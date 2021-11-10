@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+body, input {
+  font: menu;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+}

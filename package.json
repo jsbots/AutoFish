@@ -1,0 +1,62 @@
+{
+  "name": "wow-fishing-bot",
+  "version": "1.0.0",
+  "description": "A fishing bot for World of Warcraft (Vanilla, TBC, WoTLK and Classic)",
+  "main": "./app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "startf": "electron-forge start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [
+    "WorldOfWarcraft",
+    "bot",
+    "fishing",
+    "wow"
+  ],
+  "author": "olesgeras",
+  "license": "ISC",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "image-pixels": "^2.2.2",
+    "keysender": "^1.6.5"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "electron": "^15.3.1",
+    "electron-rebuild": "^3.2.4"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "wow_fishing_bot"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
