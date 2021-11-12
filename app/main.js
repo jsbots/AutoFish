@@ -1,7 +1,9 @@
 let { app, BrowserWindow, ipcMain, Menu } = require('electron');
 
+let win;
+
 function createWindow() {
-  let win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800, // 400
     height: 600, // 500
     show: false,
@@ -36,3 +38,7 @@ app.on('window-all-closed', () => {
 });
 
 Menu.setApplicationMenu(null)
+
+ipcMain.on('hide-window', (event) => {
+  
+});
