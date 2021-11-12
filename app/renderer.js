@@ -7,13 +7,11 @@ const stopButton = document.querySelector('#stop');
 // END HTML//
 
 
-
 // GLOBAL //
-let w, m, k;
+let w, m, k, options;
 const delay = 75;
 const test = false;
 // END OF GLOBALS //
-
 
 
 const sleep = (time) => {
@@ -23,58 +21,15 @@ const sleep = (time) => {
 }
 
 const getOptions = (timeNow) => {
-  const options = {
+  return {
     timer: 5 * 60 * 1000,
     startTime: timeNow,
     fishingZone: {x: 0, y: 0, width: 0, height: 0},
     autoLoot: true,
     close: false
   };
-
-  return options;
 };
 
-const startTheBot = (options) => {
-
-  try {
-    var game = findTheGame(`World of Warcraft`)
-  } catch(e) {
-    console.log(`Can't find the game`);
-    return;
-  }
-
-  const {workwindow, mouse, keyboard} = game;
-
-  w = workwindow;
-  m = mouse;
-  k = keyboard;
-
-  m.buttonTogglerDelay = delay;
-  k.keyTogglerDelay = delay;
-  k.keySenderDelay = delay
-
-  const display = w.getView();
-  const center = new Vec(display.width / 2, display.height / 2);
-  w.setForeground();
-
-  new GlobalHotkey({
-    key: 'space',
-    action() {
-      process.exit();
-    }
-  });
-  const stats = { caught: 0, ncaught: 0 };
-
-if(test) {
-  setInterval(() => {
-    let {x, y} = m.getPos();
-    let [r, g, b] = w.colorAt(x, y, 'array');
-    console.log(x, y, `r - g`, r - g, `r - b`, r - b);
-  }, 500);
-} else {
-  startFishing(options, display, center, stats);
-}
-};
 
 const findTheGame = (name) => {
   const {handle} = getAllWindows().find(({title}) => new RegExp(name).test(title));
@@ -136,13 +91,13 @@ const castFishing = () => {
     k.sendKey('enter');
     k.printText('/cast fishing', 0);
     k.sendKey('enter');
-    setTimeout(resolve, 1000); // Fishpole animation
+    setTimeout(resolve, 1750); // 1000 in wotlk
   });
 };
 
 const findFishingZone = (center, display) => {
-  let {x, y} = center.plus(new Vec(-(display.width * 0.15),-(display.height * 0.4)));
-  return {x, y, width: display.width * 0.3, height: display.height * 0.4};
+  let {x, y} = center.plus(new Vec(-(display.width * 0.2),-(display.height * 0.4)));
+  return {x, y, width: display.width * 0.4, height: display.height * 0.3};
 };
 
 const gotAway = async (center) => {
@@ -172,11 +127,13 @@ const getFish = (bobberPos, stats, center) => {
 
 const checkHook = (start) => {
   return new Promise((resolve, reject) => {
-    let angle = Math.PI / 2;
+    let angleY = Math.PI;
+    let angleX = Math.PI / 4;
     const waveAnimation = () => {
-      if(isReddish(start.colorNow)) {
-        let y = Math.sin(angle += 0.025) * 2;
-        // m.moveTo(start.x, start.y + y);
+      if(isReddish(start.colorNow) && !options.close) {
+      let y = Math.sin(angleY += 0.025) * 3; // 0.025 in WOTLK
+       let x = Math.cos(angleX += 0.025);
+        m.moveTo(start.x + x, start.y + y);
         setTimeout(waveAnimation, 10);
       } else {
         resolve(true);
@@ -187,21 +144,80 @@ const checkHook = (start) => {
   });
 }
 
+const prepareTheView = async () => {
+  for (var i = 0; i < 4; i++) {
+    k.sendKey('home')
+    await sleep(1000);
+  }
+
+  for(let i = 0; i < 2; i++) {
+    k.sendKey('end');
+    await sleep(1000);
+  }
+
+  return true;
+};
+
+const startTheBot = async () => {
+
+  try {
+    var game = findTheGame(`World of Warcraft`)
+  } catch(e) {
+    console.log(`Can't find the game`);
+    return;
+  }
+
+  const {workwindow, mouse, keyboard} = game;
+
+  w = workwindow;
+  m = mouse;
+  k = keyboard;
+
+  m.buttonTogglerDelay = delay;
+  k.keyTogglerDelay = delay;
+  k.keySenderDelay = delay
+
+  const display = w.getView();
+  const center = new Vec(display.width / 2, display.height / 2);
+  w.setForeground();
+
+  new GlobalHotkey({
+    key: 'space',
+    action() {
+      process.exit();
+    }
+  });
+  const stats = { caught: 0, ncaught: 0 };
+
+  // await prepareTheView()
+  
+if(test) {
+  setInterval(() => {
+    let {x, y} = m.getPos();
+    let [r, g, b] = w.colorAt(x, y, 'array');
+    console.log(x, y, `r - g`, r - g, `r - b`, r - b);
+  }, 500);
+} else {
+  startFishing(display, center, stats);
+}
+};
+
+
 // TEST MAIN //
-const startFishing = async (options, display, center, stats) => {
+const startFishing = async (display, center, stats) => {
 
   await castFishing();
 
   let fishZone = findFishingZone(center, display);
 
   let redPos;
-  for (let i = 0; !redPos && i < 5; i++) {
-    await sleep(100) // TEST to slow down red search
+  for (let i = 0; !redPos && i < 10; i++) {
+    await sleep(100);
     redPos = await findColor(fishZone, isReddish);
   };
 
   if(redPos) {
-    let bobberPos = redPos.plus(new Vec(1, 2)); // adjust position to the middle of the red feather
+    let bobberPos = redPos.plus(new Vec(2, 4)); // 1,2 in WOTLK
     let hooked = await checkHook(bobberPos);
     if(hooked) {
       await getFish(bobberPos, stats, center);
@@ -211,7 +227,7 @@ const startFishing = async (options, display, center, stats) => {
   }
 
 
-  if(Date.now() - options.startTime < options.timer && !options.close) { startFishing(options, display, center, stats); }
+  if(Date.now() - options.startTime < options.timer && !options.close) { startFishing(display, center, stats); }
   else {
     showStats(stats);
     startButton.disabled = false;
@@ -227,11 +243,9 @@ const showStats = (stats) => {
 
 
 startButton.addEventListener('click', (event) => {
-  event.preventDefault();
   startButton.disabled = true;
   stopButton.disabled = false;
-
-  let options = getOptions(Date.now());
+  options = getOptions(Date.now());
 
   stopButton.addEventListener('click', (event) => {
     options.close = true;
@@ -239,8 +253,7 @@ startButton.addEventListener('click', (event) => {
     stopButton.disabled = true;
   });
 
-
   setTimeout(() => {
-     startTheBot(options);
+     startTheBot();
   }, 3000);
 });
