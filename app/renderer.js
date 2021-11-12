@@ -73,6 +73,24 @@ class Display {
       height: Math.floor(this.height * height)
     });
   }
+
+  async findColor (color, cond) {
+    let {data: rgb} = await pixels(w.capture(this).data,
+                      {width: this.width, height: this.height});
+
+  for (let y = 0, i = 0; y < this.height; y++) {
+    for (let x = 0; x < this.width; x++, i += 4) {
+      let r = rgb[i];
+      let g = rgb[i + 1];
+      let b = rgb[i + 2];
+      if(color([r, g, b])) {
+        let result = new Vec(this.x + x, this.y + y);
+        if(!cond || cond(result))
+          return result;
+        }
+      }
+    }
+  }
 }
 
 const findTheGame = (name) => {
@@ -80,30 +98,18 @@ const findTheGame = (name) => {
   return new Hardware(handle);
 };
 
-
-const findColor = async (start, color) => {
-  let {data: rgb} = await pixels(w.capture(start).data,
-                    {width: start.width, height: start.height});
-
-for (let y = 0, i = 0; y < start.height; y++) {
-  for (let x = 0; x < start.width; x++, i += 4) {
-    let r = rgb[i];
-    let g = rgb[i + 1];
-    let b = rgb[i + 2];
-    if(color([r, g, b])) {
-      return new Vec(start.x + x, start.y + y);
-      }
-    }
-  }
-};
-
-const isReddish = ([r, g, b]) =>  {
+const isRed = ([r, g, b]) =>  {
     return r - g > 50 && r - b > 50;
 };
 
 const isYellow = ([r, g, b]) => {
   return r - b > 200 && g - b > 200;
 }
+
+const isBlue = ([r, g, b]) => {
+  return b - r > 20 && b - g > 20;
+};
+
 
 const castFishing = () => {
   return new Promise((resolve, reject) => {
@@ -114,21 +120,16 @@ const castFishing = () => {
   });
 };
 
-const findFishingZone = (center, display) => {
-  return {x: display.width * .26, y: 0, width: Math.floor(display.width * .48), height: Math.floor(display.height * .48)};
+const gotAway = async (fishZone) => {
+  return await fishZone.findColor(isYellow);
 };
 
-const gotAway = async (center) => {
-  let start = {x: center.x - 100, y: 150, width: 200, height: 30};
-  return await findColor(start, isYellow);
-};
-
-const getFish = (bobberPos, stats, center) => {
+const getFish = (bobberPos, stats, fishZone) => {
   return new Promise(async (resolve, reject) => {
 
     bobberPos.click(1, 'right');
     await sleep(250) // wait 250ms for yellow text to appear
-    if(!await gotAway(center)) {
+    if(!await gotAway(fishZone)) {
       stats.caught++
     } else {
       stats.ncaught++
@@ -144,7 +145,7 @@ const checkHook = (start) => {
     let angleY = Math.PI;
     let angleX = Math.PI / 4;
     const waveAnimation = () => {
-      if(isReddish(start.colorNow) && !options.close) {
+      if(isRed(start.colorNow) && !options.close) {
         let y = Math.sin(angleY += 0.025) * 3; // 0.025 in WOTLK
         let x = Math.cos(angleX += 0.025);
         m.moveTo(start.x + x, start.y + y);
@@ -178,8 +179,8 @@ const startTheBot = async () => {
   k.keySenderDelay = delay
 
   const display = new Display(w.getView());
+  let fishZone = display.rel(.26, 0, .48, .48);
 
-  const center = new Vec(display.width / 2, display.height / 2);
   let stopEvent = new GlobalHotkey({
     key: 'space',
     action() {
@@ -191,31 +192,39 @@ const startTheBot = async () => {
     setInterval(() => {
       let {x, y} = m.getPos();
       let [r, g, b] = w.colorAt(x, y, 'array');
-      console.log(x, y, `r - g`, r - g, `r - b`, r - b);
+      console.log(x, y, r, g, b);
     }, 500);
   } else {
   w.setForeground();
-  let stats = await startFishing(display, center);
+  const stats = await startFishing(fishZone);
   showStats(stats);
   }
 };
 
+const isBobber = (bobber) => {
+  console.log(`here`);
+  blueFeatherPos = new Vec(-3, -3);
+  const {x, y} = bobber.plus(blueFeatherPos);
+  const color = w.colorAt(x, y, 'array');
+  console.log(`color`, color);
+  return isBlue(color);
+}
 
 // TEST MAIN //
-const startFishing = async (display, center) => {
+const startFishing = async (fishZone) => {
 
   const stats = { caught: 0, ncaught: 0 };
-  let fishZone = display.rel(.26, 0, .48, .48);
 
   for(;;) {
     await castFishing();
-    let bobber = await findColor(fishZone, isReddish);
+
+    let bobber = await fishZone.findColor(isRed, isBobber);
 
     if(bobber) {
       bobber = bobber.plus(new Vec(2, 4));        // 1,2 in WOTLK
       let hooked = await checkHook(bobber);
       if(hooked) {
-        await getFish(bobber, stats, center);
+        await getFish(bobber, stats, fishZone);
       }
     } else {
       console.log("Didn't find bobber, will /cast fishing again!");
@@ -226,7 +235,6 @@ const startFishing = async (display, center) => {
      }
   }
 }
-
 
 const showStats = (stats) => {
   let total = stats.caught + stats.ncaught;
