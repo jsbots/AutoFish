@@ -14,16 +14,22 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  padding: 10px;
 }
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   position: absolute;
 }
 
 button {
-  width: 100px;
+  width: 100%;
   height: 100px;
+}
+
+.start_off {
+  
+}
+.start_on {
+
 }

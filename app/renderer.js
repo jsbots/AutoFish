@@ -3,7 +3,7 @@ const pixels = require("image-pixels");
 
 // HTML //
 const startButton = document.querySelector('#start');
-const stopButton = document.querySelector('#stop');
+
 // END HTML//
 
 
@@ -31,10 +31,6 @@ const getOptions = (timeNow) => {
 };
 
 
-const findTheGame = (name) => {
-  const {handle} = getAllWindows().find(({title}) => new RegExp(name).test(title));
-  return new Hardware(handle);
-};
 
 class Vec{
   constructor(x, y) {
@@ -61,6 +57,12 @@ class Vec{
     return w.colorAt(this.x, this.y, 'array');
   }
 }
+
+const findTheGame = (name) => {
+  const {handle} = getAllWindows().find(({title}) => new RegExp(name).test(title));
+  return new Hardware(handle);
+};
+
 
 const findColor = async (start, color) => {
   let {data: rgb} = await pixels(w.capture(start).data,
@@ -117,10 +119,6 @@ const getFish = (bobberPos, stats, center) => {
       setTimeout(resolve, 1000);
     }
 
-    //
-    // Autoloot???
-    //
-
     setTimeout(resolve, 4500);
   });
 };
@@ -131,8 +129,8 @@ const checkHook = (start) => {
     let angleX = Math.PI / 4;
     const waveAnimation = () => {
       if(isReddish(start.colorNow) && !options.close) {
-      let y = Math.sin(angleY += 0.025) * 3; // 0.025 in WOTLK
-       let x = Math.cos(angleX += 0.025);
+        let y = Math.sin(angleY += 0.025) * 3; // 0.025 in WOTLK
+        let x = Math.cos(angleX += 0.025);
         m.moveTo(start.x + x, start.y + y);
         setTimeout(waveAnimation, 10);
       } else {
@@ -144,22 +142,8 @@ const checkHook = (start) => {
   });
 }
 
-const prepareTheView = async () => {
-  for (var i = 0; i < 4; i++) {
-    k.sendKey('home')
-    await sleep(1000);
-  }
-
-  for(let i = 0; i < 2; i++) {
-    k.sendKey('end');
-    await sleep(1000);
-  }
-
-  return true;
-};
 
 const startTheBot = async () => {
-
   try {
     var game = findTheGame(`World of Warcraft`)
   } catch(e) {
@@ -179,27 +163,24 @@ const startTheBot = async () => {
 
   const display = w.getView();
   const center = new Vec(display.width / 2, display.height / 2);
-  w.setForeground();
-
   new GlobalHotkey({
     key: 'space',
     action() {
-      process.exit();
+      options.close = true;
     }
   });
-  const stats = { caught: 0, ncaught: 0 };
+  const stats = { caught: 0, ncaught: 0};
 
-  // await prepareTheView()
-  
-if(test) {
-  setInterval(() => {
-    let {x, y} = m.getPos();
-    let [r, g, b] = w.colorAt(x, y, 'array');
-    console.log(x, y, `r - g`, r - g, `r - b`, r - b);
-  }, 500);
-} else {
+  if(test) {
+    setInterval(() => {
+      let {x, y} = m.getPos();
+      let [r, g, b] = w.colorAt(x, y, 'array');
+      console.log(x, y, `r - g`, r - g, `r - b`, r - b);
+    }, 500);
+  } else {
+  w.setForeground();
   startFishing(display, center, stats);
-}
+  }
 };
 
 
@@ -223,15 +204,13 @@ const startFishing = async (display, center, stats) => {
       await getFish(bobberPos, stats, center);
     }
   } else {
-    console.log("Didn't find bobber");
+    console.log("Didn't find bobber, will /cast fishing again!");
   }
-
 
   if(Date.now() - options.startTime < options.timer && !options.close) { startFishing(display, center, stats); }
   else {
     showStats(stats);
-    startButton.disabled = false;
-    stopButton.disabled = true;
+    options.close = false;
   }
 }
 
@@ -242,18 +221,25 @@ const showStats = (stats) => {
 };
 
 
-startButton.addEventListener('click', (event) => {
-  startButton.disabled = true;
-  stopButton.disabled = false;
-  options = getOptions(Date.now());
+(() => {
+  let started = false;
 
-  stopButton.addEventListener('click', (event) => {
-    options.close = true;
-    startButton.disabled = false;
-    stopButton.disabled = true;
+  startButton.addEventListener('click', (event) => {
+      options = getOptions(Date.now());
+      if(!started) {
+        startButton.innerHTML = `STOP`;
+        startButton.className = 'start_off';
+        startButton.disabled = true;
+
+        setTimeout(() => {
+          startTheBot();
+          startButton.disabled = false;
+        }, 3000);
+      } else {
+        event.target.innerHTML = `START`;
+        startButton.className = 'start_on';
+        options.close = true;
+      }
+      started = !started;
   });
-
-  setTimeout(() => {
-     startTheBot();
-  }, 3000);
-});
+})(); // Start button event
