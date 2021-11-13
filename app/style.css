@@ -16,6 +16,11 @@ html, body {
   overflow: hidden;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   padding: 10px;
@@ -27,9 +32,41 @@ button {
   height: 100px;
 }
 
-.start_off {
-  
+.shell {
+  display: flex;
+  flex-flow: column;
 }
-.start_on {
+section {
+  margin: 5px 0;
+  padding: 5px;
+}
 
+.logo {
+  text-align: center;
+}
+
+.section_name {
+  margin: 0;
+  font-size: 12px;
+  color: grey;
+}
+
+.log {
+  height: 150px;
+  background-color: rgba(255, 255, 0, .1);
+  border: 1px inset grey;
+  overflow-y: scroll;
+}
+
+footer {
+  text-align: center;
+}
+
+
+.options label {
+  display: block;
+}
+
+.options {
+  border: 1px inset grey;
 }

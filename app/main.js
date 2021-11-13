@@ -1,11 +1,11 @@
-let { app, BrowserWindow, ipcMain, Menu } = require('electron');
+let { app, BrowserWindow, ipcMain, Menu, dialog, desktopCapturer } = require('electron');
 
 let win;
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800, // 400
-    height: 600, // 500
+    width: 800, // 350
+    height: 1000, // 630
     show: false,
     webPreferences: {
       contextIsolation: false,
@@ -39,6 +39,15 @@ app.on('window-all-closed', () => {
 
 Menu.setApplicationMenu(null)
 
-ipcMain.on('hide-window', (event) => {
-  
+ipcMain.on('wrong-place', (event) => {
+  dialog.showMessageBoxSync(win, {
+  type: `warning`,
+  title: `Warning!`,
+  message: `It seems bot can't /cast fishing in this place, try to find another.`,
+  buttons: [`Ok`],
+  });
+});
+
+ipcMain.handle('lose-focus', (event) => {
+  win.blur();
 });

@@ -6,10 +6,53 @@
 
         <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="style.css">
-    <title>Fishing bot ver. 1.0.0</title>
+    <title>AutoFish v1.0.0</title>
   </head>
   <body>
-    <button type="button" name="button" id=start class=start_on> START </button>
+    <div class=shell>
+    <section class=logo>
+      <img src="img/logo.jpg" alt="AutoFish">
+    </section>
+
+    <h1 class=section_name>Options:</h1>
+    <section class=options>
+      <label>
+        <input type="checkbox" name=""> AutoLoot
+      </label>
+
+      <label>
+
+        <input type="checkbox" name=""> Something else
+      </label>
+
+      <label>
+        <input type="checkbox" name="">
+        Timer(min)
+        <input type="number" name="" disabled>
+      </label>
+    </section>
+
+    <h1 class=section_name>Log:</h1>
+    <section class=log>
+
+    </section>
+    <section>
+      <p>
+        Before pressing the start:
+
+          <p>1. Open the game</p>
+          <p>2. Tick off Auto Loot option </p>
+          <p>3. Find a good place to fish heading north</p>
+
+      </p>
+      </section>
+      <button type="button" name="button" id=start class=start_on> START </button>
+
+    </div>
+    <footer>
+
+      <p>made by <a href="youtube.com/olesgeras">olesgeras</a></p>
+    </footer>
     <script src="renderer.js"></script>
   </body>
 </html>
