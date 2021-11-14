@@ -70,9 +70,8 @@ class Display {
       let g = rgb[i + 1];
       let b = rgb[i + 2];
       if(color([r, g, b])) {
-
         let result = new Vec(this.x + x, this.y + y);
-            m.moveTo(result.x, result.y);
+        m.moveTo(result.x, result.y); // lighten up the bobber
           if(!cond || cond(result)) {
             return result;
           }
@@ -134,7 +133,7 @@ const sleep = (time) => {
 
 const getOptions = (timeNow) => {
   return {
-    timer: 5 * 60 * 1000,
+    timer: 10 * 60 * 1000,
     startTime: timeNow,
     fishingZone: {x: 0, y: 0, width: 0, height: 0},
     autoLoot: true,
@@ -144,7 +143,7 @@ const getOptions = (timeNow) => {
 
 const findTheGame = (name) => {
   const {handle, className} = getAllWindows().find(({title}) => new RegExp(name).test(title));
-  return new Virtual(handle);
+  return new Hardware(handle);
   /*
   if(className == `GxWindowClassD3d` || className == `GxWindowClass`) {
 
@@ -198,10 +197,16 @@ const getFish = (bobber, stats, fishZone) => {
   });
 };
 
+const stuckTime = (timeBefore, timer) => {
+  return Date.now() - timeBefore > (timer * 1000);
+};
+
 const checkHook = async (feather) => {
     log.send(`Waiting for fish to hook...`)
+
     let angleY = Math.PI;
     let angleX = Math.PI * 3 / 2;
+    let startTime = Date.now();
 
     for(;!options.close;) {
       if(isRed(feather.colorNow)) {
@@ -212,27 +217,22 @@ const checkHook = async (feather) => {
         return true;
       }
 
+      if(stuckTime(startTime, 30)) {
+          throw new Error(`Change the place of fishing`);
+      };
+
       await sleep(10);
     }
 }
 
 const isBobber = (bobber) => {
-  const blueFeather = bobber.plus(new Vec(3, -10)); // -3 -3
+  const blueFeather = bobber.plus(new Vec(0, -10)); // -3 -3
   return isBlue(blueFeather.colorNow);
 }
 
 
 const startTheBot = async () => {
-  try {
-    var game = findTheGame(`World of Warcraft`)
-  } catch(e) {
-    console.log(e);
-    log.send(`Can't find the game window.`, 'err');
-    return false;
-  }
-
-  const {workwindow, mouse, keyboard} = game;
-
+  const {workwindow, mouse, keyboard} = findTheGame(`World of Warcraft`);
   w = workwindow;
   m = mouse;
   k = keyboard;
@@ -242,7 +242,7 @@ const startTheBot = async () => {
   k.keySenderDelay = delay
 
   const display = Display.create(w.getView());
-  let fishZone = display.rel(.26, .1, .48, .4);
+  const fishZone = display.rel(.26, .05, .48, .4);
 
   new GlobalHotkey({
     key: 'space',
@@ -258,8 +258,8 @@ const startTheBot = async () => {
       console.log(x, y, r, g, b);
     }, 500);
   } else {
-  //await ipcRenderer.invoke('lose-focus'); // !vitual
-  //w.setForeground(); // !virtual
+  await ipcRenderer.invoke('lose-focus'); // !vitual
+  w.setForeground(); // !virtual
   const stats = await startFishing(fishZone);
   showStats(stats);
   }
@@ -271,15 +271,15 @@ const startFishing = async (fishZone) => {
     await castFishing();
     let bobber = await fishZone.findColor(isRed, isBobber);
     if(bobber) {
-      bobber = bobber.plus(new Vec(0, 3));        // 1,2 in WOTLK
+      bobber = bobber.plus(new Vec(0, 2));        // 1,2 in WOTLK
       let hooked = await checkHook(bobber);
       if(hooked) {
         await getFish(bobber, stats, fishZone);
       }
     } else {
+      console.log(bobber);
       if(!stats.caught && !stats.ncaught) {
-        ipcRenderer.send('wrong-place');
-        options.close = true;
+        throw new Error(`Change the place of fishing`);
       };
       log.send("Didn't find bobber, will /cast fishing again!", 'err');
     }
@@ -293,8 +293,11 @@ const startFishing = async (fishZone) => {
 
 const showStats = (stats) => {
   let total = stats.caught + stats.ncaught;
-  let ncaughtPercent = Math.floor(stats.ncaught / total * 100) || 0;
-  log.send(`Done! Caught: ${stats.caught}, Missed: ${ncaughtPercent}%`, 'caught');
+  log.send(`Done!
+    Total: ${total}
+    Caught: ${stats.caught}
+    Missed: ${stats.ncaught}`,
+  'caught');
 };
 
 const stopTheBot = () => {
@@ -307,7 +310,7 @@ const stopTheBot = () => {
 
 startButton.addEventListener('click', (event) => {
 
-    options = options || getOptions(Date.now());
+    options = getOptions(Date.now());
     log = Log.create();
 
     if(options.close) {
@@ -318,8 +321,13 @@ startButton.addEventListener('click', (event) => {
 
       log.send(`Looking for the game window...`);
       setTimeout(async () => {
-        if(!await startTheBot()) {stopTheBot()};
         startButton.disabled = false;
+        startTheBot()
+         .catch(e => {
+           ipcRenderer.send('wrong-place');
+           log.send(`ERROR: ${e.message}`, 'err');
+           stopTheBot();
+         });
       }, 250);
 
     } else {
