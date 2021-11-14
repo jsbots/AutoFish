@@ -11,7 +11,7 @@ const startButton = document.querySelector('#start');
 // GLOBAL //
 let w, m, k, options, log;
 const delay = 75;
-const test = false;
+const test = true;
 
 // END OF GLOBALS //
 
@@ -71,8 +71,9 @@ class Display {
       let b = rgb[i + 2];
       if(color([r, g, b])) {
         let result = new Vec(this.x + x, this.y + y);
-        if(!cond || cond(result))
-          return result;
+          if(!cond || cond(result)) {
+            return result;
+          }
         }
       }
     }
@@ -108,7 +109,7 @@ class Log {
     return new Log(node, types)
   }
 }
-log = Log.create();
+
 
 const getCurrentTime = () => {
   let date = new Date();
@@ -140,9 +141,13 @@ const getOptions = (timeNow) => {
 };
 
 const findTheGame = (name) => {
+  console.log(getAllWindows());
   const {handle, className} = getAllWindows().find(({title}) => new RegExp(name).test(title));
-  if(className != `GxWindowClassD3d`) throw Error;
-  return new Hardware(handle);
+  if(className == `GxWindowClassD3d` || className == `GxWindowClass`) {
+    return new Hardware(handle);
+  } else {
+    throw Error;
+  }
 };
 
 const isRed = ([r, g, b]) =>  {
@@ -163,7 +168,7 @@ const castFishing = () => {
     k.sendKey('enter');
     k.printText('/cast fishing', 0);
     k.sendKey('enter');
-    setTimeout(resolve, 1750); // casting animation
+    setTimeout(resolve, 1750); // 1750 casting animation
   });
 };
 
@@ -196,7 +201,7 @@ const checkHook = async (feather) => {
       if(isRed(feather.colorNow)) {
         let y = Math.sin(angleY += 0.025) * 3; // 0.025 in WOTLK
         let x = Math.cos(angleX += 0.025);
-        // m.moveTo(start.x + x, start.y + y);
+        m.moveTo(start.x + x, start.y + y);
       } else {
         return true;
       }
@@ -206,7 +211,7 @@ const checkHook = async (feather) => {
 }
 
 const isBobber = (bobber) => {
-  blueFeatherPos = new Vec(-3, -3);
+  blueFeatherPos = new Vec(-5, -5); // -3 -3
   const {x, y} = bobber.plus(blueFeatherPos);
   const color = w.colorAt(x, y, 'array');
   return isBlue(color);
@@ -232,7 +237,7 @@ const startTheBot = async () => {
   k.keySenderDelay = delay
 
   const display = Display.create(w.getView());
-  let fishZone = display.rel(.26, 0, .48, .48);
+  let fishZone = display.rel(.26, .1, .48, .48);
 
   new GlobalHotkey({
     key: 'space',
@@ -242,6 +247,10 @@ const startTheBot = async () => {
   });
 
   if(test) {
+    await ipcRenderer.invoke('lose-focus');
+    m.moveTo(66, 58, 1000);
+    m.click();
+
     setInterval(() => {
       let {x, y} = m.getPos();
       let [r, g, b] = w.colorAt(x, y, 'array');
@@ -275,7 +284,7 @@ const startFishing = async (fishZone, log) => {
     }
 
     if(Date.now() - options.startTime > options.timer || options.close) {
-      resetButton();
+      stopTheBot();
       return stats;
      }
   }
@@ -283,11 +292,12 @@ const startFishing = async (fishZone, log) => {
 
 const showStats = (stats) => {
   let total = stats.caught + stats.ncaught;
-  let ncaughtPercent = Math.floor(stats.ncaught / total * 100);
+  let ncaughtPercent = Math.floor(stats.ncaught / total * 100) || 0;
   log.send(`Done! Caught: ${stats.caught}, Missed: ${ncaughtPercent}%`, 'caught');
 };
 
-const resetButton = () => {
+const stopTheBot = () => {
+  log.send(`Stopping the bot...`);
   startButton.innerHTML = `START`;
   startButton.className = 'start_on';
   options.close = true;
@@ -295,7 +305,10 @@ const resetButton = () => {
   };
 
 startButton.addEventListener('click', (event) => {
+
     options = options || getOptions(Date.now());
+    log = Log.create();
+
     if(options.close) {
       startButton.innerHTML = `STOP`;
       startButton.className = 'start_off';
@@ -304,11 +317,11 @@ startButton.addEventListener('click', (event) => {
 
       log.send(`Looking for the game window...`);
       setTimeout(async () => {
-        if(!await startTheBot()) {resetButton()};
+        if(!await startTheBot()) {stopTheBot()};
         startButton.disabled = false;
       }, 250);
 
     } else {
-      resetButton();
+      stopTheBot();
     }
 });
