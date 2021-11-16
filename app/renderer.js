@@ -71,7 +71,7 @@ class Display {
       let b = rgb[i + 2];
       if(color([r, g, b])) {
         let result = new Vec(this.x + x, this.y + y);
-          m.moveTo(result.x, result.y); // lighten up the bobber
+        // m.moveTo(result.x, result.y); // lighten up the bobber
           if(!cond || cond(result)) {
             return result;
           }
@@ -158,7 +158,7 @@ const findTheGame = (name) => {
 };
 
 const isRed = ([r, g, b]) =>  {
-  return r - g > 30 && r - b > 30;
+  return r - g > 75 && r - b > 75;
 };
 
 const isBlue = ([r, g, b]) => {
@@ -169,15 +169,23 @@ const isYellow = ([r, g, b]) => {
   return r - b > 200 && g - b > 200;
 }
 
+const isGreen = ([r, g, b]) => {
+  return g - r > 150 && g - b > 150;
+};
 
 
-const castFishing = () => {
-  return new Promise((resolve, reject) => {
+const castFishing = async (castZone, initial) => {
     k.sendKey('enter');
     k.printText('/cast fishing', 0);
     k.sendKey('enter');
-    setTimeout(resolve, 1500); // 1750 casting animation
-  });
+
+    await sleep(1500);
+
+    if(initial && !await castZone.findColor(isGreen)) {
+      throw new Error(`Please, find another place for fishing.`);
+    } else {
+      return true;
+    }
 };
 
 const gotAway = async (fishZone) => {
@@ -202,37 +210,58 @@ const getFish = (bobber, stats, fishZone) => {
   });
 };
 
-const stuckTime = (timeBefore, timer) => {
+const timeOut = (timeBefore, timer) => {
   return Date.now() - timeBefore > (timer * 1000);
 };
 
 const checkHook = async (feather) => {
     log.send(`Waiting for fish to hook...`)
-
+/*
     let angleY = Math.PI;
     let angleX = Math.PI * 3 / 2;
-    let startTime = Date.now();
+*/
 
+    let startTime = Date.now();
     for(;state;) {
       if(isRed(feather.colorNow)) {
-        let y = Math.sin(angleY += 0.025) * 2; // 0.025 in WOTLK
-        let x = Math.cos(angleX += 0.025);
+        /*
+        let y = Math.sin(angleY += 0.060); // 0.025 in WOTLK
+        let x = Math.cos(angleX += 0.060);
+        color = feather.plus(new Vec(x, y)).colorNow;
         m.moveTo(feather.x + x, feather.y + y);
+        */
+      } else if(feather = checkAround(feather, feather.colorNow)) {
       } else {
         return true;
       }
 
-      if(stuckTime(startTime, 30)) {
-        log.send(`30 seconds passed, but didn't catch the fish. Will try again...`)
+      m.moveTo(feather.x, feather.y);
+
+      if(timeOut(startTime, 30)) {
         return false
       }
 
-      await sleep(10);
+      await sleep(275);
     }
 }
 
+const checkAround = (center) => {
+  let movedTo;
+  for(let y = center.y - 2; y <= center.y + 2; y++) {
+    for(let x = center.x - 2; x <= center.x + 2; x++) {
+        let point = new Vec(x, y);
+        if(isRed(point.colorNow)) {
+          movedTo = point;
+          break;
+        }
+    }
+  }
+
+  return movedTo;
+};
+
 const isBobber = (bobber) => {
-  const blueFeather = bobber.plus(new Vec(0, -10)); // -3 -3
+  const blueFeather = bobber.plus(new Vec(0, -3)); // -3 -3
   return isBlue(blueFeather.colorNow);
 }
 
@@ -248,15 +277,6 @@ const startTheBot = async () => {
   k.keySenderDelay = delay
 
   const display = Display.create(w.getView());
-  const fishZone = display.rel(.343, .018, .312, .416); // .26, .05 , .48, .4
- /*
-   new GlobalHotkey({
-    key: 'space',
-    action() {
-      state = true;
-    }
-  });
-*/
 
   if(test) {
     setInterval(() => {
@@ -265,32 +285,40 @@ const startTheBot = async () => {
       console.log(x / 1920, y / 1080, r, g, b);
     }, 500);
   } else {
-  // await ipcRenderer.invoke('lose-focus'); // !vitual
-  // w.setForeground(); // !virtual
-  const stats = await startFishing(fishZone);
+  //await ipcRenderer.invoke('lose-focus'); // !vitual
+  //w.setForeground(); // !virtual
+  const stats = await startFishing(display);
   showStats(stats);
+  stopTheBot();
   }
 };
 
-const startFishing = async (fishZone) => {
+
+
+const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
+  const initial = !stats.caught && !stats.ncaught;
+
+  const fishZone = display.rel(.343, .018, .312, .416);
+  const castZone = display.rel(.438, .840, .046, .020);
+
   for(;;) {
-    await castFishing();
-    let bobber = await fishZone.findColor(isRed, isBobber);
+    await castFishing(castZone, initial);
+    let bobber = await fishZone.findColor(isRed); // deleted is bobber
     if(bobber) {
-      bobber = bobber.plus(new Vec(0, 3));        // 1,2 in WOTLK
+      // bobber = bobber.plus(new Vec(-2, 5));   // 3
       let hooked = await checkHook(bobber);
       if(hooked) {
         await getFish(bobber, stats, fishZone);
+      } else {
+        log.send(`30 seconds have passed, but didn't catch the fish. Will /cast fishing again!`, 'ncaught');
+        stats.ncaught++;
       }
     } else {
-      if(!stats.caught && !stats.ncaught) {
-        throw new Error(`Change the place of fishing`);
-      };
       log.send("Didn't find bobber, will /cast fishing again!", 'err');
     }
 
-    if(Date.now() - options.startTime > options.timer || !state) { return stats;}
+    if(Date.now() - options.startTime > options.timer || !state) { return stats; }
   }
 }
 
@@ -308,7 +336,6 @@ const stopTheBot = () => {
   startButton.innerHTML = `START`;
   startButton.className = 'start_on';
   state = !state;
-  // GlobalHotkey.deleteAll();
   };
 
 startButton.addEventListener('click', (event) => {
@@ -320,14 +347,14 @@ startButton.addEventListener('click', (event) => {
       state = !state;
 
       log.send(`Starting the bot...`);
-      setTimeout(async () => {
+      setTimeout(() => {
         startButton.disabled = false;
         startTheBot()
          .catch(e => {
-           ipcRenderer.send('wrong-place');
            log.send(`ERROR: ${e.message}`, 'err');
            stopTheBot();
-         });}, 250);
+         });
+       }, 275);
     } else {
       stopTheBot();
     }
