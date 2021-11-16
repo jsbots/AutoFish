@@ -4,7 +4,8 @@ const { ipcRenderer } = require('electron');
 
 // HTML //
 const startButton = document.querySelector('#start');
-
+const timerData = document.querySelector('#timerData');
+const timerCheck = document.querySelector('#timerCheck')
 // END HTML//
 
 
@@ -86,31 +87,34 @@ class Display {
 }
 
 class Log {
-  constructor(node, types) {
-    this.node = node;
-    this.types = types;
+  constructor() {
+    let types = {
+                 err: 'red',
+                 ok: 'green',
+                 warn: 'orange',
+                 msg: 'black'
+               };
+
+    for(let type of Object.keys(types)) {
+      this[type] = (text) => {
+          this.send(text, types[type]);
+      };
+    }
+
+    this.node = document.querySelector('.log');
   }
 
   send(text, type) {
     let date = getCurrentTime();
     let p = document.createElement('p');
     p.innerHTML = `[${date.hr}:${date.min}:${date.sec}] ${text}`;
-    p.style.color = this.types[type || 'black'];
+    p.style.color = type || 'black';
     this.node.append(p);
-  }
-
-  static create() {
-    let node = document.querySelector('.log');
-    let types = {warn: 'yellow',
-                 msg: 'black',
-                 err: 'red',
-                 caught: 'green',
-                 ncaught: 'orange'};
-
-    return new Log(node, types)
+    this.node.scrollTop += 30;
   }
 }
-log = Log.create();
+
+log = new Log();
 
 
 
@@ -135,7 +139,7 @@ const sleep = (time) => {
 
 const getOptions = (timeNow) => {
   return {
-    timer: 10 * 60 * 1000,
+    timer: (Math.abs(+timerData.value) || Infinity) * 60 * 1000,
     startTime: timeNow,
     fishingZone: {x: 0, y: 0, width: 0, height: 0},
     autoLoot: true,
@@ -144,21 +148,26 @@ const getOptions = (timeNow) => {
 };
 
 const findTheGame = (name) => {
-  log.send(`Looking for the window of the game...`)
-  const {handle, className} = getAllWindows().find(({title}) => new RegExp(name).test(title));
-  log.send(`OK!`, 'caught');
-  return new Virtual(handle);
-  /*
-  if(className == `GxWindowClassD3d` || className == `GxWindowClass`) {
+  log.msg(`Looking for the window of the game...`);
 
-  } else {
-    throw Error;
-  }
- */
+  try {
+    const {handle, className} = getAllWindows().find(({title, className}) => {
+      if(new RegExp(name).test(title) &&
+        (className == `GxWindowClass` || className == `GxWindowClassD3d`)) {
+          return true;
+        }
+      });
+
+      log.ok(`Found the window!`);
+      return new Virtual(handle);
+    } catch(e) {
+      throw new Error(`Can't find the window of the game.`);
+    }
+
 };
 
 const isRed = ([r, g, b]) =>  {
-  return r - g > 75 && r - b > 75;
+  return (r - g > 35 && r - b > 35) && (g < 100 && b < 100);
 };
 
 const isBlue = ([r, g, b]) => {
@@ -175,6 +184,8 @@ const isGreen = ([r, g, b]) => {
 
 
 const castFishing = async (castZone, initial) => {
+    log.msg(`Casting...`);
+
     k.sendKey('enter');
     k.printText('/cast fishing', 0);
     k.sendKey('enter');
@@ -198,10 +209,10 @@ const getFish = (bobber, stats, fishZone) => {
     await sleep(250); // wait 250ms for yellow warning to appear
 
     if(!await gotAway(fishZone)) {
-      log.send(`Caught the fish!`, 'caught')
+      log.ok(`Caught the fish!`)
       stats.caught++
     } else {
-      log.send(`Didn't catch the fish`, 'ncaught')
+      log.warn(`Didn't catch the fish`)
       stats.ncaught++
       setTimeout(resolve, 1000); // wait 1s if we didn't catch a fish
     }
@@ -215,21 +226,12 @@ const timeOut = (timeBefore, timer) => {
 };
 
 const checkHook = async (feather) => {
-    log.send(`Waiting for fish to hook...`)
-/*
-    let angleY = Math.PI;
-    let angleX = Math.PI * 3 / 2;
-*/
+    log.msg(`Waiting for fish to hook...`)
 
     let startTime = Date.now();
     for(;state;) {
+
       if(isRed(feather.colorNow)) {
-        /*
-        let y = Math.sin(angleY += 0.060); // 0.025 in WOTLK
-        let x = Math.cos(angleX += 0.060);
-        color = feather.plus(new Vec(x, y)).colorNow;
-        m.moveTo(feather.x + x, feather.y + y);
-        */
       } else if(feather = checkAround(feather, feather.colorNow)) {
       } else {
         return true;
@@ -238,17 +240,18 @@ const checkHook = async (feather) => {
       m.moveTo(feather.x, feather.y);
 
       if(timeOut(startTime, 30)) {
+        log.warn(`30 seconds have passed, but didn't catch the fish. Will /cast fishing again!`);
         return false
       }
 
-      await sleep(275);
+      await sleep(150); //
     }
 }
 
 const checkAround = (center) => {
   let movedTo;
-  for(let y = center.y - 2; y <= center.y + 2; y++) {
-    for(let x = center.x - 2; x <= center.x + 2; x++) {
+  for(let y = center.y - 1; y <= center.y + 1; y++) {
+    for(let x = center.x - 1; x <= center.x + 1; x++) {
         let point = new Vec(x, y);
         if(isRed(point.colorNow)) {
           movedTo = point;
@@ -256,7 +259,6 @@ const checkAround = (center) => {
         }
     }
   }
-
   return movedTo;
 };
 
@@ -285,11 +287,13 @@ const startTheBot = async () => {
       console.log(x / 1920, y / 1080, r, g, b);
     }, 500);
   } else {
-  //await ipcRenderer.invoke('lose-focus'); // !vitual
-  //w.setForeground(); // !virtual
-  const stats = await startFishing(display);
-  showStats(stats);
-  stopTheBot();
+    // await ipcRenderer.invoke('lose-focus'); // !vitual
+    // w.setForeground(); // !virtual
+    const stats = await startFishing(display);
+    showStats(stats);
+    if(state) {
+      stopTheBot();
+    }
   }
 };
 
@@ -297,12 +301,13 @@ const startTheBot = async () => {
 
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
-  const initial = !stats.caught && !stats.ncaught;
+
 
   const fishZone = display.rel(.343, .018, .312, .416);
   const castZone = display.rel(.438, .840, .046, .020);
 
   for(;;) {
+    let initial = !stats.caught && !stats.ncaught;
     await castFishing(castZone, initial);
     let bobber = await fishZone.findColor(isRed); // deleted is bobber
     if(bobber) {
@@ -311,11 +316,10 @@ const startFishing = async (display) => {
       if(hooked) {
         await getFish(bobber, stats, fishZone);
       } else {
-        log.send(`30 seconds have passed, but didn't catch the fish. Will /cast fishing again!`, 'ncaught');
         stats.ncaught++;
       }
     } else {
-      log.send("Didn't find bobber, will /cast fishing again!", 'err');
+      log.err("Didn't find bobber, will /cast fishing again!");
     }
 
     if(Date.now() - options.startTime > options.timer || !state) { return stats; }
@@ -324,7 +328,7 @@ const startFishing = async (display) => {
 
 const showStats = (stats) => {
   let total = stats.caught + stats.ncaught;
-  log.send(`Done!
+  log.ok(`Done!
     Total: ${total}
     Caught: ${stats.caught}
     Missed: ${stats.ncaught}`,
@@ -332,26 +336,31 @@ const showStats = (stats) => {
 };
 
 const stopTheBot = () => {
-  log.send(`Stopping the bot...`);
+  log.msg(`Stopping the bot...`);
   startButton.innerHTML = `START`;
   startButton.className = 'start_on';
   state = !state;
   };
 
+
+// Listeners //
+
 startButton.addEventListener('click', (event) => {
     options = getOptions(Date.now());
+
     if(!state) {
       startButton.innerHTML = `STOP`;
       startButton.className = 'start_off';
       startButton.disabled = true;
       state = !state;
 
-      log.send(`Starting the bot...`);
+      log.msg(`Starting the bot...`);
       setTimeout(() => {
         startButton.disabled = false;
         startTheBot()
          .catch(e => {
-           log.send(`ERROR: ${e.message}`, 'err');
+           log.err(`ERROR: ${e.message}`, 'err');
+           ipcRenderer.send('error');
            stopTheBot();
          });
        }, 275);
@@ -359,3 +368,5 @@ startButton.addEventListener('click', (event) => {
       stopTheBot();
     }
 });
+
+timerCheck.addEventListener('click', () => {timerData.disabled = !timerData.disabled});

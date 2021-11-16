@@ -1,4 +1,4 @@
-let { app, BrowserWindow, ipcMain, Menu, dialog, desktopCapturer } = require('electron');
+let { app, BrowserWindow, ipcMain, Menu, dialog, desktopCapturer, shell } = require('electron');
 
 let win;
 
@@ -51,3 +51,7 @@ ipcMain.on('wrong-place', (event) => {
 ipcMain.handle('lose-focus', (event) => {
   win.blur();
 });
+
+ipcMain.on('error', () => {
+  shell.beep();
+})
