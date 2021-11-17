@@ -20,6 +20,7 @@ function createWindow() {
     win = null;
   });
 
+
   win.once('ready-to-show', () => {
     win.webContents.openDevTools()
     win.show();

@@ -137,7 +137,7 @@ const sleep = (time) => {
 
 const getOptions = (timeNow) => {
   return {
-    timer: 5 * 60 * 1000,
+    timer: ((!timerData.disabled && Math.abs(+timerData.value)) || Infinity) * 60 * 1000,
     startTime: timeNow,
     fishingZone: {x: 0, y: 0, width: 0, height: 0},
     autoLoot: true,
@@ -165,7 +165,7 @@ const findTheGame = (name) => {
 };
 
 const isRed = ([r, g, b]) =>  {
-  return (r - g > 35 && r - b > 35) && (g < 100 && b < 100);
+  return (r - g > 20 && r - b > 20) && (g < 100 && b < 100);
 };
 
 const isBlue = ([r, g, b]) => {
