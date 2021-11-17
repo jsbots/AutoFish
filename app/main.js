@@ -52,6 +52,6 @@ ipcMain.handle('lose-focus', (event) => {
   win.blur();
 });
 
-ipcMain.on('error', () => {
+ipcMain.on('sound', () => {
   shell.beep();
 })
