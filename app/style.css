@@ -16,7 +16,7 @@ html, body {
   overflow: hidden;
 }
 
-p {
+p, h1 {
   margin: 0;
   padding: 0;
 }
@@ -41,9 +41,14 @@ section {
   padding: 5px;
 }
 
-.logo {
+.logo_name {
+  background: url('img/fish_logo.jpg') no-repeat center left;
+  padding-left: 65px;
+  font-size: 56px;
   text-align: center;
 }
+
+
 
 .section_name {
   margin: 0;
@@ -59,6 +64,7 @@ section {
 }
 
 footer {
+  margin-top: 5px;
   text-align: center;
 }
 
@@ -69,4 +75,23 @@ footer {
 
 .options {
   border: 1px inset grey;
+}
+
+.link {
+  padding-left: 23px;
+  padding-bottom: 3px;
+  background: url('img/youtube.jpg') no-repeat left center;
+}
+
+#start {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#timerData {
+  width: 40px;
+}
+
+.before_info {
+  cursor: pointer;
 }
