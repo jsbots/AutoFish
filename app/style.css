@@ -42,7 +42,7 @@ section {
 }
 
 .logo_name {
-  background: url('img/fish_logo.jpg') no-repeat center left;
+  background: url('img/icon.png') no-repeat center left;
   padding-left: 65px;
   font-size: 56px;
   text-align: center;
@@ -77,7 +77,7 @@ footer {
   border: 1px inset grey;
 }
 
-.link {
+#youtube_link {
   padding-left: 23px;
   padding-bottom: 3px;
   background: url('img/youtube.jpg') no-repeat left center;
