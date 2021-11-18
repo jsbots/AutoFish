@@ -71,10 +71,13 @@ footer {
 
 .options label {
   display: block;
+  margin: 5px 0;
+
 }
 
 .options {
   border: 1px inset grey;
+      border-radius: 5px;
 }
 
 #youtube_link {
@@ -90,8 +93,13 @@ footer {
 
 #timerData {
   width: 40px;
+  height: 20px;
 }
 
 .before_info {
   cursor: pointer;
+}
+
+.add_info {
+  margin-left: 10px;
 }

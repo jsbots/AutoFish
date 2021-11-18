@@ -12,11 +12,12 @@ const path = require('path');
 
 let win;
 Menu.setApplicationMenu(null)
+let powerBlocker = powerSaveBlocker.start('prevent-display-sleep')
 
 function createWindow() {
   win = new BrowserWindow({
     width: 800, // 350
-    height: 1000, // 630
+    height: 670, // 630
     show: false,
     webPreferences: {
       contextIsolation: false,
@@ -34,7 +35,7 @@ function createWindow() {
 
 
   win.once('ready-to-show', () => {
-    win.webContents.openDevTools()
+     win.webContents.openDevTools()
     win.show();
   })
 }
@@ -46,6 +47,7 @@ app.on('window-all-closed', () => {
   if (process.platform === 'darwin') {
     return false;
   }
+  powerSaveBlocker.stop(powerBlocker);
   app.quit();
 });
 
@@ -55,18 +57,20 @@ app.on('window-all-closed', () => {
 //////////////////////////
 
 
-
 const {Virtual, Hardware, getAllWindows} = require('keysender');
 const pixels = require('image-pixels');
 
 
 // GLOBAL //
+
 let w, m, k, options, log;
 let state = false;
 const delay = 150;
 const test = false;
 
 // END OF GLOBALS //
+
+
 
 class Vec{
   constructor(x, y) {
@@ -121,9 +125,7 @@ class Display {
       let g = rgb[i + 1];
       let b = rgb[i + 2];
       if(color([r, g, b])) {
-        // console.log(r, g, b);
         let result = new Vec(this.x + x, this.y + y);
-        // m.moveTo(result.x, result.y); // lighten up the bobber
           if(!cond || cond(result)) {
             return result;
           }
@@ -205,10 +207,6 @@ const isRed = ([r, g, b]) =>  {
   return (r - g > 20 && r - b > 20) && (g < 100 && b < 100);
 };
 
-const isBlue = ([r, g, b]) => {
-  return b - r > 20 && b - g > 20;
-};
-
 const isYellow = ([r, g, b]) => {
   return r - b > 200 && g - b > 200;
 };
@@ -217,9 +215,6 @@ const isGreen = ([r, g, b]) => {
   return g - r > 150 && g - b > 150;
 };
 
-const isBlack = ([r, g, b]) => {
-  return r < 30 && g < 30 && b < 30;
-};
 
 
 const castFishing = async (castZone, initial) => {
@@ -297,8 +292,8 @@ const checkAround = (center) => {
 };
 
 const fullCheckAround = (center) => {
-  for(let y = center.y - 1; y <= center.y + 1; y++) {
-    for(let x = center.x - 1; x <= center.x + 1; x++) {
+  for(let y = center.y - 2; y <= center.y + 2; y++) {
+    for(let x = center.x - 2; x <= center.x + 2; x++) {
         let point = new Vec(x, y);
         if(point.x != center.x &&
            point.y != center.y &&
@@ -322,15 +317,20 @@ const startTheBot = async () => {
 
   const display = Display.create(w.getView());
 
+  // w.setForeground();
+
   if(test) {
-    setInterval(() => {
+    setInterval(async () => {
+      m.moveTo(testd.x, testd.y);
+      await sleep(1000);
+      m.moveTo(testd.x + testd.width, testd.y + testd.height);
+
       let {x, y} = m.getPos();
       m.moveTo(x, y);
       let [r, g, b] = w.colorAt(x, y, 'array');
       console.log(x, y, `color`, r, g, b);
-    }, 500);
+    }, 3000);
   } else {
-    // w.setForeground(); // !virtual
     const stats = await startFishing(display);
     showStats(stats);
     if(state) {
@@ -343,8 +343,8 @@ const startTheBot = async () => {
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
 
-  const fishZone = display.rel(.343, .018, .312, .416);
-  const castZone = display.rel(.438, .840, .046, .020);
+  const fishZone = display.rel(.359, .018, .260, .416);
+  const castZone = display.rel(.438, .845, .046, .020);
 
   for(;;) {
     const initial = !stats.caught && !stats.ncaught;
@@ -385,6 +385,7 @@ const stopTheBot = () => {
 
   state = !state;
 };
+
 
 ipcMain.on('start-bot', (event, getOptions) => {
   options = getOptions;

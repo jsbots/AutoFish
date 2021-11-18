@@ -17,21 +17,18 @@
     <h1 class=section_name>Options:</h1>
     <section class=options>
       <label>
-        <select class="" name="">
-          <option> Classic & Classic TBC </option>
-          <option> WoTLK </option>
+        Game:
+        <select id=game_select>
+          <option>Classic & Classic TBC</option>
+          <option>WoTLK</option>
         </select>
       </label>
 
       <label>
-        <input type="checkbox" id=timerCheck>
-        Timer(min)
-        <input type="number" id=timerData disabled>
+        Timer:
+        <input type="number" id=timerData> (min)
       </label>
 
-      <label>
-        Color intensity:
-      </label>
     </section>
 
     <h1 class=section_name>Log:</h1>
@@ -39,16 +36,15 @@
 
     </section>
     <section>
-      <p>
-        Before pressing the start:
+      Before pressing the start:
+      <div class="add_info">
 
-          <p>1. Open the game. </p>
-          <p>2. Equip your favorite fishpole. </p>
-          <p>3. Switch to DirectX 11 (legacy) mode.</p>
-          <p>4. Turn on "Auto Loot" option. </p>
-          <p>5. Find a good place to fish. <sup class=before_info>(i)</sup></p>
-
-      </p>
+        <p>1. Open the game. </p>
+        <p>2. Equip your favorite fishpole. </p>
+        <p>3. Switch to DirectX 11 (legacy) mode.</p>
+        <p>4. Turn on "Auto Loot" option. </p>
+        <p>5. Find a good place to fish. <span class=before_info>(i)</span></p>
+      </div>
       </section>
       <button type="button" name="button" id=start class=start_on> START </button>
 

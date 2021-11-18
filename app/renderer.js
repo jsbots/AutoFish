@@ -1,25 +1,16 @@
 const { ipcRenderer } = require('electron');
 
-// HTML //
 const startButton = document.querySelector('#start');
 const timerData = document.querySelector('#timerData');
-const timerCheck = document.querySelector('#timerCheck')
 const logSection = document.querySelector('#log');
 const youtubeLink = document.querySelector('#youtube_link');
-
-// END HTML//
-
-// Listeners //
-
-
+const gameSelect = document.querySelector('#game_select');
 
 const getOptions = (timeNow) => {
   return {
-    timer: ((!timerData.disabled && Math.abs(+timerData.value)) || Infinity) * 60 * 1000,
+    timer: (Math.abs(+timerData.value) || Infinity) * 60 * 1000,
     startTime: timeNow,
-    fishingZone: {x: 0, y: 0, width: 0, height: 0},
-    autoLoot: true,
-    close: true
+    game: gameSelect.value === `Classic & Classic TBC` ? 'classic' : 'wotlk'
   };
 };
 
@@ -49,7 +40,6 @@ const stopTheBot = () => {
   startButton.className = 'start_on';
 };
 
-timerCheck.addEventListener('click', () => {timerData.disabled = !timerData.disabled});
 
 ipcRenderer.on('log-data', (event, data) => {
   renderLog(data);
