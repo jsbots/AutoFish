@@ -21,7 +21,8 @@ function createWindow() {
     webPreferences: {
       contextIsolation: false,
   	  nodeIntegration: true
-    }
+    },
+    icon: './app/img/icon.png'
   });
 
   win.resizable = false;
@@ -41,31 +42,12 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
 })
-
 app.on('window-all-closed', () => {
   if (process.platform === 'darwin') {
     return false;
   }
   app.quit();
 });
-
-
-ipcMain.on('wrong-place', (event) => {
-  dialog.showMessageBoxSync(win, {
-  type: `warning`,
-  title: `Warning!`,
-  message: `It seems bot can't /cast fishing in this place, try to find another.`,
-  buttons: [`Ok`],
-  });
-});
-
-ipcMain.handle('lose-focus', (event) => {
-
-});
-
-ipcMain.on('sound', () => {
-  shell.beep();
-})
 
 
 ///////////////////////////
@@ -139,6 +121,7 @@ class Display {
       let g = rgb[i + 1];
       let b = rgb[i + 2];
       if(color([r, g, b])) {
+        // console.log(r, g, b);
         let result = new Vec(this.x + x, this.y + y);
         // m.moveTo(result.x, result.y); // lighten up the bobber
           if(!cond || cond(result)) {
@@ -263,15 +246,15 @@ const getFish = (bobber, stats, fishZone) => {
     await sleep(250); // wait 250ms for yellow warning to appear
 
     if(!await gotAway(fishZone)) {
-      log.ok(`Caught the fish!`)
+      log.ok(`Hooked the fish!`)
       stats.caught++
     } else {
-      log.warn(`Didn't catch the fish`)
+      log.warn(`No fish are hooked.`)
       stats.ncaught++
       setTimeout(resolve, 1000); // wait 1s if we didn't catch a fish
     }
 
-    setTimeout(resolve, 3500); // wait 3.5s until bobber fully disappear
+    setTimeout(resolve, 2500); // wait 2.5s until bobber fully disappear
   });
 };
 
@@ -280,11 +263,11 @@ const timeOut = (timeBefore, timer) => {
 };
 
 const checkHook = async (feather) => {
-    log.msg(`Waiting for fish to hook...`)
+    log.msg(`Waiting for fish to be hooked...`)
     let startTime = Date.now();
     for(;state;) {
       if(isRed(feather.colorNow)) {
-      } else if(feather = checkAround(feather, feather.colorNow)) {
+      } else if(feather = checkAround(feather)) {
       } else {
         return true;
       }
@@ -301,26 +284,31 @@ const checkHook = async (feather) => {
 }
 
 const checkAround = (center) => {
-  let movedTo;
   for(let y = center.y - 1; y <= center.y + 1; y++) {
     for(let x = center.x - 1; x <= center.x + 1; x++) {
         let point = new Vec(x, y);
-        if(isRed(point.colorNow)) {
-          movedTo = point;
-          break;
+        if(point.x != center.x &&
+           point.y != center.y &&
+           isRed(point.colorNow)) {
+          return point;
         }
     }
   }
-  return movedTo;
 };
 
-const isBobber = (bobber) => {
-  /*
-  const blueFeather = bobber.plus(new Vec(0, -3)); // -3 -3
-  return isBlue(blueFeather.colorNow);
-  */
-}
-
+const fullCheckAround = (center) => {
+  for(let y = center.y - 1; y <= center.y + 1; y++) {
+    for(let x = center.x - 1; x <= center.x + 1; x++) {
+        let point = new Vec(x, y);
+        if(point.x != center.x &&
+           point.y != center.y &&
+           !isRed(point.colorNow)) {
+          return false;
+        }
+    }
+  }
+  return true;
+};
 
 const startTheBot = async () => {
   const {workwindow, mouse, keyboard} = findTheGame(`World of Warcraft`);
@@ -361,13 +349,13 @@ const startFishing = async (display) => {
   for(;;) {
     const initial = !stats.caught && !stats.ncaught;
     await castFishing(castZone, initial);
-    let bobber = await fishZone.findColor(isRed);
+    let bobber = await fishZone.findColor(isRed, fullCheckAround);
     if(bobber) {
       let hooked = await checkHook(bobber);
       if(hooked) {
         await getFish(bobber, stats, fishZone);
       } else {
-        stats.ncaught++;
+        if(state) { stats.ncaught++; };
       }
     } else {
       log.err("Didn't find bobber, will /cast fishing again!");
@@ -387,7 +375,14 @@ const showStats = (stats) => {
 };
 
 const stopTheBot = () => {
+  shell.beep();
   log.msg(`Stopping the bot...`);
+
+  if(!win.isFocused()) {
+    win.flashFrame(true);
+    win.once('focus', () => win.flashFrame(false));
+  }
+
   state = !state;
 };
 
@@ -402,3 +397,6 @@ ipcMain.on('start-bot', (event, getOptions) => {
 });
 
 ipcMain.on('stop-bot', stopTheBot);
+ipcMain.on('open-link', (event) => {
+  shell.openExternal('https://www.youtube.com/olesgeras');
+});

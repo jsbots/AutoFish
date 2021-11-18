@@ -5,6 +5,8 @@ const startButton = document.querySelector('#start');
 const timerData = document.querySelector('#timerData');
 const timerCheck = document.querySelector('#timerCheck')
 const logSection = document.querySelector('#log');
+const youtubeLink = document.querySelector('#youtube_link');
+
 // END HTML//
 
 // Listeners //
@@ -21,6 +23,7 @@ const getOptions = (timeNow) => {
   };
 };
 
+
 let state = false;
 startButton.addEventListener('click', (event) => {
 
@@ -32,6 +35,11 @@ startButton.addEventListener('click', (event) => {
       stopTheBot();
       ipcRenderer.send('stop-bot');
     }
+
+    startButton.disabled = true;
+    setTimeout(() => {
+      startButton.disabled = false;
+    }, 500);
 
     state = !state;
 });
@@ -59,3 +67,9 @@ const renderLog = ({text, type}) => {
   logSection.append(p)
   logSection.scrollTop += 30;
 };
+
+
+youtubeLink.addEventListener('click', (event) => {
+  ipcRenderer.send('open-link');
+  event.preventDefault();
+})
