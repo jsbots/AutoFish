@@ -5,6 +5,8 @@ const timerData = document.querySelector('#timerData');
 const logSection = document.querySelector('#log');
 const youtubeLink = document.querySelector('#youtube_link');
 const gameSelect = document.querySelector('#game_select');
+const wotlkInfo = document.querySelector('.wotlk_info');
+const classicInfo = document.querySelector('.classic_info');
 
 const getOptions = (timeNow) => {
   return {
@@ -63,3 +65,13 @@ youtubeLink.addEventListener('click', (event) => {
   ipcRenderer.send('open-link');
   event.preventDefault();
 })
+
+gameSelect.addEventListener('change', (event) => {
+  if(gameSelect.value === `Classic & Classic TBC`) {
+    classicInfo.style.display = 'block';
+    wotlkInfo.style.display = 'none';
+  } else {
+    wotlkInfo.style.display = 'block';
+    classicInfo.style.display = 'none';
+  }
+});
