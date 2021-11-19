@@ -5,7 +5,7 @@ const pixels = require('image-pixels');
 
 let w, m, k, options, log;
 let state = false;
-const delay = 150;
+const delay = [75, 250];
 const test = false;
 
 // END OF GLOBALS //
@@ -25,10 +25,10 @@ class Vec{
     return Math.sqrt(Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2));
   }
 
-  click(repeat = 1, button) {
-    m.moveTo(this.x, this.y, delay);
+  async click(repeat = 1, button) {
+    await m.moveCurveToAsync(this.x, this.y, 2, 150);
     for(let i = 0; i < repeat; i++) {
-      m.click(button, delay, delay)
+      m.click(button, delay)
     }
   }
 
@@ -36,6 +36,7 @@ class Vec{
     return w.colorAt(this.x, this.y, 'array');
   }
 }
+
 
 class Display {
   constructor({x, y, width, height}) {
@@ -79,6 +80,19 @@ class Display {
 }
 
 
+const getCurrentTime = () => {
+  let date = new Date();
+  let times = {hr: date.getHours(),min: date.getMinutes(), sec: date.getSeconds()};
+  for(let time of Object.keys(times)) {
+    times[time] = times[time].toString();
+    if(times[time].length < 2) {
+      times[time] = times[time].padStart(2, `0`);
+    }
+  }
+
+  return times;
+};
+
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
     setTimeout(resolve, time);
@@ -97,7 +111,7 @@ const findTheGame = (name) => {
       });
 
       log.ok(`Found the window!`);
-      return new Virtual(handle);
+      return new Hardware(handle);
     } catch(e) {
       throw new Error(`Can't find the window of the game.`);
     }
@@ -118,18 +132,10 @@ const isGreen = ([r, g, b]) => {
 
 
 
-const castFishing = async (castZone, initial) => {
+const castFishing = async () => {
     log.msg(`Casting...`);
-
-    k.sendKey('enter');
-    k.printText('/cast fishing', 0);
-    k.sendKey('enter');
-
+    k.sendKey('2');
     await sleep(1500);
-
-    if(initial && !await castZone.findColor(isGreen)) {
-      throw new Error(`Please, find another place for fishing.`);
-    }
 };
 
 const gotAway = async (fishZone) => {
@@ -147,10 +153,10 @@ const getFish = (bobber, stats, fishZone) => {
     } else {
       log.warn(`No fish are hooked.`)
       stats.ncaught++
-      setTimeout(resolve, 1000); // wait 1s if we didn't catch a fish
+      setTimeout(resolve, 1000 + Math.random() * 1000); // wait 1s if we didn't catch a fish
     }
 
-    setTimeout(resolve, 2500); // wait 2.5s until bobber fully disappear
+    setTimeout(resolve, 2000 + Math.random() * 1000); // wait 2.5s until bobber fully disappear
   });
 };
 
@@ -158,9 +164,10 @@ const timeOut = (timeBefore, timer) => {
   return Date.now() - timeBefore > (timer * 1000);
 };
 
-const checkHook = async (feather) => {
+const checkHook = async (feather, zone) => {
     log.msg(`Waiting for fish to be hooked...`)
     let startTime = Date.now();
+    let random = false;
     for(;state;) {
       if(isRed(feather.colorNow)) {
       } else if(feather = checkAround(feather)) {
@@ -168,16 +175,40 @@ const checkHook = async (feather) => {
         return true;
       }
 
-      m.moveTo(feather.x, feather.y);
+      if(!random) {
+        let time = 1000 + Math.random() * 1000;
+        await randomAction(zone, time);
+        setTimeout(() => {
+          random = false;
+        }, time);
+        random = true;
+      }
+
 
       if(timeOut(startTime, 30)) {
         log.warn(`30 seconds have passed, but didn't catch the fish. Will /cast fishing again!`);
         return false
       }
 
-      await sleep(100);
+      await sleep(50);
     }
 }
+
+const randomAction = async (zone, time) => {
+  let randX = (Math.random() * zone.width) + zone.x;
+  let randY = (Math.random() * zone.height) + zone.y;
+  let randomKeys = ['b', 'c', 'k'];
+  if(Math.random() > .5) {
+    let chosenKey = randomKeys[Math.floor(Math.random() * randomKeys.length)];
+    k.sendKey(chosenKey);
+    setTimeout(() => {
+      k.sendKey(chosenKey);
+    }, time);
+  }
+
+  await m.moveCurveToAsync(randX, randY, 2, 70);
+}
+
 
 const checkAround = (center) => {
   for(let y = center.y - 1; y <= center.y + 1; y++) {
@@ -206,10 +237,11 @@ const fullCheckAround = (center) => {
   return true;
 };
 
-const startTheBot = async (opts, logs) => {
-  options = opts;
+const startTheBot = async (mainOptions, mainLog) => {
+  options = mainOptions;
+  log = mainLog;
+
   state = true;
-  log = logs;
 
   const {workwindow, mouse, keyboard} = findTheGame(`World of Warcraft`);
   w = workwindow;
@@ -244,19 +276,46 @@ const startTheBot = async (opts, logs) => {
   }
 };
 
+class RandomMove {
+  constructor(time, key) {
+      this.timer = time;
+      this.key = key;
+  }
+
+  check(timeNow) {
+    console.log(timeNow, this.timer);
+    if(timeNow >= this.timer) {
+      return true;
+    }
+  }
+
+  async move() {
+    m.toggle(true, "right");
+    await sleep(100);
+    k.toggleKey(this.key, true);
+    await sleep(100);
+    k.toggleKey(this.key, false);
+    await sleep(100);
+    m.toggle(false, "right");
+  }
+
+  static create(timer, key) {
+    timer = (Math.random() * timer) * 60 * 1000;
+    return new RandomMove(Date.now() + timer, key);
+  }
+}
 
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
-
   const fishZone = display.rel(.359, .018, .260, .416);
-  const castZone = display.rel(.438, .845, .046, .020);
+  let random = RandomMove.create(1, 'd');
 
   for(;;) {
     const initial = !stats.caught && !stats.ncaught;
-    await castFishing(castZone, initial);
+    await castFishing();
     let bobber = await fishZone.findColor(isRed, fullCheckAround);
     if(bobber) {
-      let hooked = await checkHook(bobber);
+      let hooked = await checkHook(bobber, fishZone);
       if(hooked) {
         await getFish(bobber, stats, fishZone);
       } else {
@@ -264,6 +323,11 @@ const startFishing = async (display) => {
       }
     } else {
       log.err("Didn't find bobber, will /cast fishing again!");
+    }
+
+    if(random.check(Date.now())) {
+      await random.move()
+      random = RandomMove.create(1, random.key == 'd' ? 'a' : 'd')
     }
 
     if(Date.now() - options.startTime > options.timer || !state) { return stats; }

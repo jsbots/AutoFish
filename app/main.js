@@ -1,4 +1,5 @@
-const { app,
+const {
+      app,
       BrowserWindow,
       ipcMain,
       Menu,
@@ -16,8 +17,8 @@ let powerBlocker = powerSaveBlocker.start('prevent-display-sleep')
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800, // 350
-    height: 690, // 630
+    width: 350, // 350
+    height: 710, // 630
     show: false,
     webPreferences: {
       contextIsolation: false,
@@ -35,7 +36,7 @@ function createWindow() {
 
 
   win.once('ready-to-show', () => {
-     win.webContents.openDevTools()
+    //win.webContents.openDevTools()
     win.show();
   })
 }
@@ -105,6 +106,7 @@ const stopTheBot = () => {
     win.once('focus', () => win.flashFrame(false));
   }
 
+  win.webContents.send('stop-bot');
   game.stopTheBot();
 };
 
@@ -114,6 +116,7 @@ const startTheBot = (options, log) => {
    }
   else {
      game = wotlk
+     win.blur();
    };
 
   return game.startTheBot(options, log);
@@ -127,7 +130,6 @@ ipcMain.on('start-bot', (event, options) => {
   })
   .catch(e => {
     log.err(`ERROR: ${e.message}`, 'err');
-    win.webContents.send('stop-bot');
     stopTheBot();
   });
 });
