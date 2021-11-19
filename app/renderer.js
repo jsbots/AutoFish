@@ -12,7 +12,7 @@ const getOptions = (timeNow) => {
   return {
     timer: (Math.abs(+timerData.value) || Infinity) * 60 * 1000,
     startTime: timeNow,
-    game: gameSelect.value === `Classic & Classic TBC` ? 'classic' : 'wotlk'
+    game: gameSelect.value === `Retail & Classic` ? 'classic' : 'wotlk'
   };
 };
 
@@ -67,7 +67,7 @@ youtubeLink.addEventListener('click', (event) => {
 })
 
 gameSelect.addEventListener('change', (event) => {
-  if(gameSelect.value === `Classic & Classic TBC`) {
+  if(gameSelect.value === `Retail & Classic`) {
     classicInfo.style.display = 'block';
     wotlkInfo.style.display = 'none';
   } else {
