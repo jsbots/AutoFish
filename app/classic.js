@@ -1,15 +1,13 @@
 const {Virtual, Hardware, getAllWindows} = require('keysender');
 const pixels = require('image-pixels');
 
-// GLOBAL //
+// GLOBALS //
 
 let w, m, k, options, log;
 let state = false;
 const delay = [75, 250];
-const test = false;
 
 // END OF GLOBALS //
-
 
 class Vec{
   constructor(x, y) {
@@ -36,8 +34,6 @@ class Vec{
     return w.colorAt(this.x, this.y, 'array');
   }
 }
-
-
 class Display {
   constructor({x, y, width, height}) {
     this.x = x;
@@ -78,7 +74,33 @@ class Display {
     return new Display(scr);
   }
 }
+class RandomMove {
+  constructor(time, key) {
+      this.timer = time;
+      this.key = key;
+  }
 
+  check(timeNow) {
+    if(timeNow >= this.timer) {
+      return true;
+    }
+  }
+
+  async move() {
+    m.toggle(true, "right");
+    await sleep(100);
+    k.toggleKey(this.key, true);
+    await sleep(100);
+    k.toggleKey(this.key, false);
+    await sleep(100);
+    m.toggle(false, "right");
+  }
+
+  static create(timer, key) {
+    timer = (Math.random() * timer) * 60 * 1000;
+    return new RandomMove(Date.now() + timer, key);
+  }
+}
 
 const getCurrentTime = () => {
   let date = new Date();
@@ -153,7 +175,7 @@ const getFish = (bobber, stats, fishZone) => {
     } else {
       log.warn(`No fish are hooked.`)
       stats.ncaught++
-      setTimeout(resolve, 1000 + Math.random() * 1000); // wait 1s if we didn't catch a fish
+      setTimeout(resolve, 1000 + Math.random() * 1000);  // wait 1s if we didn't catch a fish
     }
 
     setTimeout(resolve, 2000 + Math.random() * 1000); // wait 2.5s until bobber fully disappear
@@ -254,56 +276,13 @@ const startTheBot = async (mainOptions, mainLog) => {
 
   const display = Display.create(w.getView());
 
-
-
-  if(test) {
-    setInterval(async () => {
-      m.moveTo(testd.x, testd.y);
-      await sleep(1000);
-      m.moveTo(testd.x + testd.width, testd.y + testd.height);
-
-      let {x, y} = m.getPos();
-      m.moveTo(x, y);
-      let [r, g, b] = w.colorAt(x, y, 'array');
-      console.log(x, y, `color`, r, g, b);
-    }, 3000);
-  } else {
-    const stats = await startFishing(display);
-    showStats(stats);
-    if(state) {
-      return true;
-    }
+  const stats = await startFishing(display);
+  showStats(stats);
+  if(state) {
+    return true;
   }
 };
 
-class RandomMove {
-  constructor(time, key) {
-      this.timer = time;
-      this.key = key;
-  }
-
-  check(timeNow) {
-    console.log(timeNow, this.timer);
-    if(timeNow >= this.timer) {
-      return true;
-    }
-  }
-
-  async move() {
-    m.toggle(true, "right");
-    await sleep(100);
-    k.toggleKey(this.key, true);
-    await sleep(100);
-    k.toggleKey(this.key, false);
-    await sleep(100);
-    m.toggle(false, "right");
-  }
-
-  static create(timer, key) {
-    timer = (Math.random() * timer) * 60 * 1000;
-    return new RandomMove(Date.now() + timer, key);
-  }
-}
 
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
