@@ -6,7 +6,8 @@ const {
       dialog,
       desktopCapturer,
       shell,
-      powerSaveBlocker
+      powerSaveBlocker,
+      globalShortcut
       } = require('electron');
 
 const path = require('path');
@@ -17,8 +18,8 @@ let powerBlocker = powerSaveBlocker.start('prevent-display-sleep')
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 350, // 350
-    height: 710, // 630
+    width: 350,
+    height: 710,
     show: false,
     webPreferences: {
       contextIsolation: false,
@@ -36,7 +37,6 @@ function createWindow() {
 
 
   win.once('ready-to-show', () => {
-    //win.webContents.openDevTools()
     win.show();
   })
 }
@@ -51,6 +51,7 @@ app.on('window-all-closed', () => {
   powerSaveBlocker.stop(powerBlocker);
   app.quit();
 });
+
 
 /////////////////////////////////////////
 
@@ -107,6 +108,7 @@ const stopTheBot = () => {
   }
 
   win.webContents.send('stop-bot');
+  globalShortcut.unregisterAll();
   game.stopTheBot();
 };
 
@@ -115,6 +117,7 @@ const startTheBot = (options, log) => {
      game = classic
    }
   else {
+     globalShortcut.register('space', stopTheBot);
      game = wotlk
      win.blur();
    };
