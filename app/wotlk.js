@@ -1,12 +1,11 @@
 const {Virtual, Hardware, getAllWindows} = require('keysender');
 const pixels = require('image-pixels');
 
-// GLOBAL //
+// GLOBALS //
 
 let w, m, k, options, log;
 let state = false;
 const delay = [75, 250];
-const test = false;
 
 // END OF GLOBALS //
 
@@ -25,8 +24,8 @@ class Vec{
     return Math.sqrt(Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2));
   }
 
-  async click(repeat = 1, button) {
-    await m.moveCurveToAsync(this.x, this.y, 2, 150);
+  click(repeat = 1, button) {
+    m.moveTo(this.x, this.y);
     for(let i = 0; i < repeat; i++) {
       m.click(button, delay)
     }
@@ -167,23 +166,13 @@ const timeOut = (timeBefore, timer) => {
 const checkHook = async (feather, zone) => {
     log.msg(`Waiting for fish to be hooked...`)
     let startTime = Date.now();
-    let random = false;
+
     for(;state;) {
       if(isRed(feather.colorNow)) {
       } else if(feather = checkAround(feather)) {
       } else {
         return true;
       }
-
-      if(!random) {
-        let time = 1000 + Math.random() * 1000;
-        await randomAction(zone, time);
-        setTimeout(() => {
-          random = false;
-        }, time);
-        random = true;
-      }
-
 
       if(timeOut(startTime, 30)) {
         log.warn(`30 seconds have passed, but didn't catch the fish. Will /cast fishing again!`);
@@ -194,25 +183,11 @@ const checkHook = async (feather, zone) => {
     }
 }
 
-const randomAction = async (zone, time) => {
-  let randX = (Math.random() * zone.width) + zone.x;
-  let randY = (Math.random() * zone.height) + zone.y;
-  let randomKeys = ['b', 'c', 'k'];
-  if(Math.random() > .5) {
-    let chosenKey = randomKeys[Math.floor(Math.random() * randomKeys.length)];
-    k.sendKey(chosenKey);
-    setTimeout(() => {
-      k.sendKey(chosenKey);
-    }, time);
-  }
-
-  await m.moveCurveToAsync(randX, randY, 2, 70);
-}
 
 
 const checkAround = (center) => {
-  for(let y = center.y - 1; y <= center.y + 1; y++) {
-    for(let x = center.x - 1; x <= center.x + 1; x++) {
+  for(let y = center.y - 2; y <= center.y + 2; y++) {
+    for(let x = center.x - 2; x <= center.x + 2; x++) {
         let point = new Vec(x, y);
         if(point.x != center.x &&
            point.y != center.y &&
@@ -254,25 +229,11 @@ const startTheBot = async (mainOptions, mainLog) => {
 
   const display = Display.create(w.getView());
 
-
-
-  if(test) {
-    setInterval(async () => {
-      m.moveTo(testd.x, testd.y);
-      await sleep(1000);
-      m.moveTo(testd.x + testd.width, testd.y + testd.height);
-
-      let {x, y} = m.getPos();
-      m.moveTo(x, y);
-      let [r, g, b] = w.colorAt(x, y, 'array');
-      console.log(x, y, `color`, r, g, b);
-    }, 3000);
-  } else {
-    const stats = await startFishing(display);
-    showStats(stats);
-    if(state) {
-      return true;
-    }
+  w.setForeground();
+  const stats = await startFishing(display);
+  showStats(stats);
+  if(state) {
+    return true;
   }
 };
 
@@ -283,7 +244,6 @@ class RandomMove {
   }
 
   check(timeNow) {
-    console.log(timeNow, this.timer);
     if(timeNow >= this.timer) {
       return true;
     }
@@ -307,7 +267,7 @@ class RandomMove {
 
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
-  const fishZone = display.rel(.359, .018, .260, .416);
+  const fishZone = display.rel(.300, .010, .400, .416);
   let random = RandomMove.create(1, 'd');
 
   for(;;) {
