@@ -1,7 +1,7 @@
 {
   "name": "AutoFish",
   "version": "1.0.0",
-  "description": "A fishing bot for World of Warcraft (Classic and Wotlk)",
+  "description": "A fishing bot for World of Warcraft (Retail, Classic + Classic TBC, Wotlk)",
   "main": "./app/main.js",
   "scripts": {
     "start": "electron .",
@@ -11,7 +11,9 @@
     "make": "electron-forge make"
   },
   "keywords": [
-    "WorldOfWarcraft",
+    "World Of Warcraft",
+    "wow-classic",
+    "wotlk-wow",
     "bot",
     "fishing",
     "wow"
