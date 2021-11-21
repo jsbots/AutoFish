@@ -36,12 +36,15 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "./app/img/icon.ico"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "wow_fishing_bot"
+            "name": "AutoFish",
+            "setupIcon": "./app/img/icon.ico"
           }
         },
         {
