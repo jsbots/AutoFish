@@ -1,5 +1,4 @@
 const {Virtual, Hardware, getAllWindows} = require('keysender');
-const pixels = require('image-pixels');
 
 // GLOBALS //
 
@@ -52,9 +51,7 @@ class Display {
   }
 
   async findColor (color, cond) {
-    let {data: rgb} = await pixels(w.capture(this).data,
-                      {width: this.width, height: this.height});
-
+  let rgb = Array.from(w.capture(this).data.values());
   for (let y = 0, i = 0; y < this.height; y++) {
     for (let x = 0; x < this.width; x++, i += 4) {
       let r = rgb[i];

@@ -22,7 +22,6 @@
   "license": "ISC",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "image-pixels": "^2.2.2",
     "keysender": "^1.6.5"
   },
   "devDependencies": {
