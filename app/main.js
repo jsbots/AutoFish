@@ -166,7 +166,6 @@ class Log {
 const classic = require('./classic.js');
 const wotlk = require('./wotlk.js');
 const log = new Log();
-
 let game;
 
 const stopTheBot = () => {
@@ -210,5 +209,5 @@ ipcMain.on('start-bot', (event, options) => {
 
 ipcMain.on('stop-bot', stopTheBot);
 ipcMain.on('open-link', (event) => {
-  shell.openExternal('https://www.youtube.com/olesgeras');
+  shell.openExternal('https://www.youtube.com/olesjs');
 });
