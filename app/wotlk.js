@@ -22,17 +22,6 @@ class Vec{
   get dist() {
     return Math.sqrt(Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2));
   }
-
-  click(repeat = 1, button) {
-    m.moveTo(this.x, this.y);
-    for(let i = 0; i < repeat; i++) {
-      m.click(button, delay)
-    }
-  }
-
-  get colorNow() {
-    return w.colorAt(this.x, this.y, 'array');
-  }
 }
 
 
@@ -53,7 +42,7 @@ class Display {
     });
   }
 
-  async findColor (color, cond) {
+  findColor (color, cond) {
   let rgb = Array.from(w.capture(this).data.values());
   for (let y = 0, i = 0; y < this.height; y++) {
     for (let x = 0; x < this.width; x++, i += 4) {
@@ -114,6 +103,8 @@ const findTheGame = (name) => {
 
 };
 
+
+
 const isRed = ([r, g, b]) =>  {
   return (r - g > 20 && r - b > 20) && (g < 100 && b < 100);
 };
@@ -128,32 +119,32 @@ const isGreen = ([r, g, b]) => {
 
 
 
-const castFishing = async () => {
+const castFishing = async (fishingKey, castDelay) => {
     log.msg(`Casting...`);
-    k.sendKey('2');
-    await sleep(1500);
+    k.sendKey(fishingKey);
+    await sleep(250);
+    let mime = require('mime');
+
+    let {data: rgb} = w.capture({x: 855, y: 140, width: 215, height: 20}, 'monochrome');
+    let {Buffer} = require('buffer');
+
+    console.log(sharp(Buffer.from(rgb)).toBuffer());
+    //let text = await ReadText(rgb);
+    //console.log(text);
+    await sleep(30000); //castDelay
 };
 
-const gotAway = async (fishZone) => {
-  return await fishZone.findColor(isYellow);
-};
 
-const getFish = (bobber, stats, fishZone) => {
-  return new Promise(async (resolve, reject) => {
-    bobber.click(1, 'right');
+const getFish = async (bobber, fishZone) => {
+    await m.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
+    m.click('right', delay);
+
     await sleep(250); // wait 250ms for yellow warning to appear
 
-    if(!await gotAway(fishZone)) {
-      log.ok(`Hooked the fish!`)
-      stats.caught++
-    } else {
-      log.warn(`No fish are hooked.`)
-      stats.ncaught++
-      setTimeout(resolve, 1000 + Math.random() * 1000); // wait 1s if we didn't catch a fish
-    }
-
-    setTimeout(resolve, 2000 + Math.random() * 1000); // wait 2.5s until bobber fully disappear
-  });
+    let isGotAway = fishZone.findColor(isYellow);
+    let waitTime = isGotAway ? 1000 : 2000;
+    await sleep(waitTime + Math.random() * 1000);
+    return isGotAway;
 };
 
 const timeOut = (timeBefore, timer) => {
@@ -161,18 +152,20 @@ const timeOut = (timeBefore, timer) => {
 };
 
 const checkHook = async (feather, zone) => {
-    log.msg(`Waiting for fish to be hooked...`)
+    log.msg(`Checking the hook...`)
     let startTime = Date.now();
 
-    for(;state;) {
-      if(isRed(feather.colorNow)) {
-      } else if(feather = checkAround(feather)) {
-      } else {
-        return true;
+    while(state) {
+      let featherColor = w.colorAt(feather.x, feather.y, 'array');
+      if(!isRed(featherColor)) {
+       feather = checkAround(feather);
+       if(!feather) {
+         return true;
+       }
       }
 
       if(timeOut(startTime, 30)) {
-        log.warn(`30 seconds have passed, but didn't catch the fish. Will /cast fishing again!`);
+        log.warn(`30 seconds have passed, casting again!`);
         return false
       }
 
@@ -188,7 +181,7 @@ const checkAround = (center) => {
         let point = new Vec(x, y);
         if(point.x != center.x &&
            point.y != center.y &&
-           isRed(point.colorNow)) {
+           isRed(w.colorAt(point.x, point.y, 'array'))) {
           return point;
         }
     }
@@ -201,7 +194,7 @@ const fullCheckAround = (center) => {
         let point = new Vec(x, y);
         if(point.x != center.x &&
            point.y != center.y &&
-           !isRed(point.colorNow)) {
+           !isRed(w.colorAt(point.x, point.y, 'array'))) {
           return false;
         }
     }
@@ -262,19 +255,31 @@ class RandomMove {
   }
 }
 
+
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
   const fishZone = display.rel(.300, .010, .400, .416);
+  let fishingKey = '2';
+  let castDelay = 1500;
+
   let random = RandomMove.create(1, 'd');
 
   for(;;) {
     const initial = !stats.caught && !stats.ncaught;
-    await castFishing();
-    let bobber = await fishZone.findColor(isRed, fullCheckAround);
+
+    await castFishing(fishingKey, castDelay);
+    let bobber = fishZone.findColor(isRed, fullCheckAround);
     if(bobber) {
       let hooked = await checkHook(bobber, fishZone);
       if(hooked) {
-        await getFish(bobber, stats, fishZone);
+        let caught = await getFish(bobber, fishZone);
+        if(caught) {
+          log.ok(`Hooked the fish!`);
+          stats.caught++;
+        } else {
+          log.warn(`No fish are hooked.`);
+          stats.ncaught++;
+        }
       } else {
         if(state) { stats.ncaught++; };
       }
