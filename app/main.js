@@ -183,14 +183,20 @@ const stopTheBot = () => {
 };
 
 const startTheBot = (options, log) => {
-  if(options.game == 'classic') {
-     game = classic
-   }
-  else {
-     globalShortcut.register('space', stopTheBot);
-     game = wotlk
-     win.blur();
-   };
+  switch(options.game) {
+
+    case "classic": {
+      game = classic
+      break;
+    }
+
+    case "wotlk": {
+      game = wotlk
+      globalShortcut.register('space', stopTheBot);
+      win.blur();
+      break;
+    }
+  }
 
   return game.startTheBot(options, log);
 };
