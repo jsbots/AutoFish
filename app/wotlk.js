@@ -22,6 +22,19 @@ class Vec{
   get dist() {
     return Math.sqrt(Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2));
   }
+
+  checkAround(size) {
+    let aroundPoint = [];
+    for(let y = this.y - size; y <= this.y + size; y++) {
+      for(let x = this.x - size; x <= this.x + size; x++) {
+          let point = new Vec(x, y);
+          if(point.x != this.x && point.y != this.y) {
+            aroundPoint.push(point);
+          }
+      }
+    }
+    return aroundPoint;
+  };
 }
 
 
@@ -42,7 +55,7 @@ class Display {
     });
   }
 
-  findColor (color, cond) {
+  findColor (color, task) {
   let rgb = Array.from(w.capture(this).data.values());
   for (let y = 0, i = 0; y < this.height; y++) {
     for (let x = 0; x < this.width; x++, i += 4) {
@@ -50,8 +63,8 @@ class Display {
       let g = rgb[i + 1];
       let b = rgb[i + 2];
       if(color([r, g, b])) {
-        let result = new Vec(this.x + x, this.y + y);
-          if(!cond || cond(result)) {
+          let result = new Vec(this.x + x, this.y + y);
+          if(!task || task(result)) {
             return result;
           }
         }
@@ -122,16 +135,7 @@ const isGreen = ([r, g, b]) => {
 const castFishing = async (fishingKey, castDelay) => {
     log.msg(`Casting...`);
     k.sendKey(fishingKey);
-    await sleep(250);
-    let mime = require('mime');
-
-    let {data: rgb} = w.capture({x: 855, y: 140, width: 215, height: 20}, 'monochrome');
-    let {Buffer} = require('buffer');
-
-    console.log(sharp(Buffer.from(rgb)).toBuffer());
-    //let text = await ReadText(rgb);
-    //console.log(text);
-    await sleep(30000); //castDelay
+    await sleep(castDelay);
 };
 
 
@@ -144,7 +148,7 @@ const getFish = async (bobber, fishZone) => {
     let isGotAway = fishZone.findColor(isYellow);
     let waitTime = isGotAway ? 1000 : 2000;
     await sleep(waitTime + Math.random() * 1000);
-    return isGotAway;
+    return !isGotAway;
 };
 
 const timeOut = (timeBefore, timer) => {
@@ -158,7 +162,9 @@ const checkHook = async (feather, zone) => {
     while(state) {
       let featherColor = w.colorAt(feather.x, feather.y, 'array');
       if(!isRed(featherColor)) {
-       feather = checkAround(feather);
+       feather = feather.checkAround(2)
+       .find((point) => isRed(w.colorAt(point.x, point.y, 'array')));
+
        if(!feather) {
          return true;
        }
@@ -173,34 +179,6 @@ const checkHook = async (feather, zone) => {
     }
 }
 
-
-
-const checkAround = (center) => {
-  for(let y = center.y - 2; y <= center.y + 2; y++) {
-    for(let x = center.x - 2; x <= center.x + 2; x++) {
-        let point = new Vec(x, y);
-        if(point.x != center.x &&
-           point.y != center.y &&
-           isRed(w.colorAt(point.x, point.y, 'array'))) {
-          return point;
-        }
-    }
-  }
-};
-
-const fullCheckAround = (center) => {
-  for(let y = center.y - 2; y <= center.y + 2; y++) {
-    for(let x = center.x - 2; x <= center.x + 2; x++) {
-        let point = new Vec(x, y);
-        if(point.x != center.x &&
-           point.y != center.y &&
-           !isRed(w.colorAt(point.x, point.y, 'array'))) {
-          return false;
-        }
-    }
-  }
-  return true;
-};
 
 const startTheBot = async (mainOptions, mainLog) => {
   options = mainOptions;
@@ -255,6 +233,11 @@ class RandomMove {
   }
 }
 
+const colorsAround = (point) => {
+  return point.checkAround(2)
+  .map((point) => w.colorAt(point.x, point.y))
+  .some((point) => !isRed(point));
+}
 
 const startFishing = async (display) => {
   const stats = { caught: 0, ncaught: 0 };
@@ -268,7 +251,7 @@ const startFishing = async (display) => {
     const initial = !stats.caught && !stats.ncaught;
 
     await castFishing(fishingKey, castDelay);
-    let bobber = fishZone.findColor(isRed, fullCheckAround);
+    let bobber = fishZone.findColor(isRed, colorsAround);
     if(bobber) {
       let hooked = await checkHook(bobber, fishZone);
       if(hooked) {
