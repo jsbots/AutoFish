@@ -1,95 +1,11 @@
 const {Virtual, Hardware, getAllWindows} = require('keysender');
+const Rgb = require('./rgb.js');
+const Display = require('./display.js');
+const log = require('./logger.js');
 
-// GLOBALS //
-
-let w, m, k, options, log;
-let state = false;
+let options;
 const delay = [75, 250];
 
-// END OF GLOBALS //
-
-
-class Vec{
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  plus(vec) {
-    return new Vec(this.x + vec.x, this.y + vec.y);
-  }
-
-  get dist() {
-    return Math.sqrt(Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2));
-  }
-
-  checkAround(size) {
-    let aroundPoint = [];
-    for(let y = this.y - size; y <= this.y + size; y++) {
-      for(let x = this.x - size; x <= this.x + size; x++) {
-          let point = new Vec(x, y);
-          if(point.x != this.x && point.y != this.y) {
-            aroundPoint.push(point);
-          }
-      }
-    }
-    return aroundPoint;
-  };
-}
-
-
-class Display {
-  constructor({x, y, width, height}) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-  }
-
-  rel(x, y, width, height) {
-    return new Display({
-      x: Math.floor(this.width * x),
-      y: Math.floor(this.height * y),
-      width: Math.floor(this.width * width),
-      height: Math.floor(this.height * height)
-    });
-  }
-
-  findColor (color, task) {
-  let rgb = Array.from(w.capture(this).data.values());
-  for (let y = 0, i = 0; y < this.height; y++) {
-    for (let x = 0; x < this.width; x++, i += 4) {
-      let r = rgb[i];
-      let g = rgb[i + 1];
-      let b = rgb[i + 2];
-      if(color([r, g, b])) {
-          let result = new Vec(this.x + x, this.y + y);
-          if(!task || task(result)) {
-            return result;
-          }
-        }
-      }
-    }
-  }
-
-  static create(scr) {
-    return new Display(scr);
-  }
-}
-
-
-const getCurrentTime = () => {
-  let date = new Date();
-  let times = {hr: date.getHours(),min: date.getMinutes(), sec: date.getSeconds()};
-  for(let time of Object.keys(times)) {
-    times[time] = times[time].toString();
-    if(times[time].length < 2) {
-      times[time] = times[time].padStart(2, `0`);
-    }
-  }
-
-  return times;
-};
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
@@ -97,47 +13,30 @@ const sleep = (time) => {
   });
 }
 
-const findTheGame = (name) => {
-  log.msg(`Looking for the window of the game...`);
-
-  try {
-    const {handle, className} = getAllWindows().find(({title, className}) => {
+const findGame = (name) => {
+      const win = getAllWindows().find(({title, className}) => {
       if(new RegExp(name).test(title) &&
         (className == `GxWindowClass` || className == `GxWindowClassD3d`)) {
           return true;
         }
       });
 
-      log.ok(`Found the window!`);
-      return new Hardware(handle);
-    } catch(e) {
-      throw new Error(`Can't find the window of the game.`);
-    }
-
+      if(win) {
+        return new Hardware(win.handle);
+      }
 };
-
-
 
 const isRed = ([r, g, b]) =>  {
   return (r - g > 20 && r - b > 20) && (g < 100 && b < 100);
 };
-
 const isYellow = ([r, g, b]) => {
   return r - b > 200 && g - b > 200;
 };
-
 const isGreen = ([r, g, b]) => {
   return g - r > 150 && g - b > 150;
 };
 
-
-
-const castFishing = async (fishingKey, castDelay) => {
-    log.msg(`Casting...`);
-    k.sendKey(fishingKey);
-    await sleep(castDelay);
-};
-
+/*
 
 const getFish = async (bobber, fishZone) => {
     await m.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
@@ -151,59 +50,33 @@ const getFish = async (bobber, fishZone) => {
     return !isGotAway;
 };
 
-const timeOut = (timeBefore, timer) => {
-  return Date.now() - timeBefore > (timer * 1000);
-};
-
-const checkHook = async (feather, zone) => {
+const checkBobber = async (bobber, rgb) => {
     log.msg(`Checking the hook...`)
     let startTime = Date.now();
 
     while(state) {
-      let featherColor = w.colorAt(feather.x, feather.y, 'array');
-      if(!isRed(featherColor)) {
-       feather = feather.checkAround(2)
-       .find((point) => isRed(w.colorAt(point.x, point.y, 'array')));
+      rgb = rgb.update();
+      let bobberColor = rgb.colorAt(bobber.x, bobber.y);
+      if(!isRed(bobberColor)) {
+       bobber = bobber.getAround(2)
+       .find((point) => isRed(rgb.colorAt(point.x, point.y)));
 
-       if(!feather) {
-         return true;
-       }
+        if(!bobber) {
+          return true;
+        }
       }
 
       if(timeOut(startTime, 30)) {
         log.warn(`30 seconds have passed, casting again!`);
-        return false
+        return false;
       }
 
       await sleep(50);
     }
 }
 
+*/
 
-const startTheBot = async (mainOptions, mainLog) => {
-  options = mainOptions;
-  log = mainLog;
-
-  state = true;
-
-  const {workwindow, mouse, keyboard} = findTheGame(`World of Warcraft`);
-  w = workwindow;
-  m = mouse;
-  k = keyboard;
-
-  m.buttonTogglerDelay = delay;
-  k.keyTogglerDelay = delay;
-  k.keySenderDelay = delay
-
-  const display = Display.create(w.getView());
-
-  w.setForeground();
-  const stats = await startFishing(display);
-  showStats(stats);
-  if(state) {
-    return true;
-  }
-};
 
 class RandomMove {
   constructor(time, key) {
@@ -233,29 +106,249 @@ class RandomMove {
   }
 }
 
-const colorsAround = (point) => {
-  return point.checkAround(2)
-  .map((point) => w.colorAt(point.x, point.y))
-  .some((point) => !isRed(point));
+
+const aroundToo = (point, rgb) => {
+  return point.getAround(2)
+  .map((point) => rgb.colorAt(point))
+  .every((point) => isRed(point));
 }
 
-const startFishing = async (display) => {
-  const stats = { caught: 0, ncaught: 0 };
-  const fishZone = display.rel(.300, .010, .400, .416);
+class PlaceError extends Error{};
+class BobberError extends Error{};
+class BobberMiss extends Error{};
+class GameError extends Error{};
+
+let maxFishTime = 30000;
+
+const bot = (game, log, {fishingKey, castDelay}) => {
+  let {workwindow, mouse, keyboard} = game;
+  let zone = Display.create(workwindow.getView()).rel(.300, .010, .400, .416);
+
+  let stats = {caught: 0, miss: 0};
+  let status = 'working';
+  let isInitial = true;
+
+  const getScreenData = (zone) => {
+    return {data: Array.from(workwindow.capture(zone).data.values()),
+            zone};
+  }
+
+  const castFishing = async () => {
+      keyboard.sendKey(fishingKey);
+      log.msg(`Casting...`);
+
+      if(isInitial) {
+        await sleep(250);
+        let rgb = Rgb.from(getScreenData(zone));
+        if(rgb.findColor(isRed) || rgb.findColor(isYellow)) {
+          throw new PlaceError();
+        }
+        isInitial = false;
+      }
+
+      await sleep(castDelay);
+  };
+
+  const findBobber = async () => {
+    log.msg(`Looking for the bobber...`);
+    let bobber = Rgb.from(getScreenData(zone)).findColor(isRed, aroundToo);
+    if(!bobber) {
+      throw new BobberError();
+    } else {
+      log.ok(`Found the bobber!`)
+      return bobber;
+    }
+  };
+
+  const checkBobber = async (bobber) => {
+    log.msg(`Checking the hook...`);
+    let startTime = Date.now();
+
+    while(status == 'working' && Date.now() - startTime < maxFishTime) {
+      if(!isRed(workwindow.colorAt(bobber.x, bobber.y, 'array'))) {
+       let redAround = bobber.getAround()
+       .find((point) => isRed(workwindow.colorAt(point.x, point.y, 'array')));
+
+        if(!redAround) {
+          return bobber;
+        } else {
+          bobber = redAround;
+        }
+      }
+
+      await sleep(50);
+    }
+
+    throw new BobberMiss();
+  };
+
+  const hookBobber = async (bobber) => {
+    await mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
+    mouse.click('right', delay);
+
+    await sleep(250);
+    if(!Rgb.from(getScreenData(zone)).findColor(isYellow)) {
+      stats.caught++;
+      log.ok('Caught the fish!');
+    } else {
+      throw new BobberMiss();
+    }
+
+    await sleep(1000 + Math.random() * 1000);
+  };
+
+  const checkErrors = async (error) => {
+    switch(true) {
+      case error instanceof PlaceError : {
+        log.err(`This place isn't good for fishing. Change the place and avoid any red and yellow colors in the "fishing zone".`);
+        status = null;
+      }
+
+      case error instanceof BobberError: {
+        log.err(`Can't find the bobber, will try again...`);
+        return;
+      }
+
+      case error instanceof BobberMiss: {
+        log.warn(`Couldn't catch the fish, will try again...`);
+        stats.miss++;
+        await sleep(2000 + Math.random() * 1000);
+        return;
+      }
+     }
+
+     throw error;
+   };
+
+  const showStats = () => {
+     let total = stats.caught + stats.miss;
+     log.ok(`Done!
+       Total: ${total}
+       Caught: ${stats.caught}
+       Missed: ${stats.miss}`,
+     'caught');
+   };
+
+
+  const start = async () => {
+     while(status == 'working') {
+       try {
+         await castFishing();
+         await hookBobber(await checkBobber(await findBobber()));
+       } catch(e) {
+         await checkErrors(e);
+       }
+     }
+     showStats();
+   };
+
+  return { start,
+           stop() { status = null } };
+};
+
+class Bot {
+  constructor() {
+    this.bot = null;
+  }
+
+  async start(win) {
+    log.setWin(win);
+    log.msg(`Looking for the window of the game...`);
+    const game = findGame('World of Warcraft');
+
+    if(game) {
+      log.ok(`Found the window!`);
+    } else {
+      log.err(`Can't find the window of the game.`);
+      throw new GameError();
+    }
+
+    game.mouse.buttonTogglerDelay = delay; // ?
+    game.keyboard.keyTogglerDelay = delay; // ?
+    game.keyboard.keySenderDelay = delay; // ?
+
+    let fishingKey = '2';
+    let castDelay = 1500;
+
+    let config = {
+      fishingKey,
+      castDelay
+    }
+
+    this.bot = bot(game, log, config);
+
+    win.blur();
+    game.workwindow.setForeground();
+    return await this.bot.start();
+  }
+
+  stop(stopApp) {
+      this.bot.stop();
+      stopApp();
+  }
+}
+
+
+module.exports = new Bot();
+
+
+/*
+const startTheBot = exports.startTheBot = async (options) => {
+
+  const {workwindow, mouse, keyboard} = findTheGame(`World of Warcraft`);
+  w = workwindow;
+  m = mouse;
+  k = keyboard;
+
+  m.buttonTogglerDelay = delay;
+  k.keyTogglerDelay = delay;
+  k.keySenderDelay = delay
+
+  const display = Display.create(w.getView());
+  log = Log.bindTo(electronWin);
+
+  w.setForeground();
+
   let fishingKey = '2';
   let castDelay = 1500;
+  let fishZone =  display.rel(.300, .010, .400, .416);
+
+  let config = {
+    fishingKey,
+    castDelay,
+    fishZone
+  }
+
+  const stats = await startFishingNew(config);
+
+
+  showStats(stats);
+  if(state) {
+    return true;
+  }
+
+
+  return true;
+};
+*/
+
+
+/*
+const startFishing = async ({fishingKey, castDelay, fishZone}) => {
+  const stats = { caught: 0, ncaught: 0 };
 
   let random = RandomMove.create(1, 'd');
 
-  for(;;) {
-    const initial = !stats.caught && !stats.ncaught;
+  for(;state;) {
 
     await castFishing(fishingKey, castDelay);
-    let bobber = fishZone.findColor(isRed, colorsAround);
+    let fishZoneRgb = Rgb.from(fishZone);
+    let bobber = fishZoneRgb.findColor(isRed, aroundToo);
+
     if(bobber) {
-      let hooked = await checkHook(bobber, fishZone);
+      let hooked = await checkBobber(bobber, fishZoneRgb);
       if(hooked) {
-        let caught = await getFish(bobber, fishZone);
+        let caught = await getFish(bobber.plus(fishZone), fishZoneRgb);
         if(caught) {
           log.ok(`Hooked the fish!`);
           stats.caught++;
@@ -278,21 +371,4 @@ const startFishing = async (display) => {
     if(Date.now() - options.startTime > options.timer || !state) { return stats; }
   }
 }
-
-const showStats = (stats) => {
-  let total = stats.caught + stats.ncaught;
-  log.ok(`Done!
-    Total: ${total}
-    Caught: ${stats.caught}
-    Missed: ${stats.ncaught}`,
-  'caught');
-};
-
-const stopTheBot = () => {
-  state = false;
-};
-
-module.exports = {
-  startTheBot,
-  stopTheBot
-};
+*/
