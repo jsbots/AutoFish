@@ -1,28 +1,13 @@
-const {Virtual, Hardware, getAllWindows} = require('keysender');
 const Rgb = require('./rgb.js');
 const Display = require('./display.js');
 const log = require('./logger.js');
-
-const DELAY = [75, 250];
+const findGame require('./findGame.js');
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
     setTimeout(resolve, time);
   });
 }
-
-const findGame = (name) => {
-      const win = getAllWindows().find(({title, className}) => {
-      if(new RegExp(name).test(title) &&
-        (className == `GxWindowClass` || className == `GxWindowClassD3d`)) {
-          return true;
-        }
-      });
-
-      if(win) {
-        return new Hardware(win.handle);
-      }
-};
 
 const isRed = ([r, g, b]) =>  {
   return (r - g > 20 && r - b > 20) && (g < 100 && b < 100);
@@ -69,6 +54,7 @@ const bot = (() => {
     return {data: Array.from(game.workwindow.capture(zone).data.values()),
             zone};
   }
+
   const checkNotification = (zone, colors) => {
     let rgb = Rgb.from(getScreenData(zone));
     return colors.some((color) => rgb.findColor(color));
@@ -122,7 +108,7 @@ const bot = (() => {
   };
   const hookBobber = async (bobber) => {
     await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
-    game.mouse.click('right', DELAY);
+    game.mouse.click('right', [75, 250]);
 
     await sleep(250);
     if(!checkNotification(zone, [isYellow])) {
@@ -178,7 +164,7 @@ const bot = (() => {
 
      if(game) {
        log.ok(`Found the window!`);
-       game.keyboard.keySenderDelay = DELAY;
+       game.keyboard.keySenderDelay = [75, 250];
      } else {
        log.err(`Can't find the window of the game.`);
        throw new GameError();
