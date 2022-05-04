@@ -14,7 +14,7 @@ module.exports = class Display {
       height: Math.floor(this.height * height)
     });
   }
-
+  
   static create(scr) {
     return new Display(scr);
   }

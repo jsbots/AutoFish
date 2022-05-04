@@ -57,7 +57,7 @@ const renderLog = ({text, type}) => {
   p.innerHTML = text;
   p.style.color = type;
   logSection.append(p)
-  logSection.scrollTop += 30;
+  logSection.scrollTop += 30; // not 30 but should be in relation to the size of text
 };
 
 

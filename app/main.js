@@ -119,7 +119,9 @@ app.on('window-all-closed', () => {
 
 // const classic = require('./classic.js');
 
-const bot = require('./bot.js');
+const createBot = require('./bot/createBot.js');
+const log = require('./utils/logger.js');
+const bot = createBot();
 
 const stopApp = () => {
   shell.beep();
@@ -136,19 +138,31 @@ const stopBot = () => {
 };
 
 const startBot = (event, settings) => {
+  log.setWin(win);
+
   let config = {
-    win,
-    gameName: "World of Warcraft",
-    fishingKey: "2",
-    castDelay: 1500,
-    maxFishTime: 30000,
-    zone: [.300, .010, .400, .416]
+    game: {
+      name: "World of Warcraft",
+      class: ``
+    },
+    bot: {
+      delay: [75, 250],
+      fishingKey: "2",
+      castDelay: 1500,
+      maxFishTime: 30000,
+      zone: [.300, .010, .400, .416]
+    }
   };
 
-
   globalShortcut.register('space', stopBot);
+  win.blur();
 
-  bot.start(config).catch(stopApp);
+  bot.start(log, config)
+  .then((stats) => log.ok(stats))
+  .catch((error) => {
+    log.err(`${error.message, error.stack}`);
+    stopApp()
+  });
 
   if(isFinite(settings.timer)) {
     setTimeout(stopBot, settings.timer);
@@ -157,6 +171,6 @@ const startBot = (event, settings) => {
 
 ipcMain.on('start-bot', startBot);
 ipcMain.on('stop-bot', stopBot);
-ipcMain.on('open-link', (event) => {
+ipcMain.on('open-link', () => {
   shell.openExternal('https://www.youtube.com/olesjs');
 });

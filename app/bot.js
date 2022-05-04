@@ -106,6 +106,7 @@ const bot = (() => {
 
     throw new BobberMiss();
   };
+
   const hookBobber = async (bobber) => {
     await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
     game.mouse.click('right', [75, 250]);
@@ -120,6 +121,7 @@ const bot = (() => {
 
     await sleep(1000 + Math.random() * 1000);
   };
+
   const checkErrors = async (error) => {
     if(!status) return;
 
@@ -159,16 +161,9 @@ const bot = (() => {
 
   const start = async (config) => {
      log.setWin(config.win);
-     log.msg(`Looking for the window of the game...`);
-     game = findGame(config.gameName);
 
-     if(game) {
-       log.ok(`Found the window!`);
-       game.keyboard.keySenderDelay = [75, 250];
-     } else {
-       log.err(`Can't find the window of the game.`);
-       throw new GameError();
-     }
+     game = findGame(config.gameName, log);
+     game.keyboard.keySenderDelay = [75, 250];
 
      zone = Display.create(game.workwindow.getView()).getRel(...config.zone);
      fishingKey = config.fishingKey;
@@ -196,5 +191,153 @@ const bot = (() => {
              stopApp();
            }};
 })();
+
+const checkNotification = (zone, colors) => {
+  let rgb = Rgb.from(getScreenData(zone));
+  return colors.some((color) => rgb.findColor(color));
+};
+
+const getScreenData = (game, zone) => {
+  return {data: Array.from(game.workwindow.capture(zone).data.values()),
+          zone};
+};
+
+const superBot = (game, log, config) => {
+
+  const zone = Display.create(game.workwindow.getView()).getRel(...config.zone);
+
+    const castFishing = async (state) => {
+        let {fishingKey, castDelay} = config;
+        log.msg('casting');
+        game.keyboard.sendKey(fishingKey);
+        if(state.status == 'initial') {
+          await sleep(100);
+          if(checkNotification(zone, [isRed, isYellow])) {
+            throw PlaceError;
+          } else {
+            state.status = 'working';
+          }
+        }
+        await sleep(castDelay);
+    };
+
+    const findBobber = async () => {
+      log.msg(`Looking for the bobber...`);
+      let bobber = Rgb.from(getScreenData(zone)).findColor(isRed, checkAround);
+      if(!bobber) {
+        throw new BobberError();
+      } else {
+        log.msg(`Found the bobber!`)
+        return bobber;
+      }
+    };
+
+    const checkBobber = async (bobber, state) => {
+      log.msg(`Checking the hook...`);
+      let startTime = Date.now();
+
+      while(state.status == 'working' && Date.now() - startTime < maxFishTime) {
+        if(!isRed(game.workwindow.colorAt(bobber.x, bobber.y, 'array'))) {
+         let redAround = bobber.getPointsAround()
+         .find((point) => isRed(game.workwindow.colorAt(point.x, point.y, 'array')));
+
+          if(!redAround) {
+            return bobber;
+          } else {
+            bobber = redAround;
+          }
+        }
+
+        await sleep(50);
+      }
+
+      throw new BobberMiss();
+    };
+
+    const hookBobber = async (bobber, state) => {
+      await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
+      game.mouse.click('right', [75, 250]);
+
+      await sleep(250);
+      if(!checkNotification(zone, [isYellow])) {
+        state.stats.caught++;
+        log.ok('Caught the fish!');
+      } else {
+        throw new BobberMiss();
+      }
+
+      await sleep(1000 + Math.random() * 1000);
+    };
+
+    const checkErrors = async (error, state) => {
+      if(!status) return;
+
+      switch(true) {
+        case error instanceof PlaceError : {
+          log.err(error.message);
+          status = null;
+          throw new Error();
+        }
+
+        case error instanceof BobberError: {
+          log.err(error.message);
+          return;
+        }
+
+        case error instanceof BobberMiss: {
+          log.warn(error.message);
+          state.stats.miss++;
+          await sleep(2000 + Math.random() * 1000);
+          return;
+        }
+       }
+
+       log.err(error.message);
+       throw error;
+     };
+
+     return {
+       async runBot(state) {
+         do {
+
+         } while(state.status == 'working');
+       }
+     }
+};
+
+
+
+const createBot = async (bot, log, config) => {
+  const state = {status: 'initial',
+                 stats: {caught: 0, miss: 0},
+                 showStats() {
+                   return `Done!
+                     Total: ${this.stats.caught + this.stats.miss}
+                     Caught: ${this.stats.caught}
+                     Missed: ${this.stats.miss}`,
+                   'caught'
+                 }
+                };
+  return {
+    async start() {
+      const log = Log.setWin(win);
+      const game = findGame(config.gameName, log);
+      const runBot = bot(game, log, config);
+
+      win.blur();
+      game.keyboard.keySenderDelay = [75, 250];
+      game.workwindow.setForeground();
+
+      return await runBot(state).then(() => log.ok(state.showStats()));
+    },
+
+    stop(stopApp) {
+      state.status = 'stopped';
+      stopApp();
+    }
+  }
+}
+
+
 
 module.exports = bot;
