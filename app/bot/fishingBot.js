@@ -50,7 +50,7 @@ const fishingBot = (game, config) => {
 
     const castFishing = async (state) => {
         let {fishingKey, castDelay} = config;
-        game.keyboard.sendKey(fishingKey);
+        game.keyboard.sendKey(fishingKey, delay);
         if(state.status == 'initial') {
           if(checkNotifications([isBrightRed, isYellow])) {
             throw new PlaceError();
@@ -87,7 +87,7 @@ const fishingBot = (game, config) => {
 
     const hookBobber = async (bobber) => {
       await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
-      game.mouse.click('right', [75, 250]);
+      game.mouse.click('right', delay);
 
       let timeAfterHook = 1000;
 
