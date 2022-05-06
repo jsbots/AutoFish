@@ -6,7 +6,7 @@ module.exports = class Display {
     this.height = height;
   }
 
-  getRel(x, y, width, height) {
+  getRel({x, y, width, height}) {
     return new Display({
       x: Math.floor(this.width * x),
       y: Math.floor(this.height * y),
@@ -14,8 +14,8 @@ module.exports = class Display {
       height: Math.floor(this.height * height)
     });
   }
-  
-  static create(scr) {
+
+  static from(scr) {
     return new Display(scr);
   }
 }
