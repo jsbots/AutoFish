@@ -149,6 +149,7 @@ const startBot = (event, settings) => {
       delay: [75, 250],
       fishingKey: "2",
       castDelay: 1500,
+      afterHookDelay: [1000, 2000],
       maxFishTime: 30000,
       relZone: {x: .300, y: .010, width: .400, height: .416}
     }
