@@ -1,5 +1,5 @@
 const Rgb = require('../utils/rgb.js');
-const Display = require('../utils/display.js');
+
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
@@ -26,6 +26,12 @@ const checkAround = (point, rgb) => {
   .every((point) => isRed(point));
 }
 
+const checkNotifications = (rgb, colors) => {
+  return colors.some((color) => rgb.findColor(color));
+};
+
+
+
 class PlaceError extends Error {
   constructor() {
     super();
@@ -33,42 +39,28 @@ class PlaceError extends Error {
   }
 };
 
-const fishingBot = (game, config) => {
+const fishingBot = (game, zone, config) => {
+  const {fishingKey, castDelay, delay, maxFishTime, afterHookDelay} = config;
 
-  const zone = Display.create(game.workwindow.getView()).getRel(...config.zone);
-
-  const getScreenData = () => {
-    return {data: Array.from(game.workwindow.capture(zone).data.values()),
-            zone};
-  };
-
-  const checkNotifications = (colors) => {
-    let rgb = Rgb.from(getScreenData());
-    return colors.some((color) => rgb.findColor(color));
-  };
-
-
-    const castFishing = async (state) => {
-        let {fishingKey, castDelay} = config;
-        game.keyboard.sendKey(fishingKey, delay);
-        if(state.status == 'initial') {
-          if(checkNotifications([isBrightRed, isYellow])) {
-            throw new PlaceError();
-          } else {
-            state.status = 'working';
-          }
+  const castFishing = async (state) => {
+      game.keyboard.sendKey(fishingKey, delay);
+      if(state.status == 'initial') {
+        const rgb = Rgb.from(game, zone);
+        if(checkNotifications(rgb, [isBrightRed, isYellow])) {
+          throw new PlaceError();
+        } else {
+          state.status = 'working';
         }
-        await sleep(castDelay);
-    };
+      }
+      await sleep(castDelay);
+  };
 
     const findBobber = () => {
-      return Rgb.from(getScreenData()).findColor(isRed, checkAround);
+      return Rgb.from(game, zone).findColor(isRed, checkAround);
     };
 
     const checkBobber = async (bobber, state) => {
-      let {maxFishTime} = config;
       let startTime = Date.now();
-
       while(state.status == 'working' && Date.now() - startTime < maxFishTime) {
         if(!isRed(game.workwindow.colorAt(bobber.x, bobber.y, 'array'))) {
          let redAround = bobber.getPointsAround()
@@ -86,18 +78,16 @@ const fishingBot = (game, config) => {
     };
 
     const hookBobber = async (bobber) => {
-      await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 150);
+      let timeAfterHook = afterHookDelay[0];
+      await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 75);
       game.mouse.click('right', delay);
-
-      let timeAfterHook = 1000;
-
       await sleep(250);
-      if(!checkNotifications([isYellow])) {
+      const rgb = Rgb.from(game, zone);
+      if(!checkNotifications(rgb, [isYellow])) {
         return true;
       } else {
-        timeAfterHook = 2000;
+        timeAfterHook = afterHookDelay[1];
       }
-
       await sleep(timeAfterHook + Math.random() * 1000);
     };
 
