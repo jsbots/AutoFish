@@ -142,15 +142,15 @@ const startBot = (event, settings) => {
 
   let config = {
     game: {
-      name: "World of Warcraft",
-      class: ``
+      names: ["World of Warcraft"],
+      classNames: [`GxWindowClass`, `GxWindowClassD3d`]
     },
     bot: {
       delay: [75, 250],
       fishingKey: "2",
       castDelay: 1500,
       maxFishTime: 30000,
-      zone: [.300, .010, .400, .416]
+      relZone: {x: .300, y: .010, width: .400, height: .416}
     }
   };
 
