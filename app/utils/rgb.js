@@ -23,7 +23,8 @@ module.exports = class Rgb {
     }
   }
 
-  static from({data, zone}) {
+  static from(game, zone) {
+    const data = Array.from(game.workwindow.capture(zone).data.values());
     let rgb = [];
     for (let y = 0, i = 0; y < zone.height; y++) {
       let row = [];
