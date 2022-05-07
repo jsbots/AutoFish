@@ -1,6 +1,8 @@
 
 const Vec = require('./vec.js');
 
+let gameWindow;
+
 module.exports = class Rgb {
   constructor(rgb, zone) {
     this.rgb = rgb;
@@ -31,8 +33,10 @@ module.exports = class Rgb {
     }
   }
 
-  static from(game, zone) {
-    const data = Array.from(game.workwindow.capture(zone).data.values());
+  static from(zone) {
+    if(!gameWindow) throw new Error(`Set the workwindow first.`);
+
+    const data = Array.from(gameWindow.capture(zone).data.values());
     let rgb = [];
     for (let y = 0, i = 0; y < zone.height; y++) {
       let row = [];
@@ -46,5 +50,9 @@ module.exports = class Rgb {
     }
 
     return new Rgb(rgb, zone);
+  }
+
+  static setWorkwindowTo(workwindow) {
+    gameWindow = workwindow;
   }
 }
