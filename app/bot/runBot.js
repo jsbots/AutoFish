@@ -1,5 +1,5 @@
 const runBot = async (bot, log, state) => {
-  const {castFishing, findBobber, checkBobber, hookBobber} = bot;
+  const {castFishing, findBobber, checkBobber, isHooked} = bot;
 
   do {
       log.msg(`Casting fishing...`);
@@ -16,7 +16,7 @@ const runBot = async (bot, log, state) => {
 
       log.msg(`Checking the hook...`);
       if(bobber = await checkBobber(bobber, state)) {
-        if(await hookBobber(bobber)) {
+        if(await isHooked(bobber)) {
           state.caught(log);
           continue;
         }
@@ -28,4 +28,4 @@ const runBot = async (bot, log, state) => {
   return state.showStats();
 }
 
-module.exports = runBot; 
+module.exports = runBot;
