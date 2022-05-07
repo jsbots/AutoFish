@@ -1,4 +1,5 @@
 const Rgb = require('../utils/rgb.js');
+const Display = require('../utils/display.js');
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
@@ -6,26 +7,14 @@ const sleep = (time) => {
   });
 };
 
-const isRed = ([r, g, b]) =>  {
-  return (r - g > 20 && r - b > 20) && (g < 100 && b < 100);
-};
+const colorConditions = {
+  isRed: ([r, g, b]) => (r - g > 20 && r - b > 20) && (g < 100 && b < 100),
+  isYellow: ([r, g, b]) => r - b > 200 && g - b > 200,
+  isBrightRed: ([r, g, b]) => r - g > 250 && r - b > 250
+}
 
-const isYellow = ([r, g, b]) => {
-  return r - b > 200 && g - b > 200;
-};
-
-const isBrightRed = ([r, g, b]) => {
-  return r - g > 250 && r - b > 250;
-};
-
-
-const checkAround = (point, rgb) => {
-  return point.getPointsAround(2)
-  .map((point) => rgb.colorAt(point))
-  .every((point) => isRed(point));
-};
-
-const checkNotifications = (rgb, colors) => {
+const checkNotifications = async (rgb, ...colors) => {
+  await sleep(250);
   return colors.some((color) => rgb.findColor(color));
 };
 
@@ -36,33 +25,45 @@ class PlaceError extends Error {
   }
 };
 
-const fishingBot = (game, zone, config) => {
-  const {fishingKey, castDelay, delay, maxFishTime, afterHookDelay} = config;
+const fishingBot = ({keyboard, mouse, workwindow}, config) => {
+  const {fishingKey, castDelay, delay, maxFishTime, afterHookDelay, relZone, autoLoot} = config;
+  const {isRed, isYellow, isBrightRed} = colorConditions;
+
+  const zone = Display.from(workwindow.getView()).getRel(relZone);
+  Rgb.setWorkwindowTo(workwindow);
 
   const castFishing = async (state) => {
-      game.keyboard.sendKey(fishingKey, delay);
+      keyboard.sendKey(fishingKey, delay);
       if(state.status == 'initial') {
-        if(checkNotifications(Rgb.from(game, zone), [isBrightRed, isYellow])) {
+        if(await checkNotifications(Rgb.from(zone), isBrightRed, isYellow)) {
           throw new PlaceError();
         } else {
           state.status = 'working';
         }
       }
-      await sleep(castDelay);
+      await sleep(castDelay + Math.random() * 500);
   };
 
-
     const findBobber = () => {
-      return Rgb.from(game, zone).findColor(isRed, checkAround);
+      const looksLikeBobber = (point, rgb) => {
+        return point.getPointsAround(2)
+        .map((point) => rgb.colorAt(point))
+        .every((point) => isRed(point));
+      };
+
+      return Rgb.from(zone).findColor(isRed, looksLikeBobber);
     };
 
     const checkBobber = async (bobber, state) => {
-      let startTime = Date.now();
+      const startTime = Date.now();
       while(state.status == 'working' && Date.now() - startTime < maxFishTime) {
-
-        if(!isRed(Rgb.from(game, {...bobber, width: 1, height: 1}).colorAt(bobber))) {
-         let newBobberPos = bobber.getPointsAround()
-         .find((point) =>  isRed(Rgb.from(game, {...point, width: 1, height: 1}).colorAt(point)));
+        let bobberColor = Rgb.from({...bobber, width: 1, height: 1}).colorAt(bobber);
+        if(!isRed(bobberColor)) {
+         const newBobberPos = bobber.getPointsAround()
+         .find((point) =>  {
+           let pointColor = Rgb.from({...point, width: 1, height: 1}).colorAt(point);
+           return isRed(pointColor);
+         });
 
           if(!newBobberPos) {
             return bobber;
@@ -73,28 +74,35 @@ const fishingBot = (game, zone, config) => {
 
         await sleep(50);
       }
-
     };
 
-    const hookBobber = async (bobber) => {
-      let timeAfterHook = afterHookDelay[0];
-      await game.mouse.moveCurveToAsync(bobber.x, bobber.y, 2, 75);
-      game.mouse.click('right', delay);
-      await sleep(250);
-      if(!checkNotifications(Rgb.from(game, zone), [isYellow])) {
+    const isHooked = async (bobber) => {
+      const mouseMoveSpeed = 1 + Math.random() * 3;
+      const mouseCurvatureStrength = 50 + Math.random() * 100;
+      await mouse.moveCurveToAsync(bobber.x, bobber.y,
+                                   mouseMoveSpeed,
+                                   mouseCurvatureStrength);
+      if(!autoLoot) {
+        keyboard.toggleKey('shift', true, delay);
+        mouse.click('right', delay);
+        keyboard.toggleKey('shift', false, delay);
+      } else {
+        mouse.click('right', delay);
+      }
+
+      if(!(await checkNotifications(Rgb.from(zone), isYellow))) {
+        await sleep(afterHookDelay.caught + Math.random() * 500);
         return true;
       } else {
-        timeAfterHook = afterHookDelay[1];
+        await sleep(afterHookDelay.miss + Math.random() * 500);
       }
-      await sleep(timeAfterHook + Math.random() * 1000);
     };
-
 
      return {
        castFishing,
        findBobber,
        checkBobber,
-       hookBobber
+       isHooked
      }
 };
 
