@@ -77,6 +77,7 @@ function handleSquirrelEvent() {
   }
 };
 
+/* Electron */
 
 let win;
 Menu.setApplicationMenu(null)
@@ -117,11 +118,12 @@ app.on('window-all-closed', () => {
   app.quit();
 });
 
-// const classic = require('./classic.js');
+/* Electron-end */
 
-const createBot = require('./bot/createBot.js');
+/* Bot */
+
+const bot = require('./bot/createBot.js')();
 const log = require('./utils/logger.js');
-const bot = createBot();
 
 const stopApp = () => {
   shell.beep();
@@ -145,15 +147,65 @@ const startBot = (event, settings) => {
       names: ["World of Warcraft"],
       classNames: [`GxWindowClass`, `GxWindowClassD3d`]
     },
-    bot: {
-      delay: [75, 250],
-      fishingKey: "2",
-      castDelay: 1500,
-      afterHookDelay: [1000, 2000],
-      maxFishTime: 30000,
-      relZone: {x: .300, y: .010, width: .400, height: .416}
+    patch: {
+      mop: {
+          delay: [75, 250],
+          fishingKey: "2",
+          castDelay: 1500,
+          afterHookDelay: {
+            caught: 1000,
+            miss: 2000
+          },
+          maxFishTime: 30000,
+          relZone: {x: .300, y: .010, width: .400, height: .416}
+      },
+      wotlk: {
+          delay: [75, 250],
+          fishingKey: "2",
+          castDelay: 1500,
+          afterHookDelay: {
+            caught: 2000,
+            miss: 3000
+          },
+          maxFishTime: 30000,
+          relZone: {x: .300, y: .010, width: .400, height: .416}
+      },
+      retail: {
+        delay: [75, 250],
+        fishingKey: "2",
+        castDelay: 1500,
+        afterHookDelay: {
+          caught: 1000,
+          miss: 2000
+        },
+        maxFishTime: 30000,
+        relZone: {x: .300, y: .010, width: .400, height: .416}
+      },
+      tbc: {
+        delay: [75, 250], // 200, 275
+        fishingKey: "2",
+        castDelay: 3000,
+        afterHookDelay: {
+          caught: 2000,
+          miss: 2000
+        },
+        maxFishTime: 30000,
+        relZone: {x: .300, y: .010, width: .400, height: .416}
+      },
+      vanilla: {
+        delay: [75, 250], // 200, 275
+        fishingKey: "2",
+        castDelay: 3000,
+        afterHookDelay: {
+          caught: 2000,
+          miss: 2000
+        },
+        maxFishTime: 30000,
+        relZone: {x: .300, y: .010, width: .400, height: .416},
+        autoLoot: false
+      }
     }
-  };
+};
 
   globalShortcut.register('space', stopBot);
   win.blur();
@@ -172,6 +224,6 @@ const startBot = (event, settings) => {
 
 ipcMain.on('start-bot', startBot);
 ipcMain.on('stop-bot', stopBot);
-ipcMain.on('open-link', () => {
-  shell.openExternal('https://www.youtube.com/olesjs');
-});
+ipcMain.on('open-link', () =>  shell.openExternal('https://www.youtube.com/olesjs'));
+
+/* Bot end */
