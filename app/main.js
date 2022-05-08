@@ -86,7 +86,7 @@ let powerBlocker = powerSaveBlocker.start('prevent-display-sleep');
 function createWindow() {
   win = new BrowserWindow({
     width: 350,
-    height: 710,
+    height: 760,
     show: false,
     webPreferences: {
       contextIsolation: false,
@@ -124,6 +124,7 @@ app.on('window-all-closed', () => {
 
 const bot = require('./bot/createBot.js')();
 const log = require('./utils/logger.js');
+const {readFileSync, writeFileSync} = require('fs');
 
 const stopApp = () => {
   shell.beep();
@@ -141,75 +142,11 @@ const stopBot = () => {
 
 const startBot = (event, settings) => {
   log.setWin(win);
-
-  let config = {
-    game: {
-      names: ["World of Warcraft"],
-      classNames: [`GxWindowClass`, `GxWindowClassD3d`]
-    },
-    patch: {
-      mop: {
-          delay: [75, 250],
-          fishingKey: "2",
-          castDelay: 1500,
-          afterHookDelay: {
-            caught: 1000,
-            miss: 2000
-          },
-          maxFishTime: 30000,
-          relZone: {x: .300, y: .010, width: .400, height: .416}
-      },
-      wotlk: {
-          delay: [75, 250],
-          fishingKey: "2",
-          castDelay: 1500,
-          afterHookDelay: {
-            caught: 2000,
-            miss: 3000
-          },
-          maxFishTime: 30000,
-          relZone: {x: .300, y: .010, width: .400, height: .416}
-      },
-      retail: {
-        delay: [75, 250],
-        fishingKey: "2",
-        castDelay: 1500,
-        afterHookDelay: {
-          caught: 1000,
-          miss: 2000
-        },
-        maxFishTime: 30000,
-        relZone: {x: .300, y: .010, width: .400, height: .416}
-      },
-      tbc: {
-        delay: [75, 250], // 200, 275
-        fishingKey: "2",
-        castDelay: 3000,
-        afterHookDelay: {
-          caught: 2000,
-          miss: 2000
-        },
-        maxFishTime: 30000,
-        relZone: {x: .300, y: .010, width: .400, height: .416}
-      },
-      vanilla: {
-        delay: [75, 250], // 200, 275
-        fishingKey: "2",
-        castDelay: 3000,
-        afterHookDelay: {
-          caught: 2000,
-          miss: 2000
-        },
-        maxFishTime: 30000,
-        relZone: {x: .300, y: .010, width: .400, height: .416},
-        autoLoot: false
-      }
-    }
-};
+  let config = JSON.parse(readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
 
   globalShortcut.register('space', stopBot);
-  win.blur();
 
+  win.blur();
   bot.start(log, config)
   .then((stats) => log.ok(stats))
   .catch((error) => {
