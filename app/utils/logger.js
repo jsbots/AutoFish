@@ -1,36 +1,30 @@
-let win;
-
-let log = new class {
-  constructor() {
-    let types = {
-                 err: 'red',
-                 ok: 'green',
-                 warn: 'orange',
-                 msg: 'black'
-               };
-
-    for(let type of Object.keys(types)) {
-      this[type] = (text) => {
-        if(win != null) {
-          this.send(text, types[type]);
-        } else {
-          throw new Error(`Electron window wasn't set`);
-        }
-      };
-    }
+class Log {
+  constructor(win) {
+    this.win = win;
   }
 
   send(text, type = 'black') {
-    let date = getCurrentTime();
+    const date = getCurrentTime();
     text = `[${date.hr}:${date.min}:${date.sec}] ${text}`;
-    win.webContents.send('log-data', {text, type});
+    this.win.webContents.send('log-data', {text, type});
   }
 
-  setWin(electronWin) {
-    win = electronWin;
+  ok(text) {
+    this.send(text, 'green');
+  }
+
+  warn(text) {
+    this.send(text, 'orange');
+  }
+
+  err(text) {
+    this.send(text, 'red')
+  }
+
+  static setTo(win) {
+    return new Log(win);
   }
 }
-
 
 const getCurrentTime = () => {
   let date = new Date();
@@ -45,4 +39,4 @@ const getCurrentTime = () => {
   return times;
 };
 
-module.exports = log;
+module.exports = Log;
