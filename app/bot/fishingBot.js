@@ -26,7 +26,15 @@ class PlaceError extends Error {
 };
 
 const fishingBot = ({keyboard, mouse, workwindow}, config) => {
-  const {fishingKey, castDelay, delay, maxFishTime, afterHookDelay, relZone, autoLoot} = config;
+  const { fishingKey,
+          castDelay,
+          delay,
+          maxFishTime,
+          afterHookDelay,
+          relZone,
+          autoLoot,
+          checkingDelay } = config;
+
   const {isRed, isYellow, isBrightRed} = colorConditions;
 
   const zone = Display.from(workwindow.getView()).getRel(relZone);
@@ -72,7 +80,7 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
           }
         }
 
-        await sleep(50);
+        await sleep(checkingDelay);
       }
     };
 
