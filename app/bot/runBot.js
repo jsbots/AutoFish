@@ -2,19 +2,19 @@ const runBot = async (bot, log, state) => {
   const {castFishing, findBobber, checkBobber, isHooked} = bot;
 
   do {
-      log.msg(`Casting fishing...`);
+      log.send(`Casting fishing...`);
       await castFishing(state);
 
-      log.msg(`Looking for the bobber...`);
+      log.send(`Looking for the bobber...`);
       let bobber = findBobber();
       if(bobber) {
-        log.msg(`Found the bobber!`)
+        log.ok(`Found the bobber!`)
       } else {
         log.err(`Can't find the bobber, will try again.`);
         continue;
       }
 
-      log.msg(`Checking the hook...`);
+      log.send(`Checking the hook...`);
       if(bobber = await checkBobber(bobber, state)) {
         if(await isHooked(bobber)) {
           state.caught(log);
