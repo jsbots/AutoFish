@@ -1,0 +1,60 @@
+{
+  "game": {
+    "names": ["World of Warcraft"],
+    "classNames": ["GxWindowClass", "GxWindowClassD3d"],
+    "controlType": "hardware",
+    "lastPatch": "mop"
+  },
+  "patch": {
+    "mop": {
+      "delay": [75, 250],
+      "fishingKey": "2",
+      "castDelay": 1500,
+      "afterHookDelay": { "caught": 1000, "miss": 2000 },
+      "maxFishTime": 30000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "autoLoot": true,
+      "checkingDelay": 50
+    },
+    "wotlk": {
+      "delay": [75, 250],
+      "fishingKey": "2",
+      "castDelay": 1500,
+      "afterHookDelay": { "caught": 2000, "miss": 3000 },
+      "maxFishTime": 30000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "autoLoot": true,
+      "checkingDelay": 50
+    },
+    "retail": {
+      "delay": [75, 250],
+      "fishingKey": "2",
+      "castDelay": 1500,
+      "afterHookDelay": { "caught": 1000, "miss": 2000 },
+      "maxFishTime": 30000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "autoLoot": true,
+      "checkingDelay": 50
+    },
+    "tbc": {
+      "delay": [75, 250],
+      "fishingKey": "2",
+      "castDelay": 3000,
+      "afterHookDelay": { "caught": 2000, "miss": 2000 },
+      "maxFishTime": 30000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "autoLoot": true,
+      "checkingDelay": 50
+    },
+    "vanilla": {
+      "delay": [75, 250],
+      "fishingKey": "2",
+      "castDelay": 3000,
+      "afterHookDelay": { "caught": 2000, "miss": 2000 },
+      "maxFishTime": 30000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "autoLoot": false,
+      "checkingDelay": 50
+    }
+  }
+}
