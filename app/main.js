@@ -122,9 +122,12 @@ app.on('window-all-closed', () => {
 
 /* Bot */
 
-const bot = require('./bot/createBot.js')();
-const log = require('./utils/logger.js');
 const {readFileSync, writeFileSync} = require('fs');
+const Log = require('./utils/logger.js');
+const createBot = require('./bot/createBot.js');
+const fishingBot = require('./bot/fishingBot.js');
+
+const {startBot, stopBot} = createBot(fishingBot);
 
 const stopApp = () => {
   shell.beep();
@@ -132,35 +135,35 @@ const stopApp = () => {
     win.flashFrame(true);
     win.once('focus', () => win.flashFrame(false));
   }
-  win.webContents.send('stop-bot');
+  win.webContents.send('stop-app');
 }
 
-const stopBot = () => {
-  bot.stop(stopApp);
+const stopAppAndBot = () => {
+  stopBot();
+  stopApp();
   globalShortcut.unregisterAll();
-};
+}
 
-const startBot = (event, settings) => {
-  log.setWin(win);
-  let config = JSON.parse(readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
-
-  globalShortcut.register('space', stopBot);
+ipcMain.on('start-bot', (event, settings) => {
+  const log = Log.setTo(win);
+  const config = JSON.parse(readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
+  globalShortcut.register('space', stopAppAndBot);
 
   win.blur();
-  bot.start(log, config)
+
+  if(isFinite(settings.timer)) {
+    setTimeout(stopAppAndBot, settings.timer);
+  }
+
+  startBot(log, config)
   .then((stats) => log.ok(stats))
   .catch((error) => {
     log.err(`${error.message, error.stack}`);
-    stopApp()
+    stopAppAndBot();
   });
+});
 
-  if(isFinite(settings.timer)) {
-    setTimeout(stopBot, settings.timer);
-  }
-};
-
-ipcMain.on('start-bot', startBot);
-ipcMain.on('stop-bot', stopBot);
+ipcMain.on('stop-bot', stopAppAndBot);
 ipcMain.on('open-link', () =>  shell.openExternal('https://www.youtube.com/olesjs'));
 
 /* Bot end */
