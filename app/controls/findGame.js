@@ -7,10 +7,15 @@ class GameError extends Error{
   }
 };
 
-const findGame = ({names, classNames}) => {
+const findGame = ({names, classNames, controlType}) => {
+
       const win = getAllWindows().find(({title, className}) =>  names.includes(title) && classNames.includes(className));
       if(win) {
-        return new Hardware(win.handle);
+        if(controlType == 'virtual') {
+          return new Virtual(win.handle);
+        } else {
+          return new Hardware(win.handle);
+        }
       } else {
         throw new GameError();
       }
