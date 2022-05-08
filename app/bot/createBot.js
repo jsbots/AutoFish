@@ -1,28 +1,24 @@
 const State = require('./state.js');
 const findGame = require('../controls/findGame.js');
-const fishingBot = require('./fishingBot.js');
 const runBot = require('./runBot.js');
 
-const createBot = () => {
-  let state;
+const createBot = (bot) => {
+  const state = new State;
   return {
-    async start(log, config) {
+    startBot(log, config) {
+      log.send('Starting the bot...');
+
       const controls = findGame(config.game);
-      log.ok(`Found the window!`);
+      log.ok(`Found the window of the game!`);
+
       controls.workwindow.setForeground();
 
-      return await runBot(
-        fishingBot(controls, config.patch.vanilla),
-        log,
-        state = new State
-      );
+      return runBot(bot(controls, config.patch.mop), log, state)
     },
-
-    stop(stopApp) {
+    stopBot() {
       state.status = 'stop';
-      stopApp();
     }
   }
-}
+};
 
 module.exports = createBot;
