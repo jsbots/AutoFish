@@ -1,5 +1,5 @@
 const Rgb = require('../utils/rgb.js');
-const Display = require('../utils/display.js');
+const Zone = require('../utils/zone.js');
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
@@ -8,9 +8,9 @@ const sleep = (time) => {
 };
 
 const colorConditions = {
-  isRed: ([r, g, b]) => (r - g > 20 && r - b > 20) && (g < 100 && b < 100),
-  isYellow: ([r, g, b]) => r - b > 200 && g - b > 200,
-  isBrightRed: ([r, g, b]) => r - g > 250 && r - b > 250
+  isBobber: ([r, g, b]) => (r - g > 20 && r - b > 20) && (g < 100 && b < 100),
+  isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
+  isError: ([r, g, b]) => r - g > 250 && r - b > 250
 }
 
 const checkNotifications = async (rgb, ...colors) => {
@@ -26,24 +26,17 @@ class PlaceError extends Error {
 };
 
 const fishingBot = ({keyboard, mouse, workwindow}, config) => {
-  const { fishingKey,
-          castDelay,
-          delay,
-          maxFishTime,
-          afterHookDelay,
-          relZone,
-          autoLoot,
-          checkingDelay } = config;
+  const { delay, relZone} = config;
+  const { isBobber, isWarning, isError } = colorConditions;
 
-  const {isRed, isYellow, isBrightRed} = colorConditions;
-
-  const zone = Display.from(workwindow.getView()).getRel(relZone);
+  const zone = Zone.from(workwindow.getView()).getRel(relZone);
   Rgb.setWorkwindowTo(workwindow);
 
   const castFishing = async (state) => {
+      const { fishingKey, castDelay } = config;
       keyboard.sendKey(fishingKey, delay);
       if(state.status == 'initial') {
-        if(await checkNotifications(Rgb.from(zone), isBrightRed, isYellow)) {
+        if(await checkNotifications(Rgb.from(zone), isError, isWarning)) {
           throw new PlaceError();
         } else {
           state.status = 'working';
@@ -56,21 +49,22 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
       const looksLikeBobber = (point, rgb) => {
         return point.getPointsAround(2)
         .map((point) => rgb.colorAt(point))
-        .every((point) => isRed(point));
+        .every((point) => isBobber(point));
       };
 
-      return Rgb.from(zone).findColor(isRed, looksLikeBobber);
+      return Rgb.from(zone).findColor(isBobber, looksLikeBobber);
     };
 
     const checkBobber = async (bobber, state) => {
+      const { maxFishTime, checkingDelay } = config;
       const startTime = Date.now();
       while(state.status == 'working' && Date.now() - startTime < maxFishTime) {
         let bobberColor = Rgb.from({...bobber, width: 1, height: 1}).colorAt(bobber);
-        if(!isRed(bobberColor)) {
+        if(!isBobber(bobberColor)) {
          const newBobberPos = bobber.getPointsAround()
          .find((point) =>  {
            let pointColor = Rgb.from({...point, width: 1, height: 1}).colorAt(point);
-           return isRed(pointColor);
+           return isBobber(pointColor);
          });
 
           if(!newBobberPos) {
@@ -85,11 +79,11 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
     };
 
     const isHooked = async (bobber) => {
-      const mouseMoveSpeed = 1 + Math.random() * 3;
-      const mouseCurvatureStrength = 50 + Math.random() * 100;
+      const{ afterHookDelay, autoLoot, mouseMoveSpeed, mouseCurvatureStrength } = config;
+
       await mouse.moveCurveToAsync(bobber.x, bobber.y,
-                                   mouseMoveSpeed,
-                                   mouseCurvatureStrength);
+                                   mouseMoveSpeed + Math.random() * 3,
+                                   mouseCurvatureStrength + Math.random() * 100);
       if(!autoLoot) {
         keyboard.toggleKey('shift', true, delay);
         mouse.click('right', delay);
@@ -98,7 +92,7 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
         mouse.click('right', delay);
       }
 
-      if(!(await checkNotifications(Rgb.from(zone), isYellow))) {
+      if(!(await checkNotifications(Rgb.from(zone), isWarning))) {
         await sleep(afterHookDelay.caught + Math.random() * 500);
         return true;
       } else {
