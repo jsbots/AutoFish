@@ -5,7 +5,7 @@ const runBot = require('./runBot.js');
 const createBot = (bot) => {
   const state = new State;
   return {
-    startBot(log, config) {
+    async startBot(log, config) {
       log.send('Starting the bot...');
 
       const controls = findGame(config.game);
@@ -13,7 +13,7 @@ const createBot = (bot) => {
 
       controls.workwindow.setForeground();
 
-      return runBot(bot(controls, config.patch.mop), log, state)
+      return await runBot(bot(controls, config.patch.mop), log, state)
     },
     stopBot() {
       state.status = 'stop';
