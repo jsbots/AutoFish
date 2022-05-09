@@ -1,4 +1,4 @@
-module.exports = class Display {
+class Zone {
   constructor({x, y, width, height}) {
     this.x = x;
     this.y = y;
@@ -7,7 +7,7 @@ module.exports = class Display {
   }
 
   getRel({x, y, width, height}) {
-    return new Display({
+    return new Zone({
       x: Math.floor(this.width * x),
       y: Math.floor(this.height * y),
       width: Math.floor(this.width * width),
@@ -16,6 +16,8 @@ module.exports = class Display {
   }
 
   static from(scr) {
-    return new Display(scr);
+    return new Zone(scr);
   }
 }
+
+module.exports = Zone;
