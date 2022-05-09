@@ -1,5 +1,5 @@
-const Rgb = require('../utils/rgb.js');
 const Zone = require('../utils/zone.js');
+const FishingZone = require('./fishingZone.js');
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
@@ -13,11 +13,6 @@ const colorConditions = {
   isError: ([r, g, b]) => r - g > 250 && r - b > 250
 }
 
-const checkNotifications = async (rgb, ...colors) => {
-  await sleep(250);
-  return colors.some((color) => rgb.findColor(color));
-};
-
 class PlaceError extends Error {
   constructor() {
     super();
@@ -30,13 +25,14 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
   const { isBobber, isWarning, isError } = colorConditions;
 
   const zone = Zone.from(workwindow.getView()).getRel(relZone);
-  Rgb.setWorkwindowTo(workwindow);
+  const fishingZone = FishingZone.from(workwindow, zone);
 
   const castFishing = async (state) => {
       const { fishingKey, castDelay } = config;
       keyboard.sendKey(fishingKey, delay);
       if(state.status == 'initial') {
-        if(await checkNotifications(Rgb.from(zone), isError, isWarning)) {
+        await sleep(250);
+        if(await fishingZone.checkNotifications(isError, isWarning)) {
           throw new PlaceError();
         } else {
           state.status = 'working';
@@ -45,32 +41,21 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
       await sleep(castDelay + Math.random() * 500);
   };
 
-    const findBobber = () => {
-      const looksLikeBobber = (point, rgb) => {
-        return point.getPointsAround(2)
-        .map((point) => rgb.colorAt(point))
-        .every((point) => isBobber(point));
-      };
+    const findBobber = () => fishingZone.findBobber(isBobber);
 
-      return Rgb.from(zone).findColor(isBobber, looksLikeBobber);
-    };
-
-    const checkBobber = async (bobber, state) => {
+    const checkBobber = async (bobberPos, state) => {
       const { maxFishTime, checkingDelay } = config;
       const startTime = Date.now();
       while(state.status == 'working' && Date.now() - startTime < maxFishTime) {
-        let bobberColor = Rgb.from({...bobber, width: 1, height: 1}).colorAt(bobber);
-        if(!isBobber(bobberColor)) {
-         const newBobberPos = bobber.getPointsAround()
-         .find((point) =>  {
-           let pointColor = Rgb.from({...point, width: 1, height: 1}).colorAt(point);
-           return isBobber(pointColor);
-         });
+
+        if(!isBobber(fishingZone.colorAt(bobberPos))) {
+         const newBobberPos = bobberPos.getPointsAround()
+         .find((pointPos) => isBobber(fishingZone.colorAt(pointPos)));
 
           if(!newBobberPos) {
-            return bobber;
+            return bobberPos;
           } else {
-            bobber = newBobberPos;
+            bobberPos = newBobberPos;
           }
         }
 
@@ -92,7 +77,8 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
         mouse.click('right', delay);
       }
 
-      if(!(await checkNotifications(Rgb.from(zone), isWarning))) {
+      await sleep(250);
+      if(!(await fishingZone.checkNotifications(isWarning))) {
         await sleep(afterHookDelay.caught + Math.random() * 500);
         return true;
       } else {
