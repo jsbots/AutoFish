@@ -14,7 +14,9 @@
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "autoLoot": true,
-      "checkingDelay": 50
+      "checkingDelay": 50,
+      "mouseMoveSpeed": 1,
+      "mouseCurvatureStrength": 50
     },
     "wotlk": {
       "delay": [75, 250],
@@ -24,7 +26,9 @@
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "autoLoot": true,
-      "checkingDelay": 50
+      "checkingDelay": 50,
+      "mouseMoveSpeed": 1,
+      "mouseCurvatureStrength": 50
     },
     "retail": {
       "delay": [75, 250],
@@ -34,7 +38,9 @@
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "autoLoot": true,
-      "checkingDelay": 50
+      "checkingDelay": 50,
+      "mouseMoveSpeed": 1,
+      "mouseCurvatureStrength": 50
     },
     "tbc": {
       "delay": [75, 250],
@@ -44,7 +50,9 @@
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "autoLoot": true,
-      "checkingDelay": 50
+      "checkingDelay": 50,
+      "mouseMoveSpeed": 1,
+      "mouseCurvatureStrength": 50
     },
     "vanilla": {
       "delay": [75, 250],
@@ -54,7 +62,9 @@
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "autoLoot": false,
-      "checkingDelay": 50
+      "checkingDelay": 50,
+      "mouseMoveSpeed": 1,
+      "mouseCurvatureStrength": 50
     }
   }
 }
