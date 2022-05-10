@@ -1,5 +1,4 @@
-const Zone = require('../utils/zone.js');
-const FishingZone = require('./fishingZone.js');
+const FishingZone = require('./zone.js');
 
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
@@ -20,11 +19,12 @@ class PlaceError extends Error {
   }
 };
 
-const fishingBot = ({keyboard, mouse, workwindow}, config) => {
-  const { delay, relZone} = config;
+const fishingBot = (controls, zone, config) => {
+  const { keyboard, mouse, workwindow } = controls;
+  const { delay, relZone } = config;
   const { isBobber, isWarning, isError } = colorConditions;
 
-  const zone = Zone.from(workwindow.getView()).getRel(relZone);
+  zone = zone.toRel(relZone)
   const fishingZone = FishingZone.from(workwindow, zone);
 
   const castFishing = async (state) => {
@@ -45,8 +45,8 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
 
     const checkBobber = async (bobberPos, state) => {
       const { maxFishTime, checkingDelay } = config;
-      const startTime = Date.now();
-      while(state.status == 'working' && Date.now() - startTime < maxFishTime) {
+      const startCheckingTime = Date.now();
+      while(state.status == 'working' && Date.now() - startCheckingTime < maxFishTime) {
 
         if(!isBobber(fishingZone.colorAt(bobberPos))) {
          const newBobberPos = bobberPos.getPointsAround()
@@ -64,7 +64,10 @@ const fishingBot = ({keyboard, mouse, workwindow}, config) => {
     };
 
     const isHooked = async (bobber) => {
-      const{ afterHookDelay, autoLoot, mouseMoveSpeed, mouseCurvatureStrength } = config;
+      const{ afterHookDelay,
+             autoLoot,
+             mouseMoveSpeed,
+             mouseCurvatureStrength } = config;
 
       await mouse.moveCurveToAsync(bobber.x, bobber.y,
                                    mouseMoveSpeed + Math.random() * 3,

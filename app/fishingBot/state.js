@@ -1,4 +1,4 @@
-class State {
+class FishingState {
   constructor() {
     this.status = 'initial';
     this.stats = {caught: 0, miss: 0};
@@ -28,4 +28,4 @@ class State {
   }
 }
 
-module.exports = State; 
+module.exports = FishingState; 

@@ -1,5 +1,3 @@
-const {Virtual, Hardware, getAllWindows} = require('keysender');
-
 class GameError extends Error{
   constructor() {
     super();
@@ -7,8 +5,9 @@ class GameError extends Error{
   }
 };
 
-const findGame = ({names, classNames, controlType}) => {
-
+const createGame = ({Virtual, Hardware, getAllWindows}) => {
+  return {
+    findGame({names, classNames, controlType}) {
       const win = getAllWindows().find(({title, className}) =>  names.includes(title) && classNames.includes(className));
       if(win) {
         if(controlType == 'virtual') {
@@ -19,6 +18,8 @@ const findGame = ({names, classNames, controlType}) => {
       } else {
         throw new GameError();
       }
+    }
+  }
 };
 
-module.exports = findGame;
+module.exports = createGame;

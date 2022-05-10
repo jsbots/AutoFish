@@ -1,13 +1,12 @@
-const GameZone = require('../controls/gameZone.js');
+const RgbAdapter = require('../controls/rgbAdapter.js');
 
-
-class FishingZone extends GameZone {
+class FishingZone extends RgbAdapter {
   constructor(workwindow, zone) {
     super(workwindow, zone);
   }
 
   async checkNotifications(...colors) {
-    return colors.some((color) => super._getRgb().findColor(color));
+    return colors.some((color) => super.getRgb().findColor(color));
   }
 
   findBobber(color) {
