@@ -1,9 +1,10 @@
 const Vec = require('../vec.js');
 
 describe('Vec', () => {
+  const vec = new Vec(10, 10);
   describe('plus(vec)', () => {
     it('Adds x, y of two vectors', () => {
-      let result = new Vec(10, 10).plus(new Vec(10, 10));
+      let result = vec.plus(new Vec(10, 10));
       expect(result.x).toBe(20);
       expect(result.y).toBe(20);
     })
@@ -16,9 +17,12 @@ describe('Vec', () => {
   });
   describe('getPointsAround(size)', () => {
     it('Returns vectors around the vector at given size', () => {
-      let result = new Vec(10, 10).getPointsAround();
+      let result = vec.getPointsAround();
       expect(result).toHaveLength(8);
-      expect(result[0]).toMatchObject(new Vec(9, 9));
+      expect(result[0]).toMatchObject({
+        x: 9,
+        y: 9
+      });
     })
   })
 })
