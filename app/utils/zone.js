@@ -6,7 +6,7 @@ class Zone {
     this.height = height;
   }
 
-  getRel({x, y, width, height}) {
+  toRel({x, y, width, height}) {
     return new Zone({
       x: Math.floor(this.width * x),
       y: Math.floor(this.height * y),
