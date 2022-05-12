@@ -1,17 +1,17 @@
 const {
-      app,
-      BrowserWindow,
-      ipcMain,
-      Menu,
-      dialog,
-      desktopCapturer,
-      shell,
-      powerSaveBlocker,
-      globalShortcut
-      } = require('electron');
-const path = require('path');
+  app,
+  BrowserWindow,
+  ipcMain,
+  Menu,
+  dialog,
+  desktopCapturer,
+  shell,
+  powerSaveBlocker,
+  globalShortcut,
+} = require("electron");
+const path = require("path");
 
-if (require('electron-squirrel-startup')) return app.quit();
+if (require("electron-squirrel-startup")) return app.quit();
 if (handleSquirrelEvent()) {
   // squirrel event handled and app will exit in 1000ms, so don't do anything else
   return;
@@ -21,53 +21,53 @@ function handleSquirrelEvent() {
     return false;
   }
 
-  const ChildProcess = require('child_process');
+  const ChildProcess = require("child_process");
 
-  const appFolder = path.resolve(process.execPath, '..');
-  const rootAtomFolder = path.resolve(appFolder, '..');
-  const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
+  const appFolder = path.resolve(process.execPath, "..");
+  const rootAtomFolder = path.resolve(appFolder, "..");
+  const updateDotExe = path.resolve(path.join(rootAtomFolder, "Update.exe"));
   const exeName = path.basename(process.execPath);
 
-  const spawn = function(command, args) {
+  const spawn = function (command, args) {
     let spawnedProcess, error;
 
     try {
-      spawnedProcess = ChildProcess.spawn(command, args, {detached: true});
+      spawnedProcess = ChildProcess.spawn(command, args, { detached: true });
     } catch (error) {}
 
     return spawnedProcess;
   };
 
-  const spawnUpdate = function(args) {
+  const spawnUpdate = function (args) {
     return spawn(updateDotExe, args);
   };
 
   const squirrelEvent = process.argv[1];
   switch (squirrelEvent) {
-    case '--squirrel-install':
-    case '--squirrel-updated':
+    case "--squirrel-install":
+    case "--squirrel-updated":
       // Optionally do things such as:
       // - Add your .exe to the PATH
       // - Write to the registry for things like file associations and
       //   explorer context menus
 
       // Install desktop and start menu shortcuts
-      spawnUpdate(['--createShortcut', exeName]);
+      spawnUpdate(["--createShortcut", exeName]);
 
       setTimeout(app.quit, 1000);
       return true;
 
-    case '--squirrel-uninstall':
+    case "--squirrel-uninstall":
       // Undo anything you did in the --squirrel-install and
       // --squirrel-updated handlers
 
       // Remove desktop and start menu shortcuts
-      spawnUpdate(['--removeShortcut', exeName]);
+      spawnUpdate(["--removeShortcut", exeName]);
 
       setTimeout(app.quit, 1000);
       return true;
 
-    case '--squirrel-obsolete':
+    case "--squirrel-obsolete":
       // This is called on the outgoing version of your app before
       // we update to the new version - it's the opposite of
       // --squirrel-updated
@@ -75,13 +75,13 @@ function handleSquirrelEvent() {
       app.quit();
       return true;
   }
-};
+}
 
 /* Electron */
 
 let win;
-Menu.setApplicationMenu(null)
-let powerBlocker = powerSaveBlocker.start('prevent-display-sleep');
+Menu.setApplicationMenu(null);
+let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 
 function createWindow() {
   win = new BrowserWindow({
@@ -90,28 +90,28 @@ function createWindow() {
     show: false,
     webPreferences: {
       contextIsolation: false,
-  	  nodeIntegration: true
+      nodeIntegration: true,
     },
-    icon: './app/img/icon.png'
+    icon: "./app/img/icon.png",
   });
 
-  win.resizable = false;
-  win.loadFile('./app/index.html');
+  win.resizable = true;
+  win.loadFile("./app/index.html");
 
-  win.on('closed', () => {
+  win.on("closed", () => {
     win = null;
   });
 
-
-  win.once('ready-to-show', () => {
+  win.once("ready-to-show", () => {
     win.show();
-  })
+  });
 }
 app.whenReady().then(() => {
   createWindow();
-})
-app.on('window-all-closed', () => {
-  if (process.platform === 'darwin') {
+  win.webContents.openDevTools();
+});
+app.on("window-all-closed", () => {
+  if (process.platform === "darwin") {
     return false;
   }
   powerSaveBlocker.stop(powerBlocker);
@@ -122,48 +122,55 @@ app.on('window-all-closed', () => {
 
 /* Bot */
 
-const {readFileSync, writeFileSync} = require('fs');
-const Log = require('./utils/logger.js');
-const createBot = require('./bot/createBot.js');
-const fishingBot = require('./bot/fishingBot.js');
+const { readFileSync, writeFileSync } = require("fs");
+const createLog = require("./utils/logger.js");
+const createState = require("./controls/createState.js");
 
-const {startBot, stopBot} = createBot(fishingBot);
+const fishingBot = require("./fishingBot/bot.js");
+const runFishingBot = require("./fishingBot/runBot.js");
+const FishingState = require("./fishingBot/state.js");
+
+const { startBot, stopBot } = createState(fishingBot, runFishingBot);
 
 const stopApp = () => {
   shell.beep();
-  if(!win.isFocused()) {
+  if (!win.isFocused()) {
     win.flashFrame(true);
-    win.once('focus', () => win.flashFrame(false));
+    win.once("focus", () => win.flashFrame(false));
   }
-  win.webContents.send('stop-app');
-}
+  win.webContents.send("stop-app");
+};
 
 const stopAppAndBot = () => {
   stopBot();
   stopApp();
   globalShortcut.unregisterAll();
-}
+};
 
-ipcMain.on('start-bot', (event, settings) => {
-  const log = Log.setTo(win);
-  const config = JSON.parse(readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
-  globalShortcut.register('space', stopAppAndBot);
+
+ipcMain.on("start-bot", (event, settings) => {
+  const log = createLog((data) => {
+    win.webContents.send('log-data', data);
+  });
+  const config = JSON.parse(readFileSync(path.join(__dirname, "config.json"), "utf8"));
+  globalShortcut.register("space", stopAppAndBot);
 
   win.blur();
-
-  if(isFinite(settings.timer)) {
-    setTimeout(stopAppAndBot, settings.timer);
-  }
-
-  startBot(log, config)
+  startBot(FishingState, log, config)
   .then((stats) => log.ok(stats))
   .catch((error) => {
-    log.err(`${error.message, error.stack}`);
+    log.err(`${(error.message, error.stack)}`);
     stopAppAndBot();
   });
+
+  if (isFinite(settings.timer)) {
+    setTimeout(stopAppAndBot, settings.timer);
+  }
 });
 
-ipcMain.on('stop-bot', stopAppAndBot);
-ipcMain.on('open-link', () =>  shell.openExternal('https://www.youtube.com/olesjs'));
+ipcMain.on("stop-bot", stopAppAndBot);
+ipcMain.on("open-link", () =>
+  shell.openExternal("https://www.youtube.com/olesgeras")
+);
 
 /* Bot end */
