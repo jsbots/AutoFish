@@ -4,17 +4,16 @@ class FishingState {
     this.stats = {caught: 0, miss: 0};
     this.time = Date.now();
   }
-  caught(log) {
+
+  caught(onCaught) {
     if(this.status == 'working') {
-      this.stats.caught++;
-      log.ok(`Caught the fish!`);
+      onCaught(this.stats.caught++);
     }
   }
 
-  miss(log) {
+  miss(onMiss) {
     if(this.status == 'working') {
-      this.stats.miss++;
-      log.warn(`Missed the fish!`)
+      onMiss(this.stats.miss++);
     }
   }
 
@@ -28,4 +27,4 @@ class FishingState {
   }
 }
 
-module.exports = FishingState; 
+module.exports = FishingState;
