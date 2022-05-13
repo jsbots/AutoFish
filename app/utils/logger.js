@@ -3,8 +3,8 @@ const getCurrentTime = require('./getCurrentTime.js');
 const createLog = (sendToWindow) => {
   return {
     send(text, type = 'black') {
-      const date = getCurrentTime();
-      text = `[${date.hr}:${date.min}:${date.sec}] ${text}`;
+      const {hr, min, sec} = getCurrentTime();
+      text = `[${hr}:${min}:${sec}] ${text}`;
       sendToWindow({text, type});
     },
 
