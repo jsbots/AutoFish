@@ -6,7 +6,7 @@ html {
 box-sizing: inherit;
 }
 
-body, input {
+body, input, pre {
   font: menu;
 }
 
@@ -16,7 +16,7 @@ html, body {
   overflow: hidden;
 }
 
-p, h1 {
+p, h1, h3 {
   margin: 0;
   padding: 0;
 }
@@ -32,23 +32,27 @@ button {
   height: 100px;
 }
 
-.shell {
+section {
+  margin: 5px 0;
+}
+
+label {
+
+}
+
+.AutoFish {
   display: flex;
   flex-flow: column;
 }
-section {
-  margin: 5px 0;
-  padding: 5px;
-}
+
 
 .logo_name {
-  background: url('img/icon.png') no-repeat center left;
+  background: url('img/icon2.png') no-repeat center left;
+  background-size: 62px 61px;
   padding-left: 65px;
   font-size: 56px;
   text-align: center;
 }
-
-
 
 .section_name {
   margin: 0;
@@ -56,11 +60,47 @@ section {
   color: grey;
 }
 
-#log {
-  height: 150px;
+.logger {
+  height: 100px;
   background-color: rgba(255, 255, 0, .1);
   border: 1px inset grey;
   overflow-y: scroll;
+}
+
+.instruction {
+  border: 1px inset grey;
+  border-radius: 5px;
+}
+
+.settings {
+  display: flex;
+}
+
+.settings div {
+  border: 1px inset grey;
+  border-radius: 5px;
+  padding: 5px;
+  flex: 1 1 0;
+}
+
+.settings div:first-child {
+    margin-right: 5px;
+}
+
+.settings label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+
+.settings .option {
+display: inline-block;
+}
+
+.settings select, .settings input[type=number] {
+  width: 100px;
+  height: 20px;
 }
 
 footer {
@@ -68,43 +108,18 @@ footer {
   text-align: center;
 }
 
-
-.options label {
-  display: block;
-  margin: 5px 0;
-
+.startButton {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.options {
-  border: 1px inset grey;
-      border-radius: 5px;
-}
-
-#youtube_link {
+.youtubeLink {
   padding-left: 23px;
   padding-bottom: 3px;
   background: url('img/youtube.jpg') no-repeat left center;
 }
 
-#start {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 #timerData {
   width: 50px;
   height: 20px;
-}
-
-.before_info {
-  cursor: pointer;
-}
-
-.classic_info {
-  margin-left: 10px;
-}
-
-.wotlk_info {
-  margin-left: 10px;
-  display: none;
 }
