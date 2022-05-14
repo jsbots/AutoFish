@@ -144,8 +144,7 @@ const renderLogger = () => {
   return {
     dom: elt('div', {className: `logger`}),
     show({text, type}) {
-      let row = document.createElement("p");
-      row.innerHTML = text;
+      let row = elt('p', null, text);
       row.style.color = type;
       this.dom.append(row);
       this.dom.scrollTop += 30; // not 30 but should be in relation to the size of text
