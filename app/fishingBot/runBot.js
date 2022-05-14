@@ -1,18 +1,23 @@
-const runBot = async (bot, log, state) => {
-  const {castFishing, findBobber, checkBobber, isHooked} = bot;
-  let attempts = 0;
+const runBot = async (bot, log, state, winSwitch) => {
+  const {castFishing, findBobber, checkBobber, hookBobber, gameWindow} = bot;
+  findBobber.attempts = 0;
   do {
       log.send(`Casting fishing...`);
-      await castFishing(state);
 
-      log.send(`Looking for the bobber...`);
+      await winSwitch.reg(() => {
+        gameWindow.setForeground();
+      })
+      await castFishing(state);
+      winSwitch.unreg();
+
+      log.send(`Looking for the bobber in...`);
       let bobber = findBobber();
       if(bobber) {
         log.ok(`Found the bobber!`);
-        attempts = 0;
+        findBobber.attempts = 0;
       } else {
         log.err(`Can't find the bobber, will try again.`);
-        if(++attempts == 3) {
+        if(++findBobber.attempts == 3) {
           throw new Error(`Have tried 3 attempts to find the bobber and failed: this place isn't good for fishing`);
         }
         continue;
@@ -20,7 +25,14 @@ const runBot = async (bot, log, state) => {
 
       log.send(`Checking the hook...`);
       if(bobber = await checkBobber(bobber, state)) {
-        if(await isHooked(bobber)) {
+
+        await winSwitch.reg(() => {
+          gameWindow.setForeground();
+        })
+        let isHooked = await hookBobber(bobber);
+        winSwitch.unreg();
+
+        if(isHooked) {
           state.caught(() => log.ok(`Caught the fish!`));
           continue;
         }
