@@ -10,13 +10,6 @@ const colorConditions = {
   isBobber: ([r, g, b]) => (r - g > 20 && r - b > 20) && (g < 100 && b < 100),
   isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
   isError: ([r, g, b]) => r - g > 250 && r - b > 250
-}
-
-class PlaceError extends Error {
-  constructor() {
-    super();
-    this.message = `This place isn't good for fishing. Change the place and avoid any red and yellow colors in the "fishing zone".`;
-  }
 };
 
 const fishingBot = (controls, zone, config) => {
@@ -30,10 +23,11 @@ const fishingBot = (controls, zone, config) => {
   const castFishing = async (state) => {
       const { fishingKey, castDelay } = config;
       keyboard.sendKey(fishingKey, delay);
+
       if(state.status == 'initial') {
         await sleep(250);
         if(await fishingZone.checkNotifications(isError, isWarning)) {
-          throw new PlaceError();
+          throw new Error(`This place isn't good for fishing`);
         } else {
           state.status = 'working';
         }
@@ -63,7 +57,7 @@ const fishingBot = (controls, zone, config) => {
       }
     };
 
-    const isHooked = async (bobber) => {
+    const hookBobber = async (bobber) => {
       const{ afterHookDelay,
              autoLoot,
              mouseMoveSpeed,
@@ -93,7 +87,8 @@ const fishingBot = (controls, zone, config) => {
        castFishing,
        findBobber,
        checkBobber,
-       isHooked
+       hookBobber,
+       gameWindow: workwindow
      }
 };
 
