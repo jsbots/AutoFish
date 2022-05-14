@@ -123,14 +123,8 @@ app.on("window-all-closed", () => {
 /* Bot */
 
 const { readFileSync, writeFileSync } = require("fs");
-const createLog = require("./utils/logger.js");
-const createState = require("./controls/createState.js");
-
-const fishingBot = require("./fishingBot/bot.js");
-const runFishingBot = require("./fishingBot/runBot.js");
-const FishingState = require("./fishingBot/state.js");
-
-const { startBot, stopBot } = createState(fishingBot, runFishingBot);
+const createBot = require("./controls/createBot.js");
+const { startBot, stopBot } = createBot();
 
 const stopApp = () => {
   shell.beep();
@@ -140,28 +134,17 @@ const stopApp = () => {
   }
   win.webContents.send("stop-app");
 };
-
 const stopAppAndBot = () => {
   stopBot();
   stopApp();
   globalShortcut.unregisterAll();
 };
 
-
 ipcMain.on("start-bot", (event, settings) => {
-  const log = createLog((data) => {
-    win.webContents.send('log-data', data);
-  });
   const config = JSON.parse(readFileSync(path.join(__dirname, "config.json"), "utf8"));
   globalShortcut.register("space", stopAppAndBot);
 
-  win.blur();
-  startBot(FishingState, log, config)
-  .then((stats) => log.ok(stats))
-  .catch((error) => {
-    log.err(`${(error.message, error.stack)}`);
-    stopAppAndBot();
-  });
+  startBot(win, config, stopAppAndBot);
 
   if (isFinite(settings.timer)) {
     setTimeout(stopAppAndBot, settings.timer);
