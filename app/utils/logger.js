@@ -22,5 +22,16 @@ const createLog = (sendToWindow) => {
   }
 }
 
+const bindLogToID = (log, id) => {
+  return Object.assign({}, log, {
+    send(text, type) {
+      log.send(`[WIN${id}] ${text}`, type);
+    }
+  })
+};
 
-module.exports = createLog;
+
+module.exports = {
+  createLog,
+  bindLogToID
+};
