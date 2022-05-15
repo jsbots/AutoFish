@@ -1,4 +1,4 @@
-const RgbAdapter = require('../controls/rgbAdapter.js');
+const RgbAdapter = require('../game/rgbAdapter.js');
 
 class FishingZone extends RgbAdapter {
   constructor(workwindow, zone) {

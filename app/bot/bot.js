@@ -12,7 +12,7 @@ const colorConditions = {
   isError: ([r, g, b]) => r - g > 250 && r - b > 250
 };
 
-const fishingBot = (controls, zone, config) => {
+const bot = (controls, zone, config) => {
   const { keyboard, mouse, workwindow } = controls;
   const { delay, relZone } = config;
   const { isBobber, isWarning, isError } = colorConditions;
@@ -92,4 +92,4 @@ const fishingBot = (controls, zone, config) => {
      }
 };
 
-module.exports = fishingBot;
+module.exports = bot;

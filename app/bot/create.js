@@ -1,14 +1,14 @@
 const keysender = require("keysender");
+const createGame = require("../game/create.js");
 
-const createGame = require("./createGame.js");
 const { createLog, bindLogToID } = require("../utils/logger.js");
 const createWinSwitch = require('../utils/createWinSwitch.js');
 
-const bot = require("../fishingBot/bot.js");
-const runBot = require("../fishingBot/runBot.js");
+const bot = require("./bot.js");
+const runBot = require("./run.js");
+const State = require("./state.js");
 
 const Zone = require("../utils/zone.js");
-const State = require("../fishingBot/state.js");
 const EventLine = require('../utils/eventLine.js');
 
 const createBot = () => {
@@ -21,9 +21,9 @@ const createBot = () => {
 
       log.send("Starting the bot...");
       const games = createGame(keysender).findWindows(config.game);
-      if (games.length == 0) {
+      if (!games) {
         log.err(`Can't find any window of the game!`);
-        onError();
+        return onError();
       } else {
         log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`)
       }
