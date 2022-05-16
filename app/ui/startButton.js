@@ -6,12 +6,19 @@ class StartButton {
     this.dom = elt('button', {className: 'startButton', onclick: (event) => {
       event.target.innerHTML = ``;
       if(this.state = !this.state) {
-        this.onStart(event);
+        this.onStart();
       } else {
-        this.onStop(event);
+        this.onStop();
       }
-      event.target.append(this.state ? document.createTextNode(`start`) : document.createTextNode(`stop`));
-    }}, `start`);
+
+      event.target.textContent = this.state ? `STOP` : `START`;
+
+    }}, `START`);
+  }
+
+  onError() {
+    this.state = false;
+    this.dom.textContent = `START`;
   }
 
   regOnStart(callback) {
