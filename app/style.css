@@ -23,35 +23,43 @@ p, h1, h3 {
 
 body {
   margin: 0;
-  padding: 10px;
+  padding: 5px;
   position: absolute;
 }
 
 button {
   width: 100%;
-  height: 100px;
+  height: 60px;
 }
 
 section {
-  margin: 5px 0;
+  margin-bottom: 5px;
 }
 
-label {
-
+h3 {
+  margin-left: 5px;
 }
+
 
 .AutoFish {
   display: flex;
   flex-flow: column;
 }
 
-
 .logo_name {
-  background: url('img/icon2.png') no-repeat center left;
+  background: url('img/icon4.png') no-repeat center left;
   background-size: 62px 61px;
-  padding-left: 65px;
-  font-size: 56px;
-  text-align: center;
+  background-position: right;
+  font-size: 52px;
+  width: 275px;
+  margin: 0 auto;
+}
+
+.logo_link {
+  display: block;
+  text-align: right;
+  margin-top: -10px;
+  margin-right: 20px;
 }
 
 .section_name {
@@ -64,26 +72,29 @@ label {
   height: 130px;
   background-color: rgba(255, 255, 0, .1);
   border: 1px inset grey;
+    border-radius: 5px;
   overflow-y: scroll;
+  padding: 5px;
 }
 
 .instruction {
   border: 1px inset grey;
   border-radius: 5px;
+  padding: 10px;
 }
 
 .settings {
   display: flex;
 }
 
-.settings div {
+.settings .settings_section {
   border: 1px inset grey;
   border-radius: 5px;
   padding: 5px;
   flex: 1 1 0;
 }
 
-.settings div:first-child {
+.settings .settings_section:first-child {
     margin-right: 5px;
 }
 
@@ -93,9 +104,16 @@ label {
   margin-bottom: 5px;
 }
 
+.settings label div {
+  display: flex;
 
-.settings .option {
-display: inline-block;
+}
+
+.settings .option_hint {
+  cursor: help;
+  height: 13px;
+  margin-left: 2px;
+  display: inline-block;
 }
 
 .settings select, .settings input[type=number] {
@@ -103,23 +121,18 @@ display: inline-block;
   height: 20px;
 }
 
+.settings input[type=text] {
+  width: 50px;
+  height: 20px;
+}
+
+
 footer {
   margin-top: 10px;
   text-align: center;
 }
 
 .startButton {
-  font-size: 24px;
+  font-size: 38px;
   font-weight: bold;
-}
-
-.youtubeLink {
-  padding-left: 23px;
-  padding-bottom: 3px;
-  background: url('img/youtube.jpg') no-repeat left center;
-}
-
-#timerData {
-  width: 50px;
-  height: 20px;
 }
