@@ -86,7 +86,7 @@ let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 function createWindow() {
   win = new BrowserWindow({
     width: 350,
-    height: 760,
+    height: 760, //675
     show: false,
     webPreferences: {
       contextIsolation: false,
@@ -118,12 +118,12 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
-/* Electron-end */
+/* Electron end */
 
 /* Bot */
 
 const { readFileSync, writeFileSync } = require("fs");
-const createBot = require("./controls/createBot.js");
+const createBot = require("./bot/create.js");
 const { startBot, stopBot } = createBot();
 
 const stopApp = () => {
@@ -140,20 +140,46 @@ const stopAppAndBot = () => {
   globalShortcut.unregisterAll();
 };
 
-ipcMain.on("start-bot", (event, settings) => {
-  const config = JSON.parse(readFileSync(path.join(__dirname, "config.json"), "utf8"));
+const getJson = (jsonPath) => {
+  return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
+}
+
+
+ipcMain.handle("start-bot", async (event, settings) => {
+  writeFileSync(path.join(__dirname, './config/settings.json'), JSON.stringify(settings));
+  const config = getJson('./config/bot.json');
   globalShortcut.register("space", stopAppAndBot);
 
-  startBot(win, config, stopAppAndBot);
+  if(settings.name == 'Retail&Classic') {
+    let result =  dialog.showMessageBoxSync(win, {
+      type: 'warning',
+      title: `Warning`,
+      message: `Using bots on official servers is prohibited. Your account might be banned for a long time.`,
+      buttons: [`I understand`, `I don't understand`],
+      defaultId: 1,
+      cancelId: 0
+    });
 
-  if (isFinite(settings.timer)) {
+    if(result) {
+      throw new Error();
+    }
+  }
+
+  if (settings.timer != 0 && isFinite(settings.timer)) {
     setTimeout(stopAppAndBot, settings.timer);
   }
+
+  return await startBot(win, config, stopAppAndBot);
 });
 
 ipcMain.on("stop-bot", stopAppAndBot);
 ipcMain.on("open-link", () =>
   shell.openExternal("https://www.youtube.com/olesgeras")
 );
+ipcMain.handle("get-settings", () => {
+  let settings = getJson('./config/settings.json');
+  let instructions = getJson('./config/instructions.json');
+  return {settings, instructions};
+});
 
 /* Bot end */
