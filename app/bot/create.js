@@ -23,7 +23,8 @@ const createBot = () => {
       const games = createGame(keysender).findWindows(config.game);
       if (!games) {
         log.err(`Can't find any window of the game!`);
-        return onError();
+        onError();
+        throw new Error; 
       } else {
         log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`)
       }
