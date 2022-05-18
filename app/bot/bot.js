@@ -64,19 +64,21 @@ const bot = (controls, zone, config, winSwitch) => {
 
     const hookBobber = async (bobber) => {
       const{ afterHookDelay,
-             autoLoot,
+             shiftClick,
+             likeHuman,
              mouseMoveSpeed,
              mouseCurvatureStrength } = config;
 
       await winSwitch.execute(workwindow);
-      /*
-      mouse.moveCurveTo(bobber.x, bobber.y,
-                        mouseMoveSpeed + Math.random() * 3,
-                        mouseCurvatureStrength + Math.random() * 100);
-      */
-       mouse.moveTo(bobber.x, bobber.y);
+      if(likeHuman) {
+        mouse.moveCurveTo(bobber.x, bobber.y,
+                          mouseMoveSpeed + Math.random() * 3,
+                          mouseCurvatureStrength + Math.random() * 100);
+      } else {
+        mouse.moveTo(bobber.x, bobber.y);
+      }
 
-      if(!autoLoot) {
+      if(shiftClick) {
         keyboard.toggleKey('shift', true, delay);
         mouse.click('right', delay);
         keyboard.toggleKey('shift', false, delay);
