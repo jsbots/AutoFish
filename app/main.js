@@ -132,12 +132,13 @@ const stopApp = () => {
     win.flashFrame(true);
     win.once("focus", () => win.flashFrame(false));
   }
-  win.webContents.send("stop-app");
 };
+
 const stopAppAndBot = () => {
   stopBot();
   stopApp();
   globalShortcut.unregisterAll();
+  win.webContents.send('stop-bot');
 };
 
 const getJson = (jsonPath) => {
@@ -145,12 +146,11 @@ const getJson = (jsonPath) => {
 }
 
 
-ipcMain.handle("start-bot", async (event, settings) => {
+ipcMain.on("start-bot", async (event, settings) => {
   writeFileSync(path.join(__dirname, './config/settings.json'), JSON.stringify(settings));
   const config = getJson('./config/bot.json');
-  globalShortcut.register("space", stopAppAndBot);
 
-  if(settings.name == 'Retail&Classic') {
+  if(settings.game == 'Retail&Classic') {
     let result =  dialog.showMessageBoxSync(win, {
       type: 'warning',
       title: `Warning`,
@@ -161,7 +161,8 @@ ipcMain.handle("start-bot", async (event, settings) => {
     });
 
     if(result) {
-      throw new Error();
+      stopAppAndBot();
+      return;
     }
   }
 
@@ -169,7 +170,8 @@ ipcMain.handle("start-bot", async (event, settings) => {
     setTimeout(stopAppAndBot, settings.timer * 1000 * 60);
   }
 
-  return await startBot(win, {game: config.game, patch: {...config.patch[settings.game], ...settings}}, stopAppAndBot);
+  globalShortcut.register("space", stopAppAndBot);
+  startBot(win, {game: config.game, patch: {...config.patch[settings.game], ...settings}}, stopAppAndBot);
 });
 
 ipcMain.on("stop-bot", stopAppAndBot);
