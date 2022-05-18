@@ -22,11 +22,7 @@ class AutoFish {
 
     this.button.regOnStart(() => {
       this.settings.block();
-      ipcRenderer.invoke('start-bot', this.settings.config)
-      .catch(() => {
-        this.button.onError();
-        this.settings.unblock();
-      });
+      ipcRenderer.send('start-bot', this.settings.config);
     });
 
     this.button.regOnStop(() => {
@@ -35,8 +31,13 @@ class AutoFish {
     });
 
     ipcRenderer.on('log-data', (event, data) => {
-      this.logger.show(data);
+        this.logger.show(data);
     });
+
+    ipcRenderer.on('stop-bot', (event) => {
+      this.button.onError();
+      this.settings.unblock();
+    })
 
     this.dom = elt('div', {},
                    renderLogo(),
