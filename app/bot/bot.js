@@ -6,13 +6,14 @@ const sleep = (time) => {
   });
 };
 
+
 const colorConditions = {
   isBobber: ([r, g, b]) => (r - g > 20 && r - b > 20) && (g < 100 && b < 100),
   isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
   isError: ([r, g, b]) => r - g > 250 && r - b > 250
 };
 
-const bot = (controls, zone, config) => {
+const bot = (controls, zone, config, winSwitch) => {
   const { keyboard, mouse, workwindow } = controls;
   const { delay, relZone } = config;
   const { isBobber, isWarning, isError } = colorConditions;
@@ -22,7 +23,10 @@ const bot = (controls, zone, config) => {
 
   const castFishing = async (state) => {
       const { fishingKey, castDelay } = config;
+
+      await winSwitch.execute(workwindow);
       keyboard.sendKey(fishingKey, delay);
+      winSwitch.finished();
 
       if(state.status == 'initial') {
         await sleep(250);
@@ -32,6 +36,7 @@ const bot = (controls, zone, config) => {
           state.status = 'working';
         }
       }
+
       await sleep(castDelay + Math.random() * 500);
   };
 
@@ -63,9 +68,14 @@ const bot = (controls, zone, config) => {
              mouseMoveSpeed,
              mouseCurvatureStrength } = config;
 
-      await mouse.moveCurveToAsync(bobber.x, bobber.y,
-                                   mouseMoveSpeed + Math.random() * 3,
-                                   mouseCurvatureStrength + Math.random() * 100);
+      await winSwitch.execute(workwindow);
+      /*
+      mouse.moveCurveTo(bobber.x, bobber.y,
+                        mouseMoveSpeed + Math.random() * 3,
+                        mouseCurvatureStrength + Math.random() * 100);
+      */
+       mouse.moveTo(bobber.x, bobber.y);
+
       if(!autoLoot) {
         keyboard.toggleKey('shift', true, delay);
         mouse.click('right', delay);
@@ -73,6 +83,7 @@ const bot = (controls, zone, config) => {
       } else {
         mouse.click('right', delay);
       }
+      winSwitch.finished();
 
       await sleep(250);
       if(!(await fishingZone.checkNotifications(isWarning))) {
