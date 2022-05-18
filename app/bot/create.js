@@ -1,20 +1,20 @@
 const keysender = require("keysender");
 const createGame = require("../game/create.js");
+const createWinSwitch = require('../game/winSwitch.js');
 
 const { createLog, bindLogToID } = require("../utils/logger.js");
+const Zone = require("../utils/zone.js");
+const EventLine = require('../utils/eventLine.js');
 
 const bot = require("./bot.js");
 const runBot = require("./run.js");
-const State = require("./state.js");
-
-const Zone = require("../utils/zone.js");
-const EventLine = require('../utils/eventLine.js');
-const createWinSwitch = require('../utils/winSwitch.js');
-
 
 
 const createBot = () => {
-  let state;
+  let state = {
+    status: 'initial',
+    startTime: null
+  };
   return {
     async startBot(win, config, onError) {
       const log = createLog((data) => {
@@ -32,7 +32,6 @@ const createBot = () => {
       }
 
       const winSwitch = createWinSwitch(new EventLine());
-      state = new State();
 
       win.blur();
 
