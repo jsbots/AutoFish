@@ -4,7 +4,7 @@ const runBot = async (bot, log, state) => {
   const {castFishing, findBobber, checkBobber, hookBobber} = bot;
   const stats = new Stats();
   findBobber.attempts = 0;
-  state.startTime = Date.now();
+
   do {
       log.send(`Casting fishing...`);
 
@@ -33,8 +33,10 @@ const runBot = async (bot, log, state) => {
         }
       }
 
-      stats.miss++;
-      log.warn(`Missed the fish!`);
+      if(state.status == 'working') {
+        stats.miss++;
+        log.warn(`Missed the fish!`);
+      }
   } while(state.status == 'working');
 
 log.ok(stats.showStats());
