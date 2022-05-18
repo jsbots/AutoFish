@@ -34,8 +34,8 @@ const createControl = (configControl) => {
     }
   }
 };
-const createAutoLoot = (configAutoLoot) => {
-  const dom = elt('input', {type: 'checkbox', className: 'option', checked: !!configAutoLoot, name: 'autoLoot'});
+const createShiftClick = (configShiftClick) => {
+  const dom = elt('input', {type: 'checkbox', className: 'option', checked: !!configShiftClick, name: 'shiftClick'});
   return  {
     dom,
     syncState(game) {
@@ -49,35 +49,45 @@ const createAutoLoot = (configAutoLoot) => {
   }
 };
 
-const renderMultiple = (configMultiple) => {
-  return elt('input', {type: 'checkbox', className: 'option', checked: !!configMultiple, name: 'multiple'});
+const renderLikeHuman = (configLikeHuman) => {
+  return elt('input', {type: 'checkbox', className: 'option', checked: !!configLikeHuman, name: 'likeHuman'});
 }
 
 
 class Settings {
   constructor(config) {
     this.config = config;
-    const {name, timer, control, autoLoot, multiple, fishingKey} = config;
+    const {game, timer, control, shiftClick, likeHuman, fishingKey} = config;
+
     this.options = {
       control: createControl(control),
-      autoLoot: createAutoLoot(autoLoot)
+      shiftClick: createShiftClick(shiftClick)
     }
     this.dom = elt('section', {className: 'settings'},
                elt('div', {className: 'settings_section'},
-                wrapInLabel('Game:', renderGameNames(name), `Choose the patch you want the bot to work on.`),
+                wrapInLabel('Game:', renderGameNames(game), `Choose the patch you want the bot to work on.`),
                 wrapInLabel('Timer: ', renderTimer(timer), 'The bot will work for the provided period of time. If 0 it will never stop.'),
                 wrapInLabel('Control: ', this.options.control.dom, `Hardware mode will open the window of the game and will directly use you mouse and keyboard. You won't be able to use the computer while the bot is working.`)
                 ),
                elt('div', {className: 'settings_section'},
-                wrapInLabel('AutoLoot: ', this.options.autoLoot.dom, `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game, or if there's no such an option (like in Vanilla)`),
-                wrapInLabel('Multiple windows: ', renderMultiple(multiple), `The bot will look for all the windows named "World of Warcraft" and start fishing on them.`)
+                wrapInLabel('Use shift + click: ', this.options.shiftClick.dom, `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game, or if there's no such an option (like in Vanilla). Your "Loot key" in the game should be assign to shift.`),
+                wrapInLabel('Like a human: ', renderLikeHuman(likeHuman), `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use many windows. `)
               )
               );
 
     this.dom.addEventListener('change', (event) => {
-      const value = event.target.value;
       const name = event.target.name;
-      config[name] = value;
+      let value = event.target.value;
+
+      if(name == 'shiftClick' || name == 'likeHuman') {
+        this.config[name] = event.target.checked;
+        return;
+      }
+
+      if(name == 'timer') {
+        value = Number(value);
+      }
+
       if(name == 'game') {
         this.onGameChange(value);
         for(let option of Object.keys(this.options)) {
@@ -85,7 +95,8 @@ class Settings {
         }
       }
 
-      })
+      this.config[name] = value;
+    })
   }
 
   regOnGameChange(callback) {
