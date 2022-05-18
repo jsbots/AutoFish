@@ -2,11 +2,10 @@
   "game": {
     "names": ["World of Warcraft"],
     "classNames": ["GxWindowClass", "GxWindowClassD3d"],
-    "controlType": "hardware",
-    "lastPatch": "mop"
+    "controlType": "hardware"
   },
   "patch": {
-    "mop": {
+    "MoP": {
       "delay": [75, 250],
       "fishingKey": "2",
       "castDelay": 1500,
@@ -18,11 +17,11 @@
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
     },
-    "wotlk": {
+    "WoTLK": {
       "delay": [75, 250],
       "fishingKey": "2",
-      "castDelay": 1500,
-      "afterHookDelay": { "caught": 2000, "miss": 3000 },
+      "castDelay": 1000,
+      "afterHookDelay": { "caught": 2750, "miss": 3000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "autoLoot": true,
@@ -30,7 +29,7 @@
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
     },
-    "retail": {
+    "Retail&Classic": {
       "delay": [75, 250],
       "fishingKey": "2",
       "castDelay": 1500,
@@ -42,7 +41,7 @@
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
     },
-    "tbc": {
+    "TBC": {
       "delay": [75, 250],
       "fishingKey": "2",
       "castDelay": 3000,
@@ -54,7 +53,7 @@
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
     },
-    "vanilla": {
+    "Vanilla": {
       "delay": [75, 250],
       "fishingKey": "2",
       "castDelay": 3000,
