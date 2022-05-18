@@ -11,7 +11,7 @@ const runBot = require("./run.js");
 
 
 const createBot = () => {
-  let state;
+  let states;
   return {
     async startBot(win, config, onError) {
       const log = createLog((data) => {
@@ -30,26 +30,32 @@ const createBot = () => {
 
       const winSwitch = createWinSwitch(new EventLine());
 
-      state = {
-        status: 'initial',
-        startTime: Date.now()
-      };
-
       win.blur();
+      states = [];
 
       let id = 0;
       for (const game of games) {
+        const state = {
+          status: 'initial',
+          startTime: Date.now()
+        };
+        states.push(state);
+
+        const logID = bindLogToID(log, ++id);
+
         const zone = Zone.from(game.workwindow.getView());
-        runBot(bot(game, zone, config.patch, winSwitch), bindLogToID(log, ++id), state)
+        runBot(bot(game, zone, config.patch, winSwitch), logID, state)
           .catch((error) => {
-            log.err(`${(error.message, error.stack)}`);
-            onError();
+            logID.err(`${(error.message)}`);
+            if(states.every(state => state.status == 'stop')) {
+              onError();
+            }
           });
       }
     },
     stopBot() {
-      if (state) {
-        state.status = "stop";
+      if (states) {
+        states.forEach(state => state.status = 'stop');
       }
     },
   };
