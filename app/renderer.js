@@ -6,7 +6,6 @@ const AutoFish = require('./ui/autoFish.js');
 
 const runApp = async () => {
   const {settings, instructions} = await ipcRenderer.invoke('get-settings');
-  console.log(settings);
   let autoFish = new AutoFish(instructions,
                               new Settings(settings),
                               new StartButton);
