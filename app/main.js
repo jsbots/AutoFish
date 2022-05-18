@@ -86,13 +86,13 @@ let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 function createWindow() {
   win = new BrowserWindow({
     width: 350,
-    height: 760, //675
+    height: 700, //675
     show: false,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
     },
-    icon: "./app/img/icon.png",
+    icon: "./app/img/icon7.png",
   });
 
   win.resizable = true;
@@ -165,11 +165,11 @@ ipcMain.handle("start-bot", async (event, settings) => {
     }
   }
 
-  if (settings.timer != 0 && isFinite(settings.timer)) {
-    setTimeout(stopAppAndBot, settings.timer);
+  if (settings.timer) {
+    setTimeout(stopAppAndBot, settings.timer * 1000 * 60);
   }
 
-  return await startBot(win, config, stopAppAndBot);
+  return await startBot(win, {game: config.game, patch: {...config.patch[settings.game], ...settings}}, stopAppAndBot);
 });
 
 ipcMain.on("stop-bot", stopAppAndBot);
