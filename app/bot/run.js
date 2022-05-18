@@ -1,6 +1,10 @@
+const Stats = require("./stats.js");
+
 const runBot = async (bot, log, state) => {
   const {castFishing, findBobber, checkBobber, hookBobber} = bot;
+  const stats = new Stats();
   findBobber.attempts = 0;
+  state.startTime = Date.now();
   do {
       log.send(`Casting fishing...`);
 
@@ -23,14 +27,18 @@ const runBot = async (bot, log, state) => {
       if(bobber = await checkBobber(bobber, state)) {
         let isHooked = await hookBobber(bobber);
         if(isHooked) {
-          state.caught(() => log.ok(`Caught the fish!`));
+          stats.caught++;
+          log.ok(`Caught the fish!`);
           continue;
         }
       }
 
-      state.miss(() => log.warn(`Missed the fish!`));
+      stats.miss++;
+      log.warn(`Missed the fish!`);
   } while(state.status == 'working');
-log.ok(state.showStats());
+
+log.ok(stats.showStats());
+log.ok(`Time Passed: ${Math.floor((Date.now() - state.startTime) / 1000)} sec`);
 }
 
 module.exports = runBot;
