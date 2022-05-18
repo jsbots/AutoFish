@@ -3,11 +3,11 @@ class EventLine {
     this.eventLine = [];
   }
 
-  add(resolve) {
-    this.eventLine.push(resolve);
-    if (this.eventLine.length == 1) {
-      resolve();
-    }
+  add(callback) {
+      this.eventLine.push(callback);
+      if (this.eventLine.length == 1) {
+        callback()
+      }
   }
 
   remove() {
