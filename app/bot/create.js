@@ -11,10 +11,7 @@ const runBot = require("./run.js");
 
 
 const createBot = () => {
-  let state = {
-    status: 'initial',
-    startTime: null
-  };
+  let state;
   return {
     async startBot(win, config, onError) {
       const log = createLog((data) => {
@@ -32,6 +29,11 @@ const createBot = () => {
       }
 
       const winSwitch = createWinSwitch(new EventLine());
+
+      state = {
+        status: 'initial',
+        startTime: Date.now()
+      };
 
       win.blur();
 
