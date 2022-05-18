@@ -37,7 +37,7 @@ const bot = (controls, zone, config, winSwitch) => {
         }
       }
 
-      await sleep(castDelay + Math.random() * 500);
+      await sleep(castDelay);
   };
 
     const findBobber = () => fishingZone.findBobber(isBobber);
@@ -75,7 +75,7 @@ const bot = (controls, zone, config, winSwitch) => {
                           mouseMoveSpeed + Math.random() * 3,
                           mouseCurvatureStrength + Math.random() * 100);
       } else {
-        mouse.moveTo(bobber.x, bobber.y);
+        mouse.moveTo(bobber.x, bobber.y, delay);
       }
 
       if(shiftClick) {
@@ -100,8 +100,7 @@ const bot = (controls, zone, config, winSwitch) => {
        castFishing,
        findBobber,
        checkBobber,
-       hookBobber,
-       gameWindow: workwindow
+       hookBobber
      }
 };
 
