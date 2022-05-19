@@ -85,14 +85,14 @@ let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 350,
-    height: 700, //675
+    width: 330,
+    height: 655,
     show: false,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
     },
-    icon: "./app/img/icon7.png",
+    icon: "./app/img/icon.png",
   });
 
   win.resizable = true;
