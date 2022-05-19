@@ -1,7 +1,6 @@
 {
-  "MoP": [
-    "Launch the game.",
-    "Switch to DirectX 11 mode.",
+  "Vanilla": [
+    "Launch the game (not as admin!).",
     "Turn off Vertical Sync.",
     "Switch to 'Windowed(fullscreen)' mode",
     "Equip your favorite fishpole.",
@@ -11,8 +10,7 @@
     "You can press 'space' to stop the bot."
   ],
   "TBC": [
-    "Launch the game.",
-    "Switch to DirectX 11 mode.",
+    "Launch the game (not as admin!).",
     "Turn off Vertical Sync.",
     "Switch to 'Windowed(fullscreen)' mode",
     "Equip your favorite fishpole.",
@@ -22,8 +20,7 @@
     "You can press 'space' to stop the bot."
   ],
   "WoTLK": [
-    "Launch the game.",
-    "Switch to DirectX 11 mode.",
+    "Launch the game (not as admin!).",
     "Turn off Vertical Sync.",
     "Switch to 'Windowed(fullscreen)' mode",
     "Equip your favorite fishpole.",
@@ -33,7 +30,7 @@
     "You can press 'space' to stop the bot."
   ],
   "Cataclysm": [
-    "Launch the game.",
+    "Launch the game (not as admin!).",
     "Switch to DirectX 11 mode.",
     "Turn off Vertical Sync.",
     "Switch to 'Windowed(fullscreen)' mode",
@@ -43,27 +40,26 @@
     "Don't use your keyboard and mouse while the bot is working.",
     "You can press 'space' to stop the bot."
   ],
-  "Vanilla": [
-    "Launch the game.",
+  "MoP": [
+    "Launch the game (not as admin!).",
     "Switch to DirectX 11 mode.",
     "Turn off Vertical Sync.",
     "Switch to 'Windowed(fullscreen)' mode",
     "Equip your favorite fishpole.",
     "Assign your 'fishing' skill to the '2' key.",
-    "Turn on 'Use shift + click' option above.",
     "Find a good place to fish (watch the video).",
     "Don't use your keyboard and mouse while the bot is working.",
     "You can press 'space' to stop the bot."
   ],
   "Retail&Classic": [
-    "Launch the game.",
+    "Launch the game (not as admin!).",
     "Switch to DirectX 11 mode.",
     "Turn off Vertical Sync.",
     "Switch to 'Windowed(fullscreen)' mode",
     "Equip your favorite fishpole.",
     "Assign your 'fishing' skill to the '2' key.",
-    "You can use either Hardware (with opened game) or Virtual (in the background) mode.",
     "Find a good place to fish (watch the video).",
+    "Don't use your keyboard and mouse while the bot is working.",
     "You can press 'space' to stop the bot."
   ]
 }
