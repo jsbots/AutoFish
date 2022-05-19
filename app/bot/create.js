@@ -2,7 +2,7 @@ const keysender = require("keysender");
 const createGame = require("../game/create.js");
 const createWinSwitch = require('../game/winSwitch.js');
 
-const { createLog, bindLogToID } = require("../utils/logger.js");
+const { createLog, createIdLog } = require("../utils/logger.js");
 const Zone = require("../utils/zone.js");
 const EventLine = require('../utils/eventLine.js');
 
@@ -19,7 +19,7 @@ const createBot = () => {
       });
 
       log.send("Starting the bot...");
-      const games = createGame(keysender).findWindows(config.game);
+      const games = createGame(keysender).findWindows(config.game, config.patch.control);
       if (!games) {
         log.err(`Can't find any window of the game!`);
         onError();
@@ -28,12 +28,10 @@ const createBot = () => {
         log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`)
       }
 
+      states = [];
       const winSwitch = createWinSwitch(new EventLine());
 
       win.blur();
-      states = [];
-
-      let id = 0;
       for (const game of games) {
         const state = {
           status: 'initial',
@@ -41,12 +39,13 @@ const createBot = () => {
         };
         states.push(state);
 
-        const logID = bindLogToID(log, ++id);
-
+        const logId = createIdLog(log);
         const zone = Zone.from(game.workwindow.getView());
-        runBot(bot(game, zone, config.patch, winSwitch), logID, state)
+
+        runBot(bot(game, zone, config.patch, winSwitch), logId, state)
           .catch((error) => {
-            logID.err(`${(error.message)}`);
+            logId.err(`${(error.message)}`);
+            state.status = 'stop';
             if(states.every(state => state.status == 'stop')) {
               onError();
             }
