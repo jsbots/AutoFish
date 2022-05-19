@@ -1,8 +1,7 @@
 {
   "game": {
     "names": ["World of Warcraft"],
-    "classNames": ["GxWindowClass", "GxWindowClassD3d"],
-    "controlType": "hardware"
+    "classNames": ["GxWindowClass", "GxWindowClassD3d"]
   },
   "patch": {
     "MoP": {
@@ -12,7 +11,17 @@
       "afterHookDelay": { "caught": 1000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "autoLoot": true,
+      "checkingDelay": 50,
+      "mouseMoveSpeed": 1,
+      "mouseCurvatureStrength": 50
+    },
+    "Cataclysm": {
+      "delay": [75, 250],
+      "fishingKey": "2",
+      "castDelay": 1500,
+      "afterHookDelay": { "caught": 1000, "miss": 2000 },
+      "maxFishTime": 30000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
@@ -20,11 +29,10 @@
     "WoTLK": {
       "delay": [75, 250],
       "fishingKey": "2",
-      "castDelay": 1000,
-      "afterHookDelay": { "caught": 2750, "miss": 3000 },
+      "castDelay": 1500,
+      "afterHookDelay": { "caught": 3000, "miss": 3000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "autoLoot": true,
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
@@ -36,7 +44,6 @@
       "afterHookDelay": { "caught": 1000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "autoLoot": true,
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
@@ -48,7 +55,6 @@
       "afterHookDelay": { "caught": 2000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "autoLoot": true,
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
@@ -60,7 +66,6 @@
       "afterHookDelay": { "caught": 2000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "autoLoot": false,
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50
