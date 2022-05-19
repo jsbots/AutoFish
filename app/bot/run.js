@@ -1,4 +1,5 @@
-const Stats = require("./stats.js");
+const Stats = require('./stats.js');
+const { convertMs } = require('../utils/time.js');
 
 const runBot = async (bot, log, state) => {
   const {castFishing, findBobber, checkBobber, hookBobber} = bot;
@@ -40,7 +41,8 @@ const runBot = async (bot, log, state) => {
   } while(state.status == 'working');
 
 log.ok(stats.showStats());
-log.ok(`Time Passed: ${Math.floor((Date.now() - state.startTime) / 1000)} sec`);
+log.ok(`Time Passed: ${convertMs(Date.now() - state.startTime)}`);
 }
+
 
 module.exports = runBot;
