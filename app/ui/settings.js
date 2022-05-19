@@ -36,13 +36,19 @@ const createControl = (configControl) => {
 };
 const createShiftClick = (configShiftClick) => {
   const dom = elt('input', {type: 'checkbox', className: 'option', checked: !!configShiftClick, name: 'shiftClick'});
+  let saved = null;
   return  {
     dom,
     syncState(game) {
       if(game == 'Vanilla') {
+        saved = dom.checked;
         dom.checked = true;
         dom.setAttribute('disabled', true);
       } else {
+        if(saved != null) {
+          dom.checked = saved;
+          saved = null;
+        }
         dom.removeAttribute('disabled');
       }
     }
@@ -66,8 +72,8 @@ class Settings {
     this.dom = elt('section', {className: 'settings'},
                elt('div', {className: 'settings_section'},
                 wrapInLabel('Game:', renderGameNames(game), `Choose the patch you want the bot to work on.`),
-                wrapInLabel('Timer: ', renderTimer(timer), 'The bot will work for the provided period of time. If 0 it will never stop.'),
-                wrapInLabel('Control: ', this.options.control.dom, `Hardware mode will open the window of the game and will directly use you mouse and keyboard. You won't be able to use the computer while the bot is working.`)
+                wrapInLabel('Timer: ', renderTimer(timer), `The bot will work for the given period of time. If it's 0 or nothing at all, it will never stop.`),
+                wrapInLabel('Control: ', this.options.control.dom, `Hardware mode will open the window of the game and will directly use your mouse and keyboard. You should not use them while the bot is working or the bot will not work properly.`)
                 ),
                elt('div', {className: 'settings_section'},
                 wrapInLabel('Use shift + click: ', this.options.shiftClick.dom, `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game, or if there's no such an option (like in Vanilla). Your "Loot key" in the game should be assign to shift.`),
