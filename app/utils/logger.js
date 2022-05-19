@@ -1,4 +1,4 @@
-const getCurrentTime = require('./getCurrentTime.js');
+const { getCurrentTime } = require('./time.js');
 
 const createLog = (sendToWindow) => {
   return {
