@@ -38,14 +38,16 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "./app/img/icon.png"
+        "icon": "./app/img/icon.ico"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "AutoFish",
-            "setupIcon": "./app/img/icon.png"
+            "setupIcon": "./app/img/icon.ico",
+            "setupExe": "AutoFish Setup.exe",
+            "loadingGif": "./app/img/install.gif"
           }
         },
         {
