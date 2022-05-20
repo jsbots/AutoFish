@@ -19,23 +19,25 @@ const wrapInLabel = (name, inner, hint) => {
 
 const createShiftClick = (configShiftClick) => {
   const dom = elt('input', {type: 'checkbox', className: 'option', checked: !!configShiftClick, name: 'shiftClick'});
-  let saved = null;
-  return  {
-    dom,
-    syncState(game) {
-      if(game == 'Vanilla') {
-        saved = dom.checked;
-        dom.checked = true;
-        dom.setAttribute('disabled', true);
-      } else {
-        if(saved != null) {
-          dom.checked = saved;
-          saved = null;
-        }
-        dom.removeAttribute('disabled');
+  const syncState = (game) => {
+    if(game == 'Vanilla') {
+      saved = dom.checked;
+      dom.checked = true;
+      dom.setAttribute('disabled', true);
+    } else {
+      if(saved != null) {
+        dom.checked = saved;
+        saved = null;
       }
+      dom.removeAttribute('disabled');
     }
   }
+  let saved = null;
+
+  return  {
+    dom,
+    syncState
+  };
 };
 
 const renderLikeHuman = (configLikeHuman) => {
@@ -51,6 +53,8 @@ class Settings {
     this.options = {
       shiftClick: createShiftClick(shiftClick)
     }
+    this.syncOptStates(game);
+
     this.dom = elt('section', {className: 'settings'},
                elt('div', {className: 'settings_section'},
                 wrapInLabel('Game:', renderGameNames(game), `Choose the patch you want the bot to work on.`),
@@ -66,24 +70,27 @@ class Settings {
       const name = event.target.name;
       let value = event.target.value;
 
+      if (name == "game") {
+        this.onGameChange(value);
+        this.syncOptStates(value);
+      }
+
       if(name == 'shiftClick' || name == 'likeHuman') {
-        this.config[name] = event.target.checked;
-        return;
+        value = event.target.checked;
       }
 
       if(name == 'timer') {
         value = Number(value);
       }
 
-      if(name == 'game') {
-        this.onGameChange(value);
-        for(let option of Object.keys(this.options)) {
-          this.options[option].syncState(value);
-        }
-      }
-
       this.config[name] = value;
     })
+  }
+
+  syncOptStates(value) {
+    for (let option of Object.keys(this.options)) {
+      this.options[option].syncState(value);
+    }
   }
 
   regOnGameChange(callback) {
