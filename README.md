@@ -8,7 +8,7 @@ For more detailed review you can watch this [video](https://www.youtube.com/watc
 
 ## Guide
 
-Old patches:
+**Old patches**:
 
 1. Launch the game.
 2. Switch to the lowest **DirectX** mode if available.
@@ -17,17 +17,15 @@ Old patches:
 5. Equip your favorite fishpole.
 6. Assign your 'fishing' skill to the **'2' key**.
 7. Find a good place to fish (watch the video).
-
-- All sides of the "Fishing zone" should be in the water (check the horizon).
-- Avoid any red and yellow colors in the "Fishing zone".
-- At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app.
-
+   - All sides of the "Fishing zone" should be in the water (check the horizon).
+   - Avoid any red and yellow colors in the "Fishing zone".
+   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app.
 8. Don't use your keyboard and mouse while the bot is working.
 9. You can press **'space'** to stop the bot.
 10. Launch AutoFish (by using AutoFish.exe or from CLI).
 11. Press "Start".
 
-Retail&classic:
+**Retail&classic:**
 
 1. Launch the game.
 2. Switch to **DirectX 11** mode.
@@ -36,11 +34,9 @@ Retail&classic:
 5. Equip your favorite fishpole.
 6. Assign your 'fishing' skill to the **'2' key**.
 7. Find a good place to fish (watch the video)
-
-- All sides of the "Fishing zone" should be in the water (check the horizon).
-- Avoid any red and yellow colors in the "Fishing zone".
-- At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app.
-
+   - All sides of the "Fishing zone" should be in the water (check the horizon).
+   - Avoid any red and yellow colors in the "Fishing zone".
+   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app.
 8. You can use either **Hardware** (with opened window) or **Virtual** (in the background) mode.
 9. You can press **'space'** to stop the bot.
 10. Find a good place to fish (watch the video).
