@@ -10,7 +10,7 @@ const createWinSwitch = (eventLine) => {
       return new Promise((resolve) => {
         eventLine.add(async () => {
           workwindow.setForeground();
-          while(!workwindow.isForeground()) {
+          while (!workwindow.isForeground()) {
             await sleep();
           }
           resolve();
@@ -19,9 +19,8 @@ const createWinSwitch = (eventLine) => {
     },
     finished() {
       eventLine.remove();
-    }
-  }
-}
-
+    },
+  };
+};
 
 module.exports = createWinSwitch;

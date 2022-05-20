@@ -1,4 +1,4 @@
-const Rgb = require('../utils/rgb.js');
+const Rgb = require("../utils/rgb.js");
 
 class RgbAdapter {
   constructor(workwindow, zone) {
@@ -7,7 +7,9 @@ class RgbAdapter {
   }
 
   getRgb(point) {
-    const capturedData = Array.from(this.workwindow.capture(point || this.zone).data.values());
+    const capturedData = Array.from(
+      this.workwindow.capture(point || this.zone).data.values()
+    );
     return Rgb.from(capturedData, point || this.zone);
   }
 
@@ -16,7 +18,7 @@ class RgbAdapter {
   }
 
   colorAt(pos) {
-    return this.getRgb({...pos, width: 1, height: 1}).colorAt(pos);
+    return this.getRgb({ ...pos, width: 1, height: 1 }).colorAt(pos);
   }
 
   static from(workwindow, zone) {

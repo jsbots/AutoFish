@@ -1,12 +1,15 @@
-const createGame = ({Hardware, getAllWindows}) => {
+const createGame = ({ Hardware, getAllWindows }) => {
   return {
-    findWindows({names, classNames}) {
-      const wins = getAllWindows().filter(({title, className}) =>  names.includes(title) && classNames.includes(className));
-      if(wins.length > 0) {
-          return wins.map((win) => new Hardware(win.handle));
+    findWindows({ names, classNames }) {
+      const wins = getAllWindows().filter(
+        ({ title, className }) =>
+          names.includes(title) && classNames.includes(className)
+      );
+      if (wins.length > 0) {
+        return wins.map((win) => new Hardware(win.handle));
       }
-    }
-  }
+    },
+  };
 };
 
 module.exports = createGame;
