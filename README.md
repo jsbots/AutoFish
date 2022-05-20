@@ -1,4 +1,6 @@
-## ![AutoFish](https://github.com/olesgeras/AutoFish/blob/fbb466a44022bb45463f65012734c5f7cae92c29/app/img/main-logo.jpg)
+<p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/fbb466a44022bb45463f65012734c5f7cae92c29/app/img/main-logo.jpg"> </p>
+
+## Fishing bot
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
 
@@ -9,9 +11,9 @@ For more detailed review you can watch [first video](https://www.youtube.com/wat
 ## Guide
 
 1. Launch the game (not as administrator).
-2. Switch to the lowest **DirectX** mode if available.
+2. Switch to the lowest **DirectX** mode if available (there's no such option in the old patches so you don't need it).
 3. Turn off **Vertical Sync**.
-4. Switch to **Windowed(fullscreen)** mode
+4. Switch to **Windowed(fullscreen)** mode (or **Fullscreen(windowed)** on Retail/Classic)
 5. Equip your favorite fishpole.
 6. Assign your 'fishing' skill to the **'2' key**.
 7. Find a good place to fish (watch the video).
