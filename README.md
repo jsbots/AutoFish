@@ -1,4 +1,4 @@
-<p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/fbb466a44022bb45463f65012734c5f7cae92c29/app/img/main-logo.jpg"> </p>
+<p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/a915e2f84d36f3aeaa61e8594332a14b2e6bedb9/app/img/main-logo.png"> </p>
 
 ## Fishing bot
 
