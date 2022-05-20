@@ -23,7 +23,7 @@ const createBot = () => {
       if (!games) {
         log.err(`Can't find any window of the game!`);
         onError();
-        throw new Error;
+        return; 
       } else {
         log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`)
       }
