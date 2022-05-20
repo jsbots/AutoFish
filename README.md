@@ -1,6 +1,6 @@
 # AutoFish
 
-![assets/images/main-logo.jpg](AutoFish)
+![https://github.com/olesgeras/AutoFish/blob/fbb466a44022bb45463f65012734c5f7cae92c29/app/img/main-logo.jpg](AutoFish)
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
 
@@ -10,7 +10,7 @@ For more detailed review you can watch this [video](https://www.youtube.com/watc
 
 ## Guide
 
-###Old patches:
+Old patches:
 
 1. Launch the game.
 2. Switch to the lowest **DirectX** mode if available.
@@ -29,7 +29,7 @@ For more detailed review you can watch this [video](https://www.youtube.com/watc
 10. Launch AutoFish (by using AutoFish.exe or from CLI).
 11. Press "Start".
 
-###Retail&classic:
+Retail&classic:
 
 1. Launch the game.
 2. Switch to **DirectX 11** mode.
