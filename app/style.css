@@ -51,8 +51,7 @@ h3 {
   display: flex;
   flex-flow: column;
 }
-.logo {
-}
+
 .logo_name {
   background: url("img/logo-icon.png") no-repeat center left;
   background-size: 80px;
