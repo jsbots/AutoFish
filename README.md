@@ -1,6 +1,6 @@
 # AutoFish
 
-![https://github.com/olesgeras/AutoFish/blob/fbb466a44022bb45463f65012734c5f7cae92c29/app/img/main-logo.jpg](AutoFish)
+![AutoFish](https://github.com/olesgeras/AutoFish/blob/fbb466a44022bb45463f65012734c5f7cae92c29/app/img/main-logo.jpg)
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
 
