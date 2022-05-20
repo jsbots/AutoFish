@@ -1,19 +1,25 @@
-const elt = require('./utils/elt.js');
+const elt = require("./utils/elt.js");
 
 class StartButton {
   constructor() {
     this.state = false;
-    this.dom = elt('button', {className: 'startButton', onclick: (event) => {
-      event.target.innerHTML = ``;
-      if(this.state = !this.state) {
-        this.onStart();
-      } else {
-        this.onStop();
-      }
+    this.dom = elt(
+      "button",
+      {
+        className: "startButton",
+        onclick: (event) => {
+          event.target.innerHTML = ``;
+          if ((this.state = !this.state)) {
+            this.onStart();
+          } else {
+            this.onStop();
+          }
 
-      event.target.textContent = this.state ? `STOP` : `START`;
-
-    }}, `START`);
+          event.target.textContent = this.state ? `STOP` : `START`;
+        },
+      },
+      `START`
+    );
   }
 
   onError() {
