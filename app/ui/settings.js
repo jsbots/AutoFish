@@ -57,8 +57,8 @@ class Settings {
                 wrapInLabel('Timer: ', renderTimer(timer), `The bot will work for the given period of time. If it's 0 or nothing at all, it will never stop.`),
                 ),
                elt('div', {className: 'settings_section'},
-                wrapInLabel('Use shift + click: ', this.options.shiftClick.dom, `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`),
-                wrapInLabel('Like a human: ', renderLikeHuman(likeHuman), `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use many windows. `)
+                wrapInLabel('Use shift+click: ', this.options.shiftClick.dom, `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`),
+                wrapInLabel('Like a human: ', renderLikeHuman(likeHuman), `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows. `)
               )
               );
 
