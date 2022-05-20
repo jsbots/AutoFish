@@ -52,7 +52,6 @@ h3 {
   flex-flow: column;
 }
 .logo {
-
 }
 .logo_name {
   background: url("img/logo-icon.png") no-repeat center left;
@@ -77,7 +76,7 @@ h3 {
 
 .logger {
   height: 130px;
-  background-image: url('./img/fish.png');
+  background-image: url("./img/fish.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
