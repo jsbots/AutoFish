@@ -1,4 +1,4 @@
-const RgbAdapter = require('../game/rgbAdapter.js');
+const RgbAdapter = require("../game/rgbAdapter.js");
 
 class FishingZone extends RgbAdapter {
   constructor(workwindow, zone) {
@@ -11,9 +11,10 @@ class FishingZone extends RgbAdapter {
 
   findBobber(color) {
     const looksLikeBobber = (point, rgb) => {
-      return point.getPointsAround(2)
-      .map((point) => rgb.colorAt(point))
-      .every((point) => color(point));
+      return point
+        .getPointsAround(2)
+        .map((point) => rgb.colorAt(point))
+        .every((point) => color(point));
     };
 
     return super.findColor(color, looksLikeBobber);

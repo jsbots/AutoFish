@@ -1,14 +1,13 @@
 const keysender = require("keysender");
 const createGame = require("../game/create.js");
-const createWinSwitch = require('../game/winSwitch.js');
+const createWinSwitch = require("../game/winSwitch.js");
 
 const { createLog, createIdLog } = require("../utils/logger.js");
 const Zone = require("../utils/zone.js");
-const EventLine = require('../utils/eventLine.js');
+const EventLine = require("../utils/eventLine.js");
 
 const bot = require("./bot.js");
 const runBot = require("./run.js");
-
 
 const createBot = () => {
   let states;
@@ -19,13 +18,20 @@ const createBot = () => {
       });
 
       log.send("Starting the bot...");
-      const games = createGame(keysender).findWindows(config.game, config.patch.control);
+      const games = createGame(keysender).findWindows(
+        config.game,
+        config.patch.control
+      );
       if (!games) {
         log.err(`Can't find any window of the game!`);
         onError();
-        return; 
+        return;
       } else {
-        log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`)
+        log.ok(
+          `Found ${games.length} window${
+            games.length > 1 ? `s` : ``
+          } of the game!`
+        );
       }
 
       states = [];
@@ -34,27 +40,28 @@ const createBot = () => {
       win.blur();
       for (const game of games) {
         const state = {
-          status: 'initial',
-          startTime: Date.now()
+          status: "initial",
+          startTime: Date.now(),
         };
         states.push(state);
 
         const logId = createIdLog(log);
         const zone = Zone.from(game.workwindow.getView());
 
-        runBot(bot(game, zone, config.patch, winSwitch), logId, state)
-          .catch((error) => {
-            logId.err(`${(error.message)}`);
-            state.status = 'stop';
-            if(states.every(state => state.status == 'stop')) {
+        runBot(bot(game, zone, config.patch, winSwitch), logId, state).catch(
+          (error) => {
+            logId.err(`${error.message}`);
+            state.status = "stop";
+            if (states.every((state) => state.status == "stop")) {
               onError();
             }
-          });
+          }
+        );
       }
     },
     stopBot() {
       if (states) {
-        states.forEach(state => state.status = 'stop');
+        states.forEach((state) => (state.status = "stop"));
       }
     },
   };
