@@ -4,7 +4,6 @@ const {
   ipcMain,
   Menu,
   dialog,
-  desktopCapturer,
   shell,
   powerSaveBlocker,
   globalShortcut,
@@ -85,9 +84,10 @@ let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 330,
-    height: 655,
+    width: 325,
+    height: 650,
     show: false,
+    resizable: false,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
@@ -95,7 +95,6 @@ function createWindow() {
     icon: "./app/img/icon.png",
   });
 
-  win.resizable = true;
   win.loadFile("./app/index.html");
 
   win.on("closed", () => {
@@ -103,12 +102,12 @@ function createWindow() {
   });
 
   win.once("ready-to-show", () => {
+    // win.webContents.openDevTools()
     win.show();
   });
 }
 app.whenReady().then(() => {
   createWindow();
-  win.webContents.openDevTools();
 });
 app.on("window-all-closed", () => {
   if (process.platform === "darwin") {
@@ -138,30 +137,32 @@ const stopAppAndBot = () => {
   stopBot();
   stopApp();
   globalShortcut.unregisterAll();
-  win.webContents.send('stop-bot');
+  win.webContents.send("stop-bot");
 };
 
 const getJson = (jsonPath) => {
   return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
-}
-
+};
 
 ipcMain.on("start-bot", async (event, settings) => {
-  writeFileSync(path.join(__dirname, './config/settings.json'), JSON.stringify(settings));
-  const config = getJson('./config/bot.json');
+  writeFileSync(
+    path.join(__dirname, "./config/settings.json"),
+    JSON.stringify(settings)
+  );
+  const config = getJson("./config/bot.json");
 
-  if(settings.game == 'Retail&Classic') {
-    let result =  dialog.showMessageBoxSync(win, {
-      type: 'warning',
+  if (settings.game == "Retail&Classic") {
+    let result = dialog.showMessageBoxSync(win, {
+      type: "warning",
       title: `Warning`,
       message: `Using bots on official servers is prohibited. Your account might be banned for a long time.`,
       buttons: [`I understand`, `I don't understand`],
-      defaultId: 1,
-      cancelId: 0
+      defaultId: 0,
+      cancelId: 1,
     });
 
-    if(result) {
-      stopAppAndBot();
+    if (result == 1) {
+      win.webContents.send("stop-bot");
       return;
     }
   }
@@ -171,7 +172,14 @@ ipcMain.on("start-bot", async (event, settings) => {
   }
 
   globalShortcut.register("space", stopAppAndBot);
-  startBot(win, {game: config.game, patch: {...config.patch[settings.game], ...settings}}, stopAppAndBot);
+  startBot(
+    win,
+    {
+      game: config.game,
+      patch: { ...config.patch[settings.game], ...settings },
+    },
+    stopAppAndBot
+  );
 });
 
 ipcMain.on("stop-bot", stopAppAndBot);
@@ -179,9 +187,9 @@ ipcMain.on("open-link", () =>
   shell.openExternal("https://www.youtube.com/olesgeras")
 );
 ipcMain.handle("get-settings", () => {
-  let settings = getJson('./config/settings.json');
-  let instructions = getJson('./config/instructions.json');
-  return {settings, instructions};
+  let settings = getJson("./config/settings.json");
+  let instructions = getJson("./config/instructions.json");
+  return { settings, instructions };
 });
 
 /* Bot end */
