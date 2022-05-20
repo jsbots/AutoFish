@@ -1,4 +1,4 @@
-const Vec = require('./vec.js');
+const Vec = require("./vec.js");
 
 module.exports = class Rgb {
   constructor(rgb, zone) {
@@ -6,24 +6,26 @@ module.exports = class Rgb {
     this.zone = zone;
   }
 
-  colorAt({x, y}) {
-    if(x >= this.zone.x &&
-       y >= this.zone.y &&
-       x <  this.zone.x + this.zone.width &&
-       y <  this.zone.y + this.zone.height) {
-         return this.rgb[y][x];
-       } else {
-         return [0, 0, 0];
-       }
+  colorAt({ x, y }) {
+    if (
+      x >= this.zone.x &&
+      y >= this.zone.y &&
+      x < this.zone.x + this.zone.width &&
+      y < this.zone.y + this.zone.height
+    ) {
+      return this.rgb[y][x];
+    } else {
+      return [0, 0, 0];
+    }
   }
 
-  findColor (color, task) {
-    for(let y = this.zone.y; y < this.zone.y + this.zone.height; y++) {
-      for(let x = this.zone.x; x < this.zone.x + this.zone.width; x++) {
+  findColor(color, task) {
+    for (let y = this.zone.y; y < this.zone.y + this.zone.height; y++) {
+      for (let x = this.zone.x; x < this.zone.x + this.zone.width; x++) {
         let point = new Vec(x, y);
-        if(color(this.colorAt(point))) {
-            if(!task || task(point, this)) {
-              return point;
+        if (color(this.colorAt(point))) {
+          if (!task || task(point, this)) {
+            return point;
           }
         }
       }
@@ -45,4 +47,4 @@ module.exports = class Rgb {
 
     return new Rgb(rgb, zone);
   }
-}
+};

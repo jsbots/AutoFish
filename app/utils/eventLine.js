@@ -4,10 +4,10 @@ class EventLine {
   }
 
   add(callback) {
-      this.eventLine.push(callback);
-      if (this.eventLine.length == 1) {
-        callback()
-      }
+    this.eventLine.push(callback);
+    if (this.eventLine.length == 1) {
+      callback();
+    }
   }
 
   remove() {

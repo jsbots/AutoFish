@@ -9,22 +9,24 @@ module.exports = class Vec {
   }
 
   get dist() {
-    return Math.sqrt(Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2));
+    return Math.sqrt(
+      Math.pow(Math.abs(this.x), 2) + Math.pow(Math.abs(this.y), 2)
+    );
   }
 
   getPointsAround(size = 1) {
     let pointsAround = [];
-    for(let y = this.y - size; y <= this.y + size; y++) {
-      for(let x = this.x - size; x <= this.x + size; x++) {
-          let point = new Vec(x, y);
-          if(point.x == this.x && point.y == this.y) {
-            continue;
-          } else {
-            pointsAround.push(point);
-          }
+    for (let y = this.y - size; y <= this.y + size; y++) {
+      for (let x = this.x - size; x <= this.x + size; x++) {
+        let point = new Vec(x, y);
+        if (point.x == this.x && point.y == this.y) {
+          continue;
+        } else {
+          pointsAround.push(point);
+        }
       }
     }
 
     return pointsAround;
-  };
-}
+  }
+};

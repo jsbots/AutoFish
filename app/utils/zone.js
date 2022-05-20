@@ -1,17 +1,17 @@
 class Zone {
-  constructor({x, y, width, height}) {
+  constructor({ x, y, width, height }) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
   }
 
-  toRel({x, y, width, height}) {
+  toRel({ x, y, width, height }) {
     return new Zone({
       x: Math.floor(this.width * x),
       y: Math.floor(this.height * y),
       width: Math.floor(this.width * width),
-      height: Math.floor(this.height * height)
+      height: Math.floor(this.height * height),
     });
   }
 

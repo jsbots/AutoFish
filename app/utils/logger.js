@@ -1,38 +1,38 @@
-const { getCurrentTime } = require('./time.js');
+const { getCurrentTime } = require("./time.js");
 
 const createLog = (sendToWindow) => {
   return {
-    send(text, type = 'black') {
-      const {hr, min, sec} = getCurrentTime();
+    send(text, type = "black") {
+      const { hr, min, sec } = getCurrentTime();
       text = `[${hr}:${min}:${sec}] ${text}`;
-      sendToWindow({text, type});
+      sendToWindow({ text, type });
     },
 
     ok(text) {
-      this.send(text, 'green');
+      this.send(text, "green");
     },
 
     warn(text) {
-      this.send(text, 'orange');
+      this.send(text, "orange");
     },
 
     err(text) {
-      this.send(text, 'red')
-    }
-  }
-}
+      this.send(text, "red");
+    },
+  };
+};
 
 const createIdLog = (log) => {
   let id = ++createIdLog.id;
   return Object.assign({}, log, {
     send(text, type) {
       log.send(`[WIN${id}] ${text}`, type);
-    }
-  })
+    },
+  });
 };
 createIdLog.id = 0;
 
 module.exports = {
   createLog,
-  createIdLog
+  createIdLog,
 };
