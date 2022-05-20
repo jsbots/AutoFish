@@ -25,6 +25,9 @@ For more detailed review you can watch [first video](https://www.youtube.com/wat
 10. Launch AutoFish (by using AutoFish.exe or from CLI).
 11. Press "Start".
 
+## UI
+<p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
+
 ## Installation
 
 If you want to tweak the app and make some changes you need to:
