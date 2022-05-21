@@ -20,7 +20,7 @@ For more detailed review you can watch [first video](https://www.youtube.com/wat
 
 The bot doesn't use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of color and understands it as hooking.
 
-## Warning! :warning: 
+## Warning :warning: 
 
 Using bots in most of the games is prohibited, by doing so you should understand all the risk that such an act entails: banning, losing account, losing real money etc. 
 
