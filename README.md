@@ -47,13 +47,13 @@ npm install
 To distribute by electron-forge:
 
 ```
-npm make
+npm run make
 ```
 
 To start the app from the CLI:
 
 ```
-npm run
+npm start
 ```
 
 ## Tests
