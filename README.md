@@ -28,6 +28,12 @@ For more detailed review you can watch [first video](https://www.youtube.com/wat
 ## UI
 <p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
 
+## Download
+
+AutoFish Setup: https://drive.google.com/file/d/1F5nRr08SMv5urPd5wHQwNEr4ytrliXBP/view?usp=sharing
+
+It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will create a shortcut with a random name on your destkop. You can rename it as you wish. Random name is for hiding the process from potential scanning of your processes by Battle.net launcher. 
+
 ## Installation
 
 If you want to tweak the app and make some changes you need to:
