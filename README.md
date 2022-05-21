@@ -40,7 +40,7 @@ To prevent detection all the delay values are randomised: mouse clicks, key pres
 3. Turn off **Vertical Sync**.
 4. Switch to **Windowed(fullscreen)** mode (or **Fullscreen(windowed)** on Retail/Classic)
 5. Equip your favorite fishpole.
-6. Assign your 'fishing' skill to the **'2' key**. *(you can change it by modifying app/config/bot.json)*
+6. Assign your 'fishing' skill to the **'2' key**.
 7. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
    - Avoid any red and yellow colors in the "Fishing zone".
