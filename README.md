@@ -24,12 +24,14 @@ The bot doesn't use any vision libraries like OpenCV, it uses a more simple solu
 
 Using bots in most of the games is prohibited, by doing so you should understand all the risk that such an act entails: banning, losing account, losing real money etc. 
 
-Using common sense while using bot will help to reduce risks of being banned:
+Using common sense while using the bot will help to reduce risks of being banned:
 - Don't leave the bot alone for a long time.
 - Don't fish in one place all the time.
 - Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.
 
 Still, the bot is written in JavaScript, while writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
+
+To prevent detection all the delay values are randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
 ## Guide :blue_book:
 
@@ -45,7 +47,7 @@ Still, the bot is written in JavaScript, while writting the bot I didn't have ac
    - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It means that your fishing place isn't good enough, try to look for another one. 
 8. Don't use your keyboard and mouse while the bot is working.
 9. You can press **'space'** to stop the bot.
-10. Launch AutoFish (by using AutoFish.exe or from CLI).
+10. Launch AutoFish (by using the shortcut or from CLI).
 11. Press "Start".
 
 ## UI :orange_book:
