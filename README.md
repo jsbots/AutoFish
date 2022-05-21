@@ -39,13 +39,13 @@ Still, the bot is written in JavaScript, while writting the bot I didn't have ac
 ## UI
 <p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
 
-## Download
+## Download :open_file_folder:
 
 AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjnKyYsIPbjpzbo/view?usp=sharing)
 
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will create a shortcut with a random name on your destkop. You can rename it as you wish. Random name is for hiding the process from potential scanning of your processes by Battle.net launcher. 
 
-## Installation
+## Installation 
 
 If you want to tweak the app and make some changes you need to:
 
