@@ -10,6 +10,7 @@
 - [Installation](#installation-hammer)
 - [Tests](#tests-straight_ruler)
 
+
 ## Fishing bot :fish:
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
@@ -18,7 +19,8 @@ The bot was tested on Retail, Classic and Classic TBC, also on old patches: Vani
 
 For more detailed review you can watch [first video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and [second video](https://youtu.be/o1i_cgZzuHc).
 
-The bot doesn't use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of color and understands it as hooking.
+The bot doesn't use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
+
 
 ## Warning :warning: 
 
@@ -32,6 +34,7 @@ Using common sense while using the bot will help to reduce risks of being banned
 Still, the bot is written in JavaScript, while writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
 To prevent detection all the delay values are randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+
 
 ## Guide :blue_book:
 
@@ -50,8 +53,10 @@ To prevent detection all the delay values are randomised: mouse clicks, key pres
 10. Launch AutoFish (by using the shortcut or from CLI).
 11. Press "Start".
 
+
 ## UI :orange_book:
 <p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
+
 
 ## Download :open_file_folder:
 
@@ -60,6 +65,7 @@ AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjn
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into folder under random name and create a shortcut with a random name on your destkop. You can rename it as you wish. 
 
 Random names are for hiding the processes from potential scanning. 
+
 
 ## Installation :hammer:
 
@@ -82,6 +88,7 @@ To start the app from the CLI:
 ```
 npm start
 ```
+
 
 ## Tests :straight_ruler:
 
