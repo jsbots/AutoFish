@@ -1,12 +1,23 @@
 <p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/a915e2f84d36f3aeaa61e8594332a14b2e6bedb9/app/img/main-logo.png"> </p>
 
-## Fishing bot
+## Fishing bot :fish:
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
 
 The bot was tested on Retail, Classic and Classic TBC, also on old patches: Vanilla, The Burning Crusade, Wrath of Lich King, Cataclysm, Mists of Pandaria on unofficial servers.
 
 For more detailed review you can watch [first video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and [second video](https://youtu.be/o1i_cgZzuHc).
+
+## Warning! :warning: 
+
+Using bots in most of the games is prohibited, by doing so you should understand all the risk that such an act entails: banning, losing account, losing real money etc. 
+
+Using common sense while using bot will help to reduce risks of being banned:
+- Don't leave the bot alone for a long time.
+- Don't fish in one place all the time.
+- Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.
+
+Still, the bot is written in JavaScript, while writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
 ## Guide
 
