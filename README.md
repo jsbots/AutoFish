@@ -19,7 +19,7 @@ For more detailed review you can watch [first video](https://www.youtube.com/wat
 7. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
    - Avoid any red and yellow colors in the "Fishing zone".
-   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app.
+   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It means that your fishing place isn't good enough, try to look for another one. 
 8. Don't use your keyboard and mouse while the bot is working.
 9. You can press **'space'** to stop the bot.
 10. Launch AutoFish (by using AutoFish.exe or from CLI).
