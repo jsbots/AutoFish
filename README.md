@@ -1,8 +1,8 @@
 <p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/a915e2f84d36f3aeaa61e8594332a14b2e6bedb9/app/img/main-logo.png"> </p>
 
-## Table of Contents
+## Table of Contents :page_with_curl:	
 
-- [Fishing bot](#fishing-bot-fish)
+- [Fishing bot](#fishing-bot-fish) 
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
 - [UI](#ui-orange_book)
