@@ -30,7 +30,7 @@ For more detailed review you can watch [first video](https://www.youtube.com/wat
 
 ## Download
 
-AutoFish Setup: https://drive.google.com/file/d/1F5nRr08SMv5urPd5wHQwNEr4ytrliXBP/view?usp=sharing
+AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjnKyYsIPbjpzbo/view?usp=sharing)
 
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will create a shortcut with a random name on your destkop. You can rename it as you wish. Random name is for hiding the process from potential scanning of your processes by Battle.net launcher. 
 
