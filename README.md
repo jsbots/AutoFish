@@ -1,5 +1,15 @@
 <p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/a915e2f84d36f3aeaa61e8594332a14b2e6bedb9/app/img/main-logo.png"> </p>
 
+## Content
+
+- [Fishing bot](https://github.com/olesgeras/AutoFish/edit/main/README.md#fishing-bot-fish)
+- [Warninig](https://github.com/olesgeras/AutoFish/edit/main/README.md#warning-warning)
+- [Guide](https://github.com/olesgeras/AutoFish/edit/main/README.md#guide-blue_book)
+- [UI](https://github.com/olesgeras/AutoFish/edit/main/README.md#ui-orange_book)
+- [Download](https://github.com/olesgeras/AutoFish/edit/main/README.md#download-open_file_folder)
+- [Installation](https://github.com/olesgeras/AutoFish/edit/main/README.md#installation-hammer)
+- [Tests](https://github.com/olesgeras/AutoFish/edit/main/README.md#tests-straight_ruler)
+
 ## Fishing bot :fish:
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
@@ -26,7 +36,7 @@ Still, the bot is written in JavaScript, while writting the bot I didn't have ac
 3. Turn off **Vertical Sync**.
 4. Switch to **Windowed(fullscreen)** mode (or **Fullscreen(windowed)** on Retail/Classic)
 5. Equip your favorite fishpole.
-6. Assign your 'fishing' skill to the **'2' key**.
+6. Assign your 'fishing' skill to the **'2' key**. *(you can change it by modifying app/config/bot.json)*
 7. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
    - Avoid any red and yellow colors in the "Fishing zone".
