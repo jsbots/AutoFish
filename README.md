@@ -2,13 +2,13 @@
 
 ## Table of Contents
 
-- [Fishing bot](https://github.com/olesgeras/AutoFish/edit/main/README.md#fishing-bot-fish)
-- [Warninig](https://github.com/olesgeras/AutoFish/edit/main/README.md#warning-warning)
-- [Guide](https://github.com/olesgeras/AutoFish/edit/main/README.md#guide-blue_book)
-- [UI](https://github.com/olesgeras/AutoFish/edit/main/README.md#ui-orange_book)
-- [Download](https://github.com/olesgeras/AutoFish/edit/main/README.md#download-open_file_folder)
-- [Installation](https://github.com/olesgeras/AutoFish/edit/main/README.md#installation-hammer)
-- [Tests](https://github.com/olesgeras/AutoFish/edit/main/README.md#tests-straight_ruler)
+- [Fishing bot](#fishing-bot-fish)
+- [Warninig](#warning-warning)
+- [Guide](#guide-blue_book)
+- [UI](#ui-orange_book)
+- [Download](#download-open_file_folder)
+- [Installation](#installation-hammer)
+- [Tests](#tests-straight_ruler)
 
 ## Fishing bot :fish:
 
