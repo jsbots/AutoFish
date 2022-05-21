@@ -55,7 +55,9 @@ Still, the bot is written in JavaScript, while writting the bot I didn't have ac
 
 AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjnKyYsIPbjpzbo/view?usp=sharing)
 
-It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will create a shortcut with a random name on your destkop. You can rename it as you wish. Random name is for hiding the process from potential scanning of your processes by Battle.net launcher. 
+It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into folder under random name and create a shortcut with a random name on your destkop. You can rename it as you wish. 
+
+Random names are for hiding the processes from potential scanning. 
 
 ## Installation :hammer:
 
