@@ -1,6 +1,6 @@
 <p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/a915e2f84d36f3aeaa61e8594332a14b2e6bedb9/app/img/main-logo.png"> </p>
 
-## Content
+## Contents
 
 - [Fishing bot](https://github.com/olesgeras/AutoFish/edit/main/README.md#fishing-bot-fish)
 - [Warninig](https://github.com/olesgeras/AutoFish/edit/main/README.md#warning-warning)
