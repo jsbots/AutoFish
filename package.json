@@ -36,35 +36,6 @@
     "jest": "^28.1.0"
   },
   "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "./app/img/icon.ico"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "AutoFish",
-            "setupIcon": "./app/img/icon.ico",
-            "setupExe": "AutoFish Setup.exe",
-            "loadingGif": "./app/img/install.gif"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+    "forge": "./forge.config.js"
   }
 }
