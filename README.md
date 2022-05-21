@@ -19,7 +19,7 @@ Using common sense while using bot will help to reduce risks of being banned:
 
 Still, the bot is written in JavaScript, while writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
-## Guide
+## Guide :blue_book:
 
 1. Launch the game (not as administrator).
 2. Switch to the lowest **DirectX** mode if available (there's no such option in the old patches so you don't need it).
@@ -36,7 +36,7 @@ Still, the bot is written in JavaScript, while writting the bot I didn't have ac
 10. Launch AutoFish (by using AutoFish.exe or from CLI).
 11. Press "Start".
 
-## UI
+## UI :orange_book:
 <p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
 
 ## Download :open_file_folder:
@@ -45,7 +45,7 @@ AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjn
 
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will create a shortcut with a random name on your destkop. You can rename it as you wish. Random name is for hiding the process from potential scanning of your processes by Battle.net launcher. 
 
-## Installation 
+## Installation :hammer:
 
 If you want to tweak the app and make some changes you need to:
 
@@ -67,7 +67,7 @@ To start the app from the CLI:
 npm start
 ```
 
-## Tests
+## Tests :straight_ruler:
 
 ```
 npm test
