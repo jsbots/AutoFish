@@ -18,7 +18,7 @@ The bot was tested on Retail, Classic and Classic TBC, also on old patches: Vani
 
 For more detailed review you can watch [first video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and [second video](https://youtu.be/o1i_cgZzuHc).
 
-The bot doesn't use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober when the bober slowly wobble, but when the bobber is jerked, the bot sees this as a change of color and understands it as hooking.
+The bot doesn't use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of color and understands it as hooking.
 
 ## Warning! :warning: 
 
