@@ -27,6 +27,12 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 Using bots in most of the games is prohibited, by doing so you should understand all the risk that such an act entails: banning, losing account, losing real money etc. 
 
+The bot is written in JavaScript, while writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
+
+To prevent detection all the delay values were randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+
+## Will I be banned for this? :interrobang:
+
 Using common sense while using the bot will help to reduce risks of being banned:
 - Don't leave the bot alone for a long time.
 - Don't fish in one place all the time.
@@ -34,16 +40,10 @@ Using common sense while using the bot will help to reduce risks of being banned
 
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you. 
 
-Still, the bot is written in JavaScript, while writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
-
-To prevent detection all the delay values were randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
-
-## Will I be banned for this? :interrobang:
-
 After reading all this you are eager to ask the most important *existential* question of the topic:
 > **"Am I going to be banned?"**
 
-The very simplified answer you seek depends on where you use the bot:
+If we consider only the software itself, the very simplified answer you seek depends on where you use the bot:
 - on **official servers**:
 > **"Probably"**. 
 
