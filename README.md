@@ -6,8 +6,9 @@
 
 - [Fishing bot](#fishing-bot-fish) 
 - [Warninig](#warning-warning)
-- [Will I be banned for this?](#will-i-be-banned-for-this-interrobang)
+- [Will I be banned for using this?](#will-i-be-banned-for-this-interrobang)
 - [Guide](#guide-blue_book)
+- [Fishing zone](#fishing-zone-dart)
 - [UI](#ui-orange_book)
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
@@ -54,7 +55,6 @@ If we consider only the software itself, the very simplified answer you seek dep
 
 
 
-
 ## Guide :blue_book:
 
 **Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
@@ -75,6 +75,13 @@ If we consider only the software itself, the very simplified answer you seek dep
 11. Launch AutoFish (by using the shortcut or from CLI).
 12. Press "Start".
 
+## Fishing Zone :dart:
+
+Watch this <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
+
+The rule of thumb here is the better you can see the red feather the better the bot will see it too. Avoid red and yellow colors (bot analyzes notifications) in the zone except the bobber itself. It's a pixel bot after all, so mind this.    
+
+<img src="https://github.com/olesgeras/AutoFish/blob/bcb00d84fb04a3968950ee1dc6e119bcf1b4a555/app/img/fishing-zone-example.jpg" width="1000">
 
 ## UI :orange_book:
 <p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
