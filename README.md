@@ -57,6 +57,8 @@ If we consider only the software itself, the very simplified answer you seek dep
 
 ## Guide :blue_book:
 
+**Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
+
 1. Launch the game (not as administrator).
 2. Switch to the lowest **DirectX** mode if available (there's no such option in the old patches so you don't need it).
 3. Turn off **Vertical Sync**.
