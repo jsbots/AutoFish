@@ -17,8 +17,8 @@ const bot = (controls, zone, config, winSwitch) => {
   const { delay, relZone } = config;
   const { isBobber, isWarning, isError } = colorConditions;
 
-  zone = zone.toRel(relZone);
-  const fishingZone = FishingZone.from(workwindow, zone);
+
+  const fishingZone = FishingZone.from(workwindow, zone.toRel(relZone));
 
   const castFishing = async (state) => {
     const { fishingKey, castDelay } = config;
@@ -29,6 +29,9 @@ const bot = (controls, zone, config, winSwitch) => {
     winSwitch.finished();
 
     if (state.status == "initial") {
+      if(zone.x == -32000 && zone.y == -32000) {
+           throw new Error('The window is in fullscreen mode')
+        }
       await sleep(250);
       if (await fishingZone.checkNotifications(isError, isWarning)) {
         throw new Error(`This place isn't good for fishing`);
@@ -108,7 +111,7 @@ const bot = (controls, zone, config, winSwitch) => {
     castFishing,
     findBobber,
     checkBobber,
-    hookBobber,
+    hookBobber
   };
 };
 
