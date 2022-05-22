@@ -88,9 +88,10 @@ It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersqu
 
 If you want to tweak the app and make some changes you need to:
 
-Install dependencies:
+Install [npm](https://docs.npmjs.com/about-npm) and dependencies:
 
 ```
+install npm
 npm install
 ```
 
