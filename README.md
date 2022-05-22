@@ -4,6 +4,7 @@
 
 - [Fishing bot](#fishing-bot-fish) 
 - [Warninig](#warning-warning)
+- [Will I be banned for this?](#will-i-be-banned-for-this-interrobang)
 - [Guide](#guide-blue_book)
 - [UI](#ui-orange_book)
 - [Download](#download-open_file_folder)
@@ -37,11 +38,18 @@ Still, the bot is written in JavaScript, while writting the bot I didn't have ac
 
 To prevent detection all the delay values were randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
+## Will I be banned for this? :interrobang:
+
 After reading all this you are eager to ask the most important *existential* question of the topic:
 > **"Am I going to be banned?"**
 
-The answer:
+The very simplified answer you seek depends on where you use the bot:
+- on **official servers**:
 > **"Probably"**. 
+
+- on **unofficial servers**: 
+> **"Unlikely"**.
+
 
 
 
