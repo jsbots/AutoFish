@@ -63,16 +63,17 @@ If we consider only the software itself, the very simplified answer you seek dep
 2. Switch to the lowest **DirectX** mode if available (there's no such option in the old patches so you don't need it).
 3. Turn off **Vertical Sync**.
 4. Switch to **Windowed(fullscreen)** mode (or **Fullscreen(windowed)** on Retail/Classic)
-5. Equip your favorite fishpole.
-6. Assign your 'fishing' skill to the **'2' key**.
-7. Find a good place to fish (watch the video).
+5. Turn on **Auto Loot** option, or check **Use shift+click** option in the UI. 
+6. Equip your favorite fishpole.
+7. Assign your 'fishing' skill to the **'2' key**.
+8. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
    - Avoid any red and yellow colors in the "Fishing zone".
    - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It can mean that either you don't set video settings right or that your fishing place isn't good enough. Check the settings and try to look for another place.  
-8. Don't use your keyboard and mouse while the bot is working.
-9. You can press **'space'** to stop the bot.
-10. Launch AutoFish (by using the shortcut or from CLI).
-11. Press "Start".
+9. Don't use your keyboard and mouse while the bot is working.
+10. You can press **'space'** to stop the bot.
+11. Launch AutoFish (by using the shortcut or from CLI).
+12. Press "Start".
 
 
 ## UI :orange_book:
