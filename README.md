@@ -64,7 +64,7 @@ If we consider only the software itself, the very simplified answer you seek dep
 7. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
    - Avoid any red and yellow colors in the "Fishing zone".
-   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It means that your fishing place isn't good enough, try to look for another one. 
+   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It can mean that either you don't set video settings right or that your fishing place isn't good enough. Check the settings and try to look for another place.  
 8. Don't use your keyboard and mouse while the bot is working.
 9. You can press **'space'** to stop the bot.
 10. Launch AutoFish (by using the shortcut or from CLI).
@@ -80,9 +80,6 @@ If we consider only the software itself, the very simplified answer you seek dep
 AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjnKyYsIPbjpzbo/view?usp=sharing)
 
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into folder under random name and create a shortcut with a random name on your destkop. You can rename it as you wish. 
-
-Random names are for hiding the processes from potential scanning. 
-
 
 ## Installation :hammer:
 
