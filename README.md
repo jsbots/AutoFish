@@ -6,9 +6,9 @@
 
 - [Fishing bot](#fishing-bot-fish) 
 - [Warninig](#warning-warning)
-- [Will I be banned for this?](#will-i-be-banned-for-this-interrobang)
+- [Will I be banned for using this?](#will-i-be-banned-for-this-interrobang)
 - [Guide](#guide-blue_book)
-- [Fishing zone](#fishing-zone)
+- [Fishing zone](#fishing-zone-dart)
 - [UI](#ui-orange_book)
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
