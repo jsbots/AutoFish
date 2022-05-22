@@ -1,5 +1,8 @@
 <p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/a915e2f84d36f3aeaa61e8594332a14b2e6bedb9/app/img/main-logo.png"> </p>
 
+[![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE) 
+
+
 ## Table of Contents :page_with_curl:	
 
 - [Fishing bot](#fishing-bot-fish) 
