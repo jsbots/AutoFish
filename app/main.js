@@ -9,6 +9,7 @@ const {
   globalShortcut,
 } = require("electron");
 const path = require("path");
+const generateName = require('./utils/generateName.js');
 
 if (require("electron-squirrel-startup")) return app.quit();
 if (handleSquirrelEvent()) {
@@ -76,14 +77,6 @@ function handleSquirrelEvent() {
   }
 }
 
-const generateName = (size) => {
-  let alphabet = `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890`;
-  return new Array(size)
-  .fill(true)
-  .map(slot => alphabet[Math.floor(Math.random() * alphabet.length)])
-  .join(``);
-};
-
 /* Electron */
 
 let win;
@@ -94,7 +87,7 @@ function createWindow() {
   win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 650,
+    height: 665,
     show: false,
     resizable: false,
     webPreferences: {
@@ -111,7 +104,6 @@ function createWindow() {
   });
 
   win.once("ready-to-show", () => {
-    // win.webContents.openDevTools()
     win.show();
   });
 }
