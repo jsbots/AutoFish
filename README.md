@@ -19,11 +19,18 @@
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
 
-The bot was tested on Retail, Classic and Classic TBC, also on old patches: Vanilla, The Burning Crusade, Wrath of Lich King, Cataclysm, Mists of Pandaria on unofficial servers.
-
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [first video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [second video](https://youtu.be/o1i_cgZzuHc).
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
+
+The bot was tested on official servers: **Retail, Classic and Classic TBC**.
+
+Also on unofficial servers:
+- [x] **MoP**: stormforge.gg
+- [x] **Cataclysm**: apollo-wow.com
+- [x] **WoTLK**: warmane.com 
+- [x] **TBC**: atlantiss.org
+- [x] **Vanilla**: kronos-wow.com
 
 
 ## Warning :warning: 
@@ -34,7 +41,7 @@ The bot is written in JavaScript, while writting the bot I didn't have acess to 
 
 To prevent detection all the delay values were randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
-## Will I be banned for this? :interrobang:
+## Will I be banned for using this? :interrobang:
 
 Using common sense while using the bot will help to reduce risks of being banned:
 - Don't leave the bot alone for a long time.
@@ -44,9 +51,9 @@ Using common sense while using the bot will help to reduce risks of being banned
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you. 
 
 After reading all this you are eager to ask the most important *existential* question of the topic:
-> **"Am I going to be banned?"**
+> **"Am I going to be banned for using this?"**
 
-If we consider only the software itself, the very simplified answer you seek depends on where you use the bot:
+If we consider **only the software itself**, the very simplified answer you seek depends on where you use the bot:
 - on **official servers**:
 > **"Probably"**. 
 
