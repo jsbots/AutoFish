@@ -15,10 +15,10 @@ const runBot = async (bot, log, state) => {
       log.ok(`Found the bobber!`);
       findBobber.attempts = 0;
     } else {
-      log.err(`Can't find the bobber, will try again.`);
+      log.err(`Can't find the bobber, try again.`);
       if (++findBobber.attempts == 3) {
         throw new Error(
-          `Have tried 3 attempts to find the bobber and failed: this place isn't good for fishing`
+          `Have tried 3 attempts to find the bobber and failed: this place isn't good for fishing.`
         );
       }
       continue;
