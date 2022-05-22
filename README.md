@@ -75,7 +75,7 @@ If we consider only the software itself, the very simplified answer you seek dep
 11. Launch AutoFish (by using the shortcut or from CLI).
 12. Press "Start".
 
-## Fishing Zone
+## Fishing Zone :dart:
 
 Watch this <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
