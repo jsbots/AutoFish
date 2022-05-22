@@ -67,9 +67,8 @@ If we consider **only the software itself**, the very simplified answer you seek
 **Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
 
 1. Launch the game (not as administrator).
-2. Switch to the lowest **DirectX** mode if available (there's no such option in the old patches so you don't need it).
-3. Turn off **Vertical Sync**.
-4. Switch to **Windowed(fullscreen)** mode (or **Fullscreen(windowed)** on Retail/Classic)
+2. Switch to the **DirectX 11** on retail (you don't need it with old patches).
+4. Switch to **Windowed or Window(maximized)** mode (default **Fullscreen(windowed)** on Retail/Classic)
 5. Turn on **Auto Loot** option, or check **Use shift+click** option in the UI. 
 6. Equip your favorite fishpole.
 7. Assign your 'fishing' skill to the **'2' key**.
