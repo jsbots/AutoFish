@@ -5,7 +5,7 @@
 ## Table of Contents :page_with_curl:	
 
 - [Fishing bot](#fishing-bot-fish) 
-- [Server tests](#server-tests-video_game)
+- [Servers tests](#server-tests-video_game)
 - [Warninig](#warning-warning)
 - [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
 - [Guide](#guide-blue_book)
@@ -26,7 +26,7 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
-## Server tests :video_game:
+## Servers tests :video_game:
 
 The bot was tested on official servers: **Retail, Classic and Classic TBC**.
 
