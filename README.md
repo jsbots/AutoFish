@@ -24,7 +24,7 @@ For more detailed review you can watch <img src="https://upload.wikimedia.org/wi
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
 
-The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** with installed World of Warcraft and launch AutoFish there. *(tested)*
+The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
 ## Server tests :video_game:
 
