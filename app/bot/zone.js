@@ -12,7 +12,7 @@ class FishingZone extends RgbAdapter {
   findBobber(color) {
     const looksLikeBobber = (point, rgb) => {
       return point
-        .getPointsAround(2)
+        .getPointsAround()
         .map((point) => rgb.colorAt(point))
         .every((point) => color(point));
     };
