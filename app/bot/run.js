@@ -2,7 +2,7 @@ const Stats = require("./stats.js");
 const { convertMs } = require("../utils/time.js");
 
 const runBot = async (bot, log, state) => {
-  const { castFishing, findBobber, checkBobber, hookBobber } = bot;
+  const { castFishing, findBobber, checkBobber, hookBobber, bobberAttempts } = bot;
   const stats = new Stats();
   findBobber.attempts = 0;
 
@@ -10,13 +10,13 @@ const runBot = async (bot, log, state) => {
     log.send(`Casting fishing...`);
     await castFishing(state);
     log.send(`Looking for the bobber in...`);
-    let bobber = findBobber();
+    let bobber = await findBobber();
     if (bobber) {
       log.ok(`Found the bobber!`);
       findBobber.attempts = 0;
     } else {
-      log.err(`Can't find the bobber, try again.`);
-      if (++findBobber.attempts == 3) {
+      log.err(`Can't find the bobber, recast.`);
+      if (++findBobber.attempts == bobberAttempts) {
         throw new Error(
           `Have tried 3 attempts to find the bobber and failed: this place isn't good for fishing.`
         );
