@@ -9,6 +9,7 @@ const EventLine = require("../utils/eventLine.js");
 const bot = require("./bot.js");
 const runBot = require("./run.js");
 
+
 const createBot = () => {
   let states;
   return {
@@ -16,6 +17,14 @@ const createBot = () => {
       const log = createLog((data) => {
         win.webContents.send("log-data", data);
       });
+
+      if (config.patch.timer) {
+        setTimeout(() => {
+          if(!states.every(({status}) => status == 'stop')) {
+            onError();
+          }
+        }, config.patch.timer * 1000 * 60);
+      }
 
       log.send("Starting the bot...");
       const games = createGame(keysender).findWindows(
@@ -39,6 +48,7 @@ const createBot = () => {
 
       win.blur();
       for (const game of games) {
+
         const state = {
           status: "initial",
           startTime: Date.now(),
@@ -47,7 +57,6 @@ const createBot = () => {
 
         const logId = createIdLog(log);
         const zone = Zone.from(game.workwindow.getView());
-
         runBot(bot(game, zone, config.patch, winSwitch), logId, state).catch(
           (error) => {
             logId.err(`${error.message}`);

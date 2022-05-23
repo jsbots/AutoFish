@@ -168,10 +168,6 @@ ipcMain.on("start-bot", async (event, settings) => {
     }
   }
 
-  if (settings.timer) {
-    setTimeout(stopAppAndBot, settings.timer * 1000 * 60);
-  }
-
   globalShortcut.register("space", stopAppAndBot);
   startBot(
     win,
