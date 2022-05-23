@@ -9,7 +9,7 @@ const runBot = async (bot, log, state) => {
   do {
     log.send(`Casting fishing...`);
     await castFishing(state);
-    log.send(`Looking for the bobber in...`);
+    log.send(`Looking for the bobber...`);
     let bobber = await findBobber();
     if (bobber) {
       log.ok(`Found the bobber!`);
