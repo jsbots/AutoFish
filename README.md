@@ -5,8 +5,9 @@
 ## Table of Contents :page_with_curl:	
 
 - [Fishing bot](#fishing-bot-fish) 
+- [Server tests](#server-tests-video_game)
 - [Warninig](#warning-warning)
-- [Will I be banned for using this?](#will-i-be-banned-for-this-interrobang)
+- [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
 - [Guide](#guide-blue_book)
 - [Fishing zone](#fishing-zone-dart)
 - [UI](#ui-orange_book)
@@ -22,6 +23,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [first video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [second video](https://youtu.be/o1i_cgZzuHc).
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
+
+The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** with installed World of Warcraft and launch AutoFish there. *(tested)*
+
+## Server tests :video_game:
 
 The bot was tested on official servers: **Retail, Classic and Classic TBC**.
 
