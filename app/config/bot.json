@@ -13,8 +13,7 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50,
-      "bobberAttempts": 3
+      "mouseCurvatureStrength": 50
     },
     "Cataclysm": {
       "delay": [75, 250],
@@ -25,8 +24,7 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50,
-      "bobberAttempts": 3
+      "mouseCurvatureStrength": 50
     },
     "WoTLK": {
       "delay": [75, 250],
@@ -37,8 +35,7 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50,
-      "bobberAttempts": 3
+      "mouseCurvatureStrength": 50
     },
     "Retail&Classic": {
       "delay": [75, 250],
@@ -49,8 +46,7 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50,
-      "bobberAttempts": 3
+      "mouseCurvatureStrength": 50
     },
     "TBC": {
       "delay": [75, 250],
@@ -61,8 +57,7 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50,
-      "bobberAttempts": 3
+      "mouseCurvatureStrength": 50
     },
     "Vanilla": {
       "delay": [75, 250],
@@ -73,8 +68,7 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50,
-      "bobberAttempts": 3
+      "mouseCurvatureStrength": 50
     }
   }
 }
