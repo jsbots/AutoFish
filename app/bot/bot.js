@@ -29,9 +29,11 @@ const bot = (controls, zone, config, winSwitch) => {
     winSwitch.finished();
 
     if (state.status == "initial") {
+
       if(zone.x == -32000 && zone.y == -32000) {
            throw new Error('The window is in fullscreen mode')
         }
+
       await sleep(250);
       if (await fishingZone.checkNotifications(isError, isWarning)) {
         throw new Error(`This place isn't good for fishing`);
@@ -43,7 +45,16 @@ const bot = (controls, zone, config, winSwitch) => {
     await sleep(castDelay);
   };
 
-  const findBobber = () => fishingZone.findBobber(isBobber);
+  const findBobber = async () => {
+    let speed = Date.now();
+    let bobber = fishingZone.findBobber(isBobber);
+
+    for(let attempt = 0; !bobber && attempt < 2; attempt++) {
+      await sleep(100);
+      bobber = fishingZone.findBobber(isBobber);
+    }
+    return bobber;
+  };
 
   const checkBobber = async (bobberPos, state) => {
     const { maxFishTime, checkingDelay } = config;
