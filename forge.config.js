@@ -10,6 +10,8 @@ module.exports = {
       "name": "@electron-forge/maker-squirrel",
       "config": {
         "name": generatedName(10),
+        "authors": generatedName(10),
+        "description": 'Electron application',
         "setupIcon": "./app/img/icon.ico",
         "setupExe": "AutoFish Setup.exe",
         "loadingGif": "./app/img/install.gif"
