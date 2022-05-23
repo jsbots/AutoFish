@@ -5,8 +5,9 @@
 ## Table of Contents :page_with_curl:	
 
 - [Fishing bot](#fishing-bot-fish) 
+- [Server tests](#server-tests-video_game)
 - [Warninig](#warning-warning)
-- [Will I be banned for using this?](#will-i-be-banned-for-this-interrobang)
+- [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
 - [Guide](#guide-blue_book)
 - [Fishing zone](#fishing-zone-dart)
 - [UI](#ui-orange_book)
@@ -22,6 +23,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [first video](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [second video](https://youtu.be/o1i_cgZzuHc).
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
+
+The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
+
+## Server tests :video_game:
 
 The bot was tested on official servers: **Retail, Classic and Classic TBC**.
 
@@ -67,9 +72,8 @@ If we consider **only the software itself**, the very simplified answer you seek
 **Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
 
 1. Launch the game (not as administrator).
-2. Switch to the lowest **DirectX** mode if available (there's no such option in the old patches so you don't need it).
-3. Turn off **Vertical Sync**.
-4. Switch to **Windowed(fullscreen)** mode (or **Fullscreen(windowed)** on Retail/Classic)
+2. Switch to the **DirectX 11** on retail (you don't need it with old patches).
+4. Switch to **Windowed or Window(maximized)** mode (default **Fullscreen(windowed)** on Retail/Classic)
 5. Turn on **Auto Loot** option, or check **Use shift+click** option in the UI. 
 6. Equip your favorite fishpole.
 7. Assign your 'fishing' skill to the **'2' key**.
