@@ -46,9 +46,7 @@ const bot = (controls, zone, config, winSwitch) => {
   };
 
   const findBobber = async () => {
-    let speed = Date.now();
     let bobber = fishingZone.findBobber(isBobber);
-
     for(let attempt = 0; !bobber && attempt < 2; attempt++) {
       await sleep(100);
       bobber = fishingZone.findBobber(isBobber);
