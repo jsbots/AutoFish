@@ -1,3 +1,4 @@
+const Zone = require("../utils/zone.js");
 const FishingZone = require("./zone.js");
 
 const sleep = (time) => {
@@ -12,28 +13,25 @@ const colorConditions = {
   isError: ([r, g, b]) => r - g > 250 && r - b > 250,
 };
 
-const bot = (controls, zone, config, winSwitch) => {
-  const { keyboard, mouse, workwindow } = controls;
+const createBot = (game, {config, settings}, winSwitch) => {
+  const { keyboard, mouse, workwindow } = game;
   const { delay, relZone } = config;
   const { isBobber, isWarning, isError } = colorConditions;
 
-
-  const fishingZone = FishingZone.from(workwindow, zone.toRel(relZone));
+  const zone = Zone.from(workwindow.getView()).toRel(relZone);
+  const fishingZone = FishingZone.from(workwindow, zone);
 
   const castFishing = async (state) => {
     const { fishingKey, castDelay } = config;
 
     await winSwitch.execute(workwindow);
-
     keyboard.sendKey(fishingKey, delay);
     winSwitch.finished();
 
     if (state.status == "initial") {
-
       if(zone.x == -32000 && zone.y == -32000) {
            throw new Error('The window is in fullscreen mode')
         }
-
       await sleep(250);
       if (await fishingZone.checkNotifications(isError, isWarning)) {
         throw new Error(`This place isn't good for fishing`);
@@ -80,11 +78,14 @@ const bot = (controls, zone, config, winSwitch) => {
   const hookBobber = async (bobber) => {
     const {
       afterHookDelay,
-      shiftClick,
-      likeHuman,
       mouseMoveSpeed,
       mouseCurvatureStrength,
     } = config;
+
+    const {
+      shiftClick,
+      likeHuman
+    } = settings;
 
     await winSwitch.execute(workwindow);
     if (likeHuman) {
@@ -124,4 +125,4 @@ const bot = (controls, zone, config, winSwitch) => {
   };
 };
 
-module.exports = bot;
+module.exports = createBot;
