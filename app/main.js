@@ -123,8 +123,18 @@ app.on("window-all-closed", () => {
 /* Bot */
 
 const { readFileSync, writeFileSync } = require("fs");
-const createBot = require("./bot/create.js");
-const { startBot, stopBot } = createBot();
+const keysender = require("keysender");
+
+const { createLog, createIdLog } = require("./utils/logger.js");
+const EventLine = require("./utils/eventLine.js");
+
+const createGame = require("./game/create.js");
+const createWinSwitch = require("./game/winSwitch.js");
+
+const createBot = require("./bot/createBot.js");
+const createStates = require("./bot/createStates.js");
+
+const { startStates, stopStates } = createStates();
 
 const stopApp = () => {
   shell.beep();
@@ -135,7 +145,7 @@ const stopApp = () => {
 };
 
 const stopAppAndBot = () => {
-  stopBot();
+  stopStates();
   stopApp();
   globalShortcut.unregisterAll();
   win.webContents.send("stop-bot");
@@ -145,44 +155,64 @@ const getJson = (jsonPath) => {
   return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
 };
 
+const showWarning = (warning) => {
+  return result = dialog.showMessageBoxSync(win, {
+    type: "warning",
+    title: `Warning`,
+    message: warning,
+    buttons: [`I understand`, `I don't understand`],
+    defaultId: 0,
+    cancelId: 1,
+  });
+};
+
 ipcMain.on("start-bot", async (event, settings) => {
-  writeFileSync(
-    path.join(__dirname, "./config/settings.json"),
-    JSON.stringify(settings)
-  );
   const config = getJson("./config/bot.json");
+  const log = createLog((data) => {
+    win.webContents.send("log-data", data);
+  });
 
-  if (settings.game == "Retail&Classic") {
-    let result = dialog.showMessageBoxSync(win, {
-      type: "warning",
-      title: `Warning`,
-      message: `Using bots on official servers is prohibited. Your account might be banned for a long time.`,
-      buttons: [`I understand`, `I don't understand`],
-      defaultId: 0,
-      cancelId: 1,
-    });
-
-    if (result == 1) {
-      win.webContents.send("stop-bot");
-      return;
-    }
+  log.send(`Looking for windows...`)
+  const games = createGame(keysender).findWindows(config.game);
+  if (!games) {
+    log.err(`Can't find any window of the game!`);
+    win.webContents.send("stop-bot");
+    return;
+  } else {
+    log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
   }
 
+  if (settings.game == "Retail&Classic" &&
+      showWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
+      win.webContenst.send('stop-bot');
+      return;
+  }
+
+  const winSwitch = createWinSwitch(new EventLine());
+  const bots = games.map((game, i) => {
+    return {
+      bot: createBot(game, { config: config.patch[settings.game], settings }, winSwitch),
+      log: createIdLog(log, ++i),
+      state: {
+       status: "initial",
+       startTime: Date.now(),
+     }
+    };
+  });
+
+  log.send("Starting the bot...");
   globalShortcut.register("space", stopAppAndBot);
-  startBot(
-    win,
-    {
-      game: config.game,
-      patch: { ...config.patch[settings.game], ...settings },
-    },
-    stopAppAndBot
-  );
+  win.blur();
+  startStates(bots, settings, stopAppAndBot);
 });
 
 ipcMain.on("stop-bot", stopAppAndBot);
 ipcMain.on("open-link", () =>
   shell.openExternal("https://www.youtube.com/olesgeras")
 );
+ipcMain.on("save-settings", (event, settings) => {
+    writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+});
 ipcMain.handle("get-settings", () => {
   let settings = getJson("./config/settings.json");
   let instructions = getJson("./config/instructions.json");
