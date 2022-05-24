@@ -142,6 +142,7 @@ class Settings {
       }
 
       this.config[name] = value;
+      this.onChange(this.config);
     });
   }
 
@@ -153,6 +154,10 @@ class Settings {
 
   regOnGameChange(callback) {
     this.onGameChange = callback;
+  }
+
+  regOnChange(callback) {
+    this.onChange = callback;
   }
 
   block() {

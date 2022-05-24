@@ -18,6 +18,8 @@ class AutoFish {
     this.button = startButton;
     this.logger = renderLogger();
 
+    this.settings.regOnChange((config) => ipcRenderer.send('save-settings', config));
+
     this.settings.regOnGameChange((game) => {
       instruction.innerHTML = ``;
       instruction.append(...parseInstruction(instructions[game]));
