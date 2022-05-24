@@ -5,7 +5,7 @@
 ## Table of Contents :page_with_curl:	
 
 - [Fishing bot](#fishing-bot-fish) 
-- [Servers tests](#server-tests-video_game)
+- [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
 - [Guide](#guide-blue_book)
@@ -14,6 +14,7 @@
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
 - [Tests](#tests-straight_ruler)
+- [Task list](#task-list-checkered_flag)
 
 
 ## Fishing bot :fish:
@@ -25,6 +26,7 @@ For more detailed review you can watch <img src="https://upload.wikimedia.org/wi
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the screen for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
+
 
 ## Servers tests :video_game:
 
@@ -133,3 +135,12 @@ npm start
 ```
 npm test
 ```
+
+## Task list :checkered_flag:
+
+- [x] Autofish 1.0.0
+- [x] Multiple windows support
+- [ ] Fishing lures support
+- [ ] Advanced settings option
+- [ ] Increased performance
+- [ ] More convoluted automation
