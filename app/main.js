@@ -172,7 +172,7 @@ ipcMain.on("start-bot", async (event, settings) => {
     win.webContents.send("log-data", data);
   });
 
-  log.send(`Looking for windows...`)
+  log.send(`Looking for the windows...`)
   const games = createGame(keysender).findWindows(config.game);
   if (!games) {
     log.err(`Can't find any window of the game!`);
