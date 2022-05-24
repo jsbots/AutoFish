@@ -184,7 +184,7 @@ ipcMain.on("start-bot", async (event, settings) => {
 
   if (settings.game == "Retail&Classic" &&
       showWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
-      win.webContenst.send('stop-bot');
+      win.webContents.send('stop-bot');
       return;
   }
 
