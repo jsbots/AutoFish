@@ -1,6 +1,6 @@
 const elt = require("./utils/elt.js");
 
-const renderGameNames = ({name}) => {
+const renderGameNames = ({game}) => {
   const gameNames = [
     "Retail&Classic",
     "MoP",
@@ -12,8 +12,8 @@ const renderGameNames = ({name}) => {
   return elt(
     "select",
     { name: "game", className: "option" },
-    ...gameNames.map((gameName) =>
-      elt("option", { selected: gameName == name }, gameName)
+    ...gameNames.map((name) =>
+      elt("option", { selected: name == game }, name)
     )
   );
 };
