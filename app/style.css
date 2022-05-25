@@ -129,14 +129,13 @@ h3 {
 }
 
 .settings select,
-.settings input[type="number"] {
-  width: 100px;
+.settings input[type="number"], .settings input[type="text"] {
+  width: 50px;
   height: 20px;
 }
 
-.settings input[type="text"] {
-  width: 50px;
-  height: 20px;
+.option.game-option {
+  width: 80px;
 }
 
 footer {
