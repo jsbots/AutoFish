@@ -144,7 +144,7 @@ npm test
 
 - [x] Autofish 1.0.0
 - [x] Multiple windows support
-- [ ] Fishing lures support
+- [x] Fishing lures support
 - [ ] Advanced settings option
 - [ ] Increased performance
 - [ ] More convoluted automation
