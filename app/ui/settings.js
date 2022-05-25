@@ -1,6 +1,6 @@
 const elt = require("./utils/elt.js");
 
-const renderGameNames = (configName) => {
+const renderGameNames = ({name}) => {
   const gameNames = [
     "Retail&Classic",
     "MoP",
@@ -12,16 +12,16 @@ const renderGameNames = (configName) => {
   return elt(
     "select",
     { name: "game", className: "option" },
-    ...gameNames.map((name) =>
-      elt("option", { selected: name == configName }, name)
+    ...gameNames.map((gameName) =>
+      elt("option", { selected: gameName == name }, gameName)
     )
   );
 };
 
-const renderTimer = (configTimer) => {
+const renderTimer = ({timer}) => {
   return elt(
     "input",
-    { type: "number", min: "1", value: configTimer, name: "timer" },
+    { type: "number", min: "0", value: timer, name: "timer", title: ""},
     `(min)`
   );
 };
@@ -44,15 +44,19 @@ const wrapInLabel = (name, inner, hint) => {
   );
 };
 
-const createShiftClick = (configShiftClick) => {
+const createShiftClick = ({shiftClick}) => {
   const dom = elt("input", {
     type: "checkbox",
     className: "option",
-    checked: !!configShiftClick,
+    checked: shiftClick,
     name: "shiftClick",
   });
-  const syncState = (game) => {
-    if (game == "Vanilla") {
+
+  let saved = null;
+  const syncState = ({name, value}) => {
+    if(name != 'game') return;
+
+    if (value == "Vanilla") {
       saved = dom.checked;
       dom.checked = true;
       dom.setAttribute("disabled", true);
@@ -64,7 +68,6 @@ const createShiftClick = (configShiftClick) => {
       dom.removeAttribute("disabled");
     }
   };
-  let saved = null;
 
   return {
     dom,
@@ -72,24 +75,68 @@ const createShiftClick = (configShiftClick) => {
   };
 };
 
-const renderLikeHuman = (configLikeHuman) => {
+const renderLikeHuman = ({likeHuman}) => {
   return elt("input", {
     type: "checkbox",
     className: "option",
-    checked: !!configLikeHuman,
+    checked: likeHuman,
     name: "likeHuman",
   });
 };
 
+const renderLures = ({lures}) => {
+  return elt("input", {
+    type: "checkbox",
+    className: "option",
+    checked: lures,
+    name: "lures",
+  });
+};
+
+const createLuresKey = ({lures, luresKey}) => {
+  const dom = elt('input', {type: 'text', value: luresKey, disabled: !lures, name: "luresKey"});
+
+  const syncState = ({name, value}) => {
+    if(name == 'lures') {
+      !value ? dom.setAttribute('disabled', 'true') : dom.removeAttribute('disabled');
+    }
+  };
+
+  return {
+    dom,
+    syncState
+  }
+}
+
+const createLuresDelay = ({lures, luresDelayMin}) => {
+  const dom = elt('input', {type: 'text', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
+
+  const syncState = ({name, value}) => {
+    if(name == 'lures') {
+      !value ? dom.setAttribute('disabled', 'true') : dom.removeAttribute('disabled');
+    }
+  };
+
+  return {
+    dom,
+    syncState
+  }
+};
+
+const renderFishingKey = ({fishingKey}) => {
+  return elt('input', {type: 'text', value: fishingKey, name: "fishingKey"});
+};
+
+
 class Settings {
   constructor(config) {
     this.config = config;
-    const { game, timer, shiftClick, likeHuman } = config;
 
     this.options = {
-      shiftClick: createShiftClick(shiftClick),
+      shiftClick: createShiftClick(config),
+      luresKey: createLuresKey(config),
+      luresDelay: createLuresDelay(config)
     };
-    this.syncOptStates(game);
 
     this.dom = elt(
       "section",
@@ -99,13 +146,23 @@ class Settings {
         { className: "settings_section" },
         wrapInLabel(
           "Game:",
-          renderGameNames(game),
+          renderGameNames(config),
           `Choose the patch you want the bot to work on.`
         ),
         wrapInLabel(
           "Timer: ",
-          renderTimer(timer),
+          renderTimer(config),
           `The bot will work for the given period of time. If it's 0 or nothing at all, it will never stop.`
+        ),
+        wrapInLabel(
+          "Fishing Key",
+          renderFishingKey(config),
+          `Write in the same key you use for fishing.`
+        ),
+        wrapInLabel(
+          "Lures Key: ",
+          this.options.luresKey.dom,
+          `Write in the same key you use for using fishing lures.`
         )
       ),
       elt(
@@ -118,8 +175,18 @@ class Settings {
         ),
         wrapInLabel(
           "Like a human: ",
-          renderLikeHuman(likeHuman),
+          renderLikeHuman(config),
           `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows. `
+        ),
+        wrapInLabel(
+          "Use lures: ",
+          renderLures(config),
+          `Check this option if you want to use fishing lures.`
+        ),
+        wrapInLabel(
+          "Lures time: ",
+          this.options.luresDelay.dom,
+          `Fishing lures expiration time. Usually it's 10 min.`
         )
       )
     );
@@ -130,25 +197,25 @@ class Settings {
 
       if (name == "game") {
         this.onGameChange(value);
-        this.syncOptStates(value);
       }
 
-      if (name == "shiftClick" || name == "likeHuman") {
+      if (name == "shiftClick" || name == "likeHuman" || name == "lures") {
         value = event.target.checked;
       }
 
-      if (name == "timer") {
+      if (name == "timer" || name == "luresDelayMin") {
         value = Number(value);
       }
 
+      this.syncOptStates({name, value});
       this.config[name] = value;
       this.onChange(this.config);
     });
   }
 
-  syncOptStates(value) {
+  syncOptStates({name, value}) {
     for (let option of Object.keys(this.options)) {
-      this.options[option].syncState(value);
+      this.options[option].syncState({name, value});
     }
   }
 
