@@ -6,29 +6,28 @@
   "patch": {
     "MoP": {
       "delay": [75, 250],
-      "fishingKey": "2",
       "castDelay": 1500,
       "afterHookDelay": { "caught": 1000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50
+      "mouseCurvatureStrength": 50,
+      "luresDelay": 3000
     },
     "Cataclysm": {
       "delay": [75, 250],
-      "fishingKey": "2",
       "castDelay": 1500,
       "afterHookDelay": { "caught": 1000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50
+      "mouseCurvatureStrength": 50,
+      "luresDelay": 3000
     },
     "WoTLK": {
       "delay": [75, 250],
-      "fishingKey": "2",
       "castDelay": 1500,
       "afterHookDelay": { "caught": 3000, "miss": 3000 },
       "maxFishTime": 30000,
@@ -36,40 +35,40 @@
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
       "mouseCurvatureStrength": 50,
-      "luresDelay": 2000 
+      "luresDelay": 3000
     },
     "Retail&Classic": {
       "delay": [75, 250],
-      "fishingKey": "2",
       "castDelay": 1500,
       "afterHookDelay": { "caught": 1000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50
+      "mouseCurvatureStrength": 50,
+      "luresDelay": 3000
     },
     "TBC": {
       "delay": [75, 250],
-      "fishingKey": "2",
       "castDelay": 3000,
       "afterHookDelay": { "caught": 2000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50
+      "mouseCurvatureStrength": 50,
+      "luresDelay": 3000
     },
     "Vanilla": {
       "delay": [75, 250],
-      "fishingKey": "2",
       "castDelay": 3000,
       "afterHookDelay": { "caught": 2000, "miss": 2000 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50
+      "mouseCurvatureStrength": 50,
+      "luresDelay": 3000
     }
   }
 }
