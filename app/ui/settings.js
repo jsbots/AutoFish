@@ -152,12 +152,12 @@ class Settings {
         wrapInLabel(
           "Timer: ",
           renderTimer(config),
-          `The bot will work for the given period of time. If it's 0 or nothing at all, it will never stop.`
+          `The bot will work for the given period of minutes. If it's 0 or nothing at all, it will never stop.`
         ),
         wrapInLabel(
           "Fishing Key",
           renderFishingKey(config),
-          `Write in the same key you use for fishing.`
+          `Write in the same key you use for fishing. If you use /castFishing instead, then assign a key for fishing.`
         ),
         wrapInLabel(
           "Lures Key: ",
@@ -184,9 +184,9 @@ class Settings {
           `Check this option if you want to use fishing lures.`
         ),
         wrapInLabel(
-          "Lures time: ",
+          "Reuse lure: ",
           this.options.luresDelay.dom,
-          `Fishing lures expiration time. Usually it's 10 min.`
+          `Fishing lures expiration time in minutes. Usually it's 10 minutes.`
         )
       )
     );
