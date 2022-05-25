@@ -35,7 +35,8 @@
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 1,
-      "mouseCurvatureStrength": 50
+      "mouseCurvatureStrength": 50,
+      "luresDelay": 2000 
     },
     "Retail&Classic": {
       "delay": [75, 250],
