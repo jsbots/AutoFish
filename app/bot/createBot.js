@@ -10,7 +10,7 @@ const sleep = (time) => {
 const colorConditions = {
   isBobber: ([r, g, b]) => r - g > 20 && r - b > 20 && g < 100 && b < 100,
   isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
-  isError: ([r, g, b]) => r - g > 250 && r - b > 250,
+  isError: ([r, g, b]) => r - g > 200 && r - b > 200,
 };
 
 const createBot = (game, {config, settings}, winSwitch) => {
@@ -23,6 +23,10 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const applyLure = async () => {
     keyboard.sendKey(settings.luresKey, delay);
+    await sleep(250);
+    if (await fishingZone.checkNotifications(isError, isWarning)) {
+      throw new Error(`Game error notification occured on applying fishing lures.`);
+    }
     return sleep(config.luresDelay);
   };
   applyLure.applied = 0;
@@ -36,16 +40,17 @@ const createBot = (game, {config, settings}, winSwitch) => {
     }
 
     await winSwitch.execute(workwindow);
-    keyboard.sendKey(config.fishingKey, delay);
+    keyboard.sendKey(settings.fishingKey, delay);
     winSwitch.finished();
 
     if (state.status == "initial") {
       if(zone.x == -32000 && zone.y == -32000) {
            throw new Error('The window is in fullscreen mode')
         }
+
       await sleep(250);
       if (await fishingZone.checkNotifications(isError, isWarning)) {
-        throw new Error(`This place isn't good for fishing`);
+        throw new Error(`Game error notification occured on casting fishing.`);
       } else {
         state.status = "working";
       }
