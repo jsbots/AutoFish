@@ -11,7 +11,7 @@ const renderGameNames = ({game}) => {
   ];
   return elt(
     "select",
-    { name: "game", className: "option" },
+    { name: "game", className: "option game-option" },
     ...gameNames.map((name) =>
       elt("option", { selected: name == game }, name)
     )
@@ -53,10 +53,8 @@ const createShiftClick = ({shiftClick}) => {
   });
 
   let saved = null;
-  const syncState = ({name, value}) => {
-    if(name != 'game') return;
-
-    if (value == "Vanilla") {
+  const syncState = (config) => {
+    if (config.game == "Vanilla") {
       saved = dom.checked;
       dom.checked = true;
       dom.setAttribute("disabled", true);
@@ -96,10 +94,8 @@ const renderLures = ({lures}) => {
 const createLuresKey = ({lures, luresKey}) => {
   const dom = elt('input', {type: 'text', value: luresKey, disabled: !lures, name: "luresKey"});
 
-  const syncState = ({name, value}) => {
-    if(name == 'lures') {
-      !value ? dom.setAttribute('disabled', 'true') : dom.removeAttribute('disabled');
-    }
+  const syncState = (config) => {
+      !config.lures ? dom.setAttribute('disabled', 'true') : dom.removeAttribute('disabled');
   };
 
   return {
@@ -109,12 +105,10 @@ const createLuresKey = ({lures, luresKey}) => {
 }
 
 const createLuresDelay = ({lures, luresDelayMin}) => {
-  const dom = elt('input', {type: 'text', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
+  const dom = elt('input', {type: 'number', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
 
-  const syncState = ({name, value}) => {
-    if(name == 'lures') {
-      !value ? dom.setAttribute('disabled', 'true') : dom.removeAttribute('disabled');
-    }
+  const syncState = (config) => {
+      !config.lures ? dom.setAttribute('disabled', 'true') : dom.removeAttribute('disabled');
   };
 
   return {
@@ -127,36 +121,40 @@ const renderFishingKey = ({fishingKey}) => {
   return elt('input', {type: 'text', value: fishingKey, name: "fishingKey"});
 };
 
-
 class Settings {
   constructor(config) {
     this.config = config;
 
     this.options = {
+      gameNames: renderGameNames(config),
+      timer: renderTimer(config),
+      fishingKey: renderFishingKey(config),
+      likeHuman: renderLikeHuman(config),
+      lures: renderLures(config),
       shiftClick: createShiftClick(config),
       luresKey: createLuresKey(config),
       luresDelay: createLuresDelay(config)
     };
 
     this.dom = elt(
-      "section",
+      "form",
       { className: "settings" },
       elt(
         "div",
         { className: "settings_section" },
         wrapInLabel(
           "Game:",
-          renderGameNames(config),
+          this.options.gameNames,
           `Choose the patch you want the bot to work on.`
         ),
         wrapInLabel(
           "Timer: ",
-          renderTimer(config),
+          this.options.timer,
           `The bot will work for the given period of minutes. If it's 0 or nothing at all, it will never stop.`
         ),
         wrapInLabel(
-          "Fishing Key",
-          renderFishingKey(config),
+          "Fishing Key: ",
+          this.options.fishingKey,
           `Write in the same key you use for fishing. If you use /castFishing instead, then assign a key for fishing.`
         ),
         wrapInLabel(
@@ -175,12 +173,12 @@ class Settings {
         ),
         wrapInLabel(
           "Like a human: ",
-          renderLikeHuman(config),
+          this.options.likeHuman,
           `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows. `
         ),
         wrapInLabel(
           "Use lures: ",
-          renderLures(config),
+          this.options.lures,
           `Check this option if you want to use fishing lures.`
         ),
         wrapInLabel(
@@ -192,30 +190,34 @@ class Settings {
     );
 
     this.dom.addEventListener("change", (event) => {
-      const name = event.target.name;
-      let value = event.target.value;
+      [...this.dom.elements].forEach(option => {
+        let value = option.value;
+        if (option.type == "checkbox") {
+          value = option.checked;
+        }
 
-      if (name == "game") {
-        this.onGameChange(value);
+        if (option.type == "number") {
+          value = Number(option.value);
+        }
+
+        this.config[option.name] = value;
+      })
+
+      if (event.target.name == "game") {
+        this.onGameChange(event.target.value);
       }
 
-      if (name == "shiftClick" || name == "likeHuman" || name == "lures") {
-        value = event.target.checked;
-      }
-
-      if (name == "timer" || name == "luresDelayMin") {
-        value = Number(value);
-      }
-
-      this.syncOptStates({name, value});
-      this.config[name] = value;
+      this.syncOptStates();
       this.onChange(this.config);
     });
   }
 
-  syncOptStates({name, value}) {
+
+  syncOptStates() {
     for (let option of Object.keys(this.options)) {
-      this.options[option].syncState({name, value});
+      if(this.options[option].syncState) {
+        this.options[option].syncState(this.config);
+      }
     }
   }
 
