@@ -87,7 +87,7 @@ function createWindow() {
   win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 650,
+    height: 700,
     show: false,
     resizable: false,
     webPreferences: {
@@ -104,6 +104,7 @@ function createWindow() {
   });
 
   win.once("ready-to-show", () => {
+    //win.webContents.openDevTools()
     win.show();
   });
 }
@@ -155,7 +156,7 @@ const getJson = (jsonPath) => {
   return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
 };
 
-const showWarning = (warning) => {
+const showChoiceWarning = (warning) => {
   return result = dialog.showMessageBoxSync(win, {
     type: "warning",
     title: `Warning`,
@@ -183,9 +184,15 @@ ipcMain.on("start-bot", async (event, settings) => {
   }
 
   if (settings.game == "Retail&Classic" &&
-      showWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
+      showChoiceWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
       win.webContents.send('stop-bot');
       return;
+  }
+
+  if(!settings.fishingKey || !settings.luresKey) {
+    dialog.showErrorBox('', `Keys values can't be empty`);
+    win.webContents.send('stop-bot');
+    return;
   }
 
   const winSwitch = createWinSwitch(new EventLine());
