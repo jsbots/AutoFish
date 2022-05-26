@@ -23,10 +23,6 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const applyLure = async () => {
     keyboard.sendKey(settings.luresKey, delay);
-    await sleep(250);
-    if (await fishingZone.checkNotifications(isError, isWarning)) {
-      throw new Error(`Game error notification occured on applying fishing lures.`);
-    }
     return sleep(config.luresDelay);
   };
   applyLure.applied = 0;
