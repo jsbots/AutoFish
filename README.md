@@ -80,9 +80,9 @@ If we consider **only the software itself**, the very simplified answer you seek
 1. Launch the game (not as administrator).
 2. Switch to the **DirectX 11** on retail (you don't need it with old patches).
 4. Switch to **Windowed or Window(maximized)** mode (default **Fullscreen(windowed)** on Retail/Classic)
-5. Turn on **Auto Loot** option, or check **Use shift+click** option in the UI. 
+5. Turn on **Auto Loot** option or check **Use shift+click** option in the UI. 
 6. Equip your favorite fishpole.
-7. Assign your 'fishing' skill to the **'2' key**.
+7. Assign your 'fishing' and 'lures' in the game and respective options in the UI.
 8. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
    - Avoid any red and yellow colors in the "Fishing zone".
