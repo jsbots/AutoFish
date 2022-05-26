@@ -66,10 +66,11 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const checkBobber = async (bobberPos, state) => {
     const startCheckingTime = Date.now();
-    while (
-      state.status == "working" &&
-      Date.now() - startCheckingTime < config.maxFishTime
-    ) {
+    while (state.status == "working") {
+      if(Date.now() - startCheckingTime > config.maxFishTime) {
+        return;
+      }
+
       if (!isBobber(fishingZone.colorAt(bobberPos))) {
         const newBobberPos = bobberPos
           .getPointsAround()
