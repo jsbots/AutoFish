@@ -30,7 +30,7 @@ h3 {
 
 body {
   margin: 0;
-  padding: 5px;
+  padding: 0;
 }
 
 button {
@@ -47,6 +47,9 @@ h3 {
 }
 
 .AutoFish {
+
+  padding: 5px;
+  height: 655px;
   display: flex;
   flex-flow: column;
 }
@@ -144,6 +147,9 @@ footer {
 }
 
 .startButton {
+  display: block;
+  flex: 1 1 0;
+  height: 100%;
   font-size: 48px;
   font-weight: bold;
 }

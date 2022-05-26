@@ -46,7 +46,7 @@ class AutoFish {
 
     this.dom = elt(
       "div",
-      {},
+      { className: "AutoFish" },
       renderLogo(),
       elt("h3", null, "Settings:"),
       this.settings.dom,

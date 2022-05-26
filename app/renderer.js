@@ -11,7 +11,7 @@ const runApp = async () => {
     new Settings(settings),
     new StartButton()
   );
-  document.querySelector(".AutoFish").append(autoFish.dom);
+  document.body.append(autoFish.dom);
 };
 
 runApp();
