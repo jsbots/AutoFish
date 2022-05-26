@@ -48,13 +48,14 @@ class AutoFish {
       "div",
       { className: "AutoFish" },
       renderLogo(),
-      elt("h3", null, "Settings:"),
+      elt("p", {className: 'settings_header'}, "Settings:"),
       this.settings.dom,
-      elt("h3", null, "Log:"),
+      elt("p", {className: 'settings_header'}, "Log:"),
       this.logger.dom,
-      elt("h3", null, "Instruction:"),
+      elt("p", {className: 'settings_header'}, "Instruction:"),
       instruction,
-      this.button.dom
+      this.button.dom,
+      elt("p", {className: "version"}, "ver. 1.2.2")
     );
   }
 }

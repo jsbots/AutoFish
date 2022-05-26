@@ -42,14 +42,10 @@ section {
   margin-bottom: 5px;
 }
 
-h3 {
-  margin-left: 5px;
-}
 
 .AutoFish {
-
   padding: 5px;
-  height: 655px;
+  height: 680px;
   display: flex;
   flex-flow: column;
 }
@@ -73,6 +69,11 @@ h3 {
   margin: 0;
   font-size: 12px;
   color: grey;
+}
+
+.settings_header {
+  font-size: 1.2em;
+  font-weight: 500;
 }
 
 .logger {
@@ -152,4 +153,8 @@ footer {
   height: 100%;
   font-size: 48px;
   font-weight: bold;
+}
+
+.version {
+  text-align: center;
 }
