@@ -14,7 +14,6 @@
 - [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
 - [Guide](#guide-blue_book)
 - [Fishing zone](#fishing-zone-dart)
-- [UI](#ui-orange_book)
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
 - [Tests](#tests-straight_ruler)
@@ -85,7 +84,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 7. Assign your 'fishing' and 'lures' in the game and respective options in the UI.
 8. Find a good place to fish (watch the video).
    - All sides of the "Fishing zone" should be in the water (check the horizon).
-   - Avoid any red and yellow colors in the "Fishing zone".
+   - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
    - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It can mean that either you don't set video settings right or that your fishing place isn't good enough. Check the settings and try to look for another place. 
 9. Don't use your keyboard and mouse while the bot is working.
 10. You can press **'space'** to stop the bot.
@@ -96,15 +95,13 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
-The rule of thumb here is the better you can see the red feather the better the bot will see it too: so the better your video settings the better it's for the bot too. Different direction might make the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. So instead of getting upset because the bot doesn't work, check the direction and position. It's a pixel bot after all, so mind this. 
-
-Avoid red and yellow colors in the zone except the bobber itself.    
+The rule of thumb here is the better you can see the red feather the better the bot will see it too: 
+- The better your video settings the better it's for the bot too. 
+- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber.
+- Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. It's a pixel bot after all, so mind this. 
+- Camera position is not so important but might have some impact too. 
 
 <img src="https://github.com/olesgeras/AutoFish/blob/bcb00d84fb04a3968950ee1dc6e119bcf1b4a555/app/img/fishing-zone-example.jpg" width="1000">
-
-## UI :orange_book:
-<p align="center"><img src="https://github.com/olesgeras/AutoFish/blob/725b384653e880cdaa556261fed5fd521976c813/app/img/uiexpl.jpg"></p>
-
 
 ## Download :open_file_folder:
 
