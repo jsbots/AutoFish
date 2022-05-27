@@ -96,7 +96,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
-The rule of thumb here is the better you can see the red feather the better the bot will see it too. Avoid red and yellow colors (bot analyzes notifications) in the zone except the bobber itself. It's a pixel bot after all, so mind this.    
+The rule of thumb here is the better you can see the red feather the better the bot will see it too: so the better your video settings the better it's for the bot too. Different direction might make the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. Avoid red and yellow colors in the zone except the bobber itself. It's a pixel bot after all, so mind this.    
 
 <img src="https://github.com/olesgeras/AutoFish/blob/bcb00d84fb04a3968950ee1dc6e119bcf1b4a555/app/img/fishing-zone-example.jpg" width="1000">
 
