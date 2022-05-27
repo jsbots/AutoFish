@@ -99,7 +99,7 @@ The rule of thumb here is the better you can see the red feather the better the 
 - The better your video settings the better it's for the bot too. 
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber.
 - Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. It's a pixel bot after all, so mind this. 
-- Camera position is not so important but might have some impact too. 
+- Camera position is not so important but might have some impact too. Just don't scroll it out so that you can see the whole Azeroth while fishing... 
 
 <img src="https://github.com/olesgeras/AutoFish/blob/bcb00d84fb04a3968950ee1dc6e119bcf1b4a555/app/img/fishing-zone-example.jpg" width="1000">
 
