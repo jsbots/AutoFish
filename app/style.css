@@ -10,7 +10,10 @@ html {
 
 body,
 input,
-pre {
+pre,
+button,
+p,
+select {
   font: menu;
 }
 
