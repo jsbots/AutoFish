@@ -215,7 +215,7 @@ ipcMain.on("start-bot", async (event, settings) => {
 
 ipcMain.on("stop-bot", stopAppAndBot);
 ipcMain.on("open-link", () =>
-  shell.openExternal("https://www.youtube.com/olesgeras")
+  shell.openExternal("https://www.youtube.com/jsbots")
 );
 ipcMain.on("save-settings", (event, settings) => {
     writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
