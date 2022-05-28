@@ -181,18 +181,6 @@ class Settings {
   regOnChange(callback) {
     this.onChange = callback;
   }
-
-  block() {
-    [...this.dom.children].forEach(
-      (option) => (option.children[0].disabled = true)
-    );
-  }
-
-  unblock() {
-    [...this.dom.children].forEach((option) =>
-      option.children[0].removeAttribute("disabled")
-    );
-  }
 }
 
 module.exports = Settings;

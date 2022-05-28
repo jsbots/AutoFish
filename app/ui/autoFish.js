@@ -26,12 +26,10 @@ class AutoFish {
     });
 
     this.button.regOnStart(() => {
-      this.settings.block();
       ipcRenderer.send("start-bot", this.settings.config);
     });
 
     this.button.regOnStop(() => {
-      this.settings.unblock();
       ipcRenderer.send("stop-bot");
     });
 
@@ -41,7 +39,6 @@ class AutoFish {
 
     ipcRenderer.on("stop-bot", () => {
       this.button.onError();
-      this.settings.unblock();
     });
 
     this.dom = elt(
