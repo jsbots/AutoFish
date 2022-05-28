@@ -52,7 +52,7 @@ class AutoFish {
       elt("p", {className: 'settings_header'}, "Instruction:"),
       instruction,
       this.button.dom,
-      elt("p", {className: "version"}, "ver. 1.2.2")
+      elt("p", {className: "version"}, "ver. 1.2.3")
     );
   }
 }
