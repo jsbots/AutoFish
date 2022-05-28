@@ -1,5 +1,5 @@
 const Zone = require("../utils/zone.js");
-const FishingZone = require("./zone.js");
+const FishingZone = require("./fishingZone.js");
 
 const sleep = (time) => {
   return new Promise((resolve) => {
@@ -7,19 +7,17 @@ const sleep = (time) => {
   });
 };
 
-const colorConditions = {
-  isBobber: ([r, g, b]) => r - g > 20 && r - b > 20 && g < 100 && b < 100,
-  isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
-  isError: ([r, g, b]) => r - g > 200 && r - b > 200,
-};
-
 const createBot = (game, {config, settings}, winSwitch) => {
   const { keyboard, mouse, workwindow } = game;
   const { delay } = config;
-  const { isBobber, isWarning, isError } = colorConditions;
 
   const zone = Zone.from(workwindow.getView()).toRel(config.relZone);
   const fishingZone = FishingZone.from(workwindow, zone);
+  fishingZone.registerColors({
+      isBobber: ([r, g, b]) => r - g > 20 && r - b > 20 && g < 100 && b < 100,
+      isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
+      isError: ([r, g, b]) => r - g > 200 && r - b > 200,
+  });
 
   const applyLure = async () => {
     keyboard.sendKey(settings.luresKey, delay);
@@ -45,7 +43,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
         }
 
       await sleep(250);
-      if (await fishingZone.checkNotifications(isError, isWarning)) {
+      if (await fishingZone.checkNotifications('error', 'warning')) {
         throw new Error(`Game error notification occured on casting fishing.`);
       } else {
         state.status = "working";
@@ -56,10 +54,10 @@ const createBot = (game, {config, settings}, winSwitch) => {
   };
 
   const findBobber = async () => {
-    let bobber = fishingZone.findBobber(isBobber);
+    let bobber = fishingZone.findBobber();
     for(let attempt = 0; !bobber && attempt < 2; attempt++) {
       await sleep(100);
-      bobber = fishingZone.findBobber(isBobber);
+      bobber = fishingZone.findBobber();
     }
     return bobber;
   };
@@ -71,11 +69,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
         return;
       }
 
-      if (!isBobber(fishingZone.colorAt(bobberPos))) {
-        const newBobberPos = bobberPos
-          .getPointsAround()
-          .find((pointPos) => isBobber(fishingZone.colorAt(pointPos)));
-
+      if (!fishingZone.isBobber(bobberPos)) {
+        const newBobberPos = fishingZone.checkAroundBobber(bobberPos);
         if (!newBobberPos) {
           return bobberPos;
         } else {
@@ -110,7 +105,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
     winSwitch.finished();
 
     await sleep(250);
-    if (!(await fishingZone.checkNotifications(isWarning))) {
+    if (!(await fishingZone.checkNotifications('warning'))) {
       await sleep(config.afterHookDelay.caught + Math.random() * 500);
       return true;
     } else {

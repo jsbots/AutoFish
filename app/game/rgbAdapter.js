@@ -4,6 +4,7 @@ class RgbAdapter {
   constructor(workwindow, zone) {
     this.workwindow = workwindow;
     this.zone = zone;
+    this.colors = {};
   }
 
   getRgb(point) {
@@ -20,6 +21,10 @@ class RgbAdapter {
   colorAt(pos) {
     return this.getRgb({ ...pos, width: 1, height: 1 }).colorAt(pos);
   }
+
+  registerColors(colors) {
+    this.colors = colors; 
+  };
 
   static from(workwindow, zone) {
     return new RgbAdapter(workwindow, zone);
