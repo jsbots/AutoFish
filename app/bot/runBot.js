@@ -1,11 +1,6 @@
-const Stats = require("./stats.js");
-const { convertMs } = require("../utils/time.js");
-
-const runBot = async (bot, log, state) => {
+const runBot = async ({bot, log, state, stats}) => {
   const { castFishing, findBobber, checkBobber, hookBobber } = bot;
-  const stats = new Stats();
   findBobber.attempts = 0;
-
   do {
     log.send(`Casting fishing...`);
     await castFishing(state);
@@ -39,9 +34,6 @@ const runBot = async (bot, log, state) => {
       log.warn(`Missed the fish!`);
     }
   } while (state.status == "working");
-
-  log.ok(stats.showStats());
-  log.ok(`Time Passed: ${convertMs(Date.now() - state.startTime)}`);
 };
 
 module.exports = runBot;

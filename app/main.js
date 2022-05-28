@@ -125,37 +125,13 @@ app.on("window-all-closed", () => {
 
 const { readFileSync, writeFileSync } = require("fs");
 const keysender = require("keysender");
-
-const { createLog, createIdLog } = require("./utils/logger.js");
-const EventLine = require("./utils/eventLine.js");
-
+const { createLog } = require("./utils/logger.js");
 const createGame = require("./game/create.js");
-const createWinSwitch = require("./game/winSwitch.js");
-
-const createBot = require("./bot/createBot.js");
-const createStates = require("./bot/createStates.js");
-
-const { startStates, stopStates } = createStates();
-
-const stopApp = () => {
-  shell.beep();
-  if (!win.isFocused()) {
-    win.flashFrame(true);
-    win.once("focus", () => win.flashFrame(false));
-  }
-};
-
-const stopAppAndBot = () => {
-  stopStates();
-  stopApp();
-  globalShortcut.unregisterAll();
-  win.webContents.send("stop-bot");
-};
+const createBots = require("./bot/createBots.js");
 
 const getJson = (jsonPath) => {
   return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
 };
-
 const showChoiceWarning = (warning) => {
   return result = dialog.showMessageBoxSync(win, {
     type: "warning",
@@ -195,35 +171,38 @@ ipcMain.on("start-bot", async (event, settings) => {
     return;
   }
 
-  const winSwitch = createWinSwitch(new EventLine());
-  const bots = games.map((game, i) => {
-    return {
-      bot: createBot(game, { config: config.patch[settings.game], settings }, winSwitch),
-      log: createIdLog(log, ++i),
-      state: {
-       status: "initial",
-       startTime: Date.now(),
-     }
-    };
-  });
+  const {startBots, stopBots} = createBots(games, settings, config, log);
+  const stopAppAndBots = () => {
+    stopBots();
+    shell.beep();
+    if (!win.isFocused()) {
+      win.flashFrame(true);
+      win.once("focus", () => win.flashFrame(false));
+    }
+    globalShortcut.unregisterAll();
+    win.webContents.send("stop-bot");
+  };
 
-  log.send("Starting the bot...");
-  globalShortcut.register("space", stopAppAndBot);
+  ipcMain.on("stop-bot", stopAppAndBots);
+  globalShortcut.register("space", stopAppAndBots);
+
   win.blur();
-  startStates(bots, settings, stopAppAndBot);
+  startBots(stopAppAndBots);
 });
 
-ipcMain.on("stop-bot", stopAppAndBot);
+/* Bot end */
+
+
 ipcMain.on("open-link", () =>
   shell.openExternal("https://www.youtube.com/jsbots")
 );
+
 ipcMain.on("save-settings", (event, settings) => {
     writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
 });
+
 ipcMain.handle("get-settings", () => {
   let settings = getJson("./config/settings.json");
   let instructions = getJson("./config/instructions.json");
   return { settings, instructions };
 });
-
-/* Bot end */

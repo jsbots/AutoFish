@@ -4,7 +4,7 @@ class Stats {
     this.miss = 0;
   }
 
-  showStats() {
+  show() {
     return `
         Total: ${this.caught + this.miss},
         Caught: ${this.caught},
