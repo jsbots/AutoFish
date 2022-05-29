@@ -69,7 +69,7 @@ const renderTimerQuit = ({timerQuit}) => {
   return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
 };
 const renderAdvancedSettings = () => {
-  return elt('input', {type: 'button', name:"advancedSettings", value: "Advanced settings", className: "advanced_settings"});
+  return elt('input', {type: 'button', name:"advancedSettings", value: "Advanced settings", className: "advanced_settings_button"});
 }
 
 

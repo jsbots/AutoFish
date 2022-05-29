@@ -108,9 +108,11 @@ function createWindow() {
     win.show();
   });
 }
+
 app.whenReady().then(() => {
   createWindow();
 });
+
 app.on("window-all-closed", () => {
   if (process.platform === "darwin") {
     return false;
@@ -206,3 +208,54 @@ ipcMain.handle("get-settings", () => {
   let instructions = getJson("./config/instructions.json");
   return { settings, instructions };
 });
+
+ipcMain.on("advanced-settings", (event) => {
+  let settWin = new BrowserWindow({
+    title: 'Advanced settings',
+    width: 365,
+    height: 345,
+    show: false,
+    resizable: false,
+    webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true,
+    },
+    icon: "./app/img/icon.png",
+  });
+
+  settWin.loadFile("./app/advSettings/index.html");
+
+  settWin.on("closed", () => {
+    ipcMain.removeAllListeners(`advanced-click`);
+    ipcMain.removeHandler(`advanced-defaults`);
+    ipcMain.removeHandler(`get-game-config`);
+    settWin = null;
+  });
+
+  settWin.once("ready-to-show", () => {
+    settWin.show();
+  });
+
+  ipcMain.on("advanced-click", (event, newConfig) => {
+    if(newConfig) {
+      const settings = getJson("./config/settings.json");
+      const config = getJson("./config/bot.json");
+      config.patch[settings.game] = newConfig;
+      writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
+    }
+    settWin.close();
+  });
+
+  ipcMain.handle("advanced-defaults", () => {
+    const settings = getJson("./config/settings.json");
+    const defaults = getJson("./config/defaults.json");
+    return defaults.patch[settings.game];
+  })
+
+  ipcMain.handle("get-game-config", () => {
+    const settings = getJson("./config/settings.json");
+    const config = getJson("./config/bot.json");
+    return config.patch[settings.game];
+  });
+
+})

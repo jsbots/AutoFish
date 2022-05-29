@@ -141,6 +141,34 @@ section {
   height: 20px;
 }
 
+.advanced_settings_button {
+  height: 23px;
+  width: 126px;
+}
+
+.advanced_settings .buttons {
+  text-align: center;
+}
+
+.advanced_settings .settings_section input {
+  width: 60px;
+}
+
+.advanced_settings .settings_section.advanced {
+  margin: 0;
+}
+
+.advanced_settings .buttons input[type=button] {
+  margin: 0 2px;
+  width: 70px;
+}
+
+.advanced_warning {
+  text-align: center;
+  color: red;
+  margin: 5px 0;
+}
+
 .option.game-option {
   width: 80px;
 }
@@ -152,12 +180,15 @@ footer {
 
 .startButton {
   display: block;
-  flex: 1 1 0;
-  height: 100%;
+  height: 125px;
   font-size: 48px;
   font-weight: bold;
 }
 
 .version {
   text-align: center;
+}
+
+.advanced_settings {
+  padding: 5px;
 }
