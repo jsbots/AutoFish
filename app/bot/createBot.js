@@ -9,7 +9,7 @@ const sleep = (time) => {
 
 const createBot = (game, {config, settings}, winSwitch) => {
   const { keyboard, mouse, workwindow } = game;
-  const { delay } = config;
+  const delay = [config.delay.from, config.delay.to];
 
   const zone = Zone.from(workwindow.getView()).toRel(config.relZone);
   const fishingZone = FishingZone.from(workwindow, zone);
