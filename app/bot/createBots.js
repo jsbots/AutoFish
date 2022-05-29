@@ -27,7 +27,7 @@ const createBots = (games, settings, config, log) => {
       log.send("Starting the bots...")
       if (settings.timer) {
         setTimeout(() => {
-          if(!bots.every(({status}) => status == 'stop')) {
+          if(!bots.every(({state}) => state.status == 'stop')) {
             onError();
             if(settings.timerQuit) {
               games.forEach(({workwindow}) => workwindow.close());
