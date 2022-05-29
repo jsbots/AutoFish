@@ -6,57 +6,6 @@ const parseInstruction = (instruction) => {
   return instruction.map((step, i) => elt("p", null, `${++i}. ${step}`));
 };
 
-class AutoFish {
-  constructor(instructions, settings, startButton) {
-    const instruction = elt(
-      "section",
-      { className: "instruction" },
-      ...parseInstruction(instructions[settings.config.game])
-    );
-
-    this.settings = settings;
-    this.button = startButton;
-    this.logger = renderLogger();
-
-    this.settings.regOnChange((config) => ipcRenderer.send('save-settings', config));
-
-    this.settings.regOnGameChange((game) => {
-      instruction.innerHTML = ``;
-      instruction.append(...parseInstruction(instructions[game]));
-    });
-
-    this.button.regOnStart(() => {
-      ipcRenderer.send("start-bot", this.settings.config);
-    });
-
-    this.button.regOnStop(() => {
-      ipcRenderer.send("stop-bot");
-    });
-
-    ipcRenderer.on("log-data", (event, data) => {
-      this.logger.show(data);
-    });
-
-    ipcRenderer.on("stop-bot", () => {
-      this.button.onError();
-    });
-
-    this.dom = elt(
-      "div",
-      { className: "AutoFish" },
-      renderLogo(),
-      elt("p", {className: 'settings_header'}, "Settings:"),
-      this.settings.dom,
-      elt("p", {className: 'settings_header'}, "Log:"),
-      this.logger.dom,
-      elt("p", {className: 'settings_header'}, "Instruction:"),
-      instruction,
-      this.button.dom,
-      elt("p", {className: "version"}, "ver. 1.2.4")
-    );
-  }
-}
-
 const renderLogo = () => {
   return elt(
     "section",
@@ -86,5 +35,59 @@ const renderLogger = () => {
     },
   };
 };
+
+class AutoFish {
+  constructor(instructions, settings, startButton) {
+    const instruction = elt(
+      "section",
+      { className: "instruction" },
+      ...parseInstruction(instructions[settings.config.game])
+    );
+    this.settings = settings;
+    this.button = startButton;
+    this.logger = renderLogger();
+
+    this.settings.regOnChange((config) => {
+      instruction.innerHTML = ``;
+      instruction.append(...parseInstruction(instructions[config.game]));
+      ipcRenderer.send('save-settings', config)
+    });
+
+    this.button.regOnStart(() => {
+      ipcRenderer.send("start-bot", this.settings.config);
+    });
+
+    this.button.regOnStop(() => {
+      ipcRenderer.send("stop-bot");
+    });
+
+    this.settings.regOnClick((config) => {
+      ipcRenderer.send('advanced-settings', config)
+    })
+
+    ipcRenderer.on("log-data", (event, data) => {
+      this.logger.show(data);
+    });
+
+    ipcRenderer.on("stop-bot", () => {
+      this.button.onError();
+    });
+
+    this.dom = elt(
+      "div",
+      { className: "AutoFish" },
+      renderLogo(),
+      elt("p", {className: 'settings_header'}, "Settings:"),
+      this.settings.dom,
+      elt("p", {className: 'settings_header'}, "Log:"),
+      this.logger.dom,
+      elt("p", {className: 'settings_header'}, "Instruction:"),
+      instruction,
+      this.button.dom,
+      elt("p", {className: "version"}, "ver. 1.3.0")
+    );
+  }
+}
+
 
 module.exports = AutoFish;
