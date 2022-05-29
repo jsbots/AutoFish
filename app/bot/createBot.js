@@ -88,8 +88,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
       mouse.moveCurveTo(
         bobber.x,
         bobber.y,
-        config.mouseMoveSpeed + Math.random() * 3,
-        config.mouseCurvatureStrength + Math.random() * 100
+        config.mouseMoveSpeed + Math.random() * 4,
+        config.mouseCurvatureStrength + Math.random() * 150
       );
     } else {
       mouse.moveTo(bobber.x, bobber.y, delay);
