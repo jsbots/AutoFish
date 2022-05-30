@@ -13,9 +13,9 @@ const renderCastDelay = ({castDelay}) => {
 };
 
 const renderAfterHookDelay = ({afterHookDelay}) => {
-  return elt(`div`, {"data-collection": `afterHookDelay`}, `caught`,
-  elt('input', {type: `number`, name: `caught`, value: afterHookDelay.caught}), `miss`,
-  elt('input', {type: `number`, name: `miss`, value: afterHookDelay.miss})
+  return elt(`div`, {"data-collection": `afterHookDelay`}, `from`,
+  elt('input', {type: `number`, name: `from`, value: afterHookDelay.from}), `to`,
+  elt('input', {type: `number`, name: `to`, value: afterHookDelay.to})
   );
 };
 
@@ -52,9 +52,9 @@ const renderLuresDelay = ({luresDelay}) => {
 const renderSettings = (config) => {
   return elt('section', {className: "settings"},
   elt('div', {className: "settings_section advanced"},
-  wrapInLabel(`Random Delay: `, renderDelay(config), `Delay Options`),
-  wrapInLabel(`Cast Delay: `, renderCastDelay(config), `Cast delay Options`),
-  wrapInLabel(`After Delay: `, renderAfterHookDelay(config), `After hook delay`),
+  wrapInLabel(`Mouse/keyboard random delay: `, renderDelay(config), `Delay Options`),
+  wrapInLabel(`Cast animation delay: `, renderCastDelay(config), `Cast delay Options`),
+  wrapInLabel(`After hook random delay: `, renderAfterHookDelay(config), `After hook delay`),
   wrapInLabel(`Max check time: `, renderMaxFishTime(config, `Check time`)),
   wrapInLabel(`Fishing zone: `, renderRelZone(config), `fishing zone`),
   wrapInLabel(`Checking delay: `, renderCheckingDelay(config), `checking delay`),
