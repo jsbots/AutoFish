@@ -1,13 +1,13 @@
 {
   "game": {
-    "names": ["World of Warcraft", "魔兽世界"],
+    "names": ["World of Warcraft", "魔兽世界", "Ascension"],
     "classNames": ["GxWindowClass", "GxWindowClassD3d"]
   },
   "patch": {
     "MoP": {
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": { "caught": 1000, "miss": 2000 },
+      "afterHookDelay": {"from": 1000, "to": 1500},
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -18,7 +18,7 @@
     "Cataclysm": {
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": { "caught": 1000, "miss": 2000 },
+      "afterHookDelay": {"from": 1000, "to": 1500},
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -29,7 +29,7 @@
     "WoTLK": {
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": { "caught": 3000, "miss": 3000 },
+      "afterHookDelay": {"from": 3000, "to": 3500},
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -40,7 +40,7 @@
     "Retail&Classic": {
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": { "caught": 1000, "miss": 2000 },
+      "afterHookDelay": {"from": 1000, "to": 1500},
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -51,7 +51,7 @@
     "TBC": {
       "delay": { "from": 75, "to": 200 },
       "castDelay": 3000,
-      "afterHookDelay": { "caught": 2000, "miss": 2000 },
+      "afterHookDelay": {"from": 2000, "to": 2500},
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -62,7 +62,7 @@
     "Vanilla": {
       "delay": { "from": 75, "to": 200 },
       "castDelay": 3000,
-      "afterHookDelay": { "caught": 2000, "miss": 2000 },
+      "afterHookDelay": {"from": 2000, "to": 2500},
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
