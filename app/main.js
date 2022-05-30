@@ -128,7 +128,7 @@ app.on("window-all-closed", () => {
 const { readFileSync, writeFileSync } = require("fs");
 const keysender = require("keysender");
 const { createLog } = require("./utils/logger.js");
-const createGame = require("./game/create.js");
+const createGame = require("./game/createGame.js");
 const createBots = require("./bot/createBots.js");
 
 const getJson = (jsonPath) => {
@@ -213,7 +213,7 @@ ipcMain.on("advanced-settings", (event) => {
   let settWin = new BrowserWindow({
     title: 'Advanced settings',
     width: 365,
-    height: 345,
+    height: 385,
     show: false,
     resizable: false,
     webPreferences: {
