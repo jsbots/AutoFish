@@ -76,20 +76,18 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 **Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
 
-1. Launch the game (not as administrator).
-2. Switch to the **DirectX 11** on retail (you don't need it with old patches).
-4. Switch to **Windowed or Window(maximized)** mode (default **Fullscreen(windowed)** on Retail/Classic)
-5. Turn on **Auto Loot** option or check **Use shift+click** option in the UI. 
-6. Equip your favorite fishpole.
-7. Assign your 'fishing' and 'lures' in the game and respective options in the UI.
+1. Launch the game *(not as administrator, keysender won't be able to get colors from it)*.
+2. Switch to the **DirectX 11** on retail *(you don't need it with old patches)*.
+4. Switch to **Windowed or Window(maximized)** mode *(it's default on Retail/Classic)*.
+5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game *(Vanilla)*. 
+6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
+7. Equip a fishpole.
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - All sides of the "Fishing zone" should be in the water (check the horizon).
+   - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
-   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It can mean that either you don't set video settings right or that your fishing place isn't good enough. Check the settings and try to look for another place. 
-9. Don't use your keyboard and mouse while the bot is working.
-10. You can press **'space'** to stop the bot.
-11. Launch AutoFish (by using the shortcut or from CLI).
-12. Press "Start".
+   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It mostly means that the fishing zone isn't good enough. 
+9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes your mouse and keyboard)*.
+10. You can press **'space'** to **stop the bot**.
 
 ## Fishing Zone :dart:
 
