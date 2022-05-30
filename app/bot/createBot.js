@@ -33,17 +33,23 @@ const createBot = (game, {config, settings}, winSwitch) => {
       applyLure.applied = Date.now();
     }
 
+    if(state.status == "initial") {
+      if(zone.x == -32000 && zone.y == -32000) {
+        throw new Error('The window is in fullscreen mode')
+      }
+
+      if(fishingZone.findBobber()) {
+        throw new Error(`Found red colors before casting. Change the fishing place.`);
+      }
+    }
+
     await winSwitch.execute(workwindow);
     keyboard.sendKey(settings.fishingKey, delay);
     winSwitch.finished();
 
     if (state.status == "initial") {
-      if(zone.x == -32000 && zone.y == -32000) {
-           throw new Error('The window is in fullscreen mode')
-        }
-
       await sleep(250);
-      if (await fishingZone.checkNotifications('error', 'warning')) {
+      if (fishingZone.checkNotifications('error')) {
         throw new Error(`Game error notification occured on casting fishing.`);
       } else {
         state.status = "working";
@@ -89,7 +95,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
         bobber.x,
         bobber.y,
         config.mouseMoveSpeed + Math.random() * 4,
-        config.mouseCurvatureStrength + Math.random() * 150
+        config.mouseCurvatureStrength + Math.random() * 125
       );
     } else {
       mouse.moveTo(bobber.x, bobber.y, delay);
@@ -104,13 +110,13 @@ const createBot = (game, {config, settings}, winSwitch) => {
     }
     winSwitch.finished();
 
+    let caught = null;
     await sleep(250);
-    if (!(await fishingZone.checkNotifications('warning'))) {
-      await sleep(config.afterHookDelay.caught + Math.random() * 500);
-      return true;
-    } else {
-      await sleep(config.afterHookDelay.miss + Math.random() * 500);
+    if (!fishingZone.checkNotifications('warning')) {
+      caught = true;
     }
+    await sleep(config.afterHookDelay.from + Math.random() * (config.afterHookDelay.to - config.afterHookDelay.from));
+    return caught;
   };
 
   return {
