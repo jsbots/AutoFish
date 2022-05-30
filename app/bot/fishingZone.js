@@ -5,7 +5,7 @@ class FishingZone extends RgbAdapter {
     super(workwindow, zone);
   }
 
-  async checkNotifications(...type) {
+  checkNotifications(...type) {
     const colors = type.map((type) => {
       switch(type) {
         case "warning": {
