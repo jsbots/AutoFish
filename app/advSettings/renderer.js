@@ -48,10 +48,15 @@ const renderLuresDelay = ({luresDelay}) => {
   return elt(`input`, {type: `number`, name: `luresDelay`, value: luresDelay});
 };
 
+const rednerCustomName = ({customName}) => {
+  return elt(`input`, {type: `text`, name: `customName`, value: customName});
+}
+
 
 const renderSettings = (config) => {
   return elt('section', {className: "settings"},
   elt('div', {className: "settings_section advanced"},
+  wrapInLabel(`Custom window name: `, rednerCustomName(config), `Custom name`),
   wrapInLabel(`Mouse/keyboard random delay: `, renderDelay(config), `Delay Options`),
   wrapInLabel(`Cast animation delay: `, renderCastDelay(config), `Cast delay Options`),
   wrapInLabel(`After hook random delay: `, renderAfterHookDelay(config), `After hook delay`),

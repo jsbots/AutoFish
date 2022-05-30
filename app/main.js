@@ -152,6 +152,12 @@ ipcMain.on("start-bot", async (event, settings) => {
   });
 
   log.send(`Looking for the windows...`)
+
+  const customName = config.patch[settings.game].customName;
+  if(customName) {
+    config.game.names.push(customName);
+  }
+
   const games = createGame(keysender).findWindows(config.game);
   if (!games) {
     log.err(`Can't find any window of the game!`);

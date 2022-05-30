@@ -5,9 +5,10 @@
   },
   "patch": {
     "MoP": {
+      "customName": "",
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": {"from": 1000, "to": 1500},
+      "afterHookDelay": { "from": 1000, "to": 1500 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -16,9 +17,10 @@
       "luresDelay": 3000
     },
     "Cataclysm": {
+      "customName": "",
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": {"from": 1000, "to": 1500},
+      "afterHookDelay": { "from": 1000, "to": 1500 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -27,9 +29,10 @@
       "luresDelay": 3000
     },
     "WoTLK": {
+      "customName": "",
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": {"from": 3000, "to": 3500},
+      "afterHookDelay": { "from": 3000, "to": 3500 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -38,9 +41,10 @@
       "luresDelay": 3000
     },
     "Retail&Classic": {
+      "customName": "",
       "delay": { "from": 75, "to": 200 },
       "castDelay": 1500,
-      "afterHookDelay": {"from": 1000, "to": 1500},
+      "afterHookDelay": { "from": 1000, "to": 1500 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -49,9 +53,10 @@
       "luresDelay": 3000
     },
     "TBC": {
+      "customName": "",
       "delay": { "from": 75, "to": 200 },
       "castDelay": 3000,
-      "afterHookDelay": {"from": 2000, "to": 2500},
+      "afterHookDelay": { "from": 2000, "to": 2500 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
@@ -60,9 +65,10 @@
       "luresDelay": 3000
     },
     "Vanilla": {
+      "customName": "",
       "delay": { "from": 75, "to": 200 },
       "castDelay": 3000,
-      "afterHookDelay": {"from": 2000, "to": 2500},
+      "afterHookDelay": { "from": 2000, "to": 2500 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
