@@ -68,7 +68,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 > **"Probably"**. 
 
 - on **unofficial servers**: 
-> **"Unlikely"**.
+> **"Unlikely"**. *(forgot to turn off the bot on Warmane once, it worked for 6 hours straight)*
 
 
 
@@ -77,8 +77,8 @@ If we consider **only the software itself**, the very simplified answer you seek
 **Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
 
 1. Launch the game *(not as administrator, keysender won't be able to get colors from it)*.
-2. Switch to the **DirectX 11** on retail *(you don't need it with old patches)*.
-4. Switch to **Windowed or Window(maximized)** mode *(it's default on Retail/Classic)*.
+2. Switch to the **DirectX 11** on retail *(skip if you use the bot on unofficial servers)*.
+4. Switch to **Windowed or Window(maximized)** mode *(skip if you use the bot on Retail/Classic)*.
 5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game *(Vanilla)*. 
 6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 7. Equip a fishpole.
@@ -86,7 +86,7 @@ If we consider **only the software itself**, the very simplified answer you seek
    - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
    - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It mostly means that the fishing zone isn't good enough. 
-9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes your mouse and keyboard)*.
+9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
 10. You can press **'space'** to **stop the bot**.
 
 ## Fishing Zone :dart:
@@ -145,5 +145,4 @@ npm test
 - [x] Multiple windows support
 - [x] Fishing lures support
 - [x] Advanced settings option
-- [ ] Increased performance
 - [ ] More convoluted automation
