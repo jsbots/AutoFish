@@ -87,7 +87,9 @@ If we consider **only the software itself**, the very simplified answer you seek
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
-   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It mostly means that the fishing zone isn't good enough. 
+     - Initially the bot will make a preliminary check for red colors.
+     - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
+   - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough. 
 9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
 10. You can press **'space'** to **stop the bot**.
 
@@ -95,7 +97,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
-The rule of thumb here is the better you can see the red feather the better the bot will see it too: 
+The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
 - The better your video settings the better it's for the bot too. 
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber.
 - Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
