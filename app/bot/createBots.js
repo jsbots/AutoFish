@@ -16,7 +16,7 @@ const createBots = (games, settings, config, log) => {
       log: createIdLog(log, ++i),
       state: {
        status: "initial",
-       startTime: Date.now(),
+       startTime: Date.now()
      },
       stats: new Stats()
     };
