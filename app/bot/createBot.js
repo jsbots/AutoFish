@@ -58,7 +58,6 @@ const createBot = (game, {config, settings}, winSwitch) => {
     if(config.randomSleep && randomSleepTimer.isElapsed()) {
       let sleepFor = random(config.randomSleepDelay.from,
                             config.randomSleepDelay.to);
-      console.log(`sleeping for`, sleepFor);
       await sleep(sleepFor);
       if(state == 'stop') return;
       randomSleepTimer.update();
@@ -117,7 +116,6 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
     if(config.reaction) {
       let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
-      console.log(`reaction`, reaction);
       await sleep(reaction)
     }
 
