@@ -3,8 +3,8 @@ const elt = require("../ui/utils/elt.js");
 const wrapInLabel = require("../ui/utils/wrapInLabel.js");
 
 const renderDelay = ({delay}) => {
-  return elt(`div`, {"data-collection": `delay`}, `from`,
-     elt('input', {type: `number`, name: `from`, value: delay.from}), `to`,
+  return elt(`div`, {"data-collection": `delay`}, `from:`,
+     elt('input', {type: `number`, name: `from`, value: delay.from}), `to:`,
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
@@ -13,8 +13,8 @@ const renderCastDelay = ({castDelay}) => {
 };
 
 const renderAfterHookDelay = ({afterHookDelay}) => {
-  return elt(`div`, {"data-collection": `afterHookDelay`}, `from`,
-  elt('input', {type: `number`, name: `from`, value: afterHookDelay.from}), `to`,
+  return elt(`div`, {"data-collection": `afterHookDelay`}, `from:`,
+  elt('input', {type: `number`, name: `from`, value: afterHookDelay.from}), `to:`,
   elt('input', {type: `number`, name: `to`, value: afterHookDelay.to})
   );
 };
@@ -25,10 +25,10 @@ const renderMaxFishTime = ({maxFishTime}) => {
 
 const renderRelZone = ({relZone}) => {
   return elt(`div`, {"data-collection": `relZone`},
-      `x`, elt(`input`, {type: `number`, name: `x`, value: relZone.x}),
-      `y`, elt(`input`, {type: `number`, name: `y`, value: relZone.y}),
-      `w`, elt(`input`, {type: `number`, name: `width`, value: relZone.width}),
-      `h`, elt(`input`, {type: `number`, name: `height`, value: relZone.height})
+      `x:`, elt(`input`, {type: `number`, name: `x`, value: relZone.x}),
+      `y:`, elt(`input`, {type: `number`, name: `y`, value: relZone.y}),
+      `w:`, elt(`input`, {type: `number`, name: `width`, value: relZone.width}),
+      `h:`, elt(`input`, {type: `number`, name: `height`, value: relZone.height})
     );
 };
 
@@ -50,12 +50,52 @@ const renderLuresDelay = ({luresDelay}) => {
 
 const rednerCustomName = ({customName}) => {
   return elt(`input`, {type: `text`, name: `customName`, value: customName});
-}
+};
+
+const renderRandomSleep = ({randomSleep}) => {
+  return elt(`input`, {type: `checkbox`, name: `randomSleep`, checked: randomSleep});
+};
+
+const renderRandomSleepEvery = ({randomSleepEvery, randomSleep}) => {
+  return elt(`div`, {"data-collection": `randomSleepEvery`}, `from:`,
+  elt('input', {type: `number`, name: `from`, value: randomSleepEvery.from, disabled: !randomSleep}), `to:`,
+  elt('input', {type: `number`, name: `to`, value: randomSleepEvery.to, disabled: !randomSleep})
+  );
+};
+
+const renderRandomSleepDelay = ({randomSleepDelay, randomSleep}) => {
+  return elt(`div`, {"data-collection": `randomSleepDelay`}, `from:`,
+  elt('input', {type: `number`, name: `from`, value: randomSleepDelay.from, disabled: !randomSleep}), `to:`,
+  elt('input', {type: `number`, name: `to`, value: randomSleepDelay.to, disabled: !randomSleep})
+  );
+};
+
+const renderReaction = ({reaction}) => {
+  return elt(`input`, {type: `checkbox`, name:`reaction`, checked: reaction});
+};
+
+const renderReactionDelay = ({reaction, reactionDelay}) => {
+  return elt(`div`, {"data-collection": `reactionDelay`}, `from:`,
+  elt('input', {type: `number`, name: `from`, value: reactionDelay.from, disabled: !reaction}), `to:`,
+  elt('input', {type: `number`, name: `to`, value: reactionDelay.to, disabled: !reaction})
+  );
+};
 
 
 const renderSettings = (config) => {
-  return elt('section', {className: "settings"},
-  elt('div', {className: "settings_section advanced"},
+  return elt('section', {className: `settings`},
+  elt(`p`, {className: `settings_header`}, `Random sleep`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Random sleep`, renderRandomSleep(config), `random sleep`),
+  wrapInLabel(`Random sleep every (min)`, renderRandomSleepEvery(config), `random sleep every`),
+  wrapInLabel(`Random sleep for (ms)`, renderRandomSleepDelay(config), `random sleep for`)
+  ),
+  elt(`p`, {className: `settings_header`}, `Random reaction`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Reaction`, renderReaction(config), `reaction time`),
+  wrapInLabel(`Reaction random delay`, renderReactionDelay(config), `reaction delay config`)),
+  elt(`p`, {className: `settings_header`}, `General`),
+  elt('div', {className: "settings_section"},
   wrapInLabel(`Custom window name: `, rednerCustomName(config), `Custom name`),
   wrapInLabel(`Mouse/keyboard random delay: `, renderDelay(config), `Delay Options`),
   wrapInLabel(`Cast animation delay: `, renderCastDelay(config), `Cast delay Options`),
@@ -65,15 +105,15 @@ const renderSettings = (config) => {
   wrapInLabel(`Checking delay: `, renderCheckingDelay(config), `checking delay`),
   wrapInLabel(`Base Mouse speed: `, renderMouseMoveSpeed(config), `mouseMoveSpeed`),
   wrapInLabel(`Base Mouse curve: `, renderMouseCurvature(config), `mouse curvature`),
-  wrapInLabel(`Lures cast delay: `, renderLuresDelay(config), `lures delay`)
-  )
+  wrapInLabel(`Lures cast delay: `, renderLuresDelay(config), `lures delay`)),
   );
 }
 
 const runApp = async () => {
   let config = await ipcRenderer.invoke("get-game-config");
   const settings = elt(`form`, null, renderSettings(config));
-  const buttons = elt(`div`, {className: `buttons`}, elt('input', {type: `button`, value: `Ok`}),
+  const buttons = elt(`div`, {className: `buttons`},
+     elt('input', {type: `button`, value: `Ok`}),
      elt('input', {type: `button`, value: `Cancel`}),
       elt('input', {type: `button`, value: `Defaults`}))
 
@@ -94,9 +134,9 @@ const runApp = async () => {
     }
   });
 
-  const advancedSettings = elt('div', {className: `advanced_settings`},
-  elt('p', {className: 'advanced_warning'}, `Warning! Changing any of these options might break the bot.`),
-  settings, buttons);
+  const advancedSettings = elt('div', {className: `advSettings`},
+  settings,
+  buttons);
   document.body.append(advancedSettings);
 
   settings.addEventListener('change', (event) => {
@@ -117,6 +157,8 @@ const runApp = async () => {
         config[option.name] = value;
       }
     });
+    settings.innerHTML = ``;
+    settings.append(renderSettings(config));
   });
 };
 
