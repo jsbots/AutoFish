@@ -37,7 +37,27 @@ const getCurrentTime = () => {
   return times;
 };
 
+
+const createTimer = (callback) => {
+  let time = 0;
+  let interval = callback();
+  return {
+    start() {
+      time = Date.now();
+    },
+    isElapsed() {
+      return Date.now() - time > interval;
+    },
+    update() {
+      interval = callback();
+      this.start();
+    }
+  }
+};
+
+
 module.exports = {
   convertMs,
   getCurrentTime,
+  createTimer
 };
