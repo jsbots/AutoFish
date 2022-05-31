@@ -42,6 +42,8 @@ Also on unofficial servers:
 - [x] **TBC**: atlantiss.org
 - [x] **Vanilla**: kronos-wow.com
 
+On custom servers:
+- [x] ~~**Ascension**: ascension.gg~~ - doesn't work!
 
 ## Warning :warning: 
 
@@ -68,7 +70,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 > **"Probably"**. 
 
 - on **unofficial servers**: 
-> **"Unlikely"**.
+> **"Unlikely"**. *(forgot to turn off the bot on Warmane once, it worked for 6 hours straight)*
 
 
 
@@ -76,26 +78,26 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 **Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
 
-1. Launch the game (not as administrator).
-2. Switch to the **DirectX 11** on retail (you don't need it with old patches).
-4. Switch to **Windowed or Window(maximized)** mode (default **Fullscreen(windowed)** on Retail/Classic)
-5. Turn on **Auto Loot** option or check **Use shift+click** option in the UI. 
-6. Equip your favorite fishpole.
-7. Assign your 'fishing' and 'lures' in the game and respective options in the UI.
+1. Launch the game *(not as administrator, keysender won't be able to get colors from it)*.
+2. Switch to the **DirectX 11** on retail *(skip if you use the bot on unofficial servers)*.
+4. Switch to **Windowed or Window(maximized)** mode *(skip if you use the bot on Retail/Classic)*.
+5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game *(Vanilla)*. 
+6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
+7. Equip a fishpole.
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - All sides of the "Fishing zone" should be in the water (check the horizon).
+   - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
-   - At first the bot will make 3 attempts to find the bobber, if it fails it will stop the app. It can mean that either you don't set video settings right or that your fishing place isn't good enough. Check the settings and try to look for another place. 
-9. Don't use your keyboard and mouse while the bot is working.
-10. You can press **'space'** to stop the bot.
-11. Launch AutoFish (by using the shortcut or from CLI).
-12. Press "Start".
+     - Initially the bot will make a preliminary check for red colors before casting.
+     - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
+   - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough. 
+9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
+10. You can press **'space'** to **stop the bot**.
 
 ## Fishing Zone :dart:
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
-The rule of thumb here is the better you can see the red feather the better the bot will see it too: 
+The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
 - The better your video settings the better it's for the bot too. 
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber.
 - Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
@@ -146,6 +148,5 @@ npm test
 - [x] Autofish 1.0.0
 - [x] Multiple windows support
 - [x] Fishing lures support
-- [ ] Advanced settings option
-- [ ] Increased performance
+- [x] Advanced settings option
 - [ ] More convoluted automation
