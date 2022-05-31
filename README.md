@@ -42,6 +42,8 @@ Also on unofficial servers:
 - [x] **TBC**: atlantiss.org
 - [x] **Vanilla**: kronos-wow.com
 
+On custom servers:
+- [x] ~~**Ascension**: ascension.gg~~ - doesn't work!
 
 ## Warning :warning: 
 
