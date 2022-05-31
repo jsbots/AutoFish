@@ -149,4 +149,4 @@ npm test
 - [x] Multiple windows support
 - [x] Fishing lures support
 - [x] Advanced settings option
-- [ ] More convoluted automation
+- [x] More convoluted automation
