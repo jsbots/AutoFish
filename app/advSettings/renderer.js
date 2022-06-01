@@ -25,10 +25,10 @@ const renderMaxFishTime = ({maxFishTime}) => {
 
 const renderRelZone = ({relZone}) => {
   return elt(`div`, {"data-collection": `relZone`},
-      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, name: `x:`, value: relZone.x}),
-      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, name: `y:`, value: relZone.y}),
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, name: `width:`, value: relZone.width}),
-      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, name: `height:`, value: relZone.height})
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, name: `x`, value: relZone.x}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, name: `y`, value: relZone.y}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, name: `width`, value: relZone.width}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, name: `height`, value: relZone.height})
     );
 };
 
@@ -48,7 +48,7 @@ const renderLuresDelay = ({luresDelay}) => {
   return elt(`input`, {type: `number`, name: `luresDelay`, value: luresDelay});
 };
 
-const rednerCustomName = ({customName}) => {
+const renderCustomName = ({customName}) => {
   return elt(`input`, {type: `text`, name: `customName`, value: customName});
 };
 
@@ -96,7 +96,7 @@ const renderSettings = (config) => {
   wrapInLabel(`Reaction random delay (ms)`, renderReactionDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot notice the bobber jerking: so the next time the bot notice the bobber jerking the reaction time will be always different(randomly generated)`)),
   elt(`p`, {className: `settings_header`}, `General`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Custom window name: `, rednerCustomName(config), `If for some reason the name of the window of the game isn't "World of Warcraft" you can write a custom name here.`),
+  wrapInLabel(`Custom window name: `, renderCustomName(config), `If for some reason the name of the window of the game isn't "World of Warcraft" you can write a custom name here.`),
   wrapInLabel(`Mouse/keyboard random delay (ms) `, renderDelay(config), `The bot will generate a random number from the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
   wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   wrapInLabel(`Base mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between this value and 4. The higher the value the faster the bot moves the cursor.`),
