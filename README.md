@@ -95,6 +95,8 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 ## Fishing Zone :dart:
 
+Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area. 
+
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
 
 The size of fishing zone is relative to the size of the window. You can change the relative points in the "Advanced settings".
