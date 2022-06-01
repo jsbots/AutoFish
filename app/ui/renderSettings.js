@@ -83,17 +83,17 @@ return elt(
       wrapInLabel(
         "Game:",
         renderGameNames(config),
-        `Choose the patch you want the bot to work on.`
+        `Choose the version of the game you want the bot to work on.`
       ),
       wrapInLabel(
         "Timer: ",
         renderTimer(config),
-        `The bot will work for the given period of minutes. If it's 0 or nothing at all, it will never stop.`
+        `The bot will work for the given period of minutes. If it's 0, it will never stop.`
       ),
       wrapInLabel(
         "Fishing Key: ",
         renderFishingKey(config),
-        `Write in the same key you use for fishing. If you use /castFishing instead, then assign a key for fishing.`
+        `Write in the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
       ),
       wrapInLabel(
         "Lures Key: ",
@@ -103,7 +103,7 @@ return elt(
       wrapInLabel(
         "Reuse lure: ",
         renderLuresDelay(config),
-        `Fishing lures expiration time in minutes. Usually it's 10 minutes.`
+        `Fishing lures expiration time in minutes.`
       )
     ),
     elt(
@@ -117,7 +117,7 @@ return elt(
       wrapInLabel(
         "Like a human: ",
         renderLikeHuman(config),
-        `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows. `
+        `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
       ),
       wrapInLabel(
         "Use lures: ",
@@ -132,7 +132,7 @@ return elt(
       wrapInLabel(
         "",
         renderAdvancedSettings(config),
-        `The bot will quit the game after timer elapsed.`
+        `Advanced settings that allow you to fine-tune the bot. Unreasonable changes might comletely break the bot.`
       ),
     )
   );
