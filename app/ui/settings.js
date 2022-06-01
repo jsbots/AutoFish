@@ -5,6 +5,12 @@ class Settings {
     this.config = config;
     this.dom = elt('form', null , renderSettings(config));
 
+    this.dom.addEventListener("input", (event) => {
+      if(event.target.type == "text" && event.target.value.length > 1) {
+        event.target.value = event.target.value[0];
+      };
+    });
+
     this.dom.addEventListener("change", (event) => {
       [...this.dom.elements].forEach(option => {
         if(option.name == "advancedSettings") return;
