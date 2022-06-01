@@ -105,6 +105,7 @@ const showChoiceWarning = (warning) => {
   });
 };
 
+
 function createWindow() {
   let win = new BrowserWindow({
     title: generateName(10),
@@ -195,7 +196,14 @@ function createWindow() {
   writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
   );
 
-  ipcMain.on("advanced-settings", createAdvSettingsWin);
+  let settWin;
+  ipcMain.on("advanced-settings", () => {
+    if(!settWin || settWin.isDestroyed()) {
+      settWin = createAdvSettingsWin()
+    } else {
+      settWin.focus();
+    }
+  });
 
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));
 }
@@ -212,10 +220,10 @@ app.whenReady().then(() => {
 const createAdvSettingsWin = () => {
   let settWin = new BrowserWindow({
     title: 'Advanced settings',
-    width: 385,
-    height: 560,
+    width: 435,
+    height: 580,
     show: false,
-    resizable: true,
+    resizable: false,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
@@ -229,7 +237,6 @@ const createAdvSettingsWin = () => {
     ipcMain.removeAllListeners(`advanced-click`);
     ipcMain.removeHandler(`advanced-defaults`);
     ipcMain.removeHandler(`get-game-config`);
-    settWin = null;
   });
 
   settWin.once("ready-to-show", () => {
@@ -257,4 +264,6 @@ const createAdvSettingsWin = () => {
     const config = getJson("./config/bot.json");
     return config.patch[settings.game];
   });
+
+  return settWin;
 };
