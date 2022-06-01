@@ -3,8 +3,8 @@ const elt = require("../ui/utils/elt.js");
 const wrapInLabel = require("../ui/utils/wrapInLabel.js");
 
 const renderDelay = ({delay}) => {
-  return elt(`div`, {"data-collection": `delay`}, `from:`,
-     elt('input', {type: `number`, name: `from`, value: delay.from}), `to:`,
+  return elt(`div`, {"data-collection": `delay`}, elt(`span`, {className: `option_text`}, `from:`),
+     elt('input', {type: `number`, name: `from`, value: delay.from}), elt(`span`, {className: `option_text`}, `to:`),
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
@@ -13,8 +13,8 @@ const renderCastDelay = ({castDelay}) => {
 };
 
 const renderAfterHookDelay = ({afterHookDelay}) => {
-  return elt(`div`, {"data-collection": `afterHookDelay`}, `from:`,
-  elt('input', {type: `number`, name: `from`, value: afterHookDelay.from}), `to:`,
+  return elt(`div`, {"data-collection": `afterHookDelay`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, name: `from`, value: afterHookDelay.from}), elt(`span`, {className: `option_text`}, `to:`),
   elt('input', {type: `number`, name: `to`, value: afterHookDelay.to})
   );
 };
@@ -25,10 +25,10 @@ const renderMaxFishTime = ({maxFishTime}) => {
 
 const renderRelZone = ({relZone}) => {
   return elt(`div`, {"data-collection": `relZone`},
-      `x:`, elt(`input`, {type: `number`, name: `x`, value: relZone.x}),
-      `y:`, elt(`input`, {type: `number`, name: `y`, value: relZone.y}),
-      `w:`, elt(`input`, {type: `number`, name: `width`, value: relZone.width}),
-      `h:`, elt(`input`, {type: `number`, name: `height`, value: relZone.height})
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, name: `x:`, value: relZone.x}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, name: `y:`, value: relZone.y}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, name: `width:`, value: relZone.width}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, name: `height:`, value: relZone.height})
     );
 };
 
@@ -57,15 +57,15 @@ const renderRandomSleep = ({randomSleep}) => {
 };
 
 const renderRandomSleepEvery = ({randomSleepEvery, randomSleep}) => {
-  return elt(`div`, {"data-collection": `randomSleepEvery`}, `from:`,
-  elt('input', {type: `number`, name: `from`, value: randomSleepEvery.from, disabled: !randomSleep}), `to:`,
+  return elt(`div`, {"data-collection": `randomSleepEvery`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, name: `from`, value: randomSleepEvery.from, disabled: !randomSleep}), elt(`span`, {className: `option_text`}, `to:`),
   elt('input', {type: `number`, name: `to`, value: randomSleepEvery.to, disabled: !randomSleep})
   );
 };
 
 const renderRandomSleepDelay = ({randomSleepDelay, randomSleep}) => {
-  return elt(`div`, {"data-collection": `randomSleepDelay`}, `from:`,
-  elt('input', {type: `number`, name: `from`, value: randomSleepDelay.from, disabled: !randomSleep}), `to:`,
+  return elt(`div`, {"data-collection": `randomSleepDelay`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, name: `from`, value: randomSleepDelay.from, disabled: !randomSleep}), elt(`span`, {className: `option_text`}, `to:`),
   elt('input', {type: `number`, name: `to`, value: randomSleepDelay.to, disabled: !randomSleep})
   );
 };
@@ -75,8 +75,8 @@ const renderReaction = ({reaction}) => {
 };
 
 const renderReactionDelay = ({reaction, reactionDelay}) => {
-  return elt(`div`, {"data-collection": `reactionDelay`}, `from:`,
-  elt('input', {type: `number`, name: `from`, value: reactionDelay.from, disabled: !reaction}), `to:`,
+  return elt(`div`, {"data-collection": `reactionDelay`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, name: `from`, value: reactionDelay.from, disabled: !reaction}), elt(`span`, {className: `option_text`}, `to:`),
   elt('input', {type: `number`, name: `to`, value: reactionDelay.to, disabled: !reaction})
   );
 };
@@ -86,27 +86,29 @@ const renderSettings = (config) => {
   return elt('section', {className: `settings`},
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Random sleep`, renderRandomSleep(config), `random sleep`),
-  wrapInLabel(`Random sleep every (min)`, renderRandomSleepEvery(config), `random sleep every`),
-  wrapInLabel(`Random sleep for (ms)`, renderRandomSleepDelay(config), `random sleep for`)
+  wrapInLabel(`Random sleep`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),
+  wrapInLabel(`Random sleep every (min)`, renderRandomSleepEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different (randomly generated).`),
+  wrapInLabel(`Random sleep for (ms)`, renderRandomSleepDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different(randomly generated).`)
   ),
   elt(`p`, {className: `settings_header`}, `Random reaction`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Reaction`, renderReaction(config), `reaction time`),
-  wrapInLabel(`Reaction random delay`, renderReactionDelay(config), `reaction delay config`)),
+  wrapInLabel(`Reaction`, renderReaction(config), `Randomise reaction time after the bobber was jerked. It might prevent the bots from working properly when used on multiple windows.`),
+  wrapInLabel(`Reaction random delay (ms)`, renderReactionDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot notice the bobber jerking: so the next time the bot notice the bobber jerking the reaction time will be always different(randomly generated)`)),
   elt(`p`, {className: `settings_header`}, `General`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Custom window name: `, rednerCustomName(config), `Custom name`),
-  wrapInLabel(`Mouse/keyboard random delay: `, renderDelay(config), `Delay Options`),
-  wrapInLabel(`Cast animation delay: `, renderCastDelay(config), `Cast delay Options`),
-  wrapInLabel(`After hook random delay: `, renderAfterHookDelay(config), `After hook delay`),
-  wrapInLabel(`Max check time: `, renderMaxFishTime(config, `Check time`)),
-  wrapInLabel(`Fishing zone: `, renderRelZone(config), `fishing zone`),
-  wrapInLabel(`Checking delay: `, renderCheckingDelay(config), `checking delay`),
-  wrapInLabel(`Base Mouse speed: `, renderMouseMoveSpeed(config), `mouseMoveSpeed`),
-  wrapInLabel(`Base Mouse curve: `, renderMouseCurvature(config), `mouse curvature`),
-  wrapInLabel(`Lures cast delay: `, renderLuresDelay(config), `lures delay`)),
-  );
+  wrapInLabel(`Custom window name: `, rednerCustomName(config), `If for some reason the name of the window of the game isn't "World of Warcraft" you can write a custom name here.`),
+  wrapInLabel(`Mouse/keyboard random delay (ms) `, renderDelay(config), `The bot will generate a random number from the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
+  wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
+  wrapInLabel(`Base mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between this value and 4. The higher the value the faster the bot moves the cursor.`),
+  wrapInLabel(`Base mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between this value and 100. The higher the value the stronger is the curvature of the movement.`),
+  wrapInLabel(`Applying lures delay: `, renderLuresDelay(config), `Applying lures delay.`)),
+  elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Max check time (ms)`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
+  wrapInLabel(`Checking delay: (ms)`, renderCheckingDelay(config), `How often the bot needs to check the hook for changes.`),
+  wrapInLabel(`Fishing zone (%)`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
+  wrapInLabel(`Cast animation delay (ms)`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
+  ));
 }
 
 const runApp = async () => {
