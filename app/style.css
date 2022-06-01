@@ -48,9 +48,10 @@ section {
 
 .AutoFish {
   padding: 5px;
-  height: 680px;
-  display: flex;
-  flex-flow: column;
+  height: 525px;
+}
+.logo {
+  margin: 0;
 }
 
 .logo_name {
@@ -90,12 +91,6 @@ section {
   border-radius: 5px;
   overflow-y: scroll;
   padding: 5px;
-}
-
-.instruction {
-  border: 1px inset grey;
-  border-radius: 5px;
-  padding: 10px;
 }
 
 .settings {
@@ -149,15 +144,10 @@ section {
   width: 80px;
 }
 
-footer {
-  margin-top: 10px;
-  text-align: center;
-}
-
 .startButton {
   display: block;
-  height: 125px;
-  font-size: 48px;
+  height: 75px;
+  font-size: 44px;
   font-weight: bold;
 }
 

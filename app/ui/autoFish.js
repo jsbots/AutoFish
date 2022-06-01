@@ -8,17 +8,17 @@ const parseInstruction = (instruction) => {
 
 const renderLogo = () => {
   return elt(
-    "section",
+    "div",
     { className: "logo" },
     elt("h1", { className: "logo_name" }, `AutoFish`),
     elt(
       "span",
       { className: "logo_link" },
-      `Made by `,
+      `by `,
       elt(
         "a",
         { href: `#`, onclick: () => ipcRenderer.send("open-link") },
-        "olesgeras"
+        "jsbots"
       )
     )
   );
@@ -37,19 +37,12 @@ const renderLogger = () => {
 };
 
 class AutoFish {
-  constructor(instructions, settings, startButton) {
-    const instruction = elt(
-      "section",
-      { className: "instruction" },
-      ...parseInstruction(instructions[settings.config.game])
-    );
+  constructor(settings, startButton) {
     this.settings = settings;
     this.button = startButton;
     this.logger = renderLogger();
 
     this.settings.regOnChange((config) => {
-      instruction.innerHTML = ``;
-      instruction.append(...parseInstruction(instructions[config.game]));
       ipcRenderer.send('save-settings', config)
     });
 
@@ -81,10 +74,8 @@ class AutoFish {
       this.settings.dom,
       elt("p", {className: 'settings_header'}, "Log:"),
       this.logger.dom,
-      elt("p", {className: 'settings_header'}, "Instruction:"),
-      instruction,
       this.button.dom,
-      elt("p", {className: "version"}, "ver. 1.3.0")
+      elt("p", {className: "version"}, "ver. 1.3.3")
     );
   }
 }

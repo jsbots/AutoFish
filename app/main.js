@@ -87,7 +87,7 @@ function createWindow() {
   win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 705,
+    height: 525,
     show: false,
     resizable: false,
     webPreferences: {
@@ -104,7 +104,6 @@ function createWindow() {
   });
 
   win.once("ready-to-show", () => {
-    //win.webContents.openDevTools()
     win.show();
   });
 }
@@ -211,17 +210,16 @@ ipcMain.on("save-settings", (event, settings) => {
 
 ipcMain.handle("get-settings", () => {
   let settings = getJson("./config/settings.json");
-  let instructions = getJson("./config/instructions.json");
-  return { settings, instructions };
+  return settings;
 });
 
-ipcMain.on("advanced-settings", (event) => {
+const createAdvSettingsWin = () => {
   let settWin = new BrowserWindow({
     title: 'Advanced settings',
-    width: 365,
-    height: 385,
+    width: 385,
+    height: 560,
     show: false,
-    resizable: false,
+    resizable: true,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
@@ -263,5 +261,6 @@ ipcMain.on("advanced-settings", (event) => {
     const config = getJson("./config/bot.json");
     return config.patch[settings.game];
   });
+};
 
-})
+ipcMain.on("advanced-settings", createAdvSettingsWin);
