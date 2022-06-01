@@ -9,7 +9,18 @@ const {
   globalShortcut,
 } = require("electron");
 const path = require("path");
+
+const { readFileSync, writeFileSync } = require("fs");
+
+/* Bot modules */
+const keysender = require("keysender");
 const generateName = require('./utils/generateName.js');
+const { createLog } = require("./utils/logger.js");
+const createGame = require("./game/createGame.js");
+const createBots = require("./bot/createBots.js");
+/* Bot modules end */
+
+/* Squirrel */
 
 if (require("electron-squirrel-startup")) return app.quit();
 if (handleSquirrelEvent()) {
@@ -77,17 +88,28 @@ function handleSquirrelEvent() {
   }
 }
 
-/* Electron */
+/* Squirrel end */
 
-let win;
-Menu.setApplicationMenu(null);
-let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
+const getJson = (jsonPath) => {
+  return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
+};
+
+const showChoiceWarning = (warning) => {
+  return result = dialog.showMessageBoxSync(win, {
+    type: "warning",
+    title: `Warning`,
+    message: warning,
+    buttons: [`I understand`, `I don't understand`],
+    defaultId: 0,
+    cancelId: 1,
+  });
+};
 
 function createWindow() {
-  win = new BrowserWindow({
+  let win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 525,
+    height: 505,
     show: false,
     resizable: false,
     webPreferences: {
@@ -100,118 +122,92 @@ function createWindow() {
   win.loadFile("./app/index.html");
 
   win.on("closed", () => {
-    win = null;
+    if (process.platform === "darwin") {
+      return false;
+    }
+    powerSaveBlocker.stop(powerBlocker);
+    app.quit();
   });
 
   win.once("ready-to-show", () => {
     win.show();
   });
+
+  ipcMain.on("start-bot", async (event, settings) => {
+    const config = getJson("./config/bot.json");
+    const log = createLog((data) => {
+      win.webContents.send("log-data", data);
+    });
+
+    log.send(`Looking for the windows...`)
+
+    const customName = config.patch[settings.game].customName;
+    if(customName) {
+      config.game.names.push(customName);
+    }
+
+    const games = createGame(keysender).findWindows(config.game);
+    if (!games) {
+      log.err(`Can't find any window of the game!`);
+      win.webContents.send("stop-bot");
+      return;
+    } else {
+      log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
+    }
+
+    if (settings.game == "Retail&Classic" &&
+        showChoiceWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
+        win.webContents.send('stop-bot');
+        return;
+    }
+
+    if(!settings.fishingKey || !settings.luresKey) {
+      dialog.showErrorBox('', `Keys values can't be empty`);
+      win.webContents.send('stop-bot');
+      return;
+    }
+
+    const {startBots, stopBots} = createBots(games, settings, config, log);
+
+    const stopAppAndBots = () => {
+      stopBots();
+      shell.beep();
+      if (!win.isFocused()) {
+        win.flashFrame(true);
+        win.once("focus", () => win.flashFrame(false));
+      }
+      globalShortcut.unregisterAll();
+      win.webContents.send("stop-bot");
+    };
+
+    ipcMain.on("stop-bot", stopAppAndBots);
+    globalShortcut.register("space", stopAppAndBots);
+
+    win.blur();
+    startBots(stopAppAndBots);
+  });
+
+  ipcMain.on("open-link", () =>
+    shell.openExternal("https://www.youtube.com/jsbots")
+  );
+
+  ipcMain.on("save-settings", (event, settings) =>
+  writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
+  );
+
+  ipcMain.on("advanced-settings", createAdvSettingsWin);
+
+  ipcMain.handle("get-settings", () => getJson("./config/settings.json"));
 }
 
+
+let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
+
 app.whenReady().then(() => {
+  Menu.setApplicationMenu(null);
   createWindow();
 });
 
-app.on("window-all-closed", () => {
-  if (process.platform === "darwin") {
-    return false;
-  }
-  powerSaveBlocker.stop(powerBlocker);
-  app.quit();
-});
-
-/* Electron end */
-
-/* Bot */
-
-const { readFileSync, writeFileSync } = require("fs");
-const keysender = require("keysender");
-const { createLog } = require("./utils/logger.js");
-const createGame = require("./game/createGame.js");
-const createBots = require("./bot/createBots.js");
-
-const getJson = (jsonPath) => {
-  return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
-};
-const showChoiceWarning = (warning) => {
-  return result = dialog.showMessageBoxSync(win, {
-    type: "warning",
-    title: `Warning`,
-    message: warning,
-    buttons: [`I understand`, `I don't understand`],
-    defaultId: 0,
-    cancelId: 1,
-  });
-};
-
-ipcMain.on("start-bot", async (event, settings) => {
-  const config = getJson("./config/bot.json");
-  const log = createLog((data) => {
-    win.webContents.send("log-data", data);
-  });
-
-  log.send(`Looking for the windows...`)
-
-  const customName = config.patch[settings.game].customName;
-  if(customName) {
-    config.game.names.push(customName);
-  }
-
-  const games = createGame(keysender).findWindows(config.game);
-  if (!games) {
-    log.err(`Can't find any window of the game!`);
-    win.webContents.send("stop-bot");
-    return;
-  } else {
-    log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
-  }
-
-  if (settings.game == "Retail&Classic" &&
-      showChoiceWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
-      win.webContents.send('stop-bot');
-      return;
-  }
-
-  if(!settings.fishingKey || !settings.luresKey) {
-    dialog.showErrorBox('', `Keys values can't be empty`);
-    win.webContents.send('stop-bot');
-    return;
-  }
-
-  const {startBots, stopBots} = createBots(games, settings, config, log);
-  const stopAppAndBots = () => {
-    stopBots();
-    shell.beep();
-    if (!win.isFocused()) {
-      win.flashFrame(true);
-      win.once("focus", () => win.flashFrame(false));
-    }
-    globalShortcut.unregisterAll();
-    win.webContents.send("stop-bot");
-  };
-
-  ipcMain.on("stop-bot", stopAppAndBots);
-  globalShortcut.register("space", stopAppAndBots);
-
-  win.blur();
-  startBots(stopAppAndBots);
-});
-
-/* Bot end */
-
-
-ipcMain.on("open-link", () =>
-  shell.openExternal("https://www.youtube.com/jsbots")
-);
-
-ipcMain.on("save-settings", (event, settings) => {
-    writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
-});
-
-ipcMain.handle("get-settings", () => {
-  let settings = getJson("./config/settings.json");
-  return settings;
-});
 
 const createAdvSettingsWin = () => {
   let settWin = new BrowserWindow({
@@ -262,5 +258,3 @@ const createAdvSettingsWin = () => {
     return config.patch[settings.game];
   });
 };
-
-ipcMain.on("advanced-settings", createAdvSettingsWin);
