@@ -48,7 +48,7 @@ section {
 
 .AutoFish {
   padding: 5px;
-  height: 525px;
+  height: 505px;
 }
 .logo {
   margin: 0;
@@ -81,7 +81,7 @@ section {
 }
 
 .logger {
-  height: 130px;
+  height: 110px;
   background-image: url("./img/fish.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -171,13 +171,22 @@ section {
   text-align: center;
 }
 
+.advSettings .option_text {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .advSettings input[type=button] {
   margin: 0 2px;
   width: 70px;
 }
 
-.advSettings .settings_section input {
-  width: 60px;
+.advSettings .settings_section input[type=number] {
+  width: 55px;
+}
+
+.advSettings .settings_section input[type=text] {
+  width: 150px;
 }
 
 .advSettings .settings {
