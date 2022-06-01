@@ -162,7 +162,7 @@ function createWindow() {
         return;
     }
 
-    if(!settings.fishingKey || !settings.luresKey) {
+    if(settings.fishingKey === `` || settings.luresKey === ``) {
       dialog.showErrorBox('', `Keys values can't be empty`);
       win.webContents.send('stop-bot');
       return;

@@ -132,7 +132,7 @@ return elt(
       wrapInLabel(
         "",
         renderAdvancedSettings(config),
-        `Advanced settings that allow you to fine-tune the bot. Unreasonable changes might comletely break the bot.`
+        `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
       ),
     )
   );
