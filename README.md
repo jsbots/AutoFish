@@ -95,6 +95,10 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 ## Fishing Zone :dart:
 
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
+
+The size of fishing zone is relative to the size of the window. You can change the relative points in the "Advanced settings".
+
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
@@ -105,7 +109,11 @@ The rule of thumb here is **the better you can see the red feather the better th
 
 I know, that's a lot of conditions to make the bot work properly, but it's a **pixel** bot after all.
 
-<img src="https://github.com/olesgeras/AutoFish/blob/bcb00d84fb04a3968950ee1dc6e119bcf1b4a555/app/img/fishing-zone-example.jpg" width="1000">
+Here are quick self-explanotary "good-bad" screenshots of the bobber: 
+
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="960">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="960">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="960">
 
 ## Download :open_file_folder:
 
