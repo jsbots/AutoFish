@@ -1,11 +1,6 @@
 const elt = require("./utils/elt.js");
 const { ipcRenderer } = require("electron");
 
-const parseInstruction = (instruction) => {
-  if (!instruction) return ``;
-  return instruction.map((step, i) => elt("p", null, `${++i}. ${step}`));
-};
-
 const renderLogo = () => {
   return elt(
     "div",
@@ -18,7 +13,7 @@ const renderLogo = () => {
       elt(
         "a",
         { href: `#`, onclick: () => ipcRenderer.send("open-link") },
-        "jsbots"
+        "olesgeras"
       )
     )
   );
@@ -46,6 +41,10 @@ class AutoFish {
       ipcRenderer.send('save-settings', config)
     });
 
+    this.settings.regOnClick((config) => {
+      ipcRenderer.send('advanced-settings', config)
+    })
+
     this.button.regOnStart(() => {
       ipcRenderer.send("start-bot", this.settings.config);
     });
@@ -54,16 +53,12 @@ class AutoFish {
       ipcRenderer.send("stop-bot");
     });
 
-    this.settings.regOnClick((config) => {
-      ipcRenderer.send('advanced-settings', config)
-    })
+    ipcRenderer.on("stop-bot", () => {
+      this.button.onError();
+    });
 
     ipcRenderer.on("log-data", (event, data) => {
       this.logger.show(data);
-    });
-
-    ipcRenderer.on("stop-bot", () => {
-      this.button.onError();
     });
 
     this.dom = elt(

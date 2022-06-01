@@ -113,7 +113,6 @@ const createBot = (game, {config, settings}, winSwitch) => {
   };
 
   const hookBobber = async (bobber) => {
-
     if(config.reaction) {
       let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
       await sleep(reaction)
