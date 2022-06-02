@@ -33,7 +33,10 @@ The bot doesn't work in the background and requires the window of the game to be
 
 ## Servers tests :video_game:
 
-The bot was tested on official servers: **Retail, Classic and Classic TBC**.
+The bot was tested on official servers: 
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Retail**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
+- <img src="guide_img/icons/good.png" width="15" height="15"> **Classic TBC**.
 
 Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15"> **MoP**: stormforge.gg
