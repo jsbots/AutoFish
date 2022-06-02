@@ -19,7 +19,7 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 250, "to": 500 }
+      "reactionDelay": { "from": 150, "to": 400 }
     },
     "Cataclysm": {
       "customName": "",
@@ -36,7 +36,7 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 250, "to": 500 }
+      "reactionDelay": { "from": 150, "to": 400 }
     },
     "WoTLK": {
       "customName": "",
@@ -53,7 +53,7 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 250, "to": 500 }
+      "reactionDelay": { "from": 150, "to": 400 }
     },
     "Retail&Classic": {
       "customName": "",
@@ -70,7 +70,7 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 250, "to": 500 }
+      "reactionDelay": { "from": 150, "to": 400 }
     },
     "TBC": {
       "customName": "",
@@ -87,7 +87,7 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 250, "to": 500 }
+      "reactionDelay": { "from": 150, "to": 400 }
     },
     "Vanilla": {
       "customName": "",
@@ -104,7 +104,7 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 250, "to": 500 }
+      "reactionDelay": { "from": 150, "to": 400 }
     }
   }
 }
