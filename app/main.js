@@ -94,7 +94,7 @@ const getJson = (jsonPath) => {
   return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
 };
 
-const showChoiceWarning = (warning) => {
+const showChoiceWarning = (win, warning) => {
   return result = dialog.showMessageBoxSync(win, {
     type: "warning",
     title: `Warning`,
@@ -157,7 +157,7 @@ function createWindow() {
     }
 
     if (settings.game == "Retail&Classic" &&
-        showChoiceWarning(`Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
+        showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
         win.webContents.send('stop-bot');
         return;
     }
