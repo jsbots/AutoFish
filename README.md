@@ -36,15 +36,15 @@ The bot doesn't work in the background and requires the window of the game to be
 The bot was tested on official servers: **Retail, Classic and Classic TBC**.
 
 Also on unofficial servers:
-- [x] **MoP**: stormforge.gg
-- [x] **Cataclysm**: apollo-wow.com
-- [x] **WoTLK**: warmane.com 
-- [x] **TBC**: atlantiss.org
-- [x] **Vanilla**: kronos-wow.com
+- <img src="guide_img/icons/good.png" width="15" height="15"> **MoP**: stormforge.gg
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
+- <img src="guide_img/icons/good.png" width="15" height="15">  **WoTLK**: warmane.com 
+- <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**: atlantiss.org
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
 On custom servers:
-- [x] ~~**Ascension**: ascension.gg~~ - doesn't work!
-- [x] **Turtle WoW**: turtle-wow.org - works, but doesn't hook when the animation of jerking isn't complete (the bobber doesn't dive into the water completely, for some reason it happens a lot on Turtle WoW).
+- <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
+- <img src="guide_img/icons/question.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org - works, but doesn't hook when the animation of jerking isn't complete (the bobber doesn't dive into the water completely, for some reason it happens a lot on Turtle WoW).
 
 ## Warning :warning: 
 
@@ -52,7 +52,7 @@ Using bots in most of the games is prohibited, by doing so you should understand
 
 The bot is written in JavaScript, when writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
-To prevent detection all the delay values were randomised: mouse clicks, key pressing, delays of casting and hooking, the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+To prevent detection all the delay values were randomised: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
 ## Will I be banned for using this? :interrobang:
 
