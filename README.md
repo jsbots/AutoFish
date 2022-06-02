@@ -44,6 +44,7 @@ Also on unofficial servers:
 
 On custom servers:
 - [x] ~~**Ascension**: ascension.gg~~ - doesn't work!
+- [x] **Turtle WoW**: turtle-wow.org - works, but doesn't hook when the animation of jerking isn't complete (the bobber doesn't dive into the water completely, for some reason it happens a lot on Turtle WoW).
 
 ## Warning :warning: 
 
