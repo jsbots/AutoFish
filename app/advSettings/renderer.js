@@ -101,7 +101,7 @@ const renderSettings = (config) => {
   wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   wrapInLabel(`Base mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between this value and 4. The higher the value the faster the bot moves the cursor.`),
   wrapInLabel(`Base mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between this value and 100. The higher the value the stronger is the curvature of the movement.`),
-  wrapInLabel(`Applying lures delay: `, renderLuresDelay(config), `Applying lures delay.`)),
+  wrapInLabel(`Applying lures delay: `, renderLuresDelay(config), `How much it takes the bot to apply the lure.`)),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Max check time (ms)`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
