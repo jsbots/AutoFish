@@ -117,7 +117,7 @@ return elt(
       wrapInLabel(
         "Like a human: ",
         renderLikeHuman(config),
-        `The bot will move your mouse in a human way: random speed and with a slight random curvature. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
+        `The bot will move your mouse in a human way: random speed and with a slight random deviation in the movement. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
       ),
       wrapInLabel(
         "Use lures: ",
