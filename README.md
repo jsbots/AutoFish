@@ -164,4 +164,4 @@ npm test
 - [x] Fishing lures support
 - [x] Advanced settings option
 - [x] More convoluted automation
-- [ ] Fast fishing mode (without delay)
+- [x] Fast fishing mode (without delay)
