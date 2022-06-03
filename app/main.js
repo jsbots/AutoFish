@@ -221,7 +221,7 @@ const createAdvSettingsWin = () => {
   let settWin = new BrowserWindow({
     title: 'Advanced settings',
     width: 435,
-    height: 580,
+    height: 630,
     show: false,
     resizable: false,
     webPreferences: {
