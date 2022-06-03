@@ -14,8 +14,13 @@ class RgbAdapter {
     return Rgb.from(capturedData, point || this.zone);
   }
 
-  findColor(color, task) {
-    return this.getRgb().findColor(color, task);
+  findColor(color, task, exception) {
+    let rgb = this.getRgb();
+    if(exception) {
+      rgb = rgb.cutOut(exception);
+    }
+
+    return rgb.findColor(color, task);
   }
 
   colorAt(pos) {
@@ -23,7 +28,7 @@ class RgbAdapter {
   }
 
   registerColors(colors) {
-    this.colors = colors; 
+    this.colors = colors;
   };
 
   static from(workwindow, zone) {
