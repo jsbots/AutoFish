@@ -86,14 +86,15 @@ const createBot = (game, {config, settings}, winSwitch) => {
     await sleep(config.castDelay);
   };
 
+
   const findBobber = async () => {
-    let bobber = fishingZone.findBobber();
-    for(let attempt = 0; !bobber && attempt < 2; attempt++) {
-      await sleep(100);
-      bobber = fishingZone.findBobber();
+    let bobber = fishingZone.findBobber(findBobber.previousBobber);
+    if(bobber) {
+      findBobber.previousBobber = [bobber, ...fishingZone.getBobberPrint(bobber).map(printPoint => bobber.plus(printPoint))];
     }
     return bobber;
   };
+  findBobber.previousBobber = null;
 
   const checkBobber = async (bobberPos, state) => {
     checkBobberTimer.start();
@@ -123,8 +124,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
       mouse.moveCurveTo(
         bobber.x,
         bobber.y,
-        config.mouseMoveSpeed + Math.random() * 4,
-        config.mouseCurvatureStrength + Math.random() * 125
+        config.mouseMoveSpeed + Math.ceil(Math.random() * 5),
+        config.mouseCurvatureStrength + Math.ceil((Math.random() * 60))
       );
     } else {
       mouse.moveTo(bobber.x, bobber.y, delay);
@@ -144,7 +145,9 @@ const createBot = (game, {config, settings}, winSwitch) => {
     if (!fishingZone.checkNotifications('warning')) {
       caught = true;
     }
-    await sleep(config.afterHookDelay.from + Math.random() * (config.afterHookDelay.to - config.afterHookDelay.from));
+    if(config.sleepAfterHook) {
+      await sleep(config.afterHookDelay.from + Math.random() * (config.afterHookDelay.to - config.afterHookDelay.from));
+    }
     return caught;
   };
 
