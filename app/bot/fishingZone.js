@@ -19,7 +19,7 @@ class FishingZone extends RgbAdapter {
     return colors.some((color) => super.getRgb().findColor(color));
   }
 
-  findBobber() {
+  findBobber(exception) {
     const looksLikeBobber = (point, rgb) => {
       return point
         .getPointsAround()
@@ -27,7 +27,7 @@ class FishingZone extends RgbAdapter {
         .every((point) => this.colors.isBobber(point));
     };
 
-    return super.findColor(this.colors.isBobber, looksLikeBobber);
+    return super.findColor(this.colors.isBobber, looksLikeBobber, exception);
   }
 
   isBobber(bobberPos) {
@@ -35,6 +35,24 @@ class FishingZone extends RgbAdapter {
         return true
       }
   }
+
+  getBobberPrint(bobber) {
+    let zone = {x: bobber.x - 30,
+                y: bobber.y - 30,
+                width: 60,
+                height: 60};
+    let rgb = super.getRgb(zone);
+    let print = [];
+    for(let y = zone.y; y < zone.y + zone.height; y++) {
+      for(let x = zone.x; x < zone.x + zone.width; x++) {
+        if(this.colors.isBobber(rgb.colorAt({x, y}))) {
+          print.push({x: x - bobber.x, y: y - bobber.y});
+        }
+      }
+    }
+
+    return print;
+  };
 
   checkAroundBobber(bobberPos) {
     return bobberPos
