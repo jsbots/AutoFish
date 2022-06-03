@@ -1,5 +1,12 @@
 const Vec = require("./vec.js");
 
+const isInLimits = ({x, y}, limits) => {
+  return (x >= limits.x &&
+          y >= limits.y &&
+          x < limits.x + limits.width &&
+          y < limits.y + limits.height);
+};
+
 module.exports = class Rgb {
   constructor(rgb, zone) {
     this.rgb = rgb;
@@ -7,12 +14,7 @@ module.exports = class Rgb {
   }
 
   colorAt({ x, y }) {
-    if (
-      x >= this.zone.x &&
-      y >= this.zone.y &&
-      x < this.zone.x + this.zone.width &&
-      y < this.zone.y + this.zone.height
-    ) {
+    if (isInLimits({x, y}, this.zone)) {
       return this.rgb[y][x];
     } else {
       return [0, 0, 0];
@@ -30,6 +32,11 @@ module.exports = class Rgb {
         }
       }
     }
+  }
+
+  cutOut(except) {
+    except.forEach(exception => this.rgb[exception.y][exception.x] = [0, 0, 0]);
+    return new Rgb(this.rgb, this.zone);
   }
 
   static from(data, zone) {
