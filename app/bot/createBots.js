@@ -1,8 +1,8 @@
 const runBot = require("./runBot.js");
 const createBot = require("./createBot.js");
-const Stats = require("./stats.js");
 
-const { convertMs } = require("../utils/time.js");
+const { convertMs } = require('../utils/time.js');
+
 const { createIdLog } = require("../utils/logger.js");
 const EventLine = require("../utils/eventLine.js");
 
@@ -10,16 +10,25 @@ const createWinSwitch = require("../game/winSwitch.js");
 
 const createBots = (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
+
   const bots = games.map((game, i) => {
     return {
       bot: createBot(game, { config: config.patch[settings.game], settings }, winSwitch),
       log: createIdLog(log, ++i),
-      state: {
-       status: "initial",
-       startTime: Date.now()
-     },
-      stats: new Stats()
-    };
+      state: { status: "initial", startTime: Date.now() },
+      stats: {
+        caught: 0,
+        miss: 0,
+        get total() {
+          return this.caught + this.miss;
+        },
+        show() {
+          return [`Total: ${this.total}`,
+                  `Caught: ${this.caught} (${this.caught / (this.total || 1) * 100}%)`,
+                  `Missed: ${this.miss} (${this.miss / (this.total || 1)  * 100}%)`]
+        }
+    }
+  }
   });
 
   return {
@@ -40,22 +49,25 @@ const createBots = (games, settings, config, log) => {
       bots.forEach((bot) => {
         runBot(bot)
         .then(() => {
-            bot.log.ok(bot.stats.show());
+            log.setState(true);
+            bot.stats.show().forEach((stat) => bot.log.ok(stat));
             bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);
         })
         .catch((error) => {
-            bot.log.err(`${error.message}`);
-            bot.log.ok(bot.stats.show());
-            bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);
             bot.state.status = "stop";
             if (bots.every(({state}) => state.status == "stop")) {
               onError();
             }
+            log.setState(true);
+            bot.log.err(`${error.message}`);
+            bot.stats.show().forEach((stat) => bot.log.ok(stat));
+            bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);
         });
       })
     },
     stopBots() {
       log.send('Stopping the bots...')
+      log.setState(false);
       bots.forEach(({state}) => state.status = "stop");
     },
   };

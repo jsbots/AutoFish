@@ -1,11 +1,14 @@
 const { getCurrentTime } = require("./time.js");
 
 const createLog = (sendToWindow) => {
+  let state = true;
   return {
     send(text, type = "black") {
-      const { hr, min, sec } = getCurrentTime();
-      text = `[${hr}:${min}:${sec}] ${text}`;
-      sendToWindow({ text, type });
+      if(state) {
+        const { hr, min, sec } = getCurrentTime();
+        text = `[${hr}:${min}:${sec}] ${text}`;
+        sendToWindow({ text, type });
+      }
     },
 
     ok(text) {
@@ -19,14 +22,18 @@ const createLog = (sendToWindow) => {
     err(text) {
       this.send(text, "red");
     },
+
+    setState(value) {
+      state = value;
+    }
   };
 };
 
 const createIdLog = (log, id) => {
   return Object.assign({}, log, {
     send(text, type) {
-      log.send(`[WIN${id}] ${text}`, type);
-    },
+        log.send(`[WIN${id}] ${text}`, type);
+      }
   });
 };
 
