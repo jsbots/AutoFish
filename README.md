@@ -164,5 +164,5 @@ npm test
 - [x] Fishing lures support
 - [x] Advanced settings option
 - [x] More convoluted automation
-- [x] Fast fishing mode (without delay)
+- [x] Fast fishing mode without delay after hooking (memory of the previous bobber position)
 - [ ] Random mouse movements in a human way between cycles.
