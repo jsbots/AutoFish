@@ -109,11 +109,9 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
 - The better your video settings the better it's for the bot too. 
-- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber.
+- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
 - Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
 - Camera position is important too, the closer you see the bobber the better. So make it from the first person if possible (especially if the place is dark/snowy).
-
-I know, that's a lot of conditions to make the bot work properly, but it's a **pixel** bot after all.
 
 Here are quick self-explanotary "good-bad" screenshots of the bobber: 
 
@@ -123,7 +121,7 @@ Here are quick self-explanotary "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish Setup: [Download](https://drive.google.com/file/d/1k5lLZJSA3KyTRO8YVVjnKyYsIPbjpzbo/view?usp=sharing)
+AutoFish Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
 
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your destkop. You can uninstall it in the Windows Settings the name of the uninstall will be the same name as the name of the shortcut.
 
@@ -164,4 +162,5 @@ npm test
 - [x] Fishing lures support
 - [x] Advanced settings option
 - [x] More convoluted automation
-- [ ] Fast fishing mode (without delay)
+- [x] Fast fishing mode without delay after hooking (memory of the previous bobber position)
+- [ ] Random mouse movements in a human way between cycles.
