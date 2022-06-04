@@ -48,7 +48,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 30000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "checkingDelay": 35,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
       "mouseCurvatureStrength": 5,
       "luresDelay": 3000,
