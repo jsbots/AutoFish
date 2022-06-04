@@ -98,7 +98,10 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const checkBobber = async (bobberPos, state) => {
     checkBobberTimer.start();
-    while (state.status == "working" && !checkBobberTimer.isElapsed()) {
+    while (state.status == "working") {
+      if(checkBobberTimer.isElapsed()) {
+        throw new Error(`Something is wrong. The bot sticked to the bobber for more than ${config.maxFishTime} ms.`)
+      }
 
       if (!fishingZone.isBobber(bobberPos)) {
         const newBobberPos = fishingZone.checkAroundBobber(bobberPos);
