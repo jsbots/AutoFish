@@ -165,3 +165,4 @@ npm test
 - [x] Advanced settings option
 - [x] More convoluted automation
 - [x] Fast fishing mode (without delay)
+- [ ] Random mouse movements in a human way between cycles.
