@@ -2,6 +2,7 @@ const runBot = require("./runBot.js");
 const createBot = require("./createBot.js");
 
 const { convertMs } = require('../utils/time.js');
+const Stats = require('./stats.js');
 
 const { createIdLog } = require("../utils/logger.js");
 const EventLine = require("../utils/eventLine.js");
@@ -16,18 +17,7 @@ const createBots = (games, settings, config, log) => {
       bot: createBot(game, { config: config.patch[settings.game], settings }, winSwitch),
       log: createIdLog(log, ++i),
       state: { status: "initial", startTime: Date.now() },
-      stats: {
-        caught: 0,
-        miss: 0,
-        get total() {
-          return this.caught + this.miss;
-        },
-        show() {
-          return [`Total: ${this.total}`,
-                  `Caught: ${this.caught} (${this.caught / (this.total || 1) * 100}%)`,
-                  `Missed: ${this.miss} (${this.miss / (this.total || 1)  * 100}%)`]
-        }
-    }
+      stats: new Stats()
   }
   });
 
