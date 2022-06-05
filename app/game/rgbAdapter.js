@@ -8,6 +8,13 @@ class RgbAdapter {
   }
 
   getRgb(zone) {
+    if(zone) {
+      zone.x = zone.x < 0 ? 0 : zone.x;
+      zone.y = zone.y < 0 ? 0 : zone.y;
+      zone.height = zone.height > this.zone.height ? this.zone.height : zone.height;
+      zone.width = zone.width > this.zone.width ? this.zone.width : zone.width;
+    }
+
     const capturedData = Array.from(
       this.workwindow.capture(zone || this.zone).data.values()
     );
@@ -19,7 +26,6 @@ class RgbAdapter {
     if(exception) {
       rgb = rgb.cutOut(exception);
     }
-
     return rgb.findColor(color, task);
   }
 
