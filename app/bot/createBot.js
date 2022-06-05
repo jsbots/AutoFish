@@ -89,6 +89,10 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const findBobber = async () => {
     let bobber = fishingZone.findBobber(findBobber.previousBobber);
+    for(let attempt = 0; !bobber && attempt < 3; attempt++) {
+      await sleep(150);
+      bobber = fishingZone.findBobber(findBobber.previousBobber);
+    }
     if(bobber) {
       findBobber.previousBobber = [bobber, ...fishingZone.getBobberPrint(bobber).map(printPoint => bobber.plus(printPoint))];
     }
@@ -141,6 +145,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
     } else {
       mouse.click("right", delay);
     }
+
+
     winSwitch.finished();
 
     let caught = null;
@@ -161,5 +167,6 @@ const createBot = (game, {config, settings}, winSwitch) => {
     hookBobber
   };
 };
+
 
 module.exports = createBot;
