@@ -37,42 +37,30 @@ class FishingZone extends RgbAdapter {
   }
 
   getBobberPrint(bobber) {
-    let zone = { x: bobber.x - 30, y: bobber.y - 30, width: 60, height: 60 };
-    let screenSize = this.workwindow.getView();
-
-    switch (true) {
-      case zone.x < screenSize.x: {
-        zone.x = screenSize.x;
-        break;
-      }
-
-      case zone.x > screenSize.x + screenSize.width: {
-        zone.x = screenSize.width;
-        break;
-      }
-
-      case zone.y < screenSize.y: {
-        zone.y = screenSize.y;
-        break;
-      }
-
-      case zone.x > screenSize.y + screenSize.height: {
-        zone.y = screenSize.height;
-        break;
-      }
-    }
-
+    let zone = { x: bobber.x - 15, y: bobber.y - 15, width: 30, height: 30 };
     let rgb = super.getRgb(zone);
+
     let print = [];
     for (let y = zone.y; y < zone.y + zone.height; y++) {
       for (let x = zone.x; x < zone.x + zone.width; x++) {
         if (this.colors.isBobber(rgb.colorAt({ x, y }))) {
-          print.push({ x: x - bobber.x, y: y - bobber.y });
+          print.push({ x, y });
         }
       }
     }
+    let highest = print.reduce((a, b) => (a.y < b.y ? a : b)).y - 5;
+    let leftest = print.reduce((a, b) => (a.x < b.x ? a : b)).x - 5;
+    let lowest = print.reduce((a, b) => (a.y > b.y ? a : b)).y + 5;
+    let rightest = print.reduce((a, b) => (a.x > b.x ? a : b)).x + 5;
 
-    return print;
+    let result = [];
+    for(let y = highest; y <= lowest; y++) {
+      for(let x = leftest; x <= rightest; x++) {
+        result.push({x, y});
+      }
+    }
+
+    return result;
   }
 
   checkAroundBobber(bobberPos) {
