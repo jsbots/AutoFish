@@ -91,7 +91,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
-     - Initially the bot will make a preliminary check for red colors before casting.
+     - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
      - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough. 
 9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
