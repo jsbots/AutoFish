@@ -35,7 +35,11 @@ module.exports = class Rgb {
   }
 
   cutOut(except) {
-    except.forEach(exception => this.rgb[exception.y][exception.x] = [0, 0, 0]);
+    except.forEach(exception => {
+      if(isInLimits(exception, this.zone)) {
+        this.rgb[exception.y][exception.x] = [0, 0, 0];
+      }
+    });
     return new Rgb(this.rgb, this.zone);
   }
 
