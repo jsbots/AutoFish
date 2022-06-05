@@ -4,6 +4,8 @@
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
 <a href="https://youtu.be/e0D5dBptQUg"><img alt="" src="https://img.shields.io/youtube/views/e0D5dBptQUg?style=social"></a>
  
+ <a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+ 
 </div>
 
 ## Table of Contents :page_with_curl:	
@@ -123,7 +125,9 @@ Here are quick self-explanotary "good-bad" screenshots of the bobber:
 
 AutoFish Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
 
-It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your destkop. You can uninstall it in the Windows Settings the name of the uninstall will be the same name as the name of the shortcut.
+It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your destkop. You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
+
+If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous. 
 
 ## Installation :hammer:
 
