@@ -48,7 +48,9 @@ const createBot = (game, {config, settings}, winSwitch) => {
         throw new Error('The window is in fullscreen mode')
       }
 
-      if(fishingZone.findBobber()) {
+      let redColor = fishingZone.findBobber();
+      if(redColor) {
+        mouse.moveTo(redColor.x, redColor.y);
         throw new Error(`Found red colors before casting. Change the fishing place.`);
       }
 
@@ -89,12 +91,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const findBobber = async () => {
     let bobber = fishingZone.findBobber(findBobber.previousBobber);
-    for(let attempt = 0; !bobber && attempt < 3; attempt++) {
-      await sleep(150);
-      bobber = fishingZone.findBobber(findBobber.previousBobber);
-    }
     if(bobber) {
-      findBobber.previousBobber = [bobber, ...fishingZone.getBobberPrint(bobber).map(printPoint => bobber.plus(printPoint))];
+      findBobber.previousBobber = fishingZone.getBobberPrint(bobber);
     }
     return bobber;
   };
