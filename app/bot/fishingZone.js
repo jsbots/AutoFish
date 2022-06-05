@@ -7,12 +7,12 @@ class FishingZone extends RgbAdapter {
 
   checkNotifications(...type) {
     const colors = type.map((type) => {
-      switch(type) {
+      switch (type) {
         case "warning": {
-          return this.colors.isWarning
+          return this.colors.isWarning;
         }
         case "error": {
-          return this.colors.isError
+          return this.colors.isError;
         }
       }
     });
@@ -31,33 +31,54 @@ class FishingZone extends RgbAdapter {
   }
 
   isBobber(bobberPos) {
-      if(this.colors.isBobber(this.colorAt(bobberPos))) {
-        return true
-      }
+    if (this.colors.isBobber(this.colorAt(bobberPos))) {
+      return true;
+    }
   }
 
   getBobberPrint(bobber) {
-    let zone = {x: bobber.x - 30,
-                y: bobber.y - 30,
-                width: 60,
-                height: 60};
+    let zone = { x: bobber.x - 30, y: bobber.y - 30, width: 60, height: 60 };
+    let screenSize = this.workwindow.getView();
+
+    switch (true) {
+      case zone.x < screenSize.x: {
+        zone.x = screenSize.x;
+        break;
+      }
+
+      case zone.x > screenSize.x + screenSize.width: {
+        zone.x = screenSize.width;
+        break;
+      }
+
+      case zone.y < screenSize.y: {
+        zone.y = screenSize.y;
+        break;
+      }
+
+      case zone.x > screenSize.y + screenSize.height: {
+        zone.y = screenSize.height;
+        break;
+      }
+    }
+
     let rgb = super.getRgb(zone);
     let print = [];
-    for(let y = zone.y; y < zone.y + zone.height; y++) {
-      for(let x = zone.x; x < zone.x + zone.width; x++) {
-        if(this.colors.isBobber(rgb.colorAt({x, y}))) {
-          print.push({x: x - bobber.x, y: y - bobber.y});
+    for (let y = zone.y; y < zone.y + zone.height; y++) {
+      for (let x = zone.x; x < zone.x + zone.width; x++) {
+        if (this.colors.isBobber(rgb.colorAt({ x, y }))) {
+          print.push({ x: x - bobber.x, y: y - bobber.y });
         }
       }
     }
 
     return print;
-  };
+  }
 
   checkAroundBobber(bobberPos) {
     return bobberPos
-    .getPointsAround()
-    .find((pointPos) => this.colors.isBobber(this.colorAt(pointPos)));
+      .getPointsAround()
+      .find((pointPos) => this.colors.isBobber(this.colorAt(pointPos)));
   }
 
   static from(workwindow, zone) {

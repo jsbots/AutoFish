@@ -7,11 +7,11 @@ class RgbAdapter {
     this.colors = {};
   }
 
-  getRgb(point) {
+  getRgb(zone) {
     const capturedData = Array.from(
-      this.workwindow.capture(point || this.zone).data.values()
+      this.workwindow.capture(zone || this.zone).data.values()
     );
-    return Rgb.from(capturedData, point || this.zone);
+    return Rgb.from(capturedData, zone || this.zone);
   }
 
   findColor(color, task, exception) {
