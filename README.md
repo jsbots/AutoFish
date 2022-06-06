@@ -108,10 +108,10 @@ The size of fishing zone is relative to the size of the window. You can change t
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
-- The better your video settings the better it's for the bot too. 
+- The better your video settings the better it's for the bot too, except the weather effects.
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
-- Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
-- Camera position isn't so important, but if the place is dark/snowy, as a solution try to make it from the first person. 
+- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
+- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help.  
 
 Here are quick self-explanotary "good-bad" screenshots of the bobber: 
 
