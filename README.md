@@ -4,8 +4,6 @@
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
 <a href="https://youtu.be/e0D5dBptQUg"><img alt="" src="https://img.shields.io/youtube/views/e0D5dBptQUg?style=social"></a>
  
- <a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
- 
 </div>
 
 ## Table of Contents :page_with_curl:	
@@ -28,7 +26,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [AutoFish 1.1](https://youtu.be/o1i_cgZzuHc).
 
-This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the window of the game for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook.
+This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the window of the game for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook. In a very simplified way, it acts as a human.
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
@@ -93,7 +91,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
-     - Initially the bot will make a preliminary check for red colors before casting.
+     - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
      - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough. 
 9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
@@ -110,10 +108,10 @@ The size of fishing zone is relative to the size of the window. You can change t
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
 
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
-- The better your video settings the better it's for the bot too. 
+- The better your video settings the better it's for the bot too, except the weather effects.
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
-- Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
-- Camera position is important too, the closer you see the bobber the better. So make it from the first person if possible (especially if the place is dark/snowy).
+- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
+- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help.  
 
 Here are quick self-explanotary "good-bad" screenshots of the bobber: 
 
@@ -128,6 +126,14 @@ AutoFish Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzK
 It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your destkop. You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous. 
+
+<div align="center">
+
+<a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+ </div>
+
+
 
 ## Installation :hammer:
 
