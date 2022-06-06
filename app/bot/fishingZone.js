@@ -48,10 +48,15 @@ class FishingZone extends RgbAdapter {
         }
       }
     }
-    let highest = print.reduce((a, b) => (a.y < b.y ? a : b)).y - 5;
-    let leftest = print.reduce((a, b) => (a.x < b.x ? a : b)).x - 5;
-    let lowest = print.reduce((a, b) => (a.y > b.y ? a : b)).y + 5;
-    let rightest = print.reduce((a, b) => (a.x > b.x ? a : b)).x + 5;
+
+    if(print.length < 1) {
+      return null; 
+    }
+
+    let highest = print.reduce((a, b) => (a.y < b.y ? a : b)).y - 10;
+    let leftest = print.reduce((a, b) => (a.x < b.x ? a : b)).x - 10;
+    let lowest = print.reduce((a, b) => (a.y > b.y ? a : b)).y + 10;
+    let rightest = print.reduce((a, b) => (a.x > b.x ? a : b)).x + 10;
 
     let result = [];
     for(let y = highest; y <= lowest; y++) {
