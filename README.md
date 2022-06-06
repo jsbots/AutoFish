@@ -111,7 +111,7 @@ The rule of thumb here is **the better you can see the red feather the better th
 - The better your video settings the better it's for the bot too. 
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
 - Different direction might make the bobber either brighter or darker, bigger or smaller (feathers), this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
-- Camera position is important too, the closer you see the bobber the better. So make it from the first person if possible (especially if the place is dark/snowy).
+- Camera position isn't so important, but if the place is dark/snowy, as a solution try to make it from the first person. 
 
 Here are quick self-explanotary "good-bad" screenshots of the bobber: 
 
