@@ -19,8 +19,9 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const zone = Zone.from(workwindow.getView()).toRel(config.relZone);
   const fishingZone = FishingZone.from(workwindow, zone);
+
   fishingZone.registerColors({
-      isBobber: ([r, g, b]) => r - g > 20 && r - b > 20 && g < 100 && b < 100,
+      isBobber: ([r, g, b]) => r - g > config.redThreshold && r - b > config.redThreshold && g < 100 && b < 100,
       isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
       isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
@@ -48,7 +49,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
         throw new Error('The window is in fullscreen mode')
       }
 
-      let redColor = fishingZone.findBobber();
+      let redColor = fishingZone.preliminaryCheck();
       if(redColor) {
         mouse.moveTo(redColor.pos.x, redColor.pos.y);
         throw new Error(`Found red colors before casting. Change the fishing place.`);
