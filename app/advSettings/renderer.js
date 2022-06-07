@@ -85,6 +85,16 @@ const renderSleepAfterHook = ({sleepAfterHook}) => {
   return elt(`input`, {type: `checkbox`, name: `sleepAfterHook`, checked: sleepAfterHook});
 };
 
+const renderRedThreshold = ({redThreshold}) => {
+  if(redThreshold < 10) redThreshold = 10;
+  if(redThreshold > 150) redThreshold = 150;
+  return elt(`div`, null,
+    elt(`div`, {className: `redThresholdColor`, style: `background-color: rgb(${redThreshold + 30}, 0, 0)`}),
+    elt(`input`, {type: `number`, name: `redThreshold`, value: redThreshold})
+  )
+
+};
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
@@ -111,6 +121,7 @@ const renderSettings = (config) => {
   ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},
+  wrapInLabel(`Red color threshold: `, renderRedThreshold(config), `The bot will ignore all the reddish colors below this value. The higher the value the more red colors the bot will ignore. Min value: 10, max value: 150.`),
   wrapInLabel(`Max check time (ms)`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Checking delay: (ms)`, renderCheckingDelay(config), `How often the bot needs to check the hook for changes.`),
   wrapInLabel(`Fishing zone (%)`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
