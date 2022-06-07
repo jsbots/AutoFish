@@ -142,7 +142,6 @@ function createWindow() {
 
     log.send(`Looking for the windows...`)
 
-    const customName = config.patch[settings.game].customName;
     if(customName) {
       config.game.names.push(customName);
     }
