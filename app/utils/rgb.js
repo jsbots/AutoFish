@@ -21,13 +21,16 @@ module.exports = class Rgb {
     }
   }
 
-  findColors(isColor) {
+  findColors(isColor, firstMet) {
     let colors = [];
     for (let y = this.zone.y; y < this.zone.y + this.zone.height; y++) {
       for (let x = this.zone.x; x < this.zone.x + this.zone.width; x++) {
         let pos = new Vec(x, y);
         let color = this.colorAt(pos);
         if (isColor(color)) {
+          if(firstMet) {
+            return {pos, color};
+          }
           colors.push({pos, color})
         }
       }
