@@ -21,17 +21,18 @@ module.exports = class Rgb {
     }
   }
 
-  findColor(color, task) {
+  findColors(isColor) {
+    let colors = [];
     for (let y = this.zone.y; y < this.zone.y + this.zone.height; y++) {
       for (let x = this.zone.x; x < this.zone.x + this.zone.width; x++) {
-        let point = new Vec(x, y);
-        if (color(this.colorAt(point))) {
-          if (!task || task(point, this)) {
-            return point;
-          }
+        let pos = new Vec(x, y);
+        let color = this.colorAt(pos);
+        if (isColor(color)) {
+          colors.push({pos, color})
         }
       }
     }
+    return colors.length > 1 ? colors : null;
   }
 
   cutOut(except) {
