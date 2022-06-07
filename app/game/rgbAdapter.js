@@ -21,12 +21,12 @@ class RgbAdapter {
     return Rgb.from(capturedData, zone || this.zone);
   }
 
-  findColor(color, task, exception) {
+  findColors(color, exception) {
     let rgb = this.getRgb();
     if(exception) {
       rgb = rgb.cutOut(exception);
     }
-    return rgb.findColor(color, task);
+    return rgb.findColors(color);
   }
 
   colorAt(pos) {

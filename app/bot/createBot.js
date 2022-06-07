@@ -50,7 +50,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
       let redColor = fishingZone.findBobber();
       if(redColor) {
-        mouse.moveTo(redColor.x, redColor.y);
+        mouse.moveTo(redColor.pos.x, redColor.pos.y);
         throw new Error(`Found red colors before casting. Change the fishing place.`);
       }
 
@@ -92,9 +92,9 @@ const createBot = (game, {config, settings}, winSwitch) => {
   const findBobber = async () => {
     let bobber = fishingZone.findBobber(findBobber.previousBobber);
     if(bobber) {
-      findBobber.previousBobber = fishingZone.getBobberPrint(bobber);
+      findBobber.previousBobber = fishingZone.getBobberPrint(bobber.rest, 5);
+      return bobber.pos;
     }
-    return bobber;
   };
   findBobber.previousBobber = null;
 

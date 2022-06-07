@@ -16,18 +16,35 @@ class FishingZone extends RgbAdapter {
         }
       }
     });
-    return colors.some((color) => super.getRgb().findColor(color));
+    return colors.some((color) => super.getRgb().findColors(color));
   }
 
   findBobber(exception) {
-    const looksLikeBobber = (point, rgb) => {
-      return point
-        .getPointsAround()
-        .map((point) => rgb.colorAt(point))
-        .every((point) => this.colors.isBobber(point));
-    };
+    let reds = super.findColors(this.colors.isBobber, exception);
+    if (!reds) return;
 
-    return super.findColor(this.colors.isBobber, looksLikeBobber, exception);
+    let { pos } = reds
+      .filter(({ pos }) => {
+        return pos.getPointsAround().every(({ x, y }) => {
+          return reds.some(redPoint => redPoint.pos.x == x && redPoint.pos.y == y);
+        });
+      })
+      .map(({ pos, color }) => {
+        let [r, g, b] = color;
+        return { pos, redness: (r - g) + (r - b) };
+      })
+      .reduce((a, b) => {
+        if (a.redness > b.redness) {
+          return a;
+        } else {
+          return b;
+        }
+      });
+
+    return {
+      pos,
+      rest: reds.map(({ pos }) => pos)
+    };
   }
 
   isBobber(bobberPos) {
@@ -36,32 +53,17 @@ class FishingZone extends RgbAdapter {
     }
   }
 
-  getBobberPrint(bobber) {
-    let zone = { x: bobber.x - 15, y: bobber.y - 15, width: 30, height: 30 };
-    let rgb = super.getRgb(zone);
-
-    let print = [];
-    for (let y = zone.y; y < zone.y + zone.height; y++) {
-      for (let x = zone.x; x < zone.x + zone.width; x++) {
-        if (this.colors.isBobber(rgb.colorAt({ x, y }))) {
-          print.push({ x, y });
-        }
-      }
-    }
-
-    if(print.length < 1) {
-      return null; 
-    }
-
-    let highest = print.reduce((a, b) => (a.y < b.y ? a : b)).y - 10;
-    let leftest = print.reduce((a, b) => (a.x < b.x ? a : b)).x - 10;
-    let lowest = print.reduce((a, b) => (a.y > b.y ? a : b)).y + 10;
-    let rightest = print.reduce((a, b) => (a.x > b.x ? a : b)).x + 10;
-
+  getBobberPrint(rest, wobble) {
     let result = [];
-    for(let y = highest; y <= lowest; y++) {
-      for(let x = leftest; x <= rightest; x++) {
-        result.push({x, y});
+
+    let highest = rest.reduce((a, b) => (a.y < b.y ? a : b)).y - wobble;
+    let leftest = rest.reduce((a, b) => (a.x < b.x ? a : b)).x - wobble;
+    let lowest = rest.reduce((a, b) => (a.y > b.y ? a : b)).y + wobble;
+    let rightest = rest.reduce((a, b) => (a.x > b.x ? a : b)).x + wobble;
+
+    for (let y = highest; y <= lowest; y++) {
+      for (let x = leftest; x <= rightest; x++) {
+        result.push({ x, y });
       }
     }
 
