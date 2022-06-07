@@ -10,7 +10,7 @@
       "castDelay": 1500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 30000,
+      "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
@@ -20,7 +20,8 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 }
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20
     },
     "Cataclysm": {
       "customName": "",
@@ -28,7 +29,7 @@
       "castDelay": 1500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 30000,
+      "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
@@ -38,7 +39,8 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 }
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20
     },
     "WoTLK": {
       "customName": "",
@@ -46,7 +48,7 @@
       "castDelay": 1500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 30000,
+      "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
@@ -56,7 +58,8 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 }
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20
     },
     "Retail&Classic": {
       "customName": "",
@@ -64,7 +67,7 @@
       "castDelay": 1500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 30000,
+      "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
@@ -74,7 +77,8 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 }
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20
     },
     "TBC": {
       "customName": "",
@@ -82,7 +86,7 @@
       "castDelay": 3000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 30000,
+      "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
@@ -92,7 +96,8 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 }
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20
     },
     "Vanilla": {
       "customName": "",
@@ -100,7 +105,7 @@
       "castDelay": 3000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 30000,
+      "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": 0.5,
@@ -110,7 +115,8 @@
       "randomSleepEvery": { "from": 1, "to": 3 },
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 }
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20
     }
   }
 }
