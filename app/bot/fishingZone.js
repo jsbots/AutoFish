@@ -27,12 +27,17 @@ class FishingZone extends RgbAdapter {
     let reds = super.findColors(this.colors.isBobber, exception);
     if (!reds) return;
 
+    reds = reds.filter(({ pos }) => {
+      return pos.getPointsAround().every(({ x, y }) => {
+        return reds.some(
+          (redPoint) => redPoint.pos.x == x && redPoint.pos.y == y
+        );
+      });
+    });
+
+    if(reds.length == 0) return;
+
     let { pos } = reds
-      .filter(({ pos }) => {
-        return pos.getPointsAround().every(({ x, y }) => {
-          return reds.some(redPoint => redPoint.pos.x == x && redPoint.pos.y == y);
-        });
-      })
       .map(({ pos, color }) => {
         let [r, g, b] = color;
         return { pos, redness: (r - g) + (r - b) };
@@ -47,7 +52,7 @@ class FishingZone extends RgbAdapter {
 
     return {
       pos,
-      rest: reds.map(({ pos }) => pos)
+      rest: reds.map(({ pos }) => pos),
     };
   }
 
