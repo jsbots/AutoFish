@@ -19,10 +19,6 @@ class FishingZone extends RgbAdapter {
     return colors.some((color) => super.getRgb().findColors(color));
   }
 
-  preliminaryCheck() {
-    return super.findColors(this.colors.isBobber, null, true);
-  }
-
   findBobber(exception) {
     let reds = super.findColors(this.colors.isBobber, exception);
     if (!reds) return;

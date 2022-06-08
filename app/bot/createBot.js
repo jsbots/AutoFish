@@ -49,7 +49,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
         throw new Error('The window is in fullscreen mode')
       }
 
-      let redColor = fishingZone.preliminaryCheck();
+      let redColor = fishingZone.findBobber();
       if(redColor) {
         mouse.moveTo(redColor.pos.x, redColor.pos.y);
         throw new Error(`Found red colors before casting. Change the fishing place.`);
