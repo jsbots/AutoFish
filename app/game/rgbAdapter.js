@@ -34,7 +34,16 @@ class RgbAdapter {
   }
 
   registerColors(colors) {
-    this.colors = colors;
+    if(!this.colors) {
+      this.colors = colors;
+    } else {
+      for(let color of Object.keys(colors)) {
+        if(!this.colors[color]) {
+          this.colors[color] = colors[color];
+        }
+      }
+    }
+
   };
 
   static from(workwindow, zone) {
