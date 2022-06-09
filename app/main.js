@@ -13,10 +13,9 @@ const path = require("path");
 const { readFileSync, writeFileSync } = require("fs");
 
 /* Bot modules */
-const keysender = require("keysender");
 const generateName = require('./utils/generateName.js');
 const { createLog } = require("./utils/logger.js");
-const createGame = require("./game/createGame.js");
+const { findGameWindows, getAllWindows } = require("./game/createGame.js");
 const createBots = require("./bot/createBots.js");
 /* Bot modules end */
 
@@ -134,6 +133,8 @@ function createWindow() {
     win.show();
   });
 
+
+
   ipcMain.on("start-bot", async (event, settings) => {
     const config = getJson("./config/bot.json");
     const log = createLog((data) => {
@@ -142,11 +143,21 @@ function createWindow() {
 
     log.send(`Looking for the windows...`)
 
-    if(customName) {
-      config.game.names.push(customName);
+    const useCustomWindow = config.patch[settings.game].useCustomWindow;
+    if(useCustomWindow) {
+      const customWindow = config.patch[settings.game].customWindow;
+      const name = getAllWindows().find(({title}) => title == customWindow);
+      if(!name) {
+        log.err(`Can't access this window`);
+        win.webContents.send("stop-bot");
+        return;
+      }
+      const {title, className} = name;
+      config.game.names.push(title);
+      config.game.classNames.push(className);
     }
 
-    const games = createGame(keysender).findWindows(config.game);
+    const games = findGameWindows(config.game);
     if (!games) {
       log.err(`Can't find any window of the game!`);
       win.webContents.send("stop-bot");
@@ -162,7 +173,7 @@ function createWindow() {
     }
 
     if(settings.fishingKey === `` || settings.luresKey === ``) {
-      dialog.showErrorBox('', `Keys values can't be empty`);
+      dialog.showErrorBox('', `Fishing and lures key values can't be empty`);
       win.webContents.send('stop-bot');
       return;
     }
@@ -191,6 +202,8 @@ function createWindow() {
     shell.openExternal("https://www.youtube.com/jsbots")
   );
 
+
+
   ipcMain.on("save-settings", (event, settings) =>
   writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
   );
@@ -204,6 +217,7 @@ function createWindow() {
     }
   });
 
+  ipcMain.handle("get-all-windows", getAllWindows);
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));
 }
 
@@ -220,7 +234,7 @@ const createAdvSettingsWin = () => {
   let settWin = new BrowserWindow({
     title: 'Advanced settings',
     width: 435,
-    height: 650,
+    height: 655,
     show: false,
     resizable: false,
     webPreferences: {
@@ -239,6 +253,7 @@ const createAdvSettingsWin = () => {
   });
 
   settWin.once("ready-to-show", () => {
+    //settWin.webContents.openDevTools();
     settWin.show();
   });
 

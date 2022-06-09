@@ -1,11 +1,12 @@
 {
   "game": {
-    "names": ["World of Warcraft", "魔兽世界"],
+    "names": ["World of Warcraft"],
     "classNames": ["GxWindowClass", "GxWindowClassD3d"]
   },
   "patch": {
     "MoP": {
-      "customName": "",
+      "useCustomWindow": false,
+      "customWindow": "",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 1500,
       "sleepAfterHook": true,
@@ -24,7 +25,8 @@
       "redThreshold": 20
     },
     "Cataclysm": {
-      "customName": "",
+      "useCustomWindow": false,
+      "customWindow": "",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 1500,
       "sleepAfterHook": true,
@@ -43,7 +45,8 @@
       "redThreshold": 20
     },
     "WoTLK": {
-      "customName": "",
+      "useCustomWindow": false,
+      "customWindow": "",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 1500,
       "sleepAfterHook": true,
@@ -62,7 +65,8 @@
       "redThreshold": 20
     },
     "Retail&Classic": {
-      "customName": "",
+      "useCustomWindow": false,
+      "customWindow": "",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 1500,
       "sleepAfterHook": true,
@@ -81,7 +85,8 @@
       "redThreshold": 20
     },
     "TBC": {
-      "customName": "",
+      "useCustomWindow": false,
+      "customWindow": "",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 3000,
       "sleepAfterHook": true,
@@ -100,7 +105,8 @@
       "redThreshold": 20
     },
     "Vanilla": {
-      "customName": "",
+      "useCustomWindow": false,
+      "customWindow": "",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 3000,
       "sleepAfterHook": true,

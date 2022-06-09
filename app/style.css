@@ -207,6 +207,10 @@ section {
   height: 20px;
   width: 20px;
   border: 1px solid grey;
-};
+}
+
+.advSettings .settings select {
+  width: 134px;
+}
 
 /* AdvSettings window end */
