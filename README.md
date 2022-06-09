@@ -1,14 +1,14 @@
 <p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/008c1ca000ba17729aa0b5dae2453a4fbf737f22/app/img/main-logo.png"> </p>
 <div align="center">
- 
+
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
 <a href="https://youtu.be/e0D5dBptQUg"><img alt="" src="https://img.shields.io/youtube/views/e0D5dBptQUg?style=social"></a>
- 
+
 </div>
 
-## Table of Contents :page_with_curl:	
+## Table of Contents :page_with_curl:
 
-- [Fishing bot](#fishing-bot-fish) 
+- [Fishing bot](#fishing-bot-fish)
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
@@ -26,14 +26,14 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [AutoFish 1.1](https://youtu.be/o1i_cgZzuHc).
 
-This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the window of the game for condensed red colors and then sticks to them checking their position for changes. It moves with the bober while the bober slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook. In a very simplified way, it acts as a human.
+This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the window of the game for condensed red colors and then sticks to them checking their position for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook. In a very simplified way, it acts as a human.
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
 
 ## Servers tests :video_game:
 
-The bot was tested on official servers: 
+The bot was tested on official servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Retail**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
 - <img src="guide_img/icons/good.png" width="15" height="15"> **Classic TBC**
@@ -41,7 +41,7 @@ The bot was tested on official servers:
 Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15"> **MoP**: stormforge.gg
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
-- <img src="guide_img/icons/good.png" width="15" height="15">  **WoTLK**: warmane.com 
+- <img src="guide_img/icons/good.png" width="15" height="15">  **WoTLK**: warmane.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**: atlantiss.org
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
@@ -49,13 +49,13 @@ On custom servers:
 - <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
 - <img src="guide_img/icons/question.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org - works, but doesn't hook when the animation of jerking isn't complete (the bobber doesn't dive into the water completely sometimes).
 
-## Warning :warning: 
+## Warning :warning:
 
-Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc. 
+Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
-The bot is written in JavaScript, when writting the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
+The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
-To prevent detection all the delay values were randomised: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
 ## Will I be banned for using this? :interrobang:
 
@@ -64,28 +64,28 @@ Using common sense while using the bot will help to reduce risks of being banned
 - Don't fish in one place all the time.
 - Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.
 
-Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you. 
+Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
 
 After reading all this you are eager to ask the most important *existential* question of the topic:
 > **"Am I going to be banned for using this?"**
 
 If we consider **only the software itself**, the very simplified answer you seek depends on where you use the bot:
 - on **official servers**:
-> **"Probably"**. 
+> **"Probably"**.
 
-- on **unofficial servers**: 
+- on **unofficial servers**:
 > **"Unlikely"**. *(forgot to turn off the bot on Warmane once, it worked for 6 hours straight)*
 
 
 
 ## Guide :blue_book:
 
-**Following the guide step by step will drastically reduce the number of problems you might run into by using this software.** 
+**Following the guide step by step will drastically reduce the number of problems you might run into by using this software.**
 
 1. Launch the game *(not as administrator, keysender won't be able to get colors from it)*.
 2. Switch to the **DirectX 11** on retail *(skip if you use the bot on unofficial servers)*.
 4. Switch to **Windowed or Window(maximized)** mode *(skip if you use the bot on Retail/Classic)*.
-5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game *(Vanilla)*. 
+5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game *(Vanilla)*.
 6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 7. Equip a fishpole.
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
@@ -93,27 +93,27 @@ If we consider **only the software itself**, the very simplified answer you seek
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
      - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
      - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
-   - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough. 
+   - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
 9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
 10. You can press **'space'** to **stop the bot**.
 
 ## Fishing Zone :dart:
 
-Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area. 
+Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
 
 The size of fishing zone is relative to the size of the window. You can change the relative points in the "Advanced settings".
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation. 
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
-The rule of thumb here is **the better you can see the red feather the better the bot will see it too**: 
+The rule of thumb here is **the better you can see the red feather the better the bot will see it too**:
 - The better your video settings the better it's for the bot too, except the weather effects.
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
-- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**. 
+- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help.  
 
-Here are quick self-explanotary "good-bad" screenshots of the bobber: 
+Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="960">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="960">
@@ -123,9 +123,9 @@ Here are quick self-explanotary "good-bad" screenshots of the bobber:
 
 AutoFish Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
 
-It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your destkop. You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
+It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop. You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
-If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous. 
+If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
 
 <div align="center">
 
