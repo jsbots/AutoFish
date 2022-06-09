@@ -175,6 +175,6 @@ npm test
 - [x] More convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature) 
 - [x] Custom window suppport.
 - [x] Red threshold support.
-- [ ] Better deviation (in a human way) in moveCurveTo.
+- [ ] Better deviation in mouse movements for "Like a human" option.
 - [ ] Random click on the bobber area.
-- [ ] Mouse movements between cycles and after cathing in a human way. 
+- [ ] Random mouse movements between cycles and after cathing. 
