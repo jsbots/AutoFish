@@ -122,8 +122,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
       await sleep(reaction)
     }
 
-    bobber.x = bobber.x + random(-10, 10);
-    bobber.y = bobber.y + random(-10, 10);
+    bobber.x = bobber.x + random(-5, 5);
+    bobber.y = bobber.y + random(-5, 5);
 
     await winSwitch.execute(workwindow);
     if (settings.likeHuman) {
@@ -150,7 +150,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
     let caught = true;
     await sleep(250);
     if (fishingZone.checkNotifications('warning')) {
-      caught = false; 
+      caught = false;
     }
 
     if(config.sleepAfterHook) {
