@@ -171,6 +171,10 @@ npm test
 - [x] Multiple windows support
 - [x] Fishing lures support
 - [x] Advanced settings option
-- [x] More convoluted automation
 - [x] Fast fishing without waiting for the bobber to disappear (memory of the previous bobber position)
-- [ ] Better deviation (in a human way) in moveCurveTo. 
+- [x] More convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature) 
+- [x] Custom window suppport.
+- [x] Red threshold support.
+- [ ] Better deviation (in a human way) in moveCurveTo.
+- [ ] Random click on the bobber area.
+- [ ] Mouse movements between cycles and after cathing in a human way. 
