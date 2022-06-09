@@ -20,38 +20,21 @@ class FishingZone extends RgbAdapter {
   }
 
 
-  findAllBobberColors() {
-    let colors = super.findColors(this.colors.isBobber);
-    return colors ? colors.map(({pos}) => pos) : null;
+  findAllBobberColors(exception) {
+    return super.findColors(this.colors.isBobber, exception);
   }
 
   findBobber(exception) {
-    let reds = super.findColors(this.colors.isBobber, exception);
-    if (!reds) return;
+    let reds = this.findAllBobberColors(exception);
+    if(!reds) return;
 
-    reds = reds.filter(({ pos }) => {
+    return reds.find(pos => {
       return pos.getPointsAround().every(({ x, y }) => {
-        return reds.some(redPoint => redPoint.pos.x == x && redPoint.pos.y == y);
+        return reds.some(redPoint => redPoint.x == x && redPoint.y == y);
       });
     });
-
-    if(reds.length == 0) return;
-
-    let { pos } = reds
-      .map(({ pos, color }) => {
-        let [r, g, b] = color;
-        return { pos, redness: (r - g) + (r - b) };
-      })
-      .reduce((a, b) => {
-        if (a.redness > b.redness) {
-          return a;
-        } else {
-          return b;
-        }
-      });
-
-    return pos;
   }
+
 
   isBobber(bobberPos) {
     if (this.colors.isBobber(this.colorAt(bobberPos))) {
