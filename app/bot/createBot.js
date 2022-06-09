@@ -51,7 +51,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
       let redColor = fishingZone.findBobber();
       if(redColor) {
-        mouse.moveTo(redColor.pos.x, redColor.pos.y);
+        mouse.moveTo(redColor.x, redColor.y);
         throw new Error(`Found red colors before casting. Change the fishing place.`);
       }
 
@@ -122,6 +122,9 @@ const createBot = (game, {config, settings}, winSwitch) => {
       await sleep(reaction)
     }
 
+    bobber.x = bobber.x + random(-10, 10);
+    bobber.y = bobber.y + random(-10, 10);
+
     await winSwitch.execute(workwindow);
     if (settings.likeHuman) {
       mouse.moveCurveTo(
@@ -144,10 +147,10 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
 
     winSwitch.finished();
-    let caught = null;
+    let caught = true;
     await sleep(250);
-    if (!fishingZone.checkNotifications('warning')) {
-      caught = true;
+    if (fishingZone.checkNotifications('warning')) {
+      caught = false; 
     }
 
     if(config.sleepAfterHook) {
