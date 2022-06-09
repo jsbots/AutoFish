@@ -43,8 +43,7 @@ class RgbAdapter {
         }
       }
     }
-
-  };
+  }
 
   static from(workwindow, zone) {
     return new RgbAdapter(workwindow, zone);

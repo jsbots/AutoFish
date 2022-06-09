@@ -21,7 +21,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
   const fishingZone = FishingZone.from(workwindow, zone);
 
   fishingZone.registerColors({
-      isBobber: ([r, g, b]) => r - g > config.redThreshold && r - b > config.redThreshold && g < 100 && b < 100,
+      isBobber: ([r, g, b]) => (r - g) > config.redThreshold && (r - b) > config.redThreshold && g < 100 && b < 100,
       isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
       isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
@@ -74,6 +74,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
     }
 
     await winSwitch.execute(workwindow);
+    findBobber.previousBobber = fishingZone.getBobberPrint(fishingZone.findAllBobberColors(), 5);
     keyboard.sendKey(settings.fishingKey, delay);
     winSwitch.finished();
 
@@ -91,11 +92,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
 
   const findBobber = async () => {
-    let bobber = fishingZone.findBobber(findBobber.previousBobber);
-    if(bobber) {
-      findBobber.previousBobber = fishingZone.getBobberPrint(bobber.rest, 5);
-      return bobber.pos;
-    }
+    return fishingZone.findBobber(findBobber.previousBobber);
   };
   findBobber.previousBobber = null;
 
@@ -147,15 +144,16 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
 
     winSwitch.finished();
-
     let caught = null;
     await sleep(250);
     if (!fishingZone.checkNotifications('warning')) {
       caught = true;
     }
+
     if(config.sleepAfterHook) {
       await sleep(config.afterHookDelay.from + Math.random() * (config.afterHookDelay.to - config.afterHookDelay.from));
     }
+
     return caught;
   };
 

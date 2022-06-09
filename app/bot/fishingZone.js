@@ -16,7 +16,13 @@ class FishingZone extends RgbAdapter {
         }
       }
     });
-    return colors.some((color) => super.getRgb().findColors(color));
+    return colors.some((color) => super.getRgb().findColors(color, true));
+  }
+
+
+  findAllBobberColors() {
+    let colors = super.findColors(this.colors.isBobber);
+    return colors ? colors.map(({pos}) => pos) : null;
   }
 
   findBobber(exception) {
@@ -44,10 +50,7 @@ class FishingZone extends RgbAdapter {
         }
       });
 
-    return {
-      pos,
-      rest: reds.map(({ pos }) => pos),
-    };
+    return pos;
   }
 
   isBobber(bobberPos) {
@@ -57,26 +60,23 @@ class FishingZone extends RgbAdapter {
   }
 
   getBobberPrint(rest, wobble) {
-    let result = [];
+    if(!rest) return
 
-    let highest = rest.reduce((a, b) => (a.y < b.y ? a : b)).y - wobble;
-    let leftest = rest.reduce((a, b) => (a.x < b.x ? a : b)).x - wobble;
-    let lowest = rest.reduce((a, b) => (a.y > b.y ? a : b)).y + wobble;
-    let rightest = rest.reduce((a, b) => (a.x > b.x ? a : b)).x + wobble;
-
-    for (let y = highest; y <= lowest; y++) {
-      for (let x = leftest; x <= rightest; x++) {
-        result.push({ x, y });
-      }
-    }
-
+    let result = [...rest];
+    rest.forEach(restPoint => {
+      restPoint.getPointsAround(wobble).forEach(aroundPoint => {
+        if(!result.some(resultPoint => resultPoint.x == aroundPoint.x && resultPoint.y == aroundPoint.y)) {
+          result.push(aroundPoint);
+        }
+      })
+    });
     return result;
   }
 
   checkAroundBobber(bobberPos) {
     return bobberPos
       .getPointsAround()
-      .find((pointPos) => this.colors.isBobber(this.colorAt(pointPos)));
+      .find((pointPos) => this.isBobber(pointPos));
   }
 
   static from(workwindow, zone) {
