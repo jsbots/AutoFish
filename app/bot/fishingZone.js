@@ -25,9 +25,7 @@ class FishingZone extends RgbAdapter {
 
     reds = reds.filter(({ pos }) => {
       return pos.getPointsAround().every(({ x, y }) => {
-        return reds.some(
-          (redPoint) => redPoint.pos.x == x && redPoint.pos.y == y
-        );
+        return reds.some(redPoint => redPoint.pos.x == x && redPoint.pos.y == y);
       });
     });
 
