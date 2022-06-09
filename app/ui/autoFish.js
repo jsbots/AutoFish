@@ -70,7 +70,7 @@ class AutoFish {
       elt("p", {className: 'settings_header'}, "Log:"),
       this.logger.dom,
       this.button.dom,
-      elt("p", {className: "version"}, "ver. 1.5.3")
+      elt("p", {className: "version"}, "ver. 1.5.4")
     );
   }
 }
