@@ -30,6 +30,7 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
+The bot usually catches 500 🐠 per hour and misses 1-2% of a total number. 
 
 ## Servers tests :video_game:
 
@@ -175,6 +176,6 @@ npm test
 - [x] More convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature) 
 - [x] Custom window suppport.
 - [x] Red threshold support.
+- [x] Random click on the bobber area.
 - [ ] Better deviation in mouse movements for "Like a human" option.
-- [ ] Random click on the bobber area.
 - [ ] Random mouse movements between cycles and after cathing. 
