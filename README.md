@@ -81,21 +81,18 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 ## Guide :blue_book:
 
-**Following the guide step by step will drastically reduce the number of problems you might run into by using this software.**
-
-1. Launch the game *(not as administrator, keysender won't be able to get colors from it)*.
-2. Switch to the **DirectX 11** on retail *(skip if you use the bot on unofficial servers)*.
-4. Switch to **Windowed or Window(maximized)** mode *(skip if you use the bot on Retail/Classic)*.
-5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game *(Vanilla)*.
+1. Launch the game *(not as administrator)*.
+2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
+4. Switch to **Window(maximized)** mode *(skip for Retail/Classic)*.
+5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game.
 6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 7. Equip a fishpole.
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - All sides of the "Fishing zone" should be in the water.
    - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
-     - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
-     - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
+   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
+   - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
-9. Don't use your keyboard and mouse while the bot is working *(the bot directly utilizes drivers of your mouse and keyboard)*.
+9. Don't use your keyboard and mouse while the bot is working.
 10. You can press **'space'** to **stop the bot**.
 
 ## Fishing Zone :dart:
