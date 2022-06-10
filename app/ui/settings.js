@@ -1,5 +1,22 @@
 const elt = require("./utils/elt.js");
 
+const convertValue = (node) => {
+  let value = node.value;
+  if (node.type == "checkbox") {
+    value = node.checked;
+  }
+
+  if (node.type == "checkbox") {
+    value = node.checked;
+  }
+
+  if (node.type == "number") {
+    value = Number(node.value);
+  }
+
+  return value;
+};
+
 class Settings {
   constructor(config, renderSettings) {
     this.config = config;
@@ -12,22 +29,19 @@ class Settings {
     });
 
     this.dom.addEventListener("change", (event) => {
-      [...this.dom.elements].forEach(option => {
-        if(option.name == "advancedSettings") return;
-        let value = option.value;
-        if (option.type == "checkbox") {
-          value = option.checked;
-        }
-
-        if (option.type == "number") {
-          value = Number(option.value);
-        }
-
-        this.config[option.name] = value;
-      });
+      if(Object.keys(this.config).includes(event.target.name)) {
+        this.config[event.target.name] = convertValue(event.target);
+      }
 
       this.dom.innerHTML = ``;
-      this.dom.append(renderSettings(config));
+      this.dom.append(renderSettings(this.config));
+
+      [...this.dom.elements].forEach(option => {
+        if(Object.keys(this.config).includes(option.name)) {
+          this.config[option.name] = convertValue(option);
+        }
+      });
+
       this.onChange(this.config);
     });
 
