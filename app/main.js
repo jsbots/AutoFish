@@ -253,7 +253,6 @@ const createAdvSettingsWin = () => {
   });
 
   settWin.once("ready-to-show", () => {
-    //settWin.webContents.openDevTools();
     settWin.show();
   });
 
