@@ -13,7 +13,7 @@ const renderLogo = () => {
       elt(
         "a",
         { href: `#`, onclick: () => ipcRenderer.send("open-link") },
-        "jsbots"
+        "olesgeras"
       )
     )
   );
