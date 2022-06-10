@@ -22,9 +22,24 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   fishingZone.registerColors({
       isBobber: ([r, g, b]) => (r - g) > config.redThreshold && (r - b) > config.redThreshold && g < 100 && b < 100,
-      isWarning: ([r, g, b]) => r - b > 200 && g - b > 200,
+      isWarning: ([r, g, b]) => r - b > 240 && g - b > 240,
       isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
+
+  const moveToRandom = ({pos, range}) => {
+        pos.x = pos.x + random(-range, range);
+        pos.y = pos.y + random(-range, range);
+        if (settings.likeHuman) {
+          mouse.moveCurveTo(
+            pos.x,
+            pos.y,
+            random(config.mouseMoveSpeed, 2),
+            random(config.mouseCurvatureStrength, 100)
+          );
+        } else {
+          mouse.moveTo(pos.x, pos.y, delay);
+        }
+  };
 
   const randomSleepTimer = createTimer(() => {
     return random(config.randomSleepEvery.from, config.randomSleepEvery.to) * 60 * 1000;
@@ -92,23 +107,28 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
 
   const findBobber = async () => {
+    const pos = fishingZone.findBobber(findBobber.previousBobber);
+    if(!pos) return;
+    await winSwitch.execute(workwindow);
+    moveToRandom({pos, range: 5});
+    winSwitch.finished();
     return fishingZone.findBobber(findBobber.previousBobber);
   };
   findBobber.previousBobber = null;
 
-  const checkBobber = async (bobberPos, state) => {
+  const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
     while (state.status == "working") {
       if(checkBobberTimer.isElapsed()) {
         throw new Error(`Something is wrong. The bot sticked to the bobber for more than ${config.maxFishTime} ms.`)
       }
 
-      if (!fishingZone.isBobber(bobberPos)) {
-        const newBobberPos = fishingZone.checkAroundBobber(bobberPos);
-        if (!newBobberPos) {
-          return bobberPos;
+      if (!fishingZone.isBobber(pos)) {
+        const newPos = fishingZone.checkAroundBobber(pos);
+        if (!newPos) {
+          return pos;
         } else {
-          bobberPos = newBobberPos;
+          pos = newPos;
         }
       }
 
@@ -116,26 +136,14 @@ const createBot = (game, {config, settings}, winSwitch) => {
     }
   };
 
-  const hookBobber = async (bobber) => {
+  const hookBobber = async (pos) => {
     if(config.reaction) {
       let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
       await sleep(reaction)
     }
 
-    bobber.x = bobber.x + random(-5, 5);
-    bobber.y = bobber.y + random(-5, 5);
-
     await winSwitch.execute(workwindow);
-    if (settings.likeHuman) {
-      mouse.moveCurveTo(
-        bobber.x,
-        bobber.y,
-        config.mouseMoveSpeed + Math.random() * 5,
-        config.mouseCurvatureStrength + Math.random() * 60
-      );
-    } else {
-      mouse.moveTo(bobber.x, bobber.y, delay);
-    }
+    moveToRandom({pos, range: 5});
 
     if (settings.shiftClick) {
       keyboard.toggleKey("shift", true, delay);
@@ -145,8 +153,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
       mouse.click("right", delay);
     }
 
-
     winSwitch.finished();
+
     let caught = true;
     await sleep(250);
     if (fishingZone.checkNotifications('warning')) {
@@ -154,7 +162,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
     }
 
     if(config.sleepAfterHook) {
-      await sleep(config.afterHookDelay.from + Math.random() * (config.afterHookDelay.to - config.afterHookDelay.from));
+      await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
     }
 
     return caught;
