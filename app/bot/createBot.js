@@ -1,5 +1,6 @@
 const Zone = require("../utils/zone.js");
 const FishingZone = require("./fishingZone.js");
+const NotificationZone = require("./notificationZone.js");
 
 const { createTimer } = require('../utils/time.js');
 
@@ -17,16 +18,27 @@ const createBot = (game, {config, settings}, winSwitch) => {
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
-  const zone = Zone.from(workwindow.getView()).toRel(config.relZone);
-  const fishingZone = FishingZone.from(workwindow, zone);
+  const screenSize = workwindow.getView();
+  const fishingZone = FishingZone.from(workwindow, Zone.from(screenSize).toRel(config.relZone));
+  const notificationZone = NotificationZone.from(workwindow, Zone.from(screenSize).toRel({
+    x: .44,
+    y: .12,
+    width: .11,
+    height: .07
+  }));
+
+  mouse.moveTo(notificationZone.zone.x + notificationZone.zone.width , notificationZone.zone.y + notificationZone.zone.height)
 
   fishingZone.registerColors({
-      isBobber: ([r, g, b]) => (r - g) > config.redThreshold && (r - b) > config.redThreshold && g < 100 && b < 100,
-      isWarning: ([r, g, b]) => r - b > 240 && g - b > 240,
-      isError: ([r, g, b]) => r - g > 200 && r - b > 200,
+      isBobber: ([r, g, b]) => (r - g) > config.redThreshold && (r - b) > config.redThreshold && g < 100 && b < 100
   });
 
-  const moveToRandom = ({pos, range}) => {
+  notificationZone.registerColors({
+    isWarning: ([r, g, b]) => r - b > 240 && g - b > 240,
+    isError: ([r, g, b]) => r - g > 200 && r - b > 200
+  });
+
+  const moveToRandom = ({ pos, range }) => {
         pos.x = pos.x + random(-range, range);
         pos.y = pos.y + random(-range, range);
         if (settings.likeHuman) {
@@ -60,7 +72,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
   const castFishing = async (state) => {
     if(state.status == "initial") {
-      if(zone.x == -32000 && zone.y == -32000) {
+      if(screenSize.x == -32000 && screenSize.y == -32000) {
         throw new Error('The window is in fullscreen mode')
       }
 
@@ -95,7 +107,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
     if (state.status == "initial") {
       await sleep(250);
-      if (fishingZone.checkNotifications('error')) {
+      if (notificationZone.check('error')) {
         throw new Error(`Game error notification occured on casting fishing.`);
       } else {
         state.status = "working";
@@ -157,7 +169,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
     let caught = true;
     await sleep(250);
-    if (fishingZone.checkNotifications('warning')) {
+    if (notificationZone.check('warning')) {
       caught = false;
     }
 
