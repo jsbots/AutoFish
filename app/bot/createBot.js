@@ -121,6 +121,12 @@ const createBot = (game, {config, settings}, winSwitch) => {
   const findBobber = async () => {
     const pos = fishingZone.findBobber(findBobber.previousBobber);
     if(!pos) return;
+
+    if(config.reaction) {
+      let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
+      await sleep(reaction)
+    }
+
     await winSwitch.execute(workwindow);
     moveToRandom({pos, range: 5});
     winSwitch.finished();
