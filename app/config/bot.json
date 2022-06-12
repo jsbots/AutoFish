@@ -70,7 +70,7 @@
       "delay": { "from": 50, "to": 150 },
       "castDelay": 1500,
       "sleepAfterHook": true,
-      "afterHookDelay": { "from": 150, "to": 400 },
+      "afterHookDelay": { "from": 1150, "to": 1400 },
       "maxFishTime": 45000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
