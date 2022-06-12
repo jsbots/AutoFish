@@ -27,8 +27,6 @@ const createBot = (game, {config, settings}, winSwitch) => {
     height: .07
   }));
 
-  mouse.moveTo(notificationZone.zone.x + notificationZone.zone.width , notificationZone.zone.y + notificationZone.zone.height)
-
   fishingZone.registerColors({
       isBobber: ([r, g, b]) => (r - g) > config.redThreshold && (r - b) > config.redThreshold && g < 100 && b < 100
   });
