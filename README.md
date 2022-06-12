@@ -30,7 +30,7 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
-The bot usually catches 500 🐠 per hour and misses 1-2% of a total number. 
+The bot usually catches 500 🐠 per hour and misses <1% of a total number. 
 
 ## Servers tests :video_game:
 
@@ -88,9 +88,8 @@ If we consider **only the software itself**, the very simplified answer you seek
 6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 7. Equip a fishpole.
 8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - Avoid any red and yellow colors in the "Fishing zone" except the bobber itself.
+   - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
    - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
-   - Yellow colors in the fishing zone won't break anything except that every fish you caught will count as missed.  
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
 9. Don't use your keyboard and mouse while the bot is working.
 10. You can press **'space'** to **stop the bot**.
@@ -106,10 +105,11 @@ The size of fishing zone is relative to the size of the window. You can change t
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**:
-- The better your video settings the better it's for the bot too, except the weather effects.
+- If you can, make your video settings as best as possible, except the weather effects...
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help.  
+- Don't fish near other players, the bot might confuse their bobber for yours.
 
 Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
