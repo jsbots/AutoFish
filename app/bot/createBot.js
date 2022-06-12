@@ -43,8 +43,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
           mouse.moveCurveTo(
             pos.x,
             pos.y,
-            random(config.mouseMoveSpeed, 2),
-            random(config.mouseCurvatureStrength, 100)
+            random(config.mouseMoveSpeed, 0.6),
+            random(config.mouseCurvatureStrength, 80)
           );
         } else {
           mouse.moveTo(pos.x, pos.y, delay);
@@ -99,7 +99,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
     }
 
     await winSwitch.execute(workwindow);
-    findBobber.previousBobber = fishingZone.getBobberPrint(fishingZone.findAllBobberColors(), 5);
+    findBobber.memory = fishingZone.getBobberPrint(fishingZone.findAllBobberColors(), 5);
     keyboard.sendKey(settings.fishingKey, delay);
     winSwitch.finished();
 
@@ -117,7 +117,7 @@ const createBot = (game, {config, settings}, winSwitch) => {
 
 
   const findBobber = async () => {
-    const pos = fishingZone.findBobber(findBobber.previousBobber);
+    const pos = fishingZone.findBobber(findBobber.memory);
     if(!pos) return;
 
     if(config.reaction) {
@@ -128,9 +128,9 @@ const createBot = (game, {config, settings}, winSwitch) => {
     await winSwitch.execute(workwindow);
     moveToRandom({pos, range: 5});
     winSwitch.finished();
-    return fishingZone.findBobber(findBobber.previousBobber);
+    return fishingZone.findBobber(findBobber.memory);
   };
-  findBobber.previousBobber = null;
+  findBobber.memory = null;
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
