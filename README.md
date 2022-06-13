@@ -30,7 +30,7 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
-The bot usually catches 500 🐠 per hour and misses <1% of a total number. 
+In a fast mode (with **Like a human** and all the other random values turned off) the bot usually catches 500 🐠 per hour and misses <1% of a total number. 
 
 ## Servers tests :video_game:
 
@@ -77,8 +77,6 @@ If we consider **only the software itself**, the very simplified answer you seek
 - on **unofficial servers**:
 > **"Unlikely"**. *(forgot to turn off the bot on Warmane once, it worked for 6 hours straight)*
 
-
-
 ## Guide :blue_book:
 
 1. Launch the game *(not as administrator)*.
@@ -93,6 +91,8 @@ If we consider **only the software itself**, the very simplified answer you seek
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
 9. Don't use your keyboard and mouse while the bot is working.
 10. You can press **'space'** to **stop the bot**.
+
+If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster).  
 
 ## Fishing Zone :dart:
 
