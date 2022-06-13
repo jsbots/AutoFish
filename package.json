@@ -1,6 +1,6 @@
 {
   "name": "AutoFish",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A fishing bot for World of Warcraft",
   "main": "./app/main.js",
   "scripts": {
