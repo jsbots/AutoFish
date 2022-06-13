@@ -178,5 +178,5 @@ npm test
 - [x] Custom window suppport.
 - [x] Red threshold support.
 - [x] Random click on the bobber area.
-- [ ] Better deviation in mouse movements for "Like a human" option.
-- [ ] Random mouse movements between cycles and after cathing. 
+- [ ] Optional loot
+- [ ] Arbitrary mouse movements over bobber while waiting and outside bobber after catching. 
