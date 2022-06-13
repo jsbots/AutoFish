@@ -30,7 +30,7 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
-The bot usually catches 500 🐠 per hour and misses <1% of a total number. 
+In a fast mode (with **Like a human** and all the other random values turned off) the bot usually catches 500 🐠 per hour and misses <1% of a total number. 
 
 ## Servers tests :video_game:
 
@@ -77,8 +77,6 @@ If we consider **only the software itself**, the very simplified answer you seek
 - on **unofficial servers**:
 > **"Unlikely"**. *(forgot to turn off the bot on Warmane once, it worked for 6 hours straight)*
 
-
-
 ## Guide :blue_book:
 
 1. Launch the game *(not as administrator)*.
@@ -93,6 +91,8 @@ If we consider **only the software itself**, the very simplified answer you seek
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
 9. Don't use your keyboard and mouse while the bot is working.
 10. You can press **'space'** to **stop the bot**.
+
+If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster).  
 
 ## Fishing Zone :dart:
 
@@ -121,7 +121,11 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 AutoFish Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
 
-It's a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) type of installation, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop. You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
+It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI. 
+
+The executable file is a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop. 
+
+You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
 
@@ -174,5 +178,5 @@ npm test
 - [x] Custom window suppport.
 - [x] Red threshold support.
 - [x] Random click on the bobber area.
-- [ ] Better deviation in mouse movements for "Like a human" option.
-- [ ] Random mouse movements between cycles and after cathing. 
+- [ ] Optional loot
+- [ ] Arbitrary mouse movements over bobber while waiting and outside bobber after catching. 
