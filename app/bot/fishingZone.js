@@ -20,12 +20,12 @@ class FishingZone extends RgbAdapter {
   }
 
 
-  findAllBobberColors(exception) {
-    return super.findColors(this.colors.isBobber, exception);
+  findAllBobberColors() {
+    return super.findColors(this.colors.isBobber);
   }
 
   findBobber(exception) {
-    let reds = this.findAllBobberColors(exception);
+    let reds = super.findColors(this.colors.isBobber, exception);
     if(!reds) return;
 
     return reds.find(pos => {
@@ -44,7 +44,6 @@ class FishingZone extends RgbAdapter {
 
   getBobberPrint(rest, wobble) {
     if(!rest) return
-
     let result = [...rest];
     rest.forEach(restPoint => {
       restPoint.getPointsAround(wobble).forEach(aroundPoint => {

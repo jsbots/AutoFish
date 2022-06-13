@@ -177,6 +177,8 @@ const createBot = (game, {config, settings}, winSwitch) => {
       caught = false;
     }
 
+    await sleep(settings.game == `Retail&Classic` ? 750 : 250); // close loot window
+
     if(config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
     }
