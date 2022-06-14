@@ -50,9 +50,12 @@ const createBot = (game, { config, settings }, winSwitch) => {
     isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
 
-  const moveToRandom = ({ pos, range }) => {
-    pos.x = pos.x + random(-range, range);
-    pos.y = pos.y + random(-range, range);
+  const moveTo = ({ pos, randomRange }) => {
+    if(randomRange) {
+      pos.x = pos.x + random(-randomRange, randomRange);
+      pos.y = pos.y + random(-randomRange, randomRange);
+    }
+
     if (settings.likeHuman) {
       mouse.moveCurveTo(
         pos.x,
@@ -138,7 +141,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
 
     await action(() => {
-      moveToRandom({ pos, range: 5 });
+      moveTo({ pos, randomRange: 5 });
     });
 
     return findBobber();
@@ -177,7 +180,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
 
     await action(() => {
-      moveToRandom({ pos, range: 5 });
+      moveTo({ pos, randomRange: 5 });
 
       if (settings.shiftClick) {
         keyboard.toggleKey("shift", true, delay);
