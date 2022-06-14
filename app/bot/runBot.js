@@ -26,6 +26,9 @@ const runBot = async ({ bot, log, state, stats }) => {
     if (randomSleep.on && randomSleep.timer.isElapsed()) {
       log.send(`Sleeping...`);
       await randomSleep();
+      if(state.status == 'stop') {
+        return;
+      }
       randomSleep.timer.update();
     }
 
