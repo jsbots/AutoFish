@@ -2,110 +2,124 @@ const Zone = require("../utils/zone.js");
 const FishingZone = require("./fishingZone.js");
 const NotificationZone = require("./notificationZone.js");
 
-const { createTimer } = require('../utils/time.js');
-
+const { createTimer } = require("../utils/time.js");
 const sleep = (time) => {
   return new Promise((resolve) => {
     setTimeout(resolve, time);
   });
 };
-
 const random = (from, to) => {
   return from + Math.random() * (to - from);
 };
 
-const createBot = (game, {config, settings}, winSwitch) => {
+const createBot = (game, { config, settings }, winSwitch) => {
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
+  const action = async (callback) => {
+    await winSwitch.execute(workwindow);
+    await callback();
+    winSwitch.finished();
+  };
+
   const screenSize = workwindow.getView();
-  const fishingZone = FishingZone.from(workwindow, Zone.from(screenSize).toRel(config.relZone));
-  const notificationZone = NotificationZone.from(workwindow, Zone.from(screenSize).toRel({
-    x: .44,
-    y: .12,
-    width: .11,
-    height: .07
-  }));
+  const fishingZone = FishingZone.from(
+    workwindow,
+    Zone.from(screenSize).toRel(config.relZone)
+  );
+  const notificationZone = NotificationZone.from(
+    workwindow,
+    Zone.from(screenSize).toRel({
+      x: 0.44,
+      y: 0.12,
+      width: 0.11,
+      height: 0.07,
+    })
+  );
 
   fishingZone.registerColors({
-      isBobber: ([r, g, b]) => (r - g) > config.redThreshold && (r - b) > config.redThreshold && g < 100 && b < 100
+    isBobber: ([r, g, b]) =>
+      r - g > config.redThreshold &&
+      r - b > config.redThreshold &&
+      g < 100 &&
+      b < 100,
   });
 
   notificationZone.registerColors({
     isWarning: ([r, g, b]) => r - b > 240 && g - b > 240,
-    isError: ([r, g, b]) => r - g > 200 && r - b > 200
+    isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
 
   const moveToRandom = ({ pos, range }) => {
-        pos.x = pos.x + random(-range, range);
-        pos.y = pos.y + random(-range, range);
-        if (settings.likeHuman) {
-          mouse.moveCurveTo(
-            pos.x,
-            pos.y,
-            random(config.mouseMoveSpeed, 0.6),
-            random(config.mouseCurvatureStrength, 80)
-          );
-        } else {
-          mouse.moveTo(pos.x, pos.y, delay);
-        }
+    pos.x = pos.x + random(-range, range);
+    pos.y = pos.y + random(-range, range);
+    if (settings.likeHuman) {
+      mouse.moveCurveTo(
+        pos.x,
+        pos.y,
+        random(config.mouseMoveSpeed, 0.6),
+        random(config.mouseCurvatureStrength, 80)
+      );
+    } else {
+      mouse.moveTo(pos.x, pos.y, delay);
+    }
   };
-
-  const randomSleepTimer = createTimer(() => {
-    return random(config.randomSleepEvery.from, config.randomSleepEvery.to) * 60 * 1000;
-  });
-
-  const luresAppliedTimer = createTimer(() => {
-    return settings.luresDelayMin * 60 * 1000;
-  });
 
   const checkBobberTimer = createTimer(() => {
     return config.maxFishTime;
-  })
+  });
 
-  const applyLure = async () => {
-    keyboard.sendKey(settings.luresKey, delay);
-    return sleep(config.luresDelay);
+  const preliminaryChecks = () => {
+    if (screenSize.x == -32000 && screenSize.y == -32000) {
+      throw new Error("The window is in fullscreen mode");
+    }
+
+    let redColor = fishingZone.findBobber();
+    if (redColor) {
+      mouse.moveTo(redColor.x, redColor.y);
+      throw new Error(
+        `Found red colors before casting. Change the fishing place.`
+      );
+    }
+  };
+
+  const applyLures = async () => {
+    await action(() => {
+      keyboard.sendKey(settings.luresKey, delay);
+    });
+    await sleep(config.luresDelay);
+  };
+
+  applyLures.on = settings.lures;
+  applyLures.timer = createTimer(() => {
+    return settings.luresDelayMin * 60 * 1000;
+  });
+
+  const randomSleep = async () => {
+    let sleepFor = random(
+      config.randomSleepDelay.from,
+      config.randomSleepDelay.to
+    );
+    await sleep(sleepFor);
+  };
+
+  randomSleep.on = config.randomSleep;
+  randomSleep.timer = createTimer(() => {
+    return random(config.randomSleepEvery.from, config.randomSleepEvery.to) * 60 * 1000;
+  });
+
+  const findAllBobberColors = () => {
+    return fishingZone.getBobberPrint(fishingZone.findAllBobberColors(), 5);
   };
 
   const castFishing = async (state) => {
-    if(state.status == "initial") {
-      if(screenSize.x == -32000 && screenSize.y == -32000) {
-        throw new Error('The window is in fullscreen mode')
-      }
-
-      let redColor = fishingZone.findBobber();
-      if(redColor) {
-        mouse.moveTo(redColor.x, redColor.y);
-        throw new Error(`Found red colors before casting. Change the fishing place.`);
-      }
-
-      randomSleepTimer.start();
-    }
-
-    if(config.randomSleep && randomSleepTimer.isElapsed()) {
-      let sleepFor = random(config.randomSleepDelay.from,
-                            config.randomSleepDelay.to);
-      await sleep(sleepFor);
-      if(state == 'stop') return;
-      randomSleepTimer.update();
-    }
-
-    if(settings.lures && luresAppliedTimer.isElapsed()) {
-      await winSwitch.execute(workwindow);
-      await applyLure();
-      winSwitch.finished();
-      luresAppliedTimer.start();
-    }
-
-    await winSwitch.execute(workwindow);
-    findBobber.memory = fishingZone.getBobberPrint(fishingZone.findAllBobberColors(), 5);
-    keyboard.sendKey(settings.fishingKey, delay);
-    winSwitch.finished();
+    await action(() => {
+      keyboard.sendKey(settings.fishingKey, delay);
+    });
 
     if (state.status == "initial") {
       await sleep(250);
-      if (notificationZone.check('error')) {
+      if (notificationZone.check("error")) {
         throw new Error(`Game error notification occured on casting fishing.`);
       } else {
         state.status = "working";
@@ -115,28 +129,28 @@ const createBot = (game, {config, settings}, winSwitch) => {
     await sleep(config.castDelay);
   };
 
-
-  const findBobber = async () => {
-    const pos = fishingZone.findBobber(findBobber.memory);
-    if(!pos) return;
-
-    if(config.reaction) {
+  const highlightBobber = async (pos) => {
+    if (config.reaction) {
       let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
-      await sleep(reaction)
+      await sleep(reaction);
     }
 
-    await winSwitch.execute(workwindow);
-    moveToRandom({pos, range: 5});
-    winSwitch.finished();
+    await action(() => {
+      moveToRandom({ pos, range: 5 });
+    });
+  };
+
+  const findBobber = () => {
     return fishingZone.findBobber(findBobber.memory);
   };
-  findBobber.memory = null;
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
     while (state.status == "working") {
-      if(checkBobberTimer.isElapsed()) {
-        throw new Error(`Something is wrong. The bot sticked to the bobber for more than ${config.maxFishTime} ms.`)
+      if (checkBobberTimer.isElapsed()) {
+        throw new Error(
+          `Something is wrong. The bot sticked to the bobber for more than ${config.maxFishTime} ms.`
+        );
       }
 
       if (!fishingZone.isBobber(pos)) {
@@ -153,33 +167,32 @@ const createBot = (game, {config, settings}, winSwitch) => {
   };
 
   const hookBobber = async (pos) => {
-    if(config.reaction) {
+    if (config.reaction) {
       let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
-      await sleep(reaction)
+      await sleep(reaction);
     }
 
-    await winSwitch.execute(workwindow);
-    moveToRandom({pos, range: 5});
+    await action(() => {
+      moveToRandom({ pos, range: 5 });
 
-    if (settings.shiftClick) {
-      keyboard.toggleKey("shift", true, delay);
-      mouse.click("right", delay);
-      keyboard.toggleKey("shift", false, delay);
-    } else {
-      mouse.click("right", delay);
-    }
-
-    winSwitch.finished();
+      if (settings.shiftClick) {
+        keyboard.toggleKey("shift", true, delay);
+        mouse.click("right", delay);
+        keyboard.toggleKey("shift", false, delay);
+      } else {
+        mouse.click("right", delay);
+      }
+    });
 
     let caught = true;
     await sleep(250);
-    if (notificationZone.check('warning')) {
+    if (notificationZone.check("warning")) {
       caught = false;
     }
 
-    await sleep(settings.game == `Retail&Classic` ? 750 : 250); // close loot window
+    await sleep(settings.game == `Retail&Classic` ? 750 : 250);
 
-    if(config.sleepAfterHook) {
+    if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
     }
 
@@ -187,12 +200,16 @@ const createBot = (game, {config, settings}, winSwitch) => {
   };
 
   return {
+    preliminaryChecks,
+    findAllBobberColors,
+    randomSleep,
+    applyLures,
     castFishing,
     findBobber,
+    highlightBobber,
     checkBobber,
-    hookBobber
+    hookBobber,
   };
 };
-
 
 module.exports = createBot;

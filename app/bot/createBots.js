@@ -11,10 +11,10 @@ const createWinSwitch = require("../game/winSwitch.js");
 
 const createBots = (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
-
+  config = {config: config.patch[settings.game], settings};
   const bots = games.map((game, i) => {
     return {
-      bot: createBot(game, { config: config.patch[settings.game], settings }, winSwitch),
+      bot: createBot(game, config, winSwitch),
       log: createIdLog(log, ++i),
       state: { status: "initial", startTime: Date.now() },
       stats: new Stats()
