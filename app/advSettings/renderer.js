@@ -37,11 +37,17 @@ const renderCheckingDelay = ({checkingDelay}) => {
 };
 
 const renderMouseMoveSpeed = ({mouseMoveSpeed}) => {
-  return elt(`input`, {type: `number`, name: `mouseMoveSpeed`, value: mouseMoveSpeed});
+  return elt(`div`, {"data-collection": `mouseMoveSpeed`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', { type: `number`, name: `from`, value: mouseMoveSpeed.from }), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', { type: `number`, name: `to`, value: mouseMoveSpeed.to })
+  );
 };
 
 const renderMouseCurvature = ({mouseCurvatureStrength}) => {
-  return elt(`input`, {type: `number`, name: `mouseCurvatureStrength`, value: mouseCurvatureStrength});
+  return elt(`div`, {"data-collection": `mouseCurvatureStrength`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', { type: `number`, name: `from`, value: mouseCurvatureStrength.from }), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', { type: `number`, name: `to`, value: mouseCurvatureStrength.to })
+  );
 };
 
 const renderLuresDelay = ({luresDelay}) => {
@@ -101,7 +107,7 @@ const renderCustomWindow = ({useCustomWindow, customWindow}) => {
         select.append(elt(`option`, { selected: title == customWindow }, title));
       })
     });
-  } 
+  }
   return elt(`div`, null, renderUseCustomWindow, select);
 ;
 };
@@ -112,9 +118,9 @@ const renderSettings = (config) => {
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Custom window: `, renderCustomWindow(config), `If for some reason your game window isn't "World of Warcraft" you can choose a custom window from all the windows opened on your computer.`),
-  wrapInLabel(`Mouse/keyboard random delay (ms) `, renderDelay(config), `The bot will generate a random number from the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
-  wrapInLabel(`Base mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between this value and 5. The higher the value the faster the bot moves the cursor.`),
-  wrapInLabel(`Base mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between this value and 60. The higher the value the stronger is the deviation of the movement.`),
+  wrapInLabel(`Mouse/keyboard random delay (ms) `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
+  wrapInLabel(`Random mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between the provided values. The higher the value the faster the bot moves the cursor. Works only if Like a human option is on.`),
+  wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay: `, renderLuresDelay(config), `How much it takes the bot to apply the lure.`)),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
@@ -133,7 +139,7 @@ const renderSettings = (config) => {
   ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Red color threshold: `, renderRedThreshold(config), `The bot will ignore all the reddish colors below this value. The higher the value the more red colors the bot will ignore. Min value: 10, max value: 150. You can increase this value if you want to ignore the reddish ground in the water (like Durotar). Experiment by changing this value untill the preliminary check before casting won't notice any red colors in the surroundings.`),
+  wrapInLabel(`Red color threshold: `, renderRedThreshold(config), `The bot will ignore all the reddish colors below this value. The higher the value the more red colors the bot will ignore. Min value: 10, max value: 150. You can increase this value if you want to ignore some reddish surroundings (e.g. Durotar). Experiment by changing this value untill the preliminary check before casting won't notice any red colors in the surroundings.`),
   wrapInLabel(`Max check time (ms)`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Checking delay: (ms)`, renderCheckingDelay(config), `How often the bot needs to check the hook for changes.`),
   wrapInLabel(`Fishing zone (%)`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
