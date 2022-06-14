@@ -130,6 +130,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   const highlightBobber = async (pos) => {
+    if(settings.likeHuman && random(0, 100) > 85) return pos;
+
     if (config.reaction) {
       let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
       await sleep(reaction);
@@ -138,6 +140,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await action(() => {
       moveToRandom({ pos, range: 5 });
     });
+
+    return findBobber();
   };
 
   const findBobber = () => {

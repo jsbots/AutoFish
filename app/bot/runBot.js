@@ -47,8 +47,7 @@ const runBot = async ({ bot, log, state, stats }) => {
     let bobber = findBobber();
 
     if(bobber) {
-      await highlightBobber(bobber);
-      bobber = findBobber();
+      bobber = await highlightBobber(bobber);
     }
 
     if (bobber) {
