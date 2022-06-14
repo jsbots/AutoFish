@@ -25,10 +25,10 @@ const renderMaxFishTime = ({maxFishTime}) => {
 
 const renderRelZone = ({relZone}) => {
   return elt(`div`, {"data-collection": `relZone`},
-      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, name: `x`, value: relZone.x}),
-      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, name: `y`, value: relZone.y}),
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, name: `width`, value: relZone.width}),
-      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, name: `height`, value: relZone.height})
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1, name: `x`, value: relZone.x}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, name: `y`, value: relZone.y}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1, name: `width`, value: relZone.width}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1, name: `height`, value: relZone.height})
     );
 };
 
@@ -38,8 +38,8 @@ const renderCheckingDelay = ({checkingDelay}) => {
 
 const renderMouseMoveSpeed = ({mouseMoveSpeed}) => {
   return elt(`div`, {"data-collection": `mouseMoveSpeed`}, elt(`span`, {className: `option_text`}, `from:`),
-  elt('input', { type: `number`, name: `from`, value: mouseMoveSpeed.from }), elt(`span`, {className: `option_text`}, `to:`),
-  elt('input', { type: `number`, name: `to`, value: mouseMoveSpeed.to })
+  elt('input', { type: `number`, step: 0.1, name: `from`, value: mouseMoveSpeed.from }), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', { type: `number`, step: 0.1, name: `to`, value: mouseMoveSpeed.to })
   );
 };
 
