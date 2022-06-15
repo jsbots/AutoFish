@@ -1,4 +1,5 @@
 package-lock.json
+eng.traineddata
 # Logs
 logs
 *.log
