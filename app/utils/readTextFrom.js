@@ -13,7 +13,7 @@ const readTextFrom = async ({data, width, height}) => {
   await new Promise((resolve) => {
     new Jimp({ data, width, height }, async (err, image) => {
       if(err) throw new Error(`Can't create an image for Jimp`);
-      img = await image.greyscale().invert().getBase64Async(Jimp.MIME_PNG);
+      img = await image.greyscale().contrast(0.1).invert().getBase64Async(Jimp.MIME_PNG);
       resolve();
     });
   });
