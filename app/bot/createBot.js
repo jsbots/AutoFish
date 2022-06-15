@@ -211,13 +211,12 @@ const createBot = (game, { config, settings }, winSwitch) => {
         if(y - 100 < 0) y = 100;
 
         let recognizedText = await readTextFrom(workwindow.capture({x: x + 30, y: y - 20, width: 120, height: 60}));
-        let result = recognizedText.replace(/\s+/g, " ").trim();
+        let recognizedWord = recognizedText.replace(/\s+/g, ` `).trim();
+        let isInList = whitelist.some(whiltelistWord => {
+            return percentComparison(whiltelistWord, recognizedWord) > 80;
+        });
 
-        console.log(`result`, result);
-        let percentages = whitelist.map(name => percentComparison(name, result));
-        console.log(`percengtage`, percentages);
-
-          if(percentages.some(percentage => percentage > 80)) {
+          if(isInList) {
             moveTo({ pos, randomRange: 5 });
             if (config.sleepAfterHook) {
               await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to)); // think time
