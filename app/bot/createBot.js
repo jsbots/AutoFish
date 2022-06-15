@@ -1,8 +1,9 @@
 const Zone = require("../utils/zone.js");
 const FishingZone = require("./fishingZone.js");
 const NotificationZone = require("./notificationZone.js");
-
+const { percentComparison, readTextFrom } = require("../utils/readTextFrom.js");
 const { createTimer } = require("../utils/time.js");
+
 const sleep = (time) => {
   return new Promise((resolve) => {
     setTimeout(resolve, time);
@@ -72,7 +73,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     return config.maxFishTime;
   });
 
-  const preliminaryChecks = () => {
+  const preliminaryChecks = async () => {
     if (screenSize.x == -32000 && screenSize.y == -32000) {
       throw new Error("The window is in fullscreen mode");
     }
@@ -191,13 +192,43 @@ const createBot = (game, { config, settings }, winSwitch) => {
       }
     });
 
-    let caught = true;
+    let caught = false;
     await sleep(250);
-    if (notificationZone.check("warning")) {
-      caught = false;
+    if (!notificationZone.check("warning")) {
+      caught = true;
+      let whitelist = [`Nettlefish`, `Pygmy Suckerfish`];
+      if(true) {
+        // RETAIL //
+        /*
+        let {x, y} = mouse.getPos();
+        if(y - 105 < 0) y = 105;
+        y = y - 25;
+        x = x + 15;
+        */
+
+        // WOTLK //
+        let {x, y} = mouse.getPos();
+        if(y - 100 < 0) y = 100;
+
+        let recognizedText = await readTextFrom(workwindow.capture({x: x + 30, y: y - 20, width: 120, height: 60}));
+        let result = recognizedText.replace(/\s+/g, " ").trim();
+
+        console.log(`result`, result);
+        let percentages = whitelist.map(name => percentComparison(name, result));
+        console.log(`percengtage`, percentages);
+
+          if(percentages.some(percentage => percentage > 80)) {
+            moveTo({ pos, randomRange: 5 });
+            if (config.sleepAfterHook) {
+              await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to)); // think time
+            }
+            mouse.click("right", delay);
+          }
+      }
+      keyboard.sendKey("escape", delay);
     }
 
-    await sleep(settings.game == `Retail&Classic` ? 750 : 250);
+    await sleep(settings.game == `Retail&Classic` ? 750 : 250); // close loot window delay
 
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
@@ -218,5 +249,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     hookBobber,
   };
 };
+
+
 
 module.exports = createBot;
