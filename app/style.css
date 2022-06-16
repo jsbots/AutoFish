@@ -95,6 +95,7 @@ section {
 
 .settings {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .settings .settings_section {
@@ -109,6 +110,10 @@ section {
 
 .settings .settings_section:first-child {
   margin-right: 5px;
+}
+
+.settings .whiteList {
+  margin-top: 5px;
 }
 
 .settings label {
@@ -133,6 +138,10 @@ section {
 .settings input[type="number"], .settings input[type="text"] {
   width: 50px;
   height: 20px;
+}
+
+.settings input[type="text"].whitelist_input  {
+  width: 208px;
 }
 
 .advanced_settings_button {
