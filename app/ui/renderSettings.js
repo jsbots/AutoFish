@@ -72,6 +72,9 @@ const renderAdvancedSettings = () => {
   return elt('input', {type: 'button', name:"advancedSettings", value: "Advanced settings", className: "advanced_settings_button"});
 }
 
+const renderWhitelist = ({whitelist, whitelistWords}) => {
+  return elt('div', null, elt('input', {type: 'checkbox', name: "whitelist", checked: whitelist}), elt('input', {type: 'text', name:"whitelistWords", className: "whitelist_input",value: whitelistWords, disabled: !whitelist}))
+}
 
 const renderSettings = (config) => {
 return elt(
@@ -134,6 +137,15 @@ return elt(
         renderAdvancedSettings(config),
         `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
       ),
+    ),
+    elt(
+      "div",
+      { className: "settings_section whiteList" },
+      wrapInLabel(
+        "Whitelist: ",
+        renderWhitelist(config),
+        `Optional loot option`
+      )
     )
   );
 }

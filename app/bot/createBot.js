@@ -196,8 +196,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await sleep(250);
     if (!notificationZone.check("warning")) {
       caught = true;
-      let whitelist = [`Nettlefish`, `Pygmy Suckerfish`];
-      if(true) {
+      if(settings.whitelist) {
         // RETAIL //
         /*
         let {x, y} = mouse.getPos();
@@ -210,6 +209,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
         let {x, y} = mouse.getPos();
         if(y - 100 < 0) y = 100;
 
+        let whitelist = settings.whitelistWords.split(',').map(word => word.trim());
         let recognizedText = await readTextFrom(workwindow.capture({x: x + 30, y: y - 20, width: 120, height: 60}));
         let recognizedWord = recognizedText.replace(/\s+/g, ` `).trim();
         let isInList = whitelist.some(whiltelistWord => {

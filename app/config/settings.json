@@ -1,1 +1,13 @@
-{"game":"Retail&Classic","timer":0,"shiftClick":false,"likeHuman":true,"lures":false,"fishingKey":"1","luresKey":"2","luresDelayMin":10,"timerQuit":false}
+{
+  "game": "Retail&Classic",
+  "timer": 0,
+  "shiftClick": false,
+  "likeHuman": true,
+  "lures": false,
+  "fishingKey": "1",
+  "luresKey": "2",
+  "luresDelayMin": 10,
+  "timerQuit": false,
+  "whitelist": false,
+  "whitelistWords": ""
+}
