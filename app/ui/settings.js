@@ -23,7 +23,7 @@ class Settings {
     this.dom = elt('form', null , renderSettings(config));
 
     this.dom.addEventListener("input", (event) => {
-      if(event.target.type == "text" && event.target.value.length > 1) {
+      if(event.target.name == "fishingKey" || event.target.name =="luresKey" && event.target.value.length > 1) {
         event.target.value = event.target.value[0];
       };
     });
