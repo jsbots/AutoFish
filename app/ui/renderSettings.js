@@ -138,13 +138,13 @@ return elt(
         `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
       ),
     ),
+    elt("p", {className: 'settings_header'}, "Loot whitelist:"),
     elt(
       "div",
-      { className: "settings_section whiteList" },
-      wrapInLabel(
-        "Whitelist: ",
+      { className: "settings_section" },
+      wrapInLabel("",
         renderWhitelist(config),
-        `Optional loot option`
+        `Experimental feature! The bot will loot only items in the list. Before using, turn off AutoLoot in the game. The names of the items must be exactly the same and separated by coma.`
       )
     )
   );
