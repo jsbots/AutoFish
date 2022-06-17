@@ -144,7 +144,7 @@ return elt(
       { className: "settings_section" },
       wrapInLabel("",
         renderWhitelist(config),
-        `Experimental feature! The bot will loot only items in the list. Before using, turn off AutoLoot in the game. The names of the items must be exactly the same and separated by coma.`
+        `Experimental feature! The bot will loot only items in the list. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by coma.`
       )
     )
   );
