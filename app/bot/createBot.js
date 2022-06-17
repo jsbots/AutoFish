@@ -1,7 +1,7 @@
 const Zone = require("../utils/zone.js");
 const FishingZone = require("./fishingZone.js");
 const NotificationZone = require("./notificationZone.js");
-const { percentComparison, readTextFrom } = require("../utils/readTextFrom.js");
+const { percentComparison, readTextFrom, sortWordsByItem } = require("../utils/readTextFrom.js");
 const { createTimer } = require("../utils/time.js");
 
 const sleep = (time) => {
@@ -51,6 +51,16 @@ const createBot = (game, { config, settings }, winSwitch) => {
     isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
 
+  config.lootWindow = config.lootWindow[screenSize.width < 1536 ? `1536` : `1920`];
+  const lootWindow = {
+    upperLimit: config.lootWindow.upperLimit * screenSize.height,
+    toItemX: config.lootWindow.toItemX * screenSize.width,
+    toItemY: config.lootWindow.toItemY * screenSize.height,
+    width: config.lootWindow.width * screenSize.width,
+    height: config.lootWindow.height * screenSize.height,
+    itemHeight: config.lootWindow.itemHeight * screenSize.height
+  };
+
   const moveTo = ({ pos, randomRange }) => {
     if(randomRange) {
       pos.x = pos.x + random(-randomRange, randomRange);
@@ -73,7 +83,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     return config.maxFishTime;
   });
 
-  const preliminaryChecks = async () => {
+  const preliminaryChecks = () => {
     if (screenSize.x == -32000 && screenSize.y == -32000) {
       throw new Error("The window is in fullscreen mode");
     }
@@ -176,8 +186,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const hookBobber = async (pos) => {
     if (config.reaction) {
-      let reaction = random(config.reactionDelay.from, config.reactionDelay.to);
-      await sleep(reaction);
+      await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
     }
 
     await action(() => {
@@ -197,34 +206,44 @@ const createBot = (game, { config, settings }, winSwitch) => {
     if (!notificationZone.check("warning")) {
       caught = true;
       if(settings.whitelist) {
-        // RETAIL //
-        /*
-        let {x, y} = mouse.getPos();
-        if(y - 105 < 0) y = 105;
-        y = y - 25;
-        x = x + 15;
-        */
-
-        // WOTLK //
-        let {x, y} = mouse.getPos();
-        if(y - 100 < 0) y = 100;
-
-        let whitelist = settings.whitelistWords.split(',').map(word => word.trim());
-        let recognizedText = await readTextFrom(workwindow.capture({x: x + 30, y: y - 20, width: 120, height: 60}));
-        let recognizedWord = recognizedText.replace(/\s+/g, ` `).trim();
-        let isInList = whitelist.some(whiltelistWord => {
-            return percentComparison(whiltelistWord, recognizedWord) > 80;
-        });
-
-          if(isInList) {
-            moveTo({ pos, randomRange: 5 });
-            if (config.sleepAfterHook) {
-              await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to)); // think time
-            }
-            mouse.click("right", delay);
+        let cursorPos = mouse.getPos();
+          if(cursorPos.y - lootWindow.upperLimit < 0) {
+            cursorPos.y = lootWindow.upperLimit;
           }
+        let whitelist = settings.whitelistWords.split(',').map(word => word.trim());
+
+        let recognizedWords = await readTextFrom(workwindow.capture({x: cursorPos.x + lootWindow.toItemX,
+                                                                    y: cursorPos.y - lootWindow.toItemY,
+                                                                    width: lootWindow.width,
+                                                                    height: lootWindow.height}), screenSize.width < 1536 ? 2 : 1.5);
+
+        let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
+        let itemPos = 0;
+        for(let item of items) {
+          let isInList = whitelist.some(whiltelistWord => {
+              return percentComparison(whiltelistWord, item) > 70;
+          });
+
+            if(isInList) {
+              moveTo({
+                pos: {x: cursorPos.x, y: cursorPos.y + itemPos},
+                randomRange: 5
+               });
+
+              if (config.reaction) {
+                await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); // think time
+              }
+
+              await action(() => {
+                mouse.click("right", delay);
+              });
+            }
+        itemPos += lootWindow.itemHeight;
+        }
       }
-      keyboard.sendKey("escape", delay);
+      await action(() => {
+          keyboard.sendKey("escape", delay);
+      });
     }
 
     await sleep(settings.game == `Retail&Classic` ? 750 : 250); // close loot window delay
@@ -248,7 +267,5 @@ const createBot = (game, { config, settings }, winSwitch) => {
     hookBobber,
   };
 };
-
-
 
 module.exports = createBot;
