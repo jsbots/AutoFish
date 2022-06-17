@@ -207,16 +207,20 @@ const createBot = (game, { config, settings }, winSwitch) => {
       caught = true;
       if(settings.whitelist) {
         let cursorPos = mouse.getPos();
+
           if(cursorPos.y - lootWindow.upperLimit < 0) {
             cursorPos.y = lootWindow.upperLimit;
+            await action(() => {
+              let pos = {x: cursorPos.x + 35, y: cursorPos.y}
+              moveTo({pos, randomRange: 10});
+            });
           }
-        let whitelist = settings.whitelistWords.split(',').map(word => word.trim());
 
+        let whitelist = settings.whitelistWords.split(',').map(word => word.trim());
         let recognizedWords = await readTextFrom(workwindow.capture({x: cursorPos.x + lootWindow.toItemX,
                                                                     y: cursorPos.y - lootWindow.toItemY,
                                                                     width: lootWindow.width,
-                                                                    height: lootWindow.height}), screenSize.width < 1536 ? 2 : 1.5);
-
+                                                                    height: lootWindow.height}), 2);
         let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
         let itemPos = 0;
         for(let item of items) {
@@ -240,14 +244,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
             }
         itemPos += lootWindow.itemHeight;
         }
-      }
-      await action(() => {
+        await action(() => {
           keyboard.sendKey("escape", delay);
-      });
+        });
+      }
     }
 
     await sleep(settings.game == `Retail&Classic` ? 750 : 250); // close loot window delay
-
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
     }
