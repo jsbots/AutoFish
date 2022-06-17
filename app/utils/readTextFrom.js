@@ -8,17 +8,18 @@ const worker = createWorker();
   await worker.initialize('eng');
 })();
 
-const readTextFrom = async ({data, width, height}) => {
+const readTextFrom = async ({data, width, height}, scale) => {
   let img;
   await new Promise((resolve) => {
     new Jimp({ data, width, height }, async (err, image) => {
       if(err) throw new Error(`Can't create an image for Jimp`);
-      img = await image.greyscale().contrast(0.1).invert().getBase64Async(Jimp.MIME_PNG);
+      img = await image.greyscale().contrast(0.3).invert().scale(scale).getBase64Async(Jimp.MIME_PNG);
       resolve();
     });
   });
-  let { data: { text } } = await worker.recognize(img);
-  return text;
+  let result = await worker.recognize(img);
+  let words = result.data.words.map(({text, baseline}) => ({text, y: baseline.y0 / scale}));
+  return words;
 }
 
 const percentComparison = (first, second) => {
@@ -33,7 +34,25 @@ const percentComparison = (first, second) => {
   return rightLettersNum / first.length * 100;
 };
 
+
+const sortWordsByItem = (words, itemHeight) => {
+  let selected = [];
+  words.forEach(word => {
+    if(word.text.length < 4) return;
+    let pos = selected[Math.floor(word.y / itemHeight)];
+    if(!pos) {
+      selected[Math.floor(word.y / itemHeight)] = word.text;
+    } else {
+      selected[Math.floor(word.y / itemHeight)] += ` ${word.text}`;
+    }
+  });
+
+  return selected;
+}
+
+
 module.exports = {
   percentComparison,
-  readTextFrom
+  readTextFrom,
+  sortWordsByItem
  };
