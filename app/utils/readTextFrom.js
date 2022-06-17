@@ -38,7 +38,7 @@ const percentComparison = (first, second) => {
 const sortWordsByItem = (words, itemHeight) => {
   let selected = [];
   words.forEach(word => {
-    if(word.text.length < 4) return;
+    if(word.text.length < 2) return;
     let pos = selected[Math.floor(word.y / itemHeight)];
     if(!pos) {
       selected[Math.floor(word.y / itemHeight)] = word.text;
