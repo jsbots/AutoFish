@@ -72,8 +72,16 @@ const renderAdvancedSettings = () => {
   return elt('input', {type: 'button', name:"advancedSettings", value: "Advanced settings", className: "advanced_settings_button"});
 }
 
-const renderWhitelist = ({whitelist, whitelistWords}) => {
-  return elt('div', null, elt('input', {type: 'checkbox', name: "whitelist", checked: whitelist}), elt('input', {type: 'text', name:"whitelistWords", className: "whitelist_input",value: whitelistWords, disabled: !whitelist}))
+const renderWhitelist = ({game, whitelist, whitelistWords}) => {
+  let disabled = !whitelist;
+  let checked = whitelist;
+  let allDisabled;
+  if(game == 'Cataclysm' || game == "TBC" || game == "Vanilla") {
+    disabled = true;
+    allDisabled = true;
+    checked = false;
+  }
+  return elt('div', null, elt('input', {type: 'checkbox', name: "whitelist", checked, disabled: allDisabled}), elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}))
 }
 
 const renderSettings = (config) => {
@@ -144,7 +152,7 @@ return elt(
       { className: "settings_section" },
       wrapInLabel("",
         renderWhitelist(config),
-        `Experimental feature! The bot will loot only items in the list. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by coma.`
+        `Experimental feature! Works only with English names and only in Retail&Classic, MoP and WoTLK. The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by coma.`
       )
     )
   );
