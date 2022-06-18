@@ -24,6 +24,13 @@
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner in **one** or **multiple** windows of the game at the same time.
 
+**Features:**
+- Multiple windows support.
+- Optional loot support.
+- Fishing lures support.
+- Custom window suppport.
+- Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
+
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [AutoFish 1.1](https://youtu.be/o1i_cgZzuHc).
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a more simple solution (and much faster): it analyzes the window of the game for condensed red colors and then sticks to them checking their position for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, the bot sees this as a change of the color and understands it as time to hook. In a very simplified way, it acts as a human.
@@ -56,7 +63,7 @@ Using bots in most of the games is prohibited, by doing so you should understand
 
 The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
-To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
 ## Will I be banned for using this? :interrobang:
 
@@ -119,7 +126,9 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
+AutoFish 1.6.2 Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing) (recommended)
+
+AutoFish 1.7.0 Setup: [Download](https://drive.google.com/file/d/1R567h7pZq7EBOr1en793Vj_ApSPneX5e/view?usp=sharing)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI. 
 
@@ -167,7 +176,7 @@ npm start
 npm test
 ```
 
-## Task list :checkered_flag:
+## Task list / Features :checkered_flag:
 
 - [x] Autofish 1.0.0
 - [x] Multiple windows support
@@ -178,5 +187,4 @@ npm test
 - [x] Custom window suppport.
 - [x] Red threshold support.
 - [x] Random click on the bobber area.
-- [ ] Optional loot
-- [ ] Arbitrary mouse movements over bobber while waiting and outside bobber after catching. 
+- [x] Optional loot
