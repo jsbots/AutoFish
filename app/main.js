@@ -109,7 +109,7 @@ function createWindow() {
   let win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 505,
+    height: 560,
     show: false,
     resizable: false,
     webPreferences: {
