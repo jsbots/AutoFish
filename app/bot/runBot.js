@@ -11,8 +11,7 @@ const runBot = async ({ bot, log, state, stats }) => {
     hookBobber,
   } = bot;
 
-  findBobber.attempts = 0;
-
+  let attempts = 0;
   do {
     if (state.status == "initial") {
       log.send(`Preliminary checks...`);
@@ -52,12 +51,12 @@ const runBot = async ({ bot, log, state, stats }) => {
 
     if (bobber) {
       log.ok(`Found the bobber!`);
-      findBobber.attempts = 0;
+      attempts = 0;
     } else {
       log.err(`Can't find the bobber, recast.`);
-      if (++findBobber.attempts == 3) {
+      if (++attempts == findBobber.maxAttempts) {
         throw new Error(
-          `Have tried 3 attempts to find the bobber and failed: this place isn't good for fishing.`
+          `Have tried ${findBobber.maxAttempts} attempts to find the bobber and failed: this place isn't good for fishing.`
         );
       }
       continue;

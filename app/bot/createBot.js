@@ -165,6 +165,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const findBobber = () => {
     return fishingZone.findBobber(findBobber.memory);
   };
+  findBobber.memory = null;
+  findBobber.maxAttempts = config.maxAttempts; 
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();

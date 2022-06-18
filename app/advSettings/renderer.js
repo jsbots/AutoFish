@@ -12,6 +12,11 @@ const renderCastDelay = ({castDelay}) => {
   return elt('input', {type: `number`, name: `castDelay`, value: castDelay})
 };
 
+
+const renderMaxAttempts = ({ maxAttempts }) => {
+  return elt('input', {type: 'number', name:"maxAttempts", value: maxAttempts})
+};
+
 const renderAfterHookDelay = ({sleepAfterHook, afterHookDelay}) => {
   return elt(`div`, {"data-collection": `afterHookDelay`}, elt(`span`, {className: `option_text`}, `from:`),
   elt('input', {type: `number`, name: `from`, value: afterHookDelay.from, disabled: !sleepAfterHook}), elt(`span`, {className: `option_text`}, `to:`),
@@ -121,7 +126,8 @@ const renderSettings = (config) => {
   wrapInLabel(`Mouse/keyboard random delay (ms) `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
   wrapInLabel(`Random mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between the provided values. The higher the value the faster the bot moves the cursor. Works only if Like a human option is on.`),
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
-  wrapInLabel(`Applying lures delay: `, renderLuresDelay(config), `How much it takes the bot to apply the lure.`)),
+  wrapInLabel(`Applying lures delay: `, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
+  wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`)),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Random sleep`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),
