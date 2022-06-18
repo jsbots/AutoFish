@@ -118,7 +118,25 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.125,
+          "toItemX": 0.009,
+          "toItemY": 0.037,
+          "itemHeight": 0.057,
+          "height": 0.214,
+          "width": 0.084
+        },
+        "1920": {
+          "upperLimit": 0.089,
+          "toItemX": 0.007,
+          "toItemY": 0.025,
+          "itemHeight": 0.04,
+          "height": 0.153,
+          "width": 0.056
+        }
+      }
     },
     "TBC": {
       "useCustomWindow": false,
