@@ -9,7 +9,8 @@ const worker = createWorker();
 })();
 
 const readTextFrom = async (buffer, scale) => {
-  let img = await Jimp.read(buffer).greyscale().contrast(0.3).invert().scale(scale);
+  let img = await Jimp.read(buffer)
+  img.greyscale().contrast(0.3).invert().scale(scale);
   let result = await worker.recognize(await img.getBase64Async(Jimp.MIME_PNG));
   let words = result.data.words.map(({text, baseline}) => ({text, y: baseline.y0 / scale}));
   return words;
