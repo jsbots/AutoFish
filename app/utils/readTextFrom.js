@@ -8,16 +8,9 @@ const worker = createWorker();
   await worker.initialize('eng');
 })();
 
-const readTextFrom = async ({data, width, height}, scale) => {
-  let img;
-  await new Promise((resolve) => {
-    new Jimp({ data, width, height }, async (err, image) => {
-      if(err) throw new Error(`Can't create an image for Jimp`);
-      img = await image.greyscale().contrast(0.3).invert().scale(scale).getBase64Async(Jimp.MIME_PNG);
-      resolve();
-    });
-  });
-  let result = await worker.recognize(img);
+const readTextFrom = async (buffer, scale) => {
+  let img = await Jimp.read(buffer).greyscale().contrast(0.3).invert().scale(scale);
+  let result = await worker.recognize(await img.getBase64Async(Jimp.MIME_PNG));
   let words = result.data.words.map(({text, baseline}) => ({text, y: baseline.y0 / scale}));
   return words;
 }
@@ -38,7 +31,7 @@ const percentComparison = (first, second) => {
 const sortWordsByItem = (words, itemHeight) => {
   let selected = [];
   words.forEach(word => {
-    if(word.text.length < 2) return;
+    if(!word.text || word.text.length < 2) return;
     let pos = selected[Math.floor(word.y / itemHeight)];
     if(!pos) {
       selected[Math.floor(word.y / itemHeight)] = word.text;
@@ -48,8 +41,7 @@ const sortWordsByItem = (words, itemHeight) => {
   });
 
   return selected;
-}
-
+};
 
 module.exports = {
   percentComparison,
