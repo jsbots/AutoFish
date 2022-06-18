@@ -54,14 +54,14 @@ const createBot = (game, { config, settings }, winSwitch) => {
     isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
 
-  config.lootWindow = config.lootWindow[screenSize.width < 1536 ? `1536` : `1920`];
+  const lootWindowPatch = config.lootWindow[screenSize.width < 1536 ? `1536` : `1920`];
   const lootWindow = {
-    upperLimit: config.lootWindow.upperLimit * screenSize.height,
-    toItemX: config.lootWindow.toItemX * screenSize.width,
-    toItemY: config.lootWindow.toItemY * screenSize.height,
-    width: config.lootWindow.width * screenSize.width,
-    height: config.lootWindow.height * screenSize.height,
-    itemHeight: config.lootWindow.itemHeight * screenSize.height
+    upperLimit: lootWindowPatch.upperLimit * screenSize.height,
+    toItemX: lootWindowPatch.toItemX * screenSize.width,
+    toItemY: lootWindowPatch.toItemY * screenSize.height,
+    width: lootWindowPatch.width * screenSize.width,
+    height: lootWindowPatch.height * screenSize.height,
+    itemHeight: lootWindowPatch.itemHeight * screenSize.height
   };
   const whitelist = settings.whitelistWords.split(',').map(word => word.trim());
 
