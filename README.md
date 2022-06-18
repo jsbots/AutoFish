@@ -176,7 +176,7 @@ npm start
 npm test
 ```
 
-## Task list / Features :checkered_flag:
+## Task list :checkered_flag:
 
 - [x] Autofish 1.0.0
 - [x] Multiple windows support
