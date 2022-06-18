@@ -1,6 +1,6 @@
 {
   "name": "AutoFish",
-  "version": "1.6.4",
+  "version": "1.7.0",
   "description": "A fishing bot for World of Warcraft",
   "main": "./app/main.js",
   "scripts": {
@@ -27,7 +27,9 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "keysender": "^1.6.5"
+    "jimp": "^0.16.1",
+    "keysender": "^1.6.5",
+    "tesseract.js": "^2.1.5"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.61",

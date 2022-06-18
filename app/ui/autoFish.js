@@ -13,7 +13,7 @@ const renderLogo = () => {
       elt(
         "a",
         { href: `#`, onclick: () => ipcRenderer.send("open-link") },
-        "olesgeras"
+        "jsbots"
       )
     )
   );
@@ -70,7 +70,7 @@ class AutoFish {
       elt("p", {className: 'settings_header'}, "Log:"),
       this.logger.dom,
       this.button.dom,
-      elt("p", {className: "version"}, "ver. 1.6.4")
+      elt("p", {className: "version"}, "ver. 1.7.0")
     );
   }
 }
