@@ -22,7 +22,25 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.123,
+          "toItemX": 0.01,
+          "toItemY": 0.035,
+          "itemHeight": 0.058,
+          "height": 0.213,
+          "width": 0.074
+        },
+        "1920": {
+          "upperLimit": 0.1,
+          "toItemX": 0.007,
+          "toItemY": 0.025,
+          "itemHeight": 0.04,
+          "height": 0.153,
+          "width": 0.056
+        }
+      }
     },
     "Cataclysm": {
       "useCustomWindow": false,
@@ -67,7 +85,7 @@
         "1536": {
           "upperLimit": 0.132,
           "toItemX": 0.019,
-          "toItemY": 0.033,
+          "toItemY": 0.022,
           "itemHeight": 0.055,
           "height": 0.218,
           "width": 0.079
