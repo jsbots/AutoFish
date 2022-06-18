@@ -75,7 +75,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 > **"Probably"**.
 
 - on **unofficial servers**:
-> **"Unlikely"**. *(forgot to turn off the bot on Warmane once, it worked for 6 hours straight)*
+> **"Unlikely"**.
 
 ## Guide :blue_book:
 
