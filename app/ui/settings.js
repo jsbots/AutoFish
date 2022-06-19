@@ -6,12 +6,8 @@ const convertValue = (node) => {
     value = node.checked;
   }
 
-  if (node.type == "checkbox") {
-    value = node.checked;
-  }
-
   if (node.type == "number") {
-    value = Number(node.value);
+    value = Number(node.value) || 0;
   }
 
   return value;
@@ -23,7 +19,8 @@ class Settings {
     this.dom = elt('form', null , renderSettings(config));
 
     this.dom.addEventListener("input", (event) => {
-      if(event.target.name == "fishingKey" || event.target.name =="luresKey" && event.target.value.length > 1) {
+      if((event.target.name == "fishingKey" || event.target.name =="luresKey") &&
+        event.target.value.length > 1 && event.target.value.length != 0) {
         event.target.value = event.target.value[0];
       };
     });
@@ -32,7 +29,7 @@ class Settings {
       if(Object.keys(this.config).includes(event.target.name)) {
         this.config[event.target.name] = convertValue(event.target);
       }
-
+      console.log(event.target.value);
       this.dom.innerHTML = ``;
       this.dom.append(renderSettings(this.config));
 

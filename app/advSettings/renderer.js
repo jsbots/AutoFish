@@ -2,6 +2,19 @@ const { ipcRenderer } = require("electron");
 const elt = require("../ui/utils/elt.js");
 const wrapInLabel = require("../ui/utils/wrapInLabel.js");
 
+const convertValue = (node) => {
+  let value = node.value;
+  if (node.type == "checkbox") {
+    value = node.checked;
+  }
+
+  if (node.type == "number") {
+    value = Number(node.value) || 0;
+  }
+
+  return value;
+};
+
 const renderDelay = ({delay}) => {
   return elt(`div`, {"data-collection": `delay`}, elt(`span`, {className: `option_text`}, `from:`),
      elt('input', {type: `number`, name: `from`, value: delay.from}), elt(`span`, {className: `option_text`}, `to:`),
@@ -187,15 +200,7 @@ const runApp = async () => {
     [...settings.elements].forEach(option => {
       if(!option.name) return;
 
-      let value = option.value;
-      if (option.type == "checkbox") {
-        value = option.checked;
-      }
-
-      if (option.type == "number") {
-        value = Number(option.value);
-      }
-
+      let value = convertValue(option);
       let collection = option.parentNode["data-collection"];
       if(collection) {
         config[collection][option.name] = value;
