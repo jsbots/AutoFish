@@ -158,7 +158,7 @@ const renderSettings = (config) => {
   ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Red color threshold: `, renderRedThreshold(config), `The bot will ignore all the reddish colors below this value. The higher the value the more red colors the bot will ignore. Min value: 10, max value: 150. You can increase this value if you want to ignore some reddish surroundings (e.g. Durotar). Experiment by changing this value untill the preliminary check before casting won't notice any red colors in the surroundings.`),
+  wrapInLabel(`Red color threshold: `, renderRedThreshold(config), `The bot will ignore all the reddish colors below this value. The higher the value the more red colors the bot will ignore. The lower the value the more red colors the bot will find. Min value: 10, max value: 150. You can increase this value if you want to ignore some reddish surroundings (e.g. Durotar). You can decrease this value, if the bobber is very dark and the bot can't find it.`),
   wrapInLabel(`Max check time (ms)`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Checking delay: (ms)`, renderCheckingDelay(config), `How often the bot needs to check the hook for changes.`),
   wrapInLabel(`Fishing zone (%)`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
