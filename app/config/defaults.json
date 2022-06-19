@@ -4,6 +4,45 @@
     "classNames": ["GxWindowClass", "GxWindowClassD3d"]
   },
   "patch": {
+    "Retail&Classic": {
+      "useCustomWindow": false,
+      "customWindow": "",
+      "delay": { "from": 50, "to": 150 },
+      "castDelay": 1250,
+      "sleepAfterHook": true,
+      "afterHookDelay": { "from": 150, "to": 400 },
+      "maxFishTime": 45000,
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "checkingDelay": 50,
+      "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
+      "mouseCurvatureStrength": { "from": 50, "to": 80 },
+      "luresDelay": 3000,
+      "randomSleep": true,
+      "randomSleepEvery": { "from": 1, "to": 3 },
+      "randomSleepDelay": { "from": 1000, "to": 15000 },
+      "reaction": true,
+      "reactionDelay": { "from": 150, "to": 400 },
+      "redThreshold": 20,
+      "maxAttempts": 3,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.125,
+          "toItemX": 0.009,
+          "toItemY": 0.037,
+          "itemHeight": 0.057,
+          "height": 0.214,
+          "width": 0.084
+        },
+        "1920": {
+          "upperLimit": 0.089,
+          "toItemX": 0.007,
+          "toItemY": 0.025,
+          "itemHeight": 0.04,
+          "height": 0.153,
+          "width": 0.056
+        }
+      }
+    },
     "MoP": {
       "useCustomWindow": false,
       "customWindow": "",
@@ -22,7 +61,26 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "maxAttempts": 3,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.123,
+          "toItemX": 0.01,
+          "toItemY": 0.035,
+          "itemHeight": 0.058,
+          "height": 0.213,
+          "width": 0.074
+        },
+        "1920": {
+          "upperLimit": 0.1,
+          "toItemX": 0.007,
+          "toItemY": 0.025,
+          "itemHeight": 0.04,
+          "height": 0.153,
+          "width": 0.056
+        }
+      }
     },
     "Cataclysm": {
       "useCustomWindow": false,
@@ -42,7 +100,26 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "maxAttempts": 3,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.123,
+          "toItemX": 0.01,
+          "toItemY": 0.035,
+          "itemHeight": 0.058,
+          "height": 0.213,
+          "width": 0.074
+        },
+        "1920": {
+          "upperLimit": 0.1,
+          "toItemX": 0.007,
+          "toItemY": 0.025,
+          "itemHeight": 0.04,
+          "height": 0.153,
+          "width": 0.056
+        }
+      }
     },
     "WoTLK": {
       "useCustomWindow": false,
@@ -62,27 +139,26 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
-    },
-    "Retail&Classic": {
-      "useCustomWindow": false,
-      "customWindow": "",
-      "delay": { "from": 50, "to": 150 },
-      "castDelay": 1250,
-      "sleepAfterHook": true,
-      "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
-      "checkingDelay": 50,
-      "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
-      "mouseCurvatureStrength": { "from": 50, "to": 80 },
-      "luresDelay": 3000,
-      "randomSleep": true,
-      "randomSleepEvery": { "from": 1, "to": 3 },
-      "randomSleepDelay": { "from": 1000, "to": 15000 },
-      "reaction": true,
-      "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "maxAttempts": 3,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.132,
+          "toItemX": 0.019,
+          "toItemY": 0.022,
+          "itemHeight": 0.055,
+          "height": 0.218,
+          "width": 0.079
+        },
+        "1920": {
+          "upperLimit": 0.117,
+          "toItemX": 0.015,
+          "toItemY": 0.023,
+          "itemHeight": 0.051,
+          "height": 0.194,
+          "width": 0.073
+        }
+      }
     },
     "TBC": {
       "useCustomWindow": false,
@@ -102,7 +178,26 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "maxAttempts": 3,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.132,
+          "toItemX": 0.019,
+          "toItemY": 0.022,
+          "itemHeight": 0.055,
+          "height": 0.218,
+          "width": 0.079
+        },
+        "1920": {
+          "upperLimit": 0.117,
+          "toItemX": 0.015,
+          "toItemY": 0.023,
+          "itemHeight": 0.051,
+          "height": 0.194,
+          "width": 0.073
+        }
+      }
     },
     "Vanilla": {
       "useCustomWindow": false,
@@ -122,7 +217,26 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20
+      "redThreshold": 20,
+      "maxAttempts": 3,
+      "lootWindow": {
+        "1536": {
+          "upperLimit": 0.132,
+          "toItemX": 0.019,
+          "toItemY": 0.022,
+          "itemHeight": 0.055,
+          "height": 0.218,
+          "width": 0.079
+        },
+        "1920": {
+          "upperLimit": 0.117,
+          "toItemX": 0.015,
+          "toItemY": 0.023,
+          "itemHeight": 0.051,
+          "height": 0.194,
+          "width": 0.073
+        }
+      }
     }
   }
 }
