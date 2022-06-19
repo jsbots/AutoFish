@@ -166,7 +166,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     return fishingZone.findBobber(findBobber.memory);
   };
   findBobber.memory = null;
-  findBobber.maxAttempts = config.maxAttempts; 
+  findBobber.maxAttempts = config.maxAttempts;
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
@@ -266,7 +266,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await sleep(250);
     if (!notificationZone.check("warning")) {
       caught = true;
-      if(settings.whitelist) {
+      if(settings.whitelist && settings.whitelistWords !== ``) {
         await pickLoot();
       }
     }
