@@ -89,17 +89,23 @@ If we consider **only the software itself**, the very simplified answer you seek
 1. Launch the game *(not as administrator)*.
 2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
 4. Switch to **Window(maximized)** mode *(skip for Retail/Classic)*.
-5. Turn on **Auto Loot** option or check **Shift+click** option in the UI of the bot if you don't have **Auto Loot** option in the game.
-6. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-7. Equip a fishpole.
-8. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
+5. Are you using whitelist? 
+   - Yes: Turn off **Auto Loot** and set **UI scale** to default. 
+   - No: Turn on **Auto Loot**
+7. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
+8. Equip a fishpole.
+9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
    - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
    - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
-9. Don't use your keyboard and mouse while the bot is working.
-10. You can press **'space'** to **stop the bot**.
+10. Don't use your keyboard and mouse while the bot is working.
+11. You can press **'space'** to **stop the bot**.
 
-If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster).  
+**Additional:**
+
+- If the bot can't find a bobber at all, decrease the threshold of the red color in the Advanced settings. (e.g. 20 -> 10)
+- If the bot finds red colors in the preliminary check but you can't see any, increase the threshold of the red color in the Advanced settings. (e.g. 20 -> 30)
+- If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster). 
 
 ## Fishing Zone :dart:
 
