@@ -1,9 +1,10 @@
 const Zone = require("../utils/zone.js");
-const FishingZone = require("./fishingZone.js");
-const NotificationZone = require("./notificationZone.js");
+const createFishingZone = require("./fishingZone.js");
+const createNotificationZone = require("./notificationZone.js");
 
 const { percentComparison, readTextFrom, sortWordsByItem } = require("../utils/textReader.js");
 const { createTimer } = require("../utils/time.js");
+
 
 const sleep = (time) => {
   return new Promise((resolve) => {
@@ -25,33 +26,21 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   const screenSize = workwindow.getView();
-
-  const fishingZone = FishingZone.from(
+  
+  const fishingZone = createFishingZone({
     workwindow,
-    Zone.from(screenSize).toRel(config.relZone)
-  );
+    zone: Zone.from(screenSize).toRel(config.relZone),
+    redThreshold: config.redThreshold
+  });
 
-  const notificationZone = NotificationZone.from(
+  const notificationZone = createNotificationZone({
     workwindow,
-    Zone.from(screenSize).toRel({
+    zone: Zone.from(screenSize).toRel({
       x: 0.44,
       y: 0.12,
       width: 0.11,
       height: 0.07,
     })
-  );
-
-  fishingZone.registerColors({
-    isBobber: ([r, g, b]) =>
-      r - g > config.redThreshold &&
-      r - b > config.redThreshold &&
-      g < 100 &&
-      b < 100,
-  });
-
-  notificationZone.registerColors({
-    isWarning: ([r, g, b]) => r - b > 240 && g - b > 240,
-    isError: ([r, g, b]) => r - g > 200 && r - b > 200,
   });
 
   const lootWindowPatch = config.lootWindow[screenSize.width < 1536 ? `1536` : `1920`];
@@ -127,7 +116,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   });
 
   const findAllBobberColors = () => {
-    return fishingZone.getBobberPrint(fishingZone.findAllBobberColors(), 5);
+    return fishingZone.getBobberPrint(5);
   };
 
   const castFishing = async (state) => {

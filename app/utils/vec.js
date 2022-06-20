@@ -14,6 +14,12 @@ module.exports = class Vec {
     );
   }
 
+  isEqual(vec) {
+    if(this.x === vec.x && this.y === vec.y) {
+      return true
+    }
+  }
+
   getPointsAround(size = 1) {
     let pointsAround = [];
     for (let y = this.y - size; y <= this.y + size; y++) {
