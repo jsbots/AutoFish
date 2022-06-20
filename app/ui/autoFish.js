@@ -36,7 +36,10 @@ class AutoFish {
     this.settings = settings;
     this.button = startButton;
     this.logger = renderLogger();
-
+    const versionNode = elt("p", {className: "version"});
+    ipcRenderer.on('set-version', (event, version) => {
+      versionNode.textContent = `ver. ${version}`;
+    })
     this.settings.regOnChange((config) => {
       ipcRenderer.send('save-settings', config)
     });
@@ -70,7 +73,7 @@ class AutoFish {
       elt("p", {className: 'settings_header'}, "Log:"),
       this.logger.dom,
       this.button.dom,
-      elt("p", {className: "version"}, "ver. 1.7.2")
+      versionNode
     );
   }
 }

@@ -131,6 +131,8 @@ function createWindow() {
 
   win.once("ready-to-show", () => {
     win.show();
+    let { version } = getJson('../package.json');
+    win.webContents.send('set-version', version);
   });
 
 
@@ -201,8 +203,6 @@ function createWindow() {
   ipcMain.on("open-link", () =>
     shell.openExternal("https://www.youtube.com/jsbots")
   );
-
-
 
   ipcMain.on("save-settings", (event, settings) =>
   writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
