@@ -214,8 +214,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
     let itemPos = 0;
     for(let item of items) {
-      let isInList = whitelist.some(whiltelistWord => {
-          return percentComparison(whiltelistWord, item) > 70;
+      let isInList = whitelist.some(word => {
+          return percentComparison(word, item) > 70;
       });
       if(isInList) {
         moveTo({
