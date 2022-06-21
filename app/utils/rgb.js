@@ -16,13 +16,18 @@ const createRgb = ({ data, width, height }) => {
   }
 
   return {
-    bitmap,
     colorAt(pos) {
       if (isInLimits(pos, { width, height })) {
         return bitmap[pos.y][pos.x];
       } else {
         return false;
       }
+    },
+
+    cutOut(exception) {
+      exception.forEach(({ x, y }) => {
+        bitmap[y][x] = [0, 0, 0];
+      })
     },
 
     findColors(isColor, stopAtFirst) {

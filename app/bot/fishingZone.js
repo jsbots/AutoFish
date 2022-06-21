@@ -8,7 +8,6 @@ const createFishingZone = ({ workwindow, zone, redThreshold }) => {
   const getRgb = () => {
     return createRgb(workwindow.capture(zone));
   };
-
   const isBobber = ([r, g, b]) => ( r - g > redThreshold &&
                                     r - b > redThreshold &&
                                     g < 100 &&
@@ -18,9 +17,7 @@ const createFishingZone = ({ workwindow, zone, redThreshold }) => {
     findBobber(exception) {
       let rgb = getRgb();
       if(exception) {
-        exception.forEach(({ x, y }) => {
-          rgb.bitmap[y][x] = [0, 0, 0];
-        })
+        rgb.cutOut(exception);
       }
       let reds = rgb.findColors(isBobber);
       if(!reds) return;
@@ -29,7 +26,6 @@ const createFishingZone = ({ workwindow, zone, redThreshold }) => {
           return reds.some(redPoint => redPoint.x == x && redPoint.y == y);
         });
       });
-
       if(!bobber) return;
       return bobber.plus({ x: zone.x, y: zone.y });
     },
