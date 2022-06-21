@@ -9,5 +9,6 @@
   "luresDelayMin": 10,
   "timerQuit": false,
   "whitelist": false,
-  "whitelistWords": ""
+  "whitelistWords": "",
+  "whiteListBlueGreen": false
 }
