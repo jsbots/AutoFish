@@ -10,7 +10,7 @@ const createRgb = ({ data, width, height }) => {
   for (let y = 0, i = 0; y < height; y++) {
     let row = [];
     for (let x = 0; x < width; x++, i += 4) {
-      row[x] = pixelData.slice(i, i + 3);
+      row[x] = [pixelData[i], pixelData[i + 1], pixelData[i + 2]];
     }
     bitmap[y] = row;
   }
