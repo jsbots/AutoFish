@@ -26,7 +26,9 @@ const createRgb = ({ data, width, height }) => {
 
     cutOut(exception) {
       exception.forEach(({ x, y }) => {
-        bitmap[y][x] = [0, 0, 0];
+        if(isInLimits({ x, y }, { width, height })) {
+          bitmap[y][x] = [0, 0, 0];
+        }
       })
     },
 
