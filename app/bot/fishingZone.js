@@ -4,10 +4,7 @@ const isInLimits = ({ x, y }, { width, height }) => {
   return x >= 0 && y >= 0 && x < width && y < height;
 };
 
-const createFishingZone = ({ workwindow, zone, redThreshold }) => {
-  const getRgb = () => {
-    return createRgb(workwindow.capture(zone));
-  };
+const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
   const isBobber = ([r, g, b]) => ( r - g > redThreshold &&
                                     r - b > redThreshold &&
                                     g < 100 &&
@@ -15,7 +12,7 @@ const createFishingZone = ({ workwindow, zone, redThreshold }) => {
   return {
 
     findBobber(exception) {
-      let rgb = getRgb();
+      let rgb = createRgb(getDataFrom(zone));
       if(exception) {
         rgb.cutOut(exception);
       }
@@ -40,14 +37,15 @@ const createFishingZone = ({ workwindow, zone, redThreshold }) => {
       if(!isInLimits({ x: pos.x - zone.x, y: pos.y - zone.y }, zone)) {
         return;
       }
-      let pointRgb = createRgb(workwindow.capture({x: pos.x, y: pos.y, width: 1, height: 1}));
+      let pointRgb = createRgb(getDataFrom({x: pos.x, y: pos.y, width: 1, height: 1}));
       if(isBobber(pointRgb.colorAt({ x: 0, y: 0 }))) {
         return true;
       }
     },
 
     getBobberPrint(wobble) {
-      let rest = getRgb().findColors(isBobber);
+      let rgb = createRgb(getDataFrom(zone));
+      let rest = rgb.findColors(isBobber);
       if(!rest) return;
       let result = [...rest];
       rest.forEach(restPoint => {

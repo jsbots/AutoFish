@@ -1,10 +1,6 @@
 const createRgb = require("../utils/rgb.js");
 
-const createNotificationZone = ({ workwindow, zone }) => {
-  const getRgb = () => {
-    return createRgb(workwindow.capture(zone));
-  };
-
+const createNotificationZone = ({ getDataFrom, zone }) => {
   const notifications = {
     isWarning: ([r, g, b]) => r - b > 240 && g - b > 240,
     isError: ([r, g, b]) => r - g > 200 && r - b > 200
@@ -24,7 +20,7 @@ const createNotificationZone = ({ workwindow, zone }) => {
         }
       });
 
-      return colors.some(color => getRgb().findColors(color, stopAtFirst));
+      return colors.some(color => createRgb(getDataFrom(zone)).findColors(color, stopAtFirst));
     },
   };
 };
