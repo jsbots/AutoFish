@@ -9,7 +9,10 @@ const createLootZone = ({ getDataFrom, zone }) => {
   return {
     findItems(...types) {
       let rgb = createRgb(getDataFrom(zone));
-      return types.some(type => rgb.findColors(colors[type]));
+      return types.some(type => rgb.findColors({
+        isColor: colors[type],
+        atFirstMet: true
+      }));
     }
   }
 };

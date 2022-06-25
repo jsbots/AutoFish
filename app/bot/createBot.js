@@ -241,7 +241,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       });
 
       if (config.reaction) {
-        await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); 
+        await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
       await action(() => {
         mouse.toggle(true, "right", delay);

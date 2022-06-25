@@ -9,6 +9,9 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
                                     r - b > redThreshold &&
                                     g < 100 &&
                                     b < 100 );
+
+  const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround().every((pos) => isBobber(rgb.colorAt(pos)));
+
   return {
 
     findBobber(exception) {
@@ -16,12 +19,10 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
       if(exception) {
         rgb.cutOut(exception);
       }
-      let reds = rgb.findColors(isBobber);
-      if(!reds) return;
-      let bobber = reds.find(pos => {
-        return pos.getPointsAround().every(({ x, y }) => {
-          return reds.some(redPoint => redPoint.x == x && redPoint.y == y);
-        });
+      let bobber = rgb.findColors({
+        isColor: isBobber,
+        atFirstMet: true,
+        task: looksLikeBobber
       });
       if(!bobber) return;
       return bobber.plus({ x: zone.x, y: zone.y });
@@ -45,7 +46,7 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
 
     getBobberPrint(wobble) {
       let rgb = createRgb(getDataFrom(zone));
-      let rest = rgb.findColors(isBobber);
+      let rest = rgb.findColors({ isColor: isBobber });
       if(!rest) return;
       let result = [...rest];
       rest.forEach(restPoint => {

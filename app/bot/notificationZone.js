@@ -20,7 +20,10 @@ const createNotificationZone = ({ getDataFrom, zone }) => {
         }
       });
 
-      return colors.some(color => createRgb(getDataFrom(zone)).findColors(color, stopAtFirst));
+      return colors.some(color => createRgb(getDataFrom(zone)).findColors({
+        isColor: color,
+        atFirstMet: true
+      }));
     },
   };
 };
