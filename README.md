@@ -16,7 +16,6 @@
 - [Fishing zone](#fishing-zone-dart)
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
-- [Tests](#tests-straight_ruler)
 - [Task list](#task-list-checkered_flag)
 
 
@@ -37,7 +36,7 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
-In a fast mode (with **Like a human** and all the other random values turned off) the bot usually catches 500 🐠 per hour and misses <1% of a total number. 
+In a fast mode (with **Like a human** and all the other random values turned off) the bot usually catches 500 🐠 per hour and misses <1% of a total number.
 
 ## Servers tests :video_game:
 
@@ -89,8 +88,8 @@ If we consider **only the software itself**, the very simplified answer you seek
 1. Launch the game *(not as administrator)*.
 2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
 4. Switch to **Window(maximized)** mode *(skip for Retail/Classic)*.
-5. Are you using whitelist? 
-   - Yes: Turn off **Auto Loot** and set **UI scale** to default. 
+5. Are you using whitelist?
+   - Yes: Turn off **Auto Loot** and set **UI scale** to default.
    - No: Turn on **Auto Loot**
 7. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 8. Equip a fishpole.
@@ -105,7 +104,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 - If the bot can't find a bobber at all, decrease the threshold of the red color in the Advanced settings. (e.g. 20 -> 10)
 - If the bot finds red colors in the preliminary check but you can't see any, increase the threshold of the red color in the Advanced settings. (e.g. 20 -> 30)
-- If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster). 
+- If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster).
 
 ## Fishing Zone :dart:
 
@@ -136,9 +135,9 @@ AutoFish 1.6.2 Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG
 
 AutoFish 1.7.1 Setup: [Download](https://drive.google.com/file/d/1f4dk90lQxf7sLX6f_HFN5G2SxCoJEIeQ/view?usp=sharing)
 
-It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI. 
+It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
-The executable file is a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop. 
+The executable file is a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
 
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
@@ -175,13 +174,6 @@ To start the app from the CLI:
 npm start
 ```
 
-
-## Tests :straight_ruler:
-
-```
-npm test
-```
-
 ## Task list :checkered_flag:
 
 - [x] Autofish 1.0.0
@@ -189,7 +181,7 @@ npm test
 - [x] Fishing lures support
 - [x] Advanced settings option
 - [x] Fast fishing without waiting for the bobber to disappear (memory of the previous bobber position)
-- [x] More convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature) 
+- [x] More convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature)
 - [x] Custom window suppport.
 - [x] Red threshold support.
 - [x] Random click on the bobber area.
