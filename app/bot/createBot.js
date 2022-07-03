@@ -34,7 +34,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const fishingZone = createFishingZone({
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
-    redThreshold: config.redThreshold
+    redThreshold: settings.threshold
   });
 
   const notificationZone = createNotificationZone({
@@ -89,7 +89,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     if (redColor) {
       mouse.moveTo(redColor.x, redColor.y);
       throw new Error(
-        `Found red colors before casting. Change the fishing place.`
+        `Found red colors before casting. Increase the red color "threshold" value or change the fishing place.`
       );
     }
   };

@@ -56,7 +56,7 @@ const runBot = async ({ bot, log, state, stats }) => {
       log.err(`Can't find the bobber, recast.`);
       if (++attempts == findBobber.maxAttempts) {
         throw new Error(
-          `Have tried ${findBobber.maxAttempts} attempts to find the bobber and failed: this place isn't good for fishing.`
+          `Have tried ${findBobber.maxAttempts} attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.`
         );
       }
       continue;
