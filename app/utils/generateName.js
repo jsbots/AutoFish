@@ -1,9 +1,15 @@
+const range = (start, end) => new Array(end - start).fill(true).map((a, i) => start + i);
+
 const generateName = (size) => {
-  let alphabet = `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890`;
+  let combined = [...range(`a`.charCodeAt(), `z`.charCodeAt()),
+                  ...range(`A`.charCodeAt(), `Z`.charCodeAt()),
+                  ...range(`0`.charCodeAt(), `9`.charCodeAt())];
+
   return new Array(size)
-  .fill(true)
-  .map(slot => alphabet[Math.floor(Math.random() * alphabet.length)])
-  .join(``);
+    .fill(true)
+    .map(() => combined[Math.floor(Math.random() * (combined.length - 1))])
+    .map((random) => String.fromCharCode(random))
+    .join(``);
 };
 
-module.exports = generateName; 
+module.exports = generateName;
