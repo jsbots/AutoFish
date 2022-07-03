@@ -20,7 +20,7 @@ const createRgb = ({ data, width, height }) => {
       if (isInLimits(pos, { width, height })) {
         return bitmap[pos.y][pos.x];
       } else {
-        return false;
+        return [0, 0, 0];
       }
     },
 
