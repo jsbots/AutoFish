@@ -48,7 +48,7 @@ section {
 
 .AutoFish {
   padding: 5px;
-  height: 585px;
+  height: 710px;
 }
 .logo {
   margin: 0;
@@ -132,6 +132,16 @@ section {
   margin-left: 2px;
   margin-top: 3px;
   display: inline-block;
+}
+
+.threshold_settings .option {
+  display: flex;
+  align-items: flex-end;
+}
+
+.threshold_settings .option .option_hint {
+  margin-bottom: 3px;
+  margin-left: 5px;
 }
 
 .settings select,
@@ -222,4 +232,30 @@ section {
   width: 134px;
 }
 
+.thresholdRange {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+}
+
+.thresholdRange input[type=range] {
+  width: 230px;
+  height: 10px;
+  z-index: 10;
+}
+
+.thresholdRange input[type=number] {
+  width: 45px;
+}
+
+.thresholdRange .bobberContainer {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.thresholdRange .bobberContainer canvas {
+  display: block;
+  margin-left: -55px;
+}
 /* AdvSettings window end */

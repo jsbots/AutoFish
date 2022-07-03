@@ -56,6 +56,11 @@ class AutoFish {
       ipcRenderer.send("stop-bot");
     });
 
+    ipcRenderer.on("settings-change", (settings) => {
+      this.settings.config = settings;
+      this.settings.render();
+    });
+
     ipcRenderer.on("stop-bot", () => {
       this.button.onError();
     });

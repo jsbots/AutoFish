@@ -1,4 +1,5 @@
 const elt = require("./utils/elt.js");
+const renderSettings = require("./renderSettings.js");
 
 const convertValue = (node) => {
   let value = node.value;
@@ -14,7 +15,7 @@ const convertValue = (node) => {
 };
 
 class Settings {
-  constructor(config, renderSettings) {
+  constructor(config) {
     this.config = config;
     this.dom = elt('form', null , renderSettings(config));
 
@@ -29,7 +30,6 @@ class Settings {
       if(Object.keys(this.config).includes(event.target.name)) {
         this.config[event.target.name] = convertValue(event.target);
       }
-      console.log(event.target.value);
       this.dom.innerHTML = ``;
       this.dom.append(renderSettings(this.config));
 
@@ -42,11 +42,24 @@ class Settings {
       this.onChange(this.config);
     });
 
+    this.dom.addEventListener("input", (event) => {
+      if(event.target.name == `threshold`) {
+        this.dom.querySelectorAll('input[name=threshold]').forEach(node => {
+          node.value = event.target.value
+        });
+      }
+    });
+
     this.dom.addEventListener('click', (event) => {
       if(event.target.name == 'advancedSettings') {
         this.onClick(this.config);
       }
     })
+  }
+
+  reRender() {
+    this.dom.innerHTML = ``;
+    this.dom.append(renderSettings(this.config));
   }
 
   regOnClick(callback) {

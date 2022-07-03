@@ -109,7 +109,7 @@ function createWindow() {
   let win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 585,
+    height: 695,
     show: false,
     resizable: false,
     webPreferences: {
@@ -134,8 +134,6 @@ function createWindow() {
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
   });
-
-
 
   ipcMain.on("start-bot", async (event, settings) => {
     const config = getJson("./config/bot.json");
@@ -234,7 +232,7 @@ const createAdvSettingsWin = () => {
   let settWin = new BrowserWindow({
     title: 'Advanced settings',
     width: 435,
-    height: 680,
+    height: 655,
     show: false,
     resizable: false,
     webPreferences: {
