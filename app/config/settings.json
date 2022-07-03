@@ -10,5 +10,6 @@
   "timerQuit": false,
   "whitelist": false,
   "whitelistWords": "",
-  "whiteListBlueGreen": false
+  "whiteListBlueGreen": false,
+  "threshold": 20
 }

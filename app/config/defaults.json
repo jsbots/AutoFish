@@ -22,7 +22,6 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20,
       "maxAttempts": 3,
       "lootWindow": {
         "1536": {
@@ -61,7 +60,6 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20,
       "maxAttempts": 3,
       "lootWindow": {
         "1536": {
@@ -100,7 +98,6 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20,
       "maxAttempts": 3,
       "lootWindow": {
         "1536": {
@@ -139,7 +136,6 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20,
       "maxAttempts": 3,
       "lootWindow": {
         "1536": {
@@ -178,7 +174,6 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20,
       "maxAttempts": 3,
       "lootWindow": {
         "1536": {
@@ -217,7 +212,6 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "redThreshold": 20,
       "maxAttempts": 3,
       "lootWindow": {
         "1536": {
