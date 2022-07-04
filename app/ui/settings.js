@@ -1,5 +1,6 @@
 const elt = require("./utils/elt.js");
 const renderSettings = require("./renderSettings.js");
+const renderBobber = require('./renderBobber.js');
 
 const convertValue = (node) => {
   let value = node.value;
@@ -47,6 +48,8 @@ class Settings {
         this.dom.querySelectorAll('input[name=threshold]').forEach(node => {
           node.value = event.target.value
         });
+        let canvas = this.dom.querySelector('.threshold_canvas');
+        renderBobber(canvas.getContext(`2d`), event.target.value);
       }
     });
 

@@ -17,6 +17,7 @@ const generateName = require('./utils/generateName.js');
 const { createLog } = require("./utils/logger.js");
 const { findGameWindows, getAllWindows } = require("./game/createGame.js");
 const createBots = require("./bot/createBots.js");
+const getBitmapAsync = require("./utils/getBitmap.js");
 /* Bot modules end */
 
 /* Squirrel */
@@ -215,13 +216,13 @@ function createWindow() {
     }
   });
 
+  ipcMain.handle("get-bitmap", getBitmapAsync);
   ipcMain.handle("get-all-windows", getAllWindows);
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));
 }
 
 
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
-
 app.whenReady().then(() => {
   Menu.setApplicationMenu(null);
   createWindow();

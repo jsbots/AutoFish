@@ -1,45 +1,25 @@
 const elt = require("./utils/elt.js");
 const wrapInLabel = require("./utils/wrapInLabel.js");
-const Jimp = require(`jimp`);
+const renderBobber = require('./renderBobber.js');
 
 const once = (fn) => {
-	let result;
-	return (...args) => {
-		if(!result) {
-			return result = fn(...args);
-		} else {
-			return result instanceof Promise ? Promise.resolve(result) : result;
-		}
-	};
+  let result;
+  return (...args) => {
+    if (!result) {
+      return (result = fn(...args));
+    } else {
+      return result;
+    }
+  };
 };
 
-const getBitmap = async (path, reader = Jimp) => {
-	const { bitmap } = await reader.read(path);
-	return bitmap;
-};
-
-const getBitmapOnce = once(getBitmap);
-
-const drawOnCanvas = ({ pos: {x, y}, color: [r, g, b] }, cx) => {
-	cx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-	cx.fillRect(x, y, 1, 1);
+const renderCanvas = (threshold) => {
+	let canvas = elt(`canvas`, { className: `threshold_canvas`, width: 80, height: 50 });
+	renderBobber(canvas.getContext(`2d`), threshold)
+	return canvas
 }
 
-const constructBitmap = ({ data, width, height }) => {
-		let pixels = [];
-			for(let y = 0, i = 0; y < height; y++) {
-				for(let x = 0; x < width; x++, i += 4) {
-					let r = data[i];
-					let g = data[i + 1];
-					let b = data[i + 2];
-					pixels.push({
-						pos: {x, y},
-						color: [r, g, b]
-					});
-				}
-			}
-		return pixels;
-}
+const renderCanvasOnce = once(renderCanvas);
 
 const renderThreshold = ({ threshold }) => {
 
@@ -49,24 +29,7 @@ const renderThreshold = ({ threshold }) => {
   const range = elt(`input`, { type: `range`, min: 10, max: 150, value: threshold, name: `threshold` });
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });
 
-	const canvas = elt(`canvas`, { width: 80, height: 50 });
-	const canvasCx = canvas.getContext(`2d`);
-
-	getBitmapOnce(`./app/img/bobber.jpg`)
-	.then((bitmap) => constructBitmap(bitmap))
-	.then((bitmap) => bitmap.map(pixel => {
-		let [r, g, b] = pixel.color;
-		if(r - g > 70 && r - b > 70 && pixel.pos.y < 32) {
-			r = +threshold + 70;
-			return {
-				pos: pixel.pos,
-				color: [r, g, b]
-			}
-		} else {
-			return pixel;
-		}
-	}))
-	.then((bitmap) => bitmap.forEach(pixel => drawOnCanvas(pixel, canvasCx)));
+	const canvas = renderCanvasOnce(threshold);
 
   const bobberContainer = elt(`div`, { className: `bobberContainer` }, canvas, number);
   return elt(`div`, { className: `thresholdRange` }, range, bobberContainer);
