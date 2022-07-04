@@ -130,6 +130,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 ## Download :open_file_folder:
 
 AutoFish 1.6.2 Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
+
 AutoFish 1.7.6 Setup: [Download](https://drive.google.com/file/d/1i1nAT1AG9puz3ERbxWU0Ye6Xvtr1r5V8/view?usp=sharing)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
