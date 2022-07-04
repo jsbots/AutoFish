@@ -36,8 +36,6 @@ This is so called "pixel bot", it doesn't change anything in the processes memor
 
 The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/)) with installed World of Warcraft and launch AutoFish there. *(tested)*
 
-In a fast mode (with **Like a human** and all the other random values turned off) the bot usually catches 500 🐠 per hour and misses <1% of a total number.
-
 ## Servers tests :video_game:
 
 The bot was tested on official servers:
@@ -102,9 +100,9 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 **Additional:**
 
-- If the bot can't find a bobber at all, decrease the threshold of the red color in the Advanced settings. (e.g. 20 -> 10)
-- If the bot finds red colors in the preliminary check but you can't see any, increase the threshold of the red color in the Advanced settings. (e.g. 20 -> 30)
-- If you use the bot on unofficial servers and don't care about making it look like a player you can turn off **Like a human** option and all the other random values to make the bot work much faster (usually 3-4 times faster).
+- If the bot can't find a bobber at all, decrease the red color threshold value. (e.g. 20 -> 10)
+- If the bot can't pass the preliminary checks for red colors, increase the red color threshold value (e.g. 20 -> 30)
+- Turn off all the "sleeping" and random values to make the bot work x2-x3 times faster.
 
 ## Fishing Zone :dart:
 
@@ -131,9 +129,8 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish 1.6.2 Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing) (recommended)
-
-AutoFish 1.7.3 Setup: [Download](https://drive.google.com/file/d/1i1nAT1AG9puz3ERbxWU0Ye6Xvtr1r5V8/view?usp=sharing)
+AutoFish 1.6.2 Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
+AutoFish 1.7.6 Setup: [Download](https://drive.google.com/file/d/1i1nAT1AG9puz3ERbxWU0Ye6Xvtr1r5V8/view?usp=sharing)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
@@ -148,8 +145,6 @@ If you downloaded a new setup, you need to uninstall the previous AutoFish first
 <a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
  </div>
-
-
 
 ## Installation :hammer:
 
@@ -186,3 +181,4 @@ npm start
 - [x] Red threshold support.
 - [x] Random click on the bobber area.
 - [x] Optional loot
+- [x] Better Threshold option
