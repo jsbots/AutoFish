@@ -63,10 +63,17 @@ section {
 }
 
 .logo_link {
-  display: block;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   margin-top: -10px;
   margin-right: 80px;
+}
+
+.logo_link_img {
+  height: 11px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .section_name {
