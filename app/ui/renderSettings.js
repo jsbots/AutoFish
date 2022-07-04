@@ -185,7 +185,7 @@ return elt(
         `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
       ),
     ),
-    elt("p", {className: 'settings_header'}, "Loot whitelist:"),
+    elt("p", {className: 'settings_header'}, "Whitelist:"),
     elt(
       "div",
       { className: "settings_section" },
@@ -195,7 +195,7 @@ return elt(
       ),
       wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F`}, `[green] `), `and `, elt(`span`, {style: `color: #015CB4`}, `[blue] `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green and blue item in addition to the items in the whitelist.`)
     ),
-    elt("p", {className: 'settings_header'}, "Red color threshold:"),
+    elt("p", {className: 'settings_header'}, "Threshold:"),
     elt(
       "div",
       { className: "settings_section threshold_settings" },
