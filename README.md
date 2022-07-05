@@ -102,18 +102,12 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 **Additional:**
 
-<<<<<<< HEAD
 - If the bot can't find a bobber at all, decrease the red color threshold value. (e.g. 20 -> 10)
 - If the bot can't pass the preliminary checks for red colors, increase the red color threshold value (e.g. 20 -> 30)
 - If you play on Classic/Vanilla/TBC and want to use lures:
-  - Your character window should be assign to default 'c' key, bot opens it and applies lures to your fishing pole.
+  - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default.
 - You can turn off all the "sleeping" and random values to make the bot work x2-x3 times faster.
-=======
-- If the bot can't find a bobber at all, decrease "Threshold" value. (e.g. 20 -> 10)
-- If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 20 -> 30)
-- Turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
->>>>>>> 7bb966dc822baccf8ab7f776032bb4b52d583c4f
 
 ## Fishing Zone :dart:
 
@@ -142,7 +136,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 AutoFish 1.6.2 Setup: [Download](https://drive.google.com/file/d/13uX8rnWBz6sbrG5bGVzKGv_LkOw3OJNT/view?usp=sharing)
 
-AutoFish 1.7.6 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.7.6/AutoFish.1.7.6.Setup.exe)
+AutoFish 1.7.6 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.7.7/AutoFish.1.7.7.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
