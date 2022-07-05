@@ -51,8 +51,8 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
 On custom servers:
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org works, but the efficiency is usually around 80% (for some reason the bobber doesn't dive into the water completely on Turtle-wow sometimes and the bot misses the fish).
 - <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
-- <img src="guide_img/icons/question.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org - works, but doesn't hook when the animation of jerking isn't complete (the bobber doesn't dive into the water completely sometimes).
 
 ## Warning :warning:
 
@@ -83,11 +83,13 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 ## Guide :blue_book:
 
+**The bot was tested only with default UI, without any addons whatsoever. It won't work properly with any addon that changes your UI.**
+
 1. Launch the game *(not as administrator)*.
 2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
 4. Switch to **Window(maximized)** mode *(skip for Retail/Classic)*.
 5. Are you using whitelist?
-   - Yes: Turn off **Auto Loot** and set **UI scale** to default.
+   - Yes: Turn off **Auto Loot**, set **UI scale** to default, turn on **Open loot window at mouse**.
    - No: Turn on **Auto Loot**
 7. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 8. Equip a fishpole.
@@ -102,7 +104,10 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 - If the bot can't find a bobber at all, decrease the red color threshold value. (e.g. 20 -> 10)
 - If the bot can't pass the preliminary checks for red colors, increase the red color threshold value (e.g. 20 -> 30)
-- Turn off all the "sleeping" and random values to make the bot work x2-x3 times faster.
+- If you play on Classic/Vanilla/TBC and want to use lures:
+  - Your character window should be assign to default 'c' key, bot opens it and applies lures to your fishing pole.
+  - Your UI scale should be set to default.
+- You can turn off all the "sleeping" and random values to make the bot work x2-x3 times faster.
 
 ## Fishing Zone :dart:
 
