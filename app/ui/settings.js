@@ -24,7 +24,7 @@ class Settings {
       if((event.target.name == "fishingKey" || event.target.name =="luresKey") &&
         event.target.value.length > 1 && event.target.value.length != 0) {
         event.target.value = event.target.value[0];
-      };
+      }
     });
 
     this.dom.addEventListener("change", (event) => {

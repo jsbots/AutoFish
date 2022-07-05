@@ -105,15 +105,6 @@ const renderSleepAfterHook = ({sleepAfterHook}) => {
   return elt(`input`, {type: `checkbox`, name: `sleepAfterHook`, checked: sleepAfterHook});
 };
 
-const renderRedThreshold = ({redThreshold}) => {
-  if(redThreshold < 10) redThreshold = 10;
-  if(redThreshold > 150) redThreshold = 150;
-  return elt(`div`, null,
-    elt(`div`, {className: `redThresholdColor`, style: `background-color: rgb(${redThreshold + 30}, 0, 0)`}),
-    elt(`input`, {type: `number`, name: `redThreshold`, value: redThreshold})
-  )
-};
-
 const renderCustomWindow = ({useCustomWindow, customWindow}) => {
   const select = elt(`select`, {name: `customWindow`, disabled: !useCustomWindow, value: customWindow});
   const renderUseCustomWindow = elt(`input`, {name: `useCustomWindow`, type: `checkbox`, checked: useCustomWindow});
@@ -127,7 +118,7 @@ const renderCustomWindow = ({useCustomWindow, customWindow}) => {
     });
   }
   return elt(`div`, null, renderUseCustomWindow, select);
-;
+
 };
 
 
