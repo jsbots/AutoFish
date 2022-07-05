@@ -102,12 +102,12 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 **Additional:**
 
-- If the bot can't find a bobber at all, decrease the red color threshold value. (e.g. 20 -> 10)
-- If the bot can't pass the preliminary checks for red colors, increase the red color threshold value (e.g. 20 -> 30)
+- If the bot can't find a bobber at all, decrease "Threshold" value. (e.g. 20 -> 10)
+- If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 20 -> 30)
 - If you play on Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default.
-- You can turn off all the "sleeping" and random values to make the bot work x2-x3 times faster.
+- You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 
 ## Fishing Zone :dart:
 
