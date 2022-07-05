@@ -1,6 +1,6 @@
 const { createTimer } = require('../utils/time.js');
 
-const windowStuck = createTimer(() => 5000);
+const windowStuck = createTimer(() => 3000);
 
 const sleep = (time) => {
   return new Promise((resolve) => {
