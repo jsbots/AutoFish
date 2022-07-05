@@ -167,7 +167,7 @@ function createWindow() {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
 
-    if (settings.game == "Retail&Classic" &&
+    if ((settings.game == "Retail" || settings.game == "Classic") &&
         showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
         win.webContents.send('stop-bot');
         return;
