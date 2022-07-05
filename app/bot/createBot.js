@@ -47,7 +47,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     })
   });
 
-  const lootWindowPatch = config.lootWindow[screenSize.width < 1536 ? `1536` : `1920`];
+  const lootWindowPatch = config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
   const lootWindow = {
     upperLimit: lootWindowPatch.upperLimit * screenSize.height,
     toItemX: lootWindowPatch.toItemX * screenSize.width,
@@ -97,6 +97,19 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const applyLures = async () => {
     await action(() => {
       keyboard.sendKey(settings.luresKey, delay);
+      if(settings.game == `Vanilla` || settings.game == `Classic` || settings.game == `TBC`) {
+        keyboard.sendKey(`c`, delay);
+        moveTo({
+          pos: {
+            x: screenSize.width <= 1536 ? screenSize.width * 0.10395 : screenSize.width * 0.09375,
+            y: screenSize.height <= 864 ? screenSize.height * 0.66666 : screenSize.height * 0.59537
+          },
+          randomRange: 5
+        });
+        mouse.toggle(true,"left", delay);
+        mouse.toggle(false, "left", delay);
+        keyboard.sendKey(`c`, delay);
+      }
     });
     await sleep(config.luresDelay);
   };
@@ -273,7 +286,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
       if (settings.shiftClick) {
         keyboard.toggleKey("shift", true, delay);
-        mouse.click("right", delay);
+        mouse.toggle(true,"right", delay);
+        mouse.toggle(false, "right", delay);
         keyboard.toggleKey("shift", false, delay);
       } else {
         mouse.toggle(true,"right", delay);
@@ -290,7 +304,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       }
     }
 
-    await sleep(settings.game == `Retail&Classic` ? 750 : 250); // close loot window delay
+    await sleep(settings.game == `Retail` || settings.game == `Classic` ? 750 : 250); // close loot window delay
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
     }
