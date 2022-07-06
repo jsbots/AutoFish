@@ -24,7 +24,7 @@
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
 
 **Features:**
-- Multiple windows support.
+- Multiple windows support. 
 - Optional loot support.
 - Fishing lures support.
 - Custom window suppport.
@@ -83,7 +83,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 ## Guide :blue_book:
 
-**The bot was tested only with default UI, without any addons whatsoever. It won't work properly with any addon that changes your UI.**
+The bot was tested only with default UI, without any addons whatsoever. **It won't work properly with any addon that changes your UI.**
 
 1. Launch the game *(not as administrator)*.
 2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
@@ -96,17 +96,19 @@ If we consider **only the software itself**, the very simplified answer you seek
 9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
    - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
-   - After casting the bot will make 3 attempts to find the bobber, if it fails it will stop the application. It mostly means that the fishing zone isn't good enough.
+   - The bot will make 3 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"), if it fails it will stop the application. 
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
 **Additional:**
 
-- If the bot can't find a bobber at all, decrease "Threshold" value. (e.g. 20 -> 10)
+- If the bot can't find a bobber, decrease "Threshold" value. (e.g. 20 -> 10)
 - If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 20 -> 30)
 - If you play on Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default.
+- Don't use **Like a human** option if you use more than one window: because of the slow mouse movement some of the bots might not catch up.  
+- Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 
 ## Fishing Zone :dart:
@@ -122,9 +124,8 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**:
 - If you can, make your video settings as best as possible, except the weather effects...
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
-- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the bot too. In most cases the place doesn't matter **it's all about direction and position**.
-- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help.  
-- Don't fish near other players, the bot might confuse their bobber for yours.
+- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
+- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view. 
 
 Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
