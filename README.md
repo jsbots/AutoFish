@@ -83,7 +83,7 @@ If we consider **only the software itself**, the very simplified answer you seek
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI, without any addons whatsoever. **It won't work properly with any addon that changes your UI.**
+The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
 
 1. Launch the game *(not as administrator)*.
 2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
