@@ -20,15 +20,8 @@ const readTextFrom = async (buffer, scale) => {
 };
 
 const percentComparison = (first, second) => {
-  let rightLettersNum = 0;
-  if (first.length == second.length) {
-    [...first].forEach((letter, position) => {
-      if (letter == second[position]) {
-        rightLettersNum++;
-      }
-    });
-  }
-  return (rightLettersNum / first.length) * 100;
+  return ([...first].reduce((total, letter) =>
+    [...second].includes(letter) ? total + 1 : total, 0) / first.length) * 100
 };
 
 const sortWordsByItem = (words, itemHeight) => {
