@@ -95,7 +95,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 8. Equip a fishpole.
 9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
-   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
+   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, it will stop working: increase Threshold or change the place.
    - The bot will make 3 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"), if it fails it will stop the application.
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
