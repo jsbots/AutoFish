@@ -10,7 +10,10 @@ const createRgb = ({ data, width, height }) => {
   for (let y = 0, i = 0; y < height; y++) {
     let row = [];
     for (let x = 0; x < width; x++, i += 4) {
-      row[x] = [pixelData[i], pixelData[i + 1], pixelData[i + 2]];
+      let r = pixelData[i];
+      let g = pixelData[i + 1];
+      let b = pixelData[i + 2];
+      row[x] = [r, g, b];
     }
     bitmap[y] = row;
   }
@@ -22,6 +25,10 @@ const createRgb = ({ data, width, height }) => {
       } else {
         return [0, 0, 0];
       }
+    },
+
+    saturate(rs, gs, bs) {
+      bitmap = bitmap.map(y => y.map(([r, g, b]) => [r + rs, g + gs, b + bs]));
     },
 
     cutOut(exception) {

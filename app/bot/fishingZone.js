@@ -16,6 +16,7 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
 
     findBobber(exception) {
       let rgb = createRgb(getDataFrom(zone));
+      rgb.saturate(40, 0, 0);
       if(exception) {
         rgb.cutOut(exception);
       }
@@ -39,6 +40,7 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
         return;
       }
       let pointRgb = createRgb(getDataFrom({x: pos.x, y: pos.y, width: 1, height: 1}));
+      pointRgb.saturate(40, 0, 0);
       if(isBobber(pointRgb.colorAt({ x: 0, y: 0 }))) {
         return true;
       }
@@ -46,6 +48,7 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
 
     getBobberPrint(wobble) {
       let rgb = createRgb(getDataFrom(zone));
+      rgb.saturate(40, 0, 0);
       let rest = rgb.findColors({ isColor: isBobber });
       if(!rest) return;
       let result = [...rest];
