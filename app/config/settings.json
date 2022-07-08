@@ -11,5 +11,5 @@
   "whitelist": false,
   "whitelistWords": "",
   "whiteListBlueGreen": false,
-  "threshold": 20
+  "threshold": 60
 }
