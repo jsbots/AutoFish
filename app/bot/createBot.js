@@ -95,9 +95,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
       throw new Error("The window is in fullscreen mode");
     }
 
-    let redColor = fishingZone.findBobber();
-    if (redColor) {
-      mouse.moveTo(redColor.x, redColor.y);
+
+    if (fishingZone.findBobber()) {
       throw new Error(
         `Found red colors before casting. Increase the red color "threshold" value or change the fishing place.`
       );
@@ -274,9 +273,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       }
 
       if (!isInList) {
-        isInList = whitelist.some((word) => {
-          return percentComparison(word, item) > 70;
-        });
+        isInList = whitelist.some((word) => percentComparison(word, item) > 90);
       }
 
       if (isInList) {
