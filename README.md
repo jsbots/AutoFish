@@ -51,7 +51,7 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
 On custom servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org works, but the efficiency is usually around 80% (for some reason the bobber doesn't dive into the water completely on Turtle-wow sometimes and the bot misses the fish).
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org - works, but the efficiency is usually around 90% (for some reason the bobber doesn't dive into the water completely sometimes).
 - <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
 
 ## Warning :warning:
