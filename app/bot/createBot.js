@@ -256,7 +256,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     let recognizedWords = await readTextFrom(getDataFrom(lootWindowDim), 2);
     let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
     let itemPos = 0;
-    let itemsPicked = 0;
+    let itemsPicked = [];
     for (let item of items) {
       let isInList;
 
@@ -289,6 +289,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
         if (config.reaction && random(0, 10) > 8) { // sometimes we think
           await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
+        } else {
+          await sleep(random(50, 150));
         }
 
         await action(() => {
@@ -296,13 +298,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
           mouse.toggle(false, "right", delay);
         });
 
-        itemsPicked++;
+        itemsPicked.push(item);
       }
 
       itemPos += lootWindow.itemHeight;
     }
 
-    if (items.length != itemsPicked) {
+    if (items.length != itemsPicked.length) {
       if (config.reaction) {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
@@ -310,6 +312,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
         keyboard.sendKey("escape", delay);
       });
     }
+
+    return itemsPicked;
   };
 
   const hookBobber = async (pos) => {
@@ -336,7 +340,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
     if (!notificationZone.check("warning")) {
       caught = true;
       if (settings.whitelist && settings.whitelistWords !== ``) {
-        await pickLoot();
+        let itemsPicked = await pickLoot();
+          if(itemsPicked.length > 0) {
+            caught = itemsPicked.toString();
+          }
       }
     }
 

@@ -67,7 +67,7 @@ const runBot = async ({ bot, log, state, stats }) => {
       let isHooked = await hookBobber(bobber);
       if (isHooked) {
         stats.caught++;
-        log.ok(`Caught the fish!`);
+        log.ok(`Caught ${typeof isHooked == `boolean` ? `the fish!` : isHooked}`);
         continue;
       }
     }
