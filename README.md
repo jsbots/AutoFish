@@ -51,7 +51,7 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
 On custom servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org works, but the efficiency is usually around 80% (for some reason the bobber doesn't dive into the water completely on Turtle-wow sometimes and the bot misses the fish).
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org - works, but the efficiency is usually around 90% (for some reason the bobber doesn't dive into the water completely sometimes).
 - <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
 
 ## Warning :warning:
@@ -95,7 +95,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 8. Equip a fishpole.
 9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
-   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, **it will show you where exactly it ran into the reddish color by moving your cursor to the place**.
+   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, it will stop working: increase Threshold or change the place.
    - The bot will make 3 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"), if it fails it will stop the application.
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
@@ -135,7 +135,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish 1.8.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.7.7/AutoFish.1.7.7.Setup.exe)
+AutoFish 1.8.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.8.0/AutoFish.1.8.0.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
