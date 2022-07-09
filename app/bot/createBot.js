@@ -8,6 +8,7 @@ const {
   readTextFrom,
   sortWordsByItem,
 } = require("../utils/textReader.js");
+
 const { createTimer } = require("../utils/time.js");
 
 const sleep = (time) => {
@@ -253,9 +254,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
       height: lootWindow.height,
     };
 
-    let recognizedWords = await readTextFrom(getDataFrom(lootWindowDim), 2);
+    let recognizedWords = await readTextFrom(getDataFrom(lootWindowDim), screenSize.width <= 1536 ? 3 : 2);
     let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
     let itemPos = 0;
+
     let itemsPicked = [];
     for (let item of items) {
       let isInList;
@@ -339,7 +341,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await sleep(250);
     if (!notificationZone.check("warning")) {
       caught = true;
-      if (settings.whitelist && settings.whitelistWords !== ``) {
+      if (settings.whitelist && settings.whitelistWords) {
         let itemsPicked = await pickLoot();
           if(itemsPicked.length > 0) {
             caught = itemsPicked.toString();
