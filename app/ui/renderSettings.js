@@ -198,7 +198,7 @@ return elt(
       { className: "settings_section" },
       wrapInLabel("",
         renderWhitelist(config),
-        `Works only with English language and only in Retail, Classic, MoP and WoTLK. The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma.`
+        `Available only for Retail, Classic, MoP and WoTLK. The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language.`
       ),
       wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green and blue item in addition to the items in the whitelist.`)
     ),
