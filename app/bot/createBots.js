@@ -6,11 +6,19 @@ const Stats = require('./stats.js');
 
 const { createIdLog } = require("../utils/logger.js");
 const EventLine = require("../utils/eventLine.js");
+const { setWorker } = require("../utils/textReader.js");
 
 const createWinSwitch = require("../game/winSwitch.js");
 
-const createBots = (games, settings, config, log) => {
+
+const createBots = async (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
+
+  if(settings.whitelist) {
+    log.send(`Downloading data for ${settings.whitelistLanguage} language, it might take a while...`)
+    await setWorker(settings.whitelistLanguage);
+  }
+
   config = {config: config.patch[settings.game], settings};
   const bots = games.map((game, i) => {
     return {

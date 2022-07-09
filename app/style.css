@@ -158,7 +158,11 @@ section {
 }
 
 .settings input[type="text"].whitelist_input  {
-  width: 263px;
+  width: 218px;
+}
+
+.settings select.whitelistLanguage {
+  width: 45px;
 }
 
 .advanced_settings_button {

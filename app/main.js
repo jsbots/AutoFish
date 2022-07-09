@@ -106,7 +106,7 @@ const showChoiceWarning = (win, warning) => {
 };
 
 
-function createWindow() {
+const createWindow = async () => {
   let win = new BrowserWindow({
     title: generateName(10),
     width: 325,
@@ -179,7 +179,7 @@ function createWindow() {
       return;
     }
 
-    const {startBots, stopBots} = createBots(games, settings, config, log);
+    const {startBots, stopBots} = await createBots(games, settings, config, log);
 
     const stopAppAndBots = () => {
       stopBots();

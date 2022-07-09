@@ -108,7 +108,7 @@ const renderAdvancedSettings = () => {
   return elt('input', {type: 'button', name:"advancedSettings", value: "Advanced Settings", className: "advanced_settings_button"});
 };
 
-const renderWhitelist = ({game, whitelist, whitelistWords}) => {
+const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
   let disabled = !whitelist;
   let checked = whitelist;
   let allDisabled;
@@ -117,7 +117,11 @@ const renderWhitelist = ({game, whitelist, whitelistWords}) => {
     allDisabled = true;
     checked = false;
   }
-  return elt('div', null, elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}), elt('input', {type: 'checkbox', name: "whitelist", checked, disabled: allDisabled}))
+  let languages = [`eng`, `spa`, `por`, `fra`, `deu`, `ita`, `rus`, `chi_sim`];
+  return elt('div', null,
+  elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map( language => elt(`option`, {selected: whitelistLanguage == language}, language))),
+  elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}),
+  elt('input', {type: 'checkbox', name: "whitelist", checked, disabled: allDisabled}))
 };
 
 const renderWhiteListGreenBlue = ({whitelist, whiteListBlueGreen}) => {

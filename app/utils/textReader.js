@@ -1,12 +1,13 @@
 const Jimp = require("jimp");
 const { createWorker } = require("tesseract.js");
+
 const worker = createWorker();
 
-(async () => {
+const setWorker = async (language) => {
   await worker.load();
-  await worker.loadLanguage("eng");
-  await worker.initialize("eng");
-})();
+  await worker.loadLanguage(language);
+  await worker.initialize(language);
+}
 
 const readTextFrom = async (buffer, scale) => {
   let img = await Jimp.read(buffer);
@@ -40,6 +41,7 @@ const sortWordsByItem = (words, itemHeight) => {
 };
 
 module.exports = {
+  setWorker,
   percentComparison,
   readTextFrom,
   sortWordsByItem,
