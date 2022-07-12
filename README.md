@@ -107,6 +107,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 - If you play on Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default.
+- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language. 
 - Don't use **Like a human** option if you use more than one window: because of the slow mouse movement some of the bots might not catch up.  
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
@@ -135,7 +136,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish 1.8.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.8.0/AutoFish.1.8.0.Setup.exe)
+AutoFish 1.8.1 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.8.1/AutoFish.1.8.1.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
