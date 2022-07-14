@@ -44,6 +44,7 @@ The bot was tested on official servers:
 - <img src="guide_img/icons/good.png" width="15" height="15"> **Classic TBC**
 
 Also on unofficial servers:
+- <img src="guide_img/icons/good.png" width="15" height="15"> **Shadowlands**: firestorm-servers.com
 - <img src="guide_img/icons/good.png" width="15" height="15"> **MoP**: stormforge.gg
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WoTLK**: warmane.com
