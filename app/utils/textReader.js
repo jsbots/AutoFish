@@ -7,7 +7,7 @@ const setWorker = async (language) => {
   await worker.load();
   await worker.loadLanguage(language);
   await worker.initialize(language);
-}
+};
 
 const readTextFrom = async (buffer, scale) => {
   let img = await Jimp.read(buffer);
@@ -20,9 +20,23 @@ const readTextFrom = async (buffer, scale) => {
   return words;
 };
 
+const getField = (attr) => (obj) => obj[attr];
 const percentComparison = (first, second) => {
-  return ([...first].reduce((total, letter) =>
-    [...second].includes(letter) ? total + 1 : total, 0) / first.length) * 100
+  if (second.length > first.length) {
+    [first, second] = [second, first];
+  }
+
+  let mainLetters = Array.from(new Set([...first])).map(letter => ({letter, index: []}));
+  [...first].forEach(letter => {
+    let prevIndexes = mainLetters.find((mainLetter) => mainLetter.letter == letter).index;
+    let lastPrevIndex = prevIndexes[prevIndexes.length - 1];
+    let index = second.indexOf(letter, lastPrevIndex ? lastPrevIndex + 1 : 0);
+    if(index != -1) {
+      prevIndexes.push(index);
+    }
+  });
+
+  return mainLetters.flatMap(getField(`index`)).length / first.length * 100
 };
 
 const sortWordsByItem = (words, itemHeight) => {
