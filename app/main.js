@@ -136,8 +136,10 @@ const createWindow = async () => {
     win.webContents.send('set-version', version);
   });
 
-  ipcMain.on("start-bot", async (event, settings) => {
+  ipcMain.on("start-bot", async () => {
     const config = getJson("./config/bot.json");
+    const settings = getJson("./config/settings.json");
+
     const log = createLog((data) => {
       win.webContents.send("log-data", data);
     });
@@ -167,10 +169,14 @@ const createWindow = async () => {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
 
-    if ((settings.game == "Retail" || settings.game == "Classic") &&
-        showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
+    if (settings.initial && (settings.game == "Retail" || settings.game == "Classic")) {
+      if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
         win.webContents.send('stop-bot');
         return;
+      } else {
+        settings.initial = false;
+        writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+      }
     }
 
     if(settings.fishingKey === `` || settings.luresKey === ``) {

@@ -12,5 +12,6 @@
   "whitelistWords": "",
   "whiteListBlueGreen": false,
   "whitelistLanguage": "eng",
-  "threshold": 60
+  "threshold": 60,
+  "initial": true
 }
