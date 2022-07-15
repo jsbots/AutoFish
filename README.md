@@ -112,7 +112,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 - Don't use **Like a human** option if you use more than one window: because of the slow mouse movement some of the bots might not catch up.  
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
-- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase cast animation delay (especially useful if you don't use **Like a human** option).
+- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **cast animation delay** value in the **Advanced Settings**.
 
 ## Fishing Zone :dart:
 
