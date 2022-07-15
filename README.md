@@ -2,7 +2,7 @@
 <div align="center">
 
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
-<a href="https://youtu.be/e0D5dBptQUg"><img alt="" src="https://img.shields.io/youtube/views/o1i_cgZzuHc?style=social"></a>
+<a href="https://youtu.be/P_kXGEzI1mo"><img alt="" src="https://img.shields.io/youtube/views/P_kXGEzI1mo?style=social"></a>
 
 </div>
 
@@ -30,7 +30,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Custom window suppport.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
-For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) and <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20">  [AutoFish 1.1](https://youtu.be/o1i_cgZzuHc).
+For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo) 
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a simpler solution: it analyzes the window of the game for condensed red colors and then sticks to them checking the area for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, it clicks on it and catches the fish.
 
@@ -44,6 +44,7 @@ The bot was tested on official servers:
 - <img src="guide_img/icons/good.png" width="15" height="15"> **Classic TBC**
 
 Also on unofficial servers:
+- <img src="guide_img/icons/good.png" width="15" height="15"> **Shadowlands**: firestorm-servers.com
 - <img src="guide_img/icons/good.png" width="15" height="15"> **MoP**: stormforge.gg
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WoTLK**: warmane.com
@@ -100,7 +101,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
-**Additional:**
+**Additional info/known issues:**
 
 - If the bot can't find a bobber, decrease "Threshold" value. (e.g. 60 -> 40)
 - If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 60 -> 80)
@@ -111,6 +112,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 - Don't use **Like a human** option if you use more than one window: because of the slow mouse movement some of the bots might not catch up.  
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
+- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase cast animation delay (especially useful if you don't use **Like a human** option).
 
 ## Fishing Zone :dart:
 
