@@ -157,7 +157,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   });
 
   const findAllBobberColors = () => {
-    return fishingZone.getBobberPrint(5);
+    return fishingZone.getBobberPrint(7);
   };
 
   const castFishing = async (state) => {
@@ -233,13 +233,11 @@ const createBot = (game, { config, settings }, winSwitch) => {
       await sleep(150); // open loot window
     }
 
-    await action(() => {
       let pos = {
         x: cursorPos.x + lootWindow.toItemX,
         y: cursorPos.y - lootWindow.toItemY - 10,
       };
       moveTo({ pos, randomRange: 5 });
-    });
 
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); // hint disappearing and smooth text analyzing time with random value
@@ -279,7 +277,6 @@ const createBot = (game, { config, settings }, winSwitch) => {
       }
 
       if (isInList) {
-        await action(() => {
           moveTo({
             pos: {
               x: cursorPos.x,
@@ -287,7 +284,6 @@ const createBot = (game, { config, settings }, winSwitch) => {
             },
             randomRange: 5,
           });
-        });
 
         if (config.reaction && random(0, 10) > 8) { // sometimes we think
           await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
@@ -295,10 +291,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
           await sleep(random(50, 150));
         }
 
-        await action(() => {
-          mouse.toggle(true, "right", delay);
-          mouse.toggle(false, "right", delay);
-        });
+        mouse.toggle(true, "right", delay);
+        mouse.toggle(false, "right", delay);
 
         itemsPicked.push(item);
       }
@@ -310,9 +304,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       if (config.reaction) {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
-      await action(() => {
         keyboard.sendKey("escape", delay);
-      });
     }
 
     return itemsPicked;
@@ -322,8 +314,9 @@ const createBot = (game, { config, settings }, winSwitch) => {
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
     }
+    let caught = false;
 
-    await action(() => {
+    await action(async () => {
       moveTo({ pos, randomRange: 5 });
 
       if (settings.shiftClick) {
@@ -335,20 +328,18 @@ const createBot = (game, { config, settings }, winSwitch) => {
         mouse.toggle(true, "right", delay);
         mouse.toggle(false, "right", delay);
       }
-    });
 
-    let caught = false;
     await sleep(250);
     if (!notificationZone.check("warning")) {
       caught = true;
       if (settings.whitelist && settings.whitelistWords) {
-        let itemsPicked = await pickLoot();
-          if(itemsPicked.length > 0) {
-            caught = itemsPicked.toString();
-          }
+          let itemsPicked = await pickLoot();
+            if(itemsPicked.length > 0) {
+              caught = itemsPicked.toString();
+            }
       }
     }
-
+    });
     await sleep(settings.game == `Retail` || settings.game == `Classic` ? 750 : 250); // close loot window delay
 
     if (config.sleepAfterHook) {
