@@ -1,6 +1,6 @@
 const { ipcRenderer } = require("electron");
-const elt = require("../ui/utils/elt.js");
-const wrapInLabel = require("../ui/utils/wrapInLabel.js");
+const elt = require("../../ui/utils/elt.js");
+const wrapInLabel = require("../../ui/utils/wrapInLabel.js");
 
 const convertValue = (node) => {
   let value = node.value;
