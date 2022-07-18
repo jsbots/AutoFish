@@ -167,7 +167,8 @@ section {
 
 .advanced_settings_button {
   height: 23px;
-  width: 126px;
+  width: 123px;
+  margin-right: 3px;
 }
 
 .option.game-option {
