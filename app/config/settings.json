@@ -7,7 +7,6 @@
   "fishingKey": "1",
   "luresKey": "2",
   "luresDelayMin": 10,
-  "timerQuit": false,
   "whitelist": false,
   "whitelistWords": "",
   "whiteListBlueGreen": false,

@@ -121,6 +121,10 @@ const renderCustomWindow = ({useCustomWindow, customWindow}) => {
 
 };
 
+const renderTimerQuit = ({timerQuit}) => {
+  return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
+};
+
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
@@ -131,7 +135,8 @@ const renderSettings = (config) => {
   wrapInLabel(`Random mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between the provided values. The higher the value the faster the bot moves the cursor. Works only if Like a human option is on.`),
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
-  wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`)),
+  wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
+  wrapInLabel( "Quit after timer: ",renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Random sleep:`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),

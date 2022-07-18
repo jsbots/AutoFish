@@ -40,7 +40,8 @@
           "height": 0.153,
           "width": 0.056
         }
-      }
+      },
+      "timerQuit": false
     },
     "Classic": {
       "useCustomWindow": false,
@@ -61,6 +62,7 @@
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 3,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.125,
@@ -99,6 +101,7 @@
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 3,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.123,
@@ -137,6 +140,7 @@
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 3,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.123,
@@ -192,7 +196,8 @@
           "height": 0.194,
           "width": 0.073
         }
-      }
+      },
+      "timerQuit": false
     },
     "TBC": {
       "useCustomWindow": false,
@@ -213,6 +218,7 @@
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 3,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.132,
@@ -251,6 +257,7 @@
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 3,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.132,

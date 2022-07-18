@@ -19,10 +19,9 @@ const createBots = async (games, settings, config, log) => {
     await setWorker(settings.whitelistLanguage);
   }
 
-  config = {config: config.patch[settings.game], settings};
   const bots = games.map((game, i) => {
     return {
-      bot: createBot(game, config, winSwitch),
+      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch),
       log: createIdLog(log, ++i),
       state: { status: "initial", startTime: Date.now() },
       stats: new Stats()
@@ -36,9 +35,9 @@ const createBots = async (games, settings, config, log) => {
         setTimeout(() => {
           if(!bots.every(({state}) => state.status == 'stop')) {
             onError();
-            if(settings.timerQuit) {
+            if(config.patch[settings.game].timerQuit) {
+              log.ok('Closing the windows...')
               games.forEach(({workwindow}) => workwindow.close());
-              log.ok('Closed all the windows...')
             }
           }
         }, settings.timer * 1000 * 60);
