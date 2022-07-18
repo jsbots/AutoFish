@@ -22,7 +22,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.125,
@@ -60,7 +61,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.125,
@@ -98,7 +100,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.123,
@@ -136,7 +139,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.123,
@@ -174,7 +178,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.132,
@@ -212,7 +217,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.132,
@@ -250,7 +256,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.132,

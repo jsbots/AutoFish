@@ -22,7 +22,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.125,
@@ -40,8 +41,7 @@
           "height": 0.153,
           "width": 0.056
         }
-      },
-      "timerQuit": false
+      }
     },
     "Classic": {
       "useCustomWindow": false,
@@ -61,7 +61,7 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
       "timerQuit": false,
       "lootWindow": {
         "1536": {
@@ -100,7 +100,7 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
       "timerQuit": false,
       "lootWindow": {
         "1536": {
@@ -139,7 +139,7 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
       "timerQuit": false,
       "lootWindow": {
         "1536": {
@@ -178,7 +178,8 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
+      "timerQuit": false,
       "lootWindow": {
         "1536": {
           "upperLimit": 0.132,
@@ -196,8 +197,7 @@
           "height": 0.194,
           "width": 0.073
         }
-      },
-      "timerQuit": false
+      }
     },
     "TBC": {
       "useCustomWindow": false,
@@ -217,7 +217,7 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
       "timerQuit": false,
       "lootWindow": {
         "1536": {
@@ -256,7 +256,7 @@
       "randomSleepDelay": { "from": 1000, "to": 15000 },
       "reaction": true,
       "reactionDelay": { "from": 150, "to": 400 },
-      "maxAttempts": 3,
+      "maxAttempts": 5,
       "timerQuit": false,
       "lootWindow": {
         "1536": {
