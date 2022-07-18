@@ -186,7 +186,7 @@ return elt(
       wrapInLabel(
         "",
         renderFishingZone(config),
-        `Set your fishing zone`
+        `The application will open the window of your game and show you the fishing zone, you can change it as you like. You can reset the fishing zone to default values in Advanced Settings.`
       ),
       wrapInLabel(
         "",
