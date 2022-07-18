@@ -57,6 +57,10 @@ class Settings {
       if(event.target.name == 'advancedSettings') {
         this.onClick(this.config);
       }
+
+      if(event.target.name == `fishingZone`) {
+        this.onFishingZoneClick();
+      }
     })
   }
 
@@ -67,6 +71,10 @@ class Settings {
 
   regOnClick(callback) {
     this.onClick = callback;
+  }
+
+  regOnFishingZoneClick(callback) {
+    this.onFishingZoneClick = callback;
   }
 
   regOnChange(callback) {

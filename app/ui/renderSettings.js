@@ -100,13 +100,15 @@ const renderLuresDelay = ({lures, luresDelayMin}) => {
 const renderFishingKey = ({fishingKey}) => {
   return elt('input', {type: 'text', value: fishingKey, name: "fishingKey"});
 };
-const renderTimerQuit = ({timerQuit}) => {
-  return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
-};
 
 const renderAdvancedSettings = () => {
   return elt('input', {type: 'button', name:"advancedSettings", value: "Advanced Settings", className: "advanced_settings_button"});
 };
+
+const renderFishingZone = () => {
+  return elt('input', {type: 'button', name:"fishingZone", value: "Set Fishing Zone", className: "advanced_settings_button"});
+};
+
 
 const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
   let disabled = !whitelist;
@@ -182,9 +184,9 @@ return elt(
         `Check this option if you want to use fishing lures.`
       ),
       wrapInLabel(
-        "Quit after timer: ",
-        renderTimerQuit(config),
-        `The bot will quit the game after timer elapsed.`
+        "",
+        renderFishingZone(config),
+        `Set your fishing zone`
       ),
       wrapInLabel(
         "",

@@ -50,8 +50,12 @@ class AutoFish {
       ipcRenderer.send('advanced-settings', config)
     })
 
+    this.settings.regOnFishingZoneClick(() => {
+      ipcRenderer.send("start-bot", `setFishingZone`);
+    })
+
     this.button.regOnStart(() => {
-      ipcRenderer.send("start-bot", this.settings.config);
+      ipcRenderer.send("start-bot");
     });
 
     this.button.regOnStop(() => {
