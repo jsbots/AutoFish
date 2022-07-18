@@ -1,3 +1,4 @@
+/* Electron modules*/
 const {
   app,
   BrowserWindow,
@@ -11,6 +12,13 @@ const {
 const path = require("path");
 
 const { readFileSync, writeFileSync } = require("fs");
+const createAdvSettings = require(`./wins/advsettings/main.js`);
+const createFishingZone = require(`./wins/fishingzone/main.js`);
+
+const getJson = (jsonPath) => {
+  return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
+};
+/* Electron modules end */
 
 /* Bot modules */
 const generateName = require('./utils/generateName.js');
@@ -21,78 +29,14 @@ const getBitmapAsync = require("./utils/getBitmap.js");
 /* Bot modules end */
 
 /* Squirrel */
-
+const handleSquirrelEvent = require(`./utils/handleSquirrel.js`);
 if (require("electron-squirrel-startup")) return app.quit();
-if (handleSquirrelEvent()) {
+if (handleSquirrelEvent(app)) {
   // squirrel event handled and app will exit in 1000ms, so don't do anything else
   return;
 }
-function handleSquirrelEvent() {
-  if (process.argv.length === 1) {
-    return false;
-  }
-
-  const ChildProcess = require("child_process");
-
-  const appFolder = path.resolve(process.execPath, "..");
-  const rootAtomFolder = path.resolve(appFolder, "..");
-  const updateDotExe = path.resolve(path.join(rootAtomFolder, "Update.exe"));
-  const exeName = path.basename(process.execPath);
-
-  const spawn = function (command, args) {
-    let spawnedProcess, error;
-
-    try {
-      spawnedProcess = ChildProcess.spawn(command, args, { detached: true });
-    } catch (error) {}
-
-    return spawnedProcess;
-  };
-
-  const spawnUpdate = function (args) {
-    return spawn(updateDotExe, args);
-  };
-
-  const squirrelEvent = process.argv[1];
-  switch (squirrelEvent) {
-    case "--squirrel-install":
-    case "--squirrel-updated":
-      // Optionally do things such as:
-      // - Add your .exe to the PATH
-      // - Write to the registry for things like file associations and
-      //   explorer context menus
-
-      // Install desktop and start menu shortcuts
-      spawnUpdate(["--createShortcut", exeName]);
-
-      setTimeout(app.quit, 1000);
-      return true;
-
-    case "--squirrel-uninstall":
-      // Undo anything you did in the --squirrel-install and
-      // --squirrel-updated handlers
-
-      // Remove desktop and start menu shortcuts
-      spawnUpdate(["--removeShortcut", exeName]);
-
-      setTimeout(app.quit, 1000);
-      return true;
-
-    case "--squirrel-obsolete":
-      // This is called on the outgoing version of your app before
-      // we update to the new version - it's the opposite of
-      // --squirrel-updated
-
-      app.quit();
-      return true;
-  }
-}
-
 /* Squirrel end */
 
-const getJson = (jsonPath) => {
-  return JSON.parse(readFileSync(path.join(__dirname, jsonPath), "utf8"));
-};
 
 const showChoiceWarning = (win, warning) => {
   return result = dialog.showMessageBoxSync(win, {
@@ -105,6 +49,28 @@ const showChoiceWarning = (win, warning) => {
   });
 };
 
+const setFishingZone = async ({workwindow}, relZone) => {
+  workwindow.setForeground();
+  while(!workwindow.isForeground()) {
+    workwindow.setForeground();
+  }
+  const screenSize = workwindow.getView();
+  const pos = {
+    x: relZone.x * screenSize.width,
+    y: relZone.y * screenSize.height,
+    width: relZone.width * screenSize.width,
+    height: relZone.height * screenSize.height
+  }
+
+  const result = await createFishingZone(pos);
+  if(!result) return;
+  return {
+    x: Math.max(result.x / screenSize.width, 0),
+    y: Math.max(result.y / screenSize.height, 0),
+    width: result.width / screenSize.width,
+    height: result.height / screenSize.height
+  }
+}
 
 const createWindow = async () => {
   let win = new BrowserWindow({
@@ -136,7 +102,7 @@ const createWindow = async () => {
     win.webContents.send('set-version', version);
   });
 
-  ipcMain.on("start-bot", async () => {
+  ipcMain.on("start-bot", async (event, type) => {
     const config = getJson("./config/bot.json");
     const settings = getJson("./config/settings.json");
 
@@ -167,6 +133,18 @@ const createWindow = async () => {
       return;
     } else {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
+    }
+
+    if(type == `setFishingZone`) {
+      log.send(`Setting fishing zone...`);
+      let data = await setFishingZone(games[0], config.patch[settings.game].relZone);
+      if(data) {
+        config.patch[settings.game].relZone = data;
+        writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
+      }
+      log.ok(`Done!`);
+      win.focus();
+      return;
     }
 
     if (settings.initial && (settings.game == "Retail" || settings.game == "Classic")) {
@@ -210,13 +188,13 @@ const createWindow = async () => {
   );
 
   ipcMain.on("save-settings", (event, settings) =>
-  writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
+    writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
   );
 
   let settWin;
   ipcMain.on("advanced-settings", () => {
     if(!settWin || settWin.isDestroyed()) {
-      settWin = createAdvSettingsWin()
+      settWin = createAdvSettings(__dirname)
     } else {
       settWin.focus();
     }
@@ -227,61 +205,8 @@ const createWindow = async () => {
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));
 }
 
-
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
   Menu.setApplicationMenu(null);
   createWindow();
 });
-
-
-const createAdvSettingsWin = () => {
-  let settWin = new BrowserWindow({
-    title: 'Advanced settings',
-    width: 435,
-    height: 655,
-    show: false,
-    resizable: false,
-    webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
-    },
-    icon: "./app/img/icon.png",
-  });
-
-  settWin.loadFile("./app/advSettings/index.html");
-
-  settWin.on("closed", () => {
-    ipcMain.removeAllListeners(`advanced-click`);
-    ipcMain.removeHandler(`advanced-defaults`);
-    ipcMain.removeHandler(`get-game-config`);
-  });
-
-  settWin.once("ready-to-show", () => {
-    settWin.show();
-  });
-
-  ipcMain.on("advanced-click", (event, newConfig) => {
-    if(newConfig) {
-      const settings = getJson("./config/settings.json");
-      const config = getJson("./config/bot.json");
-      config.patch[settings.game] = newConfig;
-      writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
-    }
-    settWin.close();
-  });
-
-  ipcMain.handle("advanced-defaults", () => {
-    const settings = getJson("./config/settings.json");
-    const defaults = getJson("./config/defaults.json");
-    return defaults.patch[settings.game];
-  })
-
-  ipcMain.handle("get-game-config", () => {
-    const settings = getJson("./config/settings.json");
-    const config = getJson("./config/bot.json");
-    return config.patch[settings.game];
-  });
-
-  return settWin;
-};
