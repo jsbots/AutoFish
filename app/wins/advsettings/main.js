@@ -15,7 +15,7 @@ const createAdvSettings = (appPath) => {
       contextIsolation: false,
       nodeIntegration: true,
     },
-    icon: path.join(appPath, `./img/icon.png`)
+    icon: `./img/icon.png`
   });
 
   win.loadFile(path.join(__dirname, `index.html`));
