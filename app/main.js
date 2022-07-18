@@ -56,17 +56,17 @@ const setFishingZone = async ({workwindow}, relZone) => {
   }
   const screenSize = workwindow.getView();
   const pos = {
-    x: relZone.x * screenSize.width,
-    y: relZone.y * screenSize.height,
+    x: screenSize.x + relZone.x * screenSize.width,
+    y: screenSize.y + relZone.y * screenSize.height,
     width: relZone.width * screenSize.width,
     height: relZone.height * screenSize.height
   }
 
-  const result = await createFishingZone(pos);
+  const result = await createFishingZone({pos, screenSize});
   if(!result) return;
   return {
-    x: Math.max(result.x / screenSize.width, 0),
-    y: Math.max(result.y / screenSize.height, 0),
+    x: (result.x - screenSize.x) / screenSize.width,
+    y: (result.y - screenSize.y) / screenSize.height,
     width: result.width / screenSize.width,
     height: result.height / screenSize.height
   }
