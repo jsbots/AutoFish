@@ -118,9 +118,9 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
+You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like. 
 
-The size of fishing zone is relative to the size of the window. You can change the relative points in the "Advanced settings".
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
@@ -138,7 +138,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish 1.8.2 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.8.2/AutoFish.1.8.2.Setup.exe)
+AutoFish 1.9.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.9.0/AutoFish.1.9.0.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
