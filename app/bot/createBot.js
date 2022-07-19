@@ -93,9 +93,12 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const preliminaryChecks = () => {
     if (screenSize.x == -32000 && screenSize.y == -32000) {
-      throw new Error("The window is in fullscreen mode");
+      throw new Error("The window is either in fullscreen mode or minimized. Switch to windowed or windowed(maximized).");
     }
 
+    if(fishingZone.isVoid()) {
+      throw new Error(`Can't get colors from the window. Switch to lower DirectX.`);
+    }
 
     if (fishingZone.findBobber()) {
       throw new Error(
