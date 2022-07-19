@@ -38,7 +38,7 @@ const renderThreshold = ({ threshold }) => {
 const renderGameNames = ({game}) => {
   const gameNames = [
     "Retail",
-    "Classic",
+    "Classic&TBCC",
     "MoP",
     "Cataclysm",
     "WoTLK",
@@ -67,12 +67,6 @@ const renderShiftClick = ({game, shiftClick}) => {
     checked: shiftClick,
     name: "shiftClick",
   });
-
-  if(game == "Vanilla") {
-      dom.checked = true;
-      dom.setAttribute('disabled', 'true');
-  }
-
   return dom;
 };
 const renderLikeHuman = ({likeHuman}) => {
@@ -113,17 +107,12 @@ const renderFishingZone = () => {
 const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
   let disabled = !whitelist;
   let checked = whitelist;
-  let allDisabled;
-  if(game == 'Cataclysm' || game == "TBC" || game == "Vanilla") {
-    disabled = true;
-    allDisabled = true;
-    checked = false;
-  }
+
   let languages = [`eng`, `spa`, `por`, `fra`, `deu`, `ita`, `rus`, `chi_sim`];
   return elt('div', null,
   elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map( language => elt(`option`, {selected: whitelistLanguage == language}, language))),
   elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}),
-  elt('input', {type: 'checkbox', name: "whitelist", checked, disabled: allDisabled}))
+  elt('input', {type: 'checkbox', name: "whitelist", checked}))
 };
 
 const renderWhiteListGreenBlue = ({whitelist, whiteListBlueGreen}) => {
@@ -200,7 +189,7 @@ return elt(
       { className: "settings_section" },
       wrapInLabel("",
         renderWhitelist(config),
-        `Available only for Retail, Classic, MoP and WoTLK. The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language.`
+        `The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language.`
       ),
       wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green and blue item in addition to the items in the whitelist.`)
     ),
