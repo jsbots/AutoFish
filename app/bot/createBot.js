@@ -71,6 +71,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
   }
 
+  if(lootWindowPatch.exitButton) {
+    lootWindow.exitButton = {
+      x: lootWindowPatch.exitButton.x * screenSize.width,
+      y: lootWindowPatch.exitButton.y * screenSize.height
+    }
+  }
+
   const whitelist = settings.whitelistWords
     .split(",")
     .map((word) => word.trim());
@@ -316,7 +323,16 @@ const createBot = (game, { config, settings }, winSwitch) => {
       if (config.reaction) {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
+      if(lootWindow.exitButton) {
+        moveTo({ pos: {
+          x: cursorPos.x + lootWindow.exitButton.x,
+          y: cursorPos.y - lootWindow.exitButton.y
+        }});
+        mouse.toggle(true, "left", delay);
+        mouse.toggle(false, "left", delay);
+      } else {
         keyboard.sendKey("escape", delay);
+      }
     }
 
     return itemsPicked;
