@@ -43,7 +43,7 @@
         }
       }
     },
-    "Classic": {
+    "Classic&TBCC": {
       "useCustomWindow": false,
       "customWindow": "",
       "delay": { "from": 50, "to": 150 },
