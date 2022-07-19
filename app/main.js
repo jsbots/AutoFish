@@ -80,6 +80,7 @@ const createWindow = async () => {
     show: false,
     resizable: false,
     webPreferences: {
+      spellcheck: false,
       contextIsolation: false,
       nodeIntegration: true,
     },
@@ -147,7 +148,7 @@ const createWindow = async () => {
       return;
     }
 
-    if (settings.initial && (settings.game == "Retail" || settings.game == "Classic")) {
+    if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&TBCC")) {
       if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time.`)) {
         win.webContents.send('stop-bot');
         return;
