@@ -54,6 +54,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const lootWindowPatch =
     config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
+
   const lootWindow = {
     upperLimit: lootWindowPatch.upperLimit * screenSize.height,
     toItemX: lootWindowPatch.toItemX * screenSize.width,
@@ -62,6 +63,14 @@ const createBot = (game, { config, settings }, winSwitch) => {
     height: lootWindowPatch.height * screenSize.height,
     itemHeight: lootWindowPatch.itemHeight * screenSize.height,
   };
+
+  if(lootWindowPatch.cursorPos) {
+    lootWindow.cursorPos = {
+      x: lootWindowPatch.cursorPos.x * screenSize.width,
+      y: lootWindowPatch.cursorPos.y * screenSize.height
+    }
+  }
+
   const whitelist = settings.whitelistWords
     .split(",")
     .map((word) => word.trim());
@@ -225,7 +234,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   const pickLoot = async () => {
-    let cursorPos = settings.game == `Vanilla`? {x: 0.0296 * screenSize.width, y: 0.2407 * screenSize.height} : mouse.getPos();
+    let cursorPos = lootWindow.cursorPos ? lootWindow.cursorPos : mouse.getPos();
     if (cursorPos.y - lootWindow.upperLimit < 0) {
       cursorPos.y = lootWindow.upperLimit;
     }

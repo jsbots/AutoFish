@@ -221,14 +221,16 @@
       "timerQuit": false,
       "lootWindow": {
         "1536": {
-          "upperLimit": 0.132,
-          "toItemX": 0.019,
-          "toItemY": 0.022,
-          "itemHeight": 0.055,
-          "height": 0.218,
-          "width": 0.079
+          "cursorPos": { "x": 0.03147, "y": 0.26692 },
+          "upperLimit": 0.13020,
+          "toItemX": 0.018301,
+          "toItemY": 0.03515,
+          "itemHeight": 0.05729,
+          "height": 0.22005,
+          "width": 0.08272
         },
         "1920": {
+          "cursorPos": { "x": 0.02968, "y": 0.24074 },
           "upperLimit": 0.117,
           "toItemX": 0.015,
           "toItemY": 0.023,
@@ -260,14 +262,16 @@
       "timerQuit": false,
       "lootWindow": {
         "1536": {
-          "upperLimit": 0.132,
-          "toItemX": 0.019,
-          "toItemY": 0.022,
-          "itemHeight": 0.055,
-          "height": 0.218,
-          "width": 0.079
+          "cursorPos": { "x": 0.03147, "y": 0.26692 },
+          "upperLimit": 0.13020,
+          "toItemX": 0.018301,
+          "toItemY": 0.03515,
+          "itemHeight": 0.05729,
+          "height": 0.22005,
+          "width": 0.08272
         },
         "1920": {
+          "cursorPos": { "x": 0.02968, "y": 0.24074 },
           "upperLimit": 0.117,
           "toItemX": 0.015,
           "toItemY": 0.023,
