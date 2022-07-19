@@ -112,7 +112,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       keyboard.sendKey(settings.luresKey, delay);
       if (
         settings.game == `Vanilla` ||
-        settings.game == `Classic` ||
+        settings.game == `Classic&TBCC` ||
         settings.game == `TBC`
       ) {
         keyboard.sendKey(`c`, delay);
@@ -225,7 +225,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   const pickLoot = async () => {
-    let cursorPos = mouse.getPos();
+    let cursorPos = settings.game == `Vanilla`? {x: 0.0296 * screenSize.width, y: 0.2407 * screenSize.height} : mouse.getPos();
     if (cursorPos.y - lootWindow.upperLimit < 0) {
       cursorPos.y = lootWindow.upperLimit;
     }
@@ -343,7 +343,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       }
     }
     });
-    await sleep(settings.game == `Retail` || settings.game == `Classic` ? 750 : 250); // close loot window delay
+    await sleep(settings.game == `Retail` || settings.game == `Classic&TBCC` ? 750 : 250); // close loot window delay
 
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
