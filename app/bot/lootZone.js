@@ -2,8 +2,8 @@ const createRgb = require('../utils/rgb.js');
 
 const createLootZone = ({ getDataFrom, zone }) => {
   let colors = {
-    blue: ([r, g, b]) => b - r > 200 && b - g > 200,
-    green: ([r, g, b]) => g - r > 200 && g - b > 200
+    blue: ([r, g, b]) => b - r > 80 && b - g > 80,
+    green: ([r, g, b]) => g - r > 80 && g - b > 80
   };
 
   return {
