@@ -360,7 +360,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await sleep(250);
     if (!notificationZone.check("warning")) {
       caught = true;
-      if (settings.whitelist && settings.whitelistWords) {
+      if (settings.whitelist) {
           let itemsPicked = await pickLoot();
             if(itemsPicked.length > 0) {
               caught = itemsPicked.toString();
