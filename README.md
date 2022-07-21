@@ -12,6 +12,7 @@
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
+- [Known Issues](#additional-info--known-issues-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
@@ -26,6 +27,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Optional loot support.
 - Fishing lures support.
 - Custom window suppport.
+- Auto confirmation for soulbound items.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
@@ -87,8 +89,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
-## Additional info / Known issues
-
+## Additional info / Known issues :pushpin:
 - If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default.
@@ -98,8 +99,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **cast animation delay** value in the **Advanced Settings**.
-
-- If you want the bot to fish only rare Soulbound items like ... turn on whitelist, leave it empty, and then "Loot all Uncommon/Rare items" option. If the item requires Soulbound confirmation the bot will confirm it.
+- If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then "Loot all Uncommon/Rare items" option. If the item requires Soulbound confirmation the bot will confirm it automatically. 
 
 ## Fishing Zone :dart:
 
