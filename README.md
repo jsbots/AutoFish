@@ -11,12 +11,10 @@
 - [Fishing bot](#fishing-bot-fish)
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
-- [Will I be banned for using this?](#will-i-be-banned-for-using-this-interrobang)
 - [Guide](#guide-blue_book)
 - [Fishing zone](#fishing-zone-dart)
 - [Download](#download-open_file_folder)
 - [Installation](#installation-hammer)
-- [Task list](#task-list-checkered_flag)
 
 
 ## Fishing bot :fish:
@@ -30,7 +28,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Custom window suppport.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
-For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo) 
+For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a simpler solution: it analyzes the window of the game for condensed red colors and then sticks to them checking the area for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, it clicks on it and catches the fish.
 
@@ -63,24 +61,12 @@ The bot is written in JavaScript, when writing the bot I didn't have acess to lo
 
 To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
-## Will I be banned for using this? :interrobang:
-
 Using common sense while using the bot will help to reduce risks of being banned:
 - Don't leave the bot alone for a long time.
 - Don't fish in one place all the time.
 - Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.
 
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
-
-After reading all this you are eager to ask the most important *existential* question of the topic:
-> **"Am I going to be banned for using this?"**
-
-If we consider **only the software itself**, the very simplified answer you seek depends on where you use the bot:
-- on **official servers**:
-> **"Probably"**.
-
-- on **unofficial servers**:
-> **"Unlikely"**.
 
 ## Guide :blue_book:
 
@@ -97,28 +83,29 @@ The bot was tested only with default UI and with default UI scale, without any a
 9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
    - Initially the bot will make a preliminary check for red colors before casting, if it finds any, it will stop working: increase Threshold or change the place.
-   - The bot will make 3 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"), if it fails it will stop the application.
+   - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"), if it fails it will stop the application.
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
-**Additional info/known issues:**
+## Additional info / Known issues
 
-- If the bot can't find a bobber, decrease "Threshold" value. (e.g. 60 -> 40)
-- If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 60 -> 80)
-- If you play on Classic/Vanilla/TBC and want to use lures:
+- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default.
-- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language. 
-- Don't use **Like a human** option if you use more than one window: because of the slow mouse movement some of the bots might not catch up.  
+- If the bot can't find a bobber, decrease "Threshold" value. (e.g. 60 -> 40)
+- If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 60 -> 80)
+- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **cast animation delay** value in the **Advanced Settings**.
+
+- If you want the bot to fish only rare Soulbound items like ... turn on whitelist, leave it empty, and then "Loot all Uncommon/Rare items" option. If the item requires Soulbound confirmation the bot will confirm it.
 
 ## Fishing Zone :dart:
 
 Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
-You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like. 
+You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
 
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
 
@@ -176,17 +163,3 @@ To start the app from the CLI:
 ```
 npm start
 ```
-
-## Task list :checkered_flag:
-
-- [x] Autofish 1.0.0
-- [x] Multiple windows support
-- [x] Fishing lures support
-- [x] Advanced settings option
-- [x] Fast fishing without waiting for the bobber to disappear (memory of the previous bobber position)
-- [x] More convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature)
-- [x] Custom window suppport.
-- [x] Red threshold support.
-- [x] Random click on the bobber area.
-- [x] Optional loot
-- [x] Better Threshold option
