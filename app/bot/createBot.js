@@ -55,6 +55,9 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const lootWindowPatch =
     config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
 
+  const confirmationWindowPatch =
+    config.confirmationWindow[screenSize.width <= 1536 ? `1536` : `1920`];
+
   const lootWindow = {
     upperLimit: lootWindowPatch.upperLimit * screenSize.height,
     toItemX: lootWindowPatch.toItemX * screenSize.width,
@@ -62,6 +65,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
     width: lootWindowPatch.width * screenSize.width,
     height: lootWindowPatch.height * screenSize.height,
     itemHeight: lootWindowPatch.itemHeight * screenSize.height,
+  };
+
+  const confirmationWindow = {
+    x: confirmationWindowPatch.x * screenSize.width,
+    y: confirmationWindowPatch.y * screenSize.height,
+    width: confirmationWindowPatch.width * screenSize.width,
+    height: confirmationWindowPatch.height * screenSize.height
   };
 
   if(lootWindowPatch.cursorPos) {
@@ -277,9 +287,9 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
     let itemsPicked = [];
     for (let item of items) {
-      let isInList;
+      let isInList = whitelist.find((word) => percentComparison(word, item) > 90);
 
-      if (settings.whiteListBlueGreen) {
+      if (!isInList && settings.whiteListBlueGreen) {
         isInList = createLootZone({
           getDataFrom,
           zone: {
@@ -289,10 +299,6 @@ const createBot = (game, { config, settings }, winSwitch) => {
             height: lootWindow.itemHeight,
           },
         }).findItems("blue", "green");
-      }
-
-      if (!isInList) {
-        isInList = whitelist.some((word) => percentComparison(word, item) > 90);
       }
 
       if (isInList) {
@@ -312,6 +318,27 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
         mouse.toggle(true, "right", delay);
         mouse.toggle(false, "right", delay);
+
+        if(typeof isInList == `boolean` && settings.confirmSoulbound) {
+          await sleep(250); // wait for the confirmation to appear
+          let recognizedWords = await readTextFrom(
+           getDataFrom(confirmationWindow),
+           screenSize.width <= 1536 ? 3 : 2
+         );
+
+
+          if(recognizedWords.some(item => percentComparison(`Okay`, item.text) > 75)) {
+            moveTo({
+              pos: {
+                     x: confirmationWindow.x + confirmationWindow.width / 2,
+                     y: confirmationWindow.y + confirmationWindow.height / 2
+                   }
+            });
+
+            mouse.toggle(true, "left", delay);
+            mouse.toggle(false, "left", delay);
+          }
+        }
 
         itemsPicked.push(item);
       }
