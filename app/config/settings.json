@@ -10,6 +10,7 @@
   "whitelist": false,
   "whitelistWords": "",
   "whiteListBlueGreen": false,
+  "confirmSoulbound": true,
   "whitelistLanguage": "eng",
   "threshold": 60,
   "initial": true
