@@ -92,13 +92,14 @@ The bot was tested only with default UI and with default UI scale, without any a
 ## Additional info / Known issues :pushpin:
 - If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
-  - Your UI scale should be set to default.
+  - Your UI scale should be set to default. 
 - If the bot can't find a bobber, decrease "Threshold" value. (e.g. 60 -> 40)
 - If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 60 -> 80)
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
-- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **cast animation delay** value in the **Advanced Settings**.
+- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **Cast animation delay** value in the **Advanced Settings**.
+- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot see the "jerking" animation better. 
 - If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
 
 ## Fishing Zone :dart:
