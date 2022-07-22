@@ -91,7 +91,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 ## Fishing Zone :dart:
 
-Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area.
+Fishing zone is a resible and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
 You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
 
