@@ -122,7 +122,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot see the "jerking" animation better:
+- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="600" align="center">
 </p>
