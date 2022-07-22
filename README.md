@@ -93,14 +93,14 @@ The bot was tested only with default UI and with default UI scale, without any a
 - If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
   - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
   - Your UI scale should be set to default. 
-- If the bot can't find a bobber, decrease "Threshold" value. (e.g. 60 -> 40)
-- If the bot can't pass the preliminary checks for red colors, increase "Threshold" value (e.g. 60 -> 80)
-- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
-- Don't fish near other players, the bot might confuse their bobber for yours.
-- You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
+- If the bot can't find a bobber, decrease "Threshold" value. 
+- If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value. 
 - If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **Cast animation delay** value in the **Advanced Settings**.
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot see the "jerking" animation better. 
 - If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
+- You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
+- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
+- Don't fish near other players, the bot might confuse their bobber for yours.
 
 ## Fishing Zone :dart:
 
@@ -110,13 +110,13 @@ You can change the dimensions of this zone by clicking on **"Set Fishing Zone"**
 
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
-
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**:
 - If you can, make your video settings as best as possible, except the weather effects...
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
 Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
