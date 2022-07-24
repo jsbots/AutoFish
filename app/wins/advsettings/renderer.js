@@ -94,6 +94,13 @@ const renderReaction = ({reaction}) => {
   return elt(`input`, {type: `checkbox`, name:`reaction`, checked: reaction});
 };
 
+const renderMissOnPurpose = ({missOnPurpose}) => {
+  if(missOnPurpose < 0) missOnPurpose = 0
+  else if(missOnPurpose > 100) missOnPurpose = 100
+
+  return elt(`input`, { type: `number`, name:`missOnPurpose`, value: missOnPurpose, min: 0, max: 100 });
+};
+
 const renderReactionDelay = ({reaction, reactionDelay}) => {
   return elt(`div`, {"data-collection": `reactionDelay`}, elt(`span`, {className: `option_text`}, `from:`),
   elt('input', {type: `number`, name: `from`, value: reactionDelay.from, disabled: !reaction}), elt(`span`, {className: `option_text`}, `to:`),
@@ -136,6 +143,7 @@ const renderSettings = (config) => {
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
+  wrapInLabel(`Miss on purpose: (%)`, renderMissOnPurpose(config), `Use this option if you play on official servers to decrease chances of being detected. Always Change this value before each fishing session.`),
   wrapInLabel( "Quit after timer: ",renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
