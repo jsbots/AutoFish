@@ -24,7 +24,12 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
-      "missOnPurpose": 10,
+      "missOnPurpose": 0,
+      "logOut": 60,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.57552 },
+        "1920": { "x": 0.5, "y": 0.55648 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -78,7 +83,12 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
-      "missOnPurpose": 10,
+      "missOnPurpose": 0,
+      "logOut": 60,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.57552 },
+        "1920": { "x": 0.5, "y": 0.55648 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -133,6 +143,11 @@
       "maxAttempts": 5,
       "timerQuit": false,
       "missOnPurpose": 0,
+      "logOut": 0,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.57552 },
+        "1920": { "x": 0.5, "y": 0.55648 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -187,6 +202,11 @@
       "maxAttempts": 5,
       "timerQuit": false,
       "missOnPurpose": 0,
+      "logOut": 0,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.53906 },
+        "1920": { "x": 0.5, "y": 0.53333 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -243,6 +263,11 @@
       "maxAttempts": 5,
       "timerQuit": false,
       "missOnPurpose": 0,
+      "logOut": 0,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.53906 },
+        "1920": { "x": 0.5, "y": 0.53333 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41288,
@@ -297,6 +322,11 @@
       "maxAttempts": 5,
       "timerQuit": false,
       "missOnPurpose": 0,
+      "logOut": 0,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.53906 },
+        "1920": { "x": 0.5, "y": 0.53333 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -353,6 +383,11 @@
       "maxAttempts": 5,
       "timerQuit": false,
       "missOnPurpose": 0,
+      "logOut": 0,
+      "logOutWindow": {
+        "1536": { "x": 0.5, "y": 0.53906 },
+        "1920": { "x": 0.5, "y": 0.53333 }
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
