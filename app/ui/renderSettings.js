@@ -108,7 +108,7 @@ const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) =
   let disabled = !whitelist;
   let checked = whitelist;
 
-  let languages = [`eng`, `spa`, `por`, `fra`, `deu`, `ita`, `rus`, `chi_sim`];
+  let languages = [`eng`, `spa`, `spa_old`, `por`, `fra`, `deu`, `ita`, `chi_sim`, `chi_tra`, `kor`, `rus`];
   return elt('div', null,
   elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map( language => elt(`option`, {selected: whitelistLanguage == language}, language))),
   elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}),
