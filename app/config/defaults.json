@@ -24,6 +24,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 10,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -32,11 +33,11 @@
           "height": 0.01953
         },
         "1920": {
-           "x": 0.43697,
-           "y": 0.16203,
-           "width": 0.05885,
-           "height": 0.01388
-          }
+          "x": 0.43697,
+          "y": 0.16203,
+          "width": 0.05885,
+          "height": 0.01388
+        }
       },
       "lootWindow": {
         "1536": {
@@ -77,6 +78,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 10,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -85,11 +87,11 @@
           "height": 0.020833
         },
         "1920": {
-           "x": 0.42031,
-           "y": 0.19722,
-           "width": 0.07447,
-           "height": 0.01851
-          }
+          "x": 0.42031,
+          "y": 0.19722,
+          "width": 0.07447,
+          "height": 0.01851
+        }
       },
       "lootWindow": {
         "1536": {
@@ -130,6 +132,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 0,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -138,11 +141,11 @@
           "height": 0.01953
         },
         "1920": {
-           "x": 0.43697,
-           "y": 0.16203,
-           "width": 0.05885,
-           "height": 0.01388
-          }
+          "x": 0.43697,
+          "y": 0.16203,
+          "width": 0.05885,
+          "height": 0.01388
+        }
       },
       "lootWindow": {
         "1536": {
@@ -183,6 +186,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 0,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -191,11 +195,11 @@
           "height": 0.01953
         },
         "1920": {
-           "x": 0.43697,
-           "y": 0.16203,
-           "width": 0.05885,
-           "height": 0.01388
-          }
+          "x": 0.43697,
+          "y": 0.16203,
+          "width": 0.05885,
+          "height": 0.01388
+        }
       },
       "lootWindow": {
         "1536": {
@@ -238,6 +242,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 0,
       "confirmationWindow": {
         "1536": {
           "x": 0.41288,
@@ -246,11 +251,11 @@
           "height": 0.02604
         },
         "1920": {
-           "x": 0.41927,
-           "y": 0.20462,
-           "width": 0.07552,
-           "height": 0.01851
-          }
+          "x": 0.41927,
+          "y": 0.20462,
+          "width": 0.07552,
+          "height": 0.01851
+        }
       },
       "lootWindow": {
         "1536": {
@@ -291,6 +296,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 0,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -299,11 +305,11 @@
           "height": 0.020833
         },
         "1920": {
-           "x": 0.42031,
-           "y": 0.19722,
-           "width": 0.07447,
-           "height": 0.01851
-          }
+          "x": 0.42031,
+          "y": 0.19722,
+          "width": 0.07447,
+          "height": 0.01851
+        }
       },
       "lootWindow": {
         "1536": {
@@ -346,6 +352,7 @@
       "reactionDelay": { "from": 150, "to": 400 },
       "maxAttempts": 5,
       "timerQuit": false,
+      "missOnPurpose": 0,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -354,11 +361,11 @@
           "height": 0.020833
         },
         "1920": {
-           "x": 0.42031,
-           "y": 0.19722,
-           "width": 0.07447,
-           "height": 0.01851
-          }
+          "x": 0.42031,
+          "y": 0.19722,
+          "width": 0.07447,
+          "height": 0.01851
+        }
       },
       "lootWindow": {
         "1536": {
