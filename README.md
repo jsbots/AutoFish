@@ -70,6 +70,8 @@ Using common sense while using the bot will help to reduce risks of being banned
 
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
 
+Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html) before using the bot. 
+
 ## Guide :blue_book:
 
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
@@ -89,22 +91,9 @@ The bot was tested only with default UI and with default UI scale, without any a
 10. Don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
-## Additional info / Known issues :pushpin:
-- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
-  - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
-  - Your UI scale should be set to default. 
-- If the bot can't find a bobber, decrease "Threshold" value. 
-- If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value. 
-- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **Cast animation delay** value in the **Advanced Settings**.
-- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot see the "jerking" animation better. 
-- If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
-- You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
-- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
-- Don't fish near other players, the bot might confuse their bobber for yours.
-
 ## Fishing Zone :dart:
 
-Fishing zone is a an area in the water where your bobber might land. The bot looks for the bobber only in this area.
+Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
 You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
 
@@ -123,6 +112,23 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="960">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="960">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="960">
+
+## Additional info / Known issues :pushpin:
+- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
+  - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
+  - Your UI scale should be set to default. 
+- If the bot can't find a bobber, decrease "Threshold" value. 
+- If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value. 
+- If the bot finds the first bobber but then can't do the same with the rest of casts, it might be because the bot processes the image too fast and the bobber can't appear in time - to get around it increase **Cast animation delay** value in the **Advanced Settings**.
+- If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
+- You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
+- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
+- Don't fish near other players, the bot might confuse their bobber for yours.
+- Any feature that analyzes your UI (whitelist, applying lures in Classic/TBC Classic/Vanilla/TBC) works only with standard 16:9 resolutions.
+- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
+<p align="center">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="600" align="center">
+</p>
 
 ## Download :open_file_folder:
 
