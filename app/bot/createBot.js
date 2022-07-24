@@ -113,9 +113,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
   };
 
-  const checkBobberTimer = createTimer(() => {
-    return config.maxFishTime;
-  });
+  const checkBobberTimer = createTimer(() => config.maxFishTime);
+  const missOnPurposeTimer = createTimer(() => random(1000, 8000));
 
   const preliminaryChecks = () => {
     if (screenSize.x == -32000 && screenSize.y == -32000) {
@@ -230,11 +229,21 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
+    const missOnPurpose = random(0, 100) < config.missOnPurpose;
+
+    if(missOnPurpose) {
+      missOnPurposeTimer.update();
+    }
+
     while (state.status == "working") {
       if (checkBobberTimer.isElapsed()) {
         throw new Error(
           `Something is wrong. The bot sticked to the bobber for more than ${config.maxFishTime} ms.`
         );
+      }
+
+      if(missOnPurpose && missOnPurposeTimer.isElapsed()) {
+        return pos;
       }
 
       if (!fishingZone.isBobber(pos)) {
