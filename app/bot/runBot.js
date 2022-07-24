@@ -1,5 +1,6 @@
 const runBot = async ({ bot, log, state, stats }) => {
   const {
+    logOut,
     preliminaryChecks,
     findAllBobberColors,
     randomSleep,
@@ -20,6 +21,20 @@ const runBot = async ({ bot, log, state, stats }) => {
       if(randomSleep.on) {
         randomSleep.timer.start();
       }
+
+      if(logOut.on) {
+        logOut.timer.start();
+      }
+    }
+
+    if(logOut.on && logOut.timer.isElapsed()) {
+      log.send(`Logging out...`)
+      await logOut(state);
+      if(state.status == 'stop') {
+        return;
+      }
+      log.send(`Logged back!`);
+      logOut.timer.update();
     }
 
     if (randomSleep.on && randomSleep.timer.isElapsed()) {

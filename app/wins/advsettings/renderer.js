@@ -25,6 +25,9 @@ const renderCastDelay = ({castDelay}) => {
   return elt('input', {type: `number`, name: `castDelay`, value: castDelay})
 };
 
+const renderLogOut = ({logOut}) => {
+  return elt('input', {type: `number`, name: `logOut`, value: logOut})
+};
 
 const renderMaxAttempts = ({ maxAttempts }) => {
   return elt('input', {type: 'number', name:"maxAttempts", value: maxAttempts})
@@ -143,8 +146,9 @@ const renderSettings = (config) => {
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
-  wrapInLabel(`Miss on purpose: (%)`, renderMissOnPurpose(config), `Use this option if you play on official servers to decrease chances of being detected. Always Change this value before each fishing session.`),
-  wrapInLabel( "Quit after timer: ",renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
+  wrapInLabel(`Miss on purpose: (%)`, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
+  wrapInLabel(`Log out/Log in: (min)`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
+  wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Random sleep:`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),

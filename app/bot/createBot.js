@@ -115,6 +115,34 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const checkBobberTimer = createTimer(() => config.maxFishTime);
   const missOnPurposeTimer = createTimer(() => random(1000, 8000));
+  const logOutTimer = createTimer(() => config.logOut * 1000 * 60);
+
+  const logOutWindow = config.logOutWindow[screenSize.width <= 1536 ? `1536` : `1920`];
+  const logOut = async (state) => {
+    await action(async () => {
+      keyboard.sendKey(`escape`);
+      await sleep(250);
+      moveTo({
+        pos: {
+        x: logOutWindow.x * screenSize.width,
+        y: logOutWindow.y * screenSize.height
+        }
+      });
+      mouse.toggle(true, "left", delay);
+      mouse.toggle(false, "left", delay);
+    });
+    await sleep(20000);
+    await sleep(random(30000, 60000));
+    if(state.status == 'stop') {
+      return;
+    }
+    await action(() => {
+      keyboard.sendKey(`enter`);
+    });
+    await sleep(random(60000, 90000));
+  };
+  logOut.timer = logOutTimer;
+  logOut.on = config.logOut > 0;
 
   const preliminaryChecks = () => {
     if (screenSize.x == -32000 && screenSize.y == -32000) {
@@ -414,6 +442,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   return {
+    logOut,
     preliminaryChecks,
     findAllBobberColors,
     randomSleep,
