@@ -147,7 +147,7 @@ const renderSettings = (config) => {
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Miss on purpose: (%)`, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
-  wrapInLabel(`Log out/Log in: (min)`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
+  wrapInLabel(`Log out/Log in: (min)`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected. If 0, the bot won't log out.`),
   wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
