@@ -28,6 +28,8 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Fishing lures support.
 - Custom window suppport.
 - Auto confirmation for soulbound items.
+- Missing on purpose
+- Logging out/in
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
