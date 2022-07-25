@@ -78,7 +78,7 @@ Using common sense while using the bot will help to reduce risks of being banned
 
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
 
-:bangbang: Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. Change **Sleep after hook** option to 1000 - 3000 to randomize number of casts per session. All this will decrease the efficiency but might save your account. It's up to you what's more important.   
+:bangbang: Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.   
 
 
 
