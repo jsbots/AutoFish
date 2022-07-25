@@ -28,6 +28,8 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Fishing lures support.
 - Custom window suppport.
 - Auto confirmation for soulbound items.
+- Missing on purpose
+- Logging out/in
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
@@ -70,7 +72,7 @@ Using common sense while using the bot will help to reduce risks of being banned
 
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
 
-Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html) before using the bot. 
+Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide.  
 
 ## Guide :blue_book:
 
@@ -97,7 +99,9 @@ Fishing zone is a resizable and movable area in the water where your bobber migh
 
 You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
 
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg">
+<p align="center">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg"  width="800">
+</p>
 
 The rule of thumb here is **the better you can see the red feather the better the bot will see it too**:
 - If you can, make your video settings as best as possible, except the weather effects...
@@ -108,10 +112,11 @@ The rule of thumb here is **the better you can see the red feather the better th
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
 Here are quick self-explanatory "good-bad" screenshots of the bobber:
-
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="960">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="960">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="960">
+<p align="center">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="800">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="800">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="800">
+</p>
 
 ## Additional info / Known issues :pushpin:
 - If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
@@ -127,12 +132,12 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 - Any feature that analyzes your UI (whitelist, applying lures in Classic/TBC Classic/Vanilla/TBC) works only with standard 16:9 resolutions.
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
 <p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="600" align="center">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
 </p>
 
 ## Download :open_file_folder:
 
-AutoFish 1.9.2 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.9.2/AutoFish.1.9.2.Setup.exe)
+AutoFish 1.10.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.0/AutoFish.1.10.0.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
