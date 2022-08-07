@@ -104,8 +104,8 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 ## Known issues :red_circle:
 
-- If the bot can't find a bobber, decrease "Threshold" value. 
-- If the bot still can't find a bobber, it might because the bobber appears too slowly, increase **Cast animation delay** option in **Advanced Settings*.
+- If the bot can't find the bobber, decrease "Threshold" value. 
+- If the bot still can't find the bobber, it might because the bobber appears too slowly, increase **Cast animation delay** option in **Advanced Settings**.
 - If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value. 
 
 ## Fishing Zone :dart:
