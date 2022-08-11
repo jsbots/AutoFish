@@ -117,19 +117,11 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const missOnPurposeTimer = createTimer(() => random(1000, 8000));
   const logOutTimer = createTimer(() => config.logOut * 1000 * 60);
 
-  const logOutWindow = config.logOutWindow[screenSize.width <= 1536 ? `1536` : `1920`];
   const logOut = async (state) => {
     await action(async () => {
-      keyboard.sendKey(`escape`);
-      await sleep(250);
-      moveTo({
-        pos: {
-        x: logOutWindow.x * screenSize.width,
-        y: logOutWindow.y * screenSize.height
-        }
-      });
-      mouse.toggle(true, "left", delay);
-      mouse.toggle(false, "left", delay);
+      keyboard.sendKey(`enter`, delay);
+      keyboard.printText(`/logout`, delay);
+      keyboard.sendKey(`enter`, delay);
     });
     await sleep(20000);
     await sleep(random(30000, 60000));
@@ -139,7 +131,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await action(() => {
       keyboard.sendKey(`enter`);
     });
-    await sleep(random(60000, 90000));
+    await sleep(random(30000, 60000));
   };
   logOut.timer = logOutTimer;
   logOut.on = config.logOut > 0;
