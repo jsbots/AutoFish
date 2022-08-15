@@ -12,7 +12,7 @@
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
-- [Known Issues](#known-issues-red_circle) 
+- [Known Issues](#known-issues-red_circle)
 - [Additional Info](#additional-info-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Download](#download-open_file_folder)
@@ -64,7 +64,7 @@ On custom servers:
 
 ## Warning :warning:
 
-If you are going to use the bot on unofficial servers, skip this section. It's very unlikely you need any of this. 
+If you are going to use the bot on unofficial servers, skip this section. It's very unlikely you need any of this.
 
 Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
@@ -104,9 +104,9 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 ## Known issues :red_circle:
 
-- If the bot can't find the bobber, decrease "Threshold" value. 
+- If the bot can't find the bobber, decrease "Threshold" value.
 - If the bot still can't find the bobber, it might be because the bobber appears too slowly and the bot should wait longer before looking for it: increase **Cast animation delay** option in the **Advanced Settings**.
-- If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value. 
+- If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value.
 
 ## Fishing Zone :dart:
 
@@ -135,9 +135,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Additional info :pushpin:
 
-- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures:
-  - Your character window should be assigned to default 'c' key, bot opens it and applies lures to your fishing pole.
-  - Your UI scale should be set to default. 
+- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures, find a macro that will apply the lures automatically onto your fishpole (there are many of them in the Internet) and assign that macro to Lures Key option.
 - If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
@@ -150,7 +148,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish 1.10.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.0/AutoFish.1.10.0.Setup.exe)
+AutoFish 1.10.2 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.2/AutoFish.1.10.2.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 

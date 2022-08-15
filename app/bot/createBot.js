@@ -155,29 +155,6 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const applyLures = async () => {
     await action(() => {
       keyboard.sendKey(settings.luresKey, delay);
-      if (
-        settings.game == `Vanilla` ||
-        settings.game == `Classic&TBCC` ||
-        settings.game == `TBC`
-      ) {
-        keyboard.sendKey(`c`, delay);
-        moveTo({
-          pos: {
-            x:
-              screenSize.width <= 1536
-                ? screenSize.width * 0.10395
-                : screenSize.width * 0.09375,
-            y:
-              screenSize.height <= 864
-                ? screenSize.height * 0.66666
-                : screenSize.height * 0.59537,
-          },
-          randomRange: 5,
-        });
-        mouse.toggle(true, "left", delay);
-        mouse.toggle(false, "left", delay);
-        keyboard.sendKey(`c`, delay);
-      }
     });
     await sleep(config.luresDelay);
   };

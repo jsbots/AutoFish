@@ -170,7 +170,7 @@ return elt(
       wrapInLabel(
         "Use lures: ",
         renderLures(config),
-        `Check this option if you want to use fishing lures.`
+        `Check this option if you want to use fishing lures. If your game requires manual application of lures, use a macros for that and assign that macro to Lures Key option.`
       ),
       wrapInLabel(
         "",
