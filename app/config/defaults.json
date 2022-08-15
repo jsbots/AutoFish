@@ -12,7 +12,12 @@
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.3958333333333333,
+        "y": 0.02962962962962963,
+        "width": 0.24635416666666668,
+        "height": 0.39537037037037037
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -122,7 +127,12 @@
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.3958333333333333,
+        "y": 0.02962962962962963,
+        "width": 0.24635416666666668,
+        "height": 0.39537037037037037
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -177,7 +187,12 @@
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.3958333333333333,
+        "y": 0.02962962962962963,
+        "width": 0.24635416666666668,
+        "height": 0.39537037037037037
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
