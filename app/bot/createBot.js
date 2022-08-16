@@ -115,13 +115,15 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const checkBobberTimer = createTimer(() => config.maxFishTime);
   const missOnPurposeTimer = createTimer(() => random(1000, 8000));
-  const logOutTimer = createTimer(() => config.logOut * 1000 * 60);
+  const logOutTimer = createTimer(() => random(config.logOutEvery.from * 1000 * 60, config.logOutEvery.to * 1000 * 60));
 
   const logOut = async (state) => {
     await action(async () => {
-      keyboard.sendKey(`enter`, delay);
+      keyboard.toggleKey(`enter`, true, delay);
+      keyboard.toggleKey(`enter`, false, delay);
       keyboard.printText(`/logout`, delay);
-      keyboard.sendKey(`enter`, delay);
+      keyboard.toggleKey(`enter`, true, delay);
+      keyboard.toggleKey(`enter`, false, delay);
     });
     await sleep(20000);
     await sleep(random(30000, 60000));

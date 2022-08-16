@@ -8,7 +8,7 @@ const createAdvSettings = (appPath) => {
   let win = new BrowserWindow({
     title: 'Advanced settings',
     width: 435,
-    height: 730,
+    height: 780,
     show: false,
     resizable: false,
     webPreferences: {
