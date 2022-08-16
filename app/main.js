@@ -149,7 +149,9 @@ const createWindow = async () => {
     }
 
     if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&TBCC")) {
-      if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time. Read the guide. Don't fish for a long time, use "Miss on purpose" and "Log out/Log in" options.`)) {
+      if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time! \n
+- Don't fish for a long time. \n
+- Use "Miss on purpose" and "Log out/Log in" options.`)) {
         win.webContents.send('stop-bot');
         return;
       } else {
