@@ -148,7 +148,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
-AutoFish 1.10.2 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v.1.10.2/AutoFish.1.10.2.Setup.exe)
+AutoFish 1.10.3 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.3/AutoFish.1.10.3.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
