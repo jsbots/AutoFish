@@ -148,6 +148,15 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Download :open_file_folder:
 
+<div align="center">
+
+<a href="https://www.paypal.com/donate/?hosted_button_id=XPWU6DUWNTSBJ">
+<img src="https://img.shields.io/badge/Donate-Paypal-blue">
+</img> 
+</a>
+
+ </div>
+
 AutoFish 1.10.3 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.3/AutoFish.1.10.3.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
@@ -157,12 +166,6 @@ The executable file is a [squirrel](https://js.electronforge.io/maker/squirrel/i
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
-
-<div align="center">
-
-<a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
- </div>
 
 ## Installation :hammer:
 
