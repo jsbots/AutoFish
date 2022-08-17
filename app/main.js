@@ -186,8 +186,12 @@ const createWindow = async () => {
     startBots(stopAppAndBots);
   });
 
-  ipcMain.on("open-link", () =>
+  ipcMain.on("open-link-youtube", () =>
     shell.openExternal("https://www.youtube.com/jsbots")
+  );
+
+  ipcMain.on("open-link-donate", () =>
+    shell.openExternal("https://ko-fi.com/olesgeras")
   );
 
   ipcMain.on("save-settings", (event, settings) =>

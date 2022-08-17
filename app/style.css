@@ -190,7 +190,9 @@ section {
   padding: 5px;
 }
 
-
+.donateLink {
+  display: inline;
+}
 
 /* AdvSettings window */
 

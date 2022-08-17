@@ -10,13 +10,12 @@ const renderLogo = () => {
       "span",
       { className: "logo_link" },
       `by `,
-        elt(`img`, {className: `logo_link_img`, src: `img/youtube.jpg`}),
+      elt(`img`, { className: `logo_link_img`, src: `img/youtube.jpg` }),
       elt(
         "a",
-        { href: `#`, onclick: () => ipcRenderer.send("open-link") },
+        { href: `#`, onclick: () => ipcRenderer.send("open-link-youtube") },
         "jsbots"
-      ),
-
+      )
     )
   );
 };
@@ -38,21 +37,32 @@ class AutoFish {
     this.settings = settings;
     this.button = startButton;
     this.logger = renderLogger();
-    const versionNode = elt("p", {className: "version"});
-    ipcRenderer.on('set-version', (event, version) => {
-      versionNode.textContent = `ver. ${version}`;
-    })
+    const versionNode = elt("span");
+    const donateLink = elt(
+      "a",
+      {
+        href: `#`,
+        className: "donateLink",
+        onclick: () => ipcRenderer.send("open-link-donate"),
+      },
+      `Donate`
+    );
+    const footer = elt(`p`, { className: "version" }, versionNode, donateLink);
+
+    ipcRenderer.on("set-version", (event, version) => {
+      versionNode.textContent = `ver. ${version} | `;
+    });
     this.settings.regOnChange((config) => {
-      ipcRenderer.send('save-settings', config)
+      ipcRenderer.send("save-settings", config);
     });
 
     this.settings.regOnClick((config) => {
-      ipcRenderer.send('advanced-settings', config)
-    })
+      ipcRenderer.send("advanced-settings", config);
+    });
 
     this.settings.regOnFishingZoneClick(() => {
       ipcRenderer.send("start-bot", `setFishingZone`);
-    })
+    });
 
     this.button.regOnStart(() => {
       ipcRenderer.send("start-bot");
@@ -79,15 +89,14 @@ class AutoFish {
       "div",
       { className: "AutoFish" },
       renderLogo(),
-      elt("p", {className: 'settings_header'}, "Settings:"),
+      elt("p", { className: "settings_header" }, "Settings:"),
       this.settings.dom,
-      elt("p", {className: 'settings_header'}, "Log:"),
+      elt("p", { className: "settings_header" }, "Log:"),
       this.logger.dom,
       this.button.dom,
-      versionNode
+      footer
     );
   }
 }
-
 
 module.exports = AutoFish;
