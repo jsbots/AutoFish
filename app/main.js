@@ -150,6 +150,7 @@ const createWindow = async () => {
 
     if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&TBCC")) {
       if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time! \n
+- Switch to DirectX11 \n
 - Don't fish for a long time. \n
 - Use "Miss on purpose" and "Log out/Log in" options.`)) {
         win.webContents.send('stop-bot');
@@ -191,7 +192,7 @@ const createWindow = async () => {
   );
 
   ipcMain.on("open-link-donate", () =>
-    shell.openExternal("https://ko-fi.com/olesgeras")
+    shell.openExternal("https://www.paypal.com/donate/?hosted_button_id=XPWU6DUWNTSBJ")
   );
 
   ipcMain.on("save-settings", (event, settings) =>
