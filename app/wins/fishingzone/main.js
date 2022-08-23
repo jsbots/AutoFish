@@ -13,7 +13,7 @@ const createFishingZone = ({pos, screenSize}, finished) => {
     height: Math.floor(pos.height),
     show: true,
     resizable: true,
-    opacity: 0.5,
+    opacity: 0.4,
     frame: false,
     webPreferences: {
       contextIsolation: false,
