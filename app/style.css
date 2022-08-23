@@ -153,12 +153,13 @@ section {
 
 .settings select,
 .settings input[type="number"], .settings input[type="text"] {
-  width: 50px;
+  width: 42px;
+  margin-right: 3px;
   height: 20px;
 }
 
 .settings input[type="text"].whitelist_input  {
-  width: 218px;
+  width: 211px;
 }
 
 .settings select.whitelistLanguage {
@@ -253,13 +254,14 @@ section {
 }
 
 .thresholdRange input[type=range] {
-  width: 230px;
+  width: 227px;
   height: 10px;
   z-index: 10;
 }
 
 .thresholdRange input[type=number] {
   width: 45px;
+  margin: 0;
 }
 
 .thresholdRange .bobberContainer {
