@@ -185,7 +185,7 @@ const renderSettings = (config) => {
 
 const runApp = async () => {
   let config = await ipcRenderer.invoke("get-game-config");
-  const settings = elt(`form`, null, renderSettings(config));
+  const settings = elt(`form`, {className: `advSettings_settings`}, renderSettings(config));
   const buttons = elt(`div`, {className: `buttons`},
      elt('input', {type: `button`, value: `Ok`}),
      elt('input', {type: `button`, value: `Cancel`}),

@@ -201,6 +201,13 @@ section {
   padding: 5px;
 }
 
+.advSettings_settings {
+  height: 625px;
+  padding-right: 3px;
+  margin-bottom: 7px;
+  overflow-y: scroll;
+}
+
 .advSettings .buttons {
   text-align: center;
 }
