@@ -135,7 +135,11 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Additional info :pushpin:
 
+<<<<<<< HEAD
 - If you play on Classic/Vanilla and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
+=======
+- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
+>>>>>>> f87dde7ddd4a382b5fc740af947e5dee92837a50
 
 **Classic**:
 ```
@@ -144,7 +148,11 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 /use 16
 ```
 
+<<<<<<< HEAD
 **Vanilla**:
+=======
+**Vanilla**: 
+>>>>>>> f87dde7ddd4a382b5fc740af947e5dee92837a50
 ```
 /script UseAction(*your lures key*);
 /script PickupInventoryItem(16);
