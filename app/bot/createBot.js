@@ -143,10 +143,6 @@ const createBot = (game, { config, settings }, winSwitch) => {
       throw new Error("The window is either in fullscreen mode or minimized. Switch to windowed or windowed(maximized).");
     }
 
-    if(fishingZone.isVoid()) {
-      throw new Error(`Can't get colors from the window. Switch to lower DirectX.`);
-    }
-
     if (fishingZone.findBobber()) {
       throw new Error(
         `Found red colors before casting. Increase the red color "threshold" value or change the fishing place.`

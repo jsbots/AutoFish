@@ -9,10 +9,7 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
                                     r - b > redThreshold &&
                                     g < 100 &&
                                     b < 100 );
-  const isVoidColor = ([r, g, b]) => r == 0 && g == 0 && b == 0;
-
   const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround().every((pos) => isBobber(rgb.colorAt(pos)));
-
   return {
 
     findBobber(exception) {
@@ -45,16 +42,6 @@ const createFishingZone = ({ getDataFrom , zone, redThreshold }) => {
       if(isBobber(pointRgb.colorAt({ x: 0, y: 0 }))) {
         return true;
       }
-    },
-
-    isVoid() {
-      const rgb = createRgb(getDataFrom(zone));
-      const randomPos = new Array(10).fill(true).map((i) => ({x: zone.x + Math.floor(Math.random() * (zone.x + zone.width)),
-                                                            y: zone.y + Math.floor(Math.random() * (zone.y + zone.height))}));
-      return randomPos.every(pixel => {
-        let pointRgb = createRgb(getDataFrom({...pixel, width: 1, height: 1}));
-        return isVoidColor(pointRgb.colorAt({ x: 0, y: 0 }))
-      })
     },
 
     getBobberPrint(wobble) {
