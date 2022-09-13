@@ -135,11 +135,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Additional info :pushpin:
 
-<<<<<<< HEAD
-- If you play on Classic/Vanilla and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
-=======
-- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
->>>>>>> f87dde7ddd4a382b5fc740af947e5dee92837a50
+- If you play on **Classic/Vanilla** and want to use lures, use a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key section:
 
 **Classic**:
 ```
@@ -148,11 +144,8 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 /use 16
 ```
 
-<<<<<<< HEAD
-**Vanilla**:
-=======
 **Vanilla**: 
->>>>>>> f87dde7ddd4a382b5fc740af947e5dee92837a50
+
 ```
 /script UseAction(*your lures key*);
 /script PickupInventoryItem(16);
@@ -173,14 +166,11 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 <div align="center">
 
-<a href="https://www.paypal.com/donate/?hosted_button_id=XPWU6DUWNTSBJ">
-<img src="https://img.shields.io/badge/Donate-Paypal-blue">
-</img>
-</a>
+<a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
  </div>
 
-AutoFish 1.10.3 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.3/AutoFish.1.10.3.Setup.exe)
+AutoFish 1.10.4 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.4/AutoFish.1.10.4.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
