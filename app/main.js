@@ -148,7 +148,7 @@ const createWindow = async () => {
       return;
     }
 
-    if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&TBCC")) {
+    if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&WotLKC")) {
       if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time! \n
 - Switch to DirectX11 \n
 - Don't fish for a long time. \n
@@ -192,7 +192,7 @@ const createWindow = async () => {
   );
 
   ipcMain.on("open-link-donate", () =>
-    shell.openExternal("https://www.paypal.com/donate/?hosted_button_id=XPWU6DUWNTSBJ")
+    shell.openExternal("https://ko-fi.com/jsbots")
   );
 
   ipcMain.on("save-settings", (event, settings) =>

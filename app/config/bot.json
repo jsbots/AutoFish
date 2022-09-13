@@ -60,7 +60,7 @@
         }
       }
     },
-    "Classic&TBCC": {
+    "Classic&WotLKC": {
       "useCustomWindow": false,
       "customWindow": "",
       "delay": { "from": 50, "to": 150 },

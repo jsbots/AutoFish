@@ -38,7 +38,7 @@ const renderThreshold = ({ threshold }) => {
 const renderGameNames = ({game}) => {
   const gameNames = [
     "Retail",
-    "Classic&TBCC",
+    "Classic&WotLKC",
     "MoP",
     "Cataclysm",
     "WoTLK",

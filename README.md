@@ -48,13 +48,13 @@ The bot doesn't work in the background and requires the window of the game to be
 The bot was tested on official servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Retail**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
-- <img src="guide_img/icons/good.png" width="15" height="15"> **Classic TBC**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK Classic**
 
 Also on unofficial servers:
-- <img src="guide_img/icons/good.png" width="15" height="15"> **Shadowlands**: firestorm-servers.com
-- <img src="guide_img/icons/good.png" width="15" height="15"> **MoP**: stormforge.gg
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Shadowlands**: firestorm-servers.com
+- <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**: stormforge.gg
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
-- <img src="guide_img/icons/good.png" width="15" height="15">  **WoTLK**: warmane.com
+- <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**: warmane.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**: atlantiss.org
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
@@ -135,12 +135,27 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Additional info :pushpin:
 
-- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures, find a macro that will apply the lures automatically onto your fishpole (there are many of them in the Internet) and assign that macro to Lures Key option.
+- If you play on Classic/Vanilla and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
+
+**Classic**:
+```
+/equip *your fishing pole name*
+/use *your lures name*
+/use 16
+```
+
+**Vanilla**:
+```
+/script UseAction(*your lures key*);
+/script PickupInventoryItem(16);
+/script ReplaceEnchant();
+```
+
 - If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- Any feature that analyzes your UI (whitelist, applying lures in Classic/TBC Classic/Vanilla/TBC) works only with standard 16:9 resolutions.
+- Whitelist works properly only with standard 16:9 resolutions (if you use ultrawide monitor, switch to 16:9 windowed mode)
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
@@ -152,7 +167,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 <a href="https://www.paypal.com/donate/?hosted_button_id=XPWU6DUWNTSBJ">
 <img src="https://img.shields.io/badge/Donate-Paypal-blue">
-</img> 
+</img>
 </a>
 
  </div>
