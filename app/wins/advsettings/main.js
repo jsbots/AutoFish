@@ -7,10 +7,10 @@ const getJson = (path) => JSON.parse(readFileSync(path), "utf8");
 const createAdvSettings = (appPath) => {
   let win = new BrowserWindow({
     title: 'Advanced Settings',
-    width: 435,
-    height: 695,
+    width: 455,
+    height: 705,
     show: false,
-    resizable: false,
+    resizable: true,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
