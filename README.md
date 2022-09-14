@@ -153,7 +153,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 /script ReplaceEnchant();
 ```
 
-- If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
+- If you want the bot to confirm rare Soulbound items, turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
