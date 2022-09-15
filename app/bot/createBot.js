@@ -146,7 +146,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
     if (fishingZone.findBobber()) {
       throw new Error(
-        `Found red colors before casting. Increase the red color "threshold" value or change the fishing place.`
+        `Found ${settings.bobberColor == `red` ? `red` : `blue`} colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.`
       );
     }
   };
