@@ -33,8 +33,9 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Fishing lures support.
 - Custom window suppport.
 - Auto confirmation for soulbound items.
-- Missing on purpose 
-- Logging out/in
+- Missing on purpose feature.
+- Logging out/in feature.
+- Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
@@ -59,7 +60,7 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
 
 On custom servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org - works, but the efficiency is usually around 90% (for some reason the bobber doesn't dive into the water completely sometimes).
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org (use blue switch for better performance)
 - <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
 
 ## Warning :warning:
@@ -123,7 +124,7 @@ The rule of thumb here is **the better you can see the red feather the better th
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
-- Tweak gamma/brightness/contrast settings to make the bobber redder. 
+- Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
@@ -145,7 +146,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 /use 16
 ```
 
-**Vanilla**: 
+**Vanilla**:
 
 ```
 /script UseAction(*your lures key*);
