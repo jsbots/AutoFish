@@ -97,8 +97,8 @@ The bot was tested only with default UI and with default UI scale, without any a
 7. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 8. Equip a fishpole.
 9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
-   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
+   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber.
+   - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
 10. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
@@ -119,9 +119,9 @@ You can change the dimensions of this zone by clicking on **"Set Fishing Zone"**
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg"  width="800">
 </p>
 
-The rule of thumb here is **the better you can see the red feather the better the bot will see it too**:
+The rule of thumb here is **the better you can see the red/blue feather the better the bot will see it too**:
 - If you can, make your video settings as best as possible, except the weather effects...
-- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
+- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place, switch between blue/red feathers or wait for the better weather.
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
 - Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
@@ -172,7 +172,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
  </div>
 
-AutoFish 1.10.4 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.4/AutoFish.1.10.4.Setup.exe)
+AutoFish 1.11.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.11.0/AutoFish.1.11.0.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
