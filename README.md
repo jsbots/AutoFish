@@ -33,7 +33,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Fishing lures support.
 - Custom window suppport.
 - Auto confirmation for soulbound items.
-- Missing on purpose
+- Missing on purpose 
 - Logging out/in
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
@@ -88,8 +88,8 @@ Anyone who can see you for more than 15m on one spot might suspect something and
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
 
 1. Launch the game *(not as administrator)*.
-2. Switch to the **DirectX 11** on retail *(skip for unofficial servers)*.
-4. Switch to **Window(maximized)** mode *(skip for Retail/Classic)*.
+2.  :exclamation: :exclamation: :exclamation: Switch to the **DirectX 11** on Retail/Classic *(skip for unofficial servers)*.
+4. Switch to **Window** or **Window(maximized)** mode *(skip for Retail/Classic, fullscreen there already works as maximized)*.
 5. Are you using whitelist?
    - Yes: Turn off **Auto Loot**, set **UI scale** to default, turn on **Open loot window at mouse**.
    - No: Turn on **Auto Loot**
@@ -97,14 +97,14 @@ The bot was tested only with default UI and with default UI scale, without any a
 8. Equip a fishpole.
 9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red colors in the "Fishing zone" except the red feather of the bobber.
-   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, it will stop working: increase Threshold or change the place.
-   - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"), if it fails it will stop the application.
-10. Don't use your keyboard and mouse while the bot is working.
+   - Initially the bot will make a preliminary check for red colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
+   - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
+10. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
 ## Known issues :red_circle:
 
-- If the bot can't find the bobber, decrease "Threshold" value.
+- If the bot can't find the bobber, decrease "Threshold" value (and be sure you are on DirectX 11).
 - If the bot still can't find the bobber, it might be because the bobber appears too slowly and the bot should wait longer before looking for it: increase **Cast animation delay** option in the **Advanced Settings**.
 - If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value.
 
@@ -123,6 +123,7 @@ The rule of thumb here is **the better you can see the red feather the better th
 - Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place or wait for the better weather.
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
+- Tweak gamma/brightness/contrast settings to make the bobber redder. 
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
@@ -135,11 +136,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Additional info :pushpin:
 
-<<<<<<< HEAD
-- If you play on Classic/Vanilla and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
-=======
-- If you play on Classic/TBC Classic/Vanilla/TBC and want to use lures, find a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key option:
->>>>>>> f87dde7ddd4a382b5fc740af947e5dee92837a50
+- If you play on **Classic/Vanilla** and want to use lures, use a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key section:
 
 **Classic**:
 ```
@@ -148,18 +145,15 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 /use 16
 ```
 
-<<<<<<< HEAD
-**Vanilla**:
-=======
 **Vanilla**: 
->>>>>>> f87dde7ddd4a382b5fc740af947e5dee92837a50
+
 ```
 /script UseAction(*your lures key*);
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
 ```
 
-- If you want the bot to fish only rare Soulbound items, turn on whitelist, leave it empty, and then turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. Do the same if you use the bot on the old patches, where AutoLoot doesn't accept soulbound items automatically.
+- If you want the bot to confirm rare Soulbound items, turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
@@ -173,14 +167,11 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 <div align="center">
 
-<a href="https://www.paypal.com/donate/?hosted_button_id=XPWU6DUWNTSBJ">
-<img src="https://img.shields.io/badge/Donate-Paypal-blue">
-</img>
-</a>
+<a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
  </div>
 
-AutoFish 1.10.3 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.3/AutoFish.1.10.3.Setup.exe)
+AutoFish 1.10.4 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.10.4/AutoFish.1.10.4.Setup.exe)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
