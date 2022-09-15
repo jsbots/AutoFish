@@ -15,6 +15,8 @@ const convertValue = (node) => {
   return value;
 };
 
+
+
 class Settings {
   constructor(config) {
     this.config = config;
@@ -27,7 +29,7 @@ class Settings {
       }
     });
 
-    this.dom.addEventListener("change", (event) => {
+    const saveSettings = (event) => {
       if(Object.keys(this.config).includes(event.target.name)) {
         this.config[event.target.name] = convertValue(event.target);
       }
@@ -41,7 +43,9 @@ class Settings {
       });
 
       this.onChange(this.config);
-    });
+    }
+
+    this.dom.addEventListener("change", saveSettings);
 
     this.dom.addEventListener("input", (event) => {
       if(event.target.name == `threshold`) {
@@ -54,6 +58,14 @@ class Settings {
     });
 
     this.dom.addEventListener('click', (event) => {
+
+      if(event.target.name == `bobberColor`) {
+        event.target.style = `background-image: url("./img/switch_${this.value == `red` ? `red` : `blue`}.png")`;
+        event.target.value = event.target.value == `blue` ? `red` : `blue`;
+        saveSettings(event);
+        this.reRender();
+      }
+
       if(event.target.name == 'advancedSettings') {
         this.onClick(this.config);
       }

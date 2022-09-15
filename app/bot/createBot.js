@@ -39,7 +39,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const fishingZone = createFishingZone({
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
-    redThreshold: settings.threshold,
+    threshold: settings.threshold,
+    bobberColor: settings.bobberColor
   });
 
   const notificationZone = createNotificationZone({

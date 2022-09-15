@@ -141,6 +141,10 @@ section {
   display: inline-block;
 }
 
+.settings_section.threshold_settings {
+  padding-left: 2px;
+}
+
 .threshold_settings .option {
   display: flex;
   align-items: flex-end;
@@ -255,13 +259,15 @@ section {
 }
 
 .thresholdRange {
+  height: 70px;
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
 }
 
 .thresholdRange input[type=range] {
-  width: 227px;
+  width: 233px;
   height: 10px;
   z-index: 10;
 }
@@ -281,4 +287,19 @@ section {
   display: block;
   margin-left: -55px;
 }
+
+.bobberColorSwitch {
+  transition: 0.1s all;
+  position: absolute;
+  width: 50px;
+  height: 31px;
+  top: 10px;
+  left: 3px;
+  border: none;
+  background-color: white;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
 /* AdvSettings window end */

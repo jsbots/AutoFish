@@ -21,10 +21,18 @@ const renderCanvas = (threshold) => {
 
 const renderCanvasOnce = once(renderCanvas);
 
-const renderThreshold = ({ threshold }) => {
+const renderThreshold = ({ threshold, bobberColor }) => {
 
 	if(threshold < 10) threshold = 10;
 	else if(threshold > 150) threshold = 150;
+
+  const bobberColorSwitch = elt(`radio`, { className: `bobberColorSwitch`,
+                                type: `text`,
+                                name: `bobberColor`,
+                                title: `Switch between blue and red feathers.`,
+                                value: bobberColor,
+                                style: `background-image: url("./img/switch_${bobberColor == `red` ? `red` : `blue`}.png")`,
+                               });
 
   const range = elt(`input`, { type: `range`, min: 10, max: 150, value: threshold, name: `threshold` });
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });
@@ -32,7 +40,7 @@ const renderThreshold = ({ threshold }) => {
 	const canvas = renderCanvasOnce(threshold);
 
   const bobberContainer = elt(`div`, { className: `bobberContainer` }, canvas, number);
-  return elt(`div`, { className: `thresholdRange` }, range, bobberContainer);
+  return elt(`div`, { className: `thresholdRange` }, bobberColorSwitch, range, bobberContainer);
 };
 
 const renderGameNames = ({game}) => {
@@ -199,7 +207,7 @@ return elt(
       { className: "settings_section threshold_settings" },
       wrapInLabel("",
         renderThreshold(config),
-        `The bot will ignore all reddish colors below this value. The higher the value the more red colors the bot will ignore. The lower the value the more red colors the bot will find. Min value: 10, max value: 150.  Increase this value if the bot can't pass the preliminary checks for red colors in the fishing zone and there's nothing except the bobber there (e.g. red bottom in Durotar). Decrease this value, if the bobber is very dark and the bot can't find it (e.g. bad lighting, bad weather).`
+        `The bot will ignore all red/blue colors below this value. The higher the value the more red/blue colors the bot will ignore. The lower the value the more red/blue colors the bot will find. Min value: 10, max value: 150.  Increase this value if the bot can't pass the preliminary checks for red/blue colors in the fishing zone and there's nothing except the bobber there (e.g. red bottom in Durotar). Decrease this value, if the bobber is very dark and the bot can't find it (e.g. bad lighting, bad weather).`
       ),
     )
   );
