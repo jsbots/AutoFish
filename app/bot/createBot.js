@@ -33,6 +33,11 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const screenSize = workwindow.getView();
 
   const getDataFrom = (zone) => {
+    if(zone.x < 0) zone.x = 0;
+    if(zone.y < 0) zone.y = 0;
+    if(zone.width > screenSize.width) zone.width = screenSize.width;
+    if(zone.height > screenSize.height) zone.height = screenSize.height;
+
     return workwindow.capture(zone);
   };
 
