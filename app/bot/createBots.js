@@ -10,8 +10,9 @@ const { setWorker } = require("../utils/textReader.js");
 
 const createWinSwitch = require("../game/winSwitch.js");
 
+let tmStats = null;
 
-const createBots = async (games, settings, config, log) => {
+const createBots = async (games, settings, config, log, tmBot) => {
   const winSwitch = createWinSwitch(new EventLine());
 
   if(settings.whitelist) {
@@ -21,12 +22,20 @@ const createBots = async (games, settings, config, log) => {
 
   const bots = games.map((game, i) => {
     return {
-      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch),
+      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch, tmBot),
       log: createIdLog(log, ++i),
       state: { status: "initial", startTime: Date.now() },
       stats: new Stats()
   }
   });
+
+  if(tmBot.bot) {
+    tmStats = bots.map(({stats}) => stats);
+    tmBot.bot.command(`statsbot`, (ctx) => {
+      ctx.reply(tmStats.map((stats, i) => `WIN${i + 1}:${stats.show()}`));
+    });
+  }
+
 
   return {
     startBots(onError) {
@@ -56,7 +65,12 @@ const createBots = async (games, settings, config, log) => {
               onError();
             }
             log.setState(true);
-            bot.log.err(`${error.message}`);
+            bot.log.err(`${error.message, error.stack}`);
+
+            if(tmBot.bot) {
+              tmBot.ctx.reply(`${error.message}`);
+            }
+
             bot.stats.show().forEach((stat) => bot.log.ok(stat));
             bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);
         });

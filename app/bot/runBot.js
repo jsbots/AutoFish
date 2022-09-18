@@ -10,6 +10,8 @@ const runBot = async ({ bot, log, state, stats }) => {
     highlightBobber,
     checkBobber,
     hookBobber,
+    checkWhisper,
+    replyToChat
   } = bot;
 
   let attempts = 0;
@@ -26,6 +28,9 @@ const runBot = async ({ bot, log, state, stats }) => {
         logOut.timer.start();
       }
     }
+
+    await replyToChat();
+    await checkWhisper();
 
     if(logOut.on && logOut.timer.isElapsed()) {
       log.send(`Logging out...`)
@@ -91,6 +96,7 @@ const runBot = async ({ bot, log, state, stats }) => {
       stats.miss++;
       log.warn(`Missed the fish!`);
     }
+
   } while (state.status == "working");
 };
 

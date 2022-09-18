@@ -77,6 +77,16 @@ class AutoFish {
       this.settings.render();
     });
 
+    ipcRenderer.on('start-tm', () => {
+        this.button.dom.click();
+    });
+
+    ipcRenderer.on(`stop-tm`, () => {
+      if(this.button.state) {
+        this.button.dom.click();
+      }
+    })
+
     ipcRenderer.on("stop-bot", () => {
       this.button.onError();
     });

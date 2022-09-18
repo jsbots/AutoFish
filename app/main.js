@@ -26,6 +26,7 @@ const { createLog } = require("./utils/logger.js");
 const { findGameWindows, getAllWindows } = require("./game/createGame.js");
 const createBots = require("./bot/createBots.js");
 const getBitmapAsync = require("./utils/getBitmap.js");
+const { Telegraf } = require('telegraf');
 /* Bot modules end */
 
 /* Squirrel */
@@ -72,6 +73,7 @@ const setFishingZone = async ({workwindow}, relZone) => {
   }
 }
 
+
 const createWindow = async () => {
   let win = new BrowserWindow({
     title: generateName(10),
@@ -102,6 +104,38 @@ const createWindow = async () => {
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
   });
+
+  let tmBot = {
+    bot: null,
+    ctx: null
+  };
+  const connectToTelegram = (key) => {
+    const listOfCommands = `/start - starts telegram bot\n/startbot - starts AutoFish\n/stopbot - stops AutoFish\n/statsbot - shows stats\n/w _username_ - whisper\n/help - list of commands`;
+    tmBot.bot = new Telegraf(key);
+    tmBot.bot.start((ctx) => {
+      ctx.reply(`Telegram bot started successfully!\n${listOfCommands}`)
+      tmBot.bot.command(`startbot`, (ctx) => {
+        win.webContents.send(`start-tm`);
+        ctx.reply(`Started the bot`);
+      });
+      tmBot.bot.command(`stopbot`, (ctx) => {
+        win.webContents.send(`stop-tm`);
+        ctx.reply(`Stopped the bot`);
+      });
+
+      tmBot.bot.command(`help`, (ctx) => {
+        ctx.reply(listOfCommands);
+      })
+      tmBot.ctx = ctx;
+
+    });
+
+
+
+    tmBot.bot.launch();
+  }
+
+  connectToTelegram(`5777516960:AAHnC6YKzbbQCicPHsINKmB1GeckBLIkVrM`);
 
   ipcMain.on("start-bot", async (event, type) => {
     const config = getJson("./config/bot.json");
@@ -167,7 +201,7 @@ const createWindow = async () => {
       return;
     }
 
-    const {startBots, stopBots} = await createBots(games, settings, config, log);
+    const {startBots, stopBots} = await createBots(games, settings, config, log, tmBot);
 
     const stopAppAndBots = () => {
       stopBots();
