@@ -29,6 +29,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "jimp": "^0.16.1",
     "keysender": "^1.6.5",
+    "telegraf": "^4.9.2",
     "tesseract.js": "^2.1.5"
   },
   "devDependencies": {
