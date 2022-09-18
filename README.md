@@ -141,6 +141,10 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead. 
 
+<p align="center">
+<img src="guide_img/soulbound.jpg" width="800" align="center">
+</p>
+
 ## Additional info :pushpin:
 
 - If you play on **Classic/Vanilla** and want to use lures, use a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key section:
