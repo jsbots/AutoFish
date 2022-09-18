@@ -13,6 +13,7 @@
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
 - [Known Issues](#known-issues-red_circle)
+- [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Additional Info](#additional-info-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Download](#download-open_file_folder)
@@ -125,6 +126,7 @@ The rule of thumb here is **the better you can see the red/blue feather the bett
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
 - Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
+- For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one. 
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
 
@@ -134,6 +136,10 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="800">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="800">
 </p>
+
+## Soulbound items auto-confirmation :large_blue_diamond:
+
+If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead. 
 
 ## Additional info :pushpin:
 
@@ -153,8 +159,6 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
 ```
-
-- If you want the bot to confirm rare Soulbound items, turn on "Loot all Uncommon and Rare items" option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**.
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
