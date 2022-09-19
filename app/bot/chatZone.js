@@ -4,8 +4,8 @@ const Jimp = require("jimp");
 const closeEnough = value => (v1, v2) => Math.abs(v1 - v2) < value;
 const closeBy10 = closeEnough(10);
 
-const createLootZone = ({ getDataFrom, zone }) => {
-  let whisperColor = ([r, g, b]) => r - g > 60 && b - g > 60;
+const createLootZone = ({ getDataFrom, zone, threshold }) => {
+  let whisperColor = ([r, g, b]) => r - g > threshold && b - g > threshold;
   let previousMsg = [];
 
   return {

@@ -8,7 +8,7 @@ const convertValue = (node) => {
     value = node.checked;
   }
 
-  if (node.type == "number") {
+  if (node.type == "number" || node.type == "range") {
     value = Number(node.value) || 0;
   }
 
@@ -149,6 +149,10 @@ const renderDetectWhisper = ({detectWhisper}) => {
   return elt('input', {type: `checkbox`, checked: detectWhisper, name: `detectWhisper`});
 };
 
+const renderWhisperThreshold = ({whisperThreshold}) => {
+  return elt(`div`, null, elt('input', {type: `range`, min: 0, max: 255, value: whisperThreshold, name: `whisperThreshold`, className: `whisperRange`}),
+   elt(`div`, {className: `whisperColorBox`, style: `background-color: rgb(${whisperThreshold},0,${whisperThreshold})`}, `${whisperThreshold}`));
+}
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
@@ -165,7 +169,8 @@ const renderSettings = (config) => {
   elt(`p`, {className: `settings_header`}, `Remote control`),
   elt(`div`, {className: `settings_section`},
     wrapInLabel(`Telegram token:`, renderTmApiKey(config), ``),
-    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), ``)
+    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), ``),
+    wrapInLabel(`Whisper threshold:`, renderWhisperThreshold(config), ``)
   ),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},

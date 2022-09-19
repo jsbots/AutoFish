@@ -303,7 +303,21 @@ section {
 }
 
 .settings_section input[type=text].tmApiKey {
+  width: 194px;
+}
+
+.settings_section input[type=range].whisperRange {
   width: 230px;
 }
+
+.whisperColorBox {
+  height: 20px;
+  width: 40px;
+  border: 1px solid grey;
+  color: white;
+  text-align: center;
+  padding-left: 3px;
+}
+
 
 /* AdvSettings window end */

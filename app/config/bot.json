@@ -29,6 +29,7 @@
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
       "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -87,6 +88,7 @@
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
       "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -144,7 +146,8 @@
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
-      "detectWhisper": false,
+      "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -203,6 +206,7 @@
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
       "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -263,6 +267,7 @@
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
       "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41288,
@@ -321,6 +326,7 @@
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
       "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -381,6 +387,7 @@
       "logOutEvery": { "from": 50, "to": 120 },
       "tmApiKey": "",
       "detectWhisper": true,
+      "whisperThreshold": 60,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
