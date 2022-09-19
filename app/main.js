@@ -109,11 +109,12 @@ const createWindow = async () => {
     bot: null,
     ctx: null
   };
+
   const connectToTelegram = (key) => {
-    const listOfCommands = `/start - starts telegram bot\n/startbot - starts AutoFish\n/stopbot - stops AutoFish\n/statsbot - shows stats\n/w _username_ - whisper\n/help - list of commands`;
+    const listOfCommands = `/start - starts telegram bot\n/startbot - starts AutoFish\n/stopbot - stops AutoFish\n/statsbot - shows stats\n/w *username* - whispers to *username*\n/help - list of commands`;
     tmBot.bot = new Telegraf(key);
     tmBot.bot.start((ctx) => {
-      ctx.reply(`Telegram bot started successfully!\n${listOfCommands}`)
+      ctx.reply(`AutoFish was connected to the bot successfully!\n${listOfCommands}`)
       tmBot.bot.command(`startbot`, (ctx) => {
         win.webContents.send(`start-tm`);
         ctx.reply(`Started the bot`);
@@ -127,15 +128,10 @@ const createWindow = async () => {
         ctx.reply(listOfCommands);
       })
       tmBot.ctx = ctx;
-
     });
 
-
-
-    tmBot.bot.launch();
-  }
-
-  connectToTelegram(`5777516960:AAHnC6YKzbbQCicPHsINKmB1GeckBLIkVrM`);
+    return tmBot.bot.launch();
+  };
 
   ipcMain.on("start-bot", async (event, type) => {
     const config = getJson("./config/bot.json");
@@ -145,7 +141,7 @@ const createWindow = async () => {
       win.webContents.send("log-data", data);
     });
 
-    log.send(`Looking for the windows...`)
+    log.send(`Looking for the windows...`);
 
     const useCustomWindow = config.patch[settings.game].useCustomWindow;
     if(useCustomWindow) {
@@ -221,6 +217,7 @@ const createWindow = async () => {
     startBots(stopAppAndBots);
   });
 
+
   ipcMain.on("open-link-youtube", () =>
     shell.openExternal("https://www.youtube.com/jsbots")
   );
@@ -242,6 +239,7 @@ const createWindow = async () => {
     }
   });
 
+  ipcMain.handle("connect-telegram", (event, key) => connectToTelegram(key))
   ipcMain.handle("get-bitmap", getBitmapAsync);
   ipcMain.handle("get-all-windows", getAllWindows);
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));

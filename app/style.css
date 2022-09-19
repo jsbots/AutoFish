@@ -302,4 +302,8 @@ section {
   cursor: pointer;
 }
 
+.settings_section input[type=text].tmApiKey {
+  width: 230px;
+}
+
 /* AdvSettings window end */

@@ -141,6 +141,10 @@ const renderTimerQuit = ({timerQuit}) => {
   return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
 };
 
+const renderTmApiKey = ({tmApiKey}) => {
+  return elt('div', null, elt('input', {type: `text`, name: `tmApiKey`, value: tmApiKey, className: `tmApiKey`}), elt('input', {type: `button`, value: `Connect`}));
+};
+
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
@@ -154,6 +158,10 @@ const renderSettings = (config) => {
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Miss on purpose (%): `, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
   wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
+  elt(`p`, {className: `settings_header`}, `Remote control`),
+  elt(`div`, {className: `settings_section`},
+    wrapInLabel(`Telegram key`, renderTmApiKey(config), ``),
+  ),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Log out/Log in:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
@@ -190,6 +198,17 @@ const runApp = async () => {
      elt('input', {type: `button`, value: `Ok`}),
      elt('input', {type: `button`, value: `Cancel`}),
      elt('input', {type: `button`, value: `Defaults`}))
+
+  settings.addEventListener(`click`, (event) => {
+    if(event.target.value == `Connect`) {
+      ipcRenderer.invoke(`connect-telegram`, config.tmApiKey)
+      .then(() => event.target.value = `Done!`)
+      .catch(() => event.target.value = `Error!`);
+
+      setTimeout(() => event.target.value = `Connect`, 1000);
+    }
+  });
+
   buttons.addEventListener(`click`, async (event) => {
     if(event.target.value == 'Ok') {
       gatherConfig();
