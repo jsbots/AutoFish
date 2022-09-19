@@ -357,6 +357,12 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
             mouse.toggle(true, "left", delay);
             mouse.toggle(false, "left", delay);
+
+            if(tmBot.ctx) {
+              tmBot.ctx.reply(`Confirmed Souldbound item!`);
+              tmBot.ctx.replyWithPhoto({source: await chatZone.getImage()});
+            }
+
           }
         }
 
