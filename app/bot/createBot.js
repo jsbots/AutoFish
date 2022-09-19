@@ -34,9 +34,11 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     winSwitch.finished();
   };
 
-  tmBot.bot.command(`/w`, (ctx) => {
-    chatMsgs.push(ctx.update.message.text);
-  })
+  if(tmBot.bot) {
+    tmBot.bot.command(`/w`, (ctx) => {
+      chatMsgs.push(ctx.update.message.text);
+    })
+  }
 
   const screenSize = workwindow.getView();
 
