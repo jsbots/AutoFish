@@ -13,7 +13,6 @@ const createLootZone = ({ getDataFrom, zone }) => {
       const rgb = createRgb(getDataFrom(zone));
       const whisperMsg = rgb.findColors({ isColor: whisperColor });
       if(whisperMsg) {
-        console.log(previousMsg.length, whisperMsg.length)
         if(!closeBy10(previousMsg.length, whisperMsg.length)) {
           previousMsg = whisperMsg;
           return true;
