@@ -27,6 +27,7 @@
       "missOnPurpose": 0,
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -83,6 +84,7 @@
       "missOnPurpose": 0,
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -139,6 +141,7 @@
       "missOnPurpose": 0,
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -195,6 +198,7 @@
       "missOnPurpose": 0,
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -253,6 +257,7 @@
       "missOnPurpose": 0,
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41288,
@@ -309,6 +314,7 @@
       "missOnPurpose": 0,
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -367,6 +373,7 @@
       "missOnPurpose": 0,
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "tmApiKey": "",
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
