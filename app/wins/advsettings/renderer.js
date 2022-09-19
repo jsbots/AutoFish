@@ -145,6 +145,10 @@ const renderTmApiKey = ({tmApiKey}) => {
   return elt('div', null, elt('input', {type: `text`, name: `tmApiKey`, value: tmApiKey, className: `tmApiKey`}), elt('input', {type: `button`, value: `Connect`}));
 };
 
+const renderDetectWhisper = ({detectWhisper}) => {
+  return elt('input', {type: `checkbox`, checked: detectWhisper, name: `detectWhisper`});
+};
+
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
@@ -160,7 +164,8 @@ const renderSettings = (config) => {
   wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
   elt(`p`, {className: `settings_header`}, `Remote control`),
   elt(`div`, {className: `settings_section`},
-    wrapInLabel(`Telegram key`, renderTmApiKey(config), ``),
+    wrapInLabel(`Telegram token:`, renderTmApiKey(config), ``),
+    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), ``)
   ),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
