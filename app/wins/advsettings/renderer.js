@@ -216,7 +216,7 @@ const renderSettings = (config) => {
   elt(`div`, {className: `settings_section`},
     wrapInLabel(`Telegram token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
     wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
-    wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `Intensity of purple color the will recognize as whispering`),
+    wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
     wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
 
   ),
