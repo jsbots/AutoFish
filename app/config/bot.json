@@ -30,6 +30,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -89,6 +90,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -148,6 +150,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -207,6 +210,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -268,6 +272,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41288,
@@ -327,6 +332,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -388,6 +394,7 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
+      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
