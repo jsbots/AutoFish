@@ -14,6 +14,7 @@
 - [Guide](#guide-blue_book)
 - [Known Issues](#known-issues-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
+- [Telegram remote control](#telegram-remote-control-iphone)
 - [Additional Info](#additional-info-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Download](#download-open_file_folder)
@@ -144,6 +145,38 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 <p align="center">
 <img src="guide_img/soulbound.jpg" width="800" align="center">
 </p>
+
+## Telegram remote control :iphone:
+
+1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process. 
+2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
+
+<p align="center">
+<img src="guide_img/tmtoken.jpg" align="center">
+</p>
+
+3. Press **Connect** button and wait until the name of the button changes to either **done** or **error*. 
+4. Open the bot in your Telegram and either press /start or write /start command.
+5. If evertyhing is OK, the bot will reply with:
+```
+AutoFish was connected to the bot successfully!
+/start - starts telegram bot
+/startbot - starts AutoFish
+/stopbot - stops AutoFish
+/statsbot - shows stats
+/quitgame - quits from all the windows opened
+/w *username* - whispers to *username*
+/help - list of commands
+```
+6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish. 
+
+<p align="center">
+<img src="guide_img/chat-zone.jpg" align="center">
+</p>
+
+
+7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages. 
+
 
 ## Additional info :pushpin:
 
