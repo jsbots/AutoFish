@@ -2,6 +2,7 @@ const Zone = require("../utils/zone.js");
 const createFishingZone = require("./fishingZone.js");
 const createNotificationZone = require("./notificationZone.js");
 const createLootZone = require("./lootZone.js");
+const createChatZone = require('./chatZone');
 
 const {
   percentComparison,
@@ -16,11 +17,14 @@ const sleep = (time) => {
     setTimeout(resolve, time);
   });
 };
+
 const random = (from, to) => {
   return from + Math.random() * (to - from);
 };
 
-const createBot = (game, { config, settings }, winSwitch) => {
+let chatMsgs = [];
+
+const createBot = (game, { config, settings }, winSwitch, tmBot) => {
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
@@ -29,6 +33,12 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await callback();
     winSwitch.finished();
   };
+
+  if(tmBot.bot) {
+    tmBot.bot.command(`/w`, (ctx) => {
+      chatMsgs.push(ctx.update.message.text);
+    })
+  }
 
   const screenSize = workwindow.getView();
 
@@ -57,6 +67,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
       height: 0.07,
     }),
   });
+
+  const chatZone = createChatZone({getDataFrom, zone: Zone.from(screenSize).toRel(config.chatZone), threshold: config.whisperThreshold});
 
   const lootWindowPatch =
     config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
@@ -347,6 +359,12 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
             mouse.toggle(true, "left", delay);
             mouse.toggle(false, "left", delay);
+
+            if(tmBot.ctx) {
+              tmBot.ctx.reply(`Confirmed Souldbound item!`);
+              tmBot.ctx.replyWithPhoto({source: await chatZone.getImage()});
+            }
+
           }
         }
 
@@ -384,7 +402,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await action(async () => {
       moveTo({ pos, randomRange: 5 });
 
-      if (settings.shiftClick) {
+      if (config.shiftClick) {
         keyboard.toggleKey("shift", true, delay);
         mouse.toggle(true, "right", delay);
         mouse.toggle(false, "right", delay);
@@ -414,6 +432,30 @@ const createBot = (game, { config, settings }, winSwitch) => {
     return caught;
   };
 
+  const checkWhisper = async () => {
+    if(tmBot.ctx == null || !config.detectWhisper) return;
+    if(chatZone.checkNewMessages()) {
+      tmBot.ctx.reply(`Someone whispered!`);
+      tmBot.ctx.replyWithPhoto({source: await chatZone.getImage()});
+    }
+  };
+
+  const replyToChat = async () => {
+    if(chatMsgs.length > 0) {
+      await action(async () => {
+        chatMsgs.forEach((message) => {
+          keyboard.toggleKey(`enter`, true, delay);
+          keyboard.toggleKey(`enter`, false, delay);
+          keyboard.printText(message, delay);
+          keyboard.toggleKey(`enter`, true, delay);
+          keyboard.toggleKey(`enter`, false, delay);
+        });
+        await sleep(500);
+        chatMsgs = [];
+      })
+    }
+  }
+
   return {
     logOut,
     preliminaryChecks,
@@ -425,6 +467,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     highlightBobber,
     checkBobber,
     hookBobber,
+    checkWhisper,
+    replyToChat
   };
 };
 

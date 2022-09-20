@@ -68,15 +68,8 @@ const renderTimer = ({timer}) => {
     `(min)`
   );
 };
-const renderShiftClick = ({game, shiftClick}) => {
-  let dom = elt("input", {
-    type: "checkbox",
-    className: "option",
-    checked: shiftClick,
-    name: "shiftClick",
-  });
-  return dom;
-};
+
+
 const renderLikeHuman = ({likeHuman}) => {
   return elt("input", {
     type: "checkbox",
@@ -109,6 +102,10 @@ const renderAdvancedSettings = () => {
 
 const renderFishingZone = () => {
   return elt('input', {type: 'button', name:"fishingZone", value: "Set Fishing Zone", className: "advanced_settings_button"});
+};
+
+const renderChatZone = () => {
+  return elt('input', {type: 'button', name:"chatZone", value: "Set Chat Zone", className: "advanced_settings_button"});
 };
 
 
@@ -166,11 +163,6 @@ return elt(
       "div",
       { className: "settings_section" },
       wrapInLabel(
-        "Use shift+click: ",
-        renderShiftClick(config),
-        `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`
-      ),
-      wrapInLabel(
         "Like a human: ",
         renderLikeHuman(config),
         `The bot will move your mouse in a human way: random speed and with a slight random deviation in the movement. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
@@ -179,6 +171,11 @@ return elt(
         "Use lures: ",
         renderLures(config),
         `Check this option if you want to use fishing lures. If your game requires manual application of lures, use a macros for that and assign that macro to Lures Key option.`
+      ),
+      wrapInLabel(
+        "",
+        renderChatZone(config),
+        ``
       ),
       wrapInLabel(
         "",

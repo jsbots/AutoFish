@@ -8,7 +8,7 @@ const convertValue = (node) => {
     value = node.checked;
   }
 
-  if (node.type == "number") {
+  if (node.type == "number" || node.type == "range") {
     value = Number(node.value) || 0;
   }
 
@@ -20,6 +20,18 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `from`, value: delay.from}), elt(`span`, {className: `option_text`}, `to:`),
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
+
+
+const renderShiftClick = ({shiftClick}) => {
+  let dom = elt("input", {
+    type: "checkbox",
+    className: "option",
+    checked: shiftClick,
+    name: "shiftClick",
+  });
+  return dom;
+};
+
 
 const renderCastDelay = ({castDelay}) => {
   return elt('input', {type: `number`, name: `castDelay`, value: castDelay})
@@ -58,6 +70,15 @@ const renderRelZone = ({relZone}) => {
       elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1, name: `height`, value: relZone.height})
     );
 };
+
+const renderChatZone = ({chatZone}) => {
+  return elt(`div`, {"data-collection": `chatZone`},
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1, name: `x`, value: chatZone.x}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, name: `y`, value: chatZone.y}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1, name: `width`, value: chatZone.width}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1, name: `height`, value: chatZone.height})
+    );
+}
 
 const renderCheckingDelay = ({checkingDelay}) => {
   return elt(`input`, {type: `number`, name:`checkingDelay`, value: checkingDelay});
@@ -141,6 +162,18 @@ const renderTimerQuit = ({timerQuit}) => {
   return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
 };
 
+const renderTmApiKey = ({tmApiKey}) => {
+  return elt('div', null, elt('input', {type: `text`, name: `tmApiKey`, value: tmApiKey, className: `tmApiKey`}), elt('input', {type: `button`, value: `Connect`}));
+};
+
+const renderDetectWhisper = ({detectWhisper}) => {
+  return elt('input', {type: `checkbox`, checked: detectWhisper, name: `detectWhisper`});
+};
+
+const renderWhisperThreshold = ({whisperThreshold}) => {
+  return elt(`div`, null, elt('input', {type: `range`, min: 0, max: 255, value: whisperThreshold, name: `whisperThreshold`, className: `whisperRange`}),
+   elt(`div`, {className: `whisperColorBox`, style: `background-color: rgb(${whisperThreshold},0,${whisperThreshold})`}, `${whisperThreshold}`));
+}
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
@@ -153,7 +186,12 @@ const renderSettings = (config) => {
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Miss on purpose (%): `, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
-  wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
+  wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`),
+  wrapInLabel(
+    "Use shift+click: ",
+    renderShiftClick(config),
+    `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`
+  )),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Log out/Log in:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
@@ -174,11 +212,19 @@ const renderSettings = (config) => {
   wrapInLabel(`Sleep after hook:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
   wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   ),
+  elt(`p`, {className: `settings_header`}, `Remote control`),
+  elt(`div`, {className: `settings_section`},
+    wrapInLabel(`Telegram token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
+    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
+    wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
+    wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
+
+  ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Checking delay (ms):`, renderCheckingDelay(config), `How often the bot needs to check the hook for changes.`),
-  wrapInLabel(`Fishing zone:`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
+  wrapInLabel(`Fishing zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
   wrapInLabel(`Cast animation delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
   ));
 }
@@ -190,6 +236,17 @@ const runApp = async () => {
      elt('input', {type: `button`, value: `Ok`}),
      elt('input', {type: `button`, value: `Cancel`}),
      elt('input', {type: `button`, value: `Defaults`}))
+
+  settings.addEventListener(`click`, (event) => {
+    if(event.target.value == `Connect`) {
+      ipcRenderer.invoke(`connect-telegram`, config.tmApiKey)
+      .then(() => event.target.value = `Done!`)
+      .catch(() => event.target.value = `Error!`);
+
+      setTimeout(() => event.target.value = `Connect`, 1000);
+    }
+  });
+
   buttons.addEventListener(`click`, async (event) => {
     if(event.target.value == 'Ok') {
       gatherConfig();

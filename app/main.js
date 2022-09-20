@@ -26,6 +26,7 @@ const { createLog } = require("./utils/logger.js");
 const { findGameWindows, getAllWindows } = require("./game/createGame.js");
 const createBots = require("./bot/createBots.js");
 const getBitmapAsync = require("./utils/getBitmap.js");
+const { Telegraf } = require('telegraf');
 /* Bot modules end */
 
 /* Squirrel */
@@ -49,7 +50,7 @@ const showChoiceWarning = (win, warning) => {
   });
 };
 
-const setFishingZone = async ({workwindow}, relZone) => {
+const setFishingZone = async ({workwindow}, relZone, type) => {
   workwindow.setForeground();
   while(!workwindow.isForeground()) {
     workwindow.setForeground();
@@ -62,7 +63,7 @@ const setFishingZone = async ({workwindow}, relZone) => {
     height: relZone.height * screenSize.height
   }
 
-  const result = await createFishingZone({pos, screenSize});
+  const result = await createFishingZone({pos, screenSize, type});
   if(!result) return;
   return {
     x: (result.x - screenSize.x) / screenSize.width,
@@ -71,6 +72,7 @@ const setFishingZone = async ({workwindow}, relZone) => {
     height: result.height / screenSize.height
   }
 }
+
 
 const createWindow = async () => {
   let win = new BrowserWindow({
@@ -103,6 +105,34 @@ const createWindow = async () => {
     win.webContents.send('set-version', version);
   });
 
+  let tmBot = {
+    bot: null,
+    ctx: null
+  };
+
+  const connectToTelegram = (key) => {
+    const listOfCommands = `/start - starts telegram bot\n/startbot - starts AutoFish\n/stopbot - stops AutoFish\n/statsbot - shows stats\n/quitgame - quits from all the windows opened\n/w *username* - whispers to *username*\n/help - list of commands\n`;
+    tmBot.bot = new Telegraf(key);
+    tmBot.bot.start((ctx) => {
+      ctx.reply(`AutoFish was connected to the bot successfully!\n${listOfCommands}`)
+      tmBot.bot.command(`startbot`, (ctx) => {
+        win.webContents.send(`start-tm`);
+        ctx.reply(`Started the bot`);
+      });
+      tmBot.bot.command(`stopbot`, (ctx) => {
+        win.webContents.send(`stop-tm`);
+        ctx.reply(`Stopped the bot`);
+      });
+
+      tmBot.bot.command(`help`, (ctx) => {
+        ctx.reply(listOfCommands);
+      })
+      tmBot.ctx = ctx;
+    });
+
+    return tmBot.bot.launch();
+  };
+
   ipcMain.on("start-bot", async (event, type) => {
     const config = getJson("./config/bot.json");
     const settings = getJson("./config/settings.json");
@@ -111,7 +141,7 @@ const createWindow = async () => {
       win.webContents.send("log-data", data);
     });
 
-    log.send(`Looking for the windows...`)
+    log.send(`Looking for the windows...`);
 
     const useCustomWindow = config.patch[settings.game].useCustomWindow;
     if(useCustomWindow) {
@@ -136,11 +166,11 @@ const createWindow = async () => {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
 
-    if(type == `setFishingZone`) {
-      log.send(`Setting fishing zone...`);
-      let data = await setFishingZone(games[0], config.patch[settings.game].relZone);
+    if(type == `relZone` || type == `chatZone`) {
+      log.send(`Setting ${type == `relZone` ? `fishing` : `chat`} zone...`);
+      let data = await setFishingZone(games[0], config.patch[settings.game][type], type);
       if(data) {
-        config.patch[settings.game].relZone = data;
+        config.patch[settings.game][type] = data;
         writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
       }
       log.ok(`Done!`);
@@ -167,7 +197,7 @@ const createWindow = async () => {
       return;
     }
 
-    const {startBots, stopBots} = await createBots(games, settings, config, log);
+    const {startBots, stopBots} = await createBots(games, settings, config, log, tmBot);
 
     const stopAppAndBots = () => {
       stopBots();
@@ -186,6 +216,7 @@ const createWindow = async () => {
     win.blur();
     startBots(stopAppAndBots);
   });
+
 
   ipcMain.on("open-link-youtube", () =>
     shell.openExternal("https://www.youtube.com/jsbots")
@@ -208,6 +239,7 @@ const createWindow = async () => {
     }
   });
 
+  ipcMain.handle("connect-telegram", (event, key) => connectToTelegram(key))
   ipcMain.handle("get-bitmap", getBitmapAsync);
   ipcMain.handle("get-all-windows", getAllWindows);
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));

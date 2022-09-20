@@ -171,9 +171,10 @@ section {
 }
 
 .advanced_settings_button {
-  height: 23px;
+  height: 22px;
   width: 123px;
   margin-right: 3px;
+  text-align: center;
 }
 
 .option.game-option {
@@ -227,7 +228,7 @@ section {
 }
 
 .advSettings .settings_section input[type=number] {
-  width: 55px;
+  width: 50px;
 }
 
 .advSettings .settings_section input[type=text] {
@@ -301,5 +302,23 @@ section {
   background-repeat: no-repeat;
   cursor: pointer;
 }
+
+.settings_section input[type=text].tmApiKey {
+  width: 194px;
+}
+
+.settings_section input[type=range].whisperRange {
+  width: 230px;
+}
+
+.whisperColorBox {
+  height: 20px;
+  width: 40px;
+  border: 1px solid grey;
+  color: white;
+  text-align: center;
+  padding-left: 3px;
+}
+
 
 /* AdvSettings window end */

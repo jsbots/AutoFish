@@ -61,7 +61,11 @@ class AutoFish {
     });
 
     this.settings.regOnFishingZoneClick(() => {
-      ipcRenderer.send("start-bot", `setFishingZone`);
+      ipcRenderer.send("start-bot", `relZone`);
+    });
+
+    this.settings.regOnChatZoneClick(() => {
+      ipcRenderer.send("start-bot", `chatZone`);
     });
 
     this.button.regOnStart(() => {
@@ -76,6 +80,16 @@ class AutoFish {
       this.settings.config = settings;
       this.settings.render();
     });
+
+    ipcRenderer.on('start-tm', () => {
+        this.button.dom.click();
+    });
+
+    ipcRenderer.on(`stop-tm`, () => {
+      if(this.button.state) {
+        this.button.dom.click();
+      }
+    })
 
     ipcRenderer.on("stop-bot", () => {
       this.button.onError();

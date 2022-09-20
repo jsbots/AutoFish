@@ -4,7 +4,7 @@ const path = require("path");
 const promisify = fn => (...args) => new Promise((resolve, reject) =>
 	fn(...args, (err, data) => (err ? reject(err) : resolve(data))));
 
-const createFishingZone = ({pos, screenSize}, finished) => {
+const createFishingZone = ({pos, screenSize, type}, finished) => {
   let win = new BrowserWindow({
 		title: `Fishing Zone`,
     x: Math.floor(pos.x),
@@ -13,7 +13,7 @@ const createFishingZone = ({pos, screenSize}, finished) => {
     height: Math.floor(pos.height),
     show: true,
     resizable: true,
-    opacity: 0.4,
+    opacity: 0.3,
     frame: false,
     webPreferences: {
       contextIsolation: false,
@@ -22,7 +22,7 @@ const createFishingZone = ({pos, screenSize}, finished) => {
 		icon: `./img/icon.png`
   });
 
-  win.loadFile(path.join(__dirname, `index.html`));
+  win.loadFile(path.join(__dirname, `${type == `relZone` ? `fishing.html` : `chat.html`}`));
 
   win.once("ready-to-show", () => {
     win.show();

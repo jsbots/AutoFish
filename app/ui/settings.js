@@ -73,6 +73,10 @@ class Settings {
       if(event.target.name == `fishingZone`) {
         this.onFishingZoneClick();
       }
+
+      if(event.target.name == `chatZone`) {
+        this.onChatZoneClick();
+      }
     })
   }
 
@@ -87,6 +91,10 @@ class Settings {
 
   regOnFishingZoneClick(callback) {
     this.onFishingZoneClick = callback;
+  }
+
+  regOnChatZoneClick(callback) {
+    this.onChatZoneClick = callback;
   }
 
   regOnChange(callback) {
