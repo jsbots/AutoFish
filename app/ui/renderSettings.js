@@ -111,6 +111,10 @@ const renderFishingZone = () => {
   return elt('input', {type: 'button', name:"fishingZone", value: "Set Fishing Zone", className: "advanced_settings_button"});
 };
 
+const renderChatZone = () => {
+  return elt('input', {type: 'button', name:"chatZone", value: "Set Chat Zone", className: "advanced_settings_button"});
+};
+
 
 const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
   let disabled = !whitelist;
@@ -179,6 +183,11 @@ return elt(
         "Use lures: ",
         renderLures(config),
         `Check this option if you want to use fishing lures. If your game requires manual application of lures, use a macros for that and assign that macro to Lures Key option.`
+      ),
+      wrapInLabel(
+        "",
+        renderChatZone(config),
+        ``
       ),
       wrapInLabel(
         "",

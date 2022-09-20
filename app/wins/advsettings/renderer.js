@@ -59,6 +59,15 @@ const renderRelZone = ({relZone}) => {
     );
 };
 
+const renderChatZone = ({chatZone}) => {
+  return elt(`div`, {"data-collection": `chatZone`},
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1, name: `x`, value: chatZone.x}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, name: `y`, value: chatZone.y}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1, name: `width`, value: chatZone.width}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1, name: `height`, value: chatZone.height})
+    );
+}
+
 const renderCheckingDelay = ({checkingDelay}) => {
   return elt(`input`, {type: `number`, name:`checkingDelay`, value: checkingDelay});
 };
@@ -166,12 +175,6 @@ const renderSettings = (config) => {
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Miss on purpose (%): `, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
   wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
-  elt(`p`, {className: `settings_header`}, `Remote control`),
-  elt(`div`, {className: `settings_section`},
-    wrapInLabel(`Telegram token:`, renderTmApiKey(config), ``),
-    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), ``),
-    wrapInLabel(`Whisper threshold:`, renderWhisperThreshold(config), ``)
-  ),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Log out/Log in:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
@@ -191,6 +194,14 @@ const renderSettings = (config) => {
   elt('div', {className: "settings_section"},
   wrapInLabel(`Sleep after hook:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
   wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
+  ),
+  elt(`p`, {className: `settings_header`}, `Remote control`),
+  elt(`div`, {className: `settings_section`},
+    wrapInLabel(`Telegram token:`, renderTmApiKey(config), ``),
+    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), ``),
+    wrapInLabel(`Whisper threshold:`, renderWhisperThreshold(config), ``),
+    wrapInLabel(`Chat zone:`, renderChatZone(config), ``),
+
   ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},

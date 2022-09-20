@@ -61,7 +61,11 @@ class AutoFish {
     });
 
     this.settings.regOnFishingZoneClick(() => {
-      ipcRenderer.send("start-bot", `setFishingZone`);
+      ipcRenderer.send("start-bot", `relZone`);
+    });
+
+    this.settings.regOnChatZoneClick(() => {
+      ipcRenderer.send("start-bot", `chatZone`);
     });
 
     this.button.regOnStart(() => {

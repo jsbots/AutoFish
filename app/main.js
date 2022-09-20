@@ -50,7 +50,7 @@ const showChoiceWarning = (win, warning) => {
   });
 };
 
-const setFishingZone = async ({workwindow}, relZone) => {
+const setFishingZone = async ({workwindow}, relZone, type) => {
   workwindow.setForeground();
   while(!workwindow.isForeground()) {
     workwindow.setForeground();
@@ -63,7 +63,7 @@ const setFishingZone = async ({workwindow}, relZone) => {
     height: relZone.height * screenSize.height
   }
 
-  const result = await createFishingZone({pos, screenSize});
+  const result = await createFishingZone({pos, screenSize, type});
   if(!result) return;
   return {
     x: (result.x - screenSize.x) / screenSize.width,
@@ -101,6 +101,7 @@ const createWindow = async () => {
 
   win.once("ready-to-show", () => {
     win.show();
+    win.webContents.openDevTools({mode: `detach`})
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
   });
@@ -166,11 +167,11 @@ const createWindow = async () => {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
 
-    if(type == `setFishingZone`) {
-      log.send(`Setting fishing zone...`);
-      let data = await setFishingZone(games[0], config.patch[settings.game].relZone);
+    if(type == `relZone` || type == `chatZone`) {
+      log.send(`Setting ${type == `relZone` ? `fishing` : `chat`} zone...`);
+      let data = await setFishingZone(games[0], config.patch[settings.game][type], type);
       if(data) {
-        config.patch[settings.game].relZone = data;
+        config.patch[settings.game][type] = data;
         writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
       }
       log.ok(`Done!`);

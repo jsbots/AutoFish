@@ -68,7 +68,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     }),
   });
 
-  const chatZone = createChatZone({getDataFrom, zone: {x: 34, y: 844, width: 432, height: 131}, threshold: config.whisperThreshold});
+  const chatZone = createChatZone({getDataFrom, zone: Zone.from(screenSize).toRel(config.chatZone), threshold: config.whisperThreshold});
 
   const lootWindowPatch =
     config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
