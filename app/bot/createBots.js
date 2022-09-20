@@ -34,6 +34,13 @@ const createBots = async (games, settings, config, log, tmBot) => {
     tmBot.bot.command(`statsbot`, (ctx) => {
       tmStats.forEach((stats, i) => ctx.reply(`WIN${i + 1}:${stats.show()}`));
     });
+    tmBot.bot.command(`quitgame`, (ctx) => {
+      games.forEach(({workwindow}) => workwindow.close());
+      log.send('Stopping the bots...')
+      log.setState(false);
+      bots.forEach(({state}) => state.status = "stop");
+      ctx.reply(`Quit all the windows of the game`);
+    })
   }
 
 
