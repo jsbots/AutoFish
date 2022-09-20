@@ -148,7 +148,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Telegram remote control :iphone:
 
-1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't acidantelly join your bot and gain control over your fishing process. 
+1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process. 
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
 
 <p align="center">
