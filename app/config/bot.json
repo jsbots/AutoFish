@@ -153,7 +153,12 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "chatZone": {
+        "x": 0.0171875,
+        "y": 0.7768518518518519,
+        "width": 0.22708333333333333,
+        "height": 0.12314814814814815
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
