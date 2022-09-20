@@ -214,17 +214,17 @@ const renderSettings = (config) => {
   ),
   elt(`p`, {className: `settings_header`}, `Remote control`),
   elt(`div`, {className: `settings_section`},
-    wrapInLabel(`Telegram token:`, renderTmApiKey(config), ``),
-    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), ``),
-    wrapInLabel(`Whisper threshold:`, renderWhisperThreshold(config), ``),
-    wrapInLabel(`Chat zone:`, renderChatZone(config), ``),
+    wrapInLabel(`Telegram token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
+    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
+    wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `Intensity of purple color the will recognize as whispering`),
+    wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
 
   ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Checking delay (ms):`, renderCheckingDelay(config), `How often the bot needs to check the hook for changes.`),
-  wrapInLabel(`Fishing zone:`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
+  wrapInLabel(`Fishing zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
   wrapInLabel(`Cast animation delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
   ));
 }
