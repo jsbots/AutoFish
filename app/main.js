@@ -101,7 +101,6 @@ const createWindow = async () => {
 
   win.once("ready-to-show", () => {
     win.show();
-    win.webContents.openDevTools({mode: `detach`})
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
   });
