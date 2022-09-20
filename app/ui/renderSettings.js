@@ -68,15 +68,8 @@ const renderTimer = ({timer}) => {
     `(min)`
   );
 };
-const renderShiftClick = ({game, shiftClick}) => {
-  let dom = elt("input", {
-    type: "checkbox",
-    className: "option",
-    checked: shiftClick,
-    name: "shiftClick",
-  });
-  return dom;
-};
+
+
 const renderLikeHuman = ({likeHuman}) => {
   return elt("input", {
     type: "checkbox",
@@ -169,11 +162,6 @@ return elt(
     elt(
       "div",
       { className: "settings_section" },
-      wrapInLabel(
-        "Use shift+click: ",
-        renderShiftClick(config),
-        `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`
-      ),
       wrapInLabel(
         "Like a human: ",
         renderLikeHuman(config),

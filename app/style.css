@@ -171,9 +171,10 @@ section {
 }
 
 .advanced_settings_button {
-  height: 23px;
+  height: 22px;
   width: 123px;
   margin-right: 3px;
+  text-align: center;
 }
 
 .option.game-option {

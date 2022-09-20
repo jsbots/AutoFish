@@ -402,7 +402,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     await action(async () => {
       moveTo({ pos, randomRange: 5 });
 
-      if (settings.shiftClick) {
+      if (config.shiftClick) {
         keyboard.toggleKey("shift", true, delay);
         mouse.toggle(true, "right", delay);
         mouse.toggle(false, "right", delay);

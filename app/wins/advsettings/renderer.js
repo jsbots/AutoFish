@@ -21,6 +21,18 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
+
+const renderShiftClick = ({shiftClick}) => {
+  let dom = elt("input", {
+    type: "checkbox",
+    className: "option",
+    checked: shiftClick,
+    name: "shiftClick",
+  });
+  return dom;
+};
+
+
 const renderCastDelay = ({castDelay}) => {
   return elt('input', {type: `number`, name: `castDelay`, value: castDelay})
 };
@@ -174,7 +186,12 @@ const renderSettings = (config) => {
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Miss on purpose (%): `, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
-  wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`)),
+  wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`),
+  wrapInLabel(
+    "Use shift+click: ",
+    renderShiftClick(config),
+    `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`
+  )),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Log out/Log in:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),

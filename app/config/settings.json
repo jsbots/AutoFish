@@ -1,7 +1,6 @@
 {
   "game": "Retail",
   "timer": 0,
-  "shiftClick": false,
   "likeHuman": true,
   "lures": false,
   "fishingKey": "1",
