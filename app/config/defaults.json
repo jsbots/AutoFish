@@ -31,7 +31,12 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "chatZone": {
+        "x": 0.018229166666666668,
+        "y": 0.7444444444444445,
+        "width": 0.2359375,
+        "height": 0.11944444444444445
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -92,7 +97,12 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "chatZone": {
+        "x": 0.022395833333333334,
+        "y": 0.6787037037037037,
+        "width": 0.28541666666666665,
+        "height": 0.15092592592592594
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -153,7 +163,12 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "chatZone": {
+        "x": 0.0171875,
+        "y": 0.7768518518518519,
+        "width": 0.22708333333333333,
+        "height": 0.12314814814814815
+      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
