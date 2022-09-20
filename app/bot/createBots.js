@@ -32,7 +32,7 @@ const createBots = async (games, settings, config, log, tmBot) => {
   if(tmBot.bot) {
     tmStats = bots.map(({stats}) => stats);
     tmBot.bot.command(`statsbot`, (ctx) => {
-      ctx.reply(tmStats.map((stats, i) => `WIN${i + 1}:${stats.show()}`));
+      tmStats.forEach((stats, i) => ctx.reply(`WIN${i + 1}:${stats.show()}`));
     });
   }
 
@@ -65,7 +65,7 @@ const createBots = async (games, settings, config, log, tmBot) => {
               onError();
             }
             log.setState(true);
-            bot.log.err(`${error.message, error.stack}`);
+            bot.log.err(`${error.message}`);
 
             if(tmBot.bot) {
               tmBot.ctx.reply(`${error.message}`);
