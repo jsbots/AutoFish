@@ -213,9 +213,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.11.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.11.0/AutoFish.1.11.0.Setup.exe) (stable)
-
-AutoFish 1.12.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.12.0/AutoFish.1.12.0.Setup.exe) 
+AutoFish 1.12.0 Setup: [Download](https://ko-fi.com/s/623a7f874d) 
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
