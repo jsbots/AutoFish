@@ -209,11 +209,11 @@ AutoFish was connected to the bot successfully!
 
 <div align="center">
 
-<a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href="https://www.buymeacoffee.com/jsbots" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
  </div>
 
-AutoFish 1.12.0 Setup: [Download](https://ko-fi.com/s/623a7f874d) 
+AutoFish 1.12.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
