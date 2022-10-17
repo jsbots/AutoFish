@@ -2,7 +2,7 @@
 <div align="center">
 
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
-<a href="https://youtu.be/P_kXGEzI1mo"><img alt="" src="https://img.shields.io/youtube/views/P_kXGEzI1mo?style=social"></a>
+<a href="https://youtu.be/A3W8UuVIZTo"><img alt="" src="https://img.shields.io/youtube/views/A3W8UuVIZTo?style=social"></a>
 
 </div>
 
@@ -40,7 +40,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
-For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
+For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a simpler solution: it analyzes the window of the game for condensed red colors and then sticks to them checking the area for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, it clicks on it and catches the fish.
 
@@ -129,7 +129,7 @@ The rule of thumb here is **the better you can see the red/blue feather the bett
 - Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
 - For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one. 
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
 
 Here are quick self-explanatory "good-bad" screenshots of the bobber:
 <p align="center">
