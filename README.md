@@ -73,7 +73,7 @@ Using bots in most of the games is prohibited, by doing so you should understand
 
 The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
-To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
 Using common sense while using the bot will help to reduce risks of being banned:
 - Don't leave the bot alone for a long time.
