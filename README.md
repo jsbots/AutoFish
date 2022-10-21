@@ -223,25 +223,3 @@ You can uninstall it in the Windows Settings, the name of the uninstall will be 
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
 
-## Installation :hammer:
-
-If you want to tweak the app and make some changes you need to:
-
-Install [npm](https://docs.npmjs.com/about-npm) and dependencies:
-
-```
-install npm
-npm install
-```
-
-To distribute by electron-forge:
-
-```
-npm run make
-```
-
-To start the app from the CLI:
-
-```
-npm start
-```
