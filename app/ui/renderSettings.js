@@ -49,7 +49,7 @@ const renderGameNames = ({game}) => {
     "Classic&WotLKC",
     "MoP",
     "Cataclysm",
-    "WoTLK",
+    "WotLK Private",
     "TBC",
     "Vanilla",
   ];
