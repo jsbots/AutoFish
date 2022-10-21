@@ -110,14 +110,14 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     .split(",")
     .map((word) => word.trim());
 
-  const moveTo = ({ pos, randomRange }) => {
+  const moveTo = async ({ pos, randomRange }) => {
     if (randomRange) {
       pos.x = pos.x + random(-randomRange, randomRange);
       pos.y = pos.y + random(-randomRange, randomRange);
     }
 
     if (settings.likeHuman) {
-      mouse.moveCurveTo(
+      await mouse.humanMoveTo(
         pos.x,
         pos.y,
         random(config.mouseMoveSpeed.from, config.mouseMoveSpeed.to),
@@ -127,7 +127,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
         )
       );
     } else {
-      mouse.moveTo(pos.x, pos.y, delay);
+      await mouse.moveTo(pos.x, pos.y, delay);
     }
   };
 
@@ -137,19 +137,19 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
   const logOut = async (state) => {
     await action(async () => {
-      keyboard.toggleKey(`enter`, true, delay);
-      keyboard.toggleKey(`enter`, false, delay);
-      keyboard.printText(`/logout`, delay);
-      keyboard.toggleKey(`enter`, true, delay);
-      keyboard.toggleKey(`enter`, false, delay);
+      await keyboard.toggleKey(`enter`, true, delay);
+      await keyboard.toggleKey(`enter`, false, delay);
+      await keyboard.printText(`/logout`, delay);
+      await keyboard.toggleKey(`enter`, true, delay);
+      await keyboard.toggleKey(`enter`, false, delay);
     });
     await sleep(20000);
     await sleep(random(30000, 60000));
     if(state.status == 'stop') {
       return;
     }
-    await action(() => {
-      keyboard.sendKey(`enter`);
+    await action(async () => {
+      await keyboard.sendKey(`enter`);
     });
     await sleep(random(30000, 60000));
   };
@@ -169,8 +169,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
   };
 
   const applyLures = async () => {
-    await action(() => {
-      keyboard.sendKey(settings.luresKey, delay);
+    await action(async () => {
+      await keyboard.sendKey(settings.luresKey, delay);
     });
     await sleep(config.luresDelay);
   };
@@ -202,8 +202,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
   };
 
   const castFishing = async (state) => {
-    await action(() => {
-      keyboard.sendKey(settings.fishingKey, delay);
+    await action(async () => {
+      await keyboard.sendKey(settings.fishingKey, delay);
     });
 
     if (state.status == "initial") {
@@ -227,8 +227,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
     }
 
-    await action(() => {
-      moveTo({ pos, randomRange: 5 });
+    await action(async () => {
+      await moveTo({ pos, randomRange: 5 });
     });
 
     return findBobber();
@@ -288,7 +288,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
         x: cursorPos.x + lootWindow.toItemX,
         y: cursorPos.y - lootWindow.toItemY - 10,
       };
-      moveTo({ pos, randomRange: 5 });
+      await moveTo({ pos, randomRange: 5 });
 
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); // hint disappearing and smooth text analyzing time with random value
@@ -324,7 +324,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       }
 
       if (isInList) {
-          moveTo({
+          await moveTo({
             pos: {
               x: cursorPos.x,
               y: cursorPos.y + itemPos,
@@ -338,8 +338,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
           await sleep(random(50, 150));
         }
 
-        mouse.toggle(true, "right", delay);
-        mouse.toggle(false, "right", delay);
+        await mouse.toggle("right", true, delay);
+        await mouse.toggle("right", false, delay);
 
         if(typeof isInList == `boolean` && settings.confirmSoulbound) {
           await sleep(250); // wait for the confirmation to appear
@@ -350,15 +350,15 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
 
           if(recognizedWords.some(item => percentComparison(`Okay`, item.text) > 75)) {
-            moveTo({
+            await moveTo({
               pos: {
                      x: confirmationWindow.x + confirmationWindow.width / 2,
                      y: confirmationWindow.y + confirmationWindow.height / 2
                    }
             });
 
-            mouse.toggle(true, "left", delay);
-            mouse.toggle(false, "left", delay);
+            await mouse.toggle("right", true, delay);
+            await mouse.toggle("right", false, delay);
 
             if(tmBot.ctx) {
               tmBot.ctx.reply(`Confirmed Souldbound item!`);
@@ -379,14 +379,14 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
       if(lootWindow.exitButton) {
-        moveTo({ pos: {
+        await moveTo({ pos: {
           x: cursorPos.x + lootWindow.exitButton.x,
           y: cursorPos.y - lootWindow.exitButton.y
         }});
-        mouse.toggle(true, "left", delay);
-        mouse.toggle(false, "left", delay);
+        await mouse.toggle("right", true, delay);
+        await mouse.toggle("right", false, delay);
       } else {
-        keyboard.sendKey("escape", delay);
+        await keyboard.sendKey("escape", delay);
       }
     }
 
@@ -400,16 +400,16 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     let caught = false;
 
     await action(async () => {
-      moveTo({ pos, randomRange: 5 });
+      await moveTo({ pos, randomRange: 5 });
 
       if (config.shiftClick) {
-        keyboard.toggleKey("shift", true, delay);
-        mouse.toggle(true, "right", delay);
-        mouse.toggle(false, "right", delay);
-        keyboard.toggleKey("shift", false, delay);
+        await keyboard.toggleKey("shift", true, delay);
+        await mouse.toggle("right", true, delay);
+        await mouse.toggle("right", false, delay);
+        await keyboard.toggleKey("shift", false, delay);
       } else {
-        mouse.toggle(true, "right", delay);
-        mouse.toggle(false, "right", delay);
+        await mouse.toggle("right", true, delay);
+        await mouse.toggle("right", false, delay);
       }
 
     await sleep(250);
@@ -443,12 +443,12 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
   const replyToChat = async () => {
     if(chatMsgs.length > 0) {
       await action(async () => {
-        chatMsgs.forEach((message) => {
-          keyboard.toggleKey(`enter`, true, delay);
-          keyboard.toggleKey(`enter`, false, delay);
-          keyboard.printText(message, delay);
-          keyboard.toggleKey(`enter`, true, delay);
-          keyboard.toggleKey(`enter`, false, delay);
+        chatMsgs.forEach(async (message) => {
+          await keyboard.toggleKey(`enter`, true, delay);
+          await keyboard.toggleKey(`enter`, false, delay);
+          await keyboard.printText(message, delay);
+          await keyboard.toggleKey(`enter`, true, delay);
+          await keyboard.toggleKey(`enter`, false, delay);
         });
         await sleep(500);
         chatMsgs = [];
