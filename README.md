@@ -2,7 +2,7 @@
 <div align="center">
 
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
-<a href="https://youtu.be/P_kXGEzI1mo"><img alt="" src="https://img.shields.io/youtube/views/P_kXGEzI1mo?style=social"></a>
+<a href="https://youtu.be/A3W8UuVIZTo"><img alt="" src="https://img.shields.io/youtube/views/A3W8UuVIZTo?style=social"></a>
 
 </div>
 
@@ -40,7 +40,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
-For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.8](https://youtu.be/P_kXGEzI1mo)
+For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a simpler solution: it analyzes the window of the game for condensed red colors and then sticks to them checking the area for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, it clicks on it and catches the fish.
 
@@ -73,7 +73,7 @@ Using bots in most of the games is prohibited, by doing so you should understand
 
 The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
 
-To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the processes, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
 Using common sense while using the bot will help to reduce risks of being banned:
 - Don't leave the bot alone for a long time.
@@ -129,7 +129,7 @@ The rule of thumb here is **the better you can see the red/blue feather the bett
 - Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
 - For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one. 
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.0](https://www.youtube.com/watch?v=e0D5dBptQUg&ab_channel=olesgeras) for video explanation.
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
 
 Here are quick self-explanatory "good-bad" screenshots of the bobber:
 <p align="center">
@@ -209,13 +209,11 @@ AutoFish was connected to the bot successfully!
 
 <div align="center">
 
-<a href='https://ko-fi.com/I2I7D2VJ4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href="https://www.buymeacoffee.com/jsbots" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
  </div>
 
-AutoFish 1.11.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.11.0/AutoFish.1.11.0.Setup.exe) (stable)
-
-AutoFish 1.12.0 Setup: [Download](https://github.com/olesgeras/AutoFish/releases/download/v1.12.0/AutoFish.1.12.0.Setup.exe) 
+AutoFish 1.12.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
@@ -225,25 +223,3 @@ You can uninstall it in the Windows Settings, the name of the uninstall will be 
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
 
-## Installation :hammer:
-
-If you want to tweak the app and make some changes you need to:
-
-Install [npm](https://docs.npmjs.com/about-npm) and dependencies:
-
-```
-install npm
-npm install
-```
-
-To distribute by electron-forge:
-
-```
-npm run make
-```
-
-To start the app from the CLI:
-
-```
-npm start
-```
