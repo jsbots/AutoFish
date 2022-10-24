@@ -45,7 +45,7 @@ class AutoFish {
         className: "donateLink",
         onclick: () => ipcRenderer.send("open-link-donate"),
       },
-      `Donate`
+      `Get Premium`
     );
     const footer = elt(`p`, { className: "version" }, versionNode, donateLink);
 

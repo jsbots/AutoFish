@@ -223,7 +223,7 @@ const createWindow = async () => {
   );
 
   ipcMain.on("open-link-donate", () =>
-    shell.openExternal("https://www.buymeacoffee.com/jsbots")
+    shell.openExternal("https://www.buymeacoffee.com/jsbots/e/96734")
   );
 
   ipcMain.on("save-settings", (event, settings) =>
