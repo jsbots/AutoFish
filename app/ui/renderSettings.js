@@ -35,6 +35,13 @@ const renderThreshold = ({ threshold, bobberColor }) => {
                                });
 
   const range = elt(`input`, { type: `range`, min: 10, max: 150, value: threshold, name: `threshold` });
+
+  if(bobberColor == `blue`) {
+    document.styleSheets[0].rules[66].style.backgroundImage = "linear-gradient(to right, black, rgb(12, 90, 155))"
+  } else {
+    document.styleSheets[0].rules[66].style.backgroundImage = "linear-gradient(to right, black, red)"
+  }
+
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });
 
 	const canvas = renderCanvasOnce(threshold);

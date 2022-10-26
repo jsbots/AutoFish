@@ -307,6 +307,7 @@ section {
 .thresholdRange input[type=range] {
   width: 233px;
   height: 10px;
+  margin-bottom: 5px;
   z-index: 10;
 }
 
@@ -359,3 +360,50 @@ section {
 
 
 /* AdvSettings window end */
+
+input[type=range][name=threshold] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range][name=threshold]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range][name=threshold]:focus {
+  outline: none;
+}
+
+input[type=range][name=threshold]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range][name=threshold]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 32px;
+  width: 16px;
+  border-radius: 3px;
+  background: rgb(240,240,240);
+  cursor: pointer;
+  margin-top: -12px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+input[type=range][name=threshold]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background-image: linear-gradient(to right, black, red);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range][name=threshold]:focus::-webkit-slider-runnable-track {
+  opacity: 0.9;
+}
