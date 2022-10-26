@@ -39,6 +39,18 @@ body {
 button {
   width: 100%;
   height: 80px;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+button:hover {
+  border: 1px solid black;
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+button:active {
+  background-color: rgb(240, 240, 240);
 }
 
 section {
@@ -95,7 +107,7 @@ section {
   background-position: center;
   background-color: rgba(255, 255, 0, 0.1);
   border: 1px inset grey;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow-y: scroll;
   padding: 5px;
 }
@@ -110,7 +122,7 @@ section {
   flex-flow: column;
   justify-content: space-between;
   border: 1px inset grey;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 5px;
   flex: 1 1 0;
 }
@@ -175,6 +187,18 @@ section {
   width: 123px;
   margin-right: 3px;
   text-align: center;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+.advanced_settings_button:hover {
+  border: 1px solid black;
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.advanced_settings_button:active {
+  background-color: rgb(240, 240, 240);
 }
 
 .option.game-option {
@@ -225,7 +249,20 @@ section {
 .advSettings input[type=button] {
   margin: 0 2px;
   width: 70px;
+  border-radius: 10px;
+  border: 1px solid grey;
 }
+
+.advSettings input[type=button]:hover {
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: rgb(230, 230, 230);
+}
+
+.advSettings input[type=button]:active {
+  background-color: rgb(240, 240, 240);
+}
+
 
 .advSettings .settings_section input[type=number] {
   width: 50px;
