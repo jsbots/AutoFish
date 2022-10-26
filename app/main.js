@@ -44,7 +44,7 @@ const showChoiceWarning = (win, warning) => {
     type: "warning",
     title: `Warning`,
     message: warning,
-    buttons: [`I understand`, `I don't understand`],
+    buttons: [`I agree`, `I don't agree`],
     defaultId: 0,
     cancelId: 1,
   });
@@ -179,10 +179,12 @@ const createWindow = async () => {
     }
 
     if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&WotLKC")) {
-      if(showChoiceWarning(win, `Using bots on official servers is prohibited. Your account might be banned for a long time! \n
-- Switch to DirectX11 \n
-- Don't fish for a long time. \n
-- Use "Miss on purpose" and "Log out/Log in" options.`)) {
+      if(showChoiceWarning(win, `The software is provided "as is" and the author disclaims all warranties
+with regard to this software. In no event shall the author be liable for
+any special, direct, indirect, or consequential damages or any damages
+whatsoever resulting from loss of use or data, whether in an
+action of contract, negligence or other tortious action, arising out of
+or in connection with the use or performance of this software.`)) {
         win.webContents.send('stop-bot');
         return;
       } else {
