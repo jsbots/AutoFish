@@ -216,7 +216,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.12.1 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
+AutoFish 1.12.2 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
