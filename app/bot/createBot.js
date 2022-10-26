@@ -272,6 +272,15 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     }
   };
 
+  const isYellow = ([r, g, b]) => r - b > 200 && g - b > 200;
+
+  const isLootOpened = async (cursorPos) => {
+    await sleep(250);
+    let x = cursorPos.x + lootWindow.exitButton.x;
+    let y = cursorPos.y - lootWindow.exitButton.y;
+    return isYellow(workwindow.colorAt(x, y, "array"));
+  };
+
   const pickLoot = async () => {
     let cursorPos = lootWindow.cursorPos ? lootWindow.cursorPos : mouse.getPos();
     if (cursorPos.y - lootWindow.upperLimit < 0) {
@@ -284,11 +293,13 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       await sleep(150); // open loot window
     }
 
+    if(settings.game != `Retail`) {
       let pos = {
         x: cursorPos.x + lootWindow.toItemX,
         y: cursorPos.y - lootWindow.toItemY - 10,
       };
       await moveTo({ pos, randomRange: 5 });
+    }
 
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); // hint disappearing and smooth text analyzing time with random value
@@ -374,7 +385,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       itemPos += lootWindow.itemHeight;
     }
 
-    if (items.length != itemsPicked.length) {
+    if (settings.game == `Retail`? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
       if (config.reaction) {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
@@ -383,8 +394,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
           x: cursorPos.x + lootWindow.exitButton.x,
           y: cursorPos.y - lootWindow.exitButton.y
         }});
-        await mouse.toggle("right", true, delay);
-        await mouse.toggle("right", false, delay);
+        await mouse.toggle("left", true, delay);
+        await mouse.toggle("left", false, delay);
       } else {
         await keyboard.sendKey("escape", delay);
       }
@@ -423,7 +434,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       }
     }
     });
-    await sleep(settings.game == `Retail` || settings.game == `Classic&WotLKC` ? 750 : 250); // close loot window delay
+    await sleep(settings.game == `Classic&WotLKC` ? 750 : 250); // close loot window delay
 
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));

@@ -11,7 +11,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 25000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
@@ -32,10 +32,10 @@
       "detectWhisper": true,
       "whisperThreshold": 60,
       "chatZone": {
-        "x": 0.018229166666666668,
-        "y": 0.7444444444444445,
+        "x": 0.01875,
+        "y": 0.8407407407407408,
         "width": 0.2359375,
-        "height": 0.11944444444444445
+        "height": 0.11851851851851852
       },
       "confirmationWindow": {
         "1536": {
@@ -53,20 +53,22 @@
       },
       "lootWindow": {
         "1536": {
-          "upperLimit": 0.125,
-          "toItemX": 0.009,
-          "toItemY": 0.037,
-          "itemHeight": 0.057,
-          "height": 0.214,
-          "width": 0.084
+          "upperLimit": 0.0651041,
+          "toItemX": 0.0190336,
+          "toItemY": 0.0117187,
+          "itemHeight": 0.0572916,
+          "height": 0.24739583,
+          "width": 0.1112737,
+          "exitButton": { "x": 0.1295754, "y": 0.05338541 }
         },
         "1920": {
-          "upperLimit": 0.089,
-          "toItemX": 0.007,
-          "toItemY": 0.025,
-          "itemHeight": 0.04,
-          "height": 0.153,
-          "width": 0.056
+          "upperLimit": 0.046296,
+          "toItemX": 0.013541,
+          "toItemY": 0.008333,
+          "itemHeight": 0.04074,
+          "height": 0.175925,
+          "width": 0.079687,
+          "exitButton": { "x": 0.092187, "y": 0.037962 }
         }
       }
     },
@@ -77,7 +79,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 25000,
       "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
