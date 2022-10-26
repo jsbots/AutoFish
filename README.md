@@ -12,14 +12,13 @@
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
-- [Known Issues](#known-issues-red_circle)
+- [Threshold](#threshold-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
 - [Additional Info](#additional-info-pushpin)
 - [Fishing zone](#fishing-zone-dart)
+- [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
-- [Installation](#installation-hammer)
-
 
 ## Fishing bot :fish:
 
@@ -105,7 +104,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 10. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 11. You can press **'space'** to **stop the bot**.
 
-## Known issues :red_circle:
+## Threshold :red_circle:
 
 - If the bot can't find the bobber, decrease "Threshold" value (and be sure you are on DirectX 11).
 - If the bot still can't find the bobber, it might be because the bobber appears too slowly and the bot should wait longer before looking for it: increase **Cast animation delay** option in the **Advanced Settings**.
@@ -199,11 +198,15 @@ AutoFish was connected to the bot successfully!
 - You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- Whitelist works properly only with standard 16:9 resolutions (if you use ultrawide monitor, switch to 16:9 windowed mode)
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
 </p>
+
+## Known issues :hammer:
+- Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
+- The bot might not work properly for some **laptops with 2 graphics cards**. 
+- The bot might not work properly if you have **latency issues**.
 
 ## Download :open_file_folder:
 
@@ -213,7 +216,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.12.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
+AutoFish 1.12.1 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
