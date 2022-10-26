@@ -4,16 +4,15 @@ const isInLimits = ({ x, y }, { width, height }) => {
   return x >= 0 && y >= 0 && x < width && y < height;
 };
 
-const isRed = (threshold) => ([r, g, b]) => (r - g > threshold &&
-                                        r - b > threshold &&
-                                        g < 100 && b < 100);
+const isOverThreshold = ([r, g, b], threshold) => r - ((g + b) / 2) > threshold;
+const isCloseEnough = ([r, g, b], closeness) => Math.abs(g - b) <= closeness;
 
-const isBlue = (threshold) => ([r, g, b]) => (b - g > threshold &&
-                                              b - r > threshold);
+const isRed = (threshold, closeness) => ([r, g, b]) => isOverThreshold([r, g, b], threshold) && isCloseEnough([r, g, b], closeness);
+
+const isBlue = (threshold, closeness) => ([r, g, b]) => isOverThreshold([b, g, r], threshold) && isCloseEnough([b, g, r], closeness);
 
 const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor }) => {
-
-  const isBobber = bobberColor == `red` ? isRed(threshold) : isBlue(threshold);
+  const isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
   const saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
 
   const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround().every((pos) => isBobber(rgb.colorAt(pos)));
