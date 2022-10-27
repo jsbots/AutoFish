@@ -9,8 +9,8 @@ const createLootZone = ({ getDataFrom, zone, threshold }) => {
   let previousMsg = [];
 
   return {
-    checkNewMessages() {
-      const rgb = createRgb(getDataFrom(zone));
+    async checkNewMessages() {
+      const rgb = createRgb(await getDataFrom(zone));
       const whisperMsg = rgb.findColors({ isColor: whisperColor });
       if(whisperMsg) {
         if(!closeBy10(previousMsg.length, whisperMsg.length)) {
@@ -21,7 +21,7 @@ const createLootZone = ({ getDataFrom, zone, threshold }) => {
     },
 
     async getImage() {
-      const img = await Jimp.read(getDataFrom(zone));
+      const img = await Jimp.read(await getDataFrom(zone));
       return await img.getBufferAsync(Jimp.MIME_JPEG)
     }
   }

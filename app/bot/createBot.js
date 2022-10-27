@@ -473,7 +473,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
   const checkWhisper = async () => {
     if(tmBot.ctx == null || !config.detectWhisper) return;
-    if(chatZone.checkNewMessages()) {
+    if(await chatZone.checkNewMessages()) {
       tmBot.ctx.reply(`Someone whispered!`);
       tmBot.ctx.replyWithPhoto({source: await chatZone.getImage()});
     }
@@ -482,13 +482,13 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
   const replyToChat = async () => {
     if(chatMsgs.length > 0) {
       await action(async () => {
-        chatMsgs.forEach(async (message) => {
+        for(const message of chatMsgs) {
           await keyboard.toggleKey(`enter`, true, delay);
           await keyboard.toggleKey(`enter`, false, delay);
           await keyboard.printText(message, delay);
           await keyboard.toggleKey(`enter`, true, delay);
           await keyboard.toggleKey(`enter`, false, delay);
-        });
+        }
         await sleep(500);
         chatMsgs = [];
       })
