@@ -12,7 +12,7 @@
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
-- [Threshold](#threshold-red_circle)
+- [Threshold errors](#threshold-errors-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
 - [Additional Info](#additional-info-pushpin)
@@ -104,11 +104,11 @@ The bot was tested only with default UI and with default UI scale, without any a
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 7. You can press **'space'** to **stop the bot**.
 
-## Threshold :red_circle:
+## Threshold errors :red_circle:
 
 >Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
 
-With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, you need to increase **Threshold** values.  
+With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, you need to increase **Threshold** value.  
 
 > Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
 
