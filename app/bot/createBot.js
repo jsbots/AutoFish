@@ -4,6 +4,15 @@ const createNotificationZone = require("./notificationZone.js");
 const createLootZone = require("./lootZone.js");
 const createChatZone = require('./chatZone');
 
+const { screen, Region, Point } = require("@nut-tree/nut-js");
+
+let once = (fn, done) => (...args) => {
+  if(!done) {
+    done = true;
+    return fn(...args);
+  }
+}
+
 const {
   percentComparison,
   readTextFrom,
@@ -42,13 +51,21 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
   const screenSize = workwindow.getView();
 
-  const getDataFrom = (zone) => {
+  const actionOnce = once(action);
+
+  const getDataFrom = async (zone) => {
     if(zone.x < 0) zone.x = 0;
     if(zone.y < 0) zone.y = 0;
     if(zone.width > screenSize.width) zone.width = screenSize.width;
     if(zone.height > screenSize.height) zone.height = screenSize.height;
 
-    return workwindow.capture(zone);
+    if(!settings.multipleWindows) {
+      await actionOnce(() => {});
+      let grabbed = await(await screen.grabRegion(new Region(zone.x, zone.y, zone.width, zone.height))).toRGB();
+      return grabbed;
+    } else {
+      return workwindow.capture(zone);
+    }
   };
 
   const fishingZone = createFishingZone({
@@ -156,12 +173,18 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
   logOut.timer = logOutTimer;
   logOut.on = config.logOut > 0;
 
-  const preliminaryChecks = () => {
+  const preliminaryChecks = async () => {
     if (screenSize.x == -32000 && screenSize.y == -32000) {
       throw new Error("The window is either in fullscreen mode or minimized. Switch to windowed or windowed(maximized).");
     }
 
-    if (fishingZone.findBobber()) {
+    let bobber = await fishingZone.findBobber();
+    if (bobber) {
+      screen.config.highlightOpacity = 1;
+      screen.config.highlightDurationMs = 1000;
+      const highlightRegion = new Region(bobber.x - 30, bobber.y - 30, 30, 30);
+      await screen.highlight(highlightRegion);
+
       throw new Error(
         `Found ${settings.bobberColor == `red` ? `red` : `blue`} colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.`
       );
@@ -197,8 +220,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     );
   });
 
-  const findAllBobberColors = () => {
-    return fishingZone.getBobberPrint(7);
+  const findAllBobberColors = async () => {
+    return await fishingZone.getBobberPrint(7);
   };
 
   const castFishing = async (state) => {
@@ -208,7 +231,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
     if (state.status == "initial") {
       await sleep(250);
-      if (notificationZone.check("error")) {
+      if (await notificationZone.check("error")) {
         throw new Error(`Game error notification occured on casting fishing.`);
       } else {
         state.status = "working";
@@ -231,11 +254,11 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       await moveTo({ pos, randomRange: 5 });
     });
 
-    return findBobber();
+    return await findBobber();
   };
 
-  const findBobber = () => {
-    return fishingZone.findBobber(findBobber.memory);
+  const findBobber = async () => {
+    return await fishingZone.findBobber(findBobber.memory);
   };
   findBobber.memory = null;
   findBobber.maxAttempts = config.maxAttempts;
@@ -259,8 +282,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
         return pos;
       }
 
-      if (!fishingZone.isBobber(pos)) {
-        const newPos = fishingZone.checkAroundBobber(pos);
+      if (!(await fishingZone.isBobber(pos))) {
+        const newPos = await fishingZone.checkAroundBobber(pos);
         if (!newPos) {
           return pos;
         } else {
@@ -278,7 +301,12 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     await sleep(250);
     let x = cursorPos.x + lootWindow.exitButton.x;
     let y = cursorPos.y - lootWindow.exitButton.y;
-    return isYellow(workwindow.colorAt(x, y, "array"));
+    if(settings.multipleWindows) {
+      return isYellow(workwindow.colorAt(x, y, "array"));
+    } else {
+      let color = await screen.colorAt(new Point(x, y));
+      return isYellow([color.R, color.G, color.B]);
+    }
   };
 
   const pickLoot = async () => {
@@ -314,7 +342,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       height: lootWindow.height,
     };
 
-    let recognizedWords = await readTextFrom(getDataFrom(lootWindowDim), screenSize.width <= 1536 ? 3 : 2);
+    let recognizedWords = await readTextFrom(await getDataFrom(lootWindowDim), screenSize.width <= 1536 ? 3 : 2);
     let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
     let itemPos = 0;
 
@@ -323,7 +351,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       let isInList = whitelist.find((word) => percentComparison(word, item) > 90);
 
       if (!isInList && settings.whiteListBlueGreen) {
-        isInList = createLootZone({
+        isInList = await createLootZone({
           getDataFrom,
           zone: {
             x: lootWindowDim.x,
@@ -355,7 +383,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
         if(typeof isInList == `boolean` && settings.confirmSoulbound) {
           await sleep(250); // wait for the confirmation to appear
           let recognizedWords = await readTextFrom(
-           getDataFrom(confirmationWindow),
+           await getDataFrom(confirmationWindow),
            screenSize.width <= 1536 ? 3 : 2
          );
 
@@ -424,7 +452,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       }
 
     await sleep(250);
-    if (!notificationZone.check("warning")) {
+    if (!(await notificationZone.check("warning"))) {
       caught = true;
       if (settings.whitelist) {
           let itemsPicked = await pickLoot();

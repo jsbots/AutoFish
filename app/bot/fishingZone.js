@@ -18,8 +18,8 @@ const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor }) => {
   const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround().every((pos) => isBobber(rgb.colorAt(pos)));
   return {
 
-    findBobber(exception) {
-      let rgb = createRgb(getDataFrom(zone));
+    async findBobber(exception) {
+      let rgb = createRgb(await getDataFrom(zone));
       rgb.saturate(...saturation)
       if(exception) {
         rgb.cutOut(exception);
@@ -33,25 +33,27 @@ const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor }) => {
       return bobber.plus({ x: zone.x, y: zone.y });
     },
 
-    checkAroundBobber(bobberPos) {
-      return bobberPos
-      .getPointsAround()
-      .find((pos) => this.isBobber(pos));
+    async checkAroundBobber(bobberPos) {
+      for(let pos of bobberPos.getPointsAround()) {
+         if(await this.isBobber(pos)) {
+           return pos;
+         }
+      }
     },
 
-    isBobber(pos) {
+    async isBobber(pos) {
       if(!isInLimits({ x: pos.x - zone.x, y: pos.y - zone.y }, zone)) {
         return;
       }
-      let pointRgb = createRgb(getDataFrom({x: pos.x, y: pos.y, width: 1, height: 1}));
+      let pointRgb = createRgb(await getDataFrom({x: pos.x, y: pos.y, width: 1, height: 1}));
       pointRgb.saturate(...saturation)
       if(isBobber(pointRgb.colorAt({ x: 0, y: 0 }))) {
         return true;
       }
     },
 
-    getBobberPrint(wobble) {
-      let rgb = createRgb(getDataFrom(zone));
+    async getBobberPrint(wobble) {
+      let rgb = createRgb(await getDataFrom(zone));
       rgb.saturate(...saturation)
       let rest = rgb.findColors({ isColor: isBobber });
       if(!rest) return;

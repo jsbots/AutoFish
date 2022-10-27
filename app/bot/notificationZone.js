@@ -8,7 +8,7 @@ const createNotificationZone = ({ getDataFrom, zone }) => {
 
   const stopAtFirst = true;
   return {
-    check(...type) {
+    async check(...type) {
       const colors = type.map((type) => {
         switch (type) {
           case "warning": {
@@ -20,10 +20,17 @@ const createNotificationZone = ({ getDataFrom, zone }) => {
         }
       });
 
-      return colors.some(color => createRgb(getDataFrom(zone)).findColors({
-        isColor: color,
-        atFirstMet: true
-      }));
+      for(const color of colors) {
+        let data = await getDataFrom(zone);
+        let rgb = createRgb(data);
+        let foundColor = rgb.findColors({
+          isColor: color,
+          atFirstMet: true
+        });
+        if(foundColor) {
+          return true;
+        }
+      }
     },
   };
 };

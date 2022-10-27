@@ -18,7 +18,7 @@ const runBot = async ({ bot, log, state, stats }) => {
   do {
     if (state.status == "initial") {
       log.send(`Preliminary checks...`);
-      preliminaryChecks();
+      await preliminaryChecks();
       log.ok(`Everything is fine!`);
       if(randomSleep.on) {
         randomSleep.timer.start();
@@ -57,13 +57,13 @@ const runBot = async ({ bot, log, state, stats }) => {
       applyLures.timer.start();
     }
 
-    findBobber.memory = findAllBobberColors();
+    findBobber.memory = await findAllBobberColors();
 
     log.send(`Casting fishing...`);
     await castFishing(state);
 
     log.send(`Looking for the bobber...`);
-    let bobber = findBobber();
+    let bobber = await findBobber();
 
     if(bobber) {
       bobber = await highlightBobber(bobber);

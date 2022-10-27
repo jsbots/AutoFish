@@ -20,6 +20,10 @@ const createBots = async (games, settings, config, log, tmBot) => {
     await setWorker(settings.whitelistLanguage);
   }
 
+  if(!settings.multipleWindows) {
+    games = [games[0]];
+  }
+
   const bots = games.map((game, i) => {
     return {
       bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch, tmBot),

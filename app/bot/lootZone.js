@@ -7,8 +7,8 @@ const createLootZone = ({ getDataFrom, zone }) => {
   };
 
   return {
-    findItems(...types) {
-      let rgb = createRgb(getDataFrom(zone));
+    async findItems(...types) {
+      let rgb = createRgb(await getDataFrom(zone));
       return types.some(type => rgb.findColors({
         isColor: colors[type],
         atFirstMet: true
