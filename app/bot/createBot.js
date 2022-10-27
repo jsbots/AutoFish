@@ -61,7 +61,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
     if(!settings.multipleWindows) {
       await actionOnce(() => {});
-      let grabbed = await(await screen.grabRegion(new Region(zone.x, zone.y, zone.width, zone.height))).toRGB();
+      let grabbed = await(await screen.grabRegion(new Region(zone.x + screenSize.x, zone.y + screenSize.y, zone.width, zone.height))).toRGB();
       return grabbed;
     } else {
       return workwindow.capture(zone);
