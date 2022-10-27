@@ -1,6 +1,6 @@
 {
   "name": "AutoFish",
-  "version": "1.12.2",
+  "version": "1.13.0",
   "description": "An easy-to-use fishing bot for official and unofficial World of Warcraft servers.",
   "main": "./app/main.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "author": "olesgeras",
   "license": "MIT",
   "dependencies": {
+    "@nut-tree/nut-js": "^2.3.0",
     "electron-squirrel-startup": "^1.0.0",
     "jimp": "^0.16.1",
     "keysender": "^2.0.6",
