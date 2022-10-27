@@ -89,26 +89,30 @@ Anyone who can see you for more than 15m on one spot might suspect something and
 
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
 
+*After 1.13.0 the bot works with both DirectX 12 and DirectX 11 if you use only one window of the game.*
+
 1. Launch the game *(not as administrator)*.
-2.  :exclamation: :exclamation: :exclamation: Switch to the **DirectX 11** on Retail/Classic *(skip for unofficial servers)*.
-4. Switch to **Window** or **Window(maximized)** mode *(skip for Retail/Classic, fullscreen there already works as maximized)*.
-5. Are you using whitelist?
+2. Are you using whitelist?
    - Yes: Turn off **Auto Loot**, set **UI scale** to default, turn on **Open loot window at mouse**.
    - No: Turn on **Auto Loot**
-7. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-8. Equip a fishpole.
-9. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber.
+3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
+4. Equip a fishpole.
+5. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
+   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Including areas with red names of the mobs lurking below in the water.
    - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
-10. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
-11. You can press **'space'** to **stop the bot**.
+6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
+7. You can press **'space'** to **stop the bot**.
 
 ## Threshold :red_circle:
 
-- If the bot can't find the bobber, decrease "Threshold" value (and be sure you are on DirectX 11).
-- If the bot still can't find the bobber, it might be because the bobber appears too slowly and the bot should wait longer before looking for it: increase **Cast animation delay** option in the **Advanced Settings**.
-- If the bot can't pass the preliminary checks for red colors, tweak your **Fishing Zone** by pressing **Set Fishing Zone** button or increase "Threshold" value.
+>Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
+
+With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, you need to increase **Threshold** values.  
+
+> Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
+
+If you see this error, it means you need to decrease threshold or change the direction/position of your fishing place to make the bobber brighter.
 
 ## Fishing Zone :dart:
 
@@ -126,7 +130,7 @@ The rule of thumb here is **the better you can see the red/blue feather the bett
 - Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
 - Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
 - Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
-- For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one. 
+- For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
 
@@ -139,7 +143,7 @@ Here are quick self-explanatory "good-bad" screenshots of the bobber:
 
 ## Soulbound items auto-confirmation :large_blue_diamond:
 
-If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead. 
+If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
 
 <p align="center">
 <img src="guide_img/soulbound.jpg" width="800" align="center">
@@ -147,14 +151,14 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Telegram remote control :iphone:
 
-1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process. 
+1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
 
 <p align="center">
 <img src="guide_img/tmtoken.jpg" align="center">
 </p>
 
-3. Press **Connect** button and wait until the name of the button changes to either **done** or **error*. 
+3. Press **Connect** button and wait until the name of the button changes to either **done** or **error*.
 4. Open the bot in your Telegram and either press /start or write /start command.
 5. If evertyhing is OK, the bot will reply with:
 ```
@@ -167,14 +171,14 @@ AutoFish was connected to the bot successfully!
 /w *username* - whispers to *username*
 /help - list of commands
 ```
-6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish. 
+6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
 
 <p align="center">
 <img src="guide_img/chat-zone.jpg" align="center">
 </p>
 
 
-7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages. 
+7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages.
 
 
 ## Additional info :pushpin:
@@ -195,7 +199,8 @@ AutoFish was connected to the bot successfully!
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
 ```
-- You can turn off all the "sleeping" and random values to make the bot work 2-3 times faster.
+- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
+- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
@@ -205,7 +210,6 @@ AutoFish was connected to the bot successfully!
 
 ## Known issues :hammer:
 - Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
-- The bot might not work properly for some **graphics cards**, might be solved by updating drivers. 
 - The bot might not work properly if you have **latency issues**.
 
 ## Download :open_file_folder:
@@ -216,7 +220,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.12.2 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380) 
+AutoFish 1.13.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
@@ -225,4 +229,3 @@ The executable file is a [squirrel](https://js.electronforge.io/maker/squirrel/i
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
-
