@@ -85,6 +85,16 @@ const renderLikeHuman = ({likeHuman}) => {
     name: "likeHuman",
   });
 };
+
+const renderMultipleWindows = ({multipleWindows}) => {
+  return elt("input", {
+    type: "checkbox",
+    className: "option",
+    checked: multipleWindows,
+    name: "multipleWindows",
+  });
+};
+
 const renderLures = ({lures}) => {
   return elt("input", {
     type: "checkbox",
@@ -95,7 +105,12 @@ const renderLures = ({lures}) => {
 };
 const renderLuresKey = ({lures, luresKey}) => {
   return elt('input', {type: 'text', value: luresKey, disabled: !lures, name: "luresKey"});
-}
+};
+
+const renderStopKey = ({stopKey}) => {
+  return elt('input', {type: 'text', value: stopKey, name: "stopKey"});
+};
+
 const renderLuresDelay = ({lures, luresDelayMin}) => {
   return elt('input', {type: 'number', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
 };
@@ -156,6 +171,11 @@ return elt(
         `Write in the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
       ),
       wrapInLabel(
+        "Stop Key: ",
+        renderStopKey(config),
+        ``
+      ),
+      wrapInLabel(
         "Lures Key: ",
         renderLuresKey(config),
         `Write in the same key you use for using fishing lures.`
@@ -173,6 +193,11 @@ return elt(
         "Like a human: ",
         renderLikeHuman(config),
         `The bot will move your mouse in a human way: random speed and with a slight random deviation in the movement. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
+      ),
+      wrapInLabel(
+        "Multiple windows: ",
+        renderMultipleWindows(config),
+        ``
       ),
       wrapInLabel(
         "Use lures: ",

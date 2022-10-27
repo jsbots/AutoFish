@@ -187,7 +187,7 @@ section {
   width: 123px;
   margin-right: 3px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid grey;
 }
 
@@ -249,7 +249,7 @@ section {
 .advSettings input[type=button] {
   margin: 0 2px;
   width: 70px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid grey;
 }
 

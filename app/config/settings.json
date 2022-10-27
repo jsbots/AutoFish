@@ -5,6 +5,7 @@
   "lures": false,
   "fishingKey": "1",
   "luresKey": "2",
+  "stopKey": "space",
   "luresDelayMin": 10,
   "whitelist": false,
   "whitelistWords": "",
@@ -13,5 +14,6 @@
   "whitelistLanguage": "eng",
   "threshold": 60,
   "bobberColor": "red",
+  "multipleWindows": false,
   "initial": true
 }

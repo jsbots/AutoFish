@@ -78,7 +78,7 @@ const createWindow = async () => {
   let win = new BrowserWindow({
     title: generateName(10),
     width: 325,
-    height: 695,
+    height: 720,
     show: false,
     resizable: false,
     webPreferences: {
@@ -213,7 +213,7 @@ or in connection with the use or performance of this software.`)) {
     };
 
     ipcMain.on("stop-bot", stopAppAndBots);
-    globalShortcut.register("space", stopAppAndBots);
+    globalShortcut.register(settings.stopKey, stopAppAndBots);
 
     win.blur();
     startBots(stopAppAndBots);
