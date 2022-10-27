@@ -168,17 +168,17 @@ return elt(
       wrapInLabel(
         "Fishing Key: ",
         renderFishingKey(config),
-        `Write in the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
+        `Assign the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
       ),
       wrapInLabel(
         "Stop Key: ",
         renderStopKey(config),
-        ``
+        `Assign a key that you will use to stop the bot.`
       ),
       wrapInLabel(
         "Lures Key: ",
         renderLuresKey(config),
-        `Write in the same key you use for using fishing lures.`
+        `Assign the same key you use for using fishing lures.`
       ),
       wrapInLabel(
         "Reuse lure: ",
@@ -197,7 +197,7 @@ return elt(
       wrapInLabel(
         "Multiple windows: ",
         renderMultipleWindows(config),
-        ``
+        `If you want to use multiple windows check this option. You need to launch every window and configure them properly, make sure every window is in DirectX 11 mode. This option uses a different library to analyze your screen, you can check it even for one window if for some reason the default way doesn't work for you.`
       ),
       wrapInLabel(
         "Use lures: ",
@@ -207,12 +207,12 @@ return elt(
       wrapInLabel(
         "",
         renderChatZone(config),
-        ``
+        `The application will open the window of your game and show you the Chat Zone that will be used by your Telegram bot, you can change it as you like. You can reset the fishing zone to default values in Advanced Settings.`
       ),
       wrapInLabel(
         "",
         renderFishingZone(config),
-        `The application will open the window of your game and show you the fishing zone, you can change it as you like. You can reset the fishing zone to default values in Advanced Settings.`
+        `The application will open the window of your game and show you the Fishing Zone, you can change it as you like. You can reset the fishing zone to default values in Advanced Settings.`
       ),
       wrapInLabel(
         "",
