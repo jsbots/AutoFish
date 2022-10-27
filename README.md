@@ -205,7 +205,7 @@ AutoFish was connected to the bot successfully!
 
 ## Known issues :hammer:
 - Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
-- The bot might not work properly for some **laptops with 2 graphics cards**. 
+- The bot might not work properly for some **graphics cards**, might be solved by updating drivers. 
 - The bot might not work properly if you have **latency issues**.
 
 ## Download :open_file_folder:
