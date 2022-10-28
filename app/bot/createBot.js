@@ -351,7 +351,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       let isInList = whitelist.find((word) => percentComparison(word, item) > 90);
 
       if (!isInList && settings.whiteListBlueGreen) {
-        isInList = await createLootZone({
+        let lootZone = createLootZone({
           getDataFrom,
           zone: {
             x: lootWindowDim.x,
@@ -359,7 +359,9 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
             width: lootWindow.width,
             height: lootWindow.itemHeight,
           },
-        }).findItems("blue", "green");
+        });
+
+        isInList = await lootZone.findItems("blue", "green");
       }
 
       if (isInList) {

@@ -35,11 +35,10 @@ const renderThreshold = ({ threshold, bobberColor }) => {
                                });
 
   const range = elt(`input`, { type: `range`, min: 10, max: 150, value: threshold, name: `threshold` });
-
   if(bobberColor == `blue`) {
-    document.styleSheets[0].rules[66].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 40), rgb(0, 90, 200))"
+    document.styleSheets[0].rules[68].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 40), rgb(0, 90, 200))"
   } else {
-    document.styleSheets[0].rules[66].style.backgroundImage = "linear-gradient(to right, rgb(40, 0, 0), rgb(250, 0, 0))"
+    document.styleSheets[0].rules[68].style.backgroundImage = "linear-gradient(to right, rgb(40, 0, 0), rgb(250, 0, 0))"
   }
 
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });
@@ -104,18 +103,24 @@ const renderLures = ({lures}) => {
   });
 };
 const renderLuresKey = ({lures, luresKey}) => {
-  return elt('input', {type: 'text', value: luresKey, disabled: !lures, name: "luresKey"});
+  let key = elt('input', {type: 'text', value: luresKey, disabled: !lures, name: "luresKey"});
+  key.setAttribute(`readonly`, `true`);
+  return key;
 };
 
 const renderStopKey = ({stopKey}) => {
-  return elt('input', {type: 'text', value: stopKey, name: "stopKey"});
+  let key = elt('input', {type: 'text', value: stopKey, name: "stopKey"});
+  key.setAttribute(`readonly`, `true`);
+  return key;
 };
 
 const renderLuresDelay = ({lures, luresDelayMin}) => {
   return elt('input', {type: 'number', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
 };
 const renderFishingKey = ({fishingKey}) => {
-  return elt('input', {type: 'text', value: fishingKey, name: "fishingKey"});
+  let key = elt('input', {type: 'text', value: fishingKey, name: "fishingKey"});
+  key.setAttribute(`readonly`, `true`);
+  return key;
 };
 
 const renderAdvancedSettings = () => {

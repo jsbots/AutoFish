@@ -22,13 +22,6 @@ class Settings {
     this.config = config;
     this.dom = elt('form', null , renderSettings(config));
 
-    this.dom.addEventListener("input", (event) => {
-      if((event.target.name == "fishingKey" || event.target.name =="luresKey") &&
-        event.target.value.length > 1 && event.target.value.length != 0) {
-        event.target.value = event.target.value[0];
-      }
-    });
-
     const saveSettings = (event) => {
       if(Object.keys(this.config).includes(event.target.name)) {
         this.config[event.target.name] = convertValue(event.target);
@@ -58,6 +51,23 @@ class Settings {
     });
 
     this.dom.addEventListener('click', (event) => {
+      if((event.target.name == `stopKey` || event.target.name == `fishingKey` || event.target.name == `luresKey`) && !event.target.disabled) {
+        event.target.style.backgroundColor = `rgb(255, 104, 101)`;
+        event.target.style.border = `1px solid grey`;
+
+        event.target.addEventListener(`blur`, function bluring(event) {
+          event.target.style.backgroundColor = `white`;
+          event.target.style.border = `1px solid grey`;
+          event.target.removeEventListener(`blur`, bluring);
+        });
+
+        document.addEventListener(`keydown`, function keyAssigning(event) {
+          event.target.value = event.key == ` `? `space` : event.key;
+          saveSettings(event);
+          document.removeEventListener(`keydown`, keyAssigning);
+          event.target.blur();
+        })
+      }
 
       if(event.target.name == `bobberColor`) {
         event.target.style = `background-image: url("./img/switch_${this.value == `red` ? `red` : `blue`}.png")`;
