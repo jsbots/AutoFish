@@ -56,7 +56,7 @@ const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor }) => {
       let rgb = createRgb(await getDataFrom(zone));
       rgb.saturate(...saturation)
       let rest = rgb.findColors({ isColor: isBobber });
-      if(!rest) return;
+      if(!rest || rest.length > 10000) return;
       let result = [...rest];
       rest.forEach(restPoint => {
         restPoint.getPointsAround(wobble).forEach(aroundPoint => {
