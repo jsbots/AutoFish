@@ -50,7 +50,14 @@ class Settings {
       }
     });
 
-    this.dom.addEventListener('click', (event) => {
+    const keyAssigning = (event) => {
+      event.target.value = event.key == ` `? `space` : event.key;
+      saveSettings(event);
+      document.removeEventListener(`keydown`, keyAssigning);
+      event.target.blur();
+    }
+
+    this.dom.addEventListener('mousedown', (event) => {
       if((event.target.name == `stopKey` || event.target.name == `fishingKey` || event.target.name == `luresKey`) && !event.target.disabled) {
         event.target.style.backgroundColor = `rgb(255, 104, 101)`;
         event.target.style.border = `1px solid grey`;
@@ -59,16 +66,14 @@ class Settings {
           event.target.style.backgroundColor = `white`;
           event.target.style.border = `1px solid grey`;
           event.target.removeEventListener(`blur`, bluring);
+          event.target.removeEventListener(`keydown`, keyAssigning);
         });
 
-        document.addEventListener(`keydown`, function keyAssigning(event) {
-          event.target.value = event.key == ` `? `space` : event.key;
-          saveSettings(event);
-          document.removeEventListener(`keydown`, keyAssigning);
-          event.target.blur();
-        })
+        event.target.addEventListener(`keydown`, keyAssigning);
       }
+    });
 
+    this.dom.addEventListener('click', (event) => {
       if(event.target.name == `bobberColor`) {
         event.target.style = `background-image: url("./img/switch_${this.value == `red` ? `red` : `blue`}.png")`;
         event.target.value = event.target.value == `blue` ? `red` : `blue`;
