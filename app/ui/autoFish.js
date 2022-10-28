@@ -37,6 +37,7 @@ class AutoFish {
     this.settings = settings;
     this.button = startButton;
     this.logger = renderLogger();
+    const premiumIcon = elt(`img`, { className: `premium_icon`, src: `img/premium.png` });
     const versionNode = elt("span");
     const donateLink = elt(
       "a",
@@ -47,10 +48,10 @@ class AutoFish {
       },
       `Get Premium`
     );
-    const footer = elt(`p`, { className: "version" }, versionNode, donateLink);
+    const footer = elt(`p`, { className: "version" }, versionNode, donateLink, premiumIcon);
 
     ipcRenderer.on("set-version", (event, version) => {
-      versionNode.textContent = `ver. ${version} | `;
+      versionNode.textContent = `ver. 1.13.1 Public | `;
     });
     this.settings.regOnChange((config) => {
       ipcRenderer.send("save-settings", config);

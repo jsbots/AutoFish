@@ -36,9 +36,9 @@ const renderThreshold = ({ threshold, bobberColor }) => {
 
   const range = elt(`input`, { type: `range`, min: 10, max: 150, value: threshold, name: `threshold` });
   if(bobberColor == `blue`) {
-    document.styleSheets[0].rules[68].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 40), rgb(0, 90, 200))"
+    document.styleSheets[0].rules[69].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 40), rgb(0, 90, 200))"
   } else {
-    document.styleSheets[0].rules[68].style.backgroundImage = "linear-gradient(to right, rgb(40, 0, 0), rgb(250, 0, 0))"
+    document.styleSheets[0].rules[69].style.backgroundImage = "linear-gradient(to right, rgb(40, 0, 0), rgb(250, 0, 0))"
   }
 
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });

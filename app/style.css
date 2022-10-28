@@ -88,6 +88,12 @@ section {
   margin-left: 5px;
 }
 
+.premium_icon {
+  height: 13px;
+  margin-left: 2px;
+  padding-top: 2px;
+}
+
 .section_name {
   margin: 0;
   font-size: 12px;
