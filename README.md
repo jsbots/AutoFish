@@ -12,7 +12,7 @@
 - [Servers tests](#servers-tests-video_game)
 - [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
-- [Threshold](#threshold-red_circle)
+- [Threshold errors](#threshold-errors-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
 - [Additional Info](#additional-info-pushpin)
@@ -22,7 +22,7 @@
 
 ## Fishing bot :fish:
 
-A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) library to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
+A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
 
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/UI.jpg?raw=true" width="600">
@@ -48,12 +48,11 @@ The bot doesn't work in the background and requires the window of the game to be
 ## Servers tests :video_game:
 
 The bot was tested on official servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Retail**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Retail** (Dragonflight)
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK Classic**
 
 Also on unofficial servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Shadowlands**: firestorm-servers.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**: stormforge.gg
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**: warmane.com
@@ -104,11 +103,11 @@ The bot was tested only with default UI and with default UI scale, without any a
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 7. You can press **'space'** to **stop the bot**.
 
-## Threshold :red_circle:
+## Threshold errors :red_circle:
 
 >Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
 
-With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, you need to increase **Threshold** values.  
+With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, you need to increase **Threshold** value.  
 
 > Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
 
