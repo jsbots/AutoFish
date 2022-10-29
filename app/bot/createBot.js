@@ -73,7 +73,8 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
     threshold: settings.threshold,
-    bobberColor: settings.bobberColor
+    bobberColor: settings.bobberColor,
+    sensitivity: Math.abs(config.bobberSensitivity - 4),
   });
 
   const notificationZone = createNotificationZone({
