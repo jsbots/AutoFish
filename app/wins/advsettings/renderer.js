@@ -244,7 +244,7 @@ const renderSettings = (config) => {
 
   ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
-  elt('div', {className: "settings_section"},
+  elt('div', {className: "settings_section settings_critical"},
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Bobber sensitivity:`, renderBobberSensitivity(config), `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.`),
   wrapInLabel(`Checking delay (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),

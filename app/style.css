@@ -105,6 +105,10 @@ section {
   font-weight: 500;
 }
 
+.settings_critical {
+  background-color: rgb(255, 221, 221);
+}
+
 .logger {
   height: 110px;
   background-image: url("./img/fish.png");
