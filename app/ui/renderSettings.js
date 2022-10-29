@@ -31,7 +31,7 @@ const renderThreshold = ({ threshold, bobberColor }) => {
                                 name: `bobberColor`,
                                 title: `Switch between blue and red feathers.`,
                                 value: bobberColor,
-                                style: `background-image: url("./img/switch_${bobberColor == `red` ? `red` : `blue`}.png")`,
+                                style: `background-image: url("./img/switch_${bobberColor == `red` ? `red` : `blue`}_new.png")`,
                                });
 
   const range = elt(`input`, { type: `range`, min: 10, max: 150, value: threshold, name: `threshold` });
