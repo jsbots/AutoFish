@@ -53,6 +53,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
   const actionOnce = once(action);
 
+  const missOnPurposeValue = config.missOnPurpose ? random(config.missOnPurposeRandom.from, config.missOnPurposeRandom.to) : 0;
   const getDataFrom = async (zone) => {
     if(zone.x < 0) zone.x = 0;
     if(zone.y < 0) zone.y = 0;
@@ -265,8 +266,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
-    const missOnPurpose = random(0, 100) < config.missOnPurpose;
-
+    const missOnPurpose = random(0, 100) < missOnPurposeValue;
     if(missOnPurpose) {
       missOnPurposeTimer.update();
     }

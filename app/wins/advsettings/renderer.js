@@ -125,11 +125,20 @@ const renderReaction = ({reaction}) => {
 };
 
 const renderMissOnPurpose = ({missOnPurpose}) => {
-  if(missOnPurpose < 0) missOnPurpose = 0
-  else if(missOnPurpose > 100) missOnPurpose = 100
-
-  return elt(`input`, { type: `number`, name:`missOnPurpose`, value: missOnPurpose, min: 0, max: 100 });
+  return elt(`input`, { type: `checkbox`, name:`missOnPurpose`, checked: missOnPurpose });
 };
+
+const renderMissOnPurposeRandom = ({missOnPurpose, missOnPurposeRandom}) => {
+
+  if(missOnPurposeRandom.from > 100) missOnPurposeRandom.from = 100;
+  if(missOnPurposeRandom.to > 100) missOnPurposeRandom.to = 100;
+  if(missOnPurposeRandom.from < 0) missOnPurposeRandom.from = 0;
+  if(missOnPurposeRandom.to < 0) missOnPurposeRandom.to = 0;
+
+  return elt(`div`, {"data-collection": `missOnPurposeRandom`}, elt(`span`, {className: `option_text`}, `from:`),
+     elt('input', {type: `number`, name: `from`, value: missOnPurposeRandom.from, disabled: !missOnPurpose}), elt(`span`, {className: `option_text`}, `to:`),
+     elt('input', {type: `number`, name: `to`, value: missOnPurposeRandom.to, disabled: !missOnPurpose}));
+}
 
 const renderReactionDelay = ({reaction, reactionDelay}) => {
   return elt(`div`, {"data-collection": `reactionDelay`}, elt(`span`, {className: `option_text`}, `from:`),
@@ -185,13 +194,17 @@ const renderSettings = (config) => {
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
-  wrapInLabel(`Miss on purpose (%): `, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
   wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`),
   wrapInLabel(
     "Use shift+click: ",
     renderShiftClick(config),
     `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assign to shift.`
   )),
+  elt(`p`, {className: `settings_header`}, `Miss on purpose`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Miss on purpose (%): `, renderMissOnPurpose(config), `Use this option if you play on official servers, it might decrease chances of being detected. Always Change this value before each fishing session.`),
+  wrapInLabel(`Random Miss on purpose: (%)`, renderMissOnPurposeRandom(config), `The bot will generate a random number from the provided values. The number is generated every fishing session: so the next time you start the bot, it will be always different (randomly generated).`),
+  ),
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Log out/Log in:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
