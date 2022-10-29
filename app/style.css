@@ -349,14 +349,14 @@ section {
 .bobberColorSwitch {
   transition: 0.1s all;
   position: absolute;
-  width: 65px;
-  height: 28px;
+  width: 60px;
+  height: 26px;
   top: 10px;
   left: 2px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
-  background-size: 65px 28px;
+  background-size: 60px 26px;
   background-position: -1px -1px;
   background-repeat: no-repeat;
   cursor: pointer;
