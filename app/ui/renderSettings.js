@@ -1,25 +1,9 @@
 const elt = require("./utils/elt.js");
 const wrapInLabel = require("./utils/wrapInLabel.js");
-const renderBobber = require('./renderBobber.js');
 
-const once = (fn) => {
-  let result;
-  return (...args) => {
-    if (!result) {
-      return (result = fn(...args));
-    } else {
-      return result;
-    }
-  };
+const renderBobberImg = (bobberColor) => {
+  return elt(`img`, {className: `threshold_canvas`, src:`img/bobber_${bobberColor}.png`, width: 80, height: 49});
 };
-
-const renderCanvas = (threshold) => {
-	let canvas = elt(`canvas`, { className: `threshold_canvas`, width: 80, height: 50 });
-	renderBobber(canvas.getContext(`2d`), threshold)
-	return canvas
-}
-
-const renderCanvasOnce = once(renderCanvas);
 
 const renderThreshold = ({ threshold, bobberColor }) => {
 
@@ -43,7 +27,7 @@ const renderThreshold = ({ threshold, bobberColor }) => {
 
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });
 
-	const canvas = renderCanvasOnce(threshold);
+	const canvas = renderBobberImg(bobberColor);
 
   const bobberContainer = elt(`div`, { className: `bobberContainer` }, canvas, number);
   return elt(`div`, { className: `thresholdRange` }, bobberColorSwitch, range, bobberContainer);

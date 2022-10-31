@@ -341,7 +341,7 @@ section {
   align-items: center;
 }
 
-.thresholdRange .bobberContainer canvas {
+.threshold_canvas {
   display: block;
   margin-left: -55px;
 }
