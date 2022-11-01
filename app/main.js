@@ -50,7 +50,7 @@ const showChoiceWarning = (win, warning) => {
   });
 };
 
-const setFishingZone = async ({workwindow}, relZone, type) => {
+const setFishingZone = async ({workwindow}, relZone, type, config, settings) => {
   workwindow.setForeground();
   while(!workwindow.isForeground()) {
     workwindow.setForeground();
@@ -63,7 +63,7 @@ const setFishingZone = async ({workwindow}, relZone, type) => {
     height: relZone.height * screenSize.height
   }
 
-  const result = await createFishingZone({pos, screenSize, type});
+  const result = await createFishingZone({pos, screenSize, type, config, settings});
   if(!result) return;
   return {
     x: (result.x - screenSize.x) / screenSize.width,
@@ -168,7 +168,7 @@ const createWindow = async () => {
 
     if(type == `relZone` || type == `chatZone`) {
       log.send(`Setting ${type == `relZone` ? `fishing` : `chat`} zone...`);
-      let data = await setFishingZone(games[0], config.patch[settings.game][type], type);
+      let data = await setFishingZone(games[0], config.patch[settings.game][type], type, config.patch[settings.game], settings);
       if(data) {
         config.patch[settings.game][type] = data;
         writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));

@@ -10,27 +10,44 @@ body {
   text-align: center;
   font: menu;
   font-size: 2em;
+  background-position: center 50px;
+  background-repeat: no-repeat;
 }
 
 div {
   -webkit-app-region: no-drag;
-  width: 40px;
-  height: 40px;
+  border: 1px solid black;
+  width: 60px;
+  border-radius: 15px;
   margin: 15px;
+  padding: 5px;
+  font-size: 0.5em;
+  color: white;
+  text-align: center;
+  cursor: pointer;
 }
 
 .buttonOk {
-  background-image: url("img/ok.png");
-  background-size: contain;
+  background-color: green;
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
 .buttonCancel {
-  background-image: url("img/cancel.png");
-  background-size: contain;
+  background-color: red;
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.buttonCheck {
+  background-color: blue;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.buttonCheck:active {
+  cursor: progress;
 }

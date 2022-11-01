@@ -1,10 +1,17 @@
 const { BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+const { screen, Region } = require("@nut-tree/nut-js");
+const fishZone = require("../../bot/fishingZone.js");
 
 const promisify = fn => (...args) => new Promise((resolve, reject) =>
 	fn(...args, (err, data) => (err ? reject(err) : resolve(data))));
 
-const createFishingZone = ({pos, screenSize, type}, finished) => {
+const getDataFrom = async (zone) => {
+	let grabbed = await(await screen.grabRegion(new Region(zone.x, zone.y, zone.width, zone.height))).toRGB();
+	return grabbed;
+};
+
+const createFishingZone = ({pos, screenSize, type, config, settings}, finished) => {
   let win = new BrowserWindow({
 		title: `Fishing Zone`,
     x: Math.floor(pos.x),
@@ -31,12 +38,31 @@ const createFishingZone = ({pos, screenSize, type}, finished) => {
   win.once('closed', () => {
     ipcMain.removeAllListeners(`fishingZone-cancel`);
     ipcMain.removeAllListeners(`fishingZone-ok`);
+		ipcMain.removeHandler(`fishingZone-check`);
   });
 
   ipcMain.on(`fishingZone-cancel`, () => {
     finished();
     win.close();
   });
+
+	ipcMain.handle(`fishingZone-check`, async () => {
+		if(type != `relZone`) return;
+		win.setOpacity(0);
+		let zone = fishZone({
+			 getDataFrom,
+			 zone: pos, threshold: settings.threshold,
+			 bobberColor: settings.bobberColor,
+			 sensitivity:  Math.abs(config.bobberSensitivity - 4)}
+		 );
+		let bobber = await zone.findBobber();
+		win.setOpacity(0.3);
+		if(bobber) {
+			return `bad`;
+		} else {
+			return `good`;
+		}
+	});
 
   ipcMain.on(`fishingZone-ok`, () => {
     win.close();

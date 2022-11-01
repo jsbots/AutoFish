@@ -303,7 +303,12 @@
       "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "chatZone": {
+        "x": 0.021875,
+        "y": 0.725,
+        "width": 0.21875,
+        "height": 0.1638888888888889
+      },
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {

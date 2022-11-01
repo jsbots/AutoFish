@@ -1,7 +1,8 @@
 const elt = require("../../ui/utils/elt.js");
 const { ipcRenderer } = require('electron');
-const buttonOk = elt(`div`, {className: `buttonOk`});
-const buttonCancel = elt(`div`, {className: `buttonCancel`});
+const buttonOk = elt(`div`, {className: `buttonOk`},  `Save`);
+const buttonCancel = elt(`div`, {className: `buttonCancel`}, `Cancel`);
+const buttonCheck = elt(`div`, {className: `buttonCheck`}, `Check`);
 
 buttonOk.addEventListener(`click`, () => {
   ipcRenderer.send(`fishingZone-ok`);
@@ -9,7 +10,16 @@ buttonOk.addEventListener(`click`, () => {
 
 buttonCancel.addEventListener(`click`, () => {
   ipcRenderer.send(`fishingZone-cancel`);
+});
+
+buttonCheck.addEventListener(`click`, async () => {
+  let result = await ipcRenderer.invoke(`fishingZone-check`);
+  document.body.style.backgroundImage = `url(img/${result}.png`;
+  setTimeout(() => {
+    document.body.style.backgroundImage = `none`;
+  }, 1000);
 })
 
 document.body.append(buttonOk);
 document.body.append(buttonCancel);
+document.body.append(buttonCheck);
