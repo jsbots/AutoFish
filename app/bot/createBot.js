@@ -465,7 +465,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       }
     }
     });
-    await sleep(settings.game == `Classic&WotLKC` ? 750 : 250); // close loot window delay
+    await sleep((settings.game == `Classic&WotLKC` || settings.game == `Retail`) ? 750 : 250); // close loot window delay
 
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
