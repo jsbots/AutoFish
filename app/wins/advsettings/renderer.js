@@ -212,7 +212,7 @@ const renderSettings = (config) => {
   )),
   elt(`p`, {className: `settings_header`}, `Miss on purpose`),
   elt('div', {className: "settings_section"},
-  wrapInLabel(`Miss on purpose: `, renderMissOnPurpose(config), `The bot will miss fish on purpose to simulate a human mistake. This functionality might decrease chances of being detected`),
+  wrapInLabel(`Miss on purpose: `, renderMissOnPurpose(config), `The bot will miss fish on purpose to simulate a human mistake. The value is % chance per cast that the bot will miss (it's not % of the whole session, so it might be drastically different). This functionality might decrease chances of being detected`),
   wrapInLabel(`Random Miss on purpose: (%)`, renderMissOnPurposeRandom(config), `The bot will generate a random number from the provided values. The number is generated every fishing session: so the next time you start the bot, it will be always different (randomly generated) between the given values.`),
   ),
   elt(`p`, {className: `settings_header`}, `Logging out`),
