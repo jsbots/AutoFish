@@ -47,6 +47,13 @@ const createFishingZone = ({pos, screenSize, type, config, settings}, finished) 
   });
 
 	ipcMain.handle(`fishingZone-check`, async () => {
+		let pos = win.getBounds();
+
+		if(pos.x < 0) pos.x = 0;
+		if(pos.y < 0) pos.y = 0;
+		if(pos.x + pos.width > screenSize.width) pos.width = screenSize.width - pos.x;
+		if(pos.y + pos.height > screenSize.height) pos.height = screenSize.height - pos.y;
+
 		if(type != `relZone`) return;
 		win.setOpacity(0);
 		let zone = fishZone({
