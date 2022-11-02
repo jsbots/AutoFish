@@ -56,12 +56,10 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**: stormforge.gg
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**: warmane.com
+  - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension**: ascension.gg (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**: atlantiss.org
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
-
-On custom servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org (use blue switch for better performance)
-- <img src="guide_img/icons/bad.png" width="15" height="15">  **Ascension**: ascension.gg - doesn't work!
+  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org (use blue switch for better performance)
 
 ## Warning :warning:
 
@@ -90,7 +88,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 *After 1.13.0 the bot works with both DirectX 12 and DirectX 11 if you use only one window of the game.*
 
-1. Launch the game *(not as administrator)*.
+1. Launch the game.
 2. Are you using whitelist?
    - Yes: Turn off **Auto Loot**, set **UI scale** to default, turn on **Open loot window at mouse**.
    - No: Turn on **Auto Loot**
@@ -101,7 +99,6 @@ The bot was tested only with default UI and with default UI scale, without any a
    - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
-7. You can press **'space'** to **stop the bot**.
 
 ## Threshold errors :red_circle:
 
@@ -122,6 +119,8 @@ You can change the dimensions of this zone by clicking on **"Set Fishing Zone"**
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg"  width="800">
 </p>
+
+Click **"Check"** button to check whether there's any red/blue colors in the fishing zone.
 
 The rule of thumb here is **the better you can see the red/blue feather the better the bot will see it too**:
 - If you can, make your video settings as best as possible, except the weather effects...
