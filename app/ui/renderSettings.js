@@ -34,23 +34,32 @@ const renderThreshold = ({ threshold, bobberColor }) => {
 };
 
 const renderGameNames = ({game}) => {
-  const gameNames = [
-    "Retail",
-    "Classic&WotLKC",
+  const gamesOfficial = [
+    `Dragonflight`,
+    `WotLK Classic`,
+    `Classic`
+  ];
+
+  const gamesPrivate = [
     "MoP",
     "Cataclysm",
     "WotLK Private",
     "TBC",
     "Vanilla",
   ];
+
   return elt(
     "select",
     { name: "game", className: "option game-option" },
-    ...gameNames.map((name) =>
-      elt("option", { selected: name == game }, name)
-    )
+    elt(`optgroup`, {label: `Official`}, ...gamesOfficial.map((name) =>
+          elt("option", { selected: name == game }, name)
+        )),
+    elt(`optgroup`, {label: `Private`}, ...gamesPrivate.map((name) =>
+          elt("option", { selected: name == game }, name)
+        )),
   );
 };
+
 const renderTimer = ({timer}) => {
   return elt(
     "input",

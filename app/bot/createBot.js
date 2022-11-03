@@ -322,7 +322,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       await sleep(150); // open loot window
     }
 
-    if(settings.game != `Retail`) {
+    if(settings.game != `Dragonflight`) {
       let pos = {
         x: cursorPos.x + lootWindow.toItemX,
         y: cursorPos.y - lootWindow.toItemY - 10,
@@ -416,7 +416,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       itemPos += lootWindow.itemHeight;
     }
 
-    if (settings.game == `Retail`? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
+    if (settings.game == `Dragonflight`? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
       if (config.reaction) {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
@@ -465,7 +465,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       }
     }
     });
-    await sleep((settings.game == `Classic&WotLKC` || settings.game == `Retail`) ? 750 : 250); // close loot window delay
+    await sleep((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? 750 : 250); // close loot window delay
 
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));

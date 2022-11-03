@@ -48,7 +48,7 @@ The bot doesn't work in the background and requires the window of the game to be
 ## Servers tests :video_game:
 
 The bot was tested on official servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Retail** (Dragonflight)
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Dragonflight**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK Classic**
 

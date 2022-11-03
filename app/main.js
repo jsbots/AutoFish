@@ -42,7 +42,7 @@ if (handleSquirrelEvent(app)) {
 const showChoiceWarning = (win, warning) => {
   return result = dialog.showMessageBoxSync(win, {
     type: "warning",
-    title: `Warning`,
+    title: `Disclaimer`,
     message: warning,
     buttons: [`I agree`, `I don't agree`],
     defaultId: 0,
@@ -178,7 +178,7 @@ const createWindow = async () => {
       return;
     }
 
-    if (settings.initial && (settings.game == "Retail" || settings.game == "Classic&WotLKC")) {
+    if (settings.initial && (settings.game == "Dragonflight" || settings.game == "WotLK Classic" || settings.game == "Classic")) {
       if(showChoiceWarning(win, `The software is provided "as is" and the author disclaims all warranties
 with regard to this software. In no event shall the author be liable for
 any special, direct, indirect, or consequential damages or any damages
