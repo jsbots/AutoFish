@@ -209,6 +209,7 @@ AutoFish was connected to the bot successfully!
 ## Known issues :hammer:
 - Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
 - The bot might not work properly if you have **latency issues**.
+- If you use many monitors the game should be on the primary one. 
 
 ## Download :open_file_folder:
 
@@ -218,7 +219,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.13.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.13.4 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
