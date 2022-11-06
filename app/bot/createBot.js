@@ -296,12 +296,12 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     }
   };
 
-  const isYellow = ([r, g, b]) => r - b > 200 && g - b > 200;
+  const isYellow = ([r, g, b]) => r - b > 135 && g - b > 135;
 
   const isLootOpened = async (cursorPos) => {
     await sleep(250);
-    let x = cursorPos.x + lootWindow.exitButton.x;
-    let y = cursorPos.y - lootWindow.exitButton.y;
+    let x = screenSize.x + cursorPos.x + lootWindow.exitButton.x;
+    let y = screenSize.y + cursorPos.y - lootWindow.exitButton.y;
     if(settings.multipleWindows) {
       return isYellow(workwindow.colorAt(x, y, "array"));
     } else {
@@ -416,7 +416,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       itemPos += lootWindow.itemHeight;
     }
 
-    if (settings.game == `Dragonflight`? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
+    if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
       if (config.reaction) {
         await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
       }
