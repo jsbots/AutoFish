@@ -465,7 +465,11 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       }
     }
     });
-    await sleep((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? 750 : 250); // close loot window delay
+    if(!settings.whitelist) {
+      await sleep((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? 750 : 250); // close loot window delay
+    } else {
+      await sleep(150);
+    }
 
     if (config.sleepAfterHook) {
       await sleep(random(config.afterHookDelay.from, config.afterHookDelay.to));
