@@ -135,16 +135,17 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 <img src="guide_img/tmtoken.jpg" align="center">
 </p>
 
-3. Press **Connect** button and wait until the name of the button changes to either **done** or **error*.
+3. Press **Connect** button and wait until the name of the button changes to either **done** or **error* (*might take awhile*).
 4. Open the bot in your Telegram and either press /start or write /start command.
 5. If evertyhing is OK, the bot will reply with:
 ```
 AutoFish was connected to the bot successfully!
-/start - starts telegram bot
-/startbot - starts AutoFish
-/stopbot - stops AutoFish
-/statsbot - shows stats
-/quitgame - quits from all the windows opened
+/start - starts telegram bot.
+/bstart - starts AutoFish.
+/bstop - stops AutoFish.
+/bstats - shows stats.
+/bquit - quits the game and the bot.
+/ss - makes a screenshot of the whole screen.
 /w *username* - whispers to *username*
 /help - list of commands
 ```
@@ -188,7 +189,7 @@ AutoFish was connected to the bot successfully!
 ## Known issues :hammer:
 - Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
 - The bot might not work properly if you have **latency issues**.
-- If you use many monitors the game should be on the primary one. 
+- If you use many monitors the game should be on the primary one.
 
 ## Download :open_file_folder:
 
@@ -198,7 +199,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.13.4 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.13.5 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
@@ -226,5 +227,3 @@ Using common sense while using the bot will help to reduce risks of being banned
 Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
 
 :bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.   
-
-
