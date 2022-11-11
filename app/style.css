@@ -405,7 +405,7 @@ input[type=range][name=threshold]::-ms-track {
 
 input[type=range][name=threshold]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: 1px solid #000000;
+  border: 1px solid grey;
   height: 32px;
   width: 16px;
   border-radius: 3px;
@@ -416,6 +416,10 @@ input[type=range][name=threshold]::-webkit-slider-thumb {
   background-repeat: no-repeat;
   cursor: pointer;
   margin-top: -12px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+input[type=range][name=threshold]::-webkit-slider-thumb:hover {
+  border: 1px solid black;
 }
 
 input[type=range][name=threshold]::-webkit-slider-runnable-track {
