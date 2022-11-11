@@ -1,4 +1,8 @@
 body {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   border: 1px solid black;
   margin: 0;
@@ -10,8 +14,6 @@ body {
   text-align: center;
   font: menu;
   font-size: 2em;
-  background-position: center 50px;
-  background-repeat: no-repeat;
 }
 
 div {

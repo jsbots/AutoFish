@@ -14,9 +14,9 @@ buttonCancel.addEventListener(`click`, () => {
 
 buttonCheck.addEventListener(`click`, async () => {
   let result = await ipcRenderer.invoke(`fishingZone-check`);
-  document.body.style.backgroundImage = `url(img/${result}.png`;
+  document.body.style.backgroundColor = result;
   setTimeout(() => {
-    document.body.style.backgroundImage = `none`;
+    document.body.style.backgroundColor = `white`;
   }, 1000);
 })
 

@@ -65,9 +65,9 @@ const createFishingZone = ({pos, screenSize, type, config, settings}, finished) 
 		let bobber = await zone.findBobber();
 		win.setOpacity(0.3);
 		if(bobber) {
-			return `bad`;
+			return `rgb(255, 70, 68)`;
 		} else {
-			return `good`;
+			return `rgb(70, 255, 68)`;
 		}
 	});
 
