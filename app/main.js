@@ -111,15 +111,15 @@ const createWindow = async () => {
   };
 
   const connectToTelegram = (key) => {
-    const listOfCommands = `/start - starts telegram bot\n/startbot - starts AutoFish\n/stopbot - stops AutoFish\n/statsbot - shows stats\n/quitgame - quits from all the windows opened\n/w *username* - whispers to *username*\n/help - list of commands\n`;
+    const listOfCommands = `/start - starts telegram bot\n/bstart - starts AutoFish\n/bstop - stops AutoFish\n/bstats - shows stats\n/bquit - quits from all the windows opened\n /ss - makes a screenshot of the whole screen \n/w *username* - whispers to *username*\n/help - list of commands\n`;
     tmBot.bot = new Telegraf(key);
     tmBot.bot.start((ctx) => {
       ctx.reply(`AutoFish was connected to the bot successfully!\n${listOfCommands}`)
-      tmBot.bot.command(`startbot`, (ctx) => {
+      tmBot.bot.command(`bstart`, (ctx) => {
         win.webContents.send(`start-tm`);
         ctx.reply(`Started the bot`);
       });
-      tmBot.bot.command(`stopbot`, (ctx) => {
+      tmBot.bot.command(`bstop`, (ctx) => {
         win.webContents.send(`stop-tm`);
         ctx.reply(`Stopped the bot`);
       });

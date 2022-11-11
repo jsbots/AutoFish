@@ -9,6 +9,7 @@ const EventLine = require("../utils/eventLine.js");
 const { setWorker } = require("../utils/textReader.js");
 
 const createWinSwitch = require("../game/winSwitch.js");
+const { app } = require("electron");
 
 let tmStats = null;
 
@@ -35,15 +36,16 @@ const createBots = async (games, settings, config, log, tmBot) => {
 
   if(tmBot.bot) {
     tmStats = bots.map(({stats}) => stats);
-    tmBot.bot.command(`statsbot`, (ctx) => {
+    tmBot.bot.command(`bstats`, (ctx) => {
       tmStats.forEach((stats, i) => ctx.reply(`WIN${i + 1}:${stats.show()}`));
     });
-    tmBot.bot.command(`quitgame`, (ctx) => {
+    tmBot.bot.command(`bquit`, (ctx) => {
       games.forEach(({workwindow}) => workwindow.close());
       log.send('Stopping the bots...')
       log.setState(false);
       bots.forEach(({state}) => state.status = "stop");
       ctx.reply(`Quit all the windows of the game`);
+      app.quit();
     })
   }
 
@@ -58,6 +60,7 @@ const createBots = async (games, settings, config, log, tmBot) => {
             if(config.patch[settings.game].timerQuit) {
               log.ok('Closing the windows...')
               games.forEach(({workwindow}) => workwindow.close());
+              app.quit();
             }
           }
         }, settings.timer * 1000 * 60);
