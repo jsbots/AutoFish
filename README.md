@@ -10,7 +10,6 @@
 
 - [Fishing bot](#fishing-bot-fish)
 - [Servers tests](#servers-tests-video_game)
-- [Warninig](#warning-warning)
 - [Guide](#guide-blue_book)
 - [Threshold errors](#threshold-errors-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
@@ -19,6 +18,7 @@
 - [Fishing zone](#fishing-zone-dart)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
+- [Disclaimer](#disclaimer-warning)
 
 ## Fishing bot :fish:
 
@@ -60,27 +60,6 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**: atlantiss.org
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
   - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org (use blue switch for better performance)
-
-## Warning :warning:
-
-If you are going to use the bot on unofficial servers, skip this section. It's very unlikely you need any of this.
-
-Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
-
-The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
-
-To prevent detection all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
-
-Using common sense while using the bot will help to reduce risks of being banned:
-- Don't leave the bot alone for a long time.
-- Don't fish in one place all the time.
-- Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.
-
-Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
-
-:bangbang: Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.   
-
-
 
 ## Guide :blue_book:
 
@@ -209,6 +188,7 @@ AutoFish was connected to the bot successfully!
 ## Known issues :hammer:
 - Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
 - The bot might not work properly if you have **latency issues**.
+- If you use many monitors the game should be on the primary one. 
 
 ## Download :open_file_folder:
 
@@ -218,12 +198,33 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.13.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.13.4 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
-The executable file is a [squirrel](https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig#authors) setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
+The executable file is a setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
 
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
+
+## Disclaimer :warning:
+
+Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
+
+Use this sofwtare at your own risk. No one will be responsible for any consequences except yourself. I don't guarantee anything related to the bot and the software is provided *as is*. **If you aren't ready for this, do not use this software.**
+
+The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
+
+To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+
+Using common sense while using the bot will help to reduce risks of being banned:
+- **Don't leave the bot alone for a long time.**
+- **Don't fish in one place all the time.**
+- **Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.**
+
+Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
+
+:bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.   
+
+
