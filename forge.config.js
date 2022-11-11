@@ -11,7 +11,7 @@ module.exports = {
       "config": {
         "name": generatedName(10),
         "authors": generatedName(10),
-        "description": 'Electron application',
+        "description": 'Application',
         "setupIcon": "./app/img/icon.ico",
         "setupExe": "AutoFish Setup.exe",
         "loadingGif": "./app/img/install.gif"
