@@ -154,7 +154,7 @@ return elt(
       "div",
       { className: "settings_section" },
       wrapInLabel(
-        "Game:",
+        "",
         renderGameNames(config),
         `Choose the version of the game you want the bot to work on.`
       ),
