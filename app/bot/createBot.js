@@ -3,6 +3,7 @@ const createFishingZone = require("./fishingZone.js");
 const createNotificationZone = require("./notificationZone.js");
 const createLootZone = require("./lootZone.js");
 const createChatZone = require('./chatZone');
+const Jimp = require(`jimp`);
 
 const { screen, Region, Point } = require("@nut-tree/nut-js");
 
@@ -43,12 +44,6 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     winSwitch.finished();
   };
 
-  if(tmBot.bot) {
-    tmBot.bot.command(`/w`, (ctx) => {
-      chatMsgs.push(ctx.update.message.text);
-    })
-  }
-
   const screenSize = workwindow.getView();
 
   const actionOnce = once(action);
@@ -68,6 +63,17 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       return workwindow.capture(zone);
     }
   };
+
+  if(tmBot.bot) {
+    tmBot.bot.command(`/w`, (ctx) => {
+      chatMsgs.push(ctx.update.message.text);
+    })
+
+    tmBot.bot.command(`/ss`, async (ctx) => {
+      const img = await (await Jimp.read(await getDataFrom(screenSize))).getBufferAsync(Jimp.MIME_JPEG);
+      tmBot.ctx.replyWithPhoto({source: img});
+    })
+  }
 
   const fishingZone = createFishingZone({
     getDataFrom,
