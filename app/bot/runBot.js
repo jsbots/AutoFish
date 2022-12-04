@@ -54,7 +54,7 @@ const runBot = async ({ bot, log, state, stats }) => {
     if (applyLures.on && applyLures.timer.isElapsed()) {
       log.send(`Applying lures...`);
       await applyLures();
-      applyLures.timer.start();
+      applyLures.timer.update();
     }
 
     findBobber.memory = await findAllBobberColors();

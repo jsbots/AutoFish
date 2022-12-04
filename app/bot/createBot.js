@@ -169,6 +169,9 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       await keyboard.toggleKey(`enter`, false, delay);
     });
     await sleep(20000);
+
+    const addTime = applyLures.timer.timeRemains();
+
     await sleep(random(30000, 60000));
     if(state.status == 'stop') {
       return;
@@ -177,6 +180,11 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       await keyboard.sendKey(`enter`);
     });
     await sleep(random(30000, 60000));
+
+    if(settings.lures) {
+      applyLures.timer.update(() => addTime);
+    }
+
   };
   logOut.timer = logOutTimer;
   logOut.on = config.logOut > 0;

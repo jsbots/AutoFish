@@ -48,9 +48,12 @@ const createTimer = (callback) => {
     isElapsed() {
       return Date.now() - time > interval;
     },
-    update() {
-      interval = callback();
+    update(cb) {
+      interval = cb ? cb() : callback();
       this.start();
+    },
+    timeRemains() {
+      return interval - (Date.now() - time);
     }
   }
 };
