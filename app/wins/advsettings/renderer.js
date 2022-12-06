@@ -181,19 +181,6 @@ const renderTimerQuit = ({timerQuit}) => {
   return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
 };
 
-const renderTmApiKey = ({tmApiKey}) => {
-  return elt('div', null, elt('input', {type: `text`, name: `tmApiKey`, value: tmApiKey, className: `tmApiKey`}), elt('input', {type: `button`, value: `Connect`}));
-};
-
-const renderDetectWhisper = ({detectWhisper}) => {
-  return elt('input', {type: `checkbox`, checked: detectWhisper, name: `detectWhisper`});
-};
-
-const renderWhisperThreshold = ({whisperThreshold}) => {
-  return elt(`div`, null, elt('input', {type: `range`, min: 0, max: 255, value: whisperThreshold, name: `whisperThreshold`, className: `whisperRange`}),
-   elt(`div`, {className: `whisperColorBox`, style: `background-color: rgb(${whisperThreshold},0,${whisperThreshold})`}, `${whisperThreshold}`));
-}
-
 const renderSettings = (config) => {
   return elt('section', {className: `settings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
@@ -235,14 +222,6 @@ const renderSettings = (config) => {
   wrapInLabel(`Sleep after hook:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
   wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   ),
-  elt(`p`, {className: `settings_header`}, `Remote control`),
-  elt(`div`, {className: `settings_section`},
-    wrapInLabel(`Telegram token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
-    wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
-    wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
-    wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
-
-  ),
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section settings_critical"},
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
@@ -260,16 +239,6 @@ const runApp = async () => {
      elt('input', {type: `button`, value: `Ok`}),
      elt('input', {type: `button`, value: `Cancel`}),
      elt('input', {type: `button`, value: `Defaults`}))
-
-  settings.addEventListener(`click`, (event) => {
-    if(event.target.value == `Connect`) {
-      ipcRenderer.invoke(`connect-telegram`, config.tmApiKey)
-      .then(() => event.target.value = `Done!`)
-      .catch(() => event.target.value = `Error!`);
-
-      setTimeout(() => event.target.value = `Connect`, 1000);
-    }
-  });
 
   buttons.addEventListener(`click`, async (event) => {
     if(event.target.value == 'Ok') {

@@ -26,7 +26,6 @@ const { createLog } = require("./utils/logger.js");
 const { findGameWindows, getAllWindows } = require("./game/createGame.js");
 const createBots = require("./bot/createBots.js");
 const getBitmapAsync = require("./utils/getBitmap.js");
-const { Telegraf } = require('telegraf');
 /* Bot modules end */
 
 /* Squirrel */
@@ -105,33 +104,6 @@ const createWindow = async () => {
     win.webContents.send('set-version', version);
   });
 
-  let tmBot = {
-    bot: null,
-    ctx: null
-  };
-
-  const connectToTelegram = (key) => {
-    const listOfCommands = `/start - starts telegram bot\n/bstart - starts AutoFish\n/bstop - stops AutoFish\n/bstats - shows stats\n/bquit - quits from all the windows opened\n /ss - makes a screenshot of the whole screen \n/w *username* - whispers to *username*\n/help - list of commands\n`;
-    tmBot.bot = new Telegraf(key);
-    tmBot.bot.start((ctx) => {
-      ctx.reply(`AutoFish was connected to the bot successfully!\n${listOfCommands}`)
-      tmBot.bot.command(`bstart`, (ctx) => {
-        win.webContents.send(`start-tm`);
-        ctx.reply(`Started the bot`);
-      });
-      tmBot.bot.command(`bstop`, (ctx) => {
-        win.webContents.send(`stop-tm`);
-        ctx.reply(`Stopped the bot`);
-      });
-
-      tmBot.bot.command(`help`, (ctx) => {
-        ctx.reply(listOfCommands);
-      })
-      tmBot.ctx = ctx;
-    });
-
-    return tmBot.bot.launch();
-  };
 
   ipcMain.on("start-bot", async (event, type) => {
     const config = getJson("./config/bot.json");
@@ -199,7 +171,7 @@ or in connection with the use or performance of this software.`)) {
       return;
     }
 
-    const {startBots, stopBots} = await createBots(games, settings, config, log, tmBot);
+    const {startBots, stopBots} = await createBots(games, settings, config, log);
 
     const stopAppAndBots = () => {
       stopBots();
@@ -241,7 +213,6 @@ or in connection with the use or performance of this software.`)) {
     }
   });
 
-  ipcMain.handle("connect-telegram", (event, key) => connectToTelegram(key))
   ipcMain.handle("get-bitmap", getBitmapAsync);
   ipcMain.handle("get-all-windows", getAllWindows);
   ipcMain.handle("get-settings", () => getJson("./config/settings.json"));

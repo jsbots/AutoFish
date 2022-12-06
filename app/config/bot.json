@@ -29,16 +29,9 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
       "bobberSensitivity": 3,
-      "chatZone": {
-        "x": 0.01875,
-        "y": 0.8407407407407408,
-        "width": 0.2359375,
-        "height": 0.11851851851851852
-      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -99,16 +92,9 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
       "bobberSensitivity": 3,
-      "chatZone": {
-        "x": 0.022395833333333334,
-        "y": 0.6787037037037037,
-        "width": 0.28541666666666665,
-        "height": 0.15092592592592594
-      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -169,16 +155,9 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
       "bobberSensitivity": 3,
-      "chatZone": {
-        "x": 0.022395833333333334,
-        "y": 0.6787037037037037,
-        "width": 0.28541666666666665,
-        "height": 0.15092592592592594
-      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -239,16 +218,9 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
       "bobberSensitivity": 3,
-      "chatZone": {
-        "x": 0.0171875,
-        "y": 0.7768518518518519,
-        "width": 0.22708333333333333,
-        "height": 0.12314814814814815
-      },
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -307,10 +279,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -372,15 +342,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": {
-        "x": 0.021875,
-        "y": 0.725,
-        "width": 0.21875,
-        "height": 0.1638888888888889
-      },
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -440,10 +403,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -505,15 +466,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "tmApiKey": "",
       "detectWhisper": true,
       "whisperThreshold": 60,
-      "chatZone": {
-        "x": 0.019791666666666666,
-        "y": 0.7564814814814815,
-        "width": 0.2875,
-        "height": 0.15092592592592594
-      },
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {

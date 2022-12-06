@@ -11,9 +11,7 @@ const { setWorker } = require("../utils/textReader.js");
 const createWinSwitch = require("../game/winSwitch.js");
 const { app } = require("electron");
 
-let tmStats = null;
-
-const createBots = async (games, settings, config, log, tmBot) => {
+const createBots = async (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
 
   if(settings.whitelist) {
@@ -27,28 +25,12 @@ const createBots = async (games, settings, config, log, tmBot) => {
 
   const bots = games.map((game, i) => {
     return {
-      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch, tmBot),
+      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch),
       log: createIdLog(log, ++i),
       state: { status: "initial", startTime: Date.now() },
       stats: new Stats()
   }
   });
-
-  if(tmBot.bot) {
-    tmStats = bots.map(({stats}) => stats);
-    tmBot.bot.command(`bstats`, (ctx) => {
-      tmStats.forEach((stats, i) => ctx.reply(`WIN${i + 1}:${stats.show()}`));
-    });
-    tmBot.bot.command(`bquit`, (ctx) => {
-      games.forEach(({workwindow}) => workwindow.close());
-      log.send('Stopping the bots...')
-      log.setState(false);
-      bots.forEach(({state}) => state.status = "stop");
-      ctx.reply(`Quit all the windows of the game`);
-      app.quit();
-    })
-  }
-
 
   return {
     startBots(onError) {
@@ -80,10 +62,6 @@ const createBots = async (games, settings, config, log, tmBot) => {
             }
             log.setState(true);
             bot.log.err(`${error.message}`);
-
-            if(tmBot.bot) {
-              tmBot.ctx.reply(`${error.message}`);
-            }
 
             bot.stats.show().forEach((stat) => bot.log.ok(stat));
             bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);

@@ -34,7 +34,7 @@ const random = (from, to) => {
 
 let chatMsgs = [];
 
-const createBot = (game, { config, settings }, winSwitch, tmBot) => {
+const createBot = (game, { config, settings }, winSwitch) => {
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
@@ -64,17 +64,6 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     }
   };
 
-  if(tmBot.bot) {
-    tmBot.bot.command(`/w`, (ctx) => {
-      chatMsgs.push(ctx.update.message.text);
-    })
-
-    tmBot.bot.command(`/ss`, async (ctx) => {
-      const img = await (await Jimp.read(await getDataFrom(screenSize))).getBufferAsync(Jimp.MIME_JPEG);
-      tmBot.ctx.replyWithPhoto({source: img});
-    })
-  }
-
   const fishingZone = createFishingZone({
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
@@ -92,8 +81,6 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
       height: 0.07,
     }),
   });
-
-  const chatZone = createChatZone({getDataFrom, zone: Zone.from(screenSize).toRel(config.chatZone), threshold: config.whisperThreshold});
 
   const lootWindowPatch =
     config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
@@ -416,11 +403,6 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
             await mouse.toggle("right", true, delay);
             await mouse.toggle("right", false, delay);
 
-            if(tmBot.ctx) {
-              tmBot.ctx.reply(`Confirmed Souldbound item!`);
-              tmBot.ctx.replyWithPhoto({source: await chatZone.getImage()});
-            }
-
           }
         }
 
@@ -492,29 +474,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     return caught;
   };
 
-  const checkWhisper = async () => {
-    if(tmBot.ctx == null || !config.detectWhisper) return;
-    if(await chatZone.checkNewMessages()) {
-      tmBot.ctx.reply(`Someone whispered!`);
-      tmBot.ctx.replyWithPhoto({source: await chatZone.getImage()});
-    }
-  };
 
-  const replyToChat = async () => {
-    if(chatMsgs.length > 0) {
-      await action(async () => {
-        for(const message of chatMsgs) {
-          await keyboard.toggleKey(`enter`, true, delay);
-          await keyboard.toggleKey(`enter`, false, delay);
-          await keyboard.printText(message, delay);
-          await keyboard.toggleKey(`enter`, true, delay);
-          await keyboard.toggleKey(`enter`, false, delay);
-        }
-        await sleep(500);
-        chatMsgs = [];
-      })
-    }
-  }
 
   return {
     logOut,
@@ -526,9 +486,7 @@ const createBot = (game, { config, settings }, winSwitch, tmBot) => {
     findBobber,
     highlightBobber,
     checkBobber,
-    hookBobber,
-    checkWhisper,
-    replyToChat
+    hookBobber
   };
 };
 
