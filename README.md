@@ -207,8 +207,6 @@ AutoFish was connected to the bot successfully!
 
 AutoFish 1.13.6 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 1.12.2 Setup: [Download](https://github.com/jsbots/AutoFish/releases/download/v1.12.2/AutoFish.1.12.2.Setup.exe) (older version for windows 7)
-
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
 The executable file is a setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
