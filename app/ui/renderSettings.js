@@ -107,6 +107,12 @@ const renderStopKey = ({stopKey}) => {
   return key;
 };
 
+const renderPoleKey = ({poleKey, lures, game}) => {
+  let key = elt('input', {type: 'text', disabled: !lures || game != `Dragonflight`, value: poleKey, name: "poleKey"});
+  key.setAttribute(`readonly`, `true`);
+  return key;
+};
+
 const renderLuresDelay = ({lures, luresDelayMin}) => {
   return elt('input', {type: 'number', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
 };
@@ -165,14 +171,14 @@ return elt(
         `Assign the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
       ),
       wrapInLabel(
-        "Stop Key: ",
-        renderStopKey(config),
-        `Assign a key that you will use to stop the bot.`
-      ),
-      wrapInLabel(
         "Lures Key: ",
         renderLuresKey(config),
         `Assign the same key you use for using fishing lures.`
+      ),
+      wrapInLabel(
+        "Pole key: ",
+        renderPoleKey(config),
+        `Exclusively for Dragonflight. Assign your fishing pole to this key to be able to apply lures to it.`
       ),
       wrapInLabel(
         "Reuse lure: ",
@@ -198,6 +204,12 @@ return elt(
         renderLures(config),
         `Check this option if you want to use fishing lures. If your game requires manual application of lures, use a macros for that and assign that macro to Lures Key option.`
       ),
+      wrapInLabel(
+        "Stop Key: ",
+        renderStopKey(config),
+        `Assign a key that you will use to stop the bot.`
+      ),
+
       wrapInLabel(
         "",
         renderFishingZone(config),

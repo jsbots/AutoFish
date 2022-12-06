@@ -6,6 +6,7 @@
   "fishingKey": "1",
   "luresKey": "2",
   "stopKey": "space",
+  "poleKey": "3",
   "luresDelayMin": 10,
   "whitelist": false,
   "whitelistWords": "",

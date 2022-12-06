@@ -185,11 +185,11 @@ section {
 }
 
 
-.settings input[name="stopKey"], .settings input[name="luresKey"], .settings input[name="fishingKey"] {
+.settings input[name="stopKey"], .settings input[name="luresKey"], .settings input[name="fishingKey"], .settings input[name="poleKey"] {
   cursor: pointer;
 }
 
-.settings input[name="stopKey"]:active, .settings input[name="luresKey"]:active, .settings input[name="fishingKey"]:active {
+.settings input[name="stopKey"]:active, .settings input[name="luresKey"]:active, .settings input[name="fishingKey"]:active, .settings input[name="poleKey"]:active {
   cursor: default;
 }
 
@@ -202,7 +202,7 @@ section {
 }
 
 .advanced_settings_button {
-  height: 35px;
+  height: 22px;
   width: 123px;
   margin-right: 3px;
   text-align: center;
@@ -433,4 +433,9 @@ input[type=range][name=threshold]::-webkit-slider-runnable-track {
 
 input[type=range][name=threshold]:focus::-webkit-slider-runnable-track {
   opacity: 0.9;
+}
+
+input[type=checkbox] {
+  width: 13px;
+  height: 13px;
 }

@@ -29,8 +29,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -92,8 +90,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -155,8 +151,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -218,8 +212,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -279,8 +271,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -342,8 +332,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -403,8 +391,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -466,8 +452,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {

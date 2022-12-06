@@ -55,7 +55,7 @@ class Settings {
     }
 
     this.dom.addEventListener('mousedown', (event) => {
-      if((event.target.name == `stopKey` || event.target.name == `fishingKey` || event.target.name == `luresKey`) && !event.target.disabled) {
+      if((event.target.name == `stopKey` || event.target.name == `fishingKey` || event.target.name == `luresKey` || event.target.name == `poleKey`) && !event.target.disabled) {
         event.target.style.backgroundColor = `rgb(255, 104, 101)`;
         event.target.style.border = `1px solid grey`;
 
