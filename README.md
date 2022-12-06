@@ -13,7 +13,7 @@
 - [Guide](#guide-blue_book)
 - [Threshold errors](#threshold-errors-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
-- [Telegram remote control](#telegram-remote-control-iphone)
+- [Telegram remote control](#telegram-remote-control-iphone) (Premium only)
 - [Additional Info](#additional-info-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Known issues](#known-issues-hammer)
@@ -161,6 +161,12 @@ AutoFish was connected to the bot successfully!
 
 ## Additional info :pushpin:
 
+- If you want to use lures on Dragonflight, you need to move your FishPole icon to some skill slot and assign it to the Pole Key.
+
+<p align="center">
+<img src="guide_img/fishpole.jpg"  width="800">
+</p>
+
 - If you play on **Classic/Vanilla** and want to use lures, use a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key section:
 
 **Classic**:
@@ -199,7 +205,7 @@ AutoFish was connected to the bot successfully!
 
  </div>
 
-AutoFish 1.13.5 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.13.6 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
 
