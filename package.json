@@ -8,6 +8,7 @@
     "startf": "electron-forge start",
     "test": "jest",
     "package": "electron-forge package",
+    "premake": "node random.js",
     "make": "electron-forge make"
   },
   "keywords": [
@@ -23,7 +24,7 @@
     "fishing",
     "wow"
   ],
-  "author": "olesgeras",
+  "author": "jsbots",
   "license": "MIT",
   "dependencies": {
     "@nut-tree/nut-js": "^2.3.0",
