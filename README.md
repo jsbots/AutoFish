@@ -193,6 +193,7 @@ AutoFish was connected to the bot successfully!
 </p>
 
 ## Known issues :hammer:
+- The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
 - Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
 - The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
