@@ -193,7 +193,7 @@ AutoFish was connected to the bot successfully!
 </p>
 
 ## Known issues :hammer:
-- Whitelist works properly only with standard 16:9 resolutions (if you use **ultrawide monitor**, switch to 16:9 windowed mode)
+- Whitelist works properly only with 1920x1080 and 1366x768 resolutions. (Use windowed mode if it's not your default resolutions)
 - The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
 
