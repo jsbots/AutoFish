@@ -197,11 +197,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const applyLures = async () => {
     await action(async () => {
       await keyboard.sendKey(settings.luresKey, delay);
-      if(config.reaction) {
-        if (config.reaction) {
-          await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
+      if(settings.usePole) {
+        if(config.reaction) {
+          await sleep(random(config.reactionDelay.from, config.reactionDelay.to))
         }
-        await keyboard.sendKey(settings.poleKey, delay);
       }
     });
     await sleep(config.luresDelay);

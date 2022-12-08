@@ -107,10 +107,11 @@ const renderStopKey = ({stopKey}) => {
   return key;
 };
 
-const renderPoleKey = ({poleKey, lures, game}) => {
-  let key = elt('input', {type: 'text', disabled: !lures || game != `Dragonflight`, value: poleKey, name: "poleKey"});
+const renderPoleKey = ({lures, game, poleKey, usePole}) => {
+  let key = elt('input', {type: 'text', value: poleKey, disabled: !usePole, name: "poleKey"});
   key.setAttribute(`readonly`, `true`);
-  return key;
+  const checkbox = elt(`input`, {type: `checkbox`, checked: usePole, style: `margin-right: 7px`, name: "usePole"});
+  return elt(`div`, null, checkbox, key);
 };
 
 const renderLuresDelay = ({lures, luresDelayMin}) => {
