@@ -29,8 +29,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -48,19 +46,21 @@
       },
       "lootWindow": {
         "1536": {
-          "upperLimit": 0.0651041,
-          "toItemX": 0.0190336,
-          "toItemY": 0.0117187,
-          "itemHeight": 0.0572916,
+          "upperLimit": 0.06510416,
+          "toItemX": 0.01976573,
+          "toItemY": 0.015625,
+          "itemHeight": 0.05078125,
+          "itemHeightAdd": 0.01432291,
           "height": 0.24739583,
-          "width": 0.1112737,
+          "width": 0.1120058,
           "exitButton": { "x": 0.1295754, "y": 0.05338541 }
         },
         "1920": {
           "upperLimit": 0.046296,
           "toItemX": 0.013541,
           "toItemY": 0.008333,
-          "itemHeight": 0.04074,
+          "itemHeight": 0.0324074,
+          "itemHeightAdd": 0.01018518,
           "height": 0.175925,
           "width": 0.079687,
           "exitButton": { "x": 0.092187, "y": 0.037962 }
@@ -92,8 +92,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -155,8 +153,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -218,8 +214,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -279,8 +273,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -342,8 +334,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -403,8 +393,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
@@ -466,8 +454,6 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
-      "detectWhisper": true,
-      "whisperThreshold": 60,
       "bobberSensitivity": 3,
       "confirmationWindow": {
         "1536": {
