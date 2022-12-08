@@ -39,10 +39,17 @@ const percentComparison = (first, second) => {
   return mainLetters.flatMap(getField(`index`)).length / first.length * 100
 };
 
-const sortWordsByItem = (words, itemHeight) => {
+const sortWordsByItem = (words, lootWindow, isDragonflight) => {
+  let itemHeight = lootWindow.itemHeight + (isDragonflight ? lootWindow.itemHeightAdd : 0);
+  let gaps;
+  if(isDragonflight) {
+    gaps = new Array(4).fill(0).map((gap, i) => ({from: i == 0 ? lootWindow.itemHeight * (i + 1) : itemHeight * i + lootWindow.itemHeight,
+                                                      to: (i == 0 ? lootWindow.itemHeight * (i + 1) : itemHeight * i + lootWindow.itemHeight) + lootWindow.itemHeightAdd + (i + 1)}));
+  }
   let selected = [];
   words.forEach((word) => {
     if (!word.text || word.text.length < 2) return;
+    if(isDragonflight && gaps.some(gap => word.y > gap.from && word.y < gap.to)) return;
     let pos = selected[Math.floor(word.y / itemHeight)];
     if (!pos) {
       selected[Math.floor(word.y / itemHeight)] = word.text;
@@ -50,8 +57,7 @@ const sortWordsByItem = (words, itemHeight) => {
       selected[Math.floor(word.y / itemHeight)] += ` ${word.text}`;
     }
   });
-
-  return selected.flat();
+  return selected.flat();;
 };
 
 module.exports = {

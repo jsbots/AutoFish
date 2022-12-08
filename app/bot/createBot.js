@@ -97,6 +97,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
     itemHeight: lootWindowPatch.itemHeight * screenSize.height,
   };
 
+  if(lootWindowPatch.itemHeightAdd) {
+    lootWindow.itemHeightAdd = lootWindowPatch.itemHeightAdd * screenSize.height;
+  }
+
   const confirmationWindow = {
     x: confirmationWindowPatch.x * screenSize.width,
     y: confirmationWindowPatch.y * screenSize.height,
@@ -350,7 +354,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     };
 
     let recognizedWords = await readTextFrom(await getDataFrom(lootWindowDim), screenSize.width <= 1536 ? 3 : 2);
-    let items = sortWordsByItem(recognizedWords, lootWindow.itemHeight);
+    let items = sortWordsByItem(recognizedWords, lootWindow, settings.game == `Dragonflight`);
     let itemPos = 0;
 
     let itemsPicked = [];
@@ -414,7 +418,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
         itemsPicked.push(item);
       }
 
-      itemPos += lootWindow.itemHeight;
+      itemPos += settings.game == `Dragonflight` ? lootWindow.itemHeight + lootWindow.itemHeightAdd : lootWindow.itemHeight;
     }
 
     if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
