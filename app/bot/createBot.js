@@ -368,7 +368,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
           },
         });
 
-        isInList = await lootZone.findItems("blue", "green");
+        isInList = await lootZone.findItems("blue", "green", "purple");
       }
 
       if (isInList) {

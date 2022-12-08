@@ -230,7 +230,7 @@ return elt(
         renderWhitelist(config),
         `The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language.`
       ),
-      wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green and blue item in addition to the items in the whitelist.`)
+      wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `and `, elt('span', {style: `color:#950c95; font-weight: bold`}, `Epic `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green, blue and purple items in addition to the items in the whitelist.`)
     ),
     elt("p", {className: 'settings_header'}, "Threshold:"),
     elt(
