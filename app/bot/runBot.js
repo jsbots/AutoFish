@@ -12,6 +12,17 @@ const runBot = async ({ bot, log, state, stats }) => {
     hookBobber
   } = bot;
 
+  const sleep = (time) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, time);
+    });
+  };
+
+  const random = (from, to) => {
+    return from + Math.random() * (to - from);
+  };
+
+  let failedCast = false;
   let attempts = 0;
   do {
     if (state.status == "initial") {
@@ -54,6 +65,12 @@ const runBot = async ({ bot, log, state, stats }) => {
 
     findBobber.memory = await findAllBobberColors();
 
+
+    if(failedCast) {
+      let randomFailed = random(500, 5000);
+      log.warn(`Failed cast before, sleeping for ${Math.floor(randomFailed)} ms`)
+      await sleep(randomFailed);
+    }
     log.send(`Casting fishing...`);
     await castFishing(state);
 
@@ -65,9 +82,11 @@ const runBot = async ({ bot, log, state, stats }) => {
     }
 
     if (bobber) {
+      failedCast = false;
       log.ok(`Found the bobber!`);
       attempts = 0;
     } else {
+      failedCast = true;
       log.err(`Can't find the bobber, recast.`);
       if (++attempts == findBobber.maxAttempts) {
         throw new Error(
