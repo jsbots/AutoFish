@@ -20,9 +20,9 @@ const renderThreshold = ({ threshold, bobberColor }) => {
 
   const range = elt(`input`, { type: `range`, min: 1, max: 150, value: threshold, name: `threshold` });
   if(bobberColor == `blue`) {
-    document.styleSheets[0].rules[71].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 40), rgb(0, 90, 200))"
+    document.styleSheets[0].rules[73].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 40), rgb(0, 90, 200))"
   } else {
-    document.styleSheets[0].rules[71].style.backgroundImage = "linear-gradient(to right, rgb(40, 0, 0), rgb(250, 0, 0))"
+    document.styleSheets[0].rules[73].style.backgroundImage = "linear-gradient(to right, rgb(40, 0, 0), rgb(250, 0, 0))"
   }
 
   const number = elt(`input`, { type: `number`, value: threshold, name: `threshold` });
@@ -133,13 +133,31 @@ const renderFishingZone = () => {
 };
 
 
+const renderFilterType = ({game, whitelist, filterType, atMouse}) => {
+
+  if(game != `Dragonflight` && game != `Vanilla`) {
+    atMouse = true;
+  }
+
+  const atMouseContainer = elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Dragonflight` && game != `Vanilla`)});
+  const modeContainer =  elt(`select`, {name: `filterType`, className: `filterType`, disabled: !whitelist},
+    elt(`option`, {selected: filterType == `whitelist`}, `whitelist`),
+    elt(`option`, {selected: filterType == `blacklist`}, `blacklist`)
+  );
+
+  return elt(`div`, null, `Filter Mode: `, modeContainer, `Loot win at mouse:`, atMouseContainer);
+}
+
 const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
+  let languages = [`eng`, `spa`, `spa_old`, `por`, `fra`, `deu`, `ita`, `chi_sim`, `chi_tra`, `kor`, `rus`];
+
+  const langContainer = elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map( language => elt(`option`, {selected: whitelistLanguage == language}, language)));
+
   let disabled = !whitelist;
   let checked = whitelist;
 
-  let languages = [`eng`, `spa`, `spa_old`, `por`, `fra`, `deu`, `ita`, `chi_sim`, `chi_tra`, `kor`, `rus`];
   return elt('div', null,
-  elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map( language => elt(`option`, {selected: whitelistLanguage == language}, language))),
+  langContainer,
   elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}),
   elt('input', {type: 'checkbox', name: "whitelist", checked}))
 };
@@ -147,6 +165,7 @@ const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) =
 const renderWhiteListGreenBlue = ({whitelist, whiteListBlueGreen}) => {
   return elt('input', {type: `checkbox`, checked: whitelist && whiteListBlueGreen, name: `whiteListBlueGreen`, disabled: !whitelist });
 };
+
 
 
 
@@ -229,7 +248,11 @@ return elt(
       { className: "settings_section" },
       wrapInLabel("",
         renderWhitelist(config),
-        `The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language.`
+        `The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language. `
+      ),
+      wrapInLabel("",
+        renderFilterType(config),
+        `Filter Mode will decide whether to pick or to ignore items in the list. Loot window at mouse will tell the bot whether it should check the loot window at mouse or the default loot window at the left side of the screen.`
       ),
       wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `and `, elt('span', {style: `color:#950c95; font-weight: bold`}, `Epic `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green, blue and purple items in addition to the items in the whitelist.`)
     ),

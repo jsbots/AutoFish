@@ -201,6 +201,16 @@ section {
   width: 45px;
 }
 
+.settings select.filterType {
+  width: 87px;
+  margin-left: 6px;
+}
+
+.settings input.atMouse {
+  margin-left: 6px;
+}
+
+
 .advanced_settings_button {
   height: 22px;
   width: 123px;

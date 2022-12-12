@@ -316,7 +316,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   const pickLoot = async () => {
-    let cursorPos = lootWindow.cursorPos ? lootWindow.cursorPos : mouse.getPos();
+    let cursorPos = settings.atMouse || !lootWindow.cursorPos ? mouse.getPos() : lootWindow.cursorPos;
     if (cursorPos.y - lootWindow.upperLimit < 0) {
       cursorPos.y = lootWindow.upperLimit;
     }
@@ -355,6 +355,14 @@ const createBot = (game, { config, settings }, winSwitch) => {
     let itemsPicked = [];
     for (let item of items) {
       let isInList = whitelist.find((word) => percentComparison(word, item) > 90);
+
+      if(settings.filterType == `blacklist`) {
+        if(isInList) {
+          isInList = false;
+        } else {
+          isInList = true;
+        }
+      }
 
       if (!isInList && settings.whiteListBlueGreen) {
         let lootZone = createLootZone({

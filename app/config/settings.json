@@ -12,6 +12,8 @@
   "whitelist": false,
   "whitelistWords": "",
   "whiteListBlueGreen": false,
+  "filterType": "whitelist",
+  "atMouse": true,
   "confirmSoulbound": true,
   "whitelistLanguage": "eng",
   "threshold": 60,
