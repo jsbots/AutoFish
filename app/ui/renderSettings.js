@@ -107,11 +107,12 @@ const renderStopKey = ({stopKey}) => {
   return key;
 };
 
-const renderPoleKey = ({lures, game, poleKey, usePole}) => {
-  let key = elt('input', {type: 'text', value: poleKey, disabled: !usePole, name: "poleKey"});
+const renderPoleKey = ({lures, game, intKey, useInt}) => {
+  let key = elt('input', {type: 'text', value: intKey, disabled: !useInt, name: "intKey"});
   key.setAttribute(`readonly`, `true`);
-  const checkbox = elt(`input`, {type: `checkbox`, checked: usePole, style: `margin-right: 7px`, name: "usePole"});
-  return elt(`div`, null, checkbox, key);
+  const checkbox = elt(`input`, {type: `checkbox`, checked: useInt, style: `margin-right: 7px`, name: "useInt"});
+  const container = elt(`div`, null, checkbox, key)
+  return container;
 };
 
 const renderLuresDelay = ({lures, luresDelayMin}) => {
@@ -177,9 +178,9 @@ return elt(
         `Assign the same key you use for using fishing lures.`
       ),
       wrapInLabel(
-        "Pole key: ",
+        "Int. key: ",
         renderPoleKey(config),
-        `Exclusively for Dragonflight. Assign your fishing pole to this key to be able to apply lures to it.`
+        `Exclusively for Dragonflight. Use interaction key instead of mouse for catching.`
       ),
       wrapInLabel(
         "Reuse lure: ",

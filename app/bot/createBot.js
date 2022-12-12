@@ -201,12 +201,6 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const applyLures = async () => {
     await action(async () => {
       await keyboard.sendKey(settings.luresKey, delay);
-      if(settings.usePole) {
-        if(config.reaction) {
-          await sleep(random(config.reactionDelay.from, config.reactionDelay.to))
-        }
-        await keyboard.sendKey(settings.poleKey, delay);
-      }
     });
     await sleep(config.luresDelay);
   };
@@ -448,16 +442,21 @@ const createBot = (game, { config, settings }, winSwitch) => {
     let caught = false;
 
     await action(async () => {
-      await moveTo({ pos, randomRange: 5 });
-
-      if (config.shiftClick) {
-        await keyboard.toggleKey("shift", true, delay);
-        await mouse.toggle("right", true, delay);
-        await mouse.toggle("right", false, delay);
-        await keyboard.toggleKey("shift", false, delay);
+      if(settings.useInt) {
+        await keyboard.toggleKey(settings.intKey, true, delay);
+        await keyboard.toggleKey(settings.intKey, false, delay);
       } else {
-        await mouse.toggle("right", true, delay);
-        await mouse.toggle("right", false, delay);
+        await moveTo({ pos, randomRange: 5 });
+
+        if (config.shiftClick) {
+          await keyboard.toggleKey("shift", true, delay);
+          await mouse.toggle("right", true, delay);
+          await mouse.toggle("right", false, delay);
+          await keyboard.toggleKey("shift", false, delay);
+        } else {
+          await mouse.toggle("right", true, delay);
+          await mouse.toggle("right", false, delay);
+        }
       }
 
     await sleep(250);
