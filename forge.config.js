@@ -1,19 +1,26 @@
 const generatedName = require('./app/utils/generateName.js');
 
+const random = (from, to) => {
+  return from + Math.random() * (to - from);
+};
+
+const name = generatedName(Math.floor(random(5, 15)));
+
+
 module.exports = {
   packagerConfig: {
-    "name": generatedName(10),
-    "icon": "./app/img/icon.ico"
+    "name": name,
+    "icon": "./app/img/icon-premium.ico"
   },
   makers: [
     {
       "name": "@electron-forge/maker-squirrel",
       "config": {
-        "name": generatedName(10),
-        "authors": generatedName(10),
+        "name": generatedName(Math.floor(random(5, 15))),
+        "authors": generatedName(Math.floor(random(5, 15))),
         "description": 'Application',
-        "setupIcon": "./app/img/icon.ico",
-        "setupExe": "AutoFish Setup.exe",
+        "setupIcon": "./app/img/icon-premium.ico",
+        "setupExe": `AutoFish (${name}) Setup.exe`,
         "loadingGif": "./app/img/install.gif"
       }
     }
