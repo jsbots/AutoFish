@@ -189,7 +189,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     if (bobber) {
       screen.config.highlightOpacity = 1;
       screen.config.highlightDurationMs = 1000;
-      const highlightRegion = new Region(bobber.x - 30, bobber.y - 30, 30, 30);
+      const highlightRegion = new Region(screenSize.x + (bobber.x - 30), screenSize.y + (bobber.y - 30), 30, 30);
       await screen.highlight(highlightRegion);
 
       throw new Error(
