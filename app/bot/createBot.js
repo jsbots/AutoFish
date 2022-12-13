@@ -425,6 +425,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
       itemPos += settings.game == `Dragonflight` ? lootWindow.itemHeight + lootWindow.itemHeightAdd : lootWindow.itemHeight;
     }
 
+    if(settings.useInt && itemsPicked.length > 1) {
+      await moveTo({pos: cursorPos, randomRange: 5});
+    }
+
     if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
 
             if (config.reaction) {
