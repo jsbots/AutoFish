@@ -305,12 +305,12 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const isLootOpened = async (cursorPos) => {
     await sleep(250);
-    let x = screenSize.x + cursorPos.x + lootWindow.exitButton.x;
-    let y = screenSize.y + cursorPos.y - lootWindow.exitButton.y;
+    let x = cursorPos.x + lootWindow.exitButton.x;
+    let y = cursorPos.y - lootWindow.exitButton.y;
     if(settings.multipleWindows) {
       return isYellow(workwindow.colorAt(x, y, "array"));
     } else {
-      let color = await screen.colorAt(new Point(x, y));
+      let color = await screen.colorAt(new Point(x + screenSize.x, y + screenSize.y));
       return isYellow([color.R, color.G, color.B]);
     }
   };
@@ -409,7 +409,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
               pos: {
                      x: confirmationWindow.x + confirmationWindow.width / 2,
                      y: confirmationWindow.y + confirmationWindow.height / 2
-                   }
+                   },
+              randomRange: 5
             });
 
             await mouse.toggle("right", true, delay);
@@ -425,19 +426,45 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
 
     if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
-      if (config.reaction) {
-        await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
-      }
-      if(lootWindow.exitButton) {
-        await moveTo({ pos: {
-          x: cursorPos.x + lootWindow.exitButton.x,
-          y: cursorPos.y - lootWindow.exitButton.y
-        }});
-        await mouse.toggle("left", true, delay);
-        await mouse.toggle("left", false, delay);
-      } else {
-        await keyboard.sendKey("escape", delay);
-      }
+
+            if (config.reaction) {
+              await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
+            }
+
+            if((config.closeLoot == `mouse` || config.closeLoot == `mouse+esc`) && lootWindow.exitButton) {
+
+              if(config.closeLoot == `mouse`) {
+                await moveTo({ pos: {
+                  x: cursorPos.x + lootWindow.exitButton.x,
+                  y: cursorPos.y - lootWindow.exitButton.y
+                }, randomRange: 5});
+                await mouse.toggle("left", true, delay);
+                await mouse.toggle("left", false, delay);
+
+                if(settings.useInt) {
+                  await moveTo({ pos: cursorPos, randomRange: 5});
+                }
+              }
+
+              if(config.closeLoot == `mouse+esc`) {
+                if(random(0, 100) > 50) {
+                  await keyboard.sendKey("escape", delay);
+                } else {
+                  await moveTo({ pos: {
+                    x: cursorPos.x + lootWindow.exitButton.x,
+                    y: cursorPos.y - lootWindow.exitButton.y
+                  }, randomRange: 5});
+                  await mouse.toggle("left", true, delay);
+                  await mouse.toggle("left", false, delay);
+
+                  if(settings.useInt) {
+                    await moveTo({ pos: cursorPos, randomRange: 5});
+                  }
+                }
+              }
+            } else {
+              await keyboard.sendKey("escape", delay);
+            }
     }
 
     return itemsPicked;

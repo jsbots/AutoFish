@@ -21,6 +21,13 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
+const renderCloseLoot = ({ closeLoot }) => {
+  return elt(`select`, {className: `closeLoot`, value: closeLoot, name: `closeLoot`},
+    elt(`option`, {selected: closeLoot == `mouse`, value: `mouse`}, `Mouse`),
+    elt(`option`, {selected: closeLoot == `esc`, value: `esc`}, `Escape`),
+    elt(`option`, {selected: closeLoot == `mouse+esc`, value: `mouse+esc`}, `Mouse + Escape`)
+  );
+};
 
 const renderShiftClick = ({shiftClick}) => {
   let dom = elt("input", {
@@ -186,6 +193,7 @@ const renderSettings = (config) => {
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Custom window: `, renderCustomWindow(config), `If for some reason your game window isn't "World of Warcraft" you can choose a custom window from all the windows opened on your computer.`),
+  wrapInLabel(`Close loot window with: `, renderCloseLoot(config), `The bot will use mouse/esc or randomly one of them to close the loot window while filtering the loot.`),
   wrapInLabel(`Mouse/keyboard random delay (ms): `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
   wrapInLabel(`Random mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random number between the provided values. The higher the value the faster the bot moves the cursor. Works only if Like a human option is on.`),
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),

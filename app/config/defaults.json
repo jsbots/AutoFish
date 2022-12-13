@@ -7,6 +7,7 @@
     "Dragonflight": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -72,6 +73,7 @@
     "WotLK Classic": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -133,6 +135,7 @@
     "Classic": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -194,6 +197,7 @@
     "MoP": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -253,6 +257,7 @@
     "Cataclysm": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -314,6 +319,7 @@
     "WotLK Private": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 1250,
       "sleepAfterHook": true,
@@ -373,6 +379,7 @@
     "TBC": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -434,6 +441,7 @@
     "Vanilla": {
       "useCustomWindow": false,
       "customWindow": "",
+      "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
