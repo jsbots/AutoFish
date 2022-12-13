@@ -49,6 +49,16 @@ const showChoiceWarning = (win, warning) => {
   });
 };
 
+
+const showWarning = (win, warning) => {
+  return result = dialog.showMessageBoxSync(win, {
+    type: "warning",
+    title: `Disclaimer`,
+    message: warning,
+    buttons: [`Ok`]
+  });
+};
+
 const random = (from, to) => {
   return from + Math.random() * (to - from);
 };
@@ -199,6 +209,14 @@ or in connection with the use or performance of this software.`)) {
   ipcMain.on("open-link-youtube", () =>
     shell.openExternal("https://www.youtube.com/jsbots")
   );
+
+  ipcMain.on("dx11-warn", () => {
+    showWarning(win, `If you play on official servers, don't forget to switch to DirectX 11 in the game.`);
+  });
+
+  ipcMain.on("whitelist-warn", () => {
+    showWarning(win, `Turn off AutoLoot. Your resolution should be either 1366x768 or 1920x1080. UI addons and UI scale should be turned off. Turn on Open Loot Window at Mouse option (optional for Dragonflight and Vanilla).`);
+  });
 
   ipcMain.on("open-link-donate", () =>
     shell.openExternal("https://www.buymeacoffee.com/jsbots/e/96734")

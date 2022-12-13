@@ -78,6 +78,14 @@ class Settings {
         this.reRender();
       }
 
+      if(event.target.name == `multipleWindows` && event.target.checked == true) {
+        this.onDx11();
+      }
+
+      if(event.target.name == `whitelist` && event.target.checked == true) {
+        this.onWhitelistWarn();
+      }
+
       if(event.target.name == 'advancedSettings') {
         this.onClick(this.config);
       }
@@ -95,6 +103,14 @@ class Settings {
 
   regOnClick(callback) {
     this.onClick = callback;
+  }
+
+  regOnDx11(callback) {
+    this.onDx11 = callback;
+  }
+
+  regOnWhitelistWarn(callback) {
+    this.onWhitelistWarn = callback;
   }
 
   regOnFishingZoneClick(callback) {
