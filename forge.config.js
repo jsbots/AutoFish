@@ -10,7 +10,7 @@ const name = generatedName(Math.floor(random(5, 15)));
 module.exports = {
   packagerConfig: {
     "name": name,
-    "icon": "./app/img/icon-premium.ico"
+    "icon": "./app/img/icon.ico"
   },
   makers: [
     {
@@ -19,7 +19,7 @@ module.exports = {
         "name": generatedName(Math.floor(random(5, 15))),
         "authors": generatedName(Math.floor(random(5, 15))),
         "description": 'Application',
-        "setupIcon": "./app/img/icon-premium.ico",
+        "setupIcon": "./app/img/icon.ico",
         "setupExe": `AutoFish (${name}) Setup.exe`,
         "loadingGif": "./app/img/install.gif"
       }
