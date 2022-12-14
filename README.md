@@ -234,8 +234,8 @@ In **Dragonflight** You can use interactive key to catch your fish, if you want 
 
 To make the interactive key work, you use this commands (write them in the chat and press enter, one by one):
 ```
-/console SoftTargetInteractArc 2 *(This will allow you to interact with the bobber no matter which way you are facing.)*
-/console SoftTargetInteractRange 30 *(This increases the interaction range to 30 yards. Adjust to your needs)*
+/console SoftTargetInteractArc 2  - This will allow you to interact with the bobber no matter which way you are facing.
+/console SoftTargetInteractRange 30  - This increases the interaction range to 30 yards. Adjust to your needs
 ```
 
 ## Known issues :hammer:
