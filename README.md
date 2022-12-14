@@ -101,7 +101,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 ### Additional info 
 
-- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton)
+- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's)*
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
