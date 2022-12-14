@@ -13,11 +13,11 @@
 - [Disclaimer](#disclaimer-warning)
 - [Guide](#guide-blue_book)
 - [Threshold](#threshold-red_circle)
-- [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
-- [Telegram remote control](#telegram-remote-control-iphone)
+- [Fishing zone](#fishing-zone-dart)
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
-- [Fishing zone](#fishing-zone-dart)
+- [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
+- [Telegram remote control](#telegram-remote-control-iphone)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
@@ -157,47 +157,6 @@ Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="800">
 </p>
 
-## Soulbound items auto-confirmation :large_blue_diamond:
-
-If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
-
-<p align="center">
-<img src="guide_img/soulbound.jpg" width="800" align="center">
-</p>
-
-## Telegram remote control :iphone:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
-2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
-
-<p align="center">
-<img src="guide_img/tmtoken.jpg" align="center">
-</p>
-
-3. Press **Connect** button and wait until the name of the button changes to either **done** or **error* (*might take awhile*).
-4. Open the bot in your Telegram and either press /start or write /start command.
-5. If evertyhing is OK, the bot will reply with:
-```
-AutoFish was connected to the bot successfully!
-/start - starts telegram bot.
-/bstart - starts AutoFish.
-/bstop - stops AutoFish.
-/bstats - shows stats.
-/bquit - quits the game and the bot.
-/ss - makes a screenshot of the whole screen.
-/w *username* - whispers to *username*
-/help - list of commands
-```
-6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
-
-<p align="center">
-<img src="guide_img/chat-zone.jpg" align="center">
-</p>
-
-7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages.
-
 
 ## Applying Lures :pushpin:
 For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
@@ -238,6 +197,47 @@ To make the interactive key work, you use this commands (write them in the chat 
 /console SoftTargetInteractArc 2  - This will allow you to interact with the bobber no matter which way you are facing.
 /console SoftTargetInteractRange 30  - This increases the interaction range to 30 yards. Adjust to your needs
 ```
+
+## Soulbound items auto-confirmation :large_blue_diamond:
+
+If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
+
+<p align="center">
+<img src="guide_img/soulbound.jpg" width="800" align="center">
+</p>
+
+## Telegram remote control :iphone:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
+2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
+
+<p align="center">
+<img src="guide_img/tmtoken.jpg" align="center">
+</p>
+
+3. Press **Connect** button and wait until the name of the button changes to either **done** or **error* (*might take awhile*).
+4. Open the bot in your Telegram and either press /start or write /start command.
+5. If evertyhing is OK, the bot will reply with:
+```
+AutoFish was connected to the bot successfully!
+/start - starts telegram bot.
+/bstart - starts AutoFish.
+/bstop - stops AutoFish.
+/bstats - shows stats.
+/bquit - quits the game and the bot.
+/ss - makes a screenshot of the whole screen.
+/w *username* - whispers to *username*
+/help - list of commands
+```
+6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
+
+<p align="center">
+<img src="guide_img/chat-zone.jpg" align="center">
+</p>
+
+7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages.
 
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
