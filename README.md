@@ -16,6 +16,7 @@
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
 - [Applying Lures](#applying-lures-pushpin)
+- [Interactive key](#interactive-key)
 - [Fishing zone](#fishing-zone-dart)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
@@ -255,3 +256,10 @@ The executable file is a setup, it will install the bot into a folder under a ra
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
+
+<p align="center"> 
+<a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
+</p>
+
+
+
