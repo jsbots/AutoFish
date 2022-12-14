@@ -11,10 +11,10 @@
 - [Fishing bot](#fishing-bot-fish)
 - [Servers tests](#servers-tests-video_game)
 - [Guide](#guide-blue_book)
-- [Threshold errors](#threshold-errors-red_circle)
+- [Threshold](#threshold-errors-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
-- [Telegram remote control](#telegram-remote-control-iphone) (Premium only)
-- [Additional Info](#additional-info-pushpin)
+- [Telegram remote control](#telegram-remote-control-iphone)
+- [Applying Lures](#applying-lures-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
@@ -61,6 +61,24 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
   - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org (use blue switch for better performance)
 
+
+## Disclaimer :warning:
+
+  Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
+
+  Use this software at your own risk. No one will be responsible for any consequences except yourself. I don't guarantee anything related to the bot and the software is provided *as is*. **If you aren't ready for this, do not use this software.**
+
+  To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
+
+  Using common sense while using the bot will help to reduce risks of being banned:
+  - **Don't leave the bot alone for a long time.**
+  - **Don't fish in one place all the time.**
+  - **Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.**
+
+  Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
+
+  :bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.
+
 ## Guide :blue_book:
 
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
@@ -79,7 +97,15 @@ The bot was tested only with default UI and with default UI scale, without any a
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 
-## Threshold errors :red_circle:
+## Threshold :red_circle:
+
+<p align="center">
+<img src="guide_img/threshold.jpg" align="center">
+</p>
+
+Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
+
+For example if I use red switch and my threshold is 60, the bot will ignore all the colors below this value, by doing so it will see only the reddest parts of the screen and that's what we need: a red feather on the bobber. **So the higher the threshold, the less red colors the bot will recognize and the other way around: the lower is the threshold the more red colors on the screen the bot will recognize.**
 
 >Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
 
@@ -91,13 +117,13 @@ If you see this error, it means you need to decrease threshold or change the dir
 
 ## Fishing Zone :dart:
 
-Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
-
-You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
-
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg"  width="800">
 </p>
+
+Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
+
+You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
 
 Click **"Check"** button to check whether there's any red/blue colors in the fishing zone.
 
@@ -111,7 +137,7 @@ The rule of thumb here is **the better you can see the red/blue feather the bett
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
 
-Here are quick self-explanatory "good-bad" screenshots of the bobber:
+Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="800">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="800">
@@ -155,24 +181,23 @@ AutoFish was connected to the bot successfully!
 <img src="guide_img/chat-zone.jpg" align="center">
 </p>
 
-
 7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages.
 
 
-## Additional info :pushpin:
+## Applying Lures :pushpin:
+- For **Dragonflight and Classic/Vanilla** you need to use a macro that will apply the lures automatically onto your fishpole and assign that macro to **Lures Key** option:
+**Dragonflight**:
 
-- If you want to use lures on Dragonflight, you need to move your FishPole icon to some skill slot and assign it to the Pole Key.
-
-<p align="center">
-<img src="guide_img/fishpole.jpg"  width="800">
-</p>
-
-- If you play on **Classic/Vanilla** and want to use lures, use a macro that will apply the lures automatically onto your fishpole and assign that macro to Lures Key section:
+```
+/use *lure_name*
+/use *fishpole_name*
+```
 
 **Classic**:
+
 ```
-/equip *your fishing pole name*
-/use *your lures name*
+/equip *fishpole_name*
+/use *lure_name*
 /use 16
 ```
 
@@ -183,14 +208,29 @@ AutoFish was connected to the bot successfully!
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
 ```
+
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
+- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
 </p>
+
+## Interactive key
+
+In **Dragonflight** You can use interactive key to catch your fish, if you want to use it with the bot turn on Int. Key option and assign the same key you use for interactive key in the game.
+
+<p align="center">
+<img src="guide_img/intkey.jpg" align="center">
+</p>
+
+To make the interactive key work, you use this commands (write them in the chat and press enter, one by one):
+
+/console SoftTargetInteractArc 2 *(This will allow you to interact with the bobber no matter which way you are facing.)*
+/console SoftTargetInteractRange 30 *(This increases the interaction range to 30 yards. Adjust to your needs)*
+
 
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
@@ -200,37 +240,12 @@ AutoFish was connected to the bot successfully!
 
 ## Download :open_file_folder:
 
-<div align="center">
+AutoFish 1.14.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-<a href="https://www.buymeacoffee.com/jsbots" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
- </div>
-
-AutoFish 1.13.6 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
-
-It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and lanch it from the CLI.
+It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
 The executable file is a setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
 
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
-
-## Disclaimer :warning:
-
-Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
-
-Use this sofwtare at your own risk. No one will be responsible for any consequences except yourself. I don't guarantee anything related to the bot and the software is provided *as is*. **If you aren't ready for this, do not use this software.**
-
-The bot is written in JavaScript, when writing the bot I didn't have acess to low-level operations like utilizing mouse, keyboard and screen. It's done by [keysender](https://github.com/Krombik/keysender), so I can't guarantee anything that comes from this particular low-level domain.
-
-To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
-
-Using common sense while using the bot will help to reduce risks of being banned:
-- **Don't leave the bot alone for a long time.**
-- **Don't fish in one place all the time.**
-- **Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.**
-
-Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
-
-:bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.   
