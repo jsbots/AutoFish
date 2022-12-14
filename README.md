@@ -10,15 +10,16 @@
 
 - [Fishing bot](#fishing-bot-fish)
 - [Servers tests](#servers-tests-video_game)
+- [Disclaimer](#disclaimer-warning)
 - [Guide](#guide-blue_book)
-- [Threshold](#threshold-errors-red_circle)
+- [Threshold](#threshold-red_circle)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
 - [Applying Lures](#applying-lures-pushpin)
 - [Fishing zone](#fishing-zone-dart)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
-- [Disclaimer](#disclaimer-warning)
+
 
 ## Fishing bot :fish:
 
@@ -97,6 +98,17 @@ The bot was tested only with default UI and with default UI scale, without any a
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 
+### Additional info 
+
+- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
+- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
+- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
+- Don't fish near other players, the bot might confuse their bobber for yours.
+- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
+<p align="center">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
+</p>
+
 ## Threshold :red_circle:
 
 <p align="center">
@@ -109,7 +121,7 @@ For example if I use red switch and my threshold is 60, the bot will ignore all 
 
 >Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
 
-With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, you need to increase **Threshold** value.  
+With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, use blue swith or increase **Threshold** value.  
 
 > Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
 
@@ -154,6 +166,8 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Telegram remote control :iphone:
 
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
 1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
 
@@ -185,7 +199,8 @@ AutoFish was connected to the bot successfully!
 
 
 ## Applying Lures :pushpin:
-- For **Dragonflight and Classic/Vanilla** you need to use a macro that will apply the lures automatically onto your fishpole and assign that macro to **Lures Key** option:
+For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
+
 **Dragonflight**:
 
 ```
@@ -209,28 +224,19 @@ AutoFish was connected to the bot successfully!
 /script ReplaceEnchant();
 ```
 
-- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
-- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
-- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
-- Don't fish near other players, the bot might confuse their bobber for yours.
-- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
-<p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
-</p>
-
 ## Interactive key
 
-In **Dragonflight** You can use interactive key to catch your fish, if you want to use it with the bot turn on Int. Key option and assign the same key you use for interactive key in the game.
+In **Dragonflight** You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
 
 <p align="center">
 <img src="guide_img/intkey.jpg" align="center">
 </p>
 
 To make the interactive key work, you use this commands (write them in the chat and press enter, one by one):
-
+```
 /console SoftTargetInteractArc 2 *(This will allow you to interact with the bobber no matter which way you are facing.)*
 /console SoftTargetInteractRange 30 *(This increases the interaction range to 30 yards. Adjust to your needs)*
-
+```
 
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
