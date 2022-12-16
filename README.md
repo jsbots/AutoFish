@@ -252,7 +252,7 @@ AutoFish 1.14.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
-The executable file is a setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
+The executable file is a setup, it will install the bot into ```c:/users/your_user/App Data/Local/random_folder/``` and create a shortcut with a random name on your desktop. 
 
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
