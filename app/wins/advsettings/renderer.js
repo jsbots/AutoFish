@@ -21,6 +21,10 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
+const renderCloseLootDelay = ({closeLootDelay}) => {
+  return elt('input', {type: `number`, name: `closeLootDelay`, value: closeLootDelay});
+};
+
 const renderCloseLoot = ({ closeLoot }) => {
   return elt(`select`, {className: `closeLoot`, value: closeLoot, name: `closeLoot`},
     elt(`option`, {selected: closeLoot == `mouse`, value: `mouse`}, `Mouse`),
@@ -233,6 +237,7 @@ const renderSettings = (config) => {
   elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
   elt('div', {className: "settings_section settings_critical"},
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
+  wrapInLabel(`Loot Window closing delay (ms):`, renderCloseLootDelay(config), `How much does it take for the loot window to disappear after looting.`),
   wrapInLabel(`Bobber sensitivity:`, renderBobberSensitivity(config), `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.`),
   wrapInLabel(`Checking delay (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
   wrapInLabel(`Fishing zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),

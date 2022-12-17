@@ -31,6 +31,7 @@
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 1500,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -97,6 +98,7 @@
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 750,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -159,6 +161,7 @@
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 750,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -221,6 +224,7 @@
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 250,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -281,6 +285,7 @@
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 250,
       "confirmationWindow": {
         "1536": {
           "x": 0.41142,
@@ -343,6 +348,7 @@
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 250,
       "confirmationWindow": {
         "1536": {
           "x": 0.41288,
@@ -403,6 +409,7 @@
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 250,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,
@@ -465,6 +472,7 @@
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "bobberSensitivity": 3,
+      "closeLootDelay": 250,
       "confirmationWindow": {
         "1536": {
           "x": 0.41215,

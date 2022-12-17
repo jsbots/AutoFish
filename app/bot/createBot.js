@@ -510,7 +510,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
     });
     if(!settings.whitelist) {
-      await sleep((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? 750 : 250); // close loot window delay
+      await sleep(config.closeLootDelay);
     } else {
       await sleep(150);
     }
