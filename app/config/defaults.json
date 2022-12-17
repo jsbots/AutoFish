@@ -30,6 +30,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 1500,
       "confirmationWindow": {
@@ -97,6 +99,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 750,
       "confirmationWindow": {
@@ -160,6 +164,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 750,
       "confirmationWindow": {
@@ -223,6 +229,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 250,
       "confirmationWindow": {
@@ -284,6 +292,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 250,
       "confirmationWindow": {
@@ -347,6 +357,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 250,
       "confirmationWindow": {
@@ -408,6 +420,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 250,
       "confirmationWindow": {
@@ -471,6 +485,8 @@
       "missOnPurposeRandom": { "from": 5, "to": 20 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": {"from": 30, "to": 90},
+      "logOutAfter": {"from": 30, "to": 90},
       "bobberSensitivity": 3,
       "closeLootDelay": 250,
       "confirmationWindow": {

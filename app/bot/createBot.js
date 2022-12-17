@@ -163,14 +163,14 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
     const addTime = applyLures.timer.timeRemains();
 
-    await sleep(random(30000, 60000));
+    await sleep(random(config.logOutFor.from * 1000, config.logOutFor.to * 1000));
     if(state.status == 'stop') {
       return;
     }
     await action(async () => {
       await keyboard.sendKey(`enter`);
     });
-    await sleep(random(30000, 60000));
+    await sleep(random(config.logOutAfter.from * 1000, config.logOutAfter.from * 1000));
 
     if(settings.lures) {
       applyLures.timer.update(() => addTime);

@@ -21,6 +21,19 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
+const renderLogOutFor = ({logOutFor, logOut}) => {
+  return elt(`div`, {"data-collection": `logOutFor`}, elt(`span`, {className: `option_text`}, `from:`),
+     elt('input', {type: `number`, name: `from`, value: logOutFor.from, disabled: !logOut}), elt(`span`, {className: `option_text`}, `to:`),
+     elt('input', {type: `number`, name: `to`, value: logOutFor.to, disabled: !logOut}));
+};
+
+const renderLogOutAfter = ({logOutAfter, logOut}) => {
+  return elt(`div`, {"data-collection": `logOutAfter`}, elt(`span`, {className: `option_text`}, `from:`),
+     elt('input', {type: `number`, name: `from`, value: logOutAfter.from, disabled: !logOut}), elt(`span`, {className: `option_text`}, `to:`),
+     elt('input', {type: `number`, name: `to`, value: logOutAfter.to, disabled: !logOut}));
+};
+
+
 const renderCloseLootDelay = ({closeLootDelay}) => {
   return elt('input', {type: `number`, name: `closeLootDelay`, value: closeLootDelay});
 };
@@ -217,7 +230,9 @@ const renderSettings = (config) => {
   elt(`p`, {className: `settings_header`}, `Logging out`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Log out/Log in:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
-  wrapInLabel(`Random Log out/Log in: (min)`, renderLogOutEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  wrapInLabel(`Random Log out every: (min)`, renderLogOutEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  wrapInLabel(`Random Log out for: (sec)`, renderLogOutFor(config), `How long the bot should be stayed logged out. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  wrapInLabel(`Random Log out after: (sec)`, renderLogOutAfter(config), `How long the bot should wait before starting fishing again. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
   ),
   elt(`p`, {className: `settings_header`}, `Random sleep`),
   elt('div', {className: "settings_section"},
