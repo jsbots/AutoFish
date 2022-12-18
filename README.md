@@ -223,22 +223,29 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 5. If evertyhing is OK, the bot will reply with:
 ```
 AutoFish was connected to the bot successfully!
+Start - starts the bot.
+Stop - stops the bot.
+Stats - returns stats.
+Screenshot - makes a screenshot of the game window.
+Quit** - closes both the game and the bot.
+/r text - replies to user.
+/w username text - whispers to user.
 /start - starts telegram bot.
-/bstart - starts AutoFish.
-/bstop - stops AutoFish.
-/bstats - shows stats.
-/bquit - quits the game and the bot.
-/ss - makes a screenshot of the whole screen.
-/w *username* - whispers to *username*
-/help - list of commands
 ```
+
+And menu: 
+
+<p align="center">
+<img src="guide_img/tmmenu.jpg" align="center">
+</p>
+
 6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
 
 <p align="center">
 <img src="guide_img/chat-zone.jpg" align="center">
 </p>
 
-7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages.
+7. If you want to make the bot notify you about any errors or whipser messeges, *you need to start it from Telegram* (*not by pressing Start on the bot's interface*). Whisper detection will work much better and reliable if you **turn off all the other chat messages**.
 
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
