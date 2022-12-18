@@ -236,7 +236,7 @@ Quit** - closes both the game and the bot.
 And menu: 
 
 <p align="center">
-<img src="guide_img/tmmenu.jpg" align="center">
+<img src="guide_img/tmmenu.jpg" width="416px" align="center">
 </p>
 
 6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
