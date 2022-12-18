@@ -13,10 +13,11 @@
 - [Disclaimer](#disclaimer-warning)
 - [Guide](#guide-blue_book)
 - [Threshold](#threshold-red_circle)
+- [Fishing zone](#fishing-zone-dart)
+- [Applying Lures](#applying-lures-pushpin)
+- [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
-- [Applying Lures](#applying-lures-pushpin)
-- [Fishing zone](#fishing-zone-dart)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
@@ -100,6 +101,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 
 ### Additional info 
 
+- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's)*
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
@@ -156,6 +158,47 @@ Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="800">
 </p>
 
+
+## Applying Lures :pushpin:
+For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
+
+**Dragonflight**:
+
+```
+/use *lure_name*
+/use *fishpole_name*
+```
+
+**Classic**:
+
+```
+/equip *fishpole_name*
+/use *lure_name*
+/use 16
+```
+
+**Vanilla**:
+
+```
+/script UseAction(*your lures key*);
+/script PickupInventoryItem(16);
+/script ReplaceEnchant();
+```
+
+## Interactive key
+
+In **Dragonflight** You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
+
+<p align="center">
+<img src="guide_img/intkey.jpg" align="center">
+</p>
+
+To make the interactive key work, you use this commands (write them in the chat and press enter, one by one):
+```
+/console SoftTargetInteractArc 2  - This will allow you to interact with the bobber no matter which way you are facing.
+/console SoftTargetInteractRange 30  - This increases the interaction range to 30 yards. Adjust to your needs
+```
+
 ## Soulbound items auto-confirmation :large_blue_diamond:
 
 If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
@@ -197,47 +240,6 @@ AutoFish was connected to the bot successfully!
 
 7. Whisper detection will work **much better and reliable** if you turn off all the other chat messages.
 
-
-## Applying Lures :pushpin:
-For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
-
-**Dragonflight**:
-
-```
-/use *lure_name*
-/use *fishpole_name*
-```
-
-**Classic**:
-
-```
-/equip *fishpole_name*
-/use *lure_name*
-/use 16
-```
-
-**Vanilla**:
-
-```
-/script UseAction(*your lures key*);
-/script PickupInventoryItem(16);
-/script ReplaceEnchant();
-```
-
-## Interactive key
-
-In **Dragonflight** You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
-
-<p align="center">
-<img src="guide_img/intkey.jpg" align="center">
-</p>
-
-To make the interactive key work, you use this commands (write them in the chat and press enter, one by one):
-```
-/console SoftTargetInteractArc 2 *(This will allow you to interact with the bobber no matter which way you are facing.)*
-/console SoftTargetInteractRange 30 *(This increases the interaction range to 30 yards. Adjust to your needs)*
-```
-
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
 - Whitelist works properly only with 1920x1080 and 1366x768 resolutions. (Use windowed mode if it's not your default resolutions)
@@ -250,8 +252,15 @@ AutoFish 1.14.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
-The executable file is a setup, it will install the bot into a folder under a random name and create a shortcut with a random name on your desktop.
+The executable file is a setup, it will install the bot into ```c:/users/your_user/App Data/Local/random_folder/``` and create a shortcut with a random name on your desktop. 
 
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
+
+<p align="center"> 
+<a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
+</p>
+
+
+
