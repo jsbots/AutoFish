@@ -19,6 +19,7 @@
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
 - [Mammoth Selling](#mammoth-selling-elephant)
+- [AFK Fishing](#afk-fishing-sleeping)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
@@ -222,19 +223,6 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 3. Press **Connect** button and wait until the name of the button changes to either **done** or **error* (*might take awhile*).
 4. Open the bot in your Telegram and either press /start or write /start command.
 5. If evertyhing is OK, the bot will reply with:
-```
-AutoFish was connected to the bot successfully!
-Start - starts the bot.
-Stop - stops the bot.
-Stats - returns stats.
-Screenshot - makes a screenshot of the game window.
-Quit** - closes both the game and the bot.
-/r text - replies to user.
-/w username text - whispers to user.
-/start - starts telegram bot.
-```
-
-And menu:
 
 <p align="center">
 <img src="guide_img/tmmenu.jpg" width="416px" align="center">
@@ -261,6 +249,12 @@ As an alternative to filtering you can use a trader on your mammoth mount to sel
 Because of the novelty of the interaction key this feature is available only for Dragonflight.
 
 Depends on the mount the name of your trader might be different, so change the default value.
+
+## AFK Fishing :sleeping:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode will switch to the game only when the bot needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**. 
 
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
