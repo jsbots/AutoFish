@@ -18,6 +18,7 @@
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Telegram remote control](#telegram-remote-control-iphone)
+- [Mammoth Selling](#mammoth-selling-elephant)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
@@ -99,7 +100,7 @@ The bot was tested only with default UI and with default UI scale, without any a
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 
-### Additional info 
+### Additional info
 
 - [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's)*
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
@@ -233,7 +234,7 @@ Quit** - closes both the game and the bot.
 /start - starts telegram bot.
 ```
 
-And menu: 
+And menu:
 
 <p align="center">
 <img src="guide_img/tmmenu.jpg" width="416px" align="center">
@@ -247,6 +248,20 @@ And menu:
 
 7. If you want to make the bot notify you about any errors or whipser messeges, *you need to start it from Telegram* (*not by pressing Start on the bot's interface*). Whisper detection will work much better and reliable if you **turn off all the other chat messages**.
 
+## Mammoth Selling :elephant:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/mammoth.jpg" align="center">
+</p>
+
+As an alternative to filtering you can use a trader on your mammoth mount to sell all the junk items during the fishing. The bot will summon your mount, target your trader, interact with it by using interaction key in the game, unsummon the mount and go on fishing.
+
+Because of the novelty of the interaction key this feature is available only for Dragonflight.
+
+Depends on the mount the name of your trader might be different, so change the default value.
+
 ## Known issues :hammer:
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
 - Whitelist works properly only with 1920x1080 and 1366x768 resolutions. (Use windowed mode if it's not your default resolutions)
@@ -259,15 +274,12 @@ AutoFish 1.14.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
-The executable file is a setup, it will install the bot into ```c:/users/your_user/App Data/Local/random_folder/``` and create a shortcut with a random name on your desktop. 
+The executable file is a setup, it will install the bot into ```c:/users/your_user/App Data/Local/random_folder/``` and create a shortcut with a random name on your desktop.
 
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
 
-<p align="center"> 
+<p align="center">
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
-
-
-
