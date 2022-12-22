@@ -85,9 +85,7 @@ Also on unofficial servers:
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
-
-*After 1.13.0 the bot works with both DirectX 12 and DirectX 11 if you use only one window of the game.*
+The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and so on, if you use any of them, turn off all the UI features they have)* 
 
 1. Launch the game.
 2. Are you using whitelist?
