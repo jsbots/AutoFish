@@ -70,7 +70,7 @@ Also on unofficial servers:
 
   Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
-  Use this software at your own risk. No one will be responsible for any consequences except yourself. I don't guarantee anything related to the bot and the software is provided *as is*. **If you aren't ready for this, do not use this software.**
+  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and I don't guarantee **anything** related to the bot and the software is provided *as is*. 
 
   To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
@@ -262,7 +262,7 @@ Because the bot can't work in the background and requires a little bit difficult
 
 ## Download :open_file_folder:
 
-AutoFish 1.14.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.14.1 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
