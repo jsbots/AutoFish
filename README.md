@@ -255,6 +255,7 @@ Depends on the mount the name of your trader might be different, so change the d
 Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode will switch to the game only when the bot needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**. 
 
 ## Known issues :hammer:
+- If the bot doesn't press/clicks, try to launch it as administrator. 
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
 - Whitelist works properly only with 1920x1080 and 1366x768 resolutions. (Use windowed mode if it's not your default resolutions)
 - The bot might not work properly if you have **latency issues**.
