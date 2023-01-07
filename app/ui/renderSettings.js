@@ -243,7 +243,7 @@ return elt(
         `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
       ),
     ),
-    elt("p", {className: 'settings_header'}, "Whitelist:"),
+    elt("p", {className: 'settings_header'}, "Filter:"),
     elt(
       "div",
       { className: "settings_section" },
