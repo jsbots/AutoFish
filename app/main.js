@@ -103,7 +103,7 @@ const createWindow = async () => {
   });
 
   win.loadFile("./app/index.html");
-  
+
   win.on("closed", () => {
     if (process.platform === "darwin") {
       return false;
@@ -144,12 +144,19 @@ const createWindow = async () => {
     }
 
     const games = findGameWindows(config.game);
+
     if (!games) {
       log.err(`Can't find any window of the game!`);
       win.webContents.send("stop-bot");
       return;
     } else {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
+    }
+
+    if(games[0].workwindow.getView().height > 1080) {
+      log.err(`Public version doesn't support resolutions higher than 1920x1080. Change your resolution or try AutoFish Premium.`);
+      win.webContents.send("stop-bot");
+      return;
     }
 
     if(type == `relZone` || type == `chatZone`) {
