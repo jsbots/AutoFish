@@ -181,7 +181,7 @@ const renderBobberSensitivity = ({bobberSensitivity}) => {
   if(bobberSensitivity < 1) bobberSensitivity = 1;
   let bobberSensitivityWin = elt(`input`, {type: `number`, name: `bobberSensitivity`, value: bobberSensitivity});
 
-  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 3, value: bobberSensitivity, onchange: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 3, value: bobberSensitivity, oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
    bobberSensitivityWin);
 }
 
