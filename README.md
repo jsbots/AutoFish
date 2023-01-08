@@ -32,7 +32,7 @@
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
 
 <p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/UI.jpg?raw=true" width="600">
+<img src="guide_img/UI.jpg" width="600">
 </p>
 
 **Public version Features:**
@@ -44,6 +44,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Logging out/in feature.
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
+
+<p align="center">
+<img src="guide_img/UI_premium.jpg" width="600">
+</p>
 
 **Premium version Features:**
 - Remote control via Telegram.
