@@ -70,7 +70,7 @@ Also on unofficial servers:
 
   Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
-  Use this software at your own risk. No one will be responsible for any consequences except yourself. I don't guarantee anything related to the bot and the software is provided *as is*. **If you aren't ready for this, do not use this software.**
+  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and I don't guarantee **anything** related to the bot and the software is provided *as is*. 
 
   To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
@@ -85,9 +85,7 @@ Also on unofficial servers:
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.**
-
-*After 1.13.0 the bot works with both DirectX 12 and DirectX 11 if you use only one window of the game.*
+The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and so on, if you use any of them, turn off all the UI features they have)* 
 
 1. Launch the game.
 2. Are you using whitelist?
@@ -257,6 +255,7 @@ Depends on the mount the name of your trader might be different, so change the d
 Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode will switch to the game only when the bot needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**. 
 
 ## Known issues :hammer:
+- If the bot doesn't press/clicks, try to launch it as administrator. 
 - The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
 - Whitelist works properly only with 1920x1080 and 1366x768 resolutions. (Use windowed mode if it's not your default resolutions)
 - The bot might not work properly if you have **latency issues**.
@@ -264,7 +263,7 @@ Because the bot can't work in the background and requires a little bit difficult
 
 ## Download :open_file_folder:
 
-AutoFish 1.14.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.14.1 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
