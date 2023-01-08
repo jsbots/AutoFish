@@ -17,23 +17,17 @@
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
+- [:crown: Remote control](#telegram-remote-control-iphone)
+- [:crown: Mammoth Selling](#mammoth-selling-elephant)
+- [:crown: AFK Fishing](#afk-fishing-sleeping)
+- [:crown: Multiple Windows](#multiple-windows-rocket)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
-
-### Premium Features :crown:
-
-- [Telegram remote control](#telegram-remote-control-iphone)
-- [Mammoth Selling](#mammoth-selling-elephant)
-- [AFK Fishing](#afk-fishing-sleeping)
-- [Multiple Windows](#multiple-windows-rocket)
 
 ## Fishing bot :fish:
 
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
 
-<p align="center">
-<img src="guide_img/UI.jpg" width="600">
-</p>
 
 **Public version Features:**
 - Optional loot support.
@@ -46,8 +40,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 <p align="center">
-<img src="guide_img/UI_premium.jpg" width="600">
+<img src="guide_img/UI.jpg" width="700">
 </p>
+
+
 
 **Premium version Features:**
 - Remote control via Telegram.
@@ -56,6 +52,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - AFK mode fishing (auto-focusing the window only when catching/casting).
 - 4K resolution support.
 - Profiles support.
+
+<p align="center">
+<img src="guide_img/UI_premium.jpg" width="700">
+</p>
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
