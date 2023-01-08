@@ -17,12 +17,15 @@
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
-- [Telegram remote control](#telegram-remote-control-iphone)
-- [Mammoth Selling](#mammoth-selling-elephant)
-- [AFK Fishing](#afk-fishing-sleeping)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
+### Premium Features :crown:
+
+- [Telegram remote control](#telegram-remote-control-iphone)
+- [Mammoth Selling](#mammoth-selling-elephant)
+- [AFK Fishing](#afk-fishing-sleeping)
+- [Multiple Windows](#multiple-windows-rocket)
 
 ## Fishing bot :fish:
 
@@ -32,8 +35,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/UI.jpg?raw=true" width="600">
 </p>
 
-**Features:**
-- Multiple windows support.
+**Public version Features:**
 - Optional loot support.
 - Fishing lures support.
 - Custom window suppport.
@@ -43,11 +45,19 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
+**Premium version Features:**
+- Remote control via Telegram.
+- Multiple game windows support (up to 4).
+- Scrap selling to mammoth trader during fishing.
+- AFK mode fishing (auto-focusing the window only when catching/casting).
+- 4K resolution support.
+- Profiles support.
+
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
 This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a simpler solution: it analyzes the window of the game for condensed red colors and then sticks to them checking the area for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, it clicks on it and catches the fish.
 
-The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/) or [VMware Player](https://www.vmware.com/products/workstation-player.html)) with installed World of Warcraft and launch AutoFish there. *(tested)*
+The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/) or [VMware Player](https://www.vmware.com/products/workstation-player.html)) with installed World of Warcraft and launch AutoFish there.
 
 ## Servers tests :video_game:
 
@@ -57,20 +67,21 @@ The bot was tested on official servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK Classic**
 
 Also on unofficial servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**: stormforge.gg
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**: apollo-wow.com
-- <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**: warmane.com
-  - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension**: ascension.gg (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
-- <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**: atlantiss.org
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**: kronos-wow.com
-  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW**: turtle-wow.org (use blue switch for better performance)
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Legion**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**
+  - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** ascension.gg (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
+- <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
+  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use blue switch for better performance)
 
 
 ## Disclaimer :warning:
 
   Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
-  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and I don't guarantee **anything** related to the bot and the software is provided *as is*. 
+  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and I don't guarantee **anything** related to the bot and the software is provided *as is*.
 
   To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
 
@@ -79,13 +90,13 @@ Also on unofficial servers:
   - **Don't fish in one place all the time.**
   - **Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.**
 
-  Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why. In my opinion, the biggest problem with people being banned is because they don't know how to cheat, not because of the software. So again, if you decided to step on this path: think and use common sense, no software will do this for you.
+  Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why.
 
-  :bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide. You can change **Sleep after hook** and **Random sleep** options to wider random range (e.g Randomly sleep from 1 - 10 min) to make number of casts per session even more randomized. All this will decrease the efficiency but might save your account. It's up to you what's more important.
+  :bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide.
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and so on, if you use any of them, turn off all the UI features they have)* 
+The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*
 
 1. Launch the game.
 2. Are you using whitelist?
@@ -94,19 +105,20 @@ The bot was tested only with default UI and with default UI scale, without any a
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 4. Equip a fishpole.
 5. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Including areas with red names of the mobs lurking below in the water.
+   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game).
    - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
 6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
 
 ### Additional info
 
-- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's)*
+- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
+- Scaling in Windows usually is higher than 100% for 4K resolutions, so change Windows Scale option respectively, otherwise setting Fishing Zone won't have correct position and dimensions.    
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and to make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
+- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
 </p>
@@ -209,7 +221,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Telegram remote control :iphone:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
 
 1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
@@ -236,7 +248,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Mammoth Selling :elephant:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
 
 <p align="center">
 <img src="guide_img/mammoth.jpg" align="center">
@@ -250,20 +262,33 @@ Depends on the mount the name of your trader might be different, so change the d
 
 ## AFK Fishing :sleeping:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
 
-Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode will switch to the game only when the bot needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**. 
+Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
+
+## Multiple Windows :rocket:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
+
+Multiple Windows feature allows you to fish in multiple windows (up to 4) at the same time. The bot will switch between the windows of the game when it needs to cast/catch fish in one of them.
+
+Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
 
 ## Known issues :hammer:
-- If the bot doesn't press/clicks, try to launch it as administrator. 
-- The bot doesn't work properly with 4k monitors, as a solution you can try to change scaling to 100% or change the settings of the main screen (not game) to 1920x1080.
-- Whitelist works properly only with 1920x1080 and 1366x768 resolutions. (Use windowed mode if it's not your default resolutions)
+- If the bot doesn't press/clicks, try to launch it as administrator.
+- Public version doesn't support 4K resolutions.
+- If the bot clicks too early (especially on 4K resolutions) you might need to increase **Bobber Density** value or tweak **Bobber Sensitivity** / **Bobber Check Delay** values.
+- Whitelist works properly only with  1366x768 or 1920x1080 or 3840x2160 resolutions.
 - The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
 
 ## Download :open_file_folder:
 
-AutoFish 1.14.1 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+<p align="center">
+<a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
+</p>
+
+AutoFish 1.14.2 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
@@ -272,7 +297,3 @@ The executable file is a setup, it will install the bot into ```c:/users/your_us
 You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
 
 If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
-
-<p align="center">
-<a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
-</p>
