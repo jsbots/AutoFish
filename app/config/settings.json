@@ -18,6 +18,6 @@
   "whitelistLanguage": "eng",
   "threshold": 60,
   "bobberColor": "red",
-  "multipleWindows": false,
+  "multipleWindows": true,
   "initial": true
 }

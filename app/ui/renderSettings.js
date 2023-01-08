@@ -217,9 +217,9 @@ return elt(
         `The bot will move your mouse in a human way: random speed and with a slight random deviation in the movement. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
       ),
       wrapInLabel(
-        "Multiple windows: ",
+        "Use DirectX 11: ",
         renderMultipleWindows(config),
-        `If you want to use multiple windows check this option. You need to launch every window and configure them properly, make sure every window is in DirectX 11 mode. This option uses a different library to analyze your screen, you can check it even for one window if for some reason the default way doesn't work for you.`
+        `If for some reason something doesn't work, you can use this option and the bot will use a different library to analyze your screen.`
       ),
       wrapInLabel(
         "Use lures: ",

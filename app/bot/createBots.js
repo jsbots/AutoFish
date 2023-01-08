@@ -19,7 +19,7 @@ const createBots = async (games, settings, config, log) => {
     await setWorker(settings.whitelistLanguage);
   }
 
-  if(!settings.multipleWindows) {
+  if(true) {
     games = [games[0]];
   }
 
