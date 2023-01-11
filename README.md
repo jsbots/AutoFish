@@ -17,10 +17,10 @@
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
-- [:crown: Remote control](#telegram-remote-control-iphone)
-- [:crown: Mammoth Selling](#mammoth-selling-elephant)
-- [:crown: AFK Fishing](#afk-fishing-sleeping)
-- [:crown: Multiple Windows](#multiple-windows-rocket)
+- [Remote control](#telegram-remote-control-iphone)
+- [Mammoth Selling](#mammoth-selling-elephant)
+- [AFK Fishing](#afk-fishing-sleeping)
+- [Multiple Windows](#multiple-windows-rocket)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
@@ -38,12 +38,6 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Logging out/in feature.
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
-
-<p align="center">
-<img src="guide_img/UI.jpg" width="700">
-</p>
-
-
 
 **Premium version Features:**
 - Remote control via Telegram.
@@ -225,7 +219,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Telegram remote control :iphone:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
@@ -252,7 +246,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 ## Mammoth Selling :elephant:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 <p align="center">
 <img src="guide_img/mammoth.jpg" align="center">
@@ -266,13 +260,13 @@ Depends on the mount the name of your trader might be different, so change the d
 
 ## AFK Fishing :sleeping:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
 
 ## Multiple Windows :rocket:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) :crown: of the app*
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 Multiple Windows feature allows you to fish in multiple windows (up to 4) at the same time. The bot will switch between the windows of the game when it needs to cast/catch fish in one of them.
 
