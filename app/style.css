@@ -17,6 +17,10 @@ select {
   font: menu;
 }
 
+select {
+  border-radius: 5px;
+}
+
 html,
 body {
   height: 100%;
