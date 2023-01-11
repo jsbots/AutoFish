@@ -48,7 +48,7 @@ class Settings {
     });
 
     const keyAssigning = (event) => {
-      event.target.value = event.key == ` `? `space` : event.key;
+      event.target.value = event.key == ` `? `space` : event.key.toLowerCase();
       saveSettings(event);
       document.removeEventListener(`keydown`, keyAssigning);
       event.target.blur();
