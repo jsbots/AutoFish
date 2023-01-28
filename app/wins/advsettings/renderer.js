@@ -21,6 +21,16 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
+const renderBobberDensity = ({bobberDensity}) => {
+
+  if(bobberDensity > 10) bobberDensity = 10;
+  if(bobberDensity < 1) bobberDensity = 1;
+  let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, value: bobberDensity});
+
+  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
+   bobberDensityWin);
+};
+
 const renderLogOutFor = ({logOutFor, logOut}) => {
   return elt(`div`, {"data-collection": `logOutFor`}, elt(`span`, {className: `option_text`}, `from:`),
      elt('input', {type: `number`, name: `from`, value: logOutFor.from, disabled: !logOut}), elt(`span`, {className: `option_text`}, `to:`),
@@ -258,8 +268,9 @@ const renderSettings = (config) => {
   wrapInLabel(`Ignore preliminary checks:`, renderIgnorePreliminary(config), `The bot will ignore all the preliminary checks including notification errors.`),
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Loot Window closing delay (ms):`, renderCloseLootDelay(config), `How much does it take for the loot window to disappear after looting.`),
-  wrapInLabel(`Bobber sensitivity:`, renderBobberSensitivity(config), `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.`),
-  wrapInLabel(`Checking delay (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
+  wrapInLabel(`Bobber sensitivity (px):`, renderBobberSensitivity(config), `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.`),
+  wrapInLabel(`Bobber density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),
+  wrapInLabel(`Bobber check time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
   wrapInLabel(`Fishing zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
   wrapInLabel(`Cast animation delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
   ));

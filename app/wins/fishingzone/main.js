@@ -60,8 +60,9 @@ const createFishingZone = ({pos, screenSize, type, config, settings}, finished) 
 			 getDataFrom,
 			 zone: pos, threshold: settings.threshold,
 			 bobberColor: settings.bobberColor,
-			 sensitivity:  Math.abs(config.bobberSensitivity - 4)}
-		 );
+			 sensitivity: config.bobberSensitivity,
+		 	 density: config.bobberDensity
+		 });
 		let bobber = await zone.findBobber();
 		win.setOpacity(0.3);
 		if(bobber) {
