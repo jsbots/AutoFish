@@ -11,10 +11,10 @@ const isRed = (threshold, closeness) => ([r, g, b]) => isOverThreshold([r, g, b]
 
 const isBlue = (threshold, closeness) => ([r, g, b]) => isOverThreshold([b, g, r], threshold) && isCloseEnough([b, g, r], closeness);
 
-const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor, sensitivity }) => {
+const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor, sensitivity, density }) => {
   const isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
   const saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
-  const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround().every((pos) => isBobber(rgb.colorAt(pos)));
+  const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround(density).every((pos) => isBobber(rgb.colorAt(pos)));
   return {
 
     async findBobber(exception) {
