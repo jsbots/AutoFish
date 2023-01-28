@@ -39,13 +39,21 @@ const createRgb = ({ data, width, height }) => {
       })
     },
 
-    findColors({ isColor, atFirstMet, task }) {
+    findColors({ isColor, atFirstMet, task, limit }) {
       let colors = [];
       for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
           let pos = new Vec(x, y);
           let color = bitmap[y][x];
           if(isColor(color)) {
+
+            if(limit != null) {
+              limit--
+              if(limit < 0) {
+                return null;
+              }
+            };
+
             if(!task || task(pos, color, this)) {
               if(atFirstMet) {
                 return pos;
