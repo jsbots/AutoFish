@@ -290,12 +290,18 @@ const createBot = (game, { config, settings }, winSwitch) => {
         return pos;
       }
 
-      if (!(await fishingZone.isBobber(pos))) {
-        const newPos = await fishingZone.checkAroundBobber(pos);
-        if (!newPos) {
+      if(settings.game == `Dragonflight`) {
+        if(!(await fishingZone.checkBobberPrint(pos))) {
           return pos;
-        } else {
-          pos = newPos;
+        }
+      } else {
+        if(!(await fishingZone.isBobber(pos))) {
+          const newPos = await fishingZone.checkAroundBobber(pos);
+          if (!newPos) {
+            return pos;
+          } else {
+            pos = newPos;
+          }
         }
       }
 

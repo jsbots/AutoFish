@@ -32,6 +32,18 @@ const createFishingZone = ({ getDataFrom , zone, threshold, bobberColor, sensiti
       return bobber.plus({ x: zone.x, y: zone.y });
     },
 
+    async checkBobberPrint(pos) {
+      let rgb = createRgb(await getDataFrom({x: pos.x - sensitivity, y: pos.y - sensitivity, width: sensitivity * 2, height: sensitivity * 2}));
+      rgb.saturate(...saturation);
+      let bobber = rgb.findColors({
+        isColor: isBobber,
+        atFirstMet: true
+      });
+      if(bobber) {
+        return true;
+      }
+    },
+
     async checkAroundBobber(bobberPos) {
       for(let pos of bobberPos.getPointsAround(sensitivity)) {
          if(await this.isBobber(pos)) {
