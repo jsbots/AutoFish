@@ -270,6 +270,10 @@ Because the bot can't work in the background and requires a little bit difficult
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
+<p align="center">
+<img src="guide_img/multiple-windows.gif" align="center">
+</p>
+
 Multiple Windows feature allows you to fish in multiple windows (up to 4) at the same time. The bot will switch between the windows of the game when it needs to cast/catch fish in one of them.
 
 Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
