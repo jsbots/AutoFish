@@ -39,7 +39,8 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Logging out/in feature.
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
-*Premium version Features:*
+
+**Premium Features:**
 - Remote control via Telegram.
 - Multiple game windows support (up to 4).
 - Sound Detection.
@@ -125,7 +126,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 ## Threshold :red_circle:
 
 <p align="center">
-<img src="guide_img/threshold.jpg" align="center">
+<img src="guide_img/threshold.gif" align="center">
 </p>
 
 Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
