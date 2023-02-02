@@ -21,6 +21,7 @@
 - [Mammoth Selling](#mammoth-selling-elephant)
 - [AFK Fishing](#afk-fishing-sleeping)
 - [Multiple Windows](#multiple-windows-rocket)
+- [Sound Detection](#sound-detection-loud_sound)
 - [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
@@ -29,7 +30,7 @@
 A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
 
 
-**Public version Features:**
+**Features:**
 - Optional loot support.
 - Fishing lures support.
 - Custom window suppport.
@@ -38,10 +39,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Logging out/in feature.
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
-
-**Premium version Features:**
+*Premium version Features:*
 - Remote control via Telegram.
 - Multiple game windows support (up to 4).
+- Sound Detection.
 - Scrap selling to mammoth trader during fishing.
 - AFK mode fishing (auto-focusing the window only when catching/casting).
 - 4K resolution support.
@@ -142,7 +143,7 @@ If you see this error, it means you need to decrease threshold or change the dir
 ## Fishing Zone :dart:
 
 <p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/fishing-zone.jpg"  width="800">
+<img src="guide_img/fishing-zone.gif" align="center">
 </p>
 
 Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
@@ -272,6 +273,22 @@ Multiple Windows feature allows you to fish in multiple windows (up to 4) at the
 
 Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
 
+## Sound Detection :loud_sound:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/sound-detection.jpg" align="center">
+</p>
+
+Sound Detection is an alternative to pixel recognition logic. The bot will hook the bobber only after "splash" sound and won't rely on checking the animation of the bobber plunging.
+
+With both Int. Key and Sound Detection turned on you can be completely independent from Threshold and Fishing Zone options. If you don't use Int. key or the game doesn't support it, the bot still needs to find a bobber first but checking will be done by sound recognition if you turn on Sound Detection option.
+
+Before using sound detection turn off Music and Ambient Sounds in the game, leave only Sound Effects. Your volume should be at normal/default level. Try to find a place secluded from the sounds made by other players to avoid false detections.
+
+You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on Sound in Background for that).
+
 ## Known issues :hammer:
 - If the bot doesn't press/clicks, try to launch it as administrator.
 - Public version doesn't support 4K resolutions.
@@ -286,7 +303,7 @@ Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.14.2 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.14.4 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
