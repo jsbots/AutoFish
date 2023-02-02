@@ -50,7 +50,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Profiles support.
 
 <p align="center">
-<img src="guide_img/UI_premium.jpg" width="700">
+<img src="guide_img/UI_premium.jpg" width="640">
 </p>
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
@@ -119,9 +119,6 @@ The bot was tested only with default UI and with default UI scale, without any a
 - If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
-<p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/horizontal_camera.jpg" width="800" align="center">
-</p>
 
 ## Threshold :red_circle:
 
@@ -165,9 +162,9 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 <p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="800">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="800">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="800">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="640">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="640">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="640">
 </p>
 
 
@@ -216,7 +213,7 @@ To make the interactive key work, you use this commands (write them in the chat 
 If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
 
 <p align="center">
-<img src="guide_img/soulbound.jpg" width="800" align="center">
+<img src="guide_img/soulbound.jpg" width="640" align="center">
 </p>
 
 ## Telegram remote control :iphone:
