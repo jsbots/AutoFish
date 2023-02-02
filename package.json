@@ -1,6 +1,6 @@
 {
   "name": "AutoFish",
-  "version": "1.14.4",
+  "version": "1.14.5",
   "description": "An easy-to-use fishing bot for official and unofficial World of Warcraft servers.",
   "main": "./app/main.js",
   "scripts": {
