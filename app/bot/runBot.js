@@ -68,7 +68,7 @@ const runBot = async ({ bot, log, state, stats }) => {
 
     if(failedCast) {
       let randomFailed = random(500, 5000);
-      log.warn(`Failed cast before, sleeping for ${Math.floor(randomFailed)} ms`)
+      log.warn(`Sleeping for ${Math.floor(randomFailed)} ms.`)
       await sleep(randomFailed);
     }
     log.send(`Casting fishing...`);

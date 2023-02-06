@@ -160,13 +160,13 @@ const createWindow = async () => {
     }
 
     if(type == `relZone` || type == `chatZone`) {
-      log.send(`Setting ${type == `relZone` ? `fishing` : `chat`} zone...`);
+      log.send(`Setting ${type == `relZone` ? `Fishing` : `Chat`} Zone...`);
       let data = await setFishingZone(games[0], config.patch[settings.game][type], type, config.patch[settings.game], settings);
       if(data) {
         config.patch[settings.game][type] = data;
         writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
       }
-      log.ok(`Done!`);
+      log.ok(`Set ${type == `relZone` ? `Fishing` : `Chat`} Zone Succesfully!`);
       win.focus();
       return;
     }
