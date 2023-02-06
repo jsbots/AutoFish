@@ -36,7 +36,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 **Features:**
 - Optional loot support.
 - Fishing lures support.
-- Custom window suppport.
+- Custom window support.
 - Auto confirmation for soulbound items.
 - Missing on purpose feature.
 - Logging out/in feature.
@@ -47,8 +47,8 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Remote control via Telegram.
 - Multiple game windows support (up to 4).
 - Sound Detection.
-- Scrap selling to mammoth trader during fishing.
-- AFK mode fishing (auto-focusing the window only when catching/casting).
+- Mammoth Selling.
+- AFK Fishing Mode (auto-focusing the window only when catching/casting).
 - 4K resolution support.
 - Profiles support.
 
@@ -299,10 +299,10 @@ Before using sound detection turn off Music and Ambient Sounds in the game, leav
 You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on Sound in Background for that).
 
 ## Known issues :hammer:
-- If the bot doesn't press/clicks, try to launch it as administrator.
-- Public version doesn't support 4K resolutions.
-- If the bot clicks too early (especially on 4K resolutions) you might need to increase **Bobber Density** value or tweak **Bobber Sensitivity** / **Bobber Check Delay** values.
-- Whitelist works properly only with  1366x768 or 1920x1080 or 3840x2160 resolutions.
+- If the bot clicks too early, first try from the 1st person view, if that didn't help, decrease **Bobber Sensitivity** or increase **Bobber Density** value (You can find them in the **Advanced Settings**).
+- If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
+- Whitelist works properly only with **1366x768** or **1920x1080** or **3840x2160** resolutions.
+- If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
 
@@ -312,7 +312,7 @@ You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection th
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.14.4 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.14.6 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
