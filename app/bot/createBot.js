@@ -281,9 +281,16 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
     while (state.status == "working") {
       if (checkBobberTimer.isElapsed()) {
-        throw new Error(
-          `Something is wrong. The bot sticked to the bobber for more than ${config.maxFishTime} ms.`
-        );
+        switch(config.maxFishTimeAfter) {
+          case `stop`: {
+            throw new Error(
+              `Something is wrong. The bot had been checking the bobber for more than ${config.maxFishTime} ms. The server might be down or your character is dead.`
+            );
+          }
+          case `recast`: {
+            return false;
+          }
+        }
       }
 
       if(missOnPurpose && missOnPurposeTimer.isElapsed()) {
@@ -487,6 +494,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
     }
     let caught = false;
+
+    if(!pos) { // in case recasting if it's stated in maxFishTimeAfter
+      return caught;
+    }
 
     await action(async () => {
       if(settings.useInt) {
