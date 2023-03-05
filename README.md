@@ -312,7 +312,7 @@ You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection th
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.14.6 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.14.7 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
