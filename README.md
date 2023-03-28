@@ -22,7 +22,6 @@
 - [AFK Fishing](#afk-fishing-sleeping)
 - [Multiple Windows](#multiple-windows-rocket)
 - [Sound Detection](#sound-detection-loud_sound)
-- [Known issues](#known-issues-hammer)
 - [Download](#download-open_file_folder)
 
 ## Fishing bot :fish:
@@ -101,27 +100,33 @@ Also on unofficial servers:
 
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*
 
-1. Launch the game.
-2. Are you using whitelist?
-   - Yes: Turn off **Auto Loot**, set **UI scale** to default, turn on **Open loot window at mouse**.
-   - No: Turn on **Auto Loot**
-3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Equip a fishpole.
+0. After you launched the setup the bot will silently **create a shortcut** of the appliction on your Desktop - use it instead of always launching the setup! (otherwise your settings won't be saved)
+1. If your **Display Scaling in Windows** is higher than 100%, go to the Advanced Settings of the bot and change *Windows Scale* value respectively.
+2. Launch the game.
+3. Are you using **Filter** feature?
+   - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
+   - No: Turn on **Auto Loot** in the game.
+4. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 5. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game).
+   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game). **Fishing Zone is an overlay on your screen, so the colors of your character and the colors of text on your screen will be recognized by it. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.**
    - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
-6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working.
+6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working (use the bot on VM if you need it to work in the background).
 
-### Additional info
+### Additional info and possible issues
 
 - [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
-- Scaling in Windows usually is higher than 100% for 4K resolutions, so change Windows Scale option respectively, otherwise setting Fishing Zone won't have correct position and dimensions.    
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
-- If you use whitelist feature in different from English languages for the first time, wait until the bot downloads the data for your language.
+- If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
+- If the bot clicks too early, first try from the 1st person view, if that didn't help, decrease **Bobber Sensitivity** or increase **Bobber Density** value (You can find them in the **Advanced Settings**).
+- If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
+- Filter works properly only with **1366x768** or **1920x1080** or **3840x2160** resolutions.
+- If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
+- The bot might not work properly if you have **latency issues**.
+- If you use many monitors the game should be on the primary one.
 
 ## Threshold :red_circle:
 
@@ -297,14 +302,6 @@ With both Int. Key and Sound Detection turned on you can be completely independe
 Before using sound detection turn off Music and Ambient Sounds in the game, leave only Sound Effects. Your volume should be at normal/default level. Try to find a place secluded from the sounds made by other players to avoid false detections.
 
 You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on Sound in Background for that).
-
-## Known issues :hammer:
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, decrease **Bobber Sensitivity** or increase **Bobber Density** value (You can find them in the **Advanced Settings**).
-- If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
-- Whitelist works properly only with **1366x768** or **1920x1080** or **3840x2160** resolutions.
-- If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
-- The bot might not work properly if you have **latency issues**.
-- If you use many monitors the game should be on the primary one.
 
 ## Download :open_file_folder:
 
