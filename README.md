@@ -100,8 +100,11 @@ Also on unofficial servers:
 
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*
 
-0. After you launched the setup the bot will silently **create a shortcut** of the appliction on your Desktop - use it instead of always launching the setup! (otherwise your settings won't be saved)
-1. If your **Display Scaling in Windows** is higher than 100%, go to the Advanced Settings of the bot and change *Windows Scale* value respectively.
+0. The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
+1. Make sure that your **Scale Factor** is 100% *(Push the Windows key and search for Display settings. Under Scale and layout)*. If you have a Premium version you can change this value in the Advanced Settings to correspond to your Scale Factor.
+
+<img src="guide_img/scale_factor.jpg" align="center" width="640">
+
 2. Launch the game.
 3. Are you using **Filter** feature?
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
