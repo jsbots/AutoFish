@@ -8,6 +8,7 @@ const {
   shell,
   powerSaveBlocker,
   globalShortcut,
+  screen
 } = require("electron");
 const path = require("path");
 
@@ -69,23 +70,24 @@ const setFishingZone = async ({workwindow}, relZone, type, config, settings) => 
     workwindow.setForeground();
   }
   const screenSize = workwindow.getView();
+  const scale = screen.getPrimaryDisplay().scaleFactor || 1;
+
   const pos = {
-    x: screenSize.x + relZone.x * screenSize.width,
-    y: screenSize.y + relZone.y * screenSize.height,
-    width: relZone.width * screenSize.width,
-    height: relZone.height * screenSize.height
+    x: (screenSize.x + relZone.x * screenSize.width) / scale,
+    y: (screenSize.y + relZone.y * screenSize.height) / scale,
+    width: (relZone.width * screenSize.width) / scale,
+    height: (relZone.height * screenSize.height) / scale
   }
 
-  const result = await createFishingZone({pos, screenSize, type, config, settings});
+  const result = await createFishingZone({pos, screenSize, type, config, settings, scale});
   if(!result) return;
   return {
-    x: (result.x - screenSize.x) / screenSize.width,
-    y: (result.y - screenSize.y) / screenSize.height,
-    width: result.width / screenSize.width,
-    height: result.height / screenSize.height
+    x: (result.x - screenSize.x) * scale / screenSize.width,
+    y: (result.y - screenSize.y) * scale / screenSize.height,
+    width: result.width * scale / screenSize.width,
+    height: result.height * scale / screenSize.height
   }
 }
-
 
 const createWindow = async () => {
   let win = new BrowserWindow({
@@ -151,12 +153,6 @@ const createWindow = async () => {
       return;
     } else {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
-    }
-
-    if(games[0].workwindow.getView().height > 1080) {
-      log.err(`Public version doesn't support resolutions higher than 1920x1080. Change your resolution or try AutoFish Premium.`);
-      win.webContents.send("stop-bot");
-      return;
     }
 
     if(type == `relZone` || type == `chatZone`) {
