@@ -103,7 +103,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 0. The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
 1. Make sure that your **Scale Factor** is 100% *(Push the Windows key and search for Display settings. Under Scale and layout)*. If you have a Premium version you can change this value in the Advanced Settings to correspond to your Scale Factor.
 
-<img src="guide_img/threshold.gif" align="center" width="640">
+<img src="guide_img/scale_factor.jpg" align="center" width="640">
 
 2. Launch the game.
 3. Are you using **Filter** feature?
