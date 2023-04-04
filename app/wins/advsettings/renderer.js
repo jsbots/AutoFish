@@ -21,6 +21,13 @@ const renderDelay = ({delay}) => {
      elt('input', {type: `number`, name: `to`, value: delay.to}));
 };
 
+const renderDynamicThreshold = ({dynamicThreshold, dynamicThresholdValue}) => {
+  let checkbox = elt(`input`, {type: `checkbox`, name: `dynamicThreshold`, checked: dynamicThreshold});
+  let input = elt(`input`, {type: `number`, name: `dynamicThresholdValue`, disabled: !dynamicThreshold, value: dynamicThresholdValue});
+  return elt(`div`, null, checkbox, input);
+};
+
+
 const renderBobberDensity = ({bobberDensity}) => {
 
   if(bobberDensity > 10) bobberDensity = 10;
@@ -244,7 +251,8 @@ const renderSettings = (config) => {
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
-  wrapInLabel( "Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`),
+  wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `After attempts limit the bot will dynamically change threshold by the provided value.`),
+  wrapInLabel("Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`),
   wrapInLabel(
     "Use shift+click: ",
     renderShiftClick(config),

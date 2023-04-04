@@ -64,7 +64,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     }
   };
 
-  const fishingZone = createFishingZone({
+  let fishingZone = createFishingZone({
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
     threshold: settings.threshold,
@@ -489,6 +489,21 @@ const createBot = (game, { config, settings }, winSwitch) => {
     return itemsPicked;
   };
 
+  const dynamicThreshold = () => {
+    settings.threshold = settings.threshold - config.dynamicThresholdValue;
+    fishingZone = createFishingZone({
+      getDataFrom,
+      zone: Zone.from(screenSize).toRel(config.relZone),
+      threshold: settings.threshold,
+      bobberColor: settings.bobberColor,
+      sensitivity: config.bobberSensitivity,
+      density: config.bobberDensity
+    });
+  }
+
+  dynamicThreshold.on = config.dynamicThreshold;
+  dynamicThreshold.limit = () => settings.threshold < 20;
+
   const hookBobber = async (pos) => {
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
@@ -544,6 +559,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
 
   return {
+    dynamicThreshold,
     logOut,
     preliminaryChecks,
     findAllBobberColors,

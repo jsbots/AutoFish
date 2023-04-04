@@ -5,6 +5,8 @@
   },
   "patch": {
     "Dragonflight": {
+      "dynamicThreshold": true,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -78,6 +80,8 @@
       }
     },
     "WotLK Classic": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -146,6 +150,8 @@
       }
     },
     "Classic": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -214,6 +220,8 @@
       }
     },
     "Legion": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -280,6 +288,8 @@
       }
     },
     "MoP": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -346,6 +356,8 @@
       }
     },
     "Cataclysm": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -414,6 +426,8 @@
       }
     },
     "WotLK Private": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -480,6 +494,8 @@
       }
     },
     "TBC": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
@@ -548,6 +564,8 @@
       }
     },
     "Vanilla": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
       "useCustomWindow": false,
       "customWindow": "",
       "closeLoot": "mouse",
