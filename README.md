@@ -126,6 +126,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
+- Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 
 ## Threshold :red_circle:
 
