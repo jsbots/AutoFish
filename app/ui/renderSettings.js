@@ -109,9 +109,9 @@ const renderStopKey = ({stopKey}) => {
 };
 
 const renderPoleKey = ({lures, game, intKey, useInt}) => {
-  let key = elt('input', {type: 'text', value: intKey, disabled: !useInt, name: "intKey"});
+  let key = elt('input', {type: 'text', value: intKey, disabled: !useInt || game != `Dragonflight`, name: "intKey"});
   key.setAttribute(`readonly`, `true`);
-  const checkbox = elt(`input`, {type: `checkbox`, checked: useInt, style: `margin-right: 7px`, name: "useInt"});
+  const checkbox = elt(`input`, {type: `checkbox`, disabled: game != `Dragonflight`, checked: game != `Dragonflight` ? false : useInt, style: `margin-right: 7px`, name: "useInt"});
   const container = elt(`div`, null, checkbox, key)
   return container;
 };
