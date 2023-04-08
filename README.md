@@ -101,20 +101,16 @@ Also on unofficial servers:
 The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*
 
 0. The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
-1. Make sure that your **Scale Factor** is 100% *(Push the Windows key and search for Display settings. Under Scale and layout)*. If you have a Premium version you can change this value in the Advanced Settings to correspond to your Scale Factor.
-
-<img src="guide_img/scale_factor.jpg" align="center" width="640">
-
-2. Launch the game.
-3. Are you using **Filter** feature?
+1. Launch the game.
+2. Are you using **Filter** feature?
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
-4. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-5. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
+3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
+4. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
    - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game). **Fishing Zone is an overlay on your screen, so the colors of your character and the colors of text on your screen will be recognized by it. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.**
    - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
    - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
-6. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working (use the bot on VM if you need it to work in the background).
+5. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working (use the bot on VM if you need it to work in the background).
 
 ### Additional info and possible issues
 
@@ -130,6 +126,7 @@ The bot was tested only with default UI and with default UI scale, without any a
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
+- Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 
 ## Threshold :red_circle:
 
@@ -312,7 +309,7 @@ You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection th
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.14.7 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.15.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
