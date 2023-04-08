@@ -111,7 +111,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 750,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -181,7 +181,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 750,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -251,7 +251,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -319,7 +319,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -387,7 +387,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -457,7 +457,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -525,7 +525,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -595,7 +595,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivity": 1,
-      "bobberDensity": 1,
+      "bobberDensity": 2,
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
