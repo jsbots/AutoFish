@@ -73,7 +73,7 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**
-  - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** ascension.gg (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
+  - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
   - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use blue switch for better performance)
@@ -98,7 +98,7 @@ Also on unofficial servers:
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*. 
+The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*.
 
 The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
 
@@ -107,56 +107,26 @@ The bot uses *squirrel* type of installation and silently creates a shortcut on 
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button (check [Fishing zone](#fishing-zone-dart) section). Avoid any red/blue colors in the Fishing zone except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game).
+4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button (Carefully read [Fishing zone](#fishing-zone-dart) section). Avoid any red/blue colors in the Fishing zone except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game) (Carefully read [Threshold](#threshold-red_circle) section).
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
+*After you pressed Start a lot of things might happen instead of bot working properly, so before telling me how frustrated you are in discord :), read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and issues section to solve 99% of the possible issues.*
 6. To stop the bot press your stop key (default: space).
 
 ### Hints and issues
 
-- - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
+- Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
+- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** or **Bobber Density** values (You can find them in the **Advanced Settings**).
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** or **Bobber Density** values (You can find them in the **Advanced Settings**).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
 - Filter works properly only with 16:9 resolutions right now: **1366x768** or **1920x1080** or **3840x2160**
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - If you use many monitors the game should be on the primary one.
 - The bot might not work properly if you have **latency issues**.
-- Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
-
-## Fishing Zone :dart:
-
-<p align="center">
-<img src="guide_img/fishing-zone.gif" align="center">
-</p>
-
-Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
-
-You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
-
-Fishing Zone is an **overlay** window on your screen, so the colors of your character and the colors of some text on your screen will be recognized by it too. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.
-
-Click **"Check"** button to check whether there's any red/blue colors in the fishing zone.
-
-The rule of thumb here is **the better you can see the red/blue feather the better the bot will see it too**:
-- If you can, make your video settings as best as possible, except the weather effects...
-- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot *(working on make it better)*. Solution: find another place, switch between blue/red feathers or wait for the better weather.
-- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
-- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
-- Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
-- For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one.
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
-
-Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
-<p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="640">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="640">
-</p>
 
 ## Threshold :red_circle:
 
@@ -176,6 +146,41 @@ With this error the bot will highlight the area where it ran into the same color
 
 If you see this error, it means you need to decrease threshold or change the direction/position of your fishing place to make the bobber brighter.
 
+### Dynamic Threshold
+
+<p align="center">
+<img src="guide_img/dynamicth.jpg" align="center">
+</p>
+
+It's simple, the bot will decrease threshold by the provided value (default: 5) after n number of failed attempts to find the bobber (default: 5) and will try to make another n attempts to find the bobber decreasing it until it reaches *Threshold < 20*. This option is good to make the bot keep working even during the bad weather when the color/brightness of the bobber is drastically decreased.   
+
+## Fishing Zone :dart:
+
+<p align="center">
+<img src="guide_img/fishing-zone.gif" align="center">
+</p>
+
+Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
+
+Fishing Zone is an **overlay** window on your screen, so the colors of your character and the colors of some text on your screen will be recognized by it too. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.
+
+Fishing Zone has **"Check"** button to help you understand whether there's any red/blue colors of the provided threshold value in the Fishing Zone before casting a bobber. It fully depends on **Threshold** value, so again, if after pressing Check button the window changes to red color - close the window, slowly increase Threshold and test again. Repeat until the window changes to green.
+
+The rule of thumb here is **the better you can see the red/blue feather the better the bot will see it too**:
+- If you can, make your video settings as best as possible, except the weather effects...
+- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot. Solution: find another place, switch between blue/red feathers or wait for the better weather.
+- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
+- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
+- Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
+- For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one.
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
+
+Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
+<p align="center">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="640">
+<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="640">
+</p>
 
 ## Applying Lures :pushpin:
 For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
@@ -252,30 +257,6 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 7. If you want to make the bot notify you about any errors or whipser messeges, *you need to start it from Telegram* (*not by pressing Start on the bot's interface*). Whisper detection will work much better and reliable if you **turn off all the other chat messages**.
 
-## Mammoth Selling :elephant:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-<p align="center">
-<img src="guide_img/mammoth.jpg" align="center">
-</p>
-
-As an alternative to filtering you can use a trader on your mammoth mount to sell all the junk items during the fishing. The bot will summon your mount, target your trader, interact with it by using interaction key in the game, unsummon the mount and go on fishing.
-
-Because of the novelty of the interaction key this feature is available only for Dragonflight.
-
-Depends on the mount the name of your trader might be different, so change the default value.
-
-## AFK Fishing :sleeping:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-<p align="center">
-<img src="guide_img/afk-fishing.gif" width="640px" align="center">
-</p>
-
-Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
-
 ## Multiple Windows :rocket:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
@@ -303,6 +284,32 @@ With both Int. Key and Sound Detection turned on you can be completely independe
 Before using sound detection turn off Music and Ambient Sounds in the game, leave only Sound Effects. Your volume should be at normal/default level. Try to find a place secluded from the sounds made by other players to avoid false detections.
 
 You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on Sound in Background for that).
+
+**Warning!** Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
+
+## Mammoth Selling :elephant:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/mammoth.jpg" align="center">
+</p>
+
+As an alternative to filtering you can use a trader on your mammoth mount to sell all the junk items during the fishing. The bot will summon your mount, target your trader, interact with it by using interaction key in the game, unsummon the mount and go on fishing.
+
+Because of the novelty of the interaction key this feature is available only for Dragonflight.
+
+Depends on the mount the name of your trader might be different, so change the default value.
+
+## AFK Fishing :sleeping:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/afk-fishing.gif" width="640px" align="center">
+</p>
+
+Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
 
 ## Download :open_file_folder:
 
