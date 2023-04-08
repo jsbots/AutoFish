@@ -17,12 +17,16 @@
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
+- [Download](#download-open_file_folder)
+
+Additional Premium Features:
+
 - [Remote control](#telegram-remote-control-iphone)
 - [Mammoth Selling](#mammoth-selling-elephant)
 - [AFK Fishing](#afk-fishing-sleeping)
 - [Multiple Windows](#multiple-windows-rocket)
 - [Sound Detection](#sound-detection-loud_sound)
-- [Download](#download-open_file_folder)
+
 
 ## Fishing bot :fish:
 
@@ -98,14 +102,14 @@ Also on unofficial servers:
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button (Carefully read [Fishing zone](#fishing-zone-dart) section). Avoid any red/blue colors in the Fishing zone except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game) (Carefully read [Threshold](#threshold-red_circle) section).
+4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too. 
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
 
-*After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and issues section to solve 99% of the possible issues.*
+*After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and Issues section to solve 99% of the possible issues.*
 
 6. To stop the bot press your stop key (default: space).
 
-### Hints and issues
+### Hints and Issues
 
 - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
 - If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You can find them in the **Advanced Settings**).
@@ -125,7 +129,7 @@ Also on unofficial servers:
 ## Threshold :red_circle:
 
 <p align="center">
-<img src="guide_img/threshold.gif" align="center">
+<img src="guide_img/threshold.gif" width="400" align="center">
 </p>
 
 Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
@@ -156,7 +160,7 @@ It's simple, the bot will decrease threshold by the provided value (default: 5) 
 
 Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
-Fishing Zone is an **overlay** window on your screen, so the colors of your character and the colors of some text on your screen will be recognized by it too. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.
+**Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
 
 Fishing Zone has **"Check"** button to help you understand whether there's any red/blue colors of the provided threshold value in the Fishing Zone before casting a bobber. It fully depends on **Threshold** value, so again, if after pressing Check button the window changes to red color - close the window, slowly increase Threshold and test again. Repeat until the window changes to green.
 
@@ -177,7 +181,7 @@ Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 </p>
 
 ## Applying Lures :pushpin:
-For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
+For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
 
 **Dragonflight**:
 
@@ -311,7 +315,9 @@ Because the bot can't work in the background and requires a little bit difficult
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.15.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.15.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+
+AutoFish 1.19.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
