@@ -81,20 +81,11 @@ Also on unofficial servers:
 
 ## Disclaimer :warning:
 
+**This project was made only for educational purpuses to explore the possibility of making a fully workable bot written in JavaScript.**
+
   Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
-  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and I don't guarantee **anything** related to the bot and the software is provided *as is*.
-
-  To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
-
-  Using common sense while using the bot will help to reduce risks of being banned:
-  - **Don't leave the bot alone for a long time.**
-  - **Don't fish in one place all the time.**
-  - **Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.**
-
-  Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why.
-
-  :bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide.
+  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and never was made with such intentions so I don't guarantee **anything** related to the bot and it's provided *as is*.
 
 ## Guide :blue_book:
 
