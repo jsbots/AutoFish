@@ -98,9 +98,9 @@ Also on unofficial servers:
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*.
+*The bot was tested only with default UI and with default UI scale, without any addons whatsoever. So turn off all the addons and set UI scale to default before using the bot. Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have.*
 
-The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
+*The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.*
 
 1. Launch the game.
 2. Are you using **Filter** feature?
@@ -109,24 +109,26 @@ The bot uses *squirrel* type of installation and silently creates a shortcut on 
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
 4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button (Carefully read [Fishing zone](#fishing-zone-dart) section). Avoid any red/blue colors in the Fishing zone except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game) (Carefully read [Threshold](#threshold-red_circle) section).
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
-*After you pressed Start a lot of things might happen instead of bot working properly, so before telling me how frustrated you are in discord :), read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and issues section to solve 99% of the possible issues.*
+
+*After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and issues section to solve 99% of the possible issues.*
+
 6. To stop the bot press your stop key (default: space).
 
 ### Hints and issues
 
 - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** or **Bobber Density** values (You can find them in the **Advanced Settings**).
+- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You can find them in the **Advanced Settings**).
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
-- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
-- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
-- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
-- If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
-- Don't fish near other players, the bot might confuse their bobber for yours.
+- If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
 - Filter works properly only with 16:9 resolutions right now: **1366x768** or **1920x1080** or **3840x2160**
+- Don't fish near other players, the bot might confuse their bobber for yours.
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - If you use many monitors the game should be on the primary one.
 - The bot might not work properly if you have **latency issues**.
+- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
+- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
+- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
 
 ## Threshold :red_circle:
 
