@@ -76,7 +76,7 @@ Also on unofficial servers:
   - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
-  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use blue switch for better performance)
+  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (because of uncomplete animtion of the jerking, use sound detection for better performance)
 
 
 ## Disclaimer :warning:
@@ -125,6 +125,7 @@ Also on unofficial servers:
 - Don't fish near other players, the bot might confuse their bobber for yours.
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - If you use many monitors the game should be on the primary one.
+- Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 - The bot might not work properly if you have **latency issues**.
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
