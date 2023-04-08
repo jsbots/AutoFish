@@ -98,53 +98,35 @@ Also on unofficial servers:
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*
+The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*. 
 
-0. The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
+The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
+
 1. Launch the game.
 2. Are you using **Filter** feature?
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a good place to fish (check [Fishing zone](#fishing-zone-dart) section).
-   - Avoid any red/blue colors in the "Fishing zone" except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game). **Fishing Zone is an overlay on your screen, so the colors of your character and the colors of text on your screen will be recognized by it. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.**
-   - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
-   - The bot will make 5 attempts to cast and find the bobber (you can change this number in the "Advanced Settings"). If it fails, it will stop the application.
-5. The bot doesn't work in the background, so don't use your keyboard and mouse while the bot is working (use the bot on VM if you need it to work in the background).
+4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button (check [Fishing zone](#fishing-zone-dart) section). Avoid any red/blue colors in the Fishing zone except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game).
+5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
+6. To stop the bot press your stop key (default: space).
 
-### Additional info and possible issues
+### Hints and issues
 
+- - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
+- The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- If the bot often misses the "jerking" of the bobber and does nothing, as a solution you might need is to fish from the 1st person view and make your camera more horizontal, so that the bot "sees" the "jerking" animation better:
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, decrease **Bobber Sensitivity** or increase **Bobber Density** value (You can find them in the **Advanced Settings**).
+- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** or **Bobber Density** values (You can find them in the **Advanced Settings**).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
-- Filter works properly only with **1366x768** or **1920x1080** or **3840x2160** resolutions.
+- Filter works properly only with 16:9 resolutions right now: **1366x768** or **1920x1080** or **3840x2160**
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
-- The bot might not work properly if you have **latency issues**.
 - If you use many monitors the game should be on the primary one.
+- The bot might not work properly if you have **latency issues**.
 - Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
-
-## Threshold :red_circle:
-
-<p align="center">
-<img src="guide_img/threshold.gif" align="center">
-</p>
-
-Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
-
-For example if I use red switch and my threshold is 60, the bot will ignore all the colors below this value, by doing so it will see only the reddest parts of the screen and that's what we need: a red feather on the bobber. **So the higher the threshold, the less red colors the bot will recognize and the other way around: the lower is the threshold the more red colors on the screen the bot will recognize.**
-
->Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
-
-With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of reddish water, use blue swith or increase **Threshold** value.  
-
-> Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
-
-If you see this error, it means you need to decrease threshold or change the direction/position of your fishing place to make the bobber brighter.
 
 ## Fishing Zone :dart:
 
@@ -155,6 +137,8 @@ If you see this error, it means you need to decrease threshold or change the dir
 Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
 You can change the dimensions of this zone by clicking on **"Set Fishing Zone"** button. The application will open the window with your game and you can resize and move it as you like.
+
+Fishing Zone is an **overlay** window on your screen, so the colors of your character and the colors of some text on your screen will be recognized by it too. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.
 
 Click **"Check"** button to check whether there's any red/blue colors in the fishing zone.
 
@@ -171,9 +155,26 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 <p align="center">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="640">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test2.jpg" width="640">
 <img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="640">
 </p>
+
+## Threshold :red_circle:
+
+<p align="center">
+<img src="guide_img/threshold.gif" align="center">
+</p>
+
+Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
+
+For example if I use red switch and my threshold is 60, the bot will ignore all the colors below this value, by doing so it will see only the reddest parts of the screen and that's what we need: a red feather on the bobber. **So the higher the threshold, the less red colors the bot will recognize and the other way around: the lower is the threshold the more red colors on the screen the bot will recognize.**
+
+>Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
+
+With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of some reddish water, use the blue switch or increase **Threshold** value.  
+
+> Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
+
+If you see this error, it means you need to decrease threshold or change the direction/position of your fishing place to make the bobber brighter.
 
 
 ## Applying Lures :pushpin:
