@@ -15,16 +15,19 @@ class StartButton {
             this.onStop();
           }
 
-          event.target.textContent = this.state ? `STOP` : `START`;
+          if(this.state) {
+            this.dom.style.backgroundImage = `url('img/stop.png')`;
+          } else {
+            this.dom.style.backgroundImage = `url('img/start.png')`;
+          }
         },
       },
-      `START`
     );
   }
 
   onError() {
     this.state = false;
-    this.dom.textContent = `START`;
+    this.dom.style.backgroundImage = `url('img/start.png')`;
   }
 
   regOnStart(callback) {
