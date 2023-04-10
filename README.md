@@ -17,12 +17,16 @@
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
+- [Download](#download-open_file_folder)
+
+Additional Premium Features:
+
 - [Remote control](#telegram-remote-control-iphone)
 - [Mammoth Selling](#mammoth-selling-elephant)
 - [AFK Fishing](#afk-fishing-sleeping)
 - [Multiple Windows](#multiple-windows-rocket)
 - [Sound Detection](#sound-detection-loud_sound)
-- [Download](#download-open_file_folder)
+
 
 ## Fishing bot :fish:
 
@@ -76,62 +80,56 @@ Also on unofficial servers:
   - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
-  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use blue switch for better performance)
+  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (because of uncomplete animtion of the jerking, use sound detection for better performance)
 
 
 ## Disclaimer :warning:
 
+**This project was made only for educational purpuses to explore the possibility of making a fully workable bot written in JavaScript.**
+
   Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
 
-  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and I don't guarantee **anything** related to the bot and the software is provided *as is*.
-
-  To minimize risks all the delay values were randomized: delays between clicks/pressing, sleep time (optional), reaction time (optional), after hook time (optional), the curvature and the speed of the mouse (optional), random click on the bobber, random highlighting of the bobber, the names of the folder where the bot is installed are generated per install, the names of the title of the bot window are generated per launch.
-
-  Using common sense while using the bot will help to reduce risks of being banned:
-  - **Don't leave the bot alone for a long time.**
-  - **Don't fish in one place all the time.**
-  - **Try to combine gameplay between fishing: run some dungeons, chat with somebody etc.**
-
-  Anyone who can see you for more than 15m on one spot might suspect something and report you, or might not.  It all depends on many external factors: who, where and why.
-
-  :bangbang:  Read [this](https://www.ownedcore.com/forums/wow-classic/wow-classic-guides/933772-what-you-need-know-if-you-want-use-fishing-bot.html#post4281886) and use **Miss on purpose** and **Log in/Log out** options as described in that guide.
+  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and never was made with such intentions so I don't guarantee **anything** related to the bot and it's provided *as is*.
 
 ## Guide :blue_book:
 
-The bot was tested only with default UI and with default UI scale, without any addons whatsoever. **So turn off all the addons and set UI scale to default before using the bot.** *(Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have)*.
+*The bot was tested only with default UI and with default UI scale, without any addons whatsoever. So turn off all the addons and set UI scale to default before using the bot. Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have.*
 
-The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.
+*The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.*
 
 1. Launch the game.
 2. Are you using **Filter** feature?
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button (Carefully read [Fishing zone](#fishing-zone-dart) section). Avoid any red/blue colors in the Fishing zone except the red/blue feather of the bobber. Take into account mobs lurking below in the water, their red names might break the bot (you can turn off all the names in the game) (Carefully read [Threshold](#threshold-red_circle) section).
+4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too. 
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
-*After you pressed Start a lot of things might happen instead of bot working properly, so before telling me how frustrated you are in discord :), read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and issues section to solve 99% of the possible issues.*
+
+*After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and Issues section to solve 99% of the possible issues.*
+
 6. To stop the bot press your stop key (default: space).
 
-### Hints and issues
+### Hints and Issues
 
 - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** or **Bobber Density** values (You can find them in the **Advanced Settings**).
+- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You can find them in the **Advanced Settings**).
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
-- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
-- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
-- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
-- If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
-- Don't fish near other players, the bot might confuse their bobber for yours.
+- If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
 - Filter works properly only with 16:9 resolutions right now: **1366x768** or **1920x1080** or **3840x2160**
+- Don't fish near other players, the bot might confuse their bobber for yours.
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - If you use many monitors the game should be on the primary one.
+- Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 - The bot might not work properly if you have **latency issues**.
+- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
+- If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
+- [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
 
 ## Threshold :red_circle:
 
 <p align="center">
-<img src="guide_img/threshold.gif" align="center">
+<img src="guide_img/threshold.gif" width="400" align="center">
 </p>
 
 Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
@@ -162,7 +160,7 @@ It's simple, the bot will decrease threshold by the provided value (default: 5) 
 
 Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
 
-Fishing Zone is an **overlay** window on your screen, so the colors of your character and the colors of some text on your screen will be recognized by it too. And because there's surely a red/blue color of some armor on your character - you should avoid it in the Fishing Zone.
+**Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
 
 Fishing Zone has **"Check"** button to help you understand whether there's any red/blue colors of the provided threshold value in the Fishing Zone before casting a bobber. It fully depends on **Threshold** value, so again, if after pressing Check button the window changes to red color - close the window, slowly increase Threshold and test again. Repeat until the window changes to green.
 
@@ -183,7 +181,7 @@ Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 </p>
 
 ## Applying Lures :pushpin:
-For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and assign that macro to **Lures Key** option:
+For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
 
 **Dragonflight**:
 
@@ -317,7 +315,9 @@ Because the bot can't work in the background and requires a little bit difficult
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.15.0 Setup: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.15.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+
+AutoFish 1.19.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
