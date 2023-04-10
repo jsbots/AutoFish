@@ -1,4 +1,4 @@
-<p align="center"> <img src="https://github.com/olesgeras/AutoFish/blob/008c1ca000ba17729aa0b5dae2453a4fbf737f22/app/img/main-logo.png"> </p>
+<p align="center" height="100px"> <img src="app/img/logo.png"> </p>
 <div align="center">
 
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
@@ -52,7 +52,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Profiles support.
 
 <p align="center">
-<img src="guide_img/UI_premium.jpg" width="640">
+<img src="guide_img/UI.jpg" width="640">
 </p>
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
