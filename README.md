@@ -1,4 +1,4 @@
-<p align="center" height="100px"> <img src="app/img/logo.png"> </p>
+<p align="center"> <img src="app/img/logo.png" width="500px"> </p>
 <div align="center">
 
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
