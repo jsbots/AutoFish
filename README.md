@@ -1,4 +1,4 @@
-<p align="center"> <img src="app/img/logo.png" width="500px"> </p>
+<p align="center"> <img src="app/img/logo.png" width="400px"> </p>
 <div align="center">
 
  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
@@ -102,7 +102,7 @@ Also on unofficial servers:
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too. 
+4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
 
 *After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and Issues section to solve 99% of the possible issues.*
