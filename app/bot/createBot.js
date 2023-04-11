@@ -70,7 +70,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     threshold: settings.threshold,
     bobberColor: settings.bobberColor,
     sensitivity: config.bobberSensitivity,
-    density: config.bobberDensity
+    density: config.bobberDensity,
+    reverseDir: settings.game == `Turtle WoW`
   });
 
   const notificationZone = createNotificationZone({
@@ -301,6 +302,10 @@ const createBot = (game, { config, settings }, winSwitch) => {
         if(!(await fishingZone.checkBobberPrint(pos))) {
           return pos;
         }
+      } else if(settings.game == `Turtle WoW`) {
+        if(await fishingZone.checkBobberPrintSplash(pos)) {
+          return pos;
+        }
       } else {
         if(!(await fishingZone.isBobber(pos))) {
           const newPos = await fishingZone.checkAroundBobber(pos);
@@ -497,7 +502,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
       threshold: settings.threshold,
       bobberColor: settings.bobberColor,
       sensitivity: config.bobberSensitivity,
-      density: config.bobberDensity
+      density: config.bobberDensity,
+      reverseDir: settings.game == `Turtle WoW`
     });
   }
 

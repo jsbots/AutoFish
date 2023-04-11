@@ -632,6 +632,77 @@
           "width": 0.073
         }
       }
+    },
+    "Turtle WoW": {
+      "dynamicThreshold": false,
+      "dynamicThresholdValue": 5,
+      "useCustomWindow": false,
+      "customWindow": "",
+      "closeLoot": "mouse",
+      "delay": { "from": 50, "to": 150 },
+      "castDelay": 2500,
+      "sleepAfterHook": true,
+      "afterHookDelay": { "from": 150, "to": 400 },
+      "maxFishTime": 45000,
+      "maxFishTimeAfter": "stop",
+      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "checkingDelay": 50,
+      "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
+      "mouseCurvatureStrength": { "from": 50, "to": 80 },
+      "luresDelay": 5500,
+      "randomSleep": true,
+      "randomSleepEvery": { "from": 1, "to": 3 },
+      "randomSleepDelay": { "from": 1000, "to": 15000 },
+      "reaction": true,
+      "reactionDelay": { "from": 150, "to": 400 },
+      "maxAttempts": 5,
+      "timerQuit": false,
+      "shiftClick": true,
+      "missOnPurpose": false,
+      "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "logOut": false,
+      "logOutEvery": { "from": 50, "to": 120 },
+      "logOutFor": { "from": 30, "to": 90 },
+      "logOutAfter": { "from": 30, "to": 90 },
+      "bobberSensitivityPrint": true,
+      "bobberSensitivity": 20,
+      "bobberDensity": 1,
+      "closeLootDelay": 250,
+      "ignorePreliminary": false,
+      "confirmationWindow": {
+        "1536": {
+          "x": 0.41215,
+          "y": 0.21875,
+          "width": 0.082723,
+          "height": 0.020833
+        },
+        "1920": {
+          "x": 0.42031,
+          "y": 0.19722,
+          "width": 0.07447,
+          "height": 0.01851
+        }
+      },
+      "lootWindow": {
+        "1536": {
+          "cursorPos": { "x": 0.03147, "y": 0.26692 },
+          "upperLimit": 0.1302,
+          "toItemX": 0.018301,
+          "toItemY": 0.03515,
+          "itemHeight": 0.05729,
+          "height": 0.22005,
+          "width": 0.08272
+        },
+        "1920": {
+          "cursorPos": { "x": 0.02968, "y": 0.24074 },
+          "upperLimit": 0.117,
+          "toItemX": 0.015,
+          "toItemY": 0.023,
+          "itemHeight": 0.051,
+          "height": 0.194,
+          "width": 0.073
+        }
+      }
     }
   }
 }

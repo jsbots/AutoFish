@@ -47,6 +47,7 @@ const renderGameNames = ({game}) => {
     "WotLK Private",
     "TBC",
     "Vanilla",
+    "Turtle WoW"
   ];
 
   return elt(
