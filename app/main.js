@@ -93,7 +93,7 @@ const createWindow = async () => {
   let win = new BrowserWindow({
     title: generateName(Math.floor(random(5, 15))),
     width: 325,
-    height: 730,
+    height: 740,
     show: false,
     resizable: false,
     webPreferences: {
@@ -246,6 +246,20 @@ or in connection with the use or performance of this software.`)) {
 
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
-  Menu.setApplicationMenu(null);
+  const menu = Menu.buildFromTemplate([{label: `Help`,     submenu: [
+      { label: 'AutoFish 1.15.1 Public' },
+      { type: 'separator' },
+      { label: 'Read Me', click: () => shell.openExternal("https://github.com/jsbots/AutoFish#guide-blue_book")},
+      { label: 'Video', click: () => shell.openExternal("https://youtu.be/A3W8UuVIZTo")},
+      { type: 'separator' },
+      { label: 'Report issue', click: () => shell.openExternal("https://github.com/jsbots/AutoFish/issues")},
+      { type: 'separator' },
+      { label: 'Discord Server', click: () => shell.openExternal("https://discord.gg/4sHFUtZ8tC")},
+      { label: 'Donate', click: () => shell.openExternal("https://www.buymeacoffee.com/jsbots")},
+      { type: 'separator' },
+      { role: 'quit' }
+    ]}])
+
+  Menu.setApplicationMenu(menu);
   createWindow();
 });
