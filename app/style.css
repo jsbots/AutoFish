@@ -110,6 +110,7 @@ section {
 }
 
 .settings_header {
+  margin-top: 5px;
   font-size: 1.2em;
   font-weight: 500;
 }
@@ -211,8 +212,9 @@ section {
 }
 
 .settings select.filterType {
-  width: 87px;
-  margin-left: 6px;
+  width: 77px;
+  margin-left: 13px;
+  margin-right: 13px;
 }
 
 .settings input.atMouse {

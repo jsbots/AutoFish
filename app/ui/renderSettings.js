@@ -146,7 +146,7 @@ const renderFilterType = ({game, whitelist, filterType, atMouse}) => {
     elt(`option`, {selected: filterType == `blacklist`}, `blacklist`)
   );
 
-  return elt(`div`, null, `Filter Mode: `, modeContainer, `Loot win at mouse:`, atMouseContainer);
+  return elt(`div`, null, `Mode: `, modeContainer, `Loot window at mouse:`, atMouseContainer);
 }
 
 const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
@@ -255,7 +255,7 @@ return elt(
         renderFilterType(config),
         `Filter Mode will decide whether to pick or to ignore items in the list. Loot window at mouse will tell the bot whether it should check the loot window at mouse or the default loot window at the left side of the screen.`
       ),
-      wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `and `, elt('span', {style: `color:#950c95; font-weight: bold`}, `Epic `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green, blue and purple items in addition to the items in the whitelist.`)
+      /*wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `and `, elt('span', {style: `color:#950c95; font-weight: bold`}, `Epic `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green, blue and purple items in addition to the items in the whitelist.`)*/
     ),
     elt("p", {className: 'settings_header'}, "Threshold:"),
     elt(

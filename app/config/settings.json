@@ -11,7 +11,7 @@
   "luresDelayMin": 10,
   "whitelist": false,
   "whitelistWords": "",
-  "whiteListBlueGreen": false,
+  "whiteListBlueGreen": true,
   "filterType": "whitelist",
   "atMouse": true,
   "confirmSoulbound": true,

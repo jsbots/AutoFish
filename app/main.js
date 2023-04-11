@@ -93,7 +93,7 @@ const createWindow = async () => {
   let win = new BrowserWindow({
     title: generateName(Math.floor(random(5, 15))),
     width: 325,
-    height: 745,
+    height: 730,
     show: false,
     resizable: false,
     webPreferences: {
@@ -115,6 +115,7 @@ const createWindow = async () => {
   });
 
   win.once("ready-to-show", () => {
+    // win.openDevTools({mode: `detach`});
     win.show();
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
