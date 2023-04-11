@@ -236,6 +236,17 @@ const renderTimerQuit = ({timerQuit}) => {
   return elt('input', {type: 'checkbox', checked: timerQuit, name: "timerQuit"});
 };
 
+const renderSplashColor = ({splashColor}) => {
+let min = 100;
+let max = 255;
+if (splashColor < min) splashColor = min;
+if (splashColor > max) splashColor = max;
+
+  let splashColorWin = elt(`input`, {type: `number`, name: `splashColor`, value: splashColor });
+  return elt(`div`, null, elt('input', {type: `range`, min, max, value: splashColor, oninput: function() {splashColorWin.value = this.value}, name: `splashColor`}),
+   splashColorWin);
+};
+
 const renderIgnorePreliminary = ({ignorePreliminary}) => {
   return elt(`input`, {type: `checkbox`, checked: ignorePreliminary, name: `ignorePreliminary`});
 }
@@ -291,7 +302,8 @@ const renderSettings = (config) => {
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Do after max check time:`, renderMaxFishTimeAfter(config), `What the bot should do if it reaches the maximum checking time.`),
   wrapInLabel(`Loot Window closing delay (ms):`, renderCloseLootDelay(config), `How much does it take for the loot window to disappear after looting.`),
-  wrapInLabel(`Bobber sensitivity (px):`, renderBobberSensitivity(config), `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.`),
+  wrapInLabel(`${config.game == `Turtle WoW` ? `Splash` : `Bobber`} sensitivity (px):`, renderBobberSensitivity(config), config.game != `Turtle WoW` ? `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.` : `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`),
+  config.game == `Turtle WoW` ? wrapInLabel(`Splash color: `, renderSplashColor(config), `Whitness of the splash effect: should be smaller at night and higher during the day. `) : ``,
   wrapInLabel(`Bobber density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),
   wrapInLabel(`Bobber check time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
   wrapInLabel(`Fishing zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),

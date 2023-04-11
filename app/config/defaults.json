@@ -634,6 +634,7 @@
       }
     },
     "Turtle WoW": {
+      "game": "Turtle WoW",
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -666,6 +667,7 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivityPrint": true,
       "bobberSensitivity": 20,
+      "splashColor": 230,
       "bobberDensity": 1,
       "closeLootDelay": 250,
       "ignorePreliminary": false,

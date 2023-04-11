@@ -71,7 +71,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     bobberColor: settings.bobberColor,
     sensitivity: config.bobberSensitivity,
     density: config.bobberDensity,
-    reverseDir: settings.game == `Turtle WoW`
+    reverseDir: settings.game == `Turtle WoW`,
+    splashColor: config.splashColor
   });
 
   const notificationZone = createNotificationZone({
@@ -503,7 +504,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
       bobberColor: settings.bobberColor,
       sensitivity: config.bobberSensitivity,
       density: config.bobberDensity,
-      reverseDir: settings.game == `Turtle WoW`
+      reverseDir: settings.game == `Turtle WoW`,
+      splashColor: config.splashColor
     });
   }
 
