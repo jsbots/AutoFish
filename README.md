@@ -102,17 +102,34 @@ Also on unofficial servers:
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
+4. Find a place to fish.
+5. Set your **Fishing Zone** by pressing **Set Fishing Zone** button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
+6. Is something wrong?
+> Yes, it says:
+```
+Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
+```
 
-*After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and Issues section to solve 99% of the possible issues.*
+Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color. 
+
+> No, but the bot recasts all the time and can't find the bobber. (as says in the log)
+
+Then you seem to overdid a little bit with **Threshold** value, decrease it, if this gets you back to "found red/blue colors" error, then there's something wrong with the size/position of your **Fishing Zone**.
+
+> No, but the bot clicks too early before fish is even hooked.
+
+There's a couple solutions to this. First, try from the 1st person view, if that didn't help, then go to the **Advanced Settings* and increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section).
+
+> No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
+
+Then you do the opposite to the previous issue: go to the **Advanced Settings* and decrease either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section).
 
 6. To stop the bot press your stop key (default: space).
 
 ### Hints and Issues
 
 - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You can find them in the **Advanced Settings**).
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
