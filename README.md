@@ -47,7 +47,7 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 **Premium Features:**
-- Youe support the project! *(main feature)*
+- You support the project! *(main feature)*
 - Remote control via Telegram.
 - Multiple game windows support (up to 4).
 - Sound Detection.
@@ -105,7 +105,7 @@ Also on unofficial servers:
 4. Find a place to fish.
 5. Set your **Fishing Zone** by pressing **Set Fishing Zone** button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
-6. Is something wrong?
+6. Are you getting an error?
 > Yes, it says: *Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.*
 
 Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color. 
