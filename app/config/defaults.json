@@ -36,7 +36,7 @@
       "logOutFor": { "from": 30, "to": 90 },
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivityPrint": true,
-      "bobberSensitivity": 10,
+      "bobberSensitivity": 5,
       "bobberDensity": 2,
       "closeLootDelay": 1500,
       "ignorePreliminary": false,
