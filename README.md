@@ -47,12 +47,12 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 **Premium Features:**
+- You support the project! *(main feature)*
 - Remote control via Telegram.
 - Multiple game windows support (up to 4).
 - Sound Detection.
-- Mammoth Selling.
+- Mammoth Selling (junk selling).
 - AFK Fishing Mode (auto-focusing the window only when catching/casting).
-- 4K resolution support.
 - Profiles support.
 
 <p align="center">
@@ -80,7 +80,7 @@ Also on unofficial servers:
   - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
 - <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
-  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (because of uncomplete animtion of the jerking, use sound detection for better performance)
+  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use separate Turtle WoW config, sound detection gives best performance there)
 
 
 ## Disclaimer :warning:
@@ -102,29 +102,43 @@ Also on unofficial servers:
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
-4. Find a place to fish and set your **Fishing Zone** by pressing "Set Fishing Zone" button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
+4. Find a place to fish.
+5. Set your **Fishing Zone** by pressing **Set Fishing Zone** button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
+6. Are you getting an error?
+> Yes, it says: *Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.*
 
-*After you pressed Start a lot of things might happen instead of the bot working properly, so before telling me in discord how frustrated you are :upside_down_face:, read [Fishing zone](#fishing-zone-dart) and [Threshold](#threshold-red_circle) and also Hints and Issues section to solve 99% of the possible issues.*
+Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color. 
+
+> No, but the bot recasts all the time and can't find the bobber. (as says in the log)
+
+Then you seem to overdid a little bit with **Threshold** value, decrease it, if this gets you back to "found red/blue colors" error, then there's something wrong with the size/position of your **Fishing Zone**.
+
+> No, but the bot clicks too early before fish is even hooked.
+
+There's a couple solutions to this. First, try from the 1st person view, if that didn't help, then go to the **Advanced Settings* and increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section).
+
+> No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
+
+Then you do the opposite to the previous issue: go to the **Advanced Settings** and decrease either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section). If it's Turtle WoW then decrease **Splash Color** value. 
 
 6. To stop the bot press your stop key (default: space).
 
 ### Hints and Issues
 
-- Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working: change your **Fizhing Zone** or increase Threshold or change the place.
-- If the bot clicks too early, first try from the 1st person view, if that didn't help, increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You can find them in the **Advanced Settings**).
+- Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working.
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
 - Filter works properly only with 16:9 resolutions right now: **1366x768** or **1920x1080** or **3840x2160**
 - Don't fish near other players, the bot might confuse their bobber for yours.
-- If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 - If you use many monitors the game should be on the primary one.
 - Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 - The bot might not work properly if you have **latency issues**.
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
+- If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 
 ## Threshold :red_circle:
 
@@ -315,9 +329,9 @@ Because the bot can't work in the background and requires a little bit difficult
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.15.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 1.15.1 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 1.19.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 1.19.1 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
