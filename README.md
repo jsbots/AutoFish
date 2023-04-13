@@ -19,8 +19,9 @@
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Download](#download-open_file_folder)
 
-Additional Premium Features:
+AutoFish Premium:
 
+- [Features](#autofish-premium-crown)
 - [Remote control](#telegram-remote-control-iphone)
 - [Mammoth Selling](#mammoth-selling-elephant)
 - [AFK Fishing](#afk-fishing-sleeping)
@@ -40,20 +41,11 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 - Optional loot support.
 - Fishing lures support.
 - Custom window support.
-- Auto confirmation for soulbound items.
+- Auto confirmation of *soulbound* items.
 - Missing on purpose feature.
 - Logging out/in feature.
 - Switching between red/blue feathers feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
-
-**Premium Features:**
-- You support the project! *(main feature)*
-- Remote control via Telegram.
-- Multiple game windows support (up to 4).
-- Sound Detection.
-- Mammoth Selling (junk selling).
-- AFK Fishing Mode (auto-focusing the window only when catching/casting).
-- Profiles support.
 
 <p align="center">
 <img src="guide_img/UI.jpg" width="640">
@@ -108,7 +100,7 @@ Also on unofficial servers:
 6. Are you getting an error?
 > Yes, it says: *Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.*
 
-Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color. 
+Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color.
 
 > No, but the bot recasts all the time and can't find the bobber. (as says in the log)
 
@@ -120,7 +112,7 @@ There's a couple solutions to this. First, try from the 1st person view, if that
 
 > No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
 
-Then you do the opposite to the previous issue: go to the **Advanced Settings** and decrease either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section). If it's Turtle WoW then decrease **Splash Color** value. 
+Then you do the opposite to the previous issue: go to the **Advanced Settings** and decrease either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section). If it's Turtle WoW then decrease **Splash Color** value.
 
 6. To stop the bot press your stop key (default: space).
 
@@ -240,6 +232,22 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 
 <p align="center">
 <img src="guide_img/soulbound.jpg" width="640" align="center">
+</p>
+
+
+## AutoFish Premium	:crown:
+
+**Premium Features:**
+- You support the project! *(main feature)*
+- Remote control via Telegram.
+- Multiple game windows support (up to 4).
+- Sound Detection.
+- Mammoth Selling (junk selling).
+- Profiles support.
+- AFK Fishing Mode (auto-focusing the window only when catching/casting).
+
+<p align="center">
+<img src="guide_img/Premium_UI.jpg" width="640">
 </p>
 
 ## Telegram remote control :iphone:
