@@ -203,6 +203,10 @@ section {
   display: inline-block;
 }
 
+.settings .option_hint:hover {
+  opacity: 0.9;
+}
+
 .settings_section.threshold_settings {
   padding-left: 2px;
 }
