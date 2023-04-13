@@ -90,9 +90,9 @@ class AutoFish {
       "div",
       { className: "AutoFish" },
       renderLogo(),
-      elt("p", { className: "settings_header" }, "Settings:"),
+      elt("p", { className: "settings_header" }, "Settings"),
       this.settings.dom,
-      elt("p", { className: "settings_header" }, "Log:"),
+      elt("p", { className: "settings_header settings_header_log" }, "Log"),
       this.logger.dom,
       this.button.dom,
       footer

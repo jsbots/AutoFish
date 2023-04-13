@@ -252,7 +252,7 @@ const renderIgnorePreliminary = ({ignorePreliminary}) => {
 }
 
 const renderSettings = (config) => {
-  return elt('section', {className: `settings`},
+  return elt('section', {className: `settings settings_advSettings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Custom window: `, renderCustomWindow(config), `If for some reason your game window isn't "World of Warcraft" you can choose a custom window from all the windows opened on your computer.`),
@@ -296,7 +296,7 @@ const renderSettings = (config) => {
   wrapInLabel(`Sleep after hook:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
   wrapInLabel(`After hook random delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   ),
-  elt(`p`, {className: `settings_header`}, `Critical (might break the bot)`),
+  elt(`p`, {className: `settings_header settings_header_critical`}, `Critical`),
   elt('div', {className: "settings_section settings_critical"},
   wrapInLabel(`Ignore preliminary checks:`, renderIgnorePreliminary(config), `The bot will ignore all the preliminary checks including notification errors.`),
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),

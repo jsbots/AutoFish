@@ -110,9 +110,23 @@ section {
 }
 
 .settings_header {
-  margin-top: 5px;
-  font-size: 1.2em;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  background-color: white;
+  margin-left: 5px;
+  margin-bottom: -1px;
+  padding: 3px;
+  padding-right: 10px;
+  border-top: 1px solid black;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 5px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  margin-top: 7px;
+  font-size: 1.1em;
   font-weight: 500;
+  z-index: 10;
 }
 
 .settings_critical {
@@ -120,7 +134,7 @@ section {
 }
 
 .logger {
-  height: 110px;
+  height: 105px;
   background-image: url("./img/fish.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -128,13 +142,28 @@ section {
   background-color: rgba(255, 255, 0, 0.1);
   border: 1px inset grey;
   border-radius: 10px;
+  border-top-left-radius: 7px;
   overflow-y: scroll;
   padding: 5px;
+}
+
+
+.settings_header_log {
+  margin-top: 2px;
+  background-color: #ffffe5;
+}
+
+.settings_header_critical {
+  background-color: rgb(255, 221, 221);
 }
 
 .settings {
   display: flex;
   flex-flow: row wrap;
+}
+
+.settings_advSettings {
+  display: block;
 }
 
 .settings .settings_section {
@@ -143,6 +172,7 @@ section {
   justify-content: space-between;
   border: 1px inset grey;
   border-radius: 10px;
+  border-top-left-radius: 7px;
   padding: 5px;
   flex: 1 1 0;
 }
