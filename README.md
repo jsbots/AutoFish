@@ -20,8 +20,7 @@
 - [Download](#download-open_file_folder)
 
 AutoFish Premium:
-
-- [Features](#autofish-premium-crown)
+- [Features](#autofish-premiumcrown)
 - [Remote control](#telegram-remote-control-iphone)
 - [Mammoth Selling](#mammoth-selling-elephant)
 - [AFK Fishing](#afk-fishing-sleeping)
