@@ -520,6 +520,7 @@ input[type=checkbox] {
 
 .settings_header_premium {
   background-color: #ffe9dc;
+  border-color: grey;
 }
 
 .premium_lock {
