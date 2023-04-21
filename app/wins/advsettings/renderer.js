@@ -112,15 +112,6 @@ const renderRelZone = ({relZone}) => {
     );
 };
 
-const renderChatZone = ({chatZone}) => {
-  return elt(`div`, {"data-collection": `chatZone`},
-      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1, name: `x`, value: chatZone.x}),
-      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, name: `y`, value: chatZone.y}),
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1, name: `width`, value: chatZone.width}),
-      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1, name: `height`, value: chatZone.height})
-    );
-}
-
 const renderCheckingDelay = ({checkingDelay}) => {
   return elt(`input`, {type: `number`, name:`checkingDelay`, value: checkingDelay});
 };
@@ -251,6 +242,80 @@ const renderIgnorePreliminary = ({ignorePreliminary}) => {
   return elt(`input`, {type: `checkbox`, checked: ignorePreliminary, name: `ignorePreliminary`});
 }
 
+
+
+
+const renderMammoth = () => {
+  return elt('input', {type: `checkbox`, checked: false, disabled: true});
+};
+
+const renderMammothKey = () => {
+  const key = elt('input', {type: `text`, disabled: true, value: `none`});
+  key.setAttribute(`readonly`, `true`);
+  return key;
+};
+
+const renderMammothKeyDelay = () => {
+  return elt('input', {type: `number`, disabled: true, value: 0});
+};
+
+const renderMammothSellDelay = () => {
+  return elt(`div`, null, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, value: 0, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`,  value: 0, disabled: true})
+  );
+};
+
+const renderMammothApplyEvery= () => {
+  return elt(`div`, null, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, value: 0, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`, value: 0, disabled: true})
+  );
+};
+
+const renderMammothTraderName = () => {
+    return elt('input', {type: `text`, disabled: true, value: `Trader`});
+};
+
+const renderSoundDetection = ({soundDetection}) => {
+    return elt(`input`, {type: `checkbox`, disabled: true, checked: false});
+};
+
+const renderSoundDetectionRange = () => {
+    let soundDetectionRangeWin = elt(`input`, {type: `number`, value: 800, disabled: true});
+
+    return elt(`div`, null, elt('input', {type: `range`, min: 128, max: 1100, value: 800, disabled: true}),
+     soundDetectionRangeWin);
+};
+
+
+
+const renderTmApiKey = () => {
+  return elt('div', null, elt('input', {type: `text`, disabled: true, value: ``, className: `tmApiKey`}), elt('input', {type: `button`, disabled: true, value: `Connect`}));
+};
+
+const renderDetectWhisper = () => {
+  return elt('input', {type: `checkbox`, disabled: true, checked: false});
+};
+
+const renderWhisperThreshold = () => {
+  let colorWin = elt(`div`, {className: `whisperColorBox`, disabled: true});
+  let range = elt('input', {type: `range`, min: 0, max: 255, value: 0, className: `whisperRange`, disabled: true});
+  return elt(`div`, null, range, colorWin);
+};
+
+const renderChatZone = () => {
+  return elt(`div`, null,
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1,  value: 0, disabled: true}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, value:0, disabled: true}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1,  value: 0, disabled: true}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1,  value: 0, disabled: true})
+    );
+}
+
+
+
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
@@ -269,6 +334,29 @@ const renderSettings = (config) => {
     renderShiftClick(config),
     `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assigned to shift.`
   )),
+
+  elt(`p`, {className: `settings_header settings_header_premium`}, `🔊 Sound Detection`), elt(`span`, {className: `premium_lock`}),
+elt('div', {className: "settings_section settings_premium"},
+wrapInLabel(`Sound Detection: `, renderSoundDetection(config), `The bot will check the change of sound instead of the change of pixels when it should catch the fish.`),
+wrapInLabel(`Sound Detection Range: `, renderSoundDetectionRange(config), `The strength of the noise created by jerking of the bobber`),
+),
+elt(`p`, {className: `settings_header settings_header_premium`}, `📲 Remote control`), elt(`span`, {className: `premium_lock`}),
+elt(`div`, {className: `settings_section settings_premium`},
+  wrapInLabel(`Telegram token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
+  wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
+  wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
+  wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
+),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🐘 Mammoth Selling`), elt(`span`, {className: `premium_lock`}),
+elt('div', {className: "settings_section settings_premium"},
+wrapInLabel(`Use mammoth for selling: `, renderMammoth(config), `You can summon a mammoth carrying traders during the fishing and then sell all the scrap to one of them using any addon for selling such scrap.`),
+wrapInLabel(`Mammoth Key: `, renderMammothKey(config), `A key that will be used to summon a mammoth mount.`),
+wrapInLabel(`Mammoth Key Delay(ms): `, renderMammothKeyDelay(config), `How long the bot will wait after summoning a mammoth mount.`),
+wrapInLabel(`Mammoth Sell Delay(ms): `, renderMammothSellDelay(config), `How long it will take to sell all the scrap to a trader. The bot will generate a random number from the provided values. The number is generated every time the bot interacts with the trader: so the next time the bot interacts with the trader it will be always different (randomly generated).`),
+wrapInLabel(`Mammoth Apply Every(min): `, renderMammothApplyEvery(config), `A randomly generated interval of summoning a mammoth mount. The bot will summon a mammoth and then generate a new random value between the provided ones.`),
+wrapInLabel(`Mammoth Trader Name: `, renderMammothTraderName(config), `The bot will use /target trader_name command to target one of your traders. Check the name of one you want to use for trading and write it here. The bot will use interaction key for interaction with a trader, you can assign it in them main settings.`),
+),
+
   elt(`p`, {className: `settings_header`}, `Miss on purpose`),
   elt('div', {className: "settings_section"},
   wrapInLabel(`Miss on purpose: `, renderMissOnPurpose(config), `The bot will miss fish on purpose to simulate a human mistake. The value is % chance per cast that the bot will miss (it's not % of the whole session, so it might be drastically different). This functionality might decrease chances of being detected`),
