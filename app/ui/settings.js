@@ -82,6 +82,10 @@ class Settings {
         this.onDx11();
       }
 
+      if((event.target.name == `lures` && event.target.checked) && (config.game == `Dragonflight` || config.game == `Classic` || config.game == `Vanilla` || config.game == `Turtle WoW`)) {
+        this.onLures();
+      }
+
       if(event.target.name == `whitelist` && event.target.checked == true) {
         this.onWhitelistWarn();
       }
@@ -107,6 +111,10 @@ class Settings {
 
   regOnDx11(callback) {
     this.onDx11 = callback;
+  }
+
+  regOnLures(callback) {
+    this.onLures = callback;
   }
 
   regOnWhitelistWarn(callback) {

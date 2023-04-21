@@ -54,7 +54,7 @@ const showChoiceWarning = (win, warning) => {
 const showWarning = (win, warning) => {
   return result = dialog.showMessageBoxSync(win, {
     type: "warning",
-    title: `Disclaimer`,
+    title: `Warning`,
     message: warning,
     buttons: [`Ok`]
   });
@@ -130,7 +130,7 @@ const createWindow = async () => {
       win.webContents.send("log-data", data);
     });
 
-    log.send(`Looking for the windows...`);
+    log.send(`Looking for the windows of the game...`);
 
     const useCustomWindow = config.patch[settings.game].useCustomWindow;
     if(useCustomWindow) {
@@ -149,7 +149,7 @@ const createWindow = async () => {
     const games = findGameWindows(config.game);
 
     if (!games) {
-      log.err(`Can't find any window of the game!`);
+      log.err(`Can't find any window of the game! Go to the Advanced Settings and choose the window of the game manually.`);
       win.webContents.send("stop-bot");
       return;
     } else {
@@ -215,7 +215,11 @@ or in connection with the use or performance of this software.`)) {
   );
 
   ipcMain.on("dx11-warn", () => {
-    showWarning(win, `If you play on official servers, don't forget to switch to DirectX 11 in the game.`);
+    showWarning(win, `Don't use this if you don't know what you are doing. This is an alternative pixel recognition logic that requires DirectX 11 turned on in the game.`);
+  });
+
+  ipcMain.on("lures-warn", () => {
+    showWarning(win, `Don't forget to make a macros as described in the Guide (Help -> Read Me) and assign it to the same key you have assigned for Lures Key.`);
   });
 
   ipcMain.on("whitelist-warn", () => {
