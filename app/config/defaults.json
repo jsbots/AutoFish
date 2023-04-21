@@ -5,6 +5,8 @@
   },
   "patch": {
     "Dragonflight": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -80,6 +82,8 @@
       }
     },
     "WotLK Classic": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -150,6 +154,8 @@
       }
     },
     "Classic": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -220,6 +226,8 @@
       }
     },
     "Legion": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -288,6 +296,8 @@
       }
     },
     "MoP": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -356,6 +366,8 @@
       }
     },
     "Cataclysm": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -426,6 +438,8 @@
       }
     },
     "WotLK Private": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -494,6 +508,8 @@
       }
     },
     "TBC": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -564,6 +580,8 @@
       }
     },
     "Vanilla": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -634,6 +652,8 @@
       }
     },
     "Turtle WoW": {
+      "multipleWindows": false,
+      "likeHuman": true,
       "game": "Turtle WoW",
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,

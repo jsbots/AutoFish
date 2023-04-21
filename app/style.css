@@ -526,6 +526,7 @@ input[type=checkbox] {
 .premium_lock {
   background-image: url('img/lock.png');
   background-repeat: no-repeat;
+  background-position: 0;
   background-size: contain;
   margin-left: 5px;
   width: 15px;

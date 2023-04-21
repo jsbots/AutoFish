@@ -70,25 +70,6 @@ const renderTimer = ({timer}) => {
   );
 };
 
-
-const renderLikeHuman = ({likeHuman}) => {
-  return elt("input", {
-    type: "checkbox",
-    className: "option",
-    checked: likeHuman,
-    name: "likeHuman",
-  });
-};
-
-const renderMultipleWindows = ({multipleWindows}) => {
-  return elt("input", {
-    type: "checkbox",
-    className: "option",
-    checked: multipleWindows,
-    name: "multipleWindows",
-  });
-};
-
 const renderLures = ({lures}) => {
   return elt("input", {
     type: "checkbox",
@@ -169,6 +150,13 @@ const renderWhiteListGreenBlue = ({whitelist, whiteListBlueGreen}) => {
 };
 
 
+const renderMultipleWindows = () => {
+  return elt(`div`, {className: `premium_lock premium_lock_main`})
+};
+
+const renderAfkmode = () => {
+  return elt(`div`, {className: `premium_lock premium_lock_main`})
+};
 
 
 const renderSettings = (config) => {
@@ -213,15 +201,15 @@ return elt(
       "div",
       { className: "settings_section" },
       wrapInLabel(
-        "Like a human: ",
-        renderLikeHuman(config),
-        `The bot will move your mouse in a human way: random speed and with a slight random deviation in the movement. Otherwise it will move the mouse instantly, which might be a better option if you use a lot of windows.`
-      ),
-      wrapInLabel(
-        "Use DirectX 11: ",
-        renderMultipleWindows(config),
-        `If for some reason something doesn't work, you can use this option and the bot will use a different library to analyze your screen.`
-      ),
+  "AFK Fishing: ",
+  elt(`div`, {className: `premium_option`}, renderAfkmode()),
+  `ONLY ON DIRECTX 11. The bot will automatically alt+tab after it casts (bringing back the previous window) and automatically focus the window of the game when it needs to catch. If you use your mouse too much during AFK fishing the whitelist feature might be unstable. `
+),
+wrapInLabel(
+  "Multiple Windows: ",
+  elt(`div`, {className: `premium_option`}, renderMultipleWindows()),
+  `ONLY ON DIRECTX 11. If you want to use multiple windows check this option. You need to launch every window and configure them properly, make sure every window is in DirectX 11 mode. This option uses a different library to analyze your screen, you can check it even for one window if for some reason the default way doesn't work for you.`
+),
       wrapInLabel(
         "Use lures: ",
         renderLures(config),

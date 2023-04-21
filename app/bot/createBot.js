@@ -55,7 +55,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     if(zone.width > screenSize.width) zone.width = screenSize.width;
     if(zone.height > screenSize.height) zone.height = screenSize.height;
 
-    if(!settings.multipleWindows) {
+    if(!config.multipleWindows) {
       await actionOnce(() => {});
       let grabbed = await(await screen.grabRegion(new Region(zone.x + screenSize.x, zone.y + screenSize.y, zone.width, zone.height))).toRGB();
       return grabbed;
@@ -135,7 +135,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
       pos.y = pos.y + random(-randomRange, randomRange);
     }
 
-    if (settings.likeHuman) {
+    if (config.likeHuman) {
       await mouse.humanMoveTo(
         pos.x,
         pos.y,
@@ -253,7 +253,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
   const highlightBobber = async (pos) => {
-    if (settings.useInt || (settings.likeHuman && random(0, 100) > 85)) {
+    if (settings.useInt || (config.likeHuman && random(0, 100) > 85)) {
         return pos;
     }
 
@@ -328,7 +328,7 @@ const createBot = (game, { config, settings }, winSwitch) => {
     await sleep(250);
     let x = cursorPos.x + lootWindow.exitButton.x;
     let y = cursorPos.y - lootWindow.exitButton.y;
-    if(settings.multipleWindows) {
+    if(config.multipleWindows) {
       return isYellow(workwindow.colorAt(x, y, "array"));
     } else {
       let color = await screen.colorAt(new Point(x + screenSize.x, y + screenSize.y));

@@ -1,7 +1,6 @@
 {
   "game": "Dragonflight",
   "timer": 0,
-  "likeHuman": true,
   "lures": false,
   "fishingKey": "1",
   "luresKey": "2",
@@ -18,6 +17,5 @@
   "whitelistLanguage": "eng",
   "threshold": 60,
   "bobberColor": "red",
-  "multipleWindows": false,
   "initial": true
 }
