@@ -251,7 +251,7 @@ or in connection with the use or performance of this software.`)) {
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
   const menu = Menu.buildFromTemplate([{label: `Help`,     submenu: [
-      { label: 'AutoFish 1.15.1 Public' },
+      { label: 'AutoFish 1.15.2 Public' },
       { type: 'separator' },
       { label: 'Read Me', click: () => shell.openExternal("https://github.com/jsbots/AutoFish#guide-blue_book")},
       { label: 'Video', click: () => shell.openExternal("https://youtu.be/A3W8UuVIZTo")},
