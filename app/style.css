@@ -117,9 +117,10 @@ section {
   margin-left: 5px;
   margin-bottom: -1px;
   padding: 3px;
-  padding-right: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
   border-top: 1px solid black;
-  border-top-right-radius: 20px;
+  border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-left: 1px solid black;
   border-right: 1px solid black;
