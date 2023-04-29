@@ -264,7 +264,7 @@ The bot is able to connect to your Arduino Board and use it to emulate a mouse/k
 1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
 2. Connect it to your computer.
 3. Install [Arduino IDE](https://www.arduino.cc/en/software).
-4. Click **New Sketch** and replace everything there with this: [Arduino Sketch](sketch/Arduino Sketch.txt).
+4. Click **New Sketch** and replace everything there with this sketch: [Arduino Sketch](https://raw.githubusercontent.com/jsbots/AutoFish/main/sketch/Arduino%20Sketch.txt).
 5. Click **Tools** -> **Port** and choose the port your Arduino Board connected to.
 6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
 7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
