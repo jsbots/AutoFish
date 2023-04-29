@@ -21,11 +21,12 @@
 
 AutoFish Premium:
 - [Features](#autofish-premiumcrown)
-- [Remote control](#telegram-remote-control-iphone)
-- [Mammoth Selling](#mammoth-selling-elephant)
-- [AFK Fishing](#afk-fishing-sleeping)
+- [Remote Control](#telegram-remote-control-iphone)
+- [Arduino Control](#arduino-control-joystick)
 - [Multiple Windows](#multiple-windows-rocket)
 - [Sound Detection](#sound-detection-loud_sound)
+- [Mammoth Selling](#mammoth-selling-elephant)
+- [AFK Fishing](#afk-fishing-sleeping)
 
 
 ## Fishing bot :fish:
@@ -239,6 +240,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 **Premium Features:**
 - You support the project! *(main feature)*
 - Remote control via Telegram.
+- Control with Arduino Board (complete hardware emulation).
 - Multiple game windows support (up to 4).
 - Sound Detection.
 - Mammoth Selling (junk selling).
@@ -248,6 +250,24 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
 </p>
+
+## Arduino Control :joystick:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/arduino.jpg" align="center">
+</p>
+
+The bot is able to connect to your Arduino Board and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
+
+1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
+2. Connect it to your computer.
+3. Install [Arduino IDE](https://www.arduino.cc/en/software).
+4. Click **New Sketch** and replace everything there with this: [Arduino Sketch](sketch/Arduino Sketch.txt).
+5. Click **Tools** -> **Port** and choose the port your Arduino Board connected to.
+6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
+7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
 
 ## Telegram remote control :iphone:
 
@@ -323,10 +343,6 @@ Depends on the mount the name of your trader might be different, so change the d
 ## AFK Fishing :sleeping:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-<p align="center">
-<img src="guide_img/afk-fishing.gif" width="640px" align="center">
-</p>
 
 Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
 
