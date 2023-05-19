@@ -11,7 +11,8 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
     highlightBobber,
     checkBobber,
     hookBobber,
-    doAfterTimer
+    doAfterTimer,
+    stopAllCurrentActions
   } = bot;
 
   const sleep = (time) => {

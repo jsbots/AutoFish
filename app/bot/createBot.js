@@ -35,7 +35,7 @@ const random = (from, to) => {
 
 let chatMsgs = [];
 
-const createBot = (game, { config, settings }, winSwitch) => {
+const createBot = (game, { config, settings }, winSwitch, state) => {
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
@@ -643,7 +643,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
     findBobber,
     highlightBobber,
     checkBobber,
-    hookBobber
+    hookBobber,
+    stopAllCurrentActions
   };
 };
 
