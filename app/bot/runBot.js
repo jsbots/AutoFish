@@ -127,6 +127,8 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
     }
 
   } while (state.status == "working");
+
+  await stopAllCurrentActions();
 };
 
 module.exports = runBot;

@@ -40,6 +40,8 @@ const createBot = (game, { config, settings }, winSwitch) => {
   const delay = [config.delay.from, config.delay.to];
 
   const action = async (callback) => {
+    if(state.status == `stop`) return;
+
     await winSwitch.execute(workwindow);
     await callback();
     winSwitch.finished();
@@ -617,6 +619,14 @@ const createBot = (game, { config, settings }, winSwitch) => {
       onError();
     }
   }
+
+  const stopAllCurrentActions = async () => {
+  if(!config.arduino) {
+    await mouse.humanMoveTo.cancelCurrent();
+    await keyboard.sendKeys.cancelCurrent();
+    await keyboard.printText.cancelCurrent();
+  }
+};
 
   doAfterTimer.on = settings.timer;
   doAfterTimer.timer = createTimer(() => settings.timer * 1000 * 60);
