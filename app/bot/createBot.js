@@ -68,11 +68,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
     threshold: settings.threshold,
+    screenSize,
     bobberColor: settings.bobberColor,
     sensitivity: config.bobberSensitivity,
     density: config.bobberDensity,
     reverseDir: settings.game == `Turtle WoW`,
     splashColor: config.splashColor,
+    direction: config.findBobberDirection,
     autoThreshold: settings.autoTh
   });
 
@@ -518,11 +520,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
       getDataFrom,
       zone: Zone.from(screenSize).toRel(config.relZone),
       threshold: settings.threshold,
+      screenSize,
       bobberColor: settings.bobberColor,
       sensitivity: config.bobberSensitivity,
       density: config.bobberDensity,
       reverseDir: settings.game == `Turtle WoW`,
       splashColor: config.splashColor,
+      direction: config.findBobberDirection,
       autoThreshold: settings.autoTh
     });
   }

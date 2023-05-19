@@ -333,7 +333,11 @@ const renderLikeHuman = ({likeHuman}) => {
 
 const renderAutoSensDens = ({autoSensDens, game}) => {
   return elt(`input`, {type: `checkbox`, disabled: game == `Turtle WoW`, checked: autoSensDens, name: `autoSensDens`});
-}
+};
+
+const renderFindBobberDirection = ({findBobberDirection}) => {
+  return elt(`select`, {name: `findBobberDirection`}, ...([`normal`, `reverse`, `center`].map(dir => elt(`option`, {value: dir, selected: findBobberDirection == dir}, dir.slice(0, 1).toUpperCase() + dir.slice(1)))))
+};
 
 
 
@@ -423,11 +427,7 @@ wrapInLabel(`Mammoth Trader Name: `, renderMammothTraderName(config), `The bot w
   wrapInLabel(`Bobber check time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
   wrapInLabel(`Fishing zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
   wrapInLabel(`Cast animation delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
-  wrapInLabel(
-    "Use DirectX 11: ",
-    renderMultipleWindows(config),
-    `If for some reason something doesn't work, you can use this option and the bot will use a different library to analyze your screen.`
-  )
+  wrapInLabel(`Looking For Bobber Direction:`, renderFindBobberDirection(config), `The direction how the bot will look for the bobber in the fishing zone. Normal means from left to right and from top to bottom, Reverse means from left to right and from bottom to top, Center means from the very center of the Fishing Zone to its borders.`),
   ));
 }
 

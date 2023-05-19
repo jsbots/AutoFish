@@ -41,6 +41,7 @@
       "bobberSensitivity": 5,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 1500,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -118,6 +119,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 750,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -191,6 +193,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 750,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -264,6 +267,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -335,6 +339,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -406,6 +411,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -479,6 +485,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -550,6 +557,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -623,6 +631,7 @@
       "bobberSensitivity": 1,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
@@ -699,6 +708,7 @@
       "splashColor": 230,
       "bobberDensity": 1,
       "autoSensDens": true,
+      "findBobberDirection": "center",
       "closeLootDelay": 250,
       "ignorePreliminary": false,
       "confirmationWindow": {
