@@ -35,21 +35,9 @@ const createBots = async (games, settings, config, log) => {
   return {
     startBots(onError) {
       log.send("Starting the bots...")
-      if (settings.timer) {
-        setTimeout(() => {
-          if(!bots.every(({state}) => state.status == 'stop')) {
-            onError();
-            if(config.patch[settings.game].timerQuit) {
-              log.ok('Closing the windows...')
-              games.forEach(({workwindow}) => workwindow.close());
-              app.quit();
-            }
-          }
-        }, settings.timer * 1000 * 60);
-      }
 
       bots.forEach((bot) => {
-        runBot(bot)
+        runBot(bot, onError, bots)
         .then(() => {
             log.setState(true);
             bot.stats.show().forEach((stat) => bot.log.ok(stat));

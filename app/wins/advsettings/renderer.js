@@ -340,6 +340,33 @@ const renderFindBobberDirection = ({findBobberDirection}) => {
 };
 
 
+const renderAfterTimer = ({afterTimer}) => {
+  let options = [
+    `Stop`,
+    `HS`,
+    `Quit`,
+    `HS + Quit`
+  ]
+  return elt('select', {value: afterTimer, name: "afterTimer"}, ...options.map(option => elt(`option`, {value: option, selected: option == afterTimer}, option)));
+};
+
+const renderHsKey = ({hsKey, afterTimer}) => {
+  const key = elt('input', {type: `text`, name: `hsKey`, disabled: afterTimer != `HS` && afterTimer != `HS + Quit`, value: hsKey});
+  key.setAttribute(`readonly`, `true`);
+  return key;
+};
+
+const renderHsKeyDelay = ({hsKeyDelay, afterTimer}) => {
+  return elt(`input`, {type: `number`, value: hsKeyDelay, disabled: afterTimer != `HS` && afterTimer != `HS + Quit`, name: `hsKeyDelay`})
+}
+
+const renderShutDown = ({timerShutDown, afterTimer}) => {
+  return elt(`input`, {type: `checkbox`, checked: timerShutDown, disabled: afterTimer != `Quit` && afterTimer != `HS + Quit`, name: `timerShutDown`});
+};
+
+
+
+
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
@@ -364,6 +391,14 @@ const renderSettings = (config) => {
     renderShiftClick(config),
     `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assigned to shift.`
   )),
+
+  elt(`p`, {className: `settings_header`}, `Timer`),
+elt('div', {className: "settings_section"},
+wrapInLabel("Do after timer: ", renderAfterTimer(config),`What the bot should do after the timer elapses (you can set it in the main window)`),
+wrapInLabel("HS Key: ", renderHsKey(config), `A key your HS is assigned.`),
+wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`),
+wrapInLabel("Shut down computer after quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
+),
 
   elt(`p`, {className: `settings_header settings_header_premium`}, `🔊 Sound Detection`), elt(`span`, {className: `premium_lock`}),
 elt('div', {className: "settings_section settings_premium"},

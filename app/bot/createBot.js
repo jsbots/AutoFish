@@ -4,6 +4,7 @@ const createNotificationZone = require("./notificationZone.js");
 const createLootZone = require("./lootZone.js");
 const createChatZone = require('./chatZone');
 const Jimp = require(`jimp`);
+const {app} = require(`electron`);
 
 const { screen, Region, Point } = require("@nut-tree/nut-js");
 
@@ -585,8 +586,43 @@ const createBot = (game, { config, settings }, winSwitch) => {
   };
 
 
+  const doAfterTimer = async (onError, wins) => {
+    if(config.afterTimer == `HS` || config.afterTimer == `HS + Quit`) {
+      await action(async () => {
+        await keyboard.sendKey(config.hsKey, delay);
+      }, true);
+      await sleep(config.hsKeyDelay);
+    }
+
+    state.status = `stop`;
+
+    if(config.afterTimer == `HS + Quit` || config.afterTimer == `Quit`) {
+      if(wins.every(win => win.state.status == `stop`)) {
+        if(config.timerShutDown) {
+            await keyboard.sendKey(`lWin`, delay);
+            await sleep(random(1000, 2000));
+            await keyboard.printText(`cmd`, delay);
+            await sleep(random(1000, 2000));
+            await keyboard.sendKey(`enter`, delay);
+            await sleep(random(1000, 2000));
+            await keyboard.printText(`shutdown -s -t 10`, delay);
+            await keyboard.sendKey(`enter`, delay);
+        }
+        app.quit();
+      }
+      workwindow.close();
+    }
+
+    if(wins.every(win => win.state.status == `stop`)) {
+      onError();
+    }
+  }
+
+  doAfterTimer.on = settings.timer;
+  doAfterTimer.timer = createTimer(() => settings.timer * 1000 * 60);
 
   return {
+    doAfterTimer,
     dynamicThreshold,
     logOut,
     preliminaryChecks,

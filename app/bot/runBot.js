@@ -1,4 +1,4 @@
-const runBot = async ({ bot, log, state, stats }) => {
+const runBot = async ({ bot, log, state, stats }, onError, wins) => {
   const {
     dynamicThreshold,
     logOut,
@@ -10,7 +10,8 @@ const runBot = async ({ bot, log, state, stats }) => {
     findBobber,
     highlightBobber,
     checkBobber,
-    hookBobber
+    hookBobber,
+    doAfterTimer
   } = bot;
 
   const sleep = (time) => {
@@ -37,6 +38,14 @@ const runBot = async ({ bot, log, state, stats }) => {
       if(logOut.on) {
         logOut.timer.start();
       }
+
+      if(doAfterTimer.on) {
+        doAfterTimer.timer.start();
+      }
+    }
+
+    if(doAfterTimer.on && state.status == "working" && doAfterTimer.timer.isElapsed()) {
+     await doAfterTimer(onError, wins);
     }
 
     if(logOut.on && logOut.timer.isElapsed()) {
