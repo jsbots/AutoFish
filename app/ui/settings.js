@@ -71,10 +71,19 @@ class Settings {
     });
 
     this.dom.addEventListener('click', (event) => {
-      if(event.target.name == `bobberColor`) {
-        event.target.style = `background-image: url("./img/switch_${this.value == `red` ? `red` : `blue`}.png")`;
-        event.target.value = event.target.value == `blue` ? `red` : `blue`;
-        saveSettings(event);
+      if(event.target.name == `bobberColor` || event.target.parentNode.name == `bobberColor`) {
+        let bobberColorNode = this.dom.querySelector(`.bobberColorSwitch`);
+        bobberColorNode.value = bobberColorNode.value == `red` ? `blue` : `red`;
+        let eventDummy = {target: bobberColorNode};
+        saveSettings(eventDummy);
+        this.reRender();
+      }
+
+      if(event.target.name == `autoTh` || event.target.parentNode.name == `autoTh`) {
+        let node = this.dom.querySelector(`.autoTh`);
+        node.value = node.value ? false : true;
+        let eventDummy = {target: node};
+        saveSettings(eventDummy);
         this.reRender();
       }
 

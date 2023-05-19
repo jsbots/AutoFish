@@ -28,13 +28,13 @@ const renderDynamicThreshold = ({dynamicThreshold, dynamicThresholdValue}) => {
 };
 
 
-const renderBobberDensity = ({bobberDensity}) => {
+const renderBobberDensity = ({bobberDensity, autoSensDens}) => {
 
   if(bobberDensity > 10) bobberDensity = 10;
   if(bobberDensity < 1) bobberDensity = 1;
-  let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, value: bobberDensity});
+  let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, disabled: autoSensDens, value: bobberDensity});
 
-  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
    bobberDensityWin);
 };
 
@@ -190,7 +190,7 @@ const renderSleepAfterHook = ({sleepAfterHook}) => {
   return elt(`input`, {type: `checkbox`, name: `sleepAfterHook`, checked: sleepAfterHook});
 };
 
-const renderBobberSensitivity = ({bobberSensitivity, soundDetection, bobberSensitivityPrint}) => {
+const renderBobberSensitivity = ({bobberSensitivity, soundDetection, bobberSensitivityPrint, autoSensDens}) => {
   let min = 1;
   let max = 3;
   if(bobberSensitivityPrint) {
@@ -200,9 +200,9 @@ const renderBobberSensitivity = ({bobberSensitivity, soundDetection, bobberSensi
 
   if(bobberSensitivity > max) bobberSensitivity = max;
   if(bobberSensitivity < min) bobberSensitivity = min;
-  let bobberSensitivityWin = elt(`input`, {type: `number`, name: `bobberSensitivity`, value: bobberSensitivity, disabled: soundDetection});
+  let bobberSensitivityWin = elt(`input`, {type: `number`, name: `bobberSensitivity`, value: bobberSensitivity, disabled: autoSensDens});
 
-  return elt(`div`, null, elt('input', {type: `range`, min, max, value: bobberSensitivity, disabled: soundDetection, oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min, max, value: bobberSensitivity, disabled: autoSensDens, oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
    bobberSensitivityWin);
 };
 
