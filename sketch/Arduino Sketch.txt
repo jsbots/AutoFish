@@ -8,8 +8,8 @@ int MOUSE_MOVE_DELAY = 0;
 int MOUSE_MOVE_OFFSET = 1;
 int RANDOM_KEY = 0;
 int RANDOM_MOUSE = 0;
-const int SERIAL_PORT = 115200;
-const int SERIAL_DELAY = 0;
+const int SERIAL_PORT = 9600;
+const int SERIAL_DELAY = 100;
 #define MAX_BUFFER_SIZE 64
 #define led 13
 
@@ -56,19 +56,19 @@ void loop()
       buffer[buffPos++] = Serial.read();
       buffer[buffPos] = '\0';
     }
-    else  
+    else
     {
       while (Serial.available()) {
         int temp = Serial.read();
       }
       digitalWrite(led, HIGH);
-      delay(3000); 
+      delay(3000);
       digitalWrite(led, LOW);
     }
   }
 
   switch (buffer[0]) {
-    case SET_DELAY: 
+    case SET_DELAY:
       {
         switch (buffer[1]) {
           case SET_KEYBOARD_DELAY:
@@ -91,7 +91,7 @@ void loop()
         }
         break;
       }
-    case PRESS_KEY:  
+    case PRESS_KEY:
       {
         char key = atoi(&buffer[1]);
         Keyboard.press(key);
@@ -100,7 +100,7 @@ void loop()
         delay(KEYBOARD_DELAY);
         break;
       }
-    case PRINT_STRING:  
+    case PRINT_STRING:
       {
         for (int i = 1; i < buffPos; i++) {
           Keyboard.write(buffer[i]);
@@ -108,40 +108,38 @@ void loop()
         }
         break;
       }
-    case KEY_DOWN: 
+    case KEY_DOWN:
       {
         Keyboard.press(atoi(&buffer[1]));
         delay(KEYBOARD_DELAY + random(RANDOM_KEY));
         break;
       }
-    case KEY_UP:  
+    case KEY_UP:
       {
         Keyboard.release(atoi(&buffer[1]));
         delay(KEYBOARD_DELAY);
         break;
       }
-    case MOUSE_MOVE:  
+    case MOUSE_MOVE:
       {
         long coordinate = atol(&buffer[3]);
-        MOUSE_MOVE_OFFSET = random(1, 4);
-     
-     
+
         long x = coordinate / 65535;
         long y = coordinate % 65535;
 
-       
+
         if (buffer[1] == '-')
           x = -x;
         if (buffer[2] == '-')
           y = -y;
 
 
-       
-        int count_step;
-        float stepX = MOUSE_MOVE_OFFSET, stepY = MOUSE_MOVE_OFFSET;   
-        int remainsX = 0, remainsY = 0; 
 
-        if (abs(x) > abs(y)) 
+        int count_step;
+        float stepX = MOUSE_MOVE_OFFSET, stepY = MOUSE_MOVE_OFFSET;
+        int remainsX = 0, remainsY = 0;
+
+        if (abs(x) > abs(y))
         {
           count_step = abs(x) / MOUSE_MOVE_OFFSET;
           if (count_step > 0)
@@ -176,9 +174,9 @@ void loop()
         }
 
         float temp = 0.0;
-        for (int i = 0; i < count_step; i++) 
+        for (int i = 0; i < count_step; i++)
         {
-          if (abs(x) > abs(y))  
+          if (abs(x) > abs(y))
           {
             int stepY2 = trunc(stepY);
             temp = temp + (abs(stepY) - trunc(abs(stepY)));
@@ -209,12 +207,12 @@ void loop()
             delay(MOUSE_MOVE_DELAY);
           }
         }
-        
+
         remainsX = abs(x) - remainsX;
-        remainsY = abs(y) - remainsY;        
+        remainsY = abs(y) - remainsY;
         if (x < 0)remainsX = -remainsX;
         if (y < 0)remainsY = -remainsY;
-        Mouse.move(remainsX, remainsY, 0);  
+        Mouse.move(remainsX, remainsY, 0);
         delay(MOUSE_MOVE_DELAY);
         break;
       }
@@ -224,20 +222,20 @@ void loop()
         delay(MOUSE_DELAY + random(RANDOM_MOUSE));
         break;
       }
-    case MOUSE_DOWN:  
+    case MOUSE_DOWN:
       {
         Serial.print(buffer[1]);
         Mouse.press(buffer[1]);
         delay(MOUSE_DELAY + random(RANDOM_MOUSE));
         break;
       }
-    case MOUSE_UP:  
+    case MOUSE_UP:
       {
         Mouse.release(buffer[1]);
         delay(MOUSE_DELAY);
         break;
       }
-    case MOUSE_SCROLL: 
+    case MOUSE_SCROLL:
       {
         char wheel = atoi(&buffer[1]);
         Mouse.move(0, 0, wheel);
