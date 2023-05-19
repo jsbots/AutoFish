@@ -136,6 +136,7 @@ section {
   margin-top: 7px;
   font-size: 1.1em;
   font-weight: 500;
+  position: relative;
 }
 
 .settings_header_main {
@@ -181,6 +182,7 @@ section {
   border-top-left-radius: 7px;
   padding: 5px;
   flex: 1 1 0;
+  z-index: 1;
 }
 
 .settings .settings_section:first-child {
