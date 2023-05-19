@@ -18,7 +18,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 25000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -101,7 +106,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 25000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -179,7 +189,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 25000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -257,7 +272,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -333,7 +353,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -409,7 +434,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -487,7 +517,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -563,7 +598,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 10,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -641,7 +681,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -720,7 +765,12 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "stop",
-      "relZone": { "x": 0.3, "y": 0.01, "width": 0.4, "height": 0.416 },
+      "relZone": {
+        "x": 0.34427083333333336,
+        "y": 0.08518518518518518,
+        "width": 0.3177083333333333,
+        "height": 0.34074074074074073
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
