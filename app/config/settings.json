@@ -18,6 +18,6 @@
   "threshold": 60,
   "bobberColor": "red",
   "autoTh": true,
-  "shortcutWarning": true,
-  "initial": true
+  "initial": true,
+  "initialZone": true
 }

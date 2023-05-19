@@ -39,12 +39,12 @@ if (handleSquirrelEvent(app)) {
 /* Squirrel end */
 
 
-const showChoiceWarning = (win, warning) => {
+const showChoiceWarning = (win, warning, title, button1, button2) => {
   return result = dialog.showMessageBoxSync(win, {
     type: "warning",
-    title: `Disclaimer`,
+    title: `${title}`,
     message: warning,
-    buttons: [`I agree`, `I don't agree`],
+    buttons: [`${button1}`, `${button2}`],
     defaultId: 0,
     cancelId: 1,
   });
@@ -121,10 +121,20 @@ const createWindow = async () => {
 
   ipcMain.on(`onload`, () => {
     const settings = getJson("./config/settings.json");
-    if(settings.shortcutWarning) {
+    if(settings.initial) {
       showWarning(win, `The shortcut to AutoFish was created on you desktop`);
-      settings.shortcutWarning = false;
-      writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+
+      if(showChoiceWarning(win, `The software is provided "as is" and the author disclaims all warranties
+with regard to this software. In no event shall the author be liable for
+any special, direct, indirect, or consequential damages or any damages
+whatsoever resulting from loss of use or data, whether in an
+action of contract, negligence or other tortious action, arising out of
+or in connection with the use or performance of this software.`, `Disclaimer`, `I agree`, `I don't agree`)) {
+        app.quit();
+      } else {
+        settings.initial = false;
+        writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+      }
     }
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
@@ -165,6 +175,16 @@ const createWindow = async () => {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
 
+    if(type != `relZone` && settings.initialZone && !(showChoiceWarning(win, `This is your first launch. Do you want to set your Fishing Zone first? (recommended)`, `Fishing Zone`, `Yes`, `No`))){
+      type = `relZone`;
+      win.webContents.send("stop-bot");
+    }
+
+    if(settings.initialZone) {
+      settings.initialZone = false;
+      writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+    }
+
     if(type == `relZone` || type == `chatZone`) {
       log.send(`Setting ${type == `relZone` ? `Fishing` : `Chat`} Zone...`);
       let data = await setFishingZone(games[0], config.patch[settings.game][type], type, config.patch[settings.game], settings);
@@ -175,21 +195,6 @@ const createWindow = async () => {
       log.ok(`Set ${type == `relZone` ? `Fishing` : `Chat`} Zone Succesfully!`);
       win.focus();
       return;
-    }
-
-    if (settings.initial && (settings.game == "Dragonflight" || settings.game == "WotLK Classic" || settings.game == "Classic")) {
-      if(showChoiceWarning(win, `The software is provided "as is" and the author disclaims all warranties
-with regard to this software. In no event shall the author be liable for
-any special, direct, indirect, or consequential damages or any damages
-whatsoever resulting from loss of use or data, whether in an
-action of contract, negligence or other tortious action, arising out of
-or in connection with the use or performance of this software.`)) {
-        win.webContents.send('stop-bot');
-        return;
-      } else {
-        settings.initial = false;
-        writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
-      }
     }
 
     if(settings.fishingKey === `` || settings.luresKey === ``) {
