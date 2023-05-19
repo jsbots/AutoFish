@@ -120,6 +120,12 @@ const createWindow = async () => {
   });
 
   ipcMain.on(`onload`, () => {
+    const settings = getJson("./config/settings.json");
+    if(settings.shortcutWarning) {
+      showWarning(win, `The shortcut to AutoFish was created on you desktop`);
+      settings.shortcutWarning = false;
+      writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+    }
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
   })
