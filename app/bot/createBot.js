@@ -67,14 +67,13 @@ const createBot = (game, { config, settings }, winSwitch) => {
   let fishingZone = createFishingZone({
     getDataFrom,
     zone: Zone.from(screenSize).toRel(config.relZone),
+    screenSize: screenSize,
     threshold: settings.threshold,
-    screenSize,
     bobberColor: settings.bobberColor,
     sensitivity: config.bobberSensitivity,
     density: config.bobberDensity,
-    reverseDir: settings.game == `Turtle WoW`,
-    splashColor: config.splashColor,
     direction: config.findBobberDirection,
+    splashColor: config.splashColor,
     autoThreshold: settings.autoTh
   });
 
@@ -516,17 +515,16 @@ const createBot = (game, { config, settings }, winSwitch) => {
 
   const dynamicThreshold = () => {
     settings.threshold = settings.threshold - config.dynamicThresholdValue;
-    fishingZone = createFishingZone({
+    let fishingZone = createFishingZone({
       getDataFrom,
       zone: Zone.from(screenSize).toRel(config.relZone),
+      screenSize: screenSize,
       threshold: settings.threshold,
-      screenSize,
       bobberColor: settings.bobberColor,
       sensitivity: config.bobberSensitivity,
       density: config.bobberDensity,
-      reverseDir: settings.game == `Turtle WoW`,
-      splashColor: config.splashColor,
       direction: config.findBobberDirection,
+      splashColor: config.splashColor,
       autoThreshold: settings.autoTh
     });
   }
