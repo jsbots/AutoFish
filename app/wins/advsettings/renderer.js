@@ -331,6 +331,11 @@ const renderLikeHuman = ({likeHuman}) => {
   });
 };
 
+const renderAutoSensDens = ({autoSensDens, game}) => {
+  return elt(`input`, {type: `checkbox`, disabled: game == `Turtle WoW`, checked: autoSensDens, name: `autoSensDens`});
+}
+
+
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
@@ -411,6 +416,7 @@ wrapInLabel(`Mammoth Trader Name: `, renderMammothTraderName(config), `The bot w
   wrapInLabel(`Max check time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Do after max check time:`, renderMaxFishTimeAfter(config), `What the bot should do if it reaches the maximum checking time.`),
   wrapInLabel(`Loot Window closing delay (ms):`, renderCloseLootDelay(config), `How much does it take for the loot window to disappear after looting.`),
+  wrapInLabel(`Auto-adjust Density and Sensitivity:`, renderAutoSensDens(config), `The bot will auto-adjust both Sensitivity and Density values per each cast.`),
   wrapInLabel(`${config.game == `Turtle WoW` ? `Splash` : `Bobber`} sensitivity (px):`, renderBobberSensitivity(config), config.game != `Turtle WoW` ? `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.` : `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`),
   config.game == `Turtle WoW` ? wrapInLabel(`Splash color: `, renderSplashColor(config), `Whitness of the splash effect: should be smaller at night and higher during the day. `) : ``,
   wrapInLabel(`Bobber density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),

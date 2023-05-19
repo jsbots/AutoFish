@@ -24,8 +24,8 @@ select {
 
 html,
 body {
-  height: 100%;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -77,6 +77,7 @@ section {
 }
 
 .logo_name {
+  background: url("img/logo-icon.png") no-repeat center left;
   background-size: 80px;
   background-position: right 15px;
   font-size: 56px;
@@ -91,6 +92,15 @@ section {
   margin-right: 80px;
 }
 
+.premium_crown {
+  position: absolute;
+  width: 30px;
+  transform: rotate(-8deg);
+  top: 0;
+  left: 133px;
+}
+
+
 .logo_link_img {
   height: 11px;
   margin-right: 5px;
@@ -98,9 +108,8 @@ section {
 }
 
 .premium_icon {
-  height: 13px;
+  height: 10px;
   margin-left: 2px;
-  padding-top: 2px;
 }
 
 .section_name {
@@ -110,15 +119,15 @@ section {
 }
 
 .settings_header {
-  position: relative;
   display: inline-block;
   text-align: center;
   background-color: white;
+  z-index: 1000;
   margin-left: 5px;
   margin-bottom: -1px;
   padding: 3px;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
   border-top: 1px solid black;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
@@ -127,7 +136,17 @@ section {
   margin-top: 7px;
   font-size: 1.1em;
   font-weight: 500;
-  z-index: 10;
+}
+
+.settings_header_main {
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 75px;
+}
+
+.settings_header_log {
+  margin-top: 2px;
+  background-color: #ffffe5;
 }
 
 .settings_critical {
@@ -148,23 +167,9 @@ section {
   padding: 5px;
 }
 
-
-.settings_header_log {
-  margin-top: 2px;
-  background-color: #ffffe5;
-}
-
-.settings_header_critical {
-  background-color: rgb(255, 221, 221);
-}
-
 .settings {
   display: flex;
   flex-flow: row wrap;
-}
-
-.settings_advSettings {
-  display: block;
 }
 
 .settings .settings_section {
@@ -205,7 +210,7 @@ section {
 }
 
 .settings .option_hint:hover {
-  opacity: 0.9;
+  opacity: 0.9
 }
 
 .settings_section.threshold_settings {
@@ -230,32 +235,31 @@ section {
 }
 
 
-.settings input[name="stopKey"], .settings input[name="luresKey"], .settings input[name="fishingKey"], .settings input[name="intKey"] {
+.settings input[name="stopKey"], .settings input[name="luresKey"], .settings input[name="fishingKey"], .settings input[name="intKey"], .settings input[name="spareKey"], .settings input[name="mammothKey"], .settings input[name="hsKey"] {
   cursor: pointer;
 }
 
-.settings input[name="stopKey"]:active, .settings input[name="luresKey"]:active, .settings input[name="fishingKey"]:active, .settings input[name="intKey"]:active {
+.settings input[name="stopKey"]:active, .settings input[name="luresKey"]:active, .settings input[name="fishingKey"]:active, .settings input[name="intKey"]:active, .settings input[name="mammothKey"]:active, .settings input[name="hsKey"]:active {
   cursor: default;
 }
 
 .settings input[type="text"].whitelist_input  {
-  width: 211px;
-}
-
-.settings select.whitelistLanguage {
-  width: 45px;
+  width: 215px;
 }
 
 .settings select.filterType {
-  width: 77px;
-  margin-left: 13px;
-  margin-right: 13px;
+  width: 78px;
+  margin-left: 11px;
+  margin-right: 16px;
+}
+
+.settings select.whitelistLanguage {
+  width: 43px;
 }
 
 .settings input.atMouse {
   margin-left: 6px;
 }
-
 
 .advanced_settings_button {
   height: 22px;
@@ -342,13 +346,13 @@ section {
 }
 
 
-.advSettings .settings_section input[type=number] {
+.advSettings .settings_section input[type=number], .advSettings .settings_section input[type=text] {
   width: 50px;
 }
 
-.advSettings .settings_section input[type=text] {
-  width: 134px;
-}
+ .advSettings .settings_section input[name=mammothTraderName] {
+   width: 160px;
+ }
 
 .advSettings .settings {
   flex-flow: column;
@@ -408,14 +412,14 @@ section {
 .bobberColorSwitch {
   transition: 0.1s all;
   position: absolute;
-  width: 60px;
-  height: 26px;
-  top: 10px;
+  width: 50px;
+  height: 22px;
+  top: 27px;
   left: 2px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
-  background-size: 60px 26px;
+  background-size: 50px 22px;
   background-position: -1px -1px;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -462,6 +466,11 @@ input[type=range][name=threshold]::-ms-track {
   color: transparent;
 }
 
+input[type=checkbox] {
+  width: 13px;
+  height: 13px;
+}
+
 input[type=range][name=threshold]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: 1px solid grey;
@@ -494,24 +503,200 @@ input[type=range][name=threshold]:focus::-webkit-slider-runnable-track {
   opacity: 0.9;
 }
 
+input[type=range][name=threshold].threshold_disabled::-webkit-slider-thumb {
+  visibility: hidden;
+}
+
+/* Profiles */
+.settings_profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profiles {
+  width: 150px;
+  height: 20px;
+  margin-top: 7px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profiles input[type=text] {
+  margin: 0;
+  display: inline;
+}
+
+.profiles input[type=button] {
+  width: 20px;
+  height: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+.profiles input[type=button]:hover {
+  border: 1px solid black;
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.profiles input[type=button]:active {
+  background-color: rgb(240, 240, 240);
+}
+
+
+.profiles select, .profiles input[type=text].profiles_text {
+  width: 100px;
+}
+
+.profiles input[type=text].profiles_text:focus {
+  border: 1px solid grey;
+}
+
+.profile_button_add {
+  background-image: url('img/add.png');
+  background-size: 12px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.profile_button_remove {
+  background-image: url('img/remove.png');
+  background-size: 12px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.settings_premium {
+  background-color: #FFDBC5;
+}
+
+.settings_header_premium {
+  background-color: #FFDBC5;
+}
+
+.settings_header_critical {
+  background-color: rgb(255, 221, 221);
+}
+
+.settings_advSettings {
+  display: block;
+}
+
+
+.autoTh {
+  transition: 0.1s all;
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 50px;
+  height: 22px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  background-size: 50px 22px;
+  background-position: -1px -1px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bobberColorSwitchText {
+  width: 70px;
+  display: inline-block;
+  margin-left: 55px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
 input[type=checkbox] {
   width: 13px;
   height: 13px;
 }
 
-
-.settings_section input[type=range].whisperRange {
-  width: 230px;
-}
-
-.whisperColorBox {
-  height: 20px;
-  width: 40px;
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
   border: 1px solid grey;
-  color: white;
-  text-align: center;
-  padding-left: 3px;
+  height: 20px;
+  width: 16px;
+  border-radius: 3px;
+  background: rgb(240,240,240);
+  background-image: url("img/grate.png");
+  background-position: center center;
+  background-size: 10px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
+
+input[type=range]::-webkit-slider-thumb:hover {
+  border: 1px solid black;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background-image: linear-gradient(to left, rgba(0, 117, 255, 0.6), rgba(0, 117, 255, 0.8));
+  border-radius: 10px;
+  border: 0.2px solid #010101;
+}
+
+
+.switch_thumb {
+  position: absolute;
+  top: 1px;
+  width: 20px;
+  height: 18px;
+  background-color: rgb(240,240,240);
+  background-image: url("img/grate.png");
+  background-position: center 3px;
+  background-size: 10px;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  border: 1px solid grey;
+}
+
+.switch_thumb_left {
+    left: 2px;
+}
+
+.switch_thumb_right {
+    left: 26px;
+}
+
+.switch_thumb:hover {
+  border: 1px solid black;
+}
+
+.settingsFolder{
+  height: 20px;
+  position: absolute;
+  left: 85px;
+  top: 94px;
+  cursor: pointer
+}
+
 
 .settings_premium {
   background-color: #FFDBC5;

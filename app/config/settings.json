@@ -17,5 +17,6 @@
   "whitelistLanguage": "eng",
   "threshold": 60,
   "bobberColor": "red",
+  "autoTh": true,
   "initial": true
 }
