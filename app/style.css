@@ -436,12 +436,14 @@ section {
 }
 
 .whisperColorBox {
-  height: 20px;
-  width: 40px;
+  height: 18px;
+  width: 49px;
   border: 1px solid grey;
   color: white;
   text-align: center;
   padding-left: 3px;
+  margin-right: 4px;
+  background-color: rgba(252, 119, 187, 0.8);
 }
 
 
@@ -501,11 +503,15 @@ input[type=range][name=threshold]::-webkit-slider-runnable-track {
   border: 0.2px solid #010101;
 }
 
+input[type=range].threshold_disabled::-webkit-slider-runnable-track {
+  opacity: 0.8;
+}
+
 input[type=range][name=threshold]:focus::-webkit-slider-runnable-track {
   opacity: 0.9;
 }
 
-input[type=range][name=threshold].threshold_disabled::-webkit-slider-thumb {
+input[type=range].threshold_disabled::-webkit-slider-thumb {
   visibility: hidden;
 }
 

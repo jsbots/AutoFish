@@ -34,7 +34,7 @@ const renderBobberDensity = ({bobberDensity, autoSensDens}) => {
   if(bobberDensity < 1) bobberDensity = 1;
   let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, disabled: autoSensDens, value: bobberDensity});
 
-  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens, className: `${autoSensDens ? `threshold_disabled` : ``}`, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
    bobberDensityWin);
 };
 
@@ -202,7 +202,7 @@ const renderBobberSensitivity = ({bobberSensitivity, soundDetection, bobberSensi
   if(bobberSensitivity < min) bobberSensitivity = min;
   let bobberSensitivityWin = elt(`input`, {type: `number`, name: `bobberSensitivity`, value: bobberSensitivity, disabled: autoSensDens});
 
-  return elt(`div`, null, elt('input', {type: `range`, min, max, value: bobberSensitivity, disabled: autoSensDens, oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min, max, value: bobberSensitivity, disabled: autoSensDens, className: `${autoSensDens ? `threshold_disabled` : ``}`, oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
    bobberSensitivityWin);
 };
 
@@ -243,33 +243,31 @@ const renderIgnorePreliminary = ({ignorePreliminary}) => {
 }
 
 
-
-
 const renderMammoth = () => {
   return elt('input', {type: `checkbox`, checked: false, disabled: true});
 };
 
 const renderMammothKey = () => {
-  const key = elt('input', {type: `text`, disabled: true, value: `none`});
+  const key = elt('input', {type: `text`, disabled: true, value: `F4`});
   key.setAttribute(`readonly`, `true`);
   return key;
 };
 
 const renderMammothKeyDelay = () => {
-  return elt('input', {type: `number`, disabled: true, value: 0});
+  return elt('input', {type: `number`, disabled: true, value: 3000});
 };
 
 const renderMammothSellDelay = () => {
   return elt(`div`, null, elt(`span`, {className: `option_text`}, `from:`),
-  elt('input', {type: `number`, value: 0, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
-  elt('input', {type: `number`,  value: 0, disabled: true})
+  elt('input', {type: `number`, value: 2000, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`,  value: 5000, disabled: true})
   );
 };
 
 const renderMammothApplyEvery= () => {
   return elt(`div`, null, elt(`span`, {className: `option_text`}, `from:`),
-  elt('input', {type: `number`, value: 0, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
-  elt('input', {type: `number`, value: 0, disabled: true})
+  elt('input', {type: `number`, value: 5, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`, value: 10, disabled: true})
   );
 };
 
@@ -284,7 +282,7 @@ const renderSoundDetection = ({soundDetection}) => {
 const renderSoundDetectionRange = () => {
     let soundDetectionRangeWin = elt(`input`, {type: `number`, value: 800, disabled: true});
 
-    return elt(`div`, null, elt('input', {type: `range`, min: 128, max: 1100, value: 800, disabled: true}),
+    return elt(`div`, null, elt('input', {type: `range`, min: 128, max: 1100, value: 800, disabled: true, className: `threshold_disabled`}),
      soundDetectionRangeWin);
 };
 
@@ -300,16 +298,20 @@ const renderDetectWhisper = () => {
 
 const renderWhisperThreshold = () => {
   let colorWin = elt(`div`, {className: `whisperColorBox`, disabled: true});
-  let range = elt('input', {type: `range`, min: 0, max: 255, value: 0, className: `whisperRange`, disabled: true});
+  let range = elt('input', {type: `range`, min: 0, max: 255, value: 0, className: `whisperRange`, disabled: true, className: `threshold_disabled`});
   return elt(`div`, null, range, colorWin);
 };
 
+const renderQuitAtWhisper = () => {
+  return elt(`input`, {type: `checkbox`, checked: false, disabled: true});
+}
+
 const renderChatZone = () => {
   return elt(`div`, null,
-      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1,  value: 0, disabled: true}),
-      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, value:0, disabled: true}),
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1,  value: 0, disabled: true}),
-      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1,  value: 0, disabled: true})
+      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1,  value: 145, disabled: true}),
+      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, value:120, disabled: true}),
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1,  value: 200, disabled: true}),
+      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1,  value: 200, disabled: true})
     );
 }
 
@@ -410,6 +412,8 @@ elt(`div`, {className: `settings_section settings_premium`},
   wrapInLabel(`Telegram token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
   wrapInLabel(`Detect whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
   wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
+  wrapInLabel(`Stop the bot and quite at whisper:`, renderQuitAtWhisper(config), ``),
+
   wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
 ),
 elt(`p`, {className: `settings_header settings_header_premium`}, `🐘 Mammoth Selling`), elt(`span`, {className: `premium_lock`}),
