@@ -342,10 +342,10 @@ const renderRngMoveRadiusStep = () => {
 
 const renderRngMoveDirLengthMax = () => {
   return elt(`div`, null,
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `w`, value: 50}),
-      elt(`span`, {className: `option_text`}, `s:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `s`, value: 50}),
-      elt(`span`, {className: `option_text`}, `a:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `a`, value: 200}),
-      elt(`span`, {className: `option_text`}, `d:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `d`, value: 200})
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {disabled: true, type: `number`, step: 1, value: 50}),
+      elt(`span`, {className: `option_text`}, `s:`), elt(`input`, {disabled: true, type: `number`, step: 1, value: 50}),
+      elt(`span`, {className: `option_text`}, `a:`), elt(`input`, {disabled: true, type: `number`, step: 1, value: 200}),
+      elt(`span`, {className: `option_text`}, `d:`), elt(`input`, {disabled: true, type: `number`, step: 1, value: 200})
     );
 };
 
