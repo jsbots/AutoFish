@@ -31,8 +31,7 @@
     "@nut-tree/nut-js": "^2.3.0",
     "electron-squirrel-startup": "^1.0.0",
     "jimp": "^0.16.1",
-    "keysender": "^2.0.6",
-    "telegraf": "^4.9.2",
+    "keysender": "^2.3.0",
     "tesseract.js": "^3.0.3"
   },
   "devDependencies": {
