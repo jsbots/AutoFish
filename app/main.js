@@ -117,9 +117,12 @@ const createWindow = async () => {
   win.once("ready-to-show", () => {
     // win.openDevTools({mode: `detach`});
     win.show();
+  });
+
+  ipcMain.on(`onload`, () => {
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
-  });
+  })
 
 
   ipcMain.on("start-bot", async (event, type) => {

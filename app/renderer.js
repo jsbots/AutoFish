@@ -11,6 +11,7 @@ const runApp = async () => {
     new StartButton()
   );
   document.body.append(autoFish.dom);
+  ipcRenderer.send(`onload`);
 };
 
 runApp();
