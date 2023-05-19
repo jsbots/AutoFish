@@ -259,6 +259,8 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 <img src="guide_img/arduino.jpg" align="center">
 </p>
 
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo) for video explanation.
+
 The bot is able to connect to your Arduino Board and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
 
 1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
@@ -352,9 +354,9 @@ Because the bot can't work in the background and requires a little bit difficult
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 1.15.1 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.0.0 beta Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 1.19.1 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.0.0 beta Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
 
