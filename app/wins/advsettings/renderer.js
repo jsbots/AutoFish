@@ -492,6 +492,29 @@ const runApp = async () => {
     }
   });
 
+  const keyAssigning = (event) => {
+    event.target.value = event.key == ` `? `space` : event.key.toLowerCase();
+    gatherConfig();
+    document.removeEventListener(`keydown`, keyAssigning);
+    event.target.blur();
+  }
+
+  settings.addEventListener('mousedown', (event) => {
+    if(event.target.name == `hsKey` && !event.target.disabled) {
+      event.target.style.backgroundColor = `rgb(255, 104, 101)`;
+      event.target.style.border = `1px solid grey`;
+
+      event.target.addEventListener(`blur`, function bluring(event) {
+        event.target.style.backgroundColor = `white`;
+        event.target.style.border = `1px solid grey`;
+        event.target.removeEventListener(`blur`, bluring);
+        event.target.removeEventListener(`keydown`, keyAssigning);
+      });
+
+      event.target.addEventListener(`keydown`, keyAssigning);
+    }
+  });
+
   const advancedSettings = elt('div', {className: `advSettings`},
   settings,
   buttons);
