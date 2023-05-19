@@ -315,14 +315,64 @@ const renderChatZone = () => {
     );
 }
 
-const renderMultipleWindows = ({multipleWindows}) => {
-  return elt("input", {
-    type: "checkbox",
-    className: "option",
-    checked: multipleWindows,
-    name: "multipleWindows",
-  });
+const renderRngMove = () => {
+  return elt(`input`, {type: `checkbox`, disabled: true,  checked: false});
 };
+
+const renderRngMoveTimer = () => {
+  return elt(`div`, null, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, className: `rngMoveTimer_from`, value: 2, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`, value: 5, disabled: true})
+  );
+}
+
+const renderRngMoveRadiusMax = () => {
+  return elt(`div`, null, elt(`span`, {className: `option_text`}, `x:`),
+  elt('input', {type: `number`, value: 150, disabled: true}), elt(`span`, {className: `option_text`}, `y:`),
+  elt('input', {type: `number`, value: 15, disabled: true})
+  );
+};
+
+const renderRngMoveRadiusStep = () => {
+  return elt(`div`, null, elt(`span`, {className: `option_text`}, `x:`),
+  elt('input', {type: `number`, value: 100, disabled: true}), elt(`span`, {className: `option_text`}, `y:`),
+  elt('input', {type: `number`, value: 15, disabled: true})
+  );
+};
+
+const renderRngMoveDirLengthMax = () => {
+  return elt(`div`, null,
+      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `w`, value: 50}),
+      elt(`span`, {className: `option_text`}, `s:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `s`, value: 50}),
+      elt(`span`, {className: `option_text`}, `a:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `a`, value: 200}),
+      elt(`span`, {className: `option_text`}, `d:`), elt(`input`, {disabled: true, type: `number`, step: 1, name: `d`, value: 200})
+    );
+};
+
+const renderRngMoveDirLength = () => {
+  return elt(`div`, null, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, className: `rngMoveTimer_from`, value: 100, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`, value: 100, disabled: true})
+  );
+};
+
+const renderRngMoveBalanceTime = () => {
+  return elt(`input`, {disabled: true, type: `number`, value: 5});
+};
+
+const renderArduino = () => {
+    return elt(`input`, {type: `checkbox`, disabled: true, checked: false});
+};
+
+const renderArduinoPort = () => {
+    let select = elt(`select`, {disabled: true}, elt(`option`, null, 'COM1'));
+    return elt(`div`, null, select, elt(`input`, {type: `button`, disabled: true, value: `Connect`}));
+};
+
+const renderArduinoRate = () => {
+  return elt(`select`, {disabled: true, className: `arduino_rate`}, ...[9600, 14400, 19200, 38400, 57600, 115200].map((rate) => elt(`option`, null, `${rate}`)))
+}
+
 
 const renderLikeHuman = ({likeHuman}) => {
   return elt("input", {
@@ -402,6 +452,12 @@ wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`
 wrapInLabel("Shut down computer after quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
 ),
 
+elt(`p`, {className: `settings_header settings_header_premium`}, `🎮 Arduino Control`), elt(`span`, {className: `premium_lock`}),
+  elt('div', {className: "settings_section settings_premium"},
+  wrapInLabel(`Use Arduino Board: `, renderArduino(config), `Using an Arduino Board will allow you to emulate a device in 100% hardware way: it will look like a real keyboard or mouse to the OS and the game. Check the guide on how to use an Arduino Board with AutoFish (Help -> Arduino Guide)`),
+  wrapInLabel(`COM Port: `, renderArduinoPort(config), `Choose the COM port of the Arduino Board connected to your computer and press Connect button.`),
+  wrapInLabel(`Bits Per Second: `, renderArduinoRate(config), `Don't change this value if you don't know what you are doing. The value should be the same as in Arduino Sketch provided in the guide (you can find it in the top of the sketch)`)
+  ),
   elt(`p`, {className: `settings_header settings_header_premium`}, `🔊 Sound Detection`), elt(`span`, {className: `premium_lock`}),
 elt('div', {className: "settings_section settings_premium"},
 wrapInLabel(`Sound Detection: `, renderSoundDetection(config), `The bot will check the change of sound instead of the change of pixels when it should catch the fish.`),
@@ -424,6 +480,16 @@ wrapInLabel(`Mammoth Key Delay(ms): `, renderMammothKeyDelay(config), `How long 
 wrapInLabel(`Mammoth Sell Delay(ms): `, renderMammothSellDelay(config), `How long it will take to sell all the scrap to a trader. The bot will generate a random number from the provided values. The number is generated every time the bot interacts with the trader: so the next time the bot interacts with the trader it will be always different (randomly generated).`),
 wrapInLabel(`Mammoth Apply Every(min): `, renderMammothApplyEvery(config), `A randomly generated interval of summoning a mammoth mount. The bot will summon a mammoth and then generate a new random value between the provided ones.`),
 wrapInLabel(`Mammoth Trader Name: `, renderMammothTraderName(config), `The bot will use /target trader_name command to target one of your traders. Check the name of one you want to use for trading and write it here. The bot will use interaction key for interaction with a trader, you can assign it in them main settings.`),
+),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🤖 Random Movement`), elt(`span`, {className: `premium_lock`}),
+elt('div', {className: "settings_section settings_premium"},
+wrapInLabel(`Use Random Movement`, renderRngMove(config), `The bot will move your camera view and the character within the given x and y radius and within w, a, s, d keys (press/release) delay.`),
+wrapInLabel(`Camera Movement Max (px):`, renderRngMoveRadiusMax(config), `Maximum radius the bot will randomly move your camera.`),
+wrapInLabel(`Camera Movement Step (px):`, renderRngMoveRadiusStep(config), `Size of the step the bot will move your camera. The bot wil choose a random value between -value and +value and move your camera by the given value.`),
+wrapInLabel(`Keys Moves Max:`, renderRngMoveDirLengthMax(config), `Maximum delay of how long the bot will press w, s, a, d keys.`),
+wrapInLabel(`Balancing Time Every (min):`, renderRngMoveBalanceTime(config), `How often the bot should balance its position and camera direction to default values.`),
+wrapInLabel(`Keys Moves Step:`, renderRngMoveDirLength(config), `Step delay of how long the bot will press w, s, a, d keys.`),
+wrapInLabel(`Use Random Camera Every (min): `, renderRngMoveTimer(config), `How often the bot should use random camera view and character position.`),
 ),
 
   elt(`p`, {className: `settings_header`}, `Miss on purpose`),
