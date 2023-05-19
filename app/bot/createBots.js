@@ -24,10 +24,11 @@ const createBots = async (games, settings, config, log) => {
   }
 
   const bots = games.map((game, i) => {
+    let state = { status: "initial", startTime: Date.now() };
     return {
-      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch),
+      bot: createBot(game, {config: config.patch[settings.game], settings}, winSwitch, state),
       log: createIdLog(log, ++i),
-      state: { status: "initial", startTime: Date.now() },
+      state,
       stats: new Stats()
   }
   });
