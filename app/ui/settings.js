@@ -87,6 +87,10 @@ class Settings {
         this.reRender();
       }
 
+      if(event.target.id == `link`) {
+        ipcRenderer.send(`open-link`, event.target.url);
+      }
+
       if(event.target.name == `multipleWindows` && event.target.checked == true) {
         this.onDx11();
       }

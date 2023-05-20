@@ -115,7 +115,7 @@ const createWindow = async () => {
   });
 
   win.once("ready-to-show", () => {
-    // win.openDevTools({mode: `detach`});
+    //win.openDevTools({mode: `detach`});
     win.show();
   });
 
@@ -230,8 +230,8 @@ or in connection with the use or performance of this software.`, `Disclaimer`, `
   });
 
 
-  ipcMain.on("open-link-youtube", () =>
-    shell.openExternal("https://www.youtube.com/jsbots")
+  ipcMain.on("open-link", (event, link) =>
+    shell.openExternal(link)
   );
 
   ipcMain.on("dx11-warn", () => {

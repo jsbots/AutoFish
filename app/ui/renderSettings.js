@@ -154,11 +154,11 @@ const renderWhiteListGreenBlue = ({whitelist, whiteListBlueGreen}) => {
 
 
 const renderMultipleWindows = () => {
-  return elt(`div`, {className: `premium_lock premium_lock_main`})
+  return elt(`div`, {className: `premium_lock premium_lock_main`, id: `link`, url: `https://youtu.be/ih-xoQcByz8`})
 };
 
 const renderAfkmode = () => {
-  return elt(`div`, {className: `premium_lock premium_lock_main`})
+  return elt(`div`, {className: `premium_lock premium_lock_main`, id: `link`, url: `https://youtu.be/lQi6fSxMyL0`})
 };
 
 

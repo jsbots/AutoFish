@@ -453,7 +453,7 @@ wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`
 wrapInLabel("Shut down computer after quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
 ),
 
-elt(`p`, {className: `settings_header settings_header_premium`}, `🎮 Arduino Control`), elt(`span`, {className: `premium_lock`}),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🎮 Arduino Control`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/yE-qARS73oo`}),
   elt('div', {className: "settings_section settings_premium"},
   wrapInLabel(`Use Arduino Board: `, renderArduino(config), `Using an Arduino Board will allow you to emulate a device in 100% hardware way: it will look like a real keyboard or mouse to the OS and the game. Check the guide on how to use an Arduino Board with AutoFish (Help -> Arduino Guide)`),
   wrapInLabel(`COM Port: `, renderArduinoPort(config), `Choose the COM port of the Arduino Board connected to your computer and press Connect button.`),
@@ -473,7 +473,7 @@ elt(`div`, {className: `settings_section settings_premium`},
 
   wrapInLabel(`Chat zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
 ),
-elt(`p`, {className: `settings_header settings_header_premium`}, `🐘 Mammoth Selling`), elt(`span`, {className: `premium_lock`}),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🐘 Mammoth Selling`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/zY2LqAPszdg`}),
 elt('div', {className: "settings_section settings_premium"},
 wrapInLabel(`Use mammoth for selling: `, renderMammoth(config), `You can summon a mammoth carrying traders during the fishing and then sell all the scrap to one of them using any addon for selling such scrap.`),
 wrapInLabel(`Mammoth Key: `, renderMammothKey(config), `A key that will be used to summon a mammoth mount.`),
@@ -482,7 +482,7 @@ wrapInLabel(`Mammoth Sell Delay(ms): `, renderMammothSellDelay(config), `How lon
 wrapInLabel(`Mammoth Apply Every(min): `, renderMammothApplyEvery(config), `A randomly generated interval of summoning a mammoth mount. The bot will summon a mammoth and then generate a new random value between the provided ones.`),
 wrapInLabel(`Mammoth Trader Name: `, renderMammothTraderName(config), `The bot will use /target trader_name command to target one of your traders. Check the name of one you want to use for trading and write it here. The bot will use interaction key for interaction with a trader, you can assign it in them main settings.`),
 ),
-elt(`p`, {className: `settings_header settings_header_premium`}, `🤖 Random Movement`), elt(`span`, {className: `premium_lock`}),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🤖 Random Movement`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/o1hU3fNn4uk`}),
 elt('div', {className: "settings_section settings_premium"},
 wrapInLabel(`Use Random Movement`, renderRngMove(config), `The bot will move your camera view and the character within the given x and y radius and within w, a, s, d keys (press/release) delay.`),
 wrapInLabel(`Camera Movement Max (px):`, renderRngMoveRadiusMax(config), `Maximum radius the bot will randomly move your camera.`),
@@ -571,6 +571,10 @@ const runApp = async () => {
   }
 
   settings.addEventListener('mousedown', (event) => {
+    if(event.target.id == `link`) {
+      ipcRenderer.send(`open-link`, event.target.url);
+    }
+
     if(event.target.name == `hsKey` && !event.target.disabled) {
       event.target.style.backgroundColor = `rgb(255, 104, 101)`;
       event.target.style.border = `1px solid grey`;

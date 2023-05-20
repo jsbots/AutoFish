@@ -717,12 +717,16 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .premium_lock {
-  background-image: url('img/lock.png');
+  background-image: url('img/youtube_icon.png');
   background-repeat: no-repeat;
   background-position: 0;
   background-size: contain;
+  background-position: center center;
   margin-left: 5px;
+  margin-right: 2px;
+  margin-top: 2px;
   width: 15px;
   height: 15px;
   display: inline-block;
+  cursor: pointer;
 }
