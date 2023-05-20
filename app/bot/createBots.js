@@ -45,7 +45,12 @@ const createBots = async (games, settings, config, log) => {
             bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);
         })
         .catch((error) => {
-            bot.state.status = "stop";
+            if(bot.state.status == `stop`) {
+              return;
+            } else {
+              bot.state.status = "stop";
+            }
+
             if (bots.every(({state}) => state.status == "stop")) {
               onError();
             }
