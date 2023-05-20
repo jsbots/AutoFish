@@ -207,6 +207,7 @@ or in connection with the use or performance of this software.`, `Disclaimer`, `
 
     const stopAppAndBots = () => {
       stopBots();
+      if(config.patch[settings.game].hideWin) win.show();
       shell.beep();
       if (!win.isFocused()) {
         win.flashFrame(true);
@@ -219,8 +220,13 @@ or in connection with the use or performance of this software.`, `Disclaimer`, `
     ipcMain.on("stop-bot", stopAppAndBots);
     globalShortcut.register(settings.stopKey, stopAppAndBots);
 
-    win.blur();
-    startBots(stopAppAndBots);
+  win.blur();
+  if(config.patch[settings.game].hideWin) {
+    setTimeout(() => {
+      win.hide();
+    }, 500 + Math.random() * 1500);
+  }
+  startBots(stopAppAndBots);
   });
 
 
