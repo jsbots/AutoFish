@@ -26,6 +26,7 @@ AutoFish Premium:
 - [Multiple Windows](#multiple-windows-rocket)
 - [Sound Detection](#sound-detection-loud_sound)
 - [Mammoth Selling](#mammoth-selling-elephant)
+- [Random camera/character movements](#random-cameracharacter-movements-robot)
 - [AFK Fishing](#afk-fishing-sleeping)
 
 
@@ -38,13 +39,11 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 </p>
 
 **Features:**
-- Optional loot support.
 - Fishing lures support.
-- Custom window support.
+- Loot filtering support.
 - Auto confirmation of *soulbound* items.
-- Missing on purpose feature.
-- Logging out/in feature.
-- Switching between red/blue feathers feature.
+- Miss on purpose feature.
+- Random Log out/log in feature.
 - Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
 
 <p align="center">
@@ -60,7 +59,7 @@ The bot doesn't work in the background and requires the window of the game to be
 ## Servers tests :video_game:
 
 The bot was tested on official servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Dragonflight**
+- <img src="guide_img/icons/good.png" width="15" height="15">  **Retail**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
 - <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK Classic**
 
@@ -85,19 +84,17 @@ Also on unofficial servers:
 
 ## Guide :blue_book:
 
-*The bot was tested only with default UI and with default UI scale, without any addons whatsoever. So turn off all the addons and set UI scale to default before using the bot. Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have.*
-
-*The bot uses *squirrel* type of installation and silently creates a shortcut on your desktop.*
-
 1. Launch the game.
 2. Are you using **Filter** feature?
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
-3. Assign your 'fishing' and 'lures' keys in the game and write them in the respective sections in the UI of the bot.
+3. Assign your 'fishing' and 'lures' keys in the game and assign the same keys for the bot. 
 4. Find a place to fish.
-5. Set your **Fishing Zone** by pressing **Set Fishing Zone** button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
+5. Set your **Fishing Zone** by pressing **Set Fishing Zone** button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI (Texts, healthbars and so on) will be recognized by the bot too.
 5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
-6. Are you getting an error?
+6. To stop the bot press your stop key (default: space).
+7. Are you getting an error?
+
 > Yes, it says: *Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.*
 
 Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color.
@@ -108,16 +105,16 @@ Then you seem to overdid a little bit with **Threshold** value, decrease it, if 
 
 > No, but the bot clicks too early before fish is even hooked.
 
-There's a couple solutions to this. First, try from the 1st person view, if that didn't help, then go to the **Advanced Settings* and increase either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section).
+There's a couple solutions to this. First, try from the 1st person view, if that didn't help, then go to the **Advanced Settings* and increase either **Bobber Sensitivity** (turn of Auto adjust Sensitivity and Density option) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section).
 
 > No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
 
 Then you do the opposite to the previous issue: go to the **Advanced Settings** and decrease either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section). If it's Turtle WoW then decrease **Splash Color** value.
 
-6. To stop the bot press your stop key (default: space).
 
 ### Hints and Issues
 
+- The bot was tested only with default UI and with default UI scale, without any addons whatsoever. So turn off all the addons and set UI scale to default before using the bot. Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have.
 - Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working.
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
@@ -133,6 +130,8 @@ Then you do the opposite to the previous issue: go to the **Advanced Settings** 
 - If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 
 ## Threshold :red_circle:
+
+*Since 2.0.0 Threshold value is obsolete and available only in Manual mode*
 
 <p align="center">
 <img src="guide_img/threshold.gif" width="400" align="center">
@@ -259,7 +258,7 @@ If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon
 <img src="guide_img/arduino.jpg" align="center">
 </p>
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo) for video explanation.
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo)
 
 The bot is able to connect to your Arduino Board and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
 
@@ -274,6 +273,8 @@ The bot is able to connect to your Arduino Board and use it to emulate a mouse/k
 ## Telegram remote control :iphone:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Telegram remote control Test Video](https://youtu.be/aKulvFK6ubg)
 
 1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
@@ -302,6 +303,8 @@ The bot is able to connect to your Arduino Board and use it to emulate a mouse/k
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
+
 <p align="center">
 <img src="guide_img/multiple-windows.gif" align="center">
 </p>
@@ -313,6 +316,8 @@ Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
 ## Sound Detection :loud_sound:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Sound Detection Test Video](https://youtu.be/ZggOy8tA32A)
 
 <p align="center">
 <img src="guide_img/sound-detection.jpg" align="center">
@@ -332,6 +337,8 @@ You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection th
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
+
 <p align="center">
 <img src="guide_img/mammoth.jpg" align="center">
 </p>
@@ -342,9 +349,23 @@ Because of the novelty of the interaction key this feature is available only for
 
 Depends on the mount the name of your trader might be different, so change the default value.
 
+## Random Camera/Character Movements :robot:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Random Camera/Character Movements Test Video](https://youtu.be/o1hU3fNn4uk)
+
+<p align="center">
+<img src="guide_img/rngMove.jpg" align="center">
+</p>
+
+The bot will randomly move and change your camera view from time to time within the given value. It will also balance itself every n minutes (default: 5) and return to the initial camera and character position.  
+
 ## AFK Fishing :sleeping:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AFK Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
 
 Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
 
