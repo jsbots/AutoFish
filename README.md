@@ -32,7 +32,9 @@ AutoFish Premium:
 
 ## Fishing bot :fish:
 
-A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/electron/electron) it uses [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate a fishing process in a human-like manner. The bot can work with one or multiple windows of the game at the same time. The bot also uses [tesseract.js](https://github.com/naptha/tesseract.js) for analyzing loot.
+This is a fishing bot designed for World of Warcraft. It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
+
+This bot is capable of simultaneously handling one or multiple game windows, enabling efficient fishing across different instances. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot analysis.
 
 <p align="center">
 <img src="guide_img/fishing.gif" width="640px" align="center">
@@ -41,10 +43,10 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 **Features:**
 - Fishing lures support.
 - Loot filtering support.
-- Auto confirmation of *soulbound* items.
-- Miss on purpose feature.
-- Random Log out/log in feature.
-- Convoluted automation (random sleep, random reaction, random sleep after catching, random mouse speed/curvature, random click on the bobber, random bobber highlighting)
+- Automated confirmation for soulbound items.
+- Intentional "miss" functionality.
+- Randomized log out/log in functionality.
+- Advanced automation with various elements of randomness, including random sleep intervals, random reactions, random delays after catching, randomized mouse speed and curvature, and random bobber highlighting.
 
 <p align="center">
 <img src="guide_img/UI.jpg" width="640">
@@ -52,9 +54,17 @@ A fishing bot for World of Warcraft, wrapped in [Electron](https://github.com/el
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
-This is so called "pixel bot", it doesn't change anything in the processes memory nor use any vision libraries like OpenCV, it uses a simpler solution: it analyzes the window of the game for condensed red colors and then sticks to them checking the area for changes. It moves with the bobber while the bobber slowly wobbles, but when the bobber is jerked, it clicks on it and catches the fish.
+This is commonly referred to as a "pixel bot." It operates without modifying the game's memory or utilizing vision libraries like OpenCV. Instead, it employs a simpler approach: it analyzes the game window for concentrated red colors and monitors that area for any changes. As the bobber moves and gently sways, the bot follows its motion. However, when the bobber suddenly jerks, the bot clicks on it and catches the fish.
 
-The bot doesn't work in the background and requires the window of the game to be opened all the time, to get around this you can use a **virtual machine** (like [VirtualBox](https://www.virtualbox.org/) or [VMware Player](https://www.vmware.com/products/workstation-player.html)) with installed World of Warcraft and launch AutoFish there.
+It's important to note that the bot requires the game window to be open at all times and does not function in the background. To address this limitation, one can utilize a **virtual machine** (such as VirtualBox or VMware Player) with World of Warcraft installed. Launching AutoFish within the virtual machine allows for a workaround.
+
+## Disclaimer :warning:
+
+**This project was solely developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using JavaScript.**
+
+It's important to note that using bots in the majority of games is explicitly prohibited. Engaging in such activities carries significant risks, including potential consequences such as account suspension, loss of in-game progress, or even real-world financial losses.
+
+When using this software, it is crucial to understand and accept the associated risks. You assume full responsibility for any outcomes that may arise, as no one else can be held accountable. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes. As a result, no guarantees or assurances can be made regarding the functionality or outcomes of the bot. It is provided as-is, without warranties or guarantees..
 
 ## Servers tests :video_game:
 
@@ -73,15 +83,6 @@ Also on unofficial servers:
 - <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
   - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use separate Turtle WoW config, sound detection gives best performance there)
 
-
-## Disclaimer :warning:
-
-**This project was made only for educational purpuses to explore the possibility of making a fully workable bot written in JavaScript.**
-
-  Using bots in most of the games is prohibited, by doing so you should understand all the risks such an act entails: being banned, losing account, losing real money etc.
-
-  Use this software at **your own risk**. No one will be responsible for any consequences except yourself. The software is in no way *"undetectable"* and never was made with such intentions so I don't guarantee **anything** related to the bot and it's provided *as is*.
-
 ## Guide :blue_book:
 
 1. Launch the game.
@@ -90,32 +91,31 @@ Also on unofficial servers:
    - No: Turn on **Auto Loot** in the game.
 3. Assign your 'fishing' and 'lures' keys in the game and assign the same keys for the bot. 
 4. Find a place to fish.
-5. Set your **Fishing Zone** by pressing **Set Fishing Zone** button. Resize and reposition **Fishing Zone** so that there's no reddish/bluish (depends on what switch you chose) elements in the that zone. Remember, **Fishing Zone** is an overlay window, so the colors of your character and UI (Texts, healthbars and so on) will be recognized by the bot too.
-5. Press Start button and don't use your mouse and keyboard (use the bot on VM if you need it to work in the background).
-6. To stop the bot press your stop key (default: space).
-7. Are you getting an error?
+5. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the switch you selected). Keep in mind that the **Fishing Zone** functions as an overlay, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
+6. Press the Start button and refrain from using your mouse and keyboard (if you require the bot to function in the background, consider using it within a virtual machine).
+7. To stop the bot, press your designated stop key (default: space).
+8. Are you encountering an error?
 
 > Yes, it says: *Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.*
 
-Reposition or resize your **Fishing Zone** to avoid any reddish or bluish elements, if you are sure there's none, then you need to either increase **Threshold** or switch to the other color.
+Adjust the position or size of your **Fishing Zone** to exclude any reddish or bluish elements. If you are certain there are none, you may need to increase the **Threshold** or switch to the other color.
 
 > No, but the bot recasts all the time and can't find the bobber. (as says in the log)
 
-Then you seem to overdid a little bit with **Threshold** value, decrease it, if this gets you back to "found red/blue colors" error, then there's something wrong with the size/position of your **Fishing Zone**.
+It indicates that you may have set the **Threshold** value too high. Try decreasing it. If the error persists, there might be an issue with the size or position of your **Fishing Zone**.
 
 > No, but the bot clicks too early before fish is even hooked.
 
-There's a couple solutions to this. First, try from the 1st person view, if that didn't help, then go to the **Advanced Settings* and increase either **Bobber Sensitivity** (turn of Auto adjust Sensitivity and Density option) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section).
+There are a couple of solutions for this. First, try switching to the 1st person view. If that doesn't help, navigate to the **Advanced Settings** and adjust either the **Bobber Sensitivity** (disable the Auto adjust Sensitivity and Density option) or the **Bobber Density** (particularly if it's not Dragonflight) values in the **Critical** section.
 
 > No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
 
-Then you do the opposite to the previous issue: go to the **Advanced Settings** and decrease either **Bobber Sensitivity** (especially if it's Dragonflight) or **Bobber Density** (especially if it's not Dragonflight) values (You will find them in *Critical* section). If it's Turtle WoW then decrease **Splash Color** value.
-
+Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Dragonflight) or the **Bobber Density** (especially if it's not Dragonflight) values in the **Critical** section. In the case of Turtle WoW, you can decrease the Splash Color value."
 
 ### Hints and Issues
 
-- The bot was tested only with default UI and with default UI scale, without any addons whatsoever. So turn off all the addons and set UI scale to default before using the bot. Especially this is related to all fishing addons like Fishing Buddy and others, if you use any of them, turn off all the UI features they have.
-- Initially the bot will make a preliminary check for red/blue colors before casting, if it finds any, it will stop working.
+- The bot has been exclusively tested with the default user interface (UI) and default UI scale, without any addons. Therefore, before using the bot, ensure that all addons are turned off and the UI scale is set to default. This is particularly important for fishing addons like Fishing Buddy and others. Disable any UI features they provide.
+- During the initial casting process, the bot performs a preliminary check for red/blue colors. If any such colors are detected, the bot will stop functioning.
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator. (especially if you use it on private servers)
@@ -137,17 +137,11 @@ Then you do the opposite to the previous issue: go to the **Advanced Settings** 
 <img src="guide_img/threshold.gif" width="400" align="center">
 </p>
 
-Threshold value is an RGB value of a red or blue color, depends on what switch you use, that represent a color threshold below which the bot will ignore all the respected colors.
+The Threshold value represents an RGB value of a red or blue color, depending on the switch used. It serves as a color threshold below which the bot will ignore all corresponding colors.
 
-For example if I use red switch and my threshold is 60, the bot will ignore all the colors below this value, by doing so it will see only the reddest parts of the screen and that's what we need: a red feather on the bobber. **So the higher the threshold, the less red colors the bot will recognize and the other way around: the lower is the threshold the more red colors on the screen the bot will recognize.**
+For instance, if the red switch is used and the threshold is set to 60, the bot will only recognize colors that are redder than this threshold value. This allows the bot to focus on the reddest parts of the screen, such as a red feather on the bobber. 
 
->Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.
-
-With this error the bot will highlight the area where it ran into the same colors as your threshold value. Tweak the **Fishing Zone** or change your fishing place. If the error happens because of some reddish water, use the blue switch or increase **Threshold** value.  
-
-> Have tried n attempts to find the bobber and failed: decrease the red color "threshold" value or change the fishing place.
-
-If you see this error, it means you need to decrease threshold or change the direction/position of your fishing place to make the bobber brighter.
+Increasing the threshold value will result in the bot recognizing fewer red colors, while decreasing the threshold value will cause the bot to recognize more red colors on the screen.
 
 ### Dynamic Threshold
 
@@ -155,7 +149,7 @@ If you see this error, it means you need to decrease threshold or change the dir
 <img src="guide_img/dynamicth.jpg" align="center">
 </p>
 
-It's simple, the bot will decrease threshold by the provided value (default: 5) after n number of failed attempts to find the bobber (default: 5) and will try to make another n attempts to find the bobber decreasing it until it reaches *Threshold < 20*. This option is good to make the bot keep working even during the bad weather when the color/brightness of the bobber is drastically decreased.   
+The bot incorporates a simple mechanism to adjust the threshold value. After a certain number of failed attempts to find the bobber (default: 5), the bot will decrease the threshold by the provided value (default: 5). It will then make another set of attempts to find the bobber, continuing to decrease the threshold until it reaches a value of Threshold < 20. This feature is particularly useful in adverse weather conditions when the color or brightness of the bobber is significantly reduced, enabling the bot to continue functioning effectively.
 
 ## Fishing Zone :dart:
 
@@ -163,19 +157,20 @@ It's simple, the bot will decrease threshold by the provided value (default: 5) 
 <img src="guide_img/fishing-zone.gif" align="center">
 </p>
 
-Fishing zone is a resizable and movable area in the water where your bobber might land. The bot looks for the bobber only in this area.
+The Fishing Zone is an adjustable area in the water where your bobber may land. The bot specifically searches for the bobber within this designated area.
 
-**Fishing Zone** is an overlay window, so the colors of your character and UI will be recognized by the bot too.
+The Fishing Zone is displayed as an overlay window, meaning that the bot will also recognize the colors of your character and user interface.
 
-Fishing Zone has **"Check"** button to help you understand whether there's any red/blue colors of the provided threshold value in the Fishing Zone before casting a bobber. It fully depends on **Threshold** value, so again, if after pressing Check button the window changes to red color - close the window, slowly increase Threshold and test again. Repeat until the window changes to green.
+To assist you in assessing the presence of red or blue colors within the Fishing Zone, there is a "Check" button. This feature relies on the Threshold value. If, upon pressing the Check button, the window turns red, close the window, gradually increase the Threshold value, and test again. Repeat this process until the window turns green.
 
-The rule of thumb here is **the better you can see the red/blue feather the better the bot will see it too**:
-- If you can, make your video settings as best as possible, except the weather effects...
-- Turn off all the weather effects so that the bot won't confuse rain/fog for jerking of the bobber. But if the weather is *really* bad (like a blizzard), it might drastically reduce the efficiency of the bot. Solution: find another place, switch between blue/red feathers or wait for the better weather.
-- Different direction might make the red feather of the bobber either brighter or darker, bigger or smaller, this all will impact the efficiency of the bot. In most cases the place doesn't matter **it's all about direction and position**.
-- Camera position isn't so important, but sometimes, if the place is dark/snowy, closer view to the bobber might help. The best position is just a normal 3rd person view.
-- Tweak gamma/brightness/contrast settings to make the bobber brighter and more colorful.
-- For very dark zones you can try other bobbers that have distinct red/blue colors on them instead of the default one.
+A general guideline to follow is that the better you can perceive the red or blue feather, the better the bot will be able to detect it as well. Consider the following tips:
+
+- Optimize your video settings to enhance visibility, excluding weather effects.
+- Disable weather effects to prevent the bot from confusing rain or fog with bobber movements. However, note that extremely harsh weather conditions, such as blizzards, may significantly reduce the bot's efficiency. In such cases, you can either find an alternative fishing spot, switch between blue and red feathers, or wait for better weather.
+- Keep in mind that different camera directions can affect the brightness, size, and visibility of the red feather on the bobber, subsequently impacting the bot's performance. While the specific location may not be critical, the direction and positioning are crucial.
+- Although camera position is not highly significant, in dark or snowy areas, a closer view of the bobber might improve visibility. Generally, a normal third-person view is ideal.
+- Adjust gamma, brightness, and contrast settings to enhance the brightness and vibrancy of the bobber.
+- In very dark zones, consider using alternative bobbers with distinctive red or blue colors instead of the default one.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
 
@@ -227,7 +222,7 @@ To make the interactive key work, you use this commands (write them in the chat 
 
 ## Soulbound items auto-confirmation :large_blue_diamond:
 
-If you want the bot to confirm rare Soulbound items, turn on **Loot all Uncommon and Rare items** option. If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
+If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
 
 <p align="center">
 <img src="guide_img/soulbound.jpg" width="640" align="center">
@@ -309,7 +304,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <img src="guide_img/multiple-windows.gif" align="center">
 </p>
 
-Multiple Windows feature allows you to fish in multiple windows (up to 4) at the same time. The bot will switch between the windows of the game when it needs to cast/catch fish in one of them.
+The Multiple Windows feature enables you to fish simultaneously in multiple game windows, with support for up to four windows. The bot will seamlessly switch between the game windows as needed for casting and catching fish. This feature enhances your fishing efficiency by allowing you to manage multiple fishing spots or engage in multi-character fishing activities.
 
 Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
 
@@ -367,7 +362,9 @@ The bot will randomly move and change your camera view from time to time within 
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AFK Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
 
-Because the bot can't work in the background and requires a little bit difficult configuration for VM, AFK Fishing mode might help you if you have only one monitor. This mode make the bot focus the window of the game only when it needs to cast and catch the fish, after that it will switch back to the previous window by using alt + tab keys.  It allows you to watch video/surf the internet/read a book while the bot is checking the bobber in the background. **This mode works only with DirectX11**.
+To facilitate the use of the bot when you have a single monitor and cannot run it in the background or set up a virtual machine, the AFK Fishing mode is available. This mode enables the bot to focus on the game window only during the casting and fish-catching process. After that, it will automatically switch back to the previous window using the Alt + Tab keys.
+
+With AFK Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
 
 ## Download :open_file_folder:
 
@@ -379,10 +376,10 @@ AutoFish 2.0.0 beta Public: [Download](https://www.buymeacoffee.com/jsbots/e/953
 
 AutoFish 2.0.0 beta Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
-It's open-source software, so if you are afraid of downloading the executable file,  you can clone the repository, check the code and launch it from the CLI.
+The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
 
-The executable file is a setup, it will install the bot into ```c:/users/your_user/App Data/Local/random_folder/``` and create a shortcut with a random name on your desktop.
+If you choose to download the executable file, it functions as a setup file that installs the bot in the following directory: *c:/users/your_user/App Data/Local/random_folder/*. Additionally, a shortcut with a randomly generated name will be created on your desktop.
 
-You can uninstall it in the Windows Settings, the name of the uninstall will be the same name as the name of the shortcut.
+If you wish to uninstall the bot, you can do so through the Windows Settings. The uninstaller will have the same name as the shortcut on your desktop.
 
-If you downloaded a new setup, you need to uninstall the previous AutoFish first, because the random names of the application and the folder are generated per install, so it won't automatically re-install a new application in the folder of the previous.
+Please note that if you download a new setup file, it is necessary to uninstall the previous version of AutoFish before proceeding. The application and folder names are generated randomly during each installation, preventing automatic installation of a new version in the previous folder.
