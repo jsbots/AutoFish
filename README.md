@@ -32,7 +32,7 @@ AutoFish Premium:
 
 ## Fishing bot :fish:
 
-This is a fishing bot designed for World of Warcraft. It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
+This is a fishing bot designed for wow-like fishing logic. It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
 
 This bot is capable of simultaneously handling one or multiple game windows, enabling efficient fishing across different instances. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot analysis.
 
@@ -56,32 +56,19 @@ For more detailed review you can watch <img src="https://upload.wikimedia.org/wi
 
 This is commonly referred to as a "pixel bot." It operates without modifying the game's memory or utilizing vision libraries like OpenCV. Instead, it employs a simpler approach: it analyzes the game window for concentrated red colors and monitors that area for any changes. As the bobber moves and gently sways, the bot follows its motion. However, when the bobber suddenly jerks, the bot clicks on it and catches the fish.
 
-It's important to note that the bot requires the game window to be open at all times and does not function in the background. To address this limitation, one can utilize a **virtual machine** (such as VirtualBox or VMware Player) with World of Warcraft installed. Launching AutoFish within the virtual machine allows for a workaround.
+It's important to note that the bot requires the game window to be open at all times and does not function in the background. To address this limitation, one can utilize a **virtual machine** such as VirtualBox or VMware Player. 
 
 ## Disclaimer :warning:
 
 **This project was solely developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using JavaScript.**
 
+This software can be used with any game that has a similar fishing logic. 
+
 It's important to note that using bots in the majority of games is explicitly prohibited. Engaging in such activities carries significant risks, including potential consequences such as account suspension, loss of in-game progress, or even real-world financial losses.
 
-When using this software, it is crucial to understand and accept the associated risks. You assume full responsibility for any outcomes that may arise, as no one else can be held accountable. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes. As a result, no guarantees or assurances can be made regarding the functionality or outcomes of the bot. It is provided as-is, without warranties or guarantees..
+When using this software, it is crucial to understand and accept the associated risks. You assume full responsibility for any outcomes that may arise, as no one else can be held accountable. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes. As a result, no guarantees or assurances can be made regarding the functionality or outcomes of the bot. 
 
-## Servers tests :video_game:
-
-The bot was tested on official servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Retail**
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Classic**
-- <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK Classic**
-
-Also on unofficial servers:
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Legion**
-- <img src="guide_img/icons/good.png" width="15" height="15">  **MoP**
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Cataclysm**
-- <img src="guide_img/icons/good.png" width="15" height="15">  **WotLK**
-  - <img src="guide_img/icons/good.png" width="15" height="15">   **Ascension** (use **custom window** option and choose *Ascension* window. Launch the bot as admin)
-- <img src="guide_img/icons/good.png" width="15" height="15">  **TBC**
-- <img src="guide_img/icons/good.png" width="15" height="15">  **Vanilla**
-  - <img src="guide_img/icons/good.png" width="15" height="15">  **Turtle WoW** (use separate Turtle WoW config, sound detection gives best performance there)
+It is provided as-is, without warranties or guarantees.
 
 ## Guide :blue_book:
 
@@ -181,9 +168,9 @@ Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
 </p>
 
 ## Applying Lures :pushpin:
-For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
+For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
 
-**Dragonflight**:
+**retail**:
 
 ```
 /use *lure_name*
@@ -208,7 +195,7 @@ For **Dragonflight** and **Classic/Vanilla** you need to use a macro that will a
 
 ## Interactive key
 
-In **Dragonflight** You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
+In **Retail**-like games You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
 
 <p align="center">
 <img src="guide_img/intkey.jpg" align="center">
@@ -223,10 +210,6 @@ To make the interactive key work, you use this commands (write them in the chat 
 ## Soulbound items auto-confirmation :large_blue_diamond:
 
 If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
-
-<p align="center">
-<img src="guide_img/soulbound.jpg" width="640" align="center">
-</p>
 
 
 ## AutoFish Premium	:crown:
