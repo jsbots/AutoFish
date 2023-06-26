@@ -9,7 +9,6 @@
 ## Table of Contents :page_with_curl:
 
 - [Fishing bot](#fishing-bot-fish)
-- [Servers tests](#servers-tests-video_game)
 - [Disclaimer](#disclaimer-warning)
 - [Guide](#guide-blue_book)
 - [Threshold](#threshold-red_circle)
@@ -35,10 +34,6 @@ AutoFish Premium:
 This is a fishing bot designed for wow-like fishing logic. It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
 
 This bot is capable of simultaneously handling one or multiple game windows, enabling efficient fishing across different instances. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot analysis.
-
-<p align="center">
-<img src="guide_img/fishing.gif" width="640px" align="center">
-</p>
 
 **Features:**
 - Fishing lures support.
@@ -140,10 +135,6 @@ The bot incorporates a simple mechanism to adjust the threshold value. After a c
 
 ## Fishing Zone :dart:
 
-<p align="center">
-<img src="guide_img/fishing-zone.gif" align="center">
-</p>
-
 The Fishing Zone is an adjustable area in the water where your bobber may land. The bot specifically searches for the bobber within this designated area.
 
 The Fishing Zone is displayed as an overlay window, meaning that the bot will also recognize the colors of your character and user interface.
@@ -160,12 +151,6 @@ A general guideline to follow is that the better you can perceive the red or blu
 - In very dark zones, consider using alternative bobbers with distinctive red or blue colors instead of the default one.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
-
-Here are quick self-explanatory **"good-bad"** screenshots of the bobber:
-<p align="center">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test1.jpg" width="640">
-<img src="https://github.com/olesgeras/AutoFish/blob/main/guide_img/good-bad-test3.jpg" width="640">
-</p>
 
 ## Applying Lures :pushpin:
 For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
@@ -213,6 +198,8 @@ If the item requires confirmation on looting, the bot will confirm it automatica
 
 
 ## AutoFish Premium	:crown:
+
+AutoFish Premium is available for supporters who donate more than 15$ and has some additional features. 
 
 **Premium Features:**
 - You support the project! *(main feature)*
@@ -271,10 +258,6 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
 
-<p align="center">
-<img src="guide_img/chat-zone.jpg" align="center">
-</p>
-
 7. If you want to make the bot notify you about any errors or whipser messeges, *you need to start it from Telegram* (*not by pressing Start on the bot's interface*). Whisper detection will work much better and reliable if you **turn off all the other chat messages**.
 
 ## Multiple Windows :rocket:
@@ -282,10 +265,6 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
-
-<p align="center">
-<img src="guide_img/multiple-windows.gif" align="center">
-</p>
 
 The Multiple Windows feature enables you to fish simultaneously in multiple game windows, with support for up to four windows. The bot will seamlessly switch between the game windows as needed for casting and catching fish. This feature enhances your fishing efficiency by allowing you to manage multiple fishing spots or engage in multi-character fishing activities.
 
