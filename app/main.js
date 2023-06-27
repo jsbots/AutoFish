@@ -188,9 +188,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
 
-    if(type != `relZone` && settings.initialZone && !(showChoiceWarning(win, `This is your first launch. Do you want to set your Fishing Zone first? (recommended)`, `Fishing Zone`, `Yes`, `No`))){
-      type = `relZone`;
-      win.webContents.send("stop-bot");
+    if(type != `relZone` && settings.initialZone){
+      await new Promise(function(resolve, reject) {
+        setTimeout(resolve, 0);
+      });
+      if(!(showChoiceWarning(win, `This is your first launch. Do you want to set your Fishing Zone first? (recommended)`, `Fishing Zone`, `Yes`, `No`))) {
+        type = `relZone`;
+        win.webContents.send("stop-bot");
+      }
     }
 
     if(settings.initialZone) {
