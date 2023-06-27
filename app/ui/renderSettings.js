@@ -5,7 +5,7 @@ const renderBobberImg = (bobberColor, autoTh) => {
   return elt(`img`, {className: `threshold_canvas ${autoTh ? `bobberColorSwitch_disabled` : ``}`, src:`img/bobber_${bobberColor}.png`, width: 80, height: 49});
 };
 
-const renderThreshold = ({ threshold, bobberColor, autoTh }) => {
+const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
 	if(threshold < 1) threshold = 1;
 	else if(threshold > 150) threshold = 150;
   const bobberColorSwitch = elt(`radio`, { className: `bobberColorSwitch ${autoTh ? `bobberColorSwitch_disabled` : ``}`,
@@ -14,11 +14,12 @@ const renderThreshold = ({ threshold, bobberColor, autoTh }) => {
                                 value: bobberColor,
                                 style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgb(100, 0, 0), red` : `rgb(0, 90, 200), rgb(0, 0, 100)`});`
                               }, elt(`div`, {className: `switch_thumb ${bobberColor == `red` ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`}, `${bobberColor == `red` ? `Red Feather` : `Blue Feather`}`));
-
+if(game == `Turtle WoW`) autoTh = false; 
 const autoThSwitch = elt(`radio`, { className: `autoTh`,
                               name: `autoTh`,
                               title: `Switch between auto and manual modes.`,
                               value: autoTh,
+                              disabled: game == `Turtle WoW`,
                               style: `background-image: linear-gradient(to right, ${autoTh ? `#663c20, #fe954d` : `#a8a8a8, #4b4b4b`});`
                             }, elt(`div`, {className: `switch_thumb ${autoTh ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`},  `${autoTh ? `Auto` : `Manual`}`));
 
