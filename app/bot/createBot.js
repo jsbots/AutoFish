@@ -63,18 +63,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   };
 
-  let fishingZone = createFishingZone({
-    getDataFrom,
-    zone: Zone.from(screenSize).toRel(config.relZone),
-    screenSize: screenSize,
-    threshold: settings.threshold,
-    bobberColor: settings.bobberColor,
-    sensitivity: config.bobberSensitivity,
-    density: config.bobberDensity,
-    direction: config.findBobberDirection,
-    splashColor: config.splashColor,
-    autoThreshold: settings.autoTh
-  });
+  let fishingZone = createFishingZone(getDataFrom, Zone.from(screenSize).toRel(config.relZone), screenSize, settings, config);
 
   const notificationZone = createNotificationZone({
     getDataFrom,
@@ -235,7 +224,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   });
 
   const findAllBobberColors = async () => {
-    if(settings.autoTh) {
+    if(settings.game == `Dragonflight` || settings.game == `WotLK Classic` || settings.game == `Classic`) {
       return null;
     }
 
@@ -514,18 +503,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   const dynamicThreshold = () => {
     settings.threshold = settings.threshold - config.dynamicThresholdValue;
-    fishingZone = createFishingZone({
-      getDataFrom,
-      zone: Zone.from(screenSize).toRel(config.relZone),
-      screenSize: screenSize,
-      threshold: settings.threshold,
-      bobberColor: settings.bobberColor,
-      sensitivity: config.bobberSensitivity,
-      density: config.bobberDensity,
-      direction: config.findBobberDirection,
-      splashColor: config.splashColor,
-      autoThreshold: settings.autoTh
-    });
+    fishingZone = createFishingZone(getDataFrom, Zone.from(screenSize).toRel(config.relZone), screenSize, settings, config);
   }
 
   dynamicThreshold.on = config.dynamicThreshold;
@@ -617,11 +595,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   }
 
   const stopAllCurrentActions = async () => {
-  if(!config.arduino) {
     await mouse.humanMoveTo.cancelCurrent();
     await keyboard.sendKeys.cancelCurrent();
     await keyboard.printText.cancelCurrent();
-  }
 };
 
   doAfterTimer.on = settings.timer;
