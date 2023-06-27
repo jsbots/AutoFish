@@ -26,7 +26,7 @@ const isBlue = (threshold, closeness, size = 255, upperLimit = 295) => ([r, g, b
                                                         isCloseEnough([b, g, r], closeness) &&
                                                         r < size && g < size && b <= upperLimit;
 
-const createFishingZone = ({ getDataFrom , zone, screenSize, threshold, bobberColor, sensitivity, density, direction, splashColor, autoThreshold }) => {
+const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberColor, autoTh: autoThreshold }, {bobberSensitivity: sensitivity, bobberDensity: density, findBobberDirection: direction, splashColor}) => {
   let isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
   let saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
   const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround(density).every((pos) => isBobber(rgb.colorAt(pos)));
@@ -157,9 +157,6 @@ const createFishingZone = ({ getDataFrom , zone, screenSize, threshold, bobberCo
         let [rA, gA, bA] = a.color;
         let [rB, gB, bB] = b.color;
 
-        let distanceA = Math.sqrt(Math.pow(Math.abs(center.x - a.pos.x), 2) + Math.pow(Math.abs(center.y - a.pos.y), 2)) / (screenSize.height > 1080 ? 10 : 5);
-        let distanceB = Math.sqrt(Math.pow(Math.abs(center.x - b.pos.x), 2) + Math.pow(Math.abs(center.y - b.pos.y), 2)) / (screenSize.height > 1080 ? 10 : 5);
-
         let closenessARed = Math.abs(gA - bA);
         let closenessBRed = Math.abs(gB - bB);
 
@@ -169,7 +166,7 @@ const createFishingZone = ({ getDataFrom , zone, screenSize, threshold, bobberCo
         let colorA = bobberColor == `red` ? (rA - Math.max(gA, bA)) - closenessARed : (bA - Math.max(gA, rA)) - closenessABlue;
         let colorB = bobberColor == `red` ? (rB - Math.max(gB, bB)) - closenessBRed : (bB - Math.max(gB, rB)) - closenessBBlue;
 
-        if((colorA - distanceA) > (colorB - distanceB)) {
+        if(colorA > colorB) {
           return a;
         } else {
           return b;
