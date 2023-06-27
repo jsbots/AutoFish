@@ -190,7 +190,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
     if(type != `relZone` && settings.initialZone){
       await new Promise(function(resolve, reject) {
-        setTimeout(resolve, 0);
+        setTimeout(resolve, 50);
       });
       if(!(showChoiceWarning(win, `This is your first launch. Do you want to set your Fishing Zone first? (recommended)`, `Fishing Zone`, `Yes`, `No`))) {
         type = `relZone`;
