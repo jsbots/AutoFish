@@ -1,1 +1,23 @@
-{"game":"Dragonflight","timer":0,"lures":false,"fishingKey":"1","luresKey":"2","stopKey":"space","intKey":"f","useInt":false,"luresDelayMin":10,"whitelist":false,"whitelistWords":"","whiteListBlueGreen":true,"filterType":"whitelist","atMouse":true,"confirmSoulbound":true,"whitelistLanguage":"eng","threshold":60,"bobberColor":"red","autoTh":true,"initial":false,"initialZone":true}
+{
+  "game": "Dragonflight",
+  "timer": 0,
+  "lures": false,
+  "fishingKey": "1",
+  "luresKey": "2",
+  "stopKey": "space",
+  "intKey": "f",
+  "useInt": false,
+  "luresDelayMin": 10,
+  "whitelist": false,
+  "whitelistWords": "",
+  "whiteListBlueGreen": true,
+  "filterType": "whitelist",
+  "atMouse": true,
+  "confirmSoulbound": true,
+  "whitelistLanguage": "eng",
+  "threshold": 60,
+  "bobberColor": "red",
+  "autoTh": true,
+  "initial": true,
+  "initialZone": true
+}
