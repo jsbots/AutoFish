@@ -43,7 +43,8 @@
     "electron": "^20.0.0",
     "electron-rebuild": "^3.2.9",
     "eslint": "^8.43.0",
-    "jest": "^28.1.0"
+    "jest": "^28.1.0",
+    "prettier": "^2.8.8"
   },
   "config": {
     "forge": "./forge.config.js"
