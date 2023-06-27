@@ -42,7 +42,7 @@
     "@electron-forge/maker-zip": "^6.0.4",
     "electron": "^20.0.0",
     "electron-rebuild": "^3.2.9",
-    "eslint": "^8.15.0",
+    "eslint": "^8.43.0",
     "jest": "^28.1.0"
   },
   "config": {

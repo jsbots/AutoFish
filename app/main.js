@@ -40,7 +40,7 @@ if (handleSquirrelEvent(app)) {
 
 
 const showChoiceWarning = (win, warning, title, button1, button2) => {
-  return result = dialog.showMessageBoxSync(win, {
+  return dialog.showMessageBoxSync(win, {
     type: "warning",
     title: `${title}`,
     message: warning,
@@ -52,7 +52,7 @@ const showChoiceWarning = (win, warning, title, button1, button2) => {
 
 
 const showWarning = (win, warning) => {
-  return result = dialog.showMessageBoxSync(win, {
+  return dialog.showMessageBoxSync(win, {
     type: "warning",
     title: `Warning`,
     message: warning,
@@ -284,7 +284,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
   const menu = Menu.buildFromTemplate([{label: `Help`,     submenu: [
-      { label: 'AutoFish 2.0.0 beta Public' },
+      { label: `AutoFish ${getJson('../package.json').version} Public` },
       { type: 'separator' },
       { label: 'Read Me', click: () => shell.openExternal("https://github.com/jsbots/AutoFish#guide-blue_book")},
       { label: 'Video', click: () => shell.openExternal("https://youtu.be/A3W8UuVIZTo")},

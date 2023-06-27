@@ -6,7 +6,6 @@ const createNotificationZone = ({ getDataFrom, zone }) => {
     isError: ([r, g, b]) => r - g > 220 && r - b > 220
   }
 
-  const stopAtFirst = true;
   return {
     async check(...type) {
       const colors = type.map((type) => {

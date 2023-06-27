@@ -16,7 +16,7 @@ const getPosWithin = ({points, pos, size, dir}) => {
   }
 
 const isOverThreshold = ([r, g, b], threshold) => (r - Math.max(g, b)) > threshold;
-const isCloseEnough = ([r, g, b], closeness) => Math.abs(g - b) <= closeness;
+const isCloseEnough = ([_, g, b], closeness) => Math.abs(g - b) <= closeness;
 
 const isRed = (threshold, closeness, size = 255, upperLimit = 295) => ([r, g, b]) => isOverThreshold([r, g, b], threshold) &&
                                                        isCloseEnough([r, g, b], closeness) &&
@@ -185,7 +185,7 @@ const createFishingZone = ({ getDataFrom , zone, screenSize, threshold, bobberCo
 
     async getBobberPointsAround(rgb, bobber) {
       let memory = [bobber];
-      for(let point of memory) {;
+      for(let point of memory) {
         if(memory.length > 10000) throw new Error(`color`);
         for(let pointAround of point.getPointsAround()) {
           if(isBobber(rgb.colorAt(pointAround)) && !memory.some(mPoint => mPoint.isEqual(pointAround))) {

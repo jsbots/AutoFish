@@ -2,8 +2,6 @@ const Zone = require("../utils/zone.js");
 const createFishingZone = require("./fishingZone.js");
 const createNotificationZone = require("./notificationZone.js");
 const createLootZone = require("./lootZone.js");
-const createChatZone = require('./chatZone');
-const Jimp = require(`jimp`);
 const {app} = require(`electron`);
 
 const { screen, Region, Point } = require("@nut-tree/nut-js");
@@ -32,8 +30,6 @@ const sleep = (time) => {
 const random = (from, to) => {
   return from + Math.random() * (to - from);
 };
-
-let chatMsgs = [];
 
 const createBot = (game, { config, settings }, winSwitch, state) => {
   const { keyboard, mouse, workwindow } = game;
@@ -518,7 +514,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   const dynamicThreshold = () => {
     settings.threshold = settings.threshold - config.dynamicThresholdValue;
-    let fishingZone = createFishingZone({
+    fishingZone = createFishingZone({
       getDataFrom,
       zone: Zone.from(screenSize).toRel(config.relZone),
       screenSize: screenSize,

@@ -57,7 +57,7 @@ const sortWordsByItem = (words, lootWindow, isDragonflight) => {
       selected[Math.floor(word.y / itemHeight)] += ` ${word.text}`;
     }
   });
-  return selected.flat();;
+  return selected.flat();
 };
 
 module.exports = {

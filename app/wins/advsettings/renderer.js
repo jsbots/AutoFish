@@ -193,7 +193,7 @@ const renderSleepAfterHook = ({sleepAfterHook}) => {
   return elt(`input`, {type: `checkbox`, name: `sleepAfterHook`, checked: sleepAfterHook});
 };
 
-const renderBobberSensitivity = ({bobberSensitivity, soundDetection, bobberSensitivityPrint, autoSensDens}) => {
+const renderBobberSensitivity = ({bobberSensitivity, bobberSensitivityPrint, autoSensDens}) => {
   let min = 1;
   let max = 3;
   if(bobberSensitivityPrint) {
@@ -278,7 +278,7 @@ const renderMammothTraderName = () => {
     return elt('input', {type: `text`, disabled: true, value: `Trader`});
 };
 
-const renderSoundDetection = ({soundDetection}) => {
+const renderSoundDetection = () => {
     return elt(`input`, {type: `checkbox`, disabled: true, checked: false});
 };
 

@@ -9,7 +9,6 @@ const EventLine = require("../utils/eventLine.js");
 const { setWorker } = require("../utils/textReader.js");
 
 const createWinSwitch = require("../game/winSwitch.js");
-const { app } = require("electron");
 
 const createBots = async (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
@@ -19,9 +18,7 @@ const createBots = async (games, settings, config, log) => {
     await setWorker(settings.whitelistLanguage);
   }
 
-  if(true) {
-    games = [games[0]];
-  }
+  games = [games[0]];
 
   const bots = games.map((game, i) => {
     let state = { status: "initial", startTime: Date.now() };

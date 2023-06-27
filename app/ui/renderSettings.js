@@ -93,7 +93,7 @@ const renderStopKey = ({stopKey}) => {
   return key;
 };
 
-const renderPoleKey = ({lures, game, intKey, useInt}) => {
+const renderPoleKey = ({ game, intKey, useInt}) => {
   let key = elt('input', {type: 'text', value: intKey, disabled: !useInt || game != `Dragonflight`, name: "intKey"});
   key.setAttribute(`readonly`, `true`);
   const checkbox = elt(`input`, {type: `checkbox`, disabled: game != `Dragonflight`, checked: game != `Dragonflight` ? false : useInt, style: `margin-right: 7px`, name: "useInt"});
@@ -134,7 +134,7 @@ const renderFilterType = ({game, whitelist, filterType, atMouse}) => {
   return elt(`div`, null, `Mode: `, modeContainer, `Loot window at mouse:`, atMouseContainer);
 }
 
-const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) => {
+const renderWhitelist = ({whitelist, whitelistWords, whitelistLanguage}) => {
   let languages = [`eng`, `spa`, `spa_old`, `por`, `fra`, `deu`, `ita`, `chi_sim`, `chi_tra`, `kor`, `rus`];
 
   const langContainer = elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map( language => elt(`option`, {selected: whitelistLanguage == language}, language)));
@@ -147,11 +147,6 @@ const renderWhitelist = ({game, whitelist, whitelistWords, whitelistLanguage}) =
   elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}),
   elt('input', {type: 'checkbox', name: "whitelist", checked}))
 };
-
-const renderWhiteListGreenBlue = ({whitelist, whiteListBlueGreen}) => {
-  return elt('input', {type: `checkbox`, checked: whitelist && whiteListBlueGreen, name: `whiteListBlueGreen`, disabled: !whitelist });
-};
-
 
 const renderMultipleWindows = () => {
   return elt(`div`, {className: `premium_lock premium_lock_main`, id: `link`, url: `https://youtu.be/ih-xoQcByz8`})
@@ -247,7 +242,6 @@ wrapInLabel(
         renderFilterType(config),
         `Filter Mode will decide whether to pick or to ignore items in the list. Loot window at mouse will tell the bot whether it should check the loot window at mouse or the default loot window at the left side of the screen.`
       ),
-      /*wrapInLabel(elt('span', null, "Loot all ", elt('span', {style: `color:#4DDF3F; font-weight: bold`}, `Uncommon `), `and `, elt(`span`, {style: `color: #015CB4; font-weight: bold`}, `Rare `), `and `, elt('span', {style: `color:#950c95; font-weight: bold`}, `Epic `), `items:`), renderWhiteListGreenBlue(config), `If you use whitelist, you can check this option to loot every green, blue and purple items in addition to the items in the whitelist.`)*/
     ),
     elt("p", {className: 'settings_header'}, "Threshold"),
     elt(
