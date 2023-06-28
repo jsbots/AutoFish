@@ -224,7 +224,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   });
 
   const findAllBobberColors = async () => {
-    if(settings.game == `Dragonflight` || settings.game == `WotLK Classic` || settings.game == `Classic`) {
+    if(settings.game == `Retail` || settings.game == `WotLK Classic` || settings.game == `Classic`) {
       return null;
     }
 
@@ -267,7 +267,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   const detectSens = () => {
     if(!config.autoSensDens || settings.game == `Turtle WoW`) return;
 
-    if(settings.game == `Dragonflight`) {
+    if(settings.game == `Retail`) {
       return `sensitivity`;
     } else if(screenSize.width > 1920) {
       return `density`;
@@ -305,7 +305,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         return pos;
       }
 
-      if(settings.game == `Dragonflight`) {
+      if(settings.game == `Retail`) {
         if(!(await fishingZone.checkBobberPrint(pos))) {
           return pos;
         }
@@ -354,7 +354,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await sleep(150); // open loot window
     }
 
-    if(settings.game != `Dragonflight`) {
+    if(settings.game != `Retail`) {
       let pos = {
         x: cursorPos.x + lootWindow.toItemX,
         y: cursorPos.y - lootWindow.toItemY - 10,
@@ -376,7 +376,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     };
 
     let recognizedWords = await readTextFrom(await getDataFrom(lootWindowDim), screenSize.width <= 1536 ? 3 : 2);
-    let items = sortWordsByItem(recognizedWords, lootWindow, settings.game == `Dragonflight`);
+    let items = sortWordsByItem(recognizedWords, lootWindow, settings.game == `Retail`);
     let itemPos = 0;
 
     let itemsPicked = [];
@@ -449,14 +449,14 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         itemsPicked.push(item);
       }
 
-      itemPos += settings.game == `Dragonflight` ? lootWindow.itemHeight + lootWindow.itemHeightAdd : lootWindow.itemHeight;
+      itemPos += settings.game == `Retail` ? lootWindow.itemHeight + lootWindow.itemHeightAdd : lootWindow.itemHeight;
     }
 
     if(settings.useInt && itemsPicked.length > 1) {
       await moveTo({pos: cursorPos, randomRange: 5});
     }
 
-    if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Dragonflight`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
+    if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
 
             if (config.reaction) {
               await sleep(random(config.reactionDelay.from, config.reactionDelay.to));

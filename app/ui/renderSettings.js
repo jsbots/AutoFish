@@ -14,7 +14,7 @@ const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
                                 value: bobberColor,
                                 style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgb(100, 0, 0), red` : `rgb(0, 90, 200), rgb(0, 0, 100)`});`
                               }, elt(`div`, {className: `switch_thumb ${bobberColor == `red` ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`}, `${bobberColor == `red` ? `Red Feather` : `Blue Feather`}`));
-if(game == `Turtle WoW`) autoTh = false; 
+if(game == `Turtle WoW`) autoTh = false;
 const autoThSwitch = elt(`radio`, { className: `autoTh`,
                               name: `autoTh`,
                               title: `Switch between auto and manual modes.`,
@@ -39,7 +39,7 @@ const autoThSwitch = elt(`radio`, { className: `autoTh`,
 
 const renderGameNames = ({game}) => {
   const gamesOfficial = [
-    `Dragonflight`,
+    `Retail`,
     `WotLK Classic`,
     `Classic`
   ];
@@ -51,18 +51,24 @@ const renderGameNames = ({game}) => {
     "WotLK Private",
     "TBC",
     "Vanilla",
-    "Turtle WoW"
   ];
+
+  const gamesCustom = [
+    "Turtle WoW"
+  ]
 
   return elt(
     "select",
     { name: "game", className: "option game-option" },
-    elt(`optgroup`, {label: `Official`}, ...gamesOfficial.map((name) =>
+    elt(`optgroup`, {label: `Official-like`}, ...gamesOfficial.map((name) =>
           elt("option", { selected: name == game }, name)
         )),
-    elt(`optgroup`, {label: `Private`}, ...gamesPrivate.map((name) =>
+    elt(`optgroup`, {label: `Private-like`}, ...gamesPrivate.map((name) =>
           elt("option", { selected: name == game }, name)
         )),
+    elt(`optgroup`, {label: `Custom-like`}, ...gamesCustom.map((name) =>
+        elt("option", { selected: name == game }, name)
+    ))
   );
 };
 
@@ -95,9 +101,9 @@ const renderStopKey = ({stopKey}) => {
 };
 
 const renderPoleKey = ({ game, intKey, useInt}) => {
-  let key = elt('input', {type: 'text', value: intKey, disabled: !useInt || game != `Dragonflight`, name: "intKey"});
+  let key = elt('input', {type: 'text', value: intKey, disabled: !useInt || game != `Retail`, name: "intKey"});
   key.setAttribute(`readonly`, `true`);
-  const checkbox = elt(`input`, {type: `checkbox`, disabled: game != `Dragonflight`, checked: game != `Dragonflight` ? false : useInt, style: `margin-right: 7px`, name: "useInt"});
+  const checkbox = elt(`input`, {type: `checkbox`, disabled: game != `Retail`, checked: game != `Retail` ? false : useInt, style: `margin-right: 7px`, name: "useInt"});
   const container = elt(`div`, null, checkbox, key)
   return container;
 };
@@ -122,11 +128,11 @@ const renderFishingZone = () => {
 
 const renderFilterType = ({game, whitelist, filterType, atMouse}) => {
 
-  if(game != `Dragonflight` && game != `Vanilla`) {
+  if(game != `Retail` && game != `Vanilla`) {
     atMouse = true;
   }
 
-  const atMouseContainer = elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Dragonflight` && game != `Vanilla`)});
+  const atMouseContainer = elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Retail` && game != `Vanilla`)});
   const modeContainer =  elt(`select`, {name: `filterType`, className: `filterType`, disabled: !whitelist},
     elt(`option`, {selected: filterType == `whitelist`}, `whitelist`),
     elt(`option`, {selected: filterType == `blacklist`}, `blacklist`)
@@ -188,7 +194,7 @@ return elt(
       wrapInLabel(
         "Int. key: ",
         renderPoleKey(config),
-        `Exclusively for Dragonflight. Use interaction key instead of mouse for catching.`
+        `Exclusively for Retail. Use interaction key instead of mouse for catching.`
       ),
       wrapInLabel(
         "Reuse Lure: ",

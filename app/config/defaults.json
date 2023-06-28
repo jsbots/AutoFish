@@ -4,7 +4,7 @@
     "classNames": ["GxWindowClass", "GxWindowClassD3d"]
   },
   "patch": {
-    "Dragonflight": {
+    "Retail": {
       "multipleWindows": false,
       "likeHuman": true,
       "dynamicThreshold": false,
