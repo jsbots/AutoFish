@@ -19,6 +19,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 25000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -113,6 +114,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 25000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -202,6 +204,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 25000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -291,6 +294,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -378,6 +382,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -465,6 +470,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -554,6 +560,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -641,6 +648,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -730,6 +738,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -820,6 +829,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
+      "highlightPercent": 85,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,

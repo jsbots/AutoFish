@@ -248,7 +248,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   const highlightBobber = async (pos) => {
-    if (settings.useInt || (config.likeHuman && random(0, 100) > 85)) {
+    if (settings.useInt || (config.likeHuman && random(0, 100) > Number(config.highlightPercent))) {
         return pos;
     }
 

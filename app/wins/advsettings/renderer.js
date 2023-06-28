@@ -17,6 +17,7 @@ const convertValue = (node) => {
 
 const renderHideWin = ({hideWin}) => elt(`input`, {type: `checkbox`, checked: hideWin, name: `hideWin`});
 
+const renderHighlightPercent = ({highlightPercent}) => elt(`input`, {type: `number`, value: highlightPercent, name: `highlightPercent`});
 
 const renderDelay = ({delay}) => {
   return elt(`div`, {"data-collection": `delay`}, elt(`span`, {className: `option_text`}, `from:`),
@@ -438,6 +439,7 @@ const renderSettings = (config) => {
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `After attempts limit the bot will dynamically change threshold by the provided value.`),
+  wrapInLabel(`Highlight bobber (%): `, renderHighlightPercent(config), `How often the bot should highlight the bobber before checking on it (if in your game the bobber become brigther or more colourfull after highlighting, then change this value to 100% if you don't care for randomness)`),
   wrapInLabel("Quit after timer: ", renderTimerQuit(config),`The bot will quit the game after timer elapsed.`),
   wrapInLabel(
     "Use shift+click: ",
