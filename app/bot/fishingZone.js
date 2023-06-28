@@ -30,6 +30,7 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
   let isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
   let saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
   const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround(density).every((pos) => isBobber(rgb.colorAt(pos)));
+  let filledBobberForPrint = [];
   let colorSwitchesCount = 0;
   return {
 
@@ -59,6 +60,7 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
       if(autoThreshold) {
         try {
           filledBobber = await this.getBobberPointsAround(rgb, bobber);
+          filledBobberForPrint = filledBobber.points;
         } catch(e) {
           if(e.message == `color` && colorSwitchesCount++ < 2) {
             bobberColor = bobberColor == `red` ? `blue` : `red`;
@@ -102,7 +104,9 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
       }
 
       if(detectSens) {
-        await this.adjustSensitivity(filledBobber.length, detectSens);
+        let mostBottom = filledBobber.points.reduce((a, b) => a.y > b.y ? a : b);
+        let mostTop = filledBobber.pos;
+        await this.adjustSensitivity(mostTop, mostBottom, detectSens);
       }
 
       if(autoThreshold) {
@@ -177,15 +181,15 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
       return {length: memory.length, pos: mostTop, points: memory};
     },
 
-    async adjustSensitivity(bobberSize, detectSens) {
+    async adjustSensitivity(mostTop, mostBottom, detectSens) {
       if(detectSens == `sensitivity`) {
-        let calculatedSens = Math.round(Math.sqrt(bobberSize / (bobberColor == `red` ? 2 : 1.5)));
+        let calculatedSens = Math.round((mostBottom.y - mostTop.y) * .65); // 65% from the top of the feather
         if(calculatedSens < 3) calculatedSens = 3;
         sensitivity = calculatedSens;
       }
 
       if(detectSens == `density`) {
-        let calculatedDens = Math.round((bobberSize / 1000) * 10);
+        let calculatedDens = Math.round((mostBottom.y - mostTop.y) * .25); // 25% from the top of the feather
         if(calculatedDens > 10) calculatedDens = 10;
         density = calculatedDens;
       }
@@ -234,9 +238,15 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
     },
 
     async getBobberPrint(wobble) {
-      let rgb = createRgb(await getDataFrom(zone));
-      rgb.saturate(...saturation)
-      let rest = rgb.findColors({ isColor: isBobber, limit: 5000});
+      let rest = [];
+      if(!autoThreshold) {
+        let rgb = createRgb(await getDataFrom(zone));
+        rgb.saturate(...saturation);
+        rest = rgb.findColors({ isColor: isBobber, limit: 5000});
+      } else {
+        rest = filledBobberForPrint;
+      }
+
       if(!rest) return;
       let result = [...rest];
       rest.forEach(restPoint => {

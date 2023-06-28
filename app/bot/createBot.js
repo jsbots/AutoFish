@@ -119,7 +119,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .map((word) => word.trim());
 
   const moveTo = async ({ pos, randomRange }) => {
-    if (randomRange) {
+    if (randomRange) { 
       pos.x = pos.x + random(-randomRange, randomRange);
       pos.y = pos.y + random(-randomRange, randomRange);
     }
@@ -268,7 +268,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
     if(settings.game == `Retail`) {
       return `sensitivity`;
-    } else if(screenSize.width > 1920) {
+    } else {
       return `density`;
     }
   }
