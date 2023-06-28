@@ -93,7 +93,7 @@
         }
       }
     },
-    "WotLK Classic": {
+    "LK Classic": {
       "multipleWindows": false,
       "likeHuman": true,
       "dynamicThreshold": false,
@@ -509,7 +509,7 @@
         }
       }
     },
-    "WotLK Private": {
+    "LK Private": {
       "multipleWindows": false,
       "likeHuman": true,
       "dynamicThreshold": false,

@@ -40,7 +40,7 @@ const autoThSwitch = elt(`radio`, { className: `autoTh`,
 const renderGameNames = ({game}) => {
   const gamesOfficial = [
     `Retail`,
-    `WotLK Classic`,
+    `LK Classic`,
     `Classic`
   ];
 
@@ -48,7 +48,7 @@ const renderGameNames = ({game}) => {
     "Legion",
     "MoP",
     "Cataclysm",
-    "WotLK Private",
+    "LK Private",
     "TBC",
     "Vanilla",
   ];
@@ -151,7 +151,7 @@ const renderWhitelist = ({whitelist, whitelistWords, whitelistLanguage}) => {
 
   return elt('div', null,
   langContainer,
-  elt('input', {type: 'text', name:"whitelistWords", placeholder: `e.g. Glacial Salmon, Pygmy Suckerfish`, className: "whitelist_input", value: whitelistWords, disabled}),
+  elt('input', {type: 'text', name:"whitelistWords", placeholder: `Red Salmon, Curcian Carp, Dragon Goby`, className: "whitelist_input", value: whitelistWords, disabled}),
   elt('input', {type: 'checkbox', name: "whitelist", checked}))
 };
 

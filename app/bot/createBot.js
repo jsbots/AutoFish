@@ -224,7 +224,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   });
 
   const findAllBobberColors = async () => {
-    if(settings.game == `Retail` || settings.game == `WotLK Classic` || settings.game == `Classic`) {
+    if(settings.game == `Retail` || settings.game == `LK Classic` || settings.game == `Classic`) {
       return null;
     }
 
@@ -456,7 +456,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await moveTo({pos: cursorPos, randomRange: 5});
     }
 
-    if ((settings.game == `WotLK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
+    if ((settings.game == `LK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
 
             if (config.reaction) {
               await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
