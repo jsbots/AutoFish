@@ -289,7 +289,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
   const menu = Menu.buildFromTemplate([{label: `Help`,     submenu: [
-      { label: `AutoFish ${getJson('../package.json').version} Public` },
+      { label: `AutoFish ver. 2.0.1 Beta Public` },
       { type: 'separator' },
       { label: 'Read Me', click: () => shell.openExternal("https://github.com/jsbots/AutoFish#guide-blue_book")},
       { label: 'Video', click: () => shell.openExternal("https://youtu.be/A3W8UuVIZTo")},
