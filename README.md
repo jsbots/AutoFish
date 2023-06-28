@@ -31,7 +31,7 @@ AutoFish Premium:
 
 ## Fishing bot :fish:
 
-This is a fishing bot designed for wow-like fishing logic. It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
+This is a fishing bot designed for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
 
 This bot is capable of simultaneously handling one or multiple game windows, enabling efficient fishing across different instances. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot analysis.
 
@@ -51,17 +51,17 @@ For more detailed review you can watch <img src="https://upload.wikimedia.org/wi
 
 This is commonly referred to as a "pixel bot." It operates without modifying the game's memory or utilizing vision libraries like OpenCV. Instead, it employs a simpler approach: it analyzes the game window for concentrated red colors and monitors that area for any changes. As the bobber moves and gently sways, the bot follows its motion. However, when the bobber suddenly jerks, the bot clicks on it and catches the fish.
 
-It's important to note that the bot requires the game window to be open at all times and does not function in the background. To address this limitation, one can utilize a **virtual machine** such as VirtualBox or VMware Player. 
+It's important to note that the bot requires the game window to be open at all times and does not function in the background. To address this limitation, one can utilize a **virtual machine** such as VirtualBox or VMware Player.
 
 ## Disclaimer :warning:
 
 **This project was solely developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using JavaScript.**
 
-This software can be used with any game that has a similar fishing logic. 
+This software can be used with any game that has a similar fishing logic.
 
 It's important to note that using bots in the majority of games is explicitly prohibited. Engaging in such activities carries significant risks, including potential consequences such as account suspension, loss of in-game progress, or even real-world financial losses.
 
-When using this software, it is crucial to understand and accept the associated risks. You assume full responsibility for any outcomes that may arise, as no one else can be held accountable. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes. As a result, no guarantees or assurances can be made regarding the functionality or outcomes of the bot. 
+When using this software, it is crucial to understand and accept the associated risks. You assume full responsibility for any outcomes that may arise, as no one else can be held accountable. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes. As a result, no guarantees or assurances can be made regarding the functionality or outcomes of the bot.
 
 It is provided as-is, without warranties or guarantees.
 
@@ -71,7 +71,7 @@ It is provided as-is, without warranties or guarantees.
 2. Are you using **Filter** feature?
    - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
    - No: Turn on **Auto Loot** in the game.
-3. Assign your 'fishing' and 'lures' keys in the game and assign the same keys for the bot. 
+3. Assign your 'fishing' and 'lures' keys in the game and assign the same keys for the bot.
 4. Find a place to fish.
 5. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the switch you selected). Keep in mind that the **Fishing Zone** functions as an overlay, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
 6. Press the Start button and refrain from using your mouse and keyboard (if you require the bot to function in the background, consider using it within a virtual machine).
@@ -88,11 +88,11 @@ It indicates that you may have set the **Threshold** value too high. Try decreas
 
 > No, but the bot clicks too early before fish is even hooked.
 
-There are a couple of solutions for this. First, try switching to the 1st person view. If that doesn't help, navigate to the **Advanced Settings** and adjust either the **Bobber Sensitivity** (disable the Auto adjust Sensitivity and Density option) or the **Bobber Density** (particularly if it's not Dragonflight) values in the **Critical** section.
+There are a couple of solutions for this. First, try switching to the 1st person view. If that doesn't help, navigate to the **Advanced Settings** and adjust either the **Bobber Sensitivity** (disable the Auto adjust Sensitivity and Density option) or the **Bobber Density** (particularly if it's not Retail) values in the **Critical** section.
 
 > No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
 
-Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Dragonflight) or the **Bobber Density** (especially if it's not Dragonflight) values in the **Critical** section. In the case of Turtle WoW, you can decrease the Splash Color value."
+Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Retail) or the **Bobber Density** (especially if it's not Retail) values in the **Critical** section. In the case of Turtle WoW, you can decrease the Splash Color value."
 
 ### Hints and Issues
 
@@ -109,7 +109,7 @@ Then you do the opposite to the previous issue: navigate to the **Advanced Setti
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - If you want to use the bot with multiple windows don't forget to switch the game to **DirectX 11**.
 - [Supported keys for the bot](https://github.com/Krombik/keysender#keyboardbutton) *(except num's and Fs)*
-- If **Lunkers** bother you in Dragonflight, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
+- If **Lunkers** bother you in Retail, you might need to turn off sleeping or decrease it to around 0.5 - 5 seconds.
 
 ## Threshold :red_circle:
 
@@ -121,7 +121,7 @@ Then you do the opposite to the previous issue: navigate to the **Advanced Setti
 
 The Threshold value represents an RGB value of a red or blue color, depending on the switch used. It serves as a color threshold below which the bot will ignore all corresponding colors.
 
-For instance, if the red switch is used and the threshold is set to 60, the bot will only recognize colors that are redder than this threshold value. This allows the bot to focus on the reddest parts of the screen, such as a red feather on the bobber. 
+For instance, if the red switch is used and the threshold is set to 60, the bot will only recognize colors that are redder than this threshold value. This allows the bot to focus on the reddest parts of the screen, such as a red feather on the bobber.
 
 Increasing the threshold value will result in the bot recognizing fewer red colors, while decreasing the threshold value will cause the bot to recognize more red colors on the screen.
 
@@ -199,7 +199,7 @@ If the item requires confirmation on looting, the bot will confirm it automatica
 
 ## AutoFish Premium	:crown:
 
-AutoFish Premium is available for supporters who donate more than 15$ and has some additional features. 
+AutoFish Premium is available for supporters who donate more than 15$ and has some additional features.
 
 **Premium Features:**
 - You support the project! *(main feature)*
@@ -302,7 +302,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 As an alternative to filtering you can use a trader on your mammoth mount to sell all the junk items during the fishing. The bot will summon your mount, target your trader, interact with it by using interaction key in the game, unsummon the mount and go on fishing.
 
-Because of the novelty of the interaction key this feature is available only for Dragonflight.
+Because of the novelty of the interaction key this feature is available only for Retail.
 
 Depends on the mount the name of your trader might be different, so change the default value.
 
