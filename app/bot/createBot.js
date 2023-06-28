@@ -119,7 +119,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .map((word) => word.trim());
 
   const moveTo = async ({ pos, randomRange }) => {
-    if (randomRange) { 
+    if (randomRange) {
       pos.x = pos.x + random(-randomRange, randomRange);
       pos.y = pos.y + random(-randomRange, randomRange);
     }
@@ -223,7 +223,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   });
 
   const findAllBobberColors = async () => {
-    if(settings.game == `Retail` || settings.game == `LK Classic` || settings.game == `Classic`) {
+    if(settings.game != `LK Private` && settings.game != `TBC` && settings.game != `Vanilla` && settings.game != `Vanilla (splash)`) {
       return null;
     }
 
