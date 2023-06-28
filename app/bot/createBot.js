@@ -64,16 +64,15 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   let fishingZone = createFishingZone(getDataFrom, Zone.from(screenSize).toRel(config.relZone), screenSize, settings, config);
-
-  const notificationZone = createNotificationZone({
-    getDataFrom,
-    zone: Zone.from(screenSize).toRel({
-      x: 0.44,
-      y: 0.12,
-      width: 0.11,
-      height: 0.07,
-    }),
-  });
+    const notificationZone = createNotificationZone({
+      getDataFrom,
+      zone: Zone.from({
+        x: Math.round((screenSize.width / 2) - (screenSize.width * config.notificationPos.width)),
+        y: Math.round(screenSize.height * config.notificationPos.y),
+        width: Math.round((screenSize.width * config.notificationPos.width) * 2),
+        height: Math.round(screenSize.height * config.notificationPos.height)
+      }),
+    });
 
   const lootWindowPatch =
     config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
