@@ -110,35 +110,17 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
         let mostRight = filledBobber.points.reduce((a, b) => a.x > b.x ? a : b);
         let center = mostLeft.x + Math.round((mostRight.x - mostLeft.x) /  2);
 
-        if(density <= 1 && bobberColor == `blue`) {
-          filledBobber.pos = getPosWithin({
-            points: filledBobber.points,
-            pos: {x: center, y: filledBobber.pos.y + 1},
-            size: 10,
-            dir: {x: 0, y: 1}
-          });
+        filledBobber.pos = getPosWithin({
+          points: filledBobber.points,
+          pos: {x: center, y: filledBobber.pos.y + density},
+          size: 10,
+          dir: {x: 0, y: 1}
+        });
 
-          if(!filledBobber.pos) return;
-        }
+      if(!filledBobber.pos) return;
 
-        if(density > 1) {
-          let mostLeft = filledBobber.points.reduce((a, b) => a.x < b.x ? a : b);
-          let mostRight = filledBobber.points.reduce((a, b) => a.x > b.x ? a : b);
-          let center = mostLeft.x + Math.round((mostRight.x - mostLeft.x) /  2);
-
-          filledBobber.pos = getPosWithin({
-            points: filledBobber.points,
-            pos: {x: center, y: filledBobber.pos.y + density},
-            size: 10,
-            dir: {x: 0, y: 1}
-          });
-
-          if(!filledBobber.pos) return;
-        }
-
-        return filledBobber.pos.plus(zone);
-      }
-
+      return filledBobber.pos.plus(zone);
+    }
       return bobber.plus(zone);
     },
 
