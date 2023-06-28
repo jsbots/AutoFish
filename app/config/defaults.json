@@ -804,10 +804,10 @@
         }
       }
     },
-    "Turtle WoW": {
+    "Vanilla (splash)": {
       "multipleWindows": false,
       "likeHuman": true,
-      "game": "Turtle WoW",
+      "game": "Vanilla (splash)",
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,

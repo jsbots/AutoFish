@@ -14,12 +14,12 @@ const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
                                 value: bobberColor,
                                 style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgb(100, 0, 0), red` : `rgb(0, 90, 200), rgb(0, 0, 100)`});`
                               }, elt(`div`, {className: `switch_thumb ${bobberColor == `red` ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`}, `${bobberColor == `red` ? `Red Feather` : `Blue Feather`}`));
-if(game == `Turtle WoW`) autoTh = false;
+if(game == `Vanilla (splash)`) autoTh = false;
 const autoThSwitch = elt(`radio`, { className: `autoTh`,
                               name: `autoTh`,
                               title: `Switch between auto and manual modes.`,
                               value: autoTh,
-                              disabled: game == `Turtle WoW`,
+                              disabled: game == `Vanilla (splash)`,
                               style: `background-image: linear-gradient(to right, ${autoTh ? `#663c20, #fe954d` : `#a8a8a8, #4b4b4b`});`
                             }, elt(`div`, {className: `switch_thumb ${autoTh ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`},  `${autoTh ? `Auto` : `Manual`}`));
 
@@ -51,11 +51,9 @@ const renderGameNames = ({game}) => {
     "LK Private",
     "TBC",
     "Vanilla",
+    "Vanilla (splash)"
   ];
 
-  const gamesCustom = [
-    "Turtle WoW"
-  ]
 
   return elt(
     "select",
@@ -65,10 +63,7 @@ const renderGameNames = ({game}) => {
         )),
     elt(`optgroup`, {label: `Private-like`}, ...gamesPrivate.map((name) =>
           elt("option", { selected: name == game }, name)
-        )),
-    elt(`optgroup`, {label: `Custom-like`}, ...gamesCustom.map((name) =>
-        elt("option", { selected: name == game }, name)
-    ))
+        ))
   );
 };
 

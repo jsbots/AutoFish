@@ -264,7 +264,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   const detectSens = () => {
-    if(!config.autoSensDens || settings.game == `Turtle WoW`) return;
+    if(!config.autoSensDens || settings.game == `Vanilla (splash)`) return;
 
     if(settings.game == `Retail`) {
       return `sensitivity`;
@@ -308,7 +308,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         if(!(await fishingZone.checkBobberPrint(pos))) {
           return pos;
         }
-      } else if(settings.game == `Turtle WoW`) {
+      } else if(settings.game == `Vanilla (splash)`) {
         if(await fishingZone.checkBobberPrintSplash(pos)) {
           return pos;
         }

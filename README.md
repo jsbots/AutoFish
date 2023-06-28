@@ -92,7 +92,7 @@ There are a couple of solutions for this. First, try switching to the 1st person
 
 > No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
 
-Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Retail) or the **Bobber Density** (especially if it's not Retail) values in the **Critical** section. In the case of Turtle WoW, you can decrease the Splash Color value."
+Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Retail) or the **Bobber Density** (especially if it's not Retail) values in the **Critical** section. In the case of Vanilla (splash), you can decrease the Splash Color value."
 
 ### Hints and Issues
 
