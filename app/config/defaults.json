@@ -25,6 +25,11 @@
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
       },
+      "notificationPos": {
+        "y": 0.11574074,
+        "width": 0.01822916,
+        "height": 0.01388888
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -114,6 +119,11 @@
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
       },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -197,6 +207,11 @@
         "y": 0.08518518518518518,
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
+      },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
       },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
@@ -282,6 +297,11 @@
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
       },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -364,6 +384,11 @@
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
       },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -445,6 +470,11 @@
         "y": 0.08518518518518518,
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
+      },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
       },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
@@ -530,6 +560,11 @@
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
       },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -611,6 +646,11 @@
         "y": 0.08518518518518518,
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
+      },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
       },
       "checkingDelay": 10,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
@@ -696,6 +736,11 @@
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
       },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
+      },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
       "mouseCurvatureStrength": { "from": 50, "to": 80 },
@@ -780,6 +825,11 @@
         "y": 0.08518518518518518,
         "width": 0.3177083333333333,
         "height": 0.34074074074074073
+      },
+      "notificationPos": {
+        "y": 0.144444444,
+        "width": 0.01822916,
+        "height": 0.01851851
       },
       "checkingDelay": 50,
       "mouseMoveSpeed": { "from": 0.3, "to": 0.6 },
