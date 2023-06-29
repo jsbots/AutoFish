@@ -1,6 +1,6 @@
 {
   "game": {
-    "names": ["World of Warcraft"],
+    "names": ["World of"],
     "classNames": ["GxWindowClass", "GxWindowClassD3d"]
   },
   "patch": {
@@ -279,7 +279,7 @@
         }
       }
     },
-    "Legion": {
+    "Leg": {
       "multipleWindows": false,
       "likeHuman": true,
       "dynamicThreshold": false,
@@ -455,7 +455,7 @@
         }
       }
     },
-    "Cataclysm": {
+    "Cata": {
       "multipleWindows": false,
       "likeHuman": true,
       "dynamicThreshold": false,

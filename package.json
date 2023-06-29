@@ -1,7 +1,7 @@
 {
   "name": "AutoFish",
   "version": "2.1.0",
-  "description": "An easy-to-use fishing bot for WoW.",
+  "description": "An easy-to-use fishing bot for games with wow-like fishing logic.",
   "main": "./app/main.js",
   "scripts": {
     "start": "electron .",
@@ -12,18 +12,19 @@
     "make": "electron-forge make"
   },
   "keywords": [
-    "World Of Warcraft",
-    "Retail",
+    "wow",
     "wow-classic",
+    "wotlk-wow",
+    "wotlk",
+    "retail",
     "tbc",
     "vanilla",
     "mop",
-    "cataclysm",
-    "retail",
-    "wotlk-wow",
     "bot",
     "fishing",
-    "wow"
+    "fishbot",
+    "fishing bot",
+    "fishing script"
   ],
   "author": "jsbots",
   "license": "MIT",

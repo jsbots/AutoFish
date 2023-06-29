@@ -45,9 +45,9 @@ const renderGameNames = ({game}) => {
   ];
 
   const gamesPrivate = [
-    "Legion",
+    "Leg",
     "MoP",
-    "Cataclysm",
+    "Cata",
     "LK Private",
     "TBC",
     "Vanilla",
