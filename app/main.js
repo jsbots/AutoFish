@@ -114,8 +114,12 @@ const createWindow = async () => {
     app.quit();
   });
 
-  win.once("ready-to-show", () => {
+  win.once("ready-to-show", async () => {
     //win.openDevTools({mode: `detach`});
+    win.show();
+    await new Promise(function(resolve, reject) {
+      setTimeout(resolve, 350);
+    });
     const settings = getJson("./config/settings.json");
     if(settings.initial) {
       showWarning(win, `The shortcut to AutoFish was created on you desktop`);
@@ -145,7 +149,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
         writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
       }
     }
-    win.show();
   });
 
   ipcMain.on(`onload`, () => {
