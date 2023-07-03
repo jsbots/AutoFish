@@ -861,7 +861,7 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "bobberSensitivityPrint": true,
       "bobberSensitivity": 20,
-      "splashColor": 230,
+      "splashColor": 220,
       "bobberDensity": 1,
       "autoSensDens": false,
       "findBobberDirection": "reverse",
