@@ -37,8 +37,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     settings.autoTh = false;
   };
 
-  console.log(settings.autoTh);
-
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
