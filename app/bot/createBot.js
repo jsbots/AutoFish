@@ -32,6 +32,13 @@ const random = (from, to) => {
 };
 
 const createBot = (game, { config, settings }, winSwitch, state) => {
+
+  if(settings.game == `Vanilla (splash)` && settings.autoTh == true) {
+    settings.autoTh = false;
+  };
+
+  console.log(settings.autoTh);
+
   const { keyboard, mouse, workwindow } = game;
   const delay = [config.delay.from, config.delay.to];
 
@@ -223,11 +230,11 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   });
 
   const findAllBobberColors = async () => {
-    if(settings.game != `LK Private` && settings.game != `TBC` && settings.game != `Vanilla` && settings.game != `Vanilla (splash)`) {
+    if(settings.game != `Retail` && settings.game != `LK Classic` && settings.game != `Classic` && settings.game != `Vanilla (splash)`) {
+      return await fishingZone.getBobberPrint(7);
+    } else {
       return null;
     }
-
-    return await fishingZone.getBobberPrint(7);
   };
 
   const castFishing = async (state) => {
