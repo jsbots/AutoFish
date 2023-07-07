@@ -7,6 +7,7 @@
     "Retail": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -102,6 +103,7 @@
     "LK Classic": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -192,6 +194,7 @@
     "Classic": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -282,6 +285,7 @@
     "Leg": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -370,6 +374,7 @@
     "MoP": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -458,6 +463,7 @@
     "Cata": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -548,6 +554,7 @@
     "LK Private": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -636,6 +643,7 @@
     "TBC": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -726,6 +734,7 @@
     "Vanilla": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
@@ -816,6 +825,7 @@
     "Vanilla (splash)": {
       "multipleWindows": false,
       "likeHuman": true,
+      "likeHumanFineTune": false,
       "game": "Vanilla (splash)",
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
