@@ -123,40 +123,51 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .split(",")
     .map((word) => word.trim());
 
-  const moveTo = async ({ pos, randomRange, fineTune }) => {
-    if (randomRange) {
-      pos.x = pos.x + random(-randomRange, randomRange);
-      pos.y = pos.y + random(-randomRange, randomRange);
-    }
-
-    if (config.likeHuman) {
-      await mouse.humanMoveTo(
-        pos.x,
-        pos.y,
-        random(config.mouseMoveSpeed.from, config.mouseMoveSpeed.to),
-        random(
-          config.mouseCurvatureStrength.from,
-          config.mouseCurvatureStrength.to
-        )
-      );
-
-      if(config.likeHumanFineTune && fineTune) {
-        let times = random(fineTune.steps[0], fineTune.steps[1]);
-        for(let i = 1; i <= times; i++) {
-          await mouse.humanMoveTo(
-            pos.x + random(-fineTune.offset / i, fineTune.offset / i),
-            pos.y + random(-fineTune.offset / i, fineTune.offset / i),
-            random(speedFrom / 3, speedTo / 3),
-            random(strengthFrom, strengthTo)
-          );
-          await sleep(random(1, 350));
-        }
+    const moveTo = async ({ pos, randomRange, speed, strength, fineTune}) => {
+      if (randomRange) {
+        pos.x = pos.x + random(-randomRange, randomRange);
+        pos.y = pos.y + random(-randomRange, randomRange);
       }
 
-    } else {
-      await mouse.moveTo(pos.x, pos.y, delay);
-    }
-  };
+      if (config.likeHuman) {
+        let speedFrom = screenSize.width < 1921 ? config.mouseMoveSpeed.from : config.mouseMoveSpeed.from * 2;
+        let speedTo = screenSize.width < 1921 ? config.mouseMoveSpeed.to : config.mouseMoveSpeed.to * 2;
+        if(speed) {
+          speedFrom = speed.from;
+          speedTo = speed.to;
+        }
+
+        let strengthFrom = config.mouseCurvatureStrength.from;
+        let strengthTo = config.mouseCurvatureStrength.to
+
+        if(strength) {
+          strengthFrom = strength.from;
+          strengthTo = strength.to;
+        }
+
+        await mouse.humanMoveTo(
+          pos.x,
+          pos.y,
+          random(speedFrom, speedTo),
+          random(strengthFrom, strengthTo)
+        );
+
+        if(config.likeHumanFineTune && fineTune) {
+          let times = random(fineTune.steps[0], fineTune.steps[1]);
+          for(let i = 1; i <= times; i++) {
+            await mouse.humanMoveTo(
+              pos.x + random(-fineTune.offset / i, fineTune.offset / i),
+              pos.y + random(-fineTune.offset / i, fineTune.offset / i),
+              random(speedFrom / 3, speedTo / 3),
+              random(strengthFrom, strengthTo)
+            );
+            await sleep(random(1, 350));
+          }
+        }
+      } else {
+        await mouse.moveTo(pos.x, pos.y, delay);
+      }
+    };
 
   const checkBobberTimer = createTimer(() => config.maxFishTime);
   const missOnPurposeTimer = createTimer(() => random(1000, 8000));
