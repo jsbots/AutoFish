@@ -230,7 +230,7 @@ The bot is able to connect to your Arduino Board and use it to emulate a mouse/k
 1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
 2. Connect it to your computer.
 3. Install [Arduino IDE](https://www.arduino.cc/en/software).
-4. Click **New Sketch** and replace everything there with this sketch: [Arduino Sketch](https://raw.githubusercontent.com/jsbots/AutoFish/main/sketch/Arduino%20Sketch.txt).
+4. Click **New Sketch** and replace everything there with this sketch: [Arduino Sketch](https://github.com/jsbots/Clicker/blob/main/clicker_sketch/clicker_sketch.ino).
 5. Click **Tools** -> **Port** and choose the port your Arduino Board connected to.
 6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
 7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
@@ -334,9 +334,9 @@ With AFK Fishing mode, you can engage in other activities such as watching video
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.1.0 beta Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.1.2 beta Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.1.0 beta Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.2.0 beta Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
 
