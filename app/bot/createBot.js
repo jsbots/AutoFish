@@ -534,7 +534,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     fishingZone = createFishingZone(getDataFrom, Zone.from(screenSize).toRel(config.relZone), screenSize, settings, config);
   }
 
-  dynamicThreshold.on = config.dynamicThreshold;
+  dynamicThreshold.on = config.dynamicThreshold && !settings.autoTh;
   dynamicThreshold.limit = () => settings.threshold < 20;
 
   const hookBobber = async (pos) => {
