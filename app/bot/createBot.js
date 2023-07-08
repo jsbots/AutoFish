@@ -123,32 +123,28 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .split(",")
     .map((word) => word.trim());
 
-    const moveTo = async ({ pos, randomRange, speed, strength, fineTune}) => {
+    const moveTo = async ({ pos, randomRange, fineTune}) => {
       if (randomRange) {
         pos.x = pos.x + random(-randomRange, randomRange);
         pos.y = pos.y + random(-randomRange, randomRange);
       }
 
       if (config.likeHuman) {
-        let speedFrom = screenSize.width < 1921 ? config.mouseMoveSpeed.from : config.mouseMoveSpeed.from * 2;
-        let speedTo = screenSize.width < 1921 ? config.mouseMoveSpeed.to : config.mouseMoveSpeed.to * 2;
-        if(speed) {
-          speedFrom = speed.from;
-          speedTo = speed.to;
+        let convertedSpeed = config.mouseMoveSpeed / 100;
+        let speedByRes =  convertedSpeed * (screenSize.width / 1920);
+        let coofByRes = 0.15 * (screenSize.width / 1920);
+        let randomSpeed = {from: speedByRes - coofByRes, to: speedByRes + coofByRes}
+        if(randomSpeed.from < 0) {
+          randomSpeed.from = 0;
         }
 
         let strengthFrom = config.mouseCurvatureStrength.from;
         let strengthTo = config.mouseCurvatureStrength.to
 
-        if(strength) {
-          strengthFrom = strength.from;
-          strengthTo = strength.to;
-        }
-
         await mouse.humanMoveTo(
           pos.x,
           pos.y,
-          random(speedFrom, speedTo),
+          random(randomSpeed.from, randomSpeed.to),
           random(strengthFrom, strengthTo)
         );
 
@@ -158,7 +154,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
             await mouse.humanMoveTo(
               pos.x + random(-fineTune.offset / i, fineTune.offset / i),
               pos.y + random(-fineTune.offset / i, fineTune.offset / i),
-              random(speedFrom / 3, speedTo / 3),
+              random(randomSpeed.from / 3, randomSpeed.to / 3),
               random(strengthFrom, strengthTo)
             );
             await sleep(random(1, 350));
