@@ -132,20 +132,23 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       if (config.likeHuman) {
         let convertedSpeed = config.mouseMoveSpeed / 100;
         let speedByRes =  convertedSpeed * (screenSize.width / 1920);
-        let coofByRes = 0.15 * (screenSize.width / 1920);
-        let randomSpeed = {from: speedByRes - coofByRes, to: speedByRes + coofByRes}
+        let speedCoofByRes = 0.15 * (screenSize.width / 1920);
+        let randomSpeed = {from: speedByRes - speedCoofByRes, to: speedByRes + speedCoofByRes}
         if(randomSpeed.from < 0) {
           randomSpeed.from = 0;
         }
 
-        let strengthFrom = config.mouseCurvatureStrength.from;
-        let strengthTo = config.mouseCurvatureStrength.to
+        let deviationCoof = 15;
+        let randomDeviation = {from: config.mouseCurvatureStrength - deviationCoof, to: config.mouseCurvatureStrength + deviationCoof};
+        if(randomDeviation.from < 0) {
+          randomDeviation.from = 0;
+        }
 
         await mouse.humanMoveTo(
           pos.x,
           pos.y,
           random(randomSpeed.from, randomSpeed.to),
-          random(strengthFrom, strengthTo)
+          random(randomDeviation.from, randomDeviation.to)
         );
 
         if(config.likeHumanFineTune && fineTune) {
@@ -155,7 +158,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
               pos.x + random(-fineTune.offset / i, fineTune.offset / i),
               pos.y + random(-fineTune.offset / i, fineTune.offset / i),
               random(randomSpeed.from / 3, randomSpeed.to / 3),
-              random(strengthFrom, strengthTo)
+              random(randomDeviation.from, randomDeviation.to)
             );
             await sleep(random(1, 350));
           }

@@ -131,17 +131,16 @@ const renderCheckingDelay = ({checkingDelay}) => {
   return elt(`input`, {type: `number`, name:`checkingDelay`, value: checkingDelay});
 };
 
-const renderMouseMoveSpeed = ({mouseMoveSpeed}) => {
-  const winRange = elt(`input`, {type: `number`, value: mouseMoveSpeed, name: "mouseMoveSpeed"})
-  const range = elt('input', {type: `range`, min: 0, max: 100, value: mouseMoveSpeed, oninput: function() {winRange.value = this.value}, name: "mouseMoveSpeed"});
+const renderMouseMoveSpeed = ({mouseMoveSpeed, likeHuman}) => {
+  const winRange = elt(`input`, {type: `number`, value: mouseMoveSpeed, name: "mouseMoveSpeed", disabled: !likeHuman})
+  const range = elt('input', {type: `range`, min: 0, className: !likeHuman ? `threshold_disabled` : ``, max: 100, value: mouseMoveSpeed, disabled: !likeHuman, oninput: function() {winRange.value = this.value}, name: "mouseMoveSpeed"});
   return elt(`div`, null, range, winRange);
 };
 
-const renderMouseCurvature = ({mouseCurvatureStrength}) => {
-  return elt(`div`, {"data-collection": `mouseCurvatureStrength`}, elt(`span`, {className: `option_text`}, `from:`),
-  elt('input', { type: `number`, name: `from`, value: mouseCurvatureStrength.from }), elt(`span`, {className: `option_text`}, `to:`),
-  elt('input', { type: `number`, name: `to`, value: mouseCurvatureStrength.to })
-  );
+const renderMouseCurvature = ({mouseCurvatureStrength, likeHuman}) => {
+  const winRange = elt(`input`, {type: `number`, value: mouseCurvatureStrength, disabled: !likeHuman, name: "mouseCurvatureStrength"})
+  const range = elt('input', {type: `range`, className: !likeHuman ? `threshold_disabled` : ``, min: 0, max: 150, value: mouseCurvatureStrength, disabled: !likeHuman, oninput: function() {winRange.value = this.value}, name: "mouseCurvatureStrength"});
+  return elt(`div`, null, range, winRange);
 };
 
 const renderLuresDelay = ({luresDelay}) => {
@@ -443,10 +442,10 @@ const renderSettings = (config) => {
   wrapInLabel(`Like a human fine-tunning: `, renderLikeHumanFineTune(config), `The bot will "fine-tune" the mouse position after moving to the bobber, imitating a human-like way of reaching the mouse-movement target position.`),
   wrapInLabel(`Hide window after start: `, renderHideWin(config), `The window will be hidden and you will be able to stop it only by using stop key.`),
   wrapInLabel(`Random mouse speed: `, renderMouseMoveSpeed(config), `The bot will generate a random speed within the provided value. The higher the value the faster the bot moves the cursor. Works only if Like a human option is on.`),
+  wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number within the provided value. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Custom window: `, renderCustomWindow(config), `If for some reason your game window isn't "World of Warcraft" you can choose a custom window from all the windows opened on your computer.`),
   wrapInLabel(`Close loot window with: `, renderCloseLoot(config), `The bot will use mouse/esc or randomly one of them to close the loot window while filtering the loot.`),
   wrapInLabel(`Mouse/keyboard random delay (ms): `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
-  wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number between the provided values. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
   wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `After attempts limit the bot will dynamically change threshold by the provided value.`),
