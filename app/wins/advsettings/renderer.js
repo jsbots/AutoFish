@@ -18,7 +18,11 @@ const convertValue = (node) => {
 
 const renderHideWin = ({hideWin}) => elt(`input`, {type: `checkbox`, checked: hideWin, name: `hideWin`});
 
-const renderHighlightPercent = ({highlightPercent}) => elt(`input`, {type: `number`, value: highlightPercent, name: `highlightPercent`});
+const renderHighlightPercent = ({highlightPercent}) => {
+  const winRange = elt(`input`, {type: `number`, value: highlightPercent, name: "highlightPercent"})
+  const range = elt('input', {type: `range`, max: 100, value: highlightPercent, oninput: function() {winRange.value = this.value}, name: "highlightPercent"});
+  return elt(`div`, null, range, winRange);
+};
 
 const renderLikeHumanFineTune = ({likeHumanFineTune}) => {
   let dom = elt("input", {
