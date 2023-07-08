@@ -33,7 +33,7 @@
         "height": 0.01388888
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
       "randomSleep": true,
@@ -129,7 +129,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
       "randomSleep": true,
@@ -220,7 +220,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
       "randomSleep": true,
@@ -311,7 +311,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
       "randomSleep": true,
@@ -400,7 +400,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
       "randomSleep": true,
@@ -489,7 +489,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
       "randomSleep": true,
@@ -580,7 +580,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
       "randomSleep": true,
@@ -669,7 +669,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
       "randomSleep": true,
@@ -760,7 +760,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
       "randomSleep": true,
@@ -852,7 +852,7 @@
         "height": 0.01851851
       },
       "checkingDelay": 50,
-      "mouseMoveSpeed": 50,
+      "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
       "randomSleep": true,
