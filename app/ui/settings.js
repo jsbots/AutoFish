@@ -1,5 +1,7 @@
 const elt = require("./utils/elt.js");
 const renderSettings = require("./renderSettings.js");
+const keySupport = require("./../utils/keySupport.js");
+const { ipcRenderer } = require("electron");
 
 const convertValue = (node) => {
   let value = node.value;
@@ -48,10 +50,22 @@ class Settings {
     });
 
     const keyAssigning = (event) => {
-      event.target.value = event.key == ` `? `space` : event.key.toLowerCase();
+      if(event.key == ` `) {
+        event.target.value = `space`;
+      } else {
+        let firstChar = event.key[0].toLowerCase();
+        let resultKey = firstChar + event.key.slice(1);
+        if(keySupport.isSupported(resultKey)) {
+          event.target.value = resultKey;
+        } else {
+          ipcRenderer.send(`unsupported-key`);
+        }
+      }
+
       saveSettings(event);
       document.removeEventListener(`keydown`, keyAssigning);
       event.target.blur();
+      event.preventDefault(); 
     }
 
     this.dom.addEventListener('mousedown', (event) => {

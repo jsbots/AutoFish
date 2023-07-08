@@ -275,6 +275,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
     writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings))
   );
 
+  ipcMain.on("unsupported-key", () => {
+    showWarning(win, `The key you pressed is not supported by AutoFish.`);
+  })
+
   let settWin;
   ipcMain.on("advanced-settings", () => {
     if(!settWin || settWin.isDestroyed()) {

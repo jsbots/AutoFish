@@ -1,8 +1,17 @@
-const { BrowserWindow, ipcMain } = require("electron");
+const { BrowserWindow, ipcMain, dialog } = require("electron");
 const { readFileSync, writeFileSync } = require("fs");
 const path = require("path");
 
 const getJson = (path) => JSON.parse(readFileSync(path), "utf8");
+
+const showWarning = (win, warning, title) => {
+  return result = dialog.showMessageBoxSync(win, {
+    type: "warning",
+    title: `Warning`,
+    message: warning,
+    buttons: [`Ok`]
+  });
+};
 
 const createAdvSettings = (appPath) => {
   let win = new BrowserWindow({
@@ -22,6 +31,7 @@ const createAdvSettings = (appPath) => {
 
   win.on("closed", () => {
     ipcMain.removeAllListeners(`advanced-click`);
+    ipcMain.removeAllListeners(`unsupported-key-win`);
     ipcMain.removeHandler(`advanced-defaults`);
     ipcMain.removeHandler(`get-game-config`);
   });
@@ -40,6 +50,10 @@ const createAdvSettings = (appPath) => {
     }
     win.close();
   });
+
+  ipcMain.on("unsupported-key-win", () => {
+    showWarning(win, `The key you pressed is not supported by AutoFish.`);
+  })
 
   ipcMain.handle("advanced-defaults", () => {
     const settings = getJson(path.join(appPath, "./config/settings.json"));
