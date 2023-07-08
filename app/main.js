@@ -92,10 +92,10 @@ const setFishingZone = async ({workwindow}, relZone, type, config, settings) => 
 const createWindow = async () => {
   let win = new BrowserWindow({
     title: generateName(Math.floor(random(5, 15))),
-    width: 325,
-    height: 760,
+    width: 340,
+    height: 770,
     show: false,
-    resizable: false,
+    resizable: true,
     webPreferences: {
       spellcheck: false,
       contextIsolation: false,
@@ -277,7 +277,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
   ipcMain.on("unsupported-key", () => {
     showWarning(win, `The key you pressed is not supported by AutoFish.`);
-  })
+  });
+
+  ipcMain.on(`resize-win`, (event, size) => {
+    win.setSize(size.width, size.height);
+  });
 
   let settWin;
   ipcMain.on("advanced-settings", () => {

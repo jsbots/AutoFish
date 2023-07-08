@@ -232,7 +232,7 @@ wrapInLabel(
         `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
       ),
     ),
-    elt("p", {className: 'settings_header'}, "Filter"),
+    elt("p", {className: 'settings_header settings_header_main'}, "Filter"),
     elt(
       "div",
       { className: "settings_section" },

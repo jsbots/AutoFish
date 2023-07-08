@@ -65,7 +65,8 @@ section {
 
 .AutoFish {
   padding: 5px;
-  height: 695px;
+  width: 325px;
+  height: 760px;
 }
 .logo {
   margin-top: 10px;
@@ -698,11 +699,12 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .settingsFolder{
-  height: 20px;
+  height: 16px;
   position: absolute;
-  left: 85px;
-  top: 94px;
-  cursor: pointer
+  left: 88px;
+  top: 86px;
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 

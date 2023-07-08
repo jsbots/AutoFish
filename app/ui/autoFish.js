@@ -90,13 +90,30 @@ class AutoFish {
       this.logger.show(data);
     });
 
+    let settingsVisibility = true;
+    let foldSettingsContainer = elt(`img`, {src: `img/unfold.png`, className: `settingsFolder`})
+    foldSettingsContainer.addEventListener(`click`, (event) => {
+        if(settingsVisibility) {
+          this.settings.dom.style = `display: none;`;
+          ipcRenderer.send(`resize-win`, {width: 341, height: 395})
+          event.target.src = `img/fold.png`;
+          document.querySelector(`.settings_header_fold`).style = `border-bottom: 1px solid grey; border-radius: 5px`;
+        } else {
+          this.settings.dom.style = `display: block`;
+          ipcRenderer.send(`resize-win`, {width: 341, height: 770})
+          event.target.src = `img/unfold.png`
+          document.querySelector(`.settings_header_fold`).style = ``;
+        }
+        settingsVisibility = !settingsVisibility;
+    })
+
     this.dom = elt(
       "div",
       { className: "AutoFish" },
       renderLogo(),
-      elt("p", { className: "settings_header" }, "Settings"),
+      elt(`div`, {className: `settings_profile`}, elt("p", { className: "settings_header settings_header_main settings_header_fold"}, "Settings"), foldSettingsContainer),
       this.settings.dom,
-      elt("p", { className: "settings_header settings_header_log" }, "Log"),
+      elt("p", { className: "settings_header settings_header_log settings_header_main" }, "Log"),
       this.logger.dom,
       this.button.dom,
       footer
