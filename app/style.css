@@ -700,11 +700,14 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .settingsFolder{
   height: 16px;
+  width: 16px;
   position: absolute;
   left: 88px;
   top: 86px;
   cursor: pointer;
+  border: 1px solid black;
   opacity: 0.5;
+  border-radius: 5px;
 }
 
 
