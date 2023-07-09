@@ -210,10 +210,11 @@ section {
   margin-left: 2px;
   margin-top: 3px;
   display: inline-block;
+  transition: 0.6s all;
 }
 
 .settings .option_hint:hover {
-  opacity: 0.9
+  transform: scale(1.25);
 }
 
 .settings_section.threshold_settings {
@@ -247,11 +248,11 @@ section {
 }
 
 .settings input[type="text"].whitelist_input  {
-  width: 215px;
+  width: 219px;
 }
 
 .settings select.filterType {
-  width: 78px;
+  width: 82px;
   margin-left: 11px;
   margin-right: 16px;
 }
@@ -266,7 +267,7 @@ section {
 
 .advanced_settings_button {
   height: 22px;
-  width: 123px;
+  width: 125px;
   margin-right: 3px;
   text-align: center;
   border-radius: 5px;
@@ -284,7 +285,7 @@ section {
 }
 
 .option.game-option {
-  width: 121px;
+  width: 125px;
 }
 
 .startButton {
@@ -390,7 +391,7 @@ section {
 }
 
 .thresholdRange input[type=range] {
-  width: 233px;
+  width: 239px;
   height: 10px;
   margin-bottom: 5px;
   z-index: 10;
