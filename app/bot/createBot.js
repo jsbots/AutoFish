@@ -78,9 +78,11 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         height: Math.round(screenSize.height * config.notificationPos.height)
       }),
     });
+    
+  let lootWinResType = screenSize.width <= 1536 ? `1536` : screenSize.height == 1440 ? `2560` : `1920`;
 
   const lootWindowPatch =
-    config.lootWindow[screenSize.width <= 1536 ? `1536` : `1920`];
+    config.lootWindow[lootWinResType];
 
   const confirmationWindowPatch =
     config.confirmationWindow[screenSize.width <= 1536 ? `1536` : `1920`];
