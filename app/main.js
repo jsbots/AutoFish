@@ -264,7 +264,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
   });
 
   ipcMain.on("whitelist-warn", () => {
-    showWarning(win, `Turn off AutoLoot. Your resolution should be either 1366x768 or 1920x1080. UI addons and UI scale should be turned off. Turn on Open Loot Window at Mouse option (optional for Retail and Vanilla).`);
+    showWarning(win, `Turn off AutoLoot.\n\nTurn off UI addons and UI scaling.\n\nTurn on Open Loot Window at Mouse option (optional for Retail and Vanilla/Vanilla(splash)).\n\nBest works with standard resolutions like: 1366x768, 1920x1080, 2560x1440 and 3840x2160.`);
   });
 
   ipcMain.on("open-link-donate", () =>
