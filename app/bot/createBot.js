@@ -127,7 +127,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .split(",")
     .map((word) => word.trim());
 
-    const moveTo = async ({ pos, randomRange, fineTune}) => {
+    const moveTo = async ({ pos, randomRange, fineTune = {offset: 5, steps: [1, 3]}}) => {
       if (randomRange) {
         pos.x = pos.x + random(-randomRange, randomRange);
         pos.y = pos.y + random(-randomRange, randomRange);
@@ -164,7 +164,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
               random(randomSpeed.from / 3, randomSpeed.to / 3),
               random(randomDeviation.from, randomDeviation.to)
             );
-            await sleep(random(1, 350));
+            await sleep(random(25, 150));
           }
         }
       } else {
@@ -290,7 +290,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
 
     await action(async () => {
-      await moveTo({ pos, randomRange: 5, fineTune: {offset: 10, steps: [1, 6]} });
+      await moveTo({ pos, randomRange: 5, fineTune: {offset: 10, steps: [1, 5]} });
     });
 
     return await findBobber();
@@ -556,7 +556,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         await keyboard.toggleKey(settings.intKey, true, delay);
         await keyboard.toggleKey(settings.intKey, false, delay);
       } else {
-        await moveTo({ pos, randomRange: 5, fineTune: {offset: 10, steps: [1, 2]}});
+        await moveTo({ pos, randomRange: 5});
 
         if (config.shiftClick) {
           await keyboard.toggleKey("shift", true, delay);
