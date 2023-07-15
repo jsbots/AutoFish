@@ -123,11 +123,11 @@ const renderFishingZone = () => {
 
 const renderFilterType = ({game, whitelist, filterType, atMouse}) => {
 
-  if(game != `Retail` && game != `Vanilla`) {
+  if(game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`) {
     atMouse = true;
   }
 
-  const atMouseContainer = elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Retail` && game != `Vanilla`)});
+  const atMouseContainer = elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`)});
   const modeContainer =  elt(`select`, {name: `filterType`, className: `filterType`, disabled: !whitelist},
     elt(`option`, {selected: filterType == `whitelist`}, `whitelist`),
     elt(`option`, {selected: filterType == `blacklist`}, `blacklist`)
