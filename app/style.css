@@ -286,6 +286,7 @@ section {
 
 .option.game-option {
   width: 125px;
+  outline: 2px solid rgba(250, 0, 0, .2); 
 }
 
 .startButton {
