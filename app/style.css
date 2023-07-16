@@ -286,7 +286,7 @@ section {
 
 .option.game-option {
   width: 125px;
-  outline: 2px solid rgba(250, 0, 0, .2); 
+  outline: 2px solid rgba(250, 0, 0, .2);
 }
 
 .startButton {
@@ -740,4 +740,124 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .advSettings input[type=range] {
   width: 180px;
+}
+
+#water {
+  top: -3px;
+  right: -9px;
+  width: 63px;
+  height: 63px;
+  background: linear-gradient(#0080FF, #00BFFF);
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+}
+
+#water:after {
+  content: "";
+  width: 50px;
+  height: 20px;
+  position: absolute;
+
+  background-color: white;
+  bottom: -11px;
+  left: 5px;
+}
+
+#bobber {
+  width: 30px;
+  height: 30px;
+  background-color: #FF0000;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  animation: bobbing 3s infinite;
+}
+
+#bobber:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #FFFFFF;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid grey;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+
+
+#bobber:after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #FFFFFF;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid grey;
+  position: absolute;
+  top: 1px;
+  left: 14px;
+}
+
+#bobber:hover {
+  cursor: pointer;
+}
+
+#bobber:active {
+  animation: plunging 1s;
+}
+
+#bobberHandle {
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: -4px;
+  left: 12px;
+  background-color: red;
+}
+
+#bobberHandle:before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: -3px;
+  left: 1px;
+  background-color: rgba(0,0,0,.7);
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#grass {
+  position: absolute;
+  background-image: url('img/grass.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 20px;
+  bottom: 20px;
+  right: 30px;
+}
+
+@keyframes plunging {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px);}
+  100% { transform: translateY(0); }
+}
+
+@keyframes bobbing {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px);}
+  100% { transform: translateY(0); }
+}
+
+.threshold_number_input {
+  z-index: 1;
 }

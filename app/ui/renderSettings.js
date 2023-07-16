@@ -2,7 +2,7 @@ const elt = require("./utils/elt.js");
 const wrapInLabel = require("./utils/wrapInLabel.js");
 
 const renderBobberImg = (bobberColor, autoTh) => {
-  return elt(`img`, {className: `threshold_canvas ${autoTh ? `bobberColorSwitch_disabled` : ``}`, src:`img/bobber_${bobberColor}.png`, width: 80, height: 49});
+  return elt(`img`, {className: `threshold_canvas ${autoTh ? `bobberColorSwitch_disabled` : ``}`, src:`img/bobber_${bobberColor}.png`, height: 49});
 };
 
 const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
@@ -30,11 +30,13 @@ const autoThSwitch = elt(`radio`, { className: `autoTh`,
     document.styleSheets[0].rules[79].style.backgroundImage = "linear-gradient(to right, rgb(100, 0, 0), rgb(250, 0, 0))"
   }
 
-  const number = elt(`input`, { type: `number`, value: threshold, disabled: autoTh, name: `threshold` });
+  const number = elt(`input`, { type: `number`, className: `threshold_number_input`, value: threshold, disabled: autoTh, name: `threshold` });
 
-	const canvas = renderBobberImg(bobberColor, autoTh);
-  const bobberContainer = elt(`div`, { className: `bobberContainer` }, canvas, number);
-  return elt(`div`, { className: `thresholdRange` }, bobberColorSwitch, range, bobberContainer, autoThSwitch);
+  let bobberImg = elt(`div`, {id: `bobber`, style: `background-color: ${bobberColor == `blue` ? `rgb(0, 0, ${150 + Number(threshold)})` : `rgb(${150 + Number(threshold)}, 0, 0)`}`}, elt(`div`, {id: `bobberHandle`, style: `background-color: ${bobberColor == `blue` ? `rgb(0, 0, ${150 + Number(threshold)})` : `rgb(${150 + Number(threshold)}, 0, 0)`}`}));
+  let waterImg = elt(`div`, {id: "water"}, bobberImg);
+
+  const bobberContainer = elt(`div`, { className: `bobberContainer` }, waterImg, number, elt(`div`, {id: `grass`}));
+  return elt(`div`, { className: `thresholdRange` }, bobberColorSwitch, range, autoThSwitch, bobberContainer);
 };
 
 const renderGameNames = ({game}) => {
