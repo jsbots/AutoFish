@@ -118,7 +118,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   if(lootWindowPatch.exitButton) {
     lootWindow.exitButton = {
-      x: lootWindowPatch.exitButton.x * screenSize.width,
+      x: lootWindowPatch.exitButton.x * (ultrawide ? Number(lootWinResType) : screenSize.width),
       y: lootWindowPatch.exitButton.y * screenSize.height
     }
   }
