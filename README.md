@@ -85,10 +85,6 @@ If you still want to use it outside educational sandbox, it is crucial to unders
 
 *Since 2.0.0 Threshold value is obsolete and available only in Manual mode*
 
-<p align="center">
-<img src="guide_img/threshold.gif" width="400" align="center">
-</p>
-
 The Threshold value represents an RGB value of a red or blue color, depending on the switch used. It serves as a color threshold below which the bot will ignore all corresponding colors.
 
 For instance, if the red switch is used and the threshold is set to 60, the bot will only recognize colors that are redder than this threshold value. This allows the bot to focus on the reddest parts of the screen, such as a red feather on the bobber.
