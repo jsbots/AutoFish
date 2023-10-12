@@ -11,6 +11,10 @@ const createLog = (sendToWindow) => {
       }
     },
 
+    msg(text) {
+      sendToWindow({ text, type: "green" });
+    },
+
     ok(text) {
       this.send(text, "green");
     },

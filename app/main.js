@@ -29,6 +29,39 @@ const createBots = require("./bot/createBots.js");
 const getBitmapAsync = require("./utils/getBitmap.js");
 /* Bot modules end */
 
+const fishQuotes = [
+  `"A bad day of fishing is better than a good day at work." - Unknown`,
+  `"Fishing is a passion that can never be fully explained." - Unknown `,
+  `"Fishing provides that connection with the whole living world. It gives you the opportunity of being totally immersed, turning back into yourself in a good way." - Ted Hughes`,
+  `"The solution to any problem—work, love, money, whatever—is to go fishing, and the worse the problem, the longer the trip should be." - John Gierach`,
+  `"There are always new places to go fishing. For any fisherman, there's always a new place, always a new horizon." - Jack Nicklaus`,
+  `"Fishing is not just a hobby; it's a state of mind." - Mariano Rivera`,
+  `"Fishing is an affirmation of life's richness and our profound interconnectedness to the natural world." - Carl Safina`,
+  `"Fishing is not just about catching fish; it's about understanding the delicate balance of nature." - Aldo Leopold`,
+  `"Angling is a way of calming the soul and setting the spirit free." - Dave Hughes`,
+  `"The act of fishing takes us to the hidden corners of the world, revealing the beauty that lies beneath the surface." - James Prosek`,
+  `"The wise fisherman knows that satisfaction is not always measured in the size of the catch." - Lao Tzu`,
+  `"There's certainly something in fishing that makes a man feel he is doing right; I can't explain it, but it's very pleasant." - Norman Maclean`,
+  `"They say there are plenty of fish in the sea, but for me, you're the only catch." - Unknown`,
+  `"To fish is to hold a mirror to nature." - Paul Schullery`,
+  `"Fishing is like dating; it's all catch and release until you find a keeper." - Unknown`,
+  `"The best way to catch a fish is to let him think he's escaping." - Unknown`,
+  `"There is no such thing as too much equipment." - Unknown (Every fisherman's mantra!)`,
+  `"Every time I cast my line, I hope to catch a moment with you." - Lila Monroe`,
+  `"There he stands, draped in more equipment than a telephone lineman, trying to outwit an organism with a brain no bigger than a breadcrumb, and getting licked in the process." - Paul O'Neil`,
+  `"The best time to go fishing is when you can get away." - Robert Traver`,
+  `"Give a man a fish, and he has food for a day; teach him how to fish, and you can get rid of him for the entire weekend." - Zenna Schaffer`,
+  `"Fishing is a quest for knowledge and wonder as much as a pursuit of fish; it is as much an acquaintance with beavers, dippers, and other fishermen as it is a challenge of trout." - Paul Schullery`,
+  `"If you wish to fish, you must venture your bait." - Latin Proverb`,
+  `"The fisherman is the biggest liar in the world. Except for writers, of course." - Unknown`,
+  `"A bad day fishing still beats a good day working." - Unknown`,
+  `"If wishes were fishes, we'd all cast nets." - Scottish Proverb`,
+  `"A woman who has never seen her husband fishing doesn't know what a patient man she married!" - Unknown`,
+  `"Fish or cut bait." - American Proverb`,
+  `"A fish and a guest smell after three days." - English Proverb`,
+  `"The fish trap exists because of the fish. Once you've gotten the fish you can forget the trap." - Chinese Proverb`
+]
+
 /* Squirrel */
 const handleSquirrelEvent = require(`./utils/handleSquirrel.js`);
 if (require("electron-squirrel-startup")) return app.quit();
@@ -114,6 +147,8 @@ const createWindow = async () => {
     app.quit();
   });
 
+
+let log;
   win.once("ready-to-show", async () => {
     //win.openDevTools({mode: `detach`});
     win.show();
@@ -154,6 +189,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
   ipcMain.on(`onload`, () => {
     let { version } = getJson('../package.json');
     win.webContents.send('set-version', version);
+    log = createLog((data) => {
+      win.webContents.send("log-data", data);
+    });
+    log.msg(fishQuotes[Math.floor(Math.random() * fishQuotes.length)]);
   })
 
 
@@ -161,9 +200,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
     const config = getJson("./config/bot.json");
     const settings = getJson("./config/settings.json");
 
-    const log = createLog((data) => {
-      win.webContents.send("log-data", data);
-    });
 
     log.send(`Looking for the windows of the game...`);
 
