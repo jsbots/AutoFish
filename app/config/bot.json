@@ -5,6 +5,7 @@
   },
   "patch": {
     "Retail": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": true,
@@ -111,6 +112,7 @@
       }
     },
     "LK Classic": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": true,
@@ -210,6 +212,7 @@
       }
     },
     "Classic": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": true,
@@ -304,11 +307,12 @@
           "itemHeight": 0.05555555,
           "height": 0.22152777,
           "width": 0.076953125,
-          "exitButton": { "x": 0.085546875, "y": 0.109722222}
+          "exitButton": { "x": 0.085546875, "y": 0.109722222 }
         }
       }
     },
     "Leg": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -397,6 +401,7 @@
       }
     },
     "MoP": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -485,6 +490,7 @@
       }
     },
     "Cata": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -575,6 +581,7 @@
       }
     },
     "LK Private": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -663,6 +670,7 @@
       }
     },
     "TBC": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -753,6 +761,7 @@
       }
     },
     "Vanilla": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -843,6 +852,7 @@
       }
     },
     "Vanilla (splash)": {
+      "timer": 0,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,

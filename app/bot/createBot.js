@@ -32,7 +32,6 @@ const random = (from, to) => {
 };
 
 const createBot = (game, { config, settings }, winSwitch, state) => {
-
   if(settings.game == `Vanilla (splash)` && settings.autoTh == true) {
     settings.autoTh = false;
   };
@@ -632,8 +631,8 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     await keyboard.printText.cancelCurrent();
 };
 
-  doAfterTimer.on = settings.timer;
-  doAfterTimer.timer = createTimer(() => settings.timer * 1000 * 60);
+  doAfterTimer.on = config.timer;
+  doAfterTimer.timer = createTimer(() => config.timer * 1000 * 60);
 
   return {
     doAfterTimer,

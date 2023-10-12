@@ -430,6 +430,15 @@ const renderShutDown = ({timerShutDown, afterTimer}) => {
 };
 
 
+const renderTimer = ({timer}) => {
+  return elt(
+    "input",
+    { type: "number", min: "0", value: timer, name: "timer", title: ""},
+    `(min)`
+  );
+};
+
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
@@ -460,6 +469,11 @@ const renderSettings = (config) => {
   ),
   elt(`p`, {className: `settings_header`}, `Timer`),
 elt('div', {className: "settings_section"},
+wrapInLabel(
+  "Timer: ",
+  renderTimer(config),
+  `The bot will work for the given period of minutes. If it's 0, it will never stop.`
+),
 wrapInLabel("Do after timer: ", renderAfterTimer(config),`What the bot should do after the timer elapses (you can set it in the main window)`),
 wrapInLabel("HS Key: ", renderHsKey(config), `A key your HS is assigned.`),
 wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`),

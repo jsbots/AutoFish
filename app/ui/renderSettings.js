@@ -174,11 +174,6 @@ return elt(
         `Choose the version of the game you want the bot to work on.`
       ),
       wrapInLabel(
-        "Timer: ",
-        renderTimer(config),
-        `The bot will work for the given period of minutes. If it's 0, it will never stop.`
-      ),
-      wrapInLabel(
         "Fishing Key: ",
         renderFishingKey(config),
         `Assign the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
