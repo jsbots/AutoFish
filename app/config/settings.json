@@ -1,12 +1,9 @@
 {
   "game": "Retail",
-  "lures": false,
   "fishingKey": "1",
-  "luresKey": "2",
   "stopKey": "space",
   "intKey": "f",
   "useInt": false,
-  "luresDelayMin": 10,
   "whitelist": false,
   "whitelistWords": "",
   "whiteListBlueGreen": true,

@@ -196,7 +196,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     });
     await sleep(random(config.logOutAfter.from * 1000, config.logOutAfter.from * 1000));
 
-    if(settings.lures) {
+    if(config.lures) {
       applyLures.timer.update(() => addTime);
     }
 
@@ -227,14 +227,14 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   const applyLures = async () => {
     await action(async () => {
-      await keyboard.sendKey(settings.luresKey, delay);
+      await keyboard.sendKey(config.luresKey, delay);
     });
     await sleep(config.luresDelay);
   };
 
-  applyLures.on = settings.lures;
+  applyLures.on = config.lures;
   applyLures.timer = createTimer(() => {
-    return settings.luresDelayMin * 60 * 1000;
+    return config.luresDelayMin * 60 * 1000;
   });
 
   const randomSleep = async () => {

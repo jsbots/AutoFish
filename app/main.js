@@ -218,12 +218,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
       return;
     }
 
-    if(settings.fishingKey === `` || settings.luresKey === ``) {
-      dialog.showErrorBox('', `Fishing and lures key values can't be empty`);
-      win.webContents.send('stop-bot');
-      return;
-    }
-
     const {startBots, stopBots} = await createBots(games, settings, config, log);
 
     const stopAppAndBots = () => {
@@ -257,10 +251,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 
   ipcMain.on("dx11-warn", () => {
     showWarning(win, `Don't use this if you don't know what you are doing. This is an alternative pixel recognition logic that requires DirectX 11 turned on in the game.`);
-  });
-
-  ipcMain.on("lures-warn", () => {
-    showWarning(win, `Don't forget to make a macros as described in the Guide (Help -> Read Me) and assign it to the same key you have assigned for Lures Key.`);
   });
 
   ipcMain.on("whitelist-warn", () => {

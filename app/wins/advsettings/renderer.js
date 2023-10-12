@@ -438,6 +438,24 @@ const renderTimer = ({timer}) => {
   );
 };
 
+const renderLures = ({lures}) => {
+  return elt("input", {
+    type: "checkbox",
+    className: "option",
+    checked: lures,
+    name: "lures",
+  });
+};
+
+const renderLuresKey = ({lures, luresKey}) => {
+  let key = elt('input', {type: 'text', value: luresKey, disabled: !lures, name: "luresKey"});
+  key.setAttribute(`readonly`, `true`);
+  return key;
+};
+
+const renderLuresApplyDelay = ({lures, luresDelayMin}) => {
+  return elt('input', {type: 'number', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
+};
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
@@ -453,8 +471,7 @@ const renderSettings = (config) => {
   wrapInLabel(`Random mouse curvature: `, renderMouseCurvature(config), `The bot will generate a random number within the provided value. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Highlight bobber (%): `, renderHighlightPercent(config), `How often the bot should highlight the bobber before checking on it (if in your game the bobber become brigther or more colourfull after highlighting, then change this value to 100% if you don't care for randomness)`),
   wrapInLabel(`Mouse/keyboard random delay (ms): `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
-  wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
-  wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
+wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `After attempts limit the bot will dynamically change threshold by the provided value.`),
   wrapInLabel(
     "Use shift+click: ",
@@ -467,6 +484,27 @@ const renderSettings = (config) => {
   wrapInLabel(`Hide window after start: `, renderHideWin(config), `The window will be hidden and you will be able to stop it only by using stop key.`),
   wrapInLabel(`Close loot window with: `, renderCloseLoot(config), `The bot will use mouse/esc or randomly one of them to close the loot window while filtering the loot.`),
   ),
+
+  elt(`p`, {className: `settings_header`}, `Lures`),
+elt('div', {className: "settings_section"},
+wrapInLabel(
+      "Use lures: ",
+      renderLures(config),
+      `Check this option if you want to use fishing lures. If your game requires manual application of lures, use a macros for that and assign that macro to Lures Key option.`
+    ),
+wrapInLabel(
+  "Lures Key: ",
+  renderLuresKey(config),
+  `Assign the same key you use for using fishing lures.`
+),
+wrapInLabel(
+  "Reuse Lure: ",
+  renderLuresApplyDelay(config),
+  `Fishing lures expiration time in minutes.`
+),
+wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
+),
+
   elt(`p`, {className: `settings_header`}, `Timer`),
 elt('div', {className: "settings_section"},
 wrapInLabel(
@@ -608,12 +646,18 @@ const runApp = async () => {
     event.preventDefault();
   }
 
+  settings.addEventListener('click', (event) => {
+    if(event.target.name == 'lures' && event.target.checked) {
+      ipcRenderer.send(`lures-warn`);
+    }
+  })
+
   settings.addEventListener('mousedown', (event) => {
     if(event.target.id == `link`) {
       ipcRenderer.send(`open-link`, event.target.url);
     }
 
-    if(event.target.name == `hsKey` && !event.target.disabled) {
+    if((event.target.name == `hsKey` || event.target.name == 'luresKey') && !event.target.disabled) {
       event.target.style.backgroundColor = `rgb(255, 104, 101)`;
       event.target.style.border = `1px solid grey`;
 

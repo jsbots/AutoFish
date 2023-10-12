@@ -32,6 +32,7 @@ const createAdvSettings = (appPath) => {
   win.on("closed", () => {
     ipcMain.removeAllListeners(`advanced-click`);
     ipcMain.removeAllListeners(`unsupported-key-win`);
+    ipcMain.removeAllListeners(`lures-warn`);
     ipcMain.removeHandler(`advanced-defaults`);
     ipcMain.removeHandler(`get-game-config`);
   });
@@ -54,6 +55,10 @@ const createAdvSettings = (appPath) => {
   ipcMain.on("unsupported-key-win", () => {
     showWarning(win, `The key you pressed is not supported by AutoFish.`);
   })
+
+  ipcMain.on("lures-warn", () => {
+    showWarning(win, `Don't forget to make a macros as described in the Guide (Help -> Read Me) and assign it to the same key you have assigned for Lures Key.`);
+  });
 
   ipcMain.handle("advanced-defaults", () => {
     const settings = getJson(path.join(appPath, "./config/settings.json"));

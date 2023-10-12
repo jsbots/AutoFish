@@ -6,6 +6,9 @@
   "patch": {
     "Retail": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": true,
@@ -113,6 +116,9 @@
     },
     "LK Classic": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": true,
@@ -213,6 +219,9 @@
     },
     "Classic": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": true,
@@ -313,6 +322,9 @@
     },
     "Leg": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -402,6 +414,9 @@
     },
     "MoP": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -491,6 +506,9 @@
     },
     "Cata": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -582,6 +600,9 @@
     },
     "LK Private": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -671,6 +692,9 @@
     },
     "TBC": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -762,6 +786,9 @@
     },
     "Vanilla": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
@@ -853,6 +880,9 @@
     },
     "Vanilla (splash)": {
       "timer": 0,
+      "lures": false,
+      "luresKey": "2",
+      "luresDelayMin": 10,
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,

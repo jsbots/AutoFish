@@ -179,20 +179,15 @@ return elt(
         `Assign the same key you use for fishing. If you use /castFishing instead, then you should assign a key for fishing.`
       ),
       wrapInLabel(
-        "Lures Key: ",
-        renderLuresKey(config),
-        `Assign the same key you use for using fishing lures.`
-      ),
-      wrapInLabel(
-        "Int. key: ",
+        "Int. Key: ",
         renderPoleKey(config),
         `Exclusively for Retail. Use interaction key instead of mouse for catching.`
       ),
       wrapInLabel(
-        "Reuse Lure: ",
-        renderLuresDelay(config),
-        `Fishing lures expiration time in minutes.`
-      )
+        "Stop Key: ",
+        renderStopKey(config),
+        `Assign a key that you will use to stop the bot.`
+      ),
     ),
     elt(
       "div",
@@ -207,16 +202,6 @@ wrapInLabel(
   elt(`div`, {className: `premium_option`}, renderMultipleWindows()),
   `ONLY ON DIRECTX 11. If you want to use multiple windows check this option. You need to launch every window and configure them properly, make sure every window is in DirectX 11 mode. This option uses a different library to analyze your screen, you can check it even for one window if for some reason the default way doesn't work for you.`
 ),
-      wrapInLabel(
-        "Use lures: ",
-        renderLures(config),
-        `Check this option if you want to use fishing lures. If your game requires manual application of lures, use a macros for that and assign that macro to Lures Key option.`
-      ),
-      wrapInLabel(
-        "Stop Key: ",
-        renderStopKey(config),
-        `Assign a key that you will use to stop the bot.`
-      ),
 
       wrapInLabel(
         "",
