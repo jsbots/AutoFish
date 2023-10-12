@@ -32,7 +32,7 @@ const createBots = async (games, settings, config, log) => {
 
   return {
     startBots(onError) {
-      log.send("Starting the bots...")
+      log.send("Starting the bot...")
 
       bots.forEach((bot) => {
         runBot(bot, onError, bots)
@@ -60,7 +60,7 @@ const createBots = async (games, settings, config, log) => {
       })
     },
     stopBots() {
-      log.send('Stopping the bots...')
+      log.send('Stopping the bot...')
       log.setState(false);
       bots.forEach(({state}) => state.status = "stop");
     },
