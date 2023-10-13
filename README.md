@@ -75,6 +75,7 @@ If you still want to use it outside educational sandbox, it is crucial to unders
 - The bot has been exclusively tested with the default user interface (UI) and default UI scale, without any addons. Therefore, before using the bot, ensure that all addons are turned off and the UI scale is set to default. This is particularly important for fishing addons like Fishing Buddy and others. Disable any UI features they provide.
 - The bot will make 5 attempts to cast and find the bobber (default: 5). If it fails, it will stop the application.
 - If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
+- With older games the bot might run into "Interrupted" loop: it's when the bot will confuse the previous bobber for the current one and after the bobber dissappeared the bot will think that it caught the fish and will recast, after that the whole process will repeat again and again. To bypass this issue use **Manual Threshold** or increase **Cast Animation Delay** value to make the bot wait until the previous bobber will disappear completely.  
 - If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
 - The bot works properly only with 1 monitor, so if you use multiple monitors, launch the bot and the game on **the primary one**.
 - Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
@@ -255,8 +256,6 @@ The Multiple Windows feature enables you to fish simultaneously in multiple game
 
 Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
 
-*Might not work on Windows 11 in Retail yet*
-
 ## Sound Detection :loud_sound:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
@@ -315,17 +314,15 @@ To facilitate the use of the bot when you have a single monitor and cannot run i
 
 With AFK Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
 
-*Might not work on Windows 11 in Retail yet*
-
 ## Download :open_file_folder:
 
 <p align="center">
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.2.1 beta Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380) or download it from **Releases** section.
+AutoFish 2.2.2 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380) or download it from **Releases** section.
 
-AutoFish 2.3.0 beta Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.3.1 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
 
