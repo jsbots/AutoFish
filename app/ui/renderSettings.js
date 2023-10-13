@@ -119,7 +119,7 @@ const renderAdvancedSettings = () => {
 };
 
 const renderFishingZone = () => {
-  return elt('input', {type: 'button', name:"fishingZone", value: "Set Fishing Zone", className: "advanced_settings_button"});
+  return elt('input', {type: 'button', name:"fishingZone", value: "Fishing Zone", className: "advanced_settings_button"});
 };
 
 
@@ -205,14 +205,10 @@ wrapInLabel(
 
       wrapInLabel(
         "",
-        renderFishingZone(config),
-        `The application will open the window of your game and show you the Fishing Zone, you can change it as you like. You can reset the fishing zone to default values in Advanced Settings.`
-      ),
+        renderFishingZone(config)),
       wrapInLabel(
         "",
-        renderAdvancedSettings(config),
-        `Advanced settings that allow you to fine-tune the bot. The settings will be saved under the chosen game version.`
-      ),
+        renderAdvancedSettings(config)),
     ),
     elt("p", {className: 'settings_header settings_header_main'}, "Filter"),
     elt(

@@ -9,11 +9,11 @@ const wrapInLabel = (name, inner, hint) => {
       "div",
       { className: "option" },
       inner,
-      elt("img", {
+      hint ? (elt("img", {
         src: "./img/hint.png",
         className: "option_hint",
         title: hint,
-      })
+      })) : ``
     )
   );
 };
