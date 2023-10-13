@@ -1,7 +1,7 @@
 {
   "game": "Retail",
   "fishingKey": "1",
-  "stopKey": "space",
+  "stopKey": "delete",
   "intKey": "f",
   "useInt": false,
   "whitelist": false,
