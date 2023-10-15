@@ -486,6 +486,12 @@ const renderWhitelist = ({whitelist}) => {
  return elt('input', {type: 'checkbox', name: "whitelist", checked: whitelist})
 };
 
+const renderSpares = () => {
+  return elt('input', {type: 'button', className: "spares-addButton" });
+}
+const renderSparesOmitInitial = () => elt('input', {type: 'checkbox', disabled: true,  name: "sparesOmitInitial", checked: true})
+
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
@@ -554,46 +560,24 @@ wrapInLabel(
 wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
 ),
 
-  elt(`p`, {className: `settings_header`}, `Timer`),
+elt(`p`, {className: `settings_header`}, `Timer`),
 elt('div', {className: "settings_section"},
 wrapInLabel(
-  "Timer (min): ",
-  renderTimer(config),
-  `The bot will work for the given period of minutes. If it's 0, it will never stop.`
+"Timer (min): ",
+renderTimer(config),
+`The bot will work for the given period of minutes. If it's 0, it will never stop.`
 ),
 wrapInLabel("Do After Timer: ", renderAfterTimer(config),`What the bot should do after the timer elapses (you can set it in the main window)`),
 wrapInLabel("HS Key: ", renderHsKey(config), `A key your HS is assigned.`),
 wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`),
 wrapInLabel("Shut Down Computer After Quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
 ),
-  elt(`p`, {className: `settings_header`}, `Miss On Purpose`),
-  elt('div', {className: "settings_section"},
-  wrapInLabel(`Miss On Purpose: `, renderMissOnPurpose(config), `The bot will miss fish on purpose to simulate a human mistake. The value is % chance per cast that the bot will miss (it's not % of the whole session, so it might be drastically different). This functionality might decrease chances of being detected`),
-  wrapInLabel(`Random Miss On Purpose (per throw): (%)`, renderMissOnPurposeRandom(config), `The bot will generate a random number from the provided values. The number is generated every fishing session: so the next time you start the bot, it will be always different (randomly generated) between the given values.`),
-  ),
-  elt(`p`, {className: `settings_header`}, `Logging Out`),
-  elt('div', {className: "settings_section"},
-  wrapInLabel(`Log Out/Log In:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
-  wrapInLabel(`Random Log Out Every: (min)`, renderLogOutEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
-  wrapInLabel(`Random Log Out For: (sec)`, renderLogOutFor(config), `How long the bot should be stayed logged out. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
-  wrapInLabel(`Random Log Out After: (sec)`, renderLogOutAfter(config), `How long the bot should wait before starting fishing again. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
-  ),
-  elt(`p`, {className: `settings_header`}, `Random Sleep`),
-  elt('div', {className: "settings_section"},
-  wrapInLabel(`Random Sleep:`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),
-  wrapInLabel(`Random Sleep Every (min):`, renderRandomSleepEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different (randomly generated).`),
-  wrapInLabel(`Random Sleep For (ms):`, renderRandomSleepDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different(randomly generated).`)
-  ),
-  elt(`p`, {className: `settings_header`}, `Random Reaction`),
-  elt('div', {className: "settings_section"},
-  wrapInLabel(`Random Reaction:`, renderReaction(config), `Randomise reaction time before any action.`),
-  wrapInLabel(`Random Reaction delay (ms):`, renderReactionDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot needs to move/press/click something: so the next time the bot uses your mouse/keyboard the reaction time will be always different(randomly generated)`)),
-  elt(`p`, {className: `settings_header`}, `Sleep after hook`),
-  elt('div', {className: "settings_section"},
-  wrapInLabel(`Sleep After Catch:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
-  wrapInLabel(`After Catch Random Delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
-  ),
 
+elt(`p`, {className: `settings_header settings_header_premium`}, `🧙 Additional Actions`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/yE-qARS73oo`}),
+elt(`div`, {className: `settings_section settings_premium`},
+    wrapInLabel(`Omit Initial Application`, renderSparesOmitInitial(config), `Don't apply additional actions at the beggining, wait until timer elapses.`),
+  renderSpares(config)
+),
 
   elt(`p`, {className: `settings_header settings_header_premium`}, `🎮 Arduino Control`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/yE-qARS73oo`}),
     elt('div', {className: "settings_section settings_premium"},
@@ -633,6 +617,34 @@ wrapInLabel("Shut Down Computer After Quitting: ", renderShutDown(config), `The 
   wrapInLabel(`Balancing Time Every (min):`, renderRngMoveBalanceTime(config), `How often the bot should balance its position and camera direction to default values.`),
   wrapInLabel(`Keys Moves Step:`, renderRngMoveDirLength(config), `Step delay of how long the bot will press w, s, a, d keys.`),
   wrapInLabel(`Use Random Camera Every (min): `, renderRngMoveTimer(config), `How often the bot should use random camera view and character position.`),
+  ),
+
+  elt(`p`, {className: `settings_header`}, `Miss On Purpose`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Miss On Purpose: `, renderMissOnPurpose(config), `The bot will miss fish on purpose to simulate a human mistake. The value is % chance per cast that the bot will miss (it's not % of the whole session, so it might be drastically different). This functionality might decrease chances of being detected`),
+  wrapInLabel(`Random Miss On Purpose (per throw): (%)`, renderMissOnPurposeRandom(config), `The bot will generate a random number from the provided values. The number is generated every fishing session: so the next time you start the bot, it will be always different (randomly generated) between the given values.`),
+  ),
+  elt(`p`, {className: `settings_header`}, `Logging Out`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Log Out/Log In:`, renderLogOut(config), `The bot will log out from the game after the given time, wait for a couple of minutes and log back to the game. This functionality might decrease chances of being detected.`),
+  wrapInLabel(`Random Log Out Every: (min)`, renderLogOutEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  wrapInLabel(`Random Log Out For: (sec)`, renderLogOutFor(config), `How long the bot should be stayed logged out. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  wrapInLabel(`Random Log Out After: (sec)`, renderLogOutAfter(config), `How long the bot should wait before starting fishing again. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  ),
+  elt(`p`, {className: `settings_header`}, `Random Sleep`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Random Sleep:`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),
+  wrapInLabel(`Random Sleep Every (min):`, renderRandomSleepEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different (randomly generated).`),
+  wrapInLabel(`Random Sleep For (ms):`, renderRandomSleepDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different(randomly generated).`)
+  ),
+  elt(`p`, {className: `settings_header`}, `Random Reaction`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Random Reaction:`, renderReaction(config), `Randomise reaction time before any action.`),
+  wrapInLabel(`Random Reaction delay (ms):`, renderReactionDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot needs to move/press/click something: so the next time the bot uses your mouse/keyboard the reaction time will be always different(randomly generated)`)),
+  elt(`p`, {className: `settings_header`}, `Sleep after hook`),
+  elt('div', {className: "settings_section"},
+  wrapInLabel(`Sleep After Catch:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
+  wrapInLabel(`After Catch Random Delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   ),
 
   elt(`p`, {className: `settings_header settings_header_critical`}, `Critical`),

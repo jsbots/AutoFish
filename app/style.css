@@ -850,3 +850,14 @@ input[type=range]::-webkit-slider-runnable-track {
 .threshold_number_input {
   z-index: 1;
 }
+
+.advSettings .settings .settings_section .spares-addButton {
+  display: block;
+  margin: 0 auto;
+  background-image: url('img/add.png');
+  background-size: 12px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 75px;
+}
