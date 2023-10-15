@@ -122,7 +122,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   }
 
-  const whitelist = settings.whitelistWords
+  const whitelist = config.whitelistWords
     .split(",")
     .map((word) => word.trim());
 
@@ -374,7 +374,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   const pickLoot = async () => {
-    let cursorPos = settings.atMouse || !lootWindow.cursorPos ? mouse.getPos() : lootWindow.cursorPos;
+    let cursorPos = config.atMouse || !lootWindow.cursorPos ? mouse.getPos() : lootWindow.cursorPos;
     if (cursorPos.y - lootWindow.upperLimit < 0) {
       cursorPos.y = lootWindow.upperLimit;
     }
@@ -414,7 +414,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     for (let item of items) {
       let isInList = whitelist.find((word) => percentComparison(word, item) > 90);
 
-      if(settings.filterType == `blacklist`) {
+      if(config.filterType == `blacklist`) {
         if(isInList) {
           isInList = false;
         } else {
@@ -422,7 +422,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         }
       }
 
-      if (!isInList && settings.whiteListBlueGreen) {
+      if (!isInList && config.whiteListBlueGreen) {
         let lootZone = createLootZone({
           getDataFrom,
           zone: {
@@ -454,7 +454,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         await mouse.toggle("right", true, delay);
         await mouse.toggle("right", false, delay);
 
-        if(typeof isInList == `boolean` && settings.confirmSoulbound) {
+        if(typeof isInList == `boolean` && config.confirmSoulbound) {
           await sleep(250); // wait for the confirmation to appear
           let recognizedWords = await readTextFrom(
            await getDataFrom(confirmationWindow),
@@ -571,7 +571,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     await sleep(250);
     if (!(await notificationZone.check("warning"))) {
       caught = true;
-      if (settings.whitelist) {
+      if (config.whitelist) {
           let itemsPicked = await pickLoot();
             if(itemsPicked.length > 0) {
               caught = itemsPicked.toString();
@@ -579,7 +579,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       }
     }
     });
-    if(!settings.whitelist) {
+    if(!config.whitelist) {
       await sleep(config.closeLootDelay);
     } else {
       await sleep(150);

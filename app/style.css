@@ -66,7 +66,7 @@ section {
 .AutoFish {
   padding: 5px;
   width: 325px;
-  height: 720px;
+  height: 628px;
 }
 .logo {
   margin-top: 10px;
@@ -247,22 +247,11 @@ section {
   cursor: default;
 }
 
-.settings input[type="text"].whitelist_input  {
-  width: 219px;
-}
-
-.settings select.filterType {
-  width: 82px;
-  margin-left: 11px;
-  margin-right: 16px;
-}
-
-.settings select.whitelistLanguage {
-  width: 43px;
-}
-
-.settings input.atMouse {
-  margin-left: 6px;
+.settings textarea.whitelist_input  {
+  width: 405px !important;
+  height: 50px;
+  max-width: 405px;
+  min-height: 50px;
 }
 
 .advanced_settings_button {

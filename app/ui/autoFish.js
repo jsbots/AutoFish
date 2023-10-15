@@ -96,7 +96,7 @@ class AutoFish {
           document.querySelector(`.settings_header_fold`).style = `border-bottom: 1px solid grey; border-radius: 5px`;
         } else {
           this.settings.dom.style = `display: block`;
-          ipcRenderer.send(`resize-win`, {width: 341, height: 720})
+          ipcRenderer.send(`resize-win`, {width: 341, height: 628})
           event.target.src = `img/unfold.png`
           document.querySelector(`.settings_header_fold`).style = ``;
         }

@@ -457,6 +457,35 @@ const renderLuresApplyDelay = ({lures, luresDelayMin}) => {
   return elt('input', {type: 'number', value: luresDelayMin, disabled: !lures, name: "luresDelayMin"});
 };
 
+
+const renderFilterType = ({whitelist, filterType}) => {
+  return elt(`select`, {name: `filterType`, className: `filterType`, disabled: !whitelist},
+    elt(`option`, {selected: filterType == `whitelist`, value: "whitelist"}, `Whitelist`),
+    elt(`option`, {selected: filterType == `blacklist`, value: "blacklist"}, `Blacklist`)
+  );
+}
+
+const renderFilterAtMouse = ({game, whitelist, atMouse}) => {
+  if(game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`) {
+    atMouse = true;
+  }
+  return elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`)});
+}
+
+const renderWhitelistLanguage = ({whitelist, whitelistLanguage}) => {
+  let languages = [`eng`, `spa`, `spa_old`, `por`, `fra`, `deu`, `ita`, `chi_sim`, `chi_tra`, `kor`, `rus`];
+  let properLanguages = {eng: `English`, spa: "Spanish", spa_old: "Spanish Old", deu: "Deutsch", por: "Português", fra: "Français", ita: "Italiano", chi_sim: "Simplified Chinese", chi_tra: "Traditional Chinese", kor: "Korean", rus: "Russian"};
+  return elt('select', {name: `whitelistLanguage`, className: `whitelistLanguage` , disabled: !whitelist}, ...languages.map(language => elt(`option`, {selected: whitelistLanguage == language, value: language}, `${properLanguages[language]}`)));
+}
+
+const renderWhitelistWords = ({whitelist, whitelistWords}) => {
+  return elt('textarea', {name:"whitelistWords", placeholder: `Red Salmon, Curcian Carp, Dragon Goby`, className: "whitelist_input", value: whitelistWords, disabled: !whitelist})
+}
+
+const renderWhitelist = ({whitelist}) => {
+ return elt('input', {type: 'checkbox', name: "whitelist", checked: whitelist})
+};
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
   elt(`p`, {className: `settings_header advanced_settings_header`}, `General`),
@@ -483,6 +512,20 @@ wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the b
   wrapInLabel(`Highlight Bobber (%): `, renderHighlightPercent(config), `How often the bot should highlight the bobber before checking on it (if in your game the bobber become brigther or more colourfull after highlighting, then change this value to 100% if you don't care for randomness)`),
   wrapInLabel(`Mouse/Keyboard random delay (ms): `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
   wrapInLabel(`Close Loot Window With: `, renderCloseLoot(config), `The bot will use mouse/esc or randomly one of them to close the loot window while filtering the loot.`)
+  ),
+
+  elt("p", {className: 'settings_header settings_header_main'}, "Filter"),
+  elt(
+    "div",
+    { className: "settings_section" },
+    wrapInLabel("Use Filter: ",
+      renderWhitelist(config),
+      `The bot will loot only items in the whitelist. Before using, turn off AutoLoot in the game and set UI Scale to default. The names of the items must be exactly the same as in the game, separated by comma. `
+    ),
+    wrapInLabel("Mode: ", renderFilterType(config), `Filter Mode will decide whether to pick or to ignore items in the list.`),
+    wrapInLabel("Language: ", renderWhitelistLanguage(config), `If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language. `),
+    wrapInLabel("Loot Window At Mouse: ", renderFilterAtMouse(config), `Loot window at mouse will tell the bot whether it should check the loot window at mouse or the default loot window at the left side of the screen.`),
+    wrapInLabel("", renderWhitelistWords(config))
   ),
 
   elt(`p`, {className: `settings_header advanced_settings_header`}, `Window`),

@@ -13,9 +13,9 @@ const createWinSwitch = require("../game/winSwitch.js");
 const createBots = async (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
 
-  if(settings.whitelist) {
-    log.send(`Downloading data for ${settings.whitelistLanguage} language, it might take a while...`)
-    await setWorker(settings.whitelistLanguage);
+  if(config.whitelist) {
+    log.send(`Downloading data for ${config.whitelistLanguage} language, it might take a while...`)
+    await setWorker(config.whitelistLanguage);
   }
 
   games = [games[0]];
