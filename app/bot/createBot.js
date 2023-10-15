@@ -237,6 +237,10 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     return config.luresDelayMin * 60 * 1000;
   });
 
+  if(config.luresOmitInitial) {
+    applyLures.timer.start();
+  }
+
   const randomSleep = async () => {
     let sleepFor = random(
       config.randomSleepDelay.from,

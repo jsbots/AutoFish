@@ -18,6 +18,8 @@ const convertValue = (node) => {
 
 const renderHideWin = ({hideWin}) => elt(`input`, {type: `checkbox`, checked: hideWin, name: `hideWin`});
 
+const renderLuresOmitInitial = ({luresOmitInitial, lures}) => elt('input', {type: 'checkbox', name: "luresOmitInitial", disabled: !lures, checked: luresOmitInitial})
+
 const renderHighlightPercent = ({highlightPercent}) => {
   const winRange = elt(`input`, {type: `number`, value: highlightPercent, name: "highlightPercent"})
   const range = elt('input', {type: `range`, max: 100, value: highlightPercent, oninput: function() {winRange.value = this.value}, name: "highlightPercent"});
@@ -147,8 +149,8 @@ const renderMouseCurvature = ({mouseCurvatureStrength, likeHuman}) => {
   return elt(`div`, null, range, winRange);
 };
 
-const renderLuresDelay = ({luresDelay}) => {
-  return elt(`input`, {type: `number`, name: `luresDelay`, value: luresDelay});
+const renderLuresDelay = ({lures, luresDelay}) => {
+  return elt(`input`, {type: `number`, disabled: !lures, name: `luresDelay`, value: luresDelay});
 };
 
 const renderRandomSleep = ({randomSleep}) => {
@@ -558,6 +560,7 @@ wrapInLabel(
   `Fishing lures expiration time in minutes.`
 ),
 wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
+wrapInLabel(`Omit Initial Application`, renderLuresOmitInitial(config), `Don't apply lures at the beggining, wait until timer elapses.`),
 ),
 
 elt(`p`, {className: `settings_header`}, `Timer`),

@@ -7,6 +7,7 @@
     "Retail": {
       "game": "Retail",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -125,6 +126,7 @@
     "LK Classic": {
       "game": "LK Classic",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -236,6 +238,7 @@
     "Classic": {
       "game": "Classic",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -347,6 +350,7 @@
     "Leg": {
       "game": "Leg",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -447,6 +451,7 @@
     "MoP": {
       "game": "MoP",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -547,6 +552,7 @@
     "Cata": {
       "game": "Cata",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -649,6 +655,7 @@
     "LK Private": {
       "game": "LK Private",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -749,6 +756,7 @@
     "TBC": {
       "game": "TBC",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -849,8 +857,9 @@
       }
     },
     "Vanilla": {
-      "game": "Vanilla", 
+      "game": "Vanilla",
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
@@ -952,6 +961,7 @@
     },
     "Vanilla (splash)": {
       "timer": 0,
+      "luresOmitInitial": false,
       "whitelist": false,
       "whitelistWords": "",
       "whiteListBlueGreen": true,
