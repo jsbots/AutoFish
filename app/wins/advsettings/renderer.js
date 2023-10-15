@@ -74,8 +74,8 @@ const renderCloseLootDelay = ({closeLootDelay}) => {
   return elt('input', {type: `number`, name: `closeLootDelay`, value: closeLootDelay});
 };
 
-const renderCloseLoot = ({ closeLoot }) => {
-  return elt(`select`, {className: `closeLoot`, value: closeLoot, name: `closeLoot`},
+const renderCloseLoot = ({ closeLoot, whitelist }) => {
+  return elt(`select`, {className: `closeLoot`, disabled: !whitelist, value: closeLoot, name: `closeLoot`},
     elt(`option`, {selected: closeLoot == `mouse`, value: `mouse`}, `Mouse`),
     elt(`option`, {selected: closeLoot == `esc`, value: `esc`}, `Escape`),
     elt(`option`, {selected: closeLoot == `mouse+esc`, value: `mouse+esc`}, `Mouse + Escape`)
@@ -517,7 +517,6 @@ wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the b
   wrapInLabel(`Random Mouse Curvature: `, renderMouseCurvature(config), `The bot will generate a random number within the provided value. The higher the value the stronger is the deviation of the movement. Works only if Like a human option is on.`),
   wrapInLabel(`Highlight Bobber (%): `, renderHighlightPercent(config), `How often the bot should highlight the bobber before checking on it (if in your game the bobber become brigther or more colourfull after highlighting, then change this value to 100% if you don't care for randomness)`),
   wrapInLabel(`Mouse/Keyboard random delay (ms): `, renderDelay(config), `The bot will generate a random number between the provided values. The number is generated every time bot utilizes your mouse or keyboard and represents the delay between pressing/releasing of mouse/keyboard clicks and pressing.`),
-  wrapInLabel(`Close Loot Window With: `, renderCloseLoot(config), `The bot will use mouse/esc or randomly one of them to close the loot window while filtering the loot.`)
   ),
 
   elt("p", {className: 'settings_header settings_header_main'}, "Filter"),
@@ -530,6 +529,7 @@ wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the b
     ),
     wrapInLabel("Mode: ", renderFilterType(config), `Filter Mode will decide whether to pick or to ignore items in the list.`),
     wrapInLabel("Language: ", renderWhitelistLanguage(config), `If it's the first time you using a language from the list, wait until the bot downloads the tesseract data for your language. `),
+    wrapInLabel(`Close Loot Window With: `, renderCloseLoot(config), `The bot will use mouse/esc or randomly one of them to close the loot window while filtering the loot.`),
     wrapInLabel("Loot Window At Mouse: ", renderFilterAtMouse(config), `Loot window at mouse will tell the bot whether it should check the loot window at mouse or the default loot window at the left side of the screen.`),
     wrapInLabel("", renderWhitelistWords(config))
   ),
