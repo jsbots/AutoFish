@@ -33,7 +33,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "jimp": "^0.16.1",
     "keysender": "^2.3.0",
-    "tesseract.js": "^3.0.3"
+    "tesseract.js": "^5.0.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.4",
