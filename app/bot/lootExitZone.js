@@ -1,5 +1,4 @@
 const createRgb = require('../utils/rgb.js');
-const Jimp = require('jimp');
 
 const createLootExitZone = ({ getDataFrom, lootWindow, size }) => {
   const isYellow = ([r, g, b]) => r - b > 135 && g - b > 135;

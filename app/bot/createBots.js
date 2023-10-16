@@ -9,12 +9,13 @@ const EventLine = require("../utils/eventLine.js");
 const { setWorker } = require("../utils/textReader.js");
 
 const createWinSwitch = require("../game/winSwitch.js");
+let properLanguages = {eng: `English`, spa: "Spanish", spa_old: "Spanish Old", deu: "Deutsch", por: "Português", fra: "Français", ita: "Italiano", chi_sim: "Simplified Chinese", chi_tra: "Traditional Chinese", kor: "Korean", rus: "Russian"};
 
 const createBots = async (games, settings, config, log) => {
   const winSwitch = createWinSwitch(new EventLine());
 
   if(config.patch[settings.game].whitelist) {
-    log.send(`Downloading data for ${config.whitelistLanguage} language, it might take a while...`);
+    log.send(`Downloading data for ${properLanguages[config.patch[settings.game].whitelistLanguage]} language, it might take a while...`);
     await setWorker(config.patch[settings.game].whitelistLanguage);
   }
 
