@@ -492,7 +492,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await moveTo({pos: cursorPos, randomRange: 5});
     }
 
-    await sleep(250);
+    await sleep(350);
     if ((settings.game == `LK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await lootExitZone.isLootOpened(cursorPos) : items.length != itemsPicked.length) {
 
             if (config.reaction) {
