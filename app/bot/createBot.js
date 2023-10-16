@@ -2,6 +2,7 @@ const Zone = require("../utils/zone.js");
 const createFishingZone = require("./fishingZone.js");
 const createNotificationZone = require("./notificationZone.js");
 const createLootZone = require("./lootZone.js");
+const createLootExitZone = require("./lootExitZone.js");
 const {app} = require(`electron`);
 
 const { screen, Region, Point } = require("@nut-tree/nut-js");
@@ -68,7 +69,8 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   let fishingZone = createFishingZone(getDataFrom, Zone.from(screenSize).toRel(config.relZone), screenSize, settings, config);
-    const notificationZone = createNotificationZone({
+
+  const notificationZone = createNotificationZone({
       getDataFrom,
       zone: Zone.from({
         x: Math.round((screenSize.width / 2) - (screenSize.width * config.notificationPos.width)),
@@ -122,11 +124,13 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   }
 
+  const lootExitZone = createLootExitZone({getDataFrom, lootWindow, size: 10 * (screenSize.width / 1920)});
+
   const whitelist = config.whitelistWords
     .split(",")
     .map((word) => word.trim());
 
-    const moveTo = async ({ pos, randomRange, fineTune = {offset: 5, steps: [1, 3]}}) => {
+    const moveTo = async ({ pos, randomRange, fineTune = {offset: randomRange, steps: [1, 3]}}) => {
       if (randomRange) {
         pos.x = pos.x + random(-randomRange, randomRange);
         pos.y = pos.y + random(-randomRange, randomRange);
@@ -363,24 +367,21 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   };
 
-  const isYellow = ([r, g, b]) => r - b > 135 && g - b > 135;
-
-  const isLootOpened = async (cursorPos) => {
-    await sleep(250);
-    let x = cursorPos.x + lootWindow.exitButton.x;
-    let y = cursorPos.y - lootWindow.exitButton.y;
-    if(config.multipleWindows) {
-      return isYellow(workwindow.colorAt(x, y, "array"));
-    } else {
-      let color = await screen.colorAt(new Point(x + screenSize.x, y + screenSize.y));
-      return isYellow([color.R, color.G, color.B]);
-    }
-  };
-
   const pickLoot = async () => {
     let cursorPos = config.atMouse || !lootWindow.cursorPos ? mouse.getPos() : lootWindow.cursorPos;
     if (cursorPos.y - lootWindow.upperLimit < 0) {
       cursorPos.y = lootWindow.upperLimit;
+    }
+
+    for(let times = 0; times <= 20; times++) { // Wait for 2 seconds max until loot appears
+      await sleep(100);
+      if(await lootExitZone.isLootOpened(cursorPos)) {
+        break;
+      }
+
+      if(times == 20) {
+        return [];
+      }
     }
 
     if (config.reaction) {
@@ -491,7 +492,8 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await moveTo({pos: cursorPos, randomRange: 5});
     }
 
-    if ((settings.game == `LK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await isLootOpened(cursorPos) : items.length != itemsPicked.length) {
+    await sleep(250);
+    if ((settings.game == `LK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await lootExitZone.isLootOpened(cursorPos) : items.length != itemsPicked.length) {
 
             if (config.reaction) {
               await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
@@ -503,12 +505,12 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
                 await moveTo({ pos: {
                   x: cursorPos.x + lootWindow.exitButton.x,
                   y: cursorPos.y - lootWindow.exitButton.y
-                }, randomRange: 5});
+                }, randomRange: 2});
                 await mouse.toggle("left", true, delay);
                 await mouse.toggle("left", false, delay);
 
                 if(settings.useInt) {
-                  await moveTo({ pos: cursorPos, randomRange: 5});
+                  await moveTo({ pos: cursorPos, randomRange: 2});
                 }
               }
 
@@ -519,12 +521,12 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
                   await moveTo({ pos: {
                     x: cursorPos.x + lootWindow.exitButton.x,
                     y: cursorPos.y - lootWindow.exitButton.y
-                  }, randomRange: 5});
+                  }, randomRange: 2});
                   await mouse.toggle("left", true, delay);
                   await mouse.toggle("left", false, delay);
 
                   if(settings.useInt) {
-                    await moveTo({ pos: cursorPos, randomRange: 5});
+                    await moveTo({ pos: cursorPos, randomRange: 2});
                   }
                 }
               }

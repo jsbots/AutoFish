@@ -15,7 +15,6 @@ const createBots = async (games, settings, config, log) => {
 
   if(config.patch[settings.game].whitelist) {
     log.send(`Downloading data for ${config.whitelistLanguage} language, it might take a while...`);
-    console.log(config.patch[settings.game].whitelistLanguage);
     await setWorker(config.patch[settings.game].whitelistLanguage);
   }
 
