@@ -335,6 +335,12 @@ section {
   background-color: rgb(230, 230, 230);
 }
 
+.advSettings input[type=button].dummy_button:hover {
+  border: 1px solid grey;
+  background-color: rgb(240, 240, 240);
+  cursor: default;
+}
+
 .advSettings input[type=button]:active {
   background-color: rgb(240, 240, 240);
 }
@@ -704,12 +710,13 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .settings_premium {
   background-color: #FFDBC5;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .settings_header_premium {
   background-color: #ffe9dc;
   border-color: grey;
+  color: rgba(0,0,0,0.7); 
 }
 
 .premium_lock {

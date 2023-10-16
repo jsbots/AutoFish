@@ -302,9 +302,8 @@ const renderSoundDetectionRange = () => {
 };
 
 
-
 const renderTmApiKey = () => {
-  return elt('div', null, elt('input', {type: `text`, disabled: true, value: ``, className: `tmApiKey`}), elt('input', {type: `button`, disabled: true, value: `Connect`}));
+  return elt('div', null, elt('input', {type: `text`, disabled: true, value: ``, className: `tmApiKey`}), elt('input', {type: `button`, className: "dummy_button", value: `Connect`}));
 };
 
 const renderDetectWhisper = () => {
@@ -381,7 +380,7 @@ const renderArduino = () => {
 
 const renderArduinoPort = () => {
     let select = elt(`select`, {disabled: true}, elt(`option`, null, 'COM1'));
-    return elt(`div`, null, select, elt(`input`, {type: `button`, disabled: true, value: `Connect`}));
+    return elt(`div`, null, select, elt(`input`, {type: `button`, className: "dummy_button",  value: `Connect`}));
 };
 
 const renderArduinoRate = () => {
@@ -489,7 +488,7 @@ const renderWhitelist = ({whitelist}) => {
 };
 
 const renderSpares = () => {
-  return elt('input', {type: 'button', className: "spares-addButton" });
+  return elt('input', {type: 'button', className: "dummy_button spares-addButton" });
 }
 const renderSparesOmitInitial = () => elt('input', {type: 'checkbox', disabled: true,  name: "sparesOmitInitial", checked: true})
 
