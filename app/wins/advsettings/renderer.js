@@ -491,6 +491,7 @@ const renderSpares = () => {
   return elt('input', {type: 'button', className: "dummy_button spares-addButton" });
 }
 const renderSparesOmitInitial = () => elt('input', {type: 'checkbox', disabled: true,  name: "sparesOmitInitial", checked: true})
+const renderCatchFishButton = ({catchFishButton}) => elt("select", {name: "catchFishButton"}, ...["right", "left", "middle"].map(button => elt('option', {selected: catchFishButton == button}, button)))
 
 
 const renderSettings = (config) => {
@@ -510,6 +511,7 @@ const renderSettings = (config) => {
   ),
 wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `After attempts limit the bot will dynamically change threshold by the provided value.`),
+  wrapInLabel(`Catch With Mouse Button: `, renderCatchFishButton(config), `Choose the button you want the bot to click when it wants to catch the fish.`),
   ),
 
   elt(`p`, {className: `settings_header advanced_settings_header`}, `Mouse and Keyboard`),
