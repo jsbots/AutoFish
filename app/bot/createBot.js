@@ -373,17 +373,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       cursorPos.y = lootWindow.upperLimit;
     }
 
-    for(let times = 0; times <= 20; times++) { // Wait for 2 seconds max until loot appears
-      await sleep(100);
-      if(await lootExitZone.isLootOpened(cursorPos)) {
-        break;
-      }
-
-      if(times == 20) {
-        return [];
-      }
-    }
-
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); // react to opening loot win
     } else {
@@ -402,6 +391,17 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to)); // hint disappearing and smooth text analyzing time with random value
     } else {
       await sleep(150); // hint dissappearing
+    }
+
+    for(let times = 0; times <= 20; times++) { // Wait for 2 seconds max until loot appears
+      await sleep(100);
+      if(await lootExitZone.isLootOpened(cursorPos)) {
+        break;
+      }
+
+      if(times == 20) {
+        return [];
+      }
     }
 
     const lootWindowDim = {
