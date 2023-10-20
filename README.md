@@ -17,31 +17,13 @@
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Download](#download-open_file_folder)
-
-AutoFish Premium:
-- [Features](#autofish-premiumcrown)
-- [Remote Control](#telegram-remote-control-iphone)
-- [Arduino Control](#arduino-control-joystick)
-- [Multiple Windows](#multiple-windows-rocket)
-- [Sound Detection](#sound-detection-loud_sound)
-- [Mammoth Selling](#mammoth-selling-elephant)
-- [Random camera/character movements](#random-cameracharacter-movements-robot)
-- [AFK Fishing](#afk-fishing-sleeping)
-
+- [AutoFish Premium](#autofish-premiumcrown)
 
 ## Fishing bot :fish:
 
-This is a fishing bot designed for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron)  framework and leverages the [keysender](https://github.com/Krombik/keysender) library and [nut.js](https://github.com/nut-tree/nut.js) library to analyze the screen and automate the fishing process in a manner that mimics human behavior.
+This is a fishing bot designed for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron) and leverages [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate the fishing process in a manner that mimics human behavior with various elements of randomness, including random sleep intervals, random reactions, random delays after catching, randomized mouse speed and curvature, and random bobber highlighting.
 
-This bot is capable of simultaneously handling one or multiple game windows, enabling efficient fishing across different instances. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot analysis.
-
-**Features:**
-- Fishing lures support.
-- Loot filtering support.
-- Automated confirmation for soulbound items.
-- Intentional "miss" functionality.
-- Randomized log out/log in functionality.
-- Advanced automation with various elements of randomness, including random sleep intervals, random reactions, random delays after catching, randomized mouse speed and curvature, and random bobber highlighting.
+This bot is capable of simultaneously handling one or multiple game windows. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot filtering.
 
 <p align="center">
 <img src="guide_img/UI.jpg" width="640">
@@ -189,43 +171,24 @@ If the item requires confirmation on looting, the bot will confirm it automatica
 AutoFish Premium is the same application only with some additional features available for supporters of the project.
 
 **Additional Premium Features:**
-- Remote control via Telegram.
-- Control with Arduino Board (complete hardware emulation).
-- Multiple game windows support (up to 4).
-- Sound Detection.
-- Mammoth Selling (junk selling).
-- Profiles support.
-- AFK Fishing Mode (auto-focusing the window only when catching/casting).
+- [Remote Control](#telegram-remote-control-iphone)
+- [Arduino Control](#arduino-control-joystick)
+- [Multiple Fishing Mode](#multiple-windows-rocket)
+- [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
+- [Sound Detection](#sound-detection-loud_sound)
+- [Mount Selling](#mount-selling-elephant)
+- [Random camera/character movements](#random-cameracharacter-movements-robot)
+- Motion Detection
+- Additional Actions
+- Profiles
 
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
 </p>
 
-## Arduino Control :joystick:
+## Remote Control :iphone:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-<p align="center">
-<img src="guide_img/arduino.jpg" align="center">
-</p>
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo)
-
-The bot is able to connect to your Arduino Board and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
-
-1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
-2. Connect it to your computer.
-3. Install [Arduino IDE](https://www.arduino.cc/en/software).
-4. Click **New Sketch** and replace everything there with this sketch: [Arduino Sketch](https://github.com/jsbots/Clicker/blob/main/clicker_sketch/clicker_sketch.ino).
-5. Click **Tools** -> **Port** and choose the port your Arduino Board connected to.
-6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
-7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
-
-## Telegram remote control :iphone:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Telegram remote control Test Video](https://youtu.be/aKulvFK6ubg)
 
 1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
@@ -246,21 +209,29 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 7. If you want to make the bot notify you about any errors or whipser messeges, *you need to start it from Telegram* (*not by pressing Start on the bot's interface*). Whisper detection will work much better and reliable if you **turn off all the other chat messages**.
 
-## Multiple Windows :rocket:
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Telegram remote control Test Video](https://youtu.be/aKulvFK6ubg)
+
+## Multiple Fishing Mode :rocket:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
-
 The Multiple Windows feature enables you to fish simultaneously in multiple game windows, with support for up to four windows. The bot will seamlessly switch between the game windows as needed for casting and catching fish. This feature enhances your fishing efficiency by allowing you to manage multiple fishing spots or engage in multi-character fishing activities.
 
-Watch [this](https://youtu.be/o1i_cgZzuHc?t=33) if you wonder how it looks like.
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
+
+## Alt-Tab Fishing Mode :sleeping:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+To facilitate the use of the bot when you have a single monitor and cannot run it in the background or set up a virtual machine, the AFK Fishing mode is available. This mode enables the bot to focus on the game window only during the casting and fish-catching process. After that, it will automatically switch back to the previous window using the Alt + Tab keys.
+
+With AFK Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AFK Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
 
 ## Sound Detection :loud_sound:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Sound Detection Test Video](https://youtu.be/ZggOy8tA32A)
 
 <p align="center">
 <img src="guide_img/sound-detection.jpg" align="center">
@@ -276,11 +247,11 @@ You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection th
 
 **Warning!** Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 
-## Mammoth Selling :elephant:
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Sound Detection Test Video](https://youtu.be/ZggOy8tA32A)
+
+## Mount Selling :elephant:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
 
 <p align="center">
 <img src="guide_img/mammoth.jpg" align="center">
@@ -292,11 +263,11 @@ Because of the novelty of the interaction key this feature is available only for
 
 Depends on the mount the name of your trader might be different, so change the default value.
 
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
+
 ## Random Camera/Character Movements :robot:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Random Camera/Character Movements Test Video](https://youtu.be/o1hU3fNn4uk)
 
 <p align="center">
 <img src="guide_img/rngMove.jpg" align="center">
@@ -304,15 +275,27 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 The bot will randomly move and change your camera view from time to time within the given value. It will also balance itself every n minutes (default: 5) and return to the initial camera and character position.  
 
-## AFK Fishing :sleeping:
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Random Camera/Character Movements Test Video](https://youtu.be/o1hU3fNn4uk)
+
+## Arduino Control :joystick:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AFK Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
+<p align="center">
+<img src="guide_img/arduino.jpg" align="center">
+</p>
 
-To facilitate the use of the bot when you have a single monitor and cannot run it in the background or set up a virtual machine, the AFK Fishing mode is available. This mode enables the bot to focus on the game window only during the casting and fish-catching process. After that, it will automatically switch back to the previous window using the Alt + Tab keys.
+The bot is able to connect to your Arduino Board and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
 
-With AFK Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
+1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
+2. Connect it to your computer.
+3. Install [Arduino IDE](https://www.arduino.cc/en/software).
+4. Click **New Sketch** and replace everything there with this sketch: [Arduino Sketch](https://github.com/jsbots/Clicker/blob/main/clicker_sketch/clicker_sketch.ino).
+5. Click **Tools** -> **Port** and choose the port your Arduino Board connected to.
+6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
+7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo)
 
 ## Download :open_file_folder:
 
@@ -320,9 +303,9 @@ With AFK Fishing mode, you can engage in other activities such as watching video
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.2.2 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380) or download it from **Releases** section.
+AutoFish 2.2.6 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.3.1 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.4.1 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
 
