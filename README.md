@@ -94,14 +94,6 @@ There are a couple of solutions for this. First, try switching to the 1st person
 
 Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Retail) or the **Bobber Density** (especially if it's not Retail) values in the **Critical** section. In the case of Vanilla (splash), you can decrease the Splash Color value."
 
-### Dynamic Threshold
-
-<p align="center">
-<img src="guide_img/dynamicth.jpg" align="center">
-</p>
-
-The bot incorporates a simple mechanism to adjust the threshold value. After a certain number of failed attempts to find the bobber (default: 5), the bot will decrease the threshold by the provided value (default: 5). It will then make another set of attempts to find the bobber, continuing to decrease the threshold until it reaches a value of Threshold < 20. This feature is particularly useful in adverse weather conditions when the color or brightness of the bobber is significantly reduced, enabling the bot to continue functioning effectively.
-
 ## Fishing Zone :dart:
 
 The Fishing Zone is an adjustable area in the water where your bobber may land. The bot specifically searches for the bobber within this designated area.
@@ -170,21 +162,21 @@ If the item requires confirmation on looting, the bot will confirm it automatica
 
 AutoFish Premium is the same application only with some additional features available for supporters of the project.
 
-**Additional Premium Features:**
-- [Remote Control](#telegram-remote-control-iphone)
-- [Arduino Control](#arduino-control-joystick)
-- [Multiple Fishing Mode](#multiple-windows-rocket)
-- [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
-- [Sound Detection](#sound-detection-loud_sound)
-- [Mount Selling](#mount-selling-elephant)
-- [Random camera/character movements](#random-cameracharacter-movements-robot)
-- Motion Detection
-- Additional Actions
-- Profiles
-
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
 </p>
+
+**Premium Features/Content:**
+- [Remote Control](#remote-control-iphone)
+- [Arduino Control](#arduino-control-joystick)
+- [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
+- [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
+- [Sound Detection](#sound-detection-loud_sound)
+- [Mount Selling](#mount-selling-elephant)
+- [Motion Detection](#motion-detection-runner)
+- [Additional Actions](#additional-actions-mage)
+- [Random camera/character movements](#random-cameracharacter-movements-robot)
+- Profiles
 
 ## Remote Control :iphone:
 
@@ -264,6 +256,26 @@ Because of the novelty of the interaction key this feature is available only for
 Depends on the mount the name of your trader might be different, so change the default value.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
+
+## Motion Detection :runner:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/motiondetection.jpg" align="center">
+</p>
+
+You can set a zone for motion detection and the bot will notifiy you via Telegram of any events happening in this zone/area. It will also send a screenshot of the motion occured. This feature might help against griefing.  
+
+## Additional Actions :mage:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/additionalactions.jpg" align="center">
+</p>
+
+You will be able to add as many additional actions which require repetition as you want (e.g. applying additional lures or using different bobbers).
 
 ## Random Camera/Character Movements :robot:
 
