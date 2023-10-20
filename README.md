@@ -168,7 +168,6 @@ AutoFish Premium is the same application only with some additional features avai
 
 **Premium Features/Content:**
 - [Remote Control](#remote-control-iphone)
-
 - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
 - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
 - [Sound Detection](#sound-detection-loud_sound)
