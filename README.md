@@ -168,14 +168,15 @@ AutoFish Premium is the same application only with some additional features avai
 
 **Premium Features/Content:**
 - [Remote Control](#remote-control-iphone)
-- [Arduino Control](#arduino-control-joystick)
+
 - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
 - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
 - [Sound Detection](#sound-detection-loud_sound)
-- [Mount Selling](#mount-selling-elephant)
 - [Motion Detection](#motion-detection-runner)
 - [Additional Actions](#additional-actions-mage)
+- [Mount Selling](#mount-selling-elephant)
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
+- [Arduino Control](#arduino-control-joystick)
 - Profiles
 
 ## Remote Control :iphone:
@@ -241,22 +242,6 @@ You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection th
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Sound Detection Test Video](https://youtu.be/ZggOy8tA32A)
 
-## Mount Selling :elephant:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
-<p align="center">
-<img src="guide_img/mammoth.jpg" align="center">
-</p>
-
-As an alternative to filtering you can use a trader on your mammoth mount to sell all the junk items during the fishing. The bot will summon your mount, target your trader, interact with it by using interaction key in the game, unsummon the mount and go on fishing.
-
-Because of the novelty of the interaction key this feature is available only for Retail.
-
-Depends on the mount the name of your trader might be different, so change the default value.
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
-
 ## Motion Detection :runner:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
@@ -276,6 +261,22 @@ You can set a zone for motion detection and the bot will notifiy you via Telegra
 </p>
 
 You will be able to add as many additional actions which require repetition as you want (e.g. applying additional lures or using different bobbers).
+
+## Mount Selling :elephant:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/mammoth.jpg" align="center">
+</p>
+
+As an alternative to filtering you can use a trader on your mammoth mount to sell all the junk items during the fishing. The bot will summon your mount, target your trader, interact with it by using interaction key in the game, unsummon the mount and go on fishing.
+
+Because of the novelty of the interaction key this feature is available only for Retail.
+
+Depends on the mount the name of your trader might be different, so change the default value.
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
 
 ## Random Camera/Character Movements :robot:
 
