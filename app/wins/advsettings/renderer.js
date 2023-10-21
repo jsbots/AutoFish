@@ -490,8 +490,20 @@ const renderWhitelist = ({whitelist}) => {
 const renderSpares = () => {
   return elt('input', {type: 'button', className: "dummy_button spares-addButton" });
 }
-const renderSparesOmitInitial = () => elt('input', {type: 'checkbox', disabled: true,  name: "sparesOmitInitial", checked: true})
+const renderSparesOmitInitial = () => elt('input', {type: 'checkbox', disabled: true, checked: true})
 const renderCatchFishButton = ({catchFishButton}) => elt("select", {name: "catchFishButton"}, ...["right", "left", "middle"].map(button => elt('option', {selected: catchFishButton == button}, button)))
+
+const renderCheckChanges = ({checkChanges}) => elt('input', {type: 'checkbox', disabled: true, checked: false});
+const renderCheckChangesSens = ({checkChanges, checkChangesSens}) => {
+  const winRange = elt(`input`, {type: `number`, value: 900, disabled: !checkChanges})
+  const range = elt('input', {type: `range`, max: 1000, min: 1, step: 1, value: checkChangesSens, className: `${!checkChanges ? `threshold_disabled` : ``}`, disabled: !checkChanges,  oninput: function() {winRange.value = this.value}});
+  return elt(`div`, null, range, winRange);
+}
+const renderCheckChangesInterval = ({checkChanges, checkChangesInterval}) => elt('input', {type: "number",  value: 1, disabled: !checkChanges});
+const renderCheckChangesIntervalAfter = ({checkChanges, checkChangesIntervalAfter}) => elt('input', {type: "number",  value: 3, disabled: !checkChanges});
+const renderCheckChangesSendImg = ({checkChanges, checkChangesSendImg}) => elt('input', {type: 'checkbox',  checked: true, disabled: !checkChanges});
+const renderCheckChangesDoAfter = ({checkChanges, checkChangesDoAfter}) => elt('select', { disabled: !checkChanges}, ...['nothing', 'stop', 'quit'].map(type => elt('option', {value: type, selected: true}, `${type[0].toUpperCase()}${type.slice(1)}`)))
+const renderCheckChangesIgnoreActions = ({checkChanges, checkChangesIgnoreActions}) => elt('input', {type: 'checkbox', disabled: !checkChanges, checked: true});
 
 
 const renderSettings = (config) => {
@@ -577,32 +589,37 @@ wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`
 wrapInLabel("Shut Down Computer After Quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
 ),
 
-elt(`p`, {className: `settings_header settings_header_premium`}, `🧙 Additional Actions`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/yE-qARS73oo`}),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🧙 Additional Actions`),
 elt(`div`, {className: `settings_section settings_premium`},
     wrapInLabel(`Omit Initial Application`, renderSparesOmitInitial(config), `Don't apply additional actions at the beggining, wait until timer elapses.`),
   renderSpares(config)
 ),
 
-  elt(`p`, {className: `settings_header settings_header_premium`}, `🎮 Arduino Control`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/yE-qARS73oo`}),
-    elt('div', {className: "settings_section settings_premium"},
-    wrapInLabel(`Use Arduino Board: `, renderArduino(config), `Using an Arduino Board will allow you to emulate a device in 100% hardware way: it will look like a real keyboard or mouse to the OS and the game. Check the guide on how to use an Arduino Board with AutoFish (Help -> Arduino Guide)`),
-    wrapInLabel(`COM Port: `, renderArduinoPort(config), `Choose the COM port of the Arduino Board connected to your computer and press Connect button.`),
-    wrapInLabel(`Bits Per Second: `, renderArduinoRate(config), `Don't change this value if you don't know what you are doing. The value should be the same as in Arduino Sketch provided in the guide (you can find it in the top of the sketch)`)
-    ),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🚨 Motion Detection`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/aKulvFK6ubg`}),
+elt(`div`, {className: `settings_section settings_premium`},
+wrapInLabel('Use Motion Detection: ', renderCheckChanges(config), `The bot will detect changes within Detection Zone. The bot will notify you in Telegram if some movement happens within Detection Zone.`),
+wrapInLabel('Send Screenshot Of The Event To Telegram:', renderCheckChangesSendImg(config), `The bot will send a screenshot of what exactly triggered the event.`),
+wrapInLabel('Ignore My Actions:', renderCheckChangesIgnoreActions(config), `The bot will try to ignore time when you do something: cast, catch, move camera, log out and so on.`),
+wrapInLabel('Sensitivity: ', renderCheckChangesSens(config), `Old good sensitivity value for a typical motion detection. Doesn't need an explanation, right?`),
+wrapInLabel('Interval (sec): ', renderCheckChangesInterval(config), `The bot will check for motion every given interval value.`),
+wrapInLabel('Ignore Time After Event Occured (sec): ', renderCheckChangesIntervalAfter(config), `After some event happened how long to ignore all the events after. `),
+wrapInLabel('Do After Event: ', renderCheckChangesDoAfter(config), `What to do after the event occured.`),
+),
+elt(`p`, {className: `settings_header settings_header_premium`}, `📲 Remote control`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/aKulvFK6ubg`}),
+elt(`div`, {className: `settings_section settings_premium`},
+  wrapInLabel(`Telegram Token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
+  wrapInLabel(`Detect Whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
+  wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
+  wrapInLabel(`Stop Bot And Quit At Whisper:`, renderQuitAtWhisper(config), `The bot will stop and quit when being whispered.`),
+
+  wrapInLabel(`Chat Zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
+),
     elt(`p`, {className: `settings_header settings_header_premium`}, `🔊 Sound Detection`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/ZggOy8tA32A`}),
   elt('div', {className: "settings_section settings_premium"},
   wrapInLabel(`Sound Detection: `, renderSoundDetection(config), `The bot will check the change of sound instead of the change of pixels when it should catch the fish.`),
   wrapInLabel(`Sound Detection Range: `, renderSoundDetectionRange(config), `The strength of the noise created by jerking of the bobber`),
   ),
-  elt(`p`, {className: `settings_header settings_header_premium`}, `📲 Remote control`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/aKulvFK6ubg`}),
-  elt(`div`, {className: `settings_section settings_premium`},
-    wrapInLabel(`Telegram Token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
-    wrapInLabel(`Detect Whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
-    wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
-    wrapInLabel(`Stop Bot And Quit At Whisper:`, renderQuitAtWhisper(config), `The bot will stop and quit when being whispered.`),
 
-    wrapInLabel(`Chat Zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
-  ),
   elt(`p`, {className: `settings_header settings_header_premium`}, `🐘 Mount Selling`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/zY2LqAPszdg`}),
   elt('div', {className: "settings_section settings_premium"},
   wrapInLabel(`Use Mount for selling: `, renderMammoth(config), `You can summon a mammoth carrying traders during the fishing and then sell all the scrap to one of them using any addon for selling such scrap.`),
@@ -622,6 +639,13 @@ elt(`div`, {className: `settings_section settings_premium`},
   wrapInLabel(`Keys Moves Step:`, renderRngMoveDirLength(config), `Step delay of how long the bot will press w, s, a, d keys.`),
   wrapInLabel(`Use Random Camera Every (min): `, renderRngMoveTimer(config), `How often the bot should use random camera view and character position.`),
   ),
+
+  elt(`p`, {className: `settings_header settings_header_premium`}, `🎮 Arduino Control`), elt(`span`, {className: `premium_lock`, id:`link`, url:`https://youtu.be/yE-qARS73oo`}),
+    elt('div', {className: "settings_section settings_premium"},
+    wrapInLabel(`Use Arduino Board: `, renderArduino(config), `Using an Arduino Board will allow you to emulate a device in 100% hardware way: it will look like a real keyboard or mouse to the OS and the game. Check the guide on how to use an Arduino Board with AutoFish (Help -> Arduino Guide)`),
+    wrapInLabel(`COM Port: `, renderArduinoPort(config), `Choose the COM port of the Arduino Board connected to your computer and press Connect button.`),
+    wrapInLabel(`Bits Per Second: `, renderArduinoRate(config), `Don't change this value if you don't know what you are doing. The value should be the same as in Arduino Sketch provided in the guide (you can find it in the top of the sketch)`)
+    ),
 
   elt(`p`, {className: `settings_header`}, `Miss On Purpose`),
   elt('div', {className: "settings_section"},
