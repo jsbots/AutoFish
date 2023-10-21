@@ -162,6 +162,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
       win.webContents.send("log-data", data);
     });
     log.msg(fishQuotes[Math.floor(Math.random() * fishQuotes.length)]);
+
+    if(screen.getAllDisplays().length > 1) {
+      log.warn("The bot detected more than 1 display: use both the game and the bot on the primary one.")
+    }
   })
 
 
