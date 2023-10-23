@@ -124,6 +124,27 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   }
 
+
+  const humanMoveTo = (x, y, randomSpeed, randomDeviation) =>
+    new Promise(async (resolve, reject) => {
+      mouse.humanMoveTo(x, y,
+         random(randomSpeed.from, randomSpeed.to),
+         random(randomDeviation.from, randomDeviation.to));
+
+    for(;state.status != 'stop';) {
+      await sleep(100);
+      let cPos = mouse.getPos();
+      if(humanMoveTo.closeEnough(cPos, {x, y})) {
+        console.log(`Finished!`, x, y, cPos);
+        return resolve();
+      }
+    }
+    return resolve();
+  });
+  humanMoveTo.closeEnough = (v1, v2, size = 1) => Math.abs(v1.x - v2.x) <= size && Math.abs(v1.y - v2.y) <= size;
+
+
+
   const lootExitZone = createLootExitZone({getDataFrom, lootWindow, size: 10 * (screenSize.width / 1920)});
 
   const whitelist = config.whitelistWords
@@ -151,14 +172,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
           randomDeviation.from = 0;
         }
 
-        await mouse.humanMoveTo(
-          pos.x,
-          pos.y,
-          random(randomSpeed.from, randomSpeed.to),
-          random(randomDeviation.from, randomDeviation.to)
-        );
+        await humanMoveTo(pos.x, pos.y, randomSpeed, randomDeviation);
 
-        if(config.likeHumanFineTune && fineTune) {
+        if(config.likeHumanFineTune && fineTune && state.status != "stop") {
           let times = random(fineTune.steps[0], fineTune.steps[1]);
           for(let i = 1; i <= times; i++) {
             await mouse.humanMoveTo(
@@ -631,12 +647,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   }
 
-  const stopAllCurrentActions = async () => {
-    await mouse.humanMoveTo.cancelCurrent();
-    await keyboard.sendKeys.cancelCurrent();
-    await keyboard.printText.cancelCurrent();
-};
-
   doAfterTimer.on = config.timer;
   doAfterTimer.timer = createTimer(() => config.timer * 1000 * 60);
 
@@ -652,8 +662,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     findBobber,
     highlightBobber,
     checkBobber,
-    hookBobber,
-    stopAllCurrentActions
+    hookBobber
   };
 };
 

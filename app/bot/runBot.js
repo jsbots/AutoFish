@@ -12,7 +12,6 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
     checkBobber,
     hookBobber,
     doAfterTimer,
-    stopAllCurrentActions
   } = bot;
 
   const sleep = (time) => {
@@ -126,10 +125,7 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
       stats.miss++;
       log.warn(`Missed the fish!`);
     }
-
   } while (state.status == "working");
-
-  await stopAllCurrentActions();
 };
 
 module.exports = runBot;

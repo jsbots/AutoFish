@@ -230,6 +230,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
     const {startBots, stopBots} = await createBots(games, settings, config, log);
 
     const stopAppAndBots = () => {
+
+      games.forEach(({mouse, keyboard}) => {
+         mouse.humanMoveTo.cancelCurrent();
+         keyboard.sendKeys.cancelCurrent();
+         keyboard.printText.cancelCurrent();
+      });
+
       stopBots();
       if(config.patch[settings.game].hideWin) win.show();
       shell.beep();
