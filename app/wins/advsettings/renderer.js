@@ -401,8 +401,8 @@ const renderAutoSensDens = ({autoSensDens, game}) => {
   return elt(`input`, {type: `checkbox`, disabled: game == `Vanilla (splash)`, checked: autoSensDens, name: `autoSensDens`});
 };
 
-const renderFindBobberDirection = ({findBobberDirection}) => {
-  return elt(`select`, {name: `findBobberDirection`}, ...([`normal`, `reverse`, `center`].map(dir => elt(`option`, {value: dir, selected: findBobberDirection == dir}, dir.slice(0, 1).toUpperCase() + dir.slice(1)))))
+const renderFindBobberDirection = ({findBobberDirection, game}) => {
+  return elt(`select`, {name: `findBobberDirection`, disabled: game == `Vanilla (splash)`}, ...([`normal`, `reverse`, `center`].map(dir => elt(`option`, {value: dir, selected: findBobberDirection == dir}, dir.slice(0, 1).toUpperCase() + dir.slice(1)))))
 };
 
 
