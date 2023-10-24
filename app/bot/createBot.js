@@ -59,13 +59,19 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     if(zone.width > screenSize.width) zone.width = screenSize.width;
     if(zone.height > screenSize.height) zone.height = screenSize.height;
 
-    if(!config.multipleWindows) {
+  switch(true) {
+    case config.libraryType == 'nut.js': {
+      console.log(`nut.js`);
       await actionOnce(() => {});
       let grabbed = await(await screen.grabRegion(new Region(zone.x + screenSize.x, zone.y + screenSize.y, zone.width, zone.height))).toRGB();
       return grabbed;
-    } else {
-      return workwindow.capture(zone);
     }
+
+    case config.libraryType == 'keysender': {
+      console.log(`keysender`);
+        return workwindow.capture(zone);
+    }
+  }
   };
 
   let fishingZone = createFishingZone(getDataFrom, Zone.from(screenSize).toRel(config.relZone), screenSize, settings, config);

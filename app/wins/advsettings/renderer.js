@@ -504,7 +504,7 @@ const renderCheckChangesIntervalAfter = ({checkChanges, checkChangesIntervalAfte
 const renderCheckChangesSendImg = ({checkChanges, checkChangesSendImg}) => elt('input', {type: 'checkbox',  checked: true, disabled: !checkChanges});
 const renderCheckChangesDoAfter = ({checkChanges, checkChangesDoAfter}) => elt('select', { disabled: !checkChanges}, ...['nothing', 'stop', 'quit'].map(type => elt('option', {value: type, selected: true}, `${type[0].toUpperCase()}${type.slice(1)}`)))
 const renderCheckChangesIgnoreActions = ({checkChanges, checkChangesIgnoreActions}) => elt('input', {type: 'checkbox', disabled: !checkChanges, checked: true});
-
+const renderLibraryType = ({libraryType}) => elt('select', { name: "libraryType" }, ...['nut.js', 'keysender'].map(lib => elt('option', {selected: lib == libraryType}, lib)));
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
@@ -677,6 +677,7 @@ elt(`div`, {className: `settings_section settings_premium`},
 
   elt(`p`, {className: `settings_header settings_header_critical`}, `Critical`),
   elt('div', {className: "settings_section settings_critical"},
+  wrapInLabel(`Visual Library: `, renderLibraryType(config), `If something doesn't work with default library you can choose another one. Mind that keysender works only with dx11.`),
   wrapInLabel(`Ignore Preliminary Checks:`, renderIgnorePreliminary(config), `The bot will ignore all the preliminary checks including notification errors.`),
   wrapInLabel(`Max Check Time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Do After Max Check Time:`, renderMaxFishTimeAfter(config), `What the bot should do if it reaches the maximum checking time.`),
