@@ -61,14 +61,12 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   switch(true) {
     case config.libraryType == 'nut.js': {
-      console.log(`nut.js`);
       await actionOnce(() => {});
       let grabbed = await(await screen.grabRegion(new Region(zone.x + screenSize.x, zone.y + screenSize.y, zone.width, zone.height))).toRGB();
       return grabbed;
     }
 
     case config.libraryType == 'keysender': {
-      console.log(`keysender`);
         return workwindow.capture(zone);
     }
   }
