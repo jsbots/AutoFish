@@ -595,7 +595,7 @@ elt(`div`, {className: `settings_section settings_premium`},
   renderSpares(config)
 ),
 
-elt(`p`, {className: `settings_header settings_header_premium`}, `🚨 Motion Detection`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/aKulvFK6ubg`}),
+elt(`p`, {className: `settings_header settings_header_premium`}, `🏃 Motion Detection`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/aKulvFK6ubg`}),
 elt(`div`, {className: `settings_section settings_premium`},
 wrapInLabel('Use Motion Detection: ', renderCheckChanges(config), `The bot will detect changes within Detection Zone. The bot will notify you in Telegram if some movement happens within Detection Zone.`),
 wrapInLabel('Send Screenshot Of The Event To Telegram:', renderCheckChangesSendImg(config), `The bot will send a screenshot of what exactly triggered the event.`),

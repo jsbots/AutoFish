@@ -135,7 +135,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await sleep(100);
       let cPos = mouse.getPos();
       if(humanMoveTo.closeEnough(cPos, {x, y})) {
-        console.log(`Finished!`, x, y, cPos);
         return resolve();
       }
     }
