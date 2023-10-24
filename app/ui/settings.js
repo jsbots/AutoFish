@@ -65,7 +65,7 @@ class Settings {
       saveSettings(event);
       document.removeEventListener(`keydown`, keyAssigning);
       event.target.blur();
-      event.preventDefault(); 
+      event.preventDefault();
     }
 
     this.dom.addEventListener('mousedown', (event) => {
@@ -85,6 +85,11 @@ class Settings {
     });
 
     this.dom.addEventListener('click', (event) => {
+
+      if(event.target.id == "link") {
+        ipcRenderer.send('open-link', (event.target.url));
+      }
+
       if(event.target.name == `bobberColor` || event.target.parentNode.name == `bobberColor`) {
         let bobberColorNode = this.dom.querySelector(`.bobberColorSwitch`);
         bobberColorNode.value = bobberColorNode.value == `red` ? `blue` : `red`;
