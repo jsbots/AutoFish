@@ -61,8 +61,12 @@ const createFishingZone = ({pos, screenSize, type, config, settings, scale}, fin
 
 		if(type != `relZone`) return;
 		win.setOpacity(0);
+		let saveAutoTh = settings.autoTh;
+		let saveFindBobberDirection = config.findBobberDirection;
+
 		settings.autoTh = false;
 		config.findBobberDirection = `normal`;
+
 		let zone = fishZone(
 			 getDataFrom,
 			 pos,
@@ -72,6 +76,10 @@ const createFishingZone = ({pos, screenSize, type, config, settings, scale}, fin
 		 );
 		let bobber = await zone.findBobber();
 		win.setOpacity(0.3);
+
+		settings.autoTh = saveAutoTh;
+		config.findBobberDirection = saveFindBobberDirection;
+
 		if(bobber) {
 			return `rgb(255, 70, 68)`;
 		} else {
