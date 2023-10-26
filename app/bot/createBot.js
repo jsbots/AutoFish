@@ -412,14 +412,16 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await sleep(150); // hint dissappearing
     }
 
-    for(let times = 0; times <= 20; times++) { // Wait for 2 seconds max until loot appears
-      await sleep(100);
-      if(await lootExitZone.isLootOpened(cursorPos)) {
-        break;
-      }
+    if(lootWindow.exitButton) {
+      for(let times = 0; times <= 20; times++) { // Wait for 2 seconds max until loot appears
+        await sleep(100);
+        if(await lootExitZone.isLootOpened(cursorPos)) {
+          break;
+        }
 
-      if(times == 20) {
-        return [];
+        if(times == 20) {
+          return [];
+        }
       }
     }
 
