@@ -95,8 +95,10 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   const confirmationWindowPatch =
     config.confirmationWindow[screenSize.width <= 1536 ? `1536` : `1920`];
 
-  const ignoreInterruptedPatch =
-    config.ignoreInterrupted[screenSize.width <= 1536 ? `1536` : `1920`];
+  let ignoreInterruptedPatch;
+  if(config.ignoreInterrupted) {
+    ignoreInterruptedPatch = config.ignoreInterrupted[screenSize.width <= 1536 ? `1536` : `1920`];
+  }
 
   const lootWindow = {
     upperLimit: lootWindowPatch.upperLimit * screenSize.height,
