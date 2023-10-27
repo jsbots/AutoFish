@@ -95,6 +95,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   const confirmationWindowPatch =
     config.confirmationWindow[screenSize.width <= 1536 ? `1536` : `1920`];
 
+  const ignoreInterruptedPatch =
+    config.ignoreInterrupted[screenSize.width <= 1536 ? `1536` : `1920`];
+
   const lootWindow = {
     upperLimit: lootWindowPatch.upperLimit * screenSize.height,
     toItemX: lootWindowPatch.toItemX * (ultrawide ? Number(lootWinResType) : screenSize.width),
@@ -283,7 +286,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       }
 
       if(config.ignoreInterrupted) {
-        let interruptedArea = cutOutNotification(config.ignoreInterrupted);
+        let interruptedArea = cutOutNotification(ignoreInterruptedPatch);
         bobber = [...bobber, ...interruptedArea];
       }
 

@@ -690,17 +690,25 @@
       "customWindow": "",
       "closeLoot": "mouse",
       "delay": { "from": 50, "to": 150 },
-      "castDelay": 1250,
+      "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 45000,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "ignoreInterrupted": {
-        "x": 0.4703125,
-        "y": 0.1407407,
-        "width": 0.0598958,
-        "height": 0.0268518
+        "1536": {
+          "x": 0.4648609,
+          "y": 0.15625,
+          "width": 0.0732064,
+          "height": 0.02994791
+        },
+        "1920": {
+          "x": 0.4703125,
+          "y": 0.1407407,
+          "width": 0.0598958,
+          "height": 0.0268518
+        }
       },
       "relZone": {
         "x": 0.34427083333333336,
@@ -806,10 +814,18 @@
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "ignoreInterrupted": {
-        "x": 0.4703125,
-        "y": 0.1407407,
-        "width": 0.0598958,
-        "height": 0.0268518
+        "1536": {
+          "x": 0.4648609,
+          "y": 0.15625,
+          "width": 0.0732064,
+          "height": 0.02994791
+        },
+        "1920": {
+          "x": 0.4703125,
+          "y": 0.1407407,
+          "width": 0.0598958,
+          "height": 0.0268518
+        }
       },
       "relZone": {
         "x": 0.34427083333333336,
