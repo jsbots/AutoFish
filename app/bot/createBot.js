@@ -129,26 +129,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
   }
 
-
-  const humanMoveTo = (x, y, randomSpeed, randomDeviation) =>
-    new Promise(async (resolve, reject) => {
-      mouse.humanMoveTo(x, y,
-         random(randomSpeed.from, randomSpeed.to),
-         random(randomDeviation.from, randomDeviation.to));
-
-    for(;state.status != 'stop';) {
-      await sleep(100);
-      let cPos = mouse.getPos();
-      if(humanMoveTo.closeEnough(cPos, {x, y})) {
-        return resolve();
-      }
-    }
-    return resolve();
-  });
-  humanMoveTo.closeEnough = (v1, v2, size = 1) => Math.abs(v1.x - v2.x) <= size && Math.abs(v1.y - v2.y) <= size;
-
-
-
   const lootExitZone = createLootExitZone({getDataFrom, lootWindow, size: 10 * (screenSize.width / 1920)});
 
   const whitelist = config.whitelistWords
@@ -176,9 +156,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
           randomDeviation.from = 0;
         }
 
-        await humanMoveTo(pos.x, pos.y, randomSpeed, randomDeviation);
+        await mouse.humanMoveTo(pos.x, pos.y, random(randomSpeed.from, randomSpeed.to), random(randomDeviation.from, randomDeviation.to));
 
-        if(config.likeHumanFineTune && fineTune && state.status != "stop") {
+        if(config.likeHumanFineTune && fineTune) {
           let times = random(fineTune.steps[0], fineTune.steps[1]);
           for(let i = 1; i <= times; i++) {
             await mouse.humanMoveTo(
@@ -347,14 +327,24 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   const detectSens = () => {
-    if(!config.autoSensDens || settings.game == `Vanilla (splash)`) return;
+    if(!config.autoSensDens || settings.game == `Vanilla (splash)`) {
+       return;
+    }
 
     if(settings.game == `Retail`) {
-      return `sensitivity`;
-    } else if(settings.autoTh) {
-      return `density`;
-    } else if(screenSize.height >= 2160) {
-      return `densityHighRes`
+      return `sensitivity`; // L and H reses for AutoThreshold and Manual
+    }
+
+    if (settings.autoTh && (settings.game == "LK Classic" || settings.game == "Classic" || settings.game == "Leg" || settings.game == "Cata")) {
+      return `density`; // LR && HR for AutoThreshold everywhere (if manual = none, because of "lookingLikeBobber" function)
+    }
+
+    if(settings.autoTh && (settings.game == 'LK Private' || settings.game == "TBC" || settings.game == "MoP" || settings.game == "Vanilla") && screenSize.height > 1080) {
+      return `densityHRlk`
+    }
+
+    if(screenSize.height > 1080) {
+        return `densityHRManual`;
     }
   }
 
