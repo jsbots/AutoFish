@@ -163,7 +163,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
         await mouse.humanMoveTo(pos.x, pos.y, random(randomSpeed.from, randomSpeed.to), random(randomDeviation.from, randomDeviation.to));
 
-        if(config.likeHumanFineTune && fineTune) {
+        if(config.likeHumanFineTune && fineTune && state.status != "stop") {
           let times = random(fineTune.steps[0], fineTune.steps[1]);
           for(let i = 1; i <= times; i++) {
             await mouse.humanMoveTo(
