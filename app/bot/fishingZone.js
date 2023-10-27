@@ -192,6 +192,10 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
          if(calculatedDens < 1) calculatedDens = 1;
          density = calculatedDens;
        }
+
+       if(detectSens == `densityHighRes`) {
+         return density = 4;
+       }
     },
 
     async checkBobberPrint(pos) {
