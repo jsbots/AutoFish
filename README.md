@@ -117,7 +117,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 ## Applying Lures :pushpin:
 For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
 
-**retail**:
+**Retail**:
 
 ```
 /use *lure_name*
@@ -138,6 +138,10 @@ For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro t
 /script UseAction(*your lures key*);
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
+```
+Or
+```
+/script UseContainerItem(0,2); PickupInventoryItem(16);
 ```
 
 ## Interactive key
