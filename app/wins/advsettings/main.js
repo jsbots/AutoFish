@@ -58,7 +58,7 @@ const createAdvSettings = (appPath) => {
   })
 
   ipcMain.on("lures-warn", () => {
-    showWarning(win, `Don't forget to make a macros as described in the Guide (Help -> Read Me) and assign it to the same key you have assigned for Lures Key.`);
+    showWarning(win, `Don't forget to make a macros as described in the Guide and assign it to the same key you have assigned for Lures Key.`);
   });
 
   ipcMain.on("whitelist-warn", () => {

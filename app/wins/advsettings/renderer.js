@@ -1,4 +1,4 @@
-const { ipcRenderer } = require("electron");
+const { ipcRenderer, shell } = require("electron");
 const elt = require("../../ui/utils/elt.js");
 const wrapInLabel = require("../../ui/utils/wrapInLabel.js");
 const keySupport = require("./../../utils/keySupport.js");
@@ -555,7 +555,7 @@ wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the b
   wrapInLabel(`Hide Bot After Start: `, renderHideWin(config), `The window of the bot will be hidden and you will be able to stop it only by using the stop key.`),
   ),
 
-  elt(`p`, {className: `settings_header`}, `Lures`),
+  elt(`p`, {className: `settings_header`}, `Lures`), elt(`a`, {href: `#`, style: `margin-left: 3px`, onclick: () => {shell.openExternal("https://github.com/jsbots/AutoFish#applying-lures-pushpin")}}, `Guide`),
 elt('div', {className: "settings_section"},
 wrapInLabel(
       "Use Lures: ",
