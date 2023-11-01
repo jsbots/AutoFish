@@ -269,10 +269,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
     showWarning(win, `Don't use this if you don't know what you are doing. This is an alternative pixel recognition logic that requires DirectX 11 turned on in the game.`);
   });
 
-  ipcMain.on("whitelist-warn", () => {
-    showWarning(win, `Turn off AutoLoot.\n\nTurn off UI addons and UI scaling.\n\nTurn on Open Loot Window at Mouse option (optional for Retail and Vanilla/Vanilla(splash)).\n\nBest works with standard resolutions like: 1366x768, 1920x1080, 2560x1440 and 3840x2160.`);
-  });
-
   ipcMain.on("open-link-donate", () =>
     shell.openExternal("https://www.buymeacoffee.com/jsbots/e/96734")
   );

@@ -33,6 +33,7 @@ const createAdvSettings = (appPath) => {
     ipcMain.removeAllListeners(`advanced-click`);
     ipcMain.removeAllListeners(`unsupported-key-win`);
     ipcMain.removeAllListeners(`lures-warn`);
+    ipcMain.removeAllListeners(`whitelist-warn`);    
     ipcMain.removeHandler(`advanced-defaults`);
     ipcMain.removeHandler(`get-game-config`);
   });
@@ -58,6 +59,10 @@ const createAdvSettings = (appPath) => {
 
   ipcMain.on("lures-warn", () => {
     showWarning(win, `Don't forget to make a macros as described in the Guide (Help -> Read Me) and assign it to the same key you have assigned for Lures Key.`);
+  });
+
+  ipcMain.on("whitelist-warn", () => {
+    showWarning(win, `Turn off AutoLoot option in the game.\n\nTurn off UI addons and UI scaling in the game.\n\nTurn on Open Loot Window at Mouse option in the game. (optional for Retail, Vanilla, Vanilla(splash), but if you do then check respective option in this section).\n\nBest works with standard resolutions like: 1366x768, 1920x1080 and 3840x2160.`);
   });
 
   ipcMain.handle("advanced-defaults", () => {

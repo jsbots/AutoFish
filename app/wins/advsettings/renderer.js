@@ -484,7 +484,7 @@ const renderWhitelistWords = ({whitelist, whitelistWords}) => {
 }
 
 const renderWhitelist = ({whitelist}) => {
- return elt('input', {type: 'checkbox', name: "whitelist", checked: whitelist})
+ return elt('input', {type: 'checkbox', name: "whitelist", onclick: () => { if(!whitelist) {ipcRenderer.send("whitelist-warn")}}, checked: whitelist})
 };
 
 const renderSpares = () => {
