@@ -17,7 +17,7 @@ const createAdvSettings = (appPath) => {
   let win = new BrowserWindow({
     title: 'Advanced Settings',
     width: 455,
-    height: 715,
+    height: 627,
     show: false,
     resizable: false,
     webPreferences: {
@@ -28,12 +28,12 @@ const createAdvSettings = (appPath) => {
   });
 
   win.loadFile(path.join(__dirname, `index.html`));
-
+  win.removeMenu();
   win.on("closed", () => {
     ipcMain.removeAllListeners(`advanced-click`);
     ipcMain.removeAllListeners(`unsupported-key-win`);
     ipcMain.removeAllListeners(`lures-warn`);
-    ipcMain.removeAllListeners(`whitelist-warn`);    
+    ipcMain.removeAllListeners(`whitelist-warn`);
     ipcMain.removeHandler(`advanced-defaults`);
     ipcMain.removeHandler(`get-game-config`);
   });

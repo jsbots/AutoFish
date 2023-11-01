@@ -304,10 +304,11 @@ section {
 
 .advSettings {
   padding: 5px;
+
 }
 
 .advSettings_settings {
-  height: 625px;
+  height: 558px;
   padding-right: 3px;
   margin-bottom: 7px;
   overflow-y: scroll;
@@ -317,16 +318,21 @@ section {
   text-align: center;
 }
 
+.advSettings .buttons input[type=button] {
+  outline: 2px solid rgba(250, 0, 0, .2);
+}
+  
 .advSettings .option_text {
   margin-left: 5px;
   margin-right: 5px;
 }
 
 .advSettings input[type=button] {
-  margin: 0 2px;
+  margin: 0 3px;
   width: 70px;
   border-radius: 5px;
   border: 1px solid grey;
+
 }
 
 .advSettings input[type=button]:hover {
@@ -716,7 +722,7 @@ input[type=range]::-webkit-slider-runnable-track {
 .settings_header_premium {
   background-color: #ffe9dc;
   border-color: grey;
-  color: rgba(0,0,0,0.7); 
+  color: rgba(0,0,0,0.7);
 }
 
 .premium_lock {
