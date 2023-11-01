@@ -49,8 +49,8 @@ If you still want to use it outside educational sandbox, it is crucial to unders
 3. Assign your 'fishing' and 'lures' keys in the game and assign the same keys for the bot.
 4. Find a place to fish.
 5. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the switch you selected). Keep in mind that the **Fishing Zone** functions as an overlay, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
-6. Press the Start button and refrain from using your mouse and keyboard (if you require the bot to function in the background, consider using a **virtual machine** such as VirtualBox or VMware Player).
-7. To stop the bot, press your designated stop key (default: space).
+6. Press the Start button and don't use your mouse and keyboard.
+7. To stop the bot, press your designated stop key (default: delete).
 
 
 ### Hints and Issues
@@ -117,7 +117,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 ## Applying Lures :pushpin:
 For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
 
-**retail**:
+**Retail**:
 
 ```
 /use *lure_name*
@@ -138,6 +138,10 @@ For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro t
 /script UseAction(*your lures key*);
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
+```
+Or
+```
+/script UseContainerItem(0,2); PickupInventoryItem(16);
 ```
 
 ## Interactive key
@@ -161,7 +165,7 @@ If the item requires confirmation on looting, the bot will confirm it automatica
 
 ## AutoFish Premium	:crown:
 
-AutoFish Premium is the same application only with some additional features available for supporters of the project.
+AutoFish Premium is just a token of gratitude for your support, it's the same application only with some additional features available for supporters of the project.
 
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
@@ -208,7 +212,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-The Multiple Windows feature enables you to fish simultaneously in multiple game windows, with support for up to four windows. The bot will seamlessly switch between the game windows as needed for casting and catching fish. This feature enhances your fishing efficiency by allowing you to manage multiple fishing spots or engage in multi-character fishing activities.
+The Multiple Windows feature enables you to fish simultaneously in multiple game windows, with support for up to 4 windows. The bot will switch between the game windows as needed for casting and catching fish. This feature enhances your fishing efficiency by allowing you to manage multiple fishing spots or engage in multi-character fishing.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
 
@@ -216,11 +220,11 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-To facilitate the use of the bot when you have a single monitor and cannot run it in the background or set up a virtual machine, the AFK Fishing mode is available. This mode enables the bot to focus on the game window only during the casting and fish-catching process. After that, it will automatically switch back to the previous window using the Alt + Tab keys.
+To facilitate the use of the bot when you have a single monitor and cannot run it in the background or set up a virtual machine, the Alt-Tab Fishing mode is available. This mode enables the bot to focus on the game window only during the casting and fish-catching process. After that, it will automatically switch back to the previous window using the Alt + Tab keys.
 
-With AFK Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
+With Alt-Tab Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AFK Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Alt-Tab Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
 
 ## Sound Detection :loud_sound:
 
@@ -236,7 +240,7 @@ With both Int. Key and Sound Detection turned on you can be completely independe
 
 Before using sound detection turn off Music and Ambient Sounds in the game, leave only Sound Effects. Your volume should be at normal/default level. Try to find a place secluded from the sounds made by other players to avoid false detections.
 
-You can also use AFK Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on Sound in Background for that).
+You can also use Alt-Tab Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on **Sound in Background** for that).
 
 **Warning!** Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 
@@ -316,9 +320,9 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.2.6 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.2.8 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.4.1 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.4.3 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
 
