@@ -60,9 +60,7 @@ You assume full responsibility for any outcomes that may arise from using this s
 
 - **Default UI only**: The bot has been exclusively tested with the default user interface (UI) and default UI scale, without any addons. Therefore, before using the bot, ensure that all addons are turned off and the UI scale is set to default. This is particularly important for fishing addons like Fishing Buddy and others. Disable any UI features they provide.
 - **No English**: If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
-- **Private servers**:  
-  - **If doesn't press anything**: If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
-  - **Turtle WoW**: If you play on TurtleWoW and similar servers, use "Vanilla (splash)" settings, also install legion textures and water on 1.12 client to make it work better.
+- **If doesn't press anything**: If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
 - **2 monitors**: The bot works properly only with 1 monitor, so if you use multiple monitors, launch the bot and the game on **the primary one**.
 - **Sound Detection**: feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
