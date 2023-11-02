@@ -491,7 +491,7 @@ const renderLibraryType = ({libraryType}) => elt('select', { name: "libraryType"
 
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
-    elt(`p`, {className: `settings_header advanced_settings_header`}, `⚙️`), elt(`span`, {className: `advanced_settings_header_text`}, `General`),
+    elt(`p`, {className: `settings_header advanced_settings_header`}, `🛠️`), elt(`span`, {className: `advanced_settings_header_text`}, `General`),
   elt('div', {className: "settings_section"},
   wrapInLabel(
     "Like a Human: ",

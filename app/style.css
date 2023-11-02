@@ -143,7 +143,7 @@ section {
 .settings_header_main {
   padding-right: 5px;
   padding-left: 5px;
-  width: 75px;
+  width: 40px;
 }
 
 .settings_header_log {
@@ -520,67 +520,6 @@ input[type=range].threshold_disabled::-webkit-slider-thumb {
 }
 
 /* Profiles */
-.settings_profile {
-  display: flex;
-  justify-content: space-between;
-}
-
-.profiles {
-  width: 150px;
-  height: 20px;
-  margin-top: 7px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.profiles input[type=text] {
-  margin: 0;
-  display: inline;
-}
-
-.profiles input[type=button] {
-  width: 20px;
-  height: 20px;
-  border: 1px solid grey;
-  border-radius: 5px;
-  margin: 0;
-  padding: 0;
-}
-
-.profiles input[type=button]:hover {
-  border: 1px solid black;
-  background-color: rgb(230, 230, 230);
-  cursor: pointer;
-}
-
-.profiles input[type=button]:active {
-  background-color: rgb(240, 240, 240);
-}
-
-
-.profiles select, .profiles input[type=text].profiles_text {
-  width: 100px;
-}
-
-.profiles input[type=text].profiles_text:focus {
-  border: 1px solid grey;
-}
-
-.profile_button_add {
-  background-image: url('img/add.png');
-  background-size: 12px;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.profile_button_remove {
-  background-image: url('img/remove.png');
-  background-size: 12px;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-
 .settings_premium {
   background-color: #FFDBC5;
 }
@@ -705,7 +644,7 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 16px;
   width: 16px;
   position: absolute;
-  left: 88px;
+  right: 10px;
   top: 86px;
   cursor: pointer;
   border: 1px solid black;
@@ -888,4 +827,9 @@ input[type=range]::-webkit-slider-runnable-track {
   font-size: 1.1em;
   font-weight: 500;
   margin-left: 5px
+}
+
+.advanced_settings_header_text_threshold {
+  margin-top: 10px;
+  margin-left: 5px;
 }
