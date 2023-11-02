@@ -36,9 +36,12 @@ This is commonly referred to as a "pixel bot." It operates without modifying the
 
 ## Disclaimer :warning:
 
-**This project was solely developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies only. The software provided should never be used with real-life applications, games and servers**
+**This project was developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies only. The software provided should never be used with real-life applications, games and servers outside private "sandbox".**
 
-If you still want to use it outside educational sandbox, it is crucial to understand and accept the associated risks. You assume full responsibility for any outcomes that may arise, as no one else can be held accountable. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes as stated above. As a result, **no guarantees or assurances can be made regarding the functionality or outcomes of the bot**.
+**This project was developed for people with limited mobility, as they may experience difficulty with motoric actions, such as those required by the fishing mechanic in games.**
+
+You assume full responsibility for any outcomes that may arise from using this software. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes as stated above. As a result, **no guarantees or assurances can be made regarding the functionality or outcomes of the bot**.
+
 
 ## Guide :blue_book:
 
@@ -59,7 +62,7 @@ If you still want to use it outside educational sandbox, it is crucial to unders
 - **No English**: If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
 - **Private servers**:  
   - **If doesn't press anything**: If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
-  - **Turtle WoW**: If you play on TurtleWoW and similar servers, use "Vanilla (splash)" settings, also install legion textures and water on 1.12 client to make it work better. 
+  - **Turtle WoW**: If you play on TurtleWoW and similar servers, use "Vanilla (splash)" settings, also install legion textures and water on 1.12 client to make it work better.
 - **2 monitors**: The bot works properly only with 1 monitor, so if you use multiple monitors, launch the bot and the game on **the primary one**.
 - **Sound Detection**: feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
