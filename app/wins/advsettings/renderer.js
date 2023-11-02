@@ -55,7 +55,7 @@ const renderBobberDensity = ({bobberDensity, autoSensDens, game}) => {
   if(bobberDensity < 1) bobberDensity = 1;
   let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", value: bobberDensity});
 
-  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", className: `${autoSensDens ? `threshold_disabled` : ``}`, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", className: `${autoSensDens || game == "Turtle WoW" || game == "Retail" ? `threshold_disabled` : ``}`, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
    bobberDensityWin);
 };
 
