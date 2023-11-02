@@ -91,8 +91,9 @@ const setFishingZone = async ({workwindow}, relZone, type, config, settings) => 
   }
 }
 
+let win;
 const createWindow = async () => {
-  let win = new BrowserWindow({
+  win = new BrowserWindow({
     title: generateName(Math.floor(random(5, 15))),
     width: 340,
     height: 628,
@@ -316,7 +317,21 @@ app.whenReady().then(() => {
       { label: 'Donate', click: () => shell.openExternal("https://www.buymeacoffee.com/jsbots")},
       { type: 'separator' },
       { role: 'quit' }
-    ]}])
+    ]},
+    {
+      label: `Cache`,
+      submenu: [
+        {
+          label: "Clear Cache",
+          click: () => {
+            win.webContents.session.clearStorageData();
+            showWarning(win, `Cache Cleared. Application Reload May Be Required`);
+          },
+        },
+        { type: "separator" },
+      ],
+    }
+  ])
 
   Menu.setApplicationMenu(menu);
   createWindow();
