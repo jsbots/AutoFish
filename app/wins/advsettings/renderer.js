@@ -124,15 +124,6 @@ const renderMaxFishTime = ({maxFishTime}) => {
   return elt(`input`, {type: `number`, name: `maxFishTime`, value: maxFishTime});
 };
 
-const renderRelZone = ({relZone}) => {
-  return elt(`div`, {"data-collection": `relZone`},
-      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1, name: `x`, value: relZone.x}),
-      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, name: `y`, value: relZone.y}),
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1, name: `width`, value: relZone.width}),
-      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1, name: `height`, value: relZone.height})
-    );
-};
-
 const renderCheckingDelay = ({checkingDelay}) => {
   return elt(`input`, {type: `number`, name:`checkingDelay`, value: checkingDelay});
 };
@@ -318,15 +309,6 @@ const renderWhisperThreshold = () => {
 
 const renderQuitAtWhisper = () => {
   return elt(`input`, {type: `checkbox`, checked: false, disabled: true});
-}
-
-const renderChatZone = () => {
-  return elt(`div`, null,
-      elt(`span`, {className: `option_text`}, `x:`), elt(`input`, {type: `number`, step: 0.1,  value: 145, disabled: true}),
-      elt(`span`, {className: `option_text`}, `y:`), elt(`input`, {type: `number`, step: 0.1, value:120, disabled: true}),
-      elt(`span`, {className: `option_text`}, `w:`), elt(`input`, {type: `number`, step: 0.1,  value: 200, disabled: true}),
-      elt(`span`, {className: `option_text`}, `h:`), elt(`input`, {type: `number`, step: 0.1,  value: 200, disabled: true})
-    );
 }
 
 const renderRngMove = () => {
@@ -585,7 +567,7 @@ renderTimer(config),
 ),
 wrapInLabel("Do After Timer: ", renderAfterTimer(config),`What the bot should do after the timer elapses (you can set it in the main window)`),
 wrapInLabel("HS Key: ", renderHsKey(config), `A key your HS is assigned.`),
-wrapInLabel("HS Delay: ", renderHsKeyDelay(config), `How long it take to use HS`),
+wrapInLabel("HS Delay (ms): ", renderHsKeyDelay(config), `How long it take to use HS`),
 wrapInLabel("Shut Down Computer After Quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
 ),
 
@@ -628,10 +610,8 @@ elt(`p`, {className: `settings_header settings_header_premium`}, `📲`),  elt(`
 elt(`div`, {className: `settings_section settings_premium`},
   wrapInLabel(`Telegram Token:`, renderTmApiKey(config), `Provide telegram token created by t.me/BotFather and press connect.`),
   wrapInLabel(`Detect Whisper:`, renderDetectWhisper(config), `The bot will analyze Chat Zone for Whisper Threshold purple colors, if it finds any it will notifiy telegram bot you connected through token.`),
-  wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
   wrapInLabel(`Stop Bot And Quit At Whisper:`, renderQuitAtWhisper(config), `The bot will stop and quit when being whispered.`),
-
-  wrapInLabel(`Chat Zone (%):`, renderChatZone(config), `The same logic as with Fishing Zone. The bot will analyze this zone for Whisper Threshold purple colors.`),
+  wrapInLabel(`Whisper Threshold:`, renderWhisperThreshold(config), `The intensity of purple color the bot will recognize as whispering.`),
 ),
 
 elt(`p`, {className: `settings_header settings_header_premium`}, `🏃`), elt(`span`, {className: `advanced_settings_header_text`}, `Motion Detection`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/0FCvm75yl5U`}),
@@ -639,10 +619,10 @@ elt(`div`, {className: `settings_section settings_premium`},
 wrapInLabel('Use Motion Detection: ', renderCheckChanges(config), `The bot will detect changes within Detection Zone. The bot will notify you in Telegram if some movement happens within Detection Zone.`),
 wrapInLabel('Send Screenshot Of The Event To Telegram:', renderCheckChangesSendImg(config), `The bot will send a screenshot of what exactly triggered the event.`),
 wrapInLabel('Ignore My Actions:', renderCheckChangesIgnoreActions(config), `The bot will try to ignore time when you do something: cast, catch, move camera, log out and so on.`),
-wrapInLabel('Sensitivity: ', renderCheckChangesSens(config), `Old good sensitivity value for a typical motion detection. Doesn't need an explanation, right?`),
 wrapInLabel('Interval (sec): ', renderCheckChangesInterval(config), `The bot will check for motion every given interval value.`),
 wrapInLabel('Ignore Time After Event Occured (sec): ', renderCheckChangesIntervalAfter(config), `After some event happened how long to ignore all the events after. `),
 wrapInLabel('Do After Event: ', renderCheckChangesDoAfter(config), `What to do after the event occured.`),
+wrapInLabel('Sensitivity: ', renderCheckChangesSens(config), `Old good sensitivity value for a typical motion detection. Doesn't need an explanation, right?`),
 ),
 
   elt(`p`, {className: `settings_header settings_header_premium`}, `🔊`), elt(`span`, {className: `advanced_settings_header_text`}, `Sound Detection`), elt(`span`, {className: `premium_lock`, id:`link`, url: `https://youtu.be/ZggOy8tA32A`}),
@@ -681,18 +661,18 @@ wrapInLabel('Do After Event: ', renderCheckChangesDoAfter(config), `What to do a
   elt(`p`, {className: `settings_header settings_header_critical`}, `⚠️`), elt(`span`, {className: `advanced_settings_header_text`}, `Critical`),
   elt('div', {className: "settings_section settings_critical"},
   wrapInLabel(`Visual Library: `, renderLibraryType(config), `If something doesn't work with default library you can choose another one. Mind that keysender works only with dx11.`),
+  wrapInLabel(`Looking For Bobber Direction:`, renderFindBobberDirection(config), `The direction how the bot will look for the bobber in the fishing zone. Normal means from left to right and from top to bottom, Reverse means from left to right and from bottom to top, Center means from the very center of the Fishing Zone to its borders.`),
   wrapInLabel(`Ignore Preliminary Checks:`, renderIgnorePreliminary(config), `The bot will ignore all the preliminary checks including notification errors.`),
   wrapInLabel(`Max Check Time (ms):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Do After Max Check Time:`, renderMaxFishTimeAfter(config), `What the bot should do if it reaches the maximum checking time.`),
   wrapInLabel(`Loot Window Closing Delay (ms):`, renderCloseLootDelay(config), `How much does it take for the loot window to disappear after looting.`),
+  wrapInLabel(`Bobber Check Time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
+  wrapInLabel(`Cast Animation Delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
   wrapInLabel(`Auto-Adjust Density and Sensitivity:`, renderAutoSensDens(config), `The bot will auto-adjust both Sensitivity and Density values per each cast.`),
   wrapInLabel(`${config.game == `Vanilla (splash)` ? `Splash` : `Bobber`} Sensitivity (px):`, renderBobberSensitivity(config), config.game != `Vanilla (splash)` ? `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.` : `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`),
   config.game == `Vanilla (splash)` ? wrapInLabel(`Splash color: `, renderSplashColor(config), `Whitness of the splash effect: should be smaller at night and higher during the day. `) : ``,
   wrapInLabel(`Bobber Density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),
-  wrapInLabel(`Bobber Check Time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
-  wrapInLabel(`Fishing Zone (%):`, renderRelZone(config), `A zone in which the bot looks for the bobber. The values are percentages of the dimensions of the window: 0.3 = 30%, 0.4 = 40% etc.`),
-  wrapInLabel(`Cast Animation Delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
-  wrapInLabel(`Looking For Bobber Direction:`, renderFindBobberDirection(config), `The direction how the bot will look for the bobber in the fishing zone. Normal means from left to right and from top to bottom, Reverse means from left to right and from bottom to top, Center means from the very center of the Fishing Zone to its borders.`),
+  
 ),
 )
 }
