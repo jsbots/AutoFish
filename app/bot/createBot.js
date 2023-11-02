@@ -674,7 +674,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   }
 
   doAfterTimer.on = config.timer;
-  doAfterTimer.timer = createTimer(() => config.timer * 1000 * 60);
+  doAfterTimer.timer = createTimer(() => config.timerTime * 1000 * 60);
 
   return {
     doAfterTimer,

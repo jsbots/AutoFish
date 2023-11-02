@@ -388,14 +388,14 @@ const renderFindBobberDirection = ({findBobberDirection, game}) => {
 };
 
 
-const renderAfterTimer = ({afterTimer}) => {
+const renderAfterTimer = ({afterTimer, timer}) => {
   let options = [
     `Stop`,
     `HS`,
     `Quit`,
     `HS + Quit`
   ]
-  return elt('select', {value: afterTimer, name: "afterTimer"}, ...options.map(option => elt(`option`, {value: option, selected: option == afterTimer}, option)));
+  return elt('select', {value: afterTimer, name: "afterTimer", disabled: !timer}, ...options.map(option => elt(`option`, {value: option, selected: option == afterTimer}, option)));
 };
 
 const renderHsKey = ({hsKey, afterTimer}) => {
@@ -412,11 +412,12 @@ const renderShutDown = ({timerShutDown, afterTimer}) => {
   return elt(`input`, {type: `checkbox`, checked: timerShutDown, disabled: afterTimer != `Quit` && afterTimer != `HS + Quit`, name: `timerShutDown`});
 };
 
+const renderTimer = ({timer}) => elt('input', {type: 'checkbox', checked: timer, name: "timer"});
 
-const renderTimer = ({timer}) => {
+const renderTimerTime = ({timerTime, timer}) => {
   return elt(
     "input",
-    { type: "number", min: "0", value: timer, name: "timer", title: ""},
+    { type: "number", min: "0", value: timerTime, disabled: !timer, name: "timerTime", title: "Minutes"},
     `(min)`
   );
 };
@@ -560,11 +561,8 @@ wrapInLabel(`Omit Initial Application`, renderLuresOmitInitial(config), `Don't a
 
 elt(`p`, {className: `settings_header`}, `⏲️`), elt(`span`, {className: `advanced_settings_header_text`}, `Timer`),
 elt('div', {className: "settings_section"},
-wrapInLabel(
-"Timer (min): ",
-renderTimer(config),
-`The bot will work for the given period of minutes. If it's 0, it will never stop.`
-),
+wrapInLabel("Use Timer: ", renderTimer(config),`It's timer. It's too dificult to explain here, so you can ask AI what is it exactly.`),
+wrapInLabel("Time (min): ", renderTimerTime(config),`The bot will work for the given period of minutes.`),
 wrapInLabel("Do After Timer: ", renderAfterTimer(config),`What the bot should do after the timer elapses (you can set it in the main window)`),
 wrapInLabel("HS Key: ", renderHsKey(config), `A key your HS is assigned.`),
 wrapInLabel("HS Delay (ms): ", renderHsKeyDelay(config), `How long it take to use HS`),
@@ -672,7 +670,7 @@ wrapInLabel('Sensitivity: ', renderCheckChangesSens(config), `Old good sensitivi
   wrapInLabel(`${config.game == `Vanilla (splash)` ? `Splash` : `Bobber`} Sensitivity (px):`, renderBobberSensitivity(config), config.game != `Vanilla (splash)` ? `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.` : `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`),
   config.game == `Vanilla (splash)` ? wrapInLabel(`Splash color: `, renderSplashColor(config), `Whitness of the splash effect: should be smaller at night and higher during the day. `) : ``,
   wrapInLabel(`Bobber Density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),
-  
+
 ),
 )
 }

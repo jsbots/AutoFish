@@ -6,7 +6,8 @@
   "patch": {
     "Retail": {
       "game": "Retail",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -127,7 +128,8 @@
     },
     "LK Classic": {
       "game": "LK Classic",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -241,7 +243,8 @@
     },
     "Classic": {
       "game": "Classic",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -355,7 +358,8 @@
     },
     "Leg": {
       "game": "Leg",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -458,7 +462,8 @@
     },
     "MoP": {
       "game": "MoP",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -561,7 +566,8 @@
     },
     "Cata": {
       "game": "Cata",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -666,7 +672,8 @@
     },
     "LK Private": {
       "game": "LK Private",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -783,7 +790,8 @@
     },
     "TBC": {
       "game": "TBC",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -902,7 +910,8 @@
     },
     "Vanilla": {
       "game": "Vanilla",
-      "timer": 0,
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -1006,7 +1015,9 @@
       }
     },
     "Vanilla (splash)": {
-      "timer": 0,
+      "game": "Vanilla (splash)",
+      "timer": false,
+      "timerTime": 30,
       "libraryType": "nut.js",
       "catchFishButton": "right",
       "luresOmitInitial": false,
@@ -1023,7 +1034,6 @@
       "multipleWindows": false,
       "likeHuman": true,
       "likeHumanFineTune": false,
-      "game": "Vanilla (splash)",
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
       "useCustomWindow": false,
