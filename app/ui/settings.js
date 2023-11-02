@@ -40,6 +40,11 @@ class Settings {
     }
 
     this.dom.addEventListener("change", saveSettings);
+    this.dom.addEventListener('change', (event) => {
+      if(event.target.name == 'game' && event.target.value == "Turtle WoW") {
+        ipcRenderer.send("turtle-warn");
+      }
+    })
 
     this.dom.addEventListener("input", (event) => {
       if(event.target.name == `threshold`) {

@@ -49,13 +49,13 @@ const renderDynamicThreshold = ({dynamicThreshold, dynamicThresholdValue}) => {
 };
 
 
-const renderBobberDensity = ({bobberDensity, autoSensDens}) => {
+const renderBobberDensity = ({bobberDensity, autoSensDens, game}) => {
 
   if(bobberDensity > 10) bobberDensity = 10;
   if(bobberDensity < 1) bobberDensity = 1;
-  let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, disabled: autoSensDens, value: bobberDensity});
+  let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", value: bobberDensity});
 
-  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens, className: `${autoSensDens ? `threshold_disabled` : ``}`, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
+  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", className: `${autoSensDens ? `threshold_disabled` : ``}`, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
    bobberDensityWin);
 };
 
@@ -450,10 +450,10 @@ const renderFilterType = ({whitelist, filterType}) => {
 }
 
 const renderFilterAtMouse = ({game, whitelist, atMouse}) => {
-  if(game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`) {
+  if(game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)` && game != `Turtle WoW`) {
     atMouse = true;
   }
-  return elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`)});
+  return elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || (game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)` && game != `Turtle WoW`)});
 }
 
 const renderWhitelistLanguage = ({whitelist, whitelistLanguage}) => {
@@ -505,7 +505,7 @@ const renderSettings = (config) => {
     `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assigned to shift.`
   ),
 wrapInLabel(`Attempts limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
-  wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `After attempts limit the bot will dynamically change threshold by the provided value.`),
+  wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `ONLY FOR MANUAL MODE. After attempts limit the bot will dynamically change threshold by the provided value.`),
   wrapInLabel(`Catch With Mouse Button: `, renderCatchFishButton(config), `Choose the button you want the bot to click when it wants to catch the fish.`),
   ),
 
@@ -667,7 +667,10 @@ wrapInLabel('Sensitivity: ', renderCheckChangesSens(config), `Old good sensitivi
   wrapInLabel(`Bobber Check Time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
   wrapInLabel(`Cast Animation Delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
   wrapInLabel(`Auto-Adjust Density and Sensitivity:`, renderAutoSensDens(config), `The bot will auto-adjust both Sensitivity and Density values per each cast.`),
-  wrapInLabel(`${config.game == `Vanilla (splash)` ? `Splash` : `Bobber`} Sensitivity (px):`, renderBobberSensitivity(config), config.game != `Vanilla (splash)` ? `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber, increase this value.` : `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`),
+  wrapInLabel(`${config.game == `Vanilla (splash)` ? `Splash` : `Bobber`} Sensitivity (px):`,
+   renderBobberSensitivity(config), config.game == `Vanilla (splash)` ?
+    `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`
+    : `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, increase this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber (it might look like it clicks with delay), decrease this value.`),
   config.game == `Vanilla (splash)` ? wrapInLabel(`Splash color: `, renderSplashColor(config), `Whitness of the splash effect: should be smaller at night and higher during the day. `) : ``,
   wrapInLabel(`Bobber Density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),
 

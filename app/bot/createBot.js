@@ -280,7 +280,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   }
 
   const findAllBobberColors = async () => {
-    if(settings.game != `Retail` && settings.game != `LK Classic` && settings.game != `Classic` && settings.game != `Vanilla (splash)`) {
+    if(settings.game != `Retail` && settings.game != `LK Classic` && settings.game != `Classic`) {
       let bobber = await fishingZone.getBobberPrint(7);
 
       if(!bobber) {
@@ -332,7 +332,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   const detectSens = () => {
-    if(!config.autoSensDens || settings.game == `Vanilla (splash)`) {
+    if(!config.autoSensDens || settings.game == `Vanilla (splash)` || settings.game == `Turtle WoW`) {
        return;
     }
 
@@ -384,7 +384,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         return pos;
       }
 
-      if(settings.game == `Retail`) {
+      if(settings.game == `Retail` || settings.game == `Turtle WoW`) {
         if(!(await fishingZone.checkBobberPrint(pos))) {
           return pos;
         }

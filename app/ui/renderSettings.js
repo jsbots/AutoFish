@@ -56,6 +56,7 @@ const renderGameNames = ({game}) => {
     "Vanilla (splash)"
   ];
 
+  const gamesCustom = ["Turtle WoW"];
 
   return elt(
     "select",
@@ -65,7 +66,10 @@ const renderGameNames = ({game}) => {
         )),
     elt(`optgroup`, {label: `Private-like`}, ...gamesPrivate.map((name) =>
           elt("option", { selected: name == game }, name)
-        ))
+        )),
+    elt(`optgroup`, {label: `Custom-like`}, ...gamesCustom.map((name) =>
+         elt("option", { selected: name == game }, name)
+       ))
   );
 };
 
