@@ -321,7 +321,7 @@ section {
 .advSettings .buttons input[type=button] {
   outline: 2px solid rgba(250, 0, 0, .2);
 }
-  
+
 .advSettings .option_text {
   margin-left: 5px;
   margin-right: 5px;
@@ -740,6 +740,11 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
 }
 
+.advSettings .premium_lock {
+  position: relative;
+  top: 3px;
+}
+
 .advSettings input[type=range] {
   width: 180px;
 }
@@ -873,4 +878,14 @@ input[type=range]::-webkit-slider-runnable-track {
   background-repeat: no-repeat;
   height: 20px;
   width: 75px;
+}
+
+.advanced_settings_header {
+  width: 40px;
+}
+
+.advanced_settings_header_text {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-left: 5px
 }
