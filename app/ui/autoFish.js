@@ -107,9 +107,9 @@ class AutoFish {
       "div",
       { className: "AutoFish" },
       renderLogo(),
-      elt(`div`, {className: `settings_profile`}, elt("p", { className: "settings_header settings_header_main settings_header_fold"}, "⚙️"), elt(`span`, {className: `advanced_settings_header_text advanced_settings_header_text_main-settings`}, `Settings`), foldSettingsContainer),
+      elt(`div`, {className: `settings_profile`}, elt("p", { className: "settings_header settings_header_main settings_header_fold"}, "⚙️"), foldSettingsContainer),
       this.settings.dom,
-      elt("p", { className: "settings_header settings_header_log settings_header_main" }, "📋"),  elt(`span`, {className: `advanced_settings_header_text`}, `Log`),
+      elt("p", { className: "settings_header settings_header_log settings_header_main" }, "📋"),
       this.logger.dom,
       this.button.dom,
       footer

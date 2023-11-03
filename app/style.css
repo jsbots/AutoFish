@@ -653,14 +653,13 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .settingsFolder{
-  height: 12px;
-  width: 12px;
+  height: 16px;
   position: absolute;
-  left: 108px;
-  top: 90px;
+  left: 53px;
+  top: 86px;
   cursor: pointer;
-  border: 1px solid black;
   opacity: 0.5;
+  border: 1px solid black;
   border-radius: 5px;
 }
 

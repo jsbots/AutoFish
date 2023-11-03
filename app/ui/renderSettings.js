@@ -189,7 +189,7 @@ wrapInLabel(
       wrapInLabel("", renderChatZone(config)),
       wrapInLabel("", renderDetectionZone(config)),
       wrapInLabel("", renderAdvancedSettings(config))),
-    elt("p", {className: 'settings_header'}, "🚧"), elt(`span`, {className: `advanced_settings_header_text advanced_settings_header_text_threshold`}, `Threshold`),
+    elt("p", {className: 'settings_header'}, "🚧"), 
     elt(
       "div",
       { className: "settings_section threshold_settings" },
