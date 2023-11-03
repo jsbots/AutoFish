@@ -641,11 +641,11 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .settingsFolder{
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
   position: absolute;
-  right: 10px;
-  top: 86px;
+  left: 108px;
+  top: 90px;
   cursor: pointer;
   border: 1px solid black;
   opacity: 0.5;
