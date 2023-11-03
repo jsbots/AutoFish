@@ -66,7 +66,7 @@ section {
 .AutoFish {
   padding: 5px;
   width: 325px;
-  height: 628px;
+  height: 678px;
 }
 .logo {
   margin-top: 10px;
@@ -255,12 +255,24 @@ section {
 }
 
 .advanced_settings_button {
-  height: 23px;
+  height: 33px;
+  font-size: 1.1em;
   width: 140px;
   margin-right: 3px;
   text-align: center;
   border-radius: 5px;
   border: 1px solid grey;
+}
+
+.advanced_settings_button_disabled {
+  height: 33px;
+  font-size: 1.1em;
+  width: 140px;
+  background-color: rgba(255, 219, 197, 0.3);
+  margin-right: 3px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid rgb(230, 230, 230);
 }
 
 .advanced_settings_button:hover {
@@ -671,7 +683,7 @@ input[type=range]::-webkit-slider-runnable-track {
   background-size: contain;
   background-position: center center;
   margin-left: 5px;
-  margin-right: 2px;
+  margin-right: 3px;
   margin-top: 2px;
   width: 15px;
   height: 15px;
@@ -832,4 +844,9 @@ input[type=range]::-webkit-slider-runnable-track {
 .advanced_settings_header_text_threshold {
   margin-top: 10px;
   margin-left: 5px;
+}
+
+.premium_label {
+  background-color: rgba(255, 219, 197, 0.3);
+  border-radius: 5px;
 }

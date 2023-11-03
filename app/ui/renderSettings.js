@@ -25,9 +25,9 @@ const autoThSwitch = elt(`radio`, { className: `autoTh`,
 
   const range = elt(`input`, { type: `range`, min: 1, max: 150, value: threshold, name: `threshold`, disabled: autoTh, className: `${autoTh ? `threshold_disabled` : ``}` });
   if(bobberColor == `blue`) {
-    document.styleSheets[0].rules[78].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 100), rgb(0, 90, 200))"
+    document.styleSheets[0].rules[79].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 100), rgb(0, 90, 200))"
   } else {
-    document.styleSheets[0].rules[78].style.backgroundImage = "linear-gradient(to right, rgb(100, 0, 0), rgb(250, 0, 0))"
+    document.styleSheets[0].rules[79].style.backgroundImage = "linear-gradient(to right, rgb(100, 0, 0), rgb(250, 0, 0))"
   }
 
   const number = elt(`input`, { type: `number`, className: `threshold_number_input`, value: threshold, disabled: autoTh, name: `threshold` });
@@ -126,6 +126,14 @@ const renderFishingZone = () => {
   return elt('input', {type: 'button', name:"fishingZone", value: "Fishing Zone", className: "advanced_settings_button"});
 };
 
+const renderChatZone = () => {
+  return elt('input', {type: 'button', disabled: true, value: "Chat Zone", className: "advanced_settings_button_disabled"});
+};
+
+const renderDetectionZone = () => {
+  return elt('input', {type: 'button', disabled: true, value: "Detection Zone", className: "advanced_settings_button_disabled"});
+};
+
 const renderMultipleWindows = () => {
   return elt(`div`, {className: `premium_lock premium_lock_main`, id: `link`, url: `https://youtu.be/ih-xoQcByz8`})
 };
@@ -133,7 +141,6 @@ const renderMultipleWindows = () => {
 const renderAfkmode = () => {
   return elt(`div`, {className: `premium_lock premium_lock_main`, id: `link`, url: `https://youtu.be/lQi6fSxMyL0`})
 };
-
 
 const renderSettings = (config) => {
 return elt(
@@ -162,28 +169,26 @@ return elt(
         renderStopKey(config),
         `Assign a key that you will use to stop the bot.`
       ),
-    ),
-    elt(
-      "div",
-      { className: "settings_section" },
       wrapInLabel(
   "Alt-Tab Fishing: ",
   elt(`div`, {className: `premium_option`}, renderAfkmode()),
-  `ONLY ON DIRECTX 11. The bot will automatically alt+tab after it casts (bringing back the previous window) and automatically focus the window of the game when it needs to catch. If you use your mouse too much during Alt-Tab Fishing the whitelist feature might be unstable. `
+  `ONLY ON DIRECTX 11. The bot will automatically alt+tab after it casts (bringing back the previous window) and automatically focus the window of the game when it needs to catch. If you use your mouse too much during Alt-Tab Fishing the whitelist feature might be unstable. `,
+  'premium_label'
 ),
 wrapInLabel(
   "Multiple Fishing: ",
   elt(`div`, {className: `premium_option`}, renderMultipleWindows()),
-  `ONLY ON DIRECTX 11. If you want to use multiple windows check this option. You need to launch every window and configure them properly, make sure every window is in DirectX 11 mode. This option uses a different library to analyze your screen, you can check it even for one window if for some reason the default way doesn't work for you.`
+  `ONLY ON DIRECTX 11. If you want to use multiple windows check this option. You need to launch every window and configure them properly, make sure every window is in DirectX 11 mode. This option uses a different library to analyze your screen, you can check it even for one window if for some reason the default way doesn't work for you.`,
+  'premium_label'
 ),
-
-      wrapInLabel(
-        "",
-        renderFishingZone(config)),
-      wrapInLabel(
-        "",
-        renderAdvancedSettings(config)),
     ),
+    elt(
+      "div",
+      { className: "settings_section" },
+      wrapInLabel("", renderFishingZone(config)),
+      wrapInLabel("", renderChatZone(config)),
+      wrapInLabel("", renderDetectionZone(config)),
+      wrapInLabel("", renderAdvancedSettings(config))),
     elt("p", {className: 'settings_header'}, "🚧"), elt(`span`, {className: `advanced_settings_header_text advanced_settings_header_text_threshold`}, `Threshold`),
     elt(
       "div",
