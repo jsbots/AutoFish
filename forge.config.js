@@ -21,6 +21,7 @@ module.exports = {
         "description": 'Application',
         "setupIcon": "./app/img/icon.ico",
         "setupExe": `AutoFish (${name}) Setup.exe`,
+        "iconUrl": "https://raw.githubusercontent.com/jsbots/AutoFish/main/app/img/icon.ico",
         "loadingGif": "./app/img/install.gif"
       }
     }
