@@ -493,6 +493,20 @@ const renderCheckChangesDoAfter = ({checkChanges, checkChangesDoAfter}) => elt('
 const renderCheckChangesIgnoreActions = ({checkChanges, checkChangesIgnoreActions}) => elt('input', {type: 'checkbox', disabled: !checkChanges, checked: true});
 const renderLibraryType = ({libraryType}) => elt('select', { name: "libraryType" }, ...['nut.js', 'keysender'].map(lib => elt('option', {selected: lib == libraryType}, lib)));
 
+
+const renderApplyFatigue = ({applyFatigue = false}) => elt('input', {name: "applyFatigue", type: "checkbox", checked: applyFatigue, disabled: true});
+const renderApplyFatigueEvery = ({applyFatigue = false, applyFatigueEvery = {from: 1, to: 5}}) => {
+  return elt(`div`, {"data-collection": `applyFatigueEvery`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, name: `from`, value: applyFatigueEvery.from, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`, name: `to`, value: applyFatigueEvery.to, disabled: true})
+  );
+};
+const renderApplyFatigueRate = ({applyFatigue = false, applyFatigueRate = 0.5}) => {
+  const winRange = elt(`input`, {type: `number`, disabled: true, value: applyFatigueRate, name: "applyFatigueRate"})
+  const range = elt('input', {type: `range`, step: 0.1, max: 10, disabled: true,  className: applyFatigue ? `` : `threshold_disabled`, value: applyFatigueRate, oninput: function() {winRange.value = this.value}, name: "applyFatigueRate"});
+  return elt(`div`, null, range, winRange);
+}
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
     elt(`p`, {className: `settings_header advanced_settings_header`}, `🛠️`), elt(`span`, {className: `advanced_settings_header_text`}, `General`),
@@ -601,6 +615,14 @@ elt('div', {className: "settings_section"},
   wrapInLabel(`Sleep After Catch:`, renderSleepAfterHook(config), `The bot will sleep after it hooked the fish for the random duration.`),
   wrapInLabel(`After Catch Random Delay (ms): `, renderAfterHookDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot hooked the fish.`),
   ),
+
+  elt(`p`, {className: `settings_header settings_header_premium`}, `🥱`), elt(`span`, {className: `advanced_settings_header_text`}, `Fatigue`),
+  elt('div', {className: "settings_section settings_premium"},
+  wrapInLabel(`Apply Fatigue:`, renderApplyFatigue(config), `The bot will simulate fatigueness by decreasing all the delay values by given rate.`),
+  wrapInLabel(`Apply Fatigue Every (min):`, renderApplyFatigueEvery(config), `The bot will randomly apply fatigueness between the provided interval`),
+  wrapInLabel(`Fatigue Rate (%):`, renderApplyFatigueRate(config), `The rate value of fatigueness which will make all the delay values increase in geometric progression.`),
+  ),
+
 
 elt(`p`, {className: `settings_header settings_header_premium`}, `🧙`),elt(`span`, {className: `advanced_settings_header_text`}, `Additional Actions`),
 elt(`div`, {className: `settings_section settings_premium`},

@@ -39,6 +39,19 @@ const autoThSwitch = elt(`radio`, { className: `autoTh`,
   return elt(`div`, { className: `thresholdRange` }, bobberColorSwitch, range, autoThSwitch, bobberContainer);
 };
 
+const renderApplyFatigue = ({applyFatigue = false}) => elt('input', {name: "applyFatigue", type: "checkbox", checked: applyFatigue});
+const renderApplyFatigueEvery = ({applyFatigue = false, applyFatigueEvery = {from: 0, to: 0}}) => {
+  return elt(`div`, {"data-collection": `applyFatigueEvery`}, elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`, name: `from`, value: applyFatigueEvery.from, disabled: !applyFatigue}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`, name: `to`, value: applyFatigueEvery.to, disabled: !applyFatigue})
+  );
+};
+const renderApplyFatigueRate = ({applyFatigue = false, applyFatigueRate = 0.5}) => {
+  const winRange = elt(`input`, {type: `number`, disabled: !applyFatigue, value: applyFatigueRate, name: "applyFatigueRate"})
+  const range = elt('input', {type: `range`, step: 0.1, max: 10, disabled: !applyFatigue,  className: applyFatigue ? `` : `threshold_disabled`, value: applyFatigueRate, oninput: function() {winRange.value = this.value}, name: "applyFatigueRate"});
+  return elt(`div`, null, range, winRange);
+}
+
 const renderGameNames = ({game}) => {
   const gamesOfficial = [
     `Retail`,
