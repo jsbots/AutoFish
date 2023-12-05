@@ -318,18 +318,24 @@ app.whenReady().then(() => {
       { role: 'quit' }
     ]},
     {
-      label: `Cache`,
-      submenu: [
-        {
-          label: "Clear Cache",
-          click: () => {
-            win.webContents.session.clearStorageData();
-            showWarning(win, `Cache Cleared. Application Reload May Be Required`);
-          },
+    label: `Cache`,
+    submenu: [
+      {
+        label: "Open Cache",
+        click: () => {
+          shell.openExternal(win.webContents.session.storagePath);
         },
-        { type: "separator" },
-      ],
-    }
+      },
+      {
+        label: "Clear Cache",
+        click: () => {
+          win.webContents.session.clearStorageData();
+          showWarning(win, `Cache Cleared. Application Reload May Be Required`);
+        },
+      },
+      { type: "separator" },
+    ],
+  },
   ])
 
   Menu.setApplicationMenu(menu);
