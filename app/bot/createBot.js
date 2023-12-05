@@ -381,6 +381,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       }
 
       if(missOnPurpose && missOnPurposeTimer.isElapsed()) {
+        pos.missedIntentionally = true;
         return pos;
       }
 
@@ -638,7 +639,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       }
 
     await sleep(250);
-    if (!(await notificationZone.check("warning"))) {
+    if (!(await notificationZone.check("warning")) && !pos.missedIntentionally) {
       caught = true;
       if (config.whitelist) {
           let itemsPicked = await pickLoot();
