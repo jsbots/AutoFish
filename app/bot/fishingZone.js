@@ -26,12 +26,13 @@ const isBlue = (threshold, closeness, size = 255, upperLimit = 295) => ([r, g, b
                                                         isCloseEnough([b, g, r], closeness) &&
                                                         r < size && g < size && b <= upperLimit;
 
-const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberColor, autoTh: autoThreshold }, {bobberSensitivity: sensitivity, bobberDensity: density, findBobberDirection: direction, splashColor}) => {
+const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberColor, autoTh: autoThreshold }, {bobberSensitivity: sensitivity, bobberDensity: density, findBobberDirection: direction, splashColor, colorSwitchOn}) => {
   let isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
   let saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
   const looksLikeBobber = (pos, color, rgb) => pos.getPointsAround(density).every((pos) => isBobber(rgb.colorAt(pos)));
   let filledBobberForPrint = [];
   let colorSwitchesCount = 0;
+
   return {
 
     async findBobber(exception, detectSens) {
@@ -62,13 +63,13 @@ const createFishingZone = (getDataFrom , zone, screenSize, { threshold, bobberCo
           filledBobber = await this.getBobberPointsAround(rgb, bobber);
           filledBobberForPrint = filledBobber.points;
         } catch(e) {
-          if(e.message == `color` && colorSwitchesCount++ < 2) {
+          if(e.message == `color` && colorSwitchOn && colorSwitchesCount++ < 2) {
             bobberColor = bobberColor == `red` ? `blue` : `red`;
             isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
             saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
             return await this.findBobber(exception, detectSens)
           } else {
-            return; 
+            return;
           }
         }
         colorSwitchesCount = 0; // reset recursive
