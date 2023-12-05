@@ -318,9 +318,9 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.3.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.4.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.5.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.6.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
 
