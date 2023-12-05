@@ -34,7 +34,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 25000,
+      "maxFishTime": 25,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 85,
       "relZone": {
@@ -156,7 +156,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 25000,
+      "maxFishTime": 25,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 85,
       "relZone": {
@@ -271,7 +271,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 25000,
+      "maxFishTime": 25,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 85,
       "relZone": {
@@ -386,7 +386,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -490,7 +490,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -594,7 +594,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -700,7 +700,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "ignoreInterrupted": {
@@ -818,7 +818,7 @@
       "castDelay": 3500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "ignoreInterrupted": {
@@ -938,7 +938,7 @@
       "castDelay": 4000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -1044,7 +1044,7 @@
       "castDelay": 4000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -1153,7 +1153,7 @@
       "castDelay": 4000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45000,
+      "maxFishTime": 45,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
