@@ -252,8 +252,8 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   const randomSleep = async () => {
     let sleepFor = random(
-      config.randomSleepDelay.from,
-      config.randomSleepDelay.to
+      config.randomSleepDelay.from * 1000,
+      config.randomSleepDelay.to * 1000
     );
     await sleep(sleepFor);
   };

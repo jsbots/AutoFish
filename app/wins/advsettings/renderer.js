@@ -590,7 +590,7 @@ elt('div', {className: "settings_section"},
   elt('div', {className: "settings_section"},
   wrapInLabel(`Random Sleep:`, renderRandomSleep(config), `The bot will sleep randomly from time to time for the random duration.`),
   wrapInLabel(`Random Sleep Every (min):`, renderRandomSleepEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different (randomly generated).`),
-  wrapInLabel(`Random Sleep For (ms):`, renderRandomSleepDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different(randomly generated).`)
+  wrapInLabel(`Random Sleep For (sec):`, renderRandomSleepDelay(config), `The bot will generate a random number from the provided values. The number is generated every time the bot goes to sleep: so the next time the bot goes to sleep it will be always different(randomly generated).`)
   ),
   elt(`p`, {className: `settings_header`}, `💤`), elt(`span`, {className: `advanced_settings_header_text`}, `Reaction Time`),
 elt('div', {className: "settings_section"},
