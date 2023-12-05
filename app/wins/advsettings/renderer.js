@@ -76,11 +76,15 @@ const renderCloseLootDelay = ({closeLootDelay}) => {
   return elt('input', {type: `number`, name: `closeLootDelay`, value: closeLootDelay});
 };
 
-const renderCloseLoot = ({ closeLoot, whitelist }) => {
+const renderCloseLoot = ({ closeLoot, whitelist, game }) => {
   return elt(`select`, {className: `closeLoot`, disabled: !whitelist, value: closeLoot, name: `closeLoot`},
     elt(`option`, {selected: closeLoot == `mouse`, value: `mouse`}, `Mouse`),
     elt(`option`, {selected: closeLoot == `esc`, value: `esc`}, `Escape`),
-    elt(`option`, {selected: closeLoot == `mouse+esc`, value: `mouse+esc`}, `Mouse + Escape`)
+
+    elt(`option`, {selected: closeLoot == `recast`, value: `recast`, disabled: !(game == `Classic` || game == `Retail` || game == `LK Classic`)}, `Recast`),
+    elt(`option`, {selected: closeLoot == `mouse+recast`, value: `mouse+recast`, disabled: !(game == `Classic` || game == `Retail` || game == `LK Classic`)}, `Random: Mouse + Recast`),
+
+    elt(`option`, {selected: closeLoot == `mouse+esc`, value: `mouse+esc`}, `Random: Mouse + Escape`),
   );
 };
 

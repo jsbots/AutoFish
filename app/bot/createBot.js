@@ -534,48 +534,69 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await moveTo({pos: cursorPos, randomRange: 5});
     }
 
-    await sleep(350);
-    if ((settings.game == `LK Classic` || settings.game == `Classic`|| settings.game == `Retail`) ? await lootExitZone.isLootOpened(cursorPos) : items.length != itemsPicked.length) {
-
-            if (config.reaction) {
-              await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
-            }
-
-            if((config.closeLoot == `mouse` || config.closeLoot == `mouse+esc`) && lootWindow.exitButton) {
-
-              if(config.closeLoot == `mouse`) {
-                await moveTo({ pos: {
-                  x: cursorPos.x + lootWindow.exitButton.x,
-                  y: cursorPos.y - lootWindow.exitButton.y
-                }, randomRange: 2});
-                await mouse.toggle("left", true, delay);
-                await mouse.toggle("left", false, delay);
-
-                if(settings.useInt) {
-                  await moveTo({ pos: cursorPos, randomRange: 2});
-                }
-              }
-
-              if(config.closeLoot == `mouse+esc`) {
-                if(random(0, 100) > 50) {
-                  await keyboard.sendKey("escape", delay);
-                } else {
-                  await moveTo({ pos: {
-                    x: cursorPos.x + lootWindow.exitButton.x,
-                    y: cursorPos.y - lootWindow.exitButton.y
-                  }, randomRange: 2});
-                  await mouse.toggle("left", true, delay);
-                  await mouse.toggle("left", false, delay);
-
-                  if(settings.useInt) {
-                    await moveTo({ pos: cursorPos, randomRange: 2});
-                  }
-                }
-              }
-            } else {
-              await keyboard.sendKey("escape", delay);
-            }
+    if(config.closeLoot == `recast`) {
+      return itemsPicked;
     }
+
+    await sleep(350); // disappearing loot window delay
+    if (settings.game == 'Leg' ? items.length != itemsPicked.length : await lootExitZone.isLootOpened(cursorPos)) {
+
+      if (config.reaction) {
+        await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
+      }
+
+      if((config.closeLoot == `mouse` || config.closeLoot == `mouse+esc` || config.closeLoot == `mouse+recast`) && lootWindow.exitButton) {
+        if(config.closeLoot == `mouse`) {
+          await moveTo({ pos: {
+            x: cursorPos.x + lootWindow.exitButton.x,
+            y: cursorPos.y - lootWindow.exitButton.y
+          }, randomRange: 2});
+          await mouse.toggle("left", true, delay);
+          await mouse.toggle("left", false, delay);
+
+          if(settings.useInt) {
+            await moveTo({ pos: cursorPos, randomRange: 2 });
+          }
+        }
+
+        if(config.closeLoot == `mouse+esc`) {
+          if(random(0, 100) > 50) {
+            await keyboard.sendKey("escape", delay);
+          } else {
+            await moveTo({ pos: {
+              x: cursorPos.x + lootWindow.exitButton.x,
+              y: cursorPos.y - lootWindow.exitButton.y
+            }, randomRange: 2});
+            await mouse.toggle("left", true, delay);
+            await mouse.toggle("left", false, delay);
+
+            if(settings.useInt) {
+              await moveTo({ pos: cursorPos, randomRange: 2 });
+            }
+          }
+        }
+
+        if(config.closeLoot == `mouse+recast`) {
+          if(random(0, 100) > 50) {
+            return itemsPicked;
+          } else {
+            await moveTo({ pos: {
+              x: cursorPos.x + lootWindow.exitButton.x,
+              y: cursorPos.y - lootWindow.exitButton.y
+            }, randomRange: 2});
+            await mouse.toggle("left", true, delay);
+            await mouse.toggle("left", false, delay);
+
+            if(settings.useInt) {
+              await moveTo({ pos: cursorPos, randomRange: 2 });
+            }
+          }
+        }
+      } else {
+          await keyboard.sendKey("escape", delay);
+      }
+    }
+
 
     return itemsPicked;
   };

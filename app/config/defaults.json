@@ -29,7 +29,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "recast",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -151,7 +151,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "recast",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -266,7 +266,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "recast",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -381,7 +381,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -485,7 +485,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -546,23 +546,25 @@
         }
       },
       "lootWindow": {
-        "1536": {
-          "upperLimit": 0.123,
-          "toItemX": 0.01,
-          "toItemY": 0.035,
-          "itemHeight": 0.058,
-          "height": 0.213,
-          "width": 0.074
-        },
-        "1920": {
-          "upperLimit": 0.1,
-          "toItemX": 0.007,
-          "toItemY": 0.025,
-          "itemHeight": 0.04,
-          "height": 0.153,
-          "width": 0.056
+          "1536": {
+            "upperLimit": 0.123,
+            "toItemX": 0.01,
+            "toItemY": 0.035,
+            "itemHeight": 0.058,
+            "height": 0.213,
+            "width": 0.074,
+            "exitButton": { "x": 0.0863836017, "y": 0.11067708333 }
+          },
+          "1920": {
+            "upperLimit": 0.1,
+            "toItemX": 0.007,
+            "toItemY": 0.025,
+            "itemHeight": 0.04,
+            "height": 0.153,
+            "width": 0.056,
+            "exitButton": { "x": 0.0619791666, "y": 0.0787037 }
+          }
         }
-      }
     },
     "Cata": {
       "game": "Cata",
@@ -695,7 +697,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 2500,
       "sleepAfterHook": true,
@@ -776,7 +778,8 @@
           "toItemY": 0.022,
           "itemHeight": 0.055,
           "height": 0.218,
-          "width": 0.079
+          "width": 0.079,
+          "exitButton": { "x": 0.096970695, "y": 0.092872229 }
         },
         "1920": {
           "upperLimit": 0.117,
@@ -784,7 +787,8 @@
           "toItemY": 0.023,
           "itemHeight": 0.051,
           "height": 0.194,
-          "width": 0.073
+          "width": 0.073,
+          "exitButton": { "x": 0.0865033, "y": 0.08619091 }
         }
       }
     },
@@ -813,7 +817,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 3500,
       "sleepAfterHook": true,
@@ -895,7 +899,8 @@
           "toItemY": 0.03515,
           "itemHeight": 0.05729,
           "height": 0.22005,
-          "width": 0.08272
+          "width": 0.08272,
+          "exitButton": { "x": 0.0980966325, "y": 0.08984375 }
         },
         "1920": {
           "cursorPos": { "x": 0.02968, "y": 0.24074 },
@@ -904,7 +909,8 @@
           "toItemY": 0.023,
           "itemHeight": 0.051,
           "height": 0.194,
-          "width": 0.073
+          "width": 0.073,
+          "exitButton": { "x": 0.0890625, "y": 0.080555555 }
         }
       }
     },
@@ -933,7 +939,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 4000,
       "sleepAfterHook": true,
@@ -994,25 +1000,27 @@
         }
       },
       "lootWindow": {
-        "1536": {
-          "cursorPos": { "x": 0.03147, "y": 0.26692 },
-          "upperLimit": 0.1302,
-          "toItemX": 0.018301,
-          "toItemY": 0.03515,
-          "itemHeight": 0.05729,
-          "height": 0.22005,
-          "width": 0.08272
-        },
-        "1920": {
-          "cursorPos": { "x": 0.02968, "y": 0.24074 },
-          "upperLimit": 0.117,
-          "toItemX": 0.015,
-          "toItemY": 0.023,
-          "itemHeight": 0.051,
-          "height": 0.194,
-          "width": 0.073
+          "1536": {
+            "cursorPos": { "x": 0.03147, "y": 0.26692 },
+            "upperLimit": 0.1302,
+            "toItemX": 0.018301,
+            "toItemY": 0.03515,
+            "itemHeight": 0.05729,
+            "height": 0.22005,
+            "width": 0.08272,
+            "exitButton": {"x": 0.09736456, "y": 0.098958333}
+          },
+          "1920": {
+            "cursorPos": { "x": 0.02968, "y": 0.24074 },
+            "upperLimit": 0.117,
+            "toItemX": 0.015,
+            "toItemY": 0.023,
+            "itemHeight": 0.051,
+            "height": 0.194,
+            "width": 0.073,
+            "exitButton": { "x": 0.0859375, "y": 0.08888888}
+          }
         }
-      }
     },
     "Vanilla (splash)": {
       "game": "Vanilla (splash)",
@@ -1039,7 +1047,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 4000,
       "sleepAfterHook": true,
@@ -1109,7 +1117,8 @@
           "toItemY": 0.03515,
           "itemHeight": 0.05729,
           "height": 0.22005,
-          "width": 0.08272
+          "width": 0.08272,
+          "exitButton": {"x": 0.09736456, "y": 0.098958333}
         },
         "1920": {
           "cursorPos": { "x": 0.02968, "y": 0.24074 },
@@ -1118,7 +1127,8 @@
           "toItemY": 0.023,
           "itemHeight": 0.051,
           "height": 0.194,
-          "width": 0.073
+          "width": 0.073,
+          "exitButton": { "x": 0.0859375, "y": 0.08888888}
         }
       }
     },
@@ -1148,7 +1158,7 @@
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
-      "closeLoot": "mouse",
+      "closeLoot": "esc",
       "delay": { "from": 50, "to": 150 },
       "castDelay": 4000,
       "sleepAfterHook": true,
@@ -1217,7 +1227,8 @@
           "toItemY": 0.03515,
           "itemHeight": 0.05729,
           "height": 0.22005,
-          "width": 0.08272
+          "width": 0.08272,
+          "exitButton": {"x": 0.09736456, "y": 0.098958333}
         },
         "1920": {
           "cursorPos": { "x": 0.02968, "y": 0.24074 },
@@ -1226,7 +1237,8 @@
           "toItemY": 0.023,
           "itemHeight": 0.051,
           "height": 0.194,
-          "width": 0.073
+          "width": 0.073,
+          "exitButton": { "x": 0.0859375, "y": 0.08888888}
         }
       }
     }
