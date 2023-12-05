@@ -26,6 +26,12 @@ const renderHighlightPercent = ({highlightPercent}) => {
   return elt(`div`, null, range, winRange);
 };
 
+const renderMissOnPurposeRandomDelay = ({missOnPurposeRandomDelay, missOnPurpose}) => {
+  return elt(`div`, {"data-collection": `missOnPurposeRandomDelay`}, elt(`span`, {className: `option_text`}, `from:`),
+     elt('input', {type: `number`, name: `from`, value: missOnPurposeRandomDelay.from, disabled: !missOnPurpose}), elt(`span`, {className: `option_text`}, `to:`),
+     elt('input', {type: `number`, name: `to`, value: missOnPurposeRandomDelay.to, disabled: !missOnPurpose}));
+};
+
 const renderLikeHumanFineTune = ({likeHumanFineTune}) => {
   let dom = elt("input", {
     type: "checkbox",
@@ -496,9 +502,9 @@ const renderLibraryType = ({libraryType}) => elt('select', { name: "libraryType"
 
 const renderApplyFatigue = ({applyFatigue = false}) => elt('input', {name: "applyFatigue", type: "checkbox", checked: applyFatigue, disabled: true});
 const renderApplyFatigueEvery = ({applyFatigue = false, applyFatigueEvery = {from: 1, to: 5}}) => {
-  return elt(`div`, {"data-collection": `applyFatigueEvery`}, elt(`span`, {className: `option_text`}, `from:`),
-  elt('input', {type: `number`, name: `from`, value: applyFatigueEvery.from, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
-  elt('input', {type: `number`, name: `to`, value: applyFatigueEvery.to, disabled: true})
+  return elt(`div`, null , elt(`span`, {className: `option_text`}, `from:`),
+  elt('input', {type: `number`,  value: applyFatigueEvery.from, disabled: true}), elt(`span`, {className: `option_text`}, `to:`),
+  elt('input', {type: `number`,  value: applyFatigueEvery.to, disabled: true})
   );
 };
 const renderApplyFatigueRate = ({applyFatigue = false, applyFatigueRate = 0.5}) => {
@@ -592,6 +598,7 @@ elt(`p`, {className: `settings_header`}, `🎯`), elt(`span`, {className: `advan
 elt('div', {className: "settings_section"},
   wrapInLabel(`Miss On Purpose: `, renderMissOnPurpose(config), `The bot will miss fish on purpose to simulate a human mistake. The value is % chance per cast that the bot will miss (it's not % of the whole session, so it might be drastically different).`),
   wrapInLabel(`Random Miss On Purpose (per throw): (%)`, renderMissOnPurposeRandom(config), `The bot will generate a random number from the provided values. The number is generated every fishing session: so the next time you start the bot, it will be always different (randomly generated) between the given values.`),
+  wrapInLabel(`Miss On Purpose Delay: (sec) `, renderMissOnPurposeRandomDelay(config), `Random delay after which the bot will miss on purpuse. The bot will generate a random number from the provided values. The number is generated every fishing session: so the next time you start the bot, it will be always different (randomly generated) between the given values.`)
   ),
   elt(`p`, {className: `settings_header`}, `🚪`),elt(`span`, {className: `advanced_settings_header_text`}, `Logging Out`),
   elt('div', {className: "settings_section"},

@@ -61,6 +61,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -183,6 +184,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -298,6 +300,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": true,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -413,6 +416,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -517,6 +521,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -546,25 +551,25 @@
         }
       },
       "lootWindow": {
-          "1536": {
-            "upperLimit": 0.123,
-            "toItemX": 0.01,
-            "toItemY": 0.035,
-            "itemHeight": 0.058,
-            "height": 0.213,
-            "width": 0.074,
-            "exitButton": { "x": 0.0863836017, "y": 0.11067708333 }
-          },
-          "1920": {
-            "upperLimit": 0.1,
-            "toItemX": 0.007,
-            "toItemY": 0.025,
-            "itemHeight": 0.04,
-            "height": 0.153,
-            "width": 0.056,
-            "exitButton": { "x": 0.0619791666, "y": 0.0787037 }
-          }
+        "1536": {
+          "upperLimit": 0.123,
+          "toItemX": 0.01,
+          "toItemY": 0.035,
+          "itemHeight": 0.058,
+          "height": 0.213,
+          "width": 0.074,
+          "exitButton": { "x": 0.0863836017, "y": 0.11067708333 }
+        },
+        "1920": {
+          "upperLimit": 0.1,
+          "toItemX": 0.007,
+          "toItemY": 0.025,
+          "itemHeight": 0.04,
+          "height": 0.153,
+          "width": 0.056,
+          "exitButton": { "x": 0.0619791666, "y": 0.0787037 }
         }
+      }
     },
     "Cata": {
       "game": "Cata",
@@ -623,6 +628,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -743,6 +749,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -863,6 +870,7 @@
       "shiftClick": false,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -971,6 +979,7 @@
       "shiftClick": true,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -1000,27 +1009,27 @@
         }
       },
       "lootWindow": {
-          "1536": {
-            "cursorPos": { "x": 0.03147, "y": 0.26692 },
-            "upperLimit": 0.1302,
-            "toItemX": 0.018301,
-            "toItemY": 0.03515,
-            "itemHeight": 0.05729,
-            "height": 0.22005,
-            "width": 0.08272,
-            "exitButton": {"x": 0.09736456, "y": 0.098958333}
-          },
-          "1920": {
-            "cursorPos": { "x": 0.02968, "y": 0.24074 },
-            "upperLimit": 0.117,
-            "toItemX": 0.015,
-            "toItemY": 0.023,
-            "itemHeight": 0.051,
-            "height": 0.194,
-            "width": 0.073,
-            "exitButton": { "x": 0.0859375, "y": 0.08888888}
-          }
+        "1536": {
+          "cursorPos": { "x": 0.03147, "y": 0.26692 },
+          "upperLimit": 0.1302,
+          "toItemX": 0.018301,
+          "toItemY": 0.03515,
+          "itemHeight": 0.05729,
+          "height": 0.22005,
+          "width": 0.08272,
+          "exitButton": { "x": 0.09736456, "y": 0.098958333 }
+        },
+        "1920": {
+          "cursorPos": { "x": 0.02968, "y": 0.24074 },
+          "upperLimit": 0.117,
+          "toItemX": 0.015,
+          "toItemY": 0.023,
+          "itemHeight": 0.051,
+          "height": 0.194,
+          "width": 0.073,
+          "exitButton": { "x": 0.0859375, "y": 0.08888888 }
         }
+      }
     },
     "Vanilla (splash)": {
       "game": "Vanilla (splash)",
@@ -1079,6 +1088,7 @@
       "shiftClick": true,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -1118,7 +1128,7 @@
           "itemHeight": 0.05729,
           "height": 0.22005,
           "width": 0.08272,
-          "exitButton": {"x": 0.09736456, "y": 0.098958333}
+          "exitButton": { "x": 0.09736456, "y": 0.098958333 }
         },
         "1920": {
           "cursorPos": { "x": 0.02968, "y": 0.24074 },
@@ -1128,7 +1138,7 @@
           "itemHeight": 0.051,
           "height": 0.194,
           "width": 0.073,
-          "exitButton": { "x": 0.0859375, "y": 0.08888888}
+          "exitButton": { "x": 0.0859375, "y": 0.08888888 }
         }
       }
     },
@@ -1190,6 +1200,7 @@
       "shiftClick": true,
       "missOnPurpose": false,
       "missOnPurposeRandom": { "from": 5, "to": 20 },
+      "missOnPurposeRandomDelay": { "from": 1, "to": 8 },
       "logOut": false,
       "logOutEvery": { "from": 50, "to": 120 },
       "logOutFor": { "from": 30, "to": 90 },
@@ -1228,7 +1239,7 @@
           "itemHeight": 0.05729,
           "height": 0.22005,
           "width": 0.08272,
-          "exitButton": {"x": 0.09736456, "y": 0.098958333}
+          "exitButton": { "x": 0.09736456, "y": 0.098958333 }
         },
         "1920": {
           "cursorPos": { "x": 0.02968, "y": 0.24074 },
@@ -1238,7 +1249,7 @@
           "itemHeight": 0.051,
           "height": 0.194,
           "width": 0.073,
-          "exitButton": { "x": 0.0859375, "y": 0.08888888}
+          "exitButton": { "x": 0.0859375, "y": 0.08888888 }
         }
       }
     }

@@ -181,7 +181,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     };
 
   const checkBobberTimer = createTimer(() => config.maxFishTime * 1000);
-  const missOnPurposeTimer = createTimer(() => random(1000, 8000));
+  const missOnPurposeTimer = createTimer(() => random(config.missOnPurposeRandomDelay.from, config.missOnPurposeRandomDelay.to) * 1000);
   const logOutTimer = createTimer(() => random(config.logOutEvery.from * 1000 * 60, config.logOutEvery.to * 1000 * 60));
 
   const logOut = async (state) => {
