@@ -38,10 +38,7 @@ This is commonly referred to as a "pixel bot." It operates without modifying the
 
 **This project was developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies only. The software provided should never be used with real-life applications, games and servers outside private "sandbox".**
 
-**This project was developed for people with limited mobility, as they may experience difficulty with motoric actions, such as those required by the fishing mechanic in games.**
-
 You assume full responsibility for any outcomes that may arise from using this software. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes as stated above. As a result, **no guarantees or assurances can be made regarding the functionality or outcomes of the bot**.
-
 
 ## Guide :blue_book:
 
