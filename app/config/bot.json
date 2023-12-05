@@ -1177,7 +1177,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
