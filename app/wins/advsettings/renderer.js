@@ -569,7 +569,7 @@ wrapInLabel("Use Timer: ", renderTimer(config),`It's timer. It's too dificult to
 wrapInLabel("Time (min): ", renderTimerTime(config),`The bot will work for the given period of minutes.`),
 wrapInLabel("Do After Timer: ", renderAfterTimer(config),`What the bot should do after the timer elapses (you can set it in the main window)`),
 wrapInLabel("HS Key: ", renderHsKey(config), `A key your HS is assigned.`),
-wrapInLabel("HS Delay (ms): ", renderHsKeyDelay(config), `How long it take to use HS`),
+wrapInLabel("HS Delay (sec): ", renderHsKeyDelay(config), `How long it take to use HS`),
 wrapInLabel("Shut Down Computer After Quitting: ", renderShutDown(config), `The bot will press Left Windows Key and launch command line, after that it will write shutdown -s -t 10 command which will shut down your computer in 10 seconds. `),
 ),
 

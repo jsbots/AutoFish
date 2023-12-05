@@ -667,7 +667,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await action(async () => {
         await keyboard.sendKey(config.hsKey, delay);
       }, true);
-      await sleep(config.hsKeyDelay);
+      await sleep(config.hsKeyDelay * 1000);
     }
 
     state.status = `stop`;
