@@ -281,7 +281,7 @@ By pressing "Accept" you agree to everything stated above.`,
   });
 
   ipcMain.on("turtle-warn", () => {
-    return showWarning(win, `For Turtle WoW you need to manually set Sensitivity in the Advanced Settings in the Critical section. If the bot often clicks too early - increase it. If the bot doesn't react at all (which might seem like it reacts with some delay), then decrease it.\n\n As an alternative you can try "Vanilla (splash)" settings.`);
+    return showWarning(win, `For Turtle WoW you need to manually set Sensitivity in the Advanced Settings in the Critical section. If the bot often clicks too early - increase it. If the bot doesn't react at all (which might seem like it reacts with some delay), then decrease it.\n\nAs an alternative you can try "Vanilla (splash)" settings with the water textures from some newer patches.`);
   });
 
   ipcMain.on("ascension-warn", () => {
