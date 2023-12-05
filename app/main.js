@@ -40,6 +40,7 @@ if (handleSquirrelEvent(app)) {
 }
 /* Squirrel end */
 
+app.setPath('sessionData', path.resolve(app.getAppPath(), `cache`)); // Set cache folder in the app folder
 
 const showChoiceWarning = (win, warning, title, button1, button2) => {
   return dialog.showMessageBoxSync(win, {
