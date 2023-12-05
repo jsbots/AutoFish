@@ -62,6 +62,7 @@ You assume full responsibility for any outcomes that may arise from using this s
 - **Sound Detection**: feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 - You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
 - Don't fish near other players, the bot might confuse their bobber for yours.
+- **Fishing Buddy**: you can set *Loot Window Closing Delay* value to 0 if use some special addons that hide loot window. You can also use FB to improve sound detection. 
 
 ## Threshold :red_circle:
 
