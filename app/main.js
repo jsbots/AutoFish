@@ -305,7 +305,7 @@ By pressing "Accept" you agree to everything stated above.`,
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
   const menu = Menu.buildFromTemplate([{label: `Help`,     submenu: [
-      { label: `AutoFish ver. 2.4.0 Public` },
+      { label: `AutoFish ver. 2.4.1 Public` },
       { type: 'separator' },
       { label: "📘 Read Me", click: () => shell.openExternal("https://github.com/jsbots/AutoFish#guide-blue_book")},
       { label: 'Video', click: () => shell.openExternal("https://youtu.be/A3W8UuVIZTo")},
