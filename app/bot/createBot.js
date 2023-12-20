@@ -159,7 +159,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .split(",")
     .map((word) => word.trim());
 
-    const moveTo = async ({ pos, randomRange, fineTune = {offset: randomRange, steps: [0, 3]}, forcedNutMouse}) => {
+    const moveTo = async ({ pos, randomRange, fineTune = {offset: randomRange, steps: [1, 3]}, forcedNutMouse}) => {
       if (randomRange) {
         pos.x = pos.x + random(-randomRange, randomRange);
         pos.y = pos.y + random(-randomRange, randomRange);
