@@ -239,12 +239,60 @@ section {
 }
 
 
-.settings input[name="stopKey"], .settings input[name="luresKey"], .settings input[name="fishingKey"], .settings input[name="intKey"], .settings input[name="spareKey"], .settings input[name="mammothKey"], .settings input[name="hsKey"] {
+
+.settings input[name="stopKey"],
+.settings input[name="luresKey"],
+.settings input[name="fishingKey"],
+.settings input[name="intKey"],
+.settings input[name="spareKey"],
+.settings input[name="mammothKey"],
+.settings input[name="hsKey"],
+.settings .spares-key,
+.settings input[name="logOutMacroKey"],
+.settings input[name="mammothMacroKey"] {
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid grey;
   cursor: pointer;
+  transition: 0.2s all;
 }
 
-.settings input[name="stopKey"]:active, .settings input[name="luresKey"]:active, .settings input[name="fishingKey"]:active, .settings input[name="intKey"]:active, .settings input[name="mammothKey"]:active, .settings input[name="hsKey"]:active {
+.settings input[name="stopKey"]:active,
+.settings input[name="luresKey"]:active,
+.settings input[name="fishingKey"]:active,
+.settings input[name="intKey"]:active,
+.settings input[name="mammothKey"]:active,
+.settings input[name="hsKey"]:active,
+.settings .spares-key:active,
+.settings input[name="logOutMacroKey"]:active,
+.settings input[name="mammothMacroKey"]:active {
   cursor: default;
+}
+
+.settings input[name="stopKey"]:focus,
+.settings input[name="luresKey"]:focus,
+.settings input[name="fishingKey"]:focus,
+.settings input[name="intKey"]:focus,
+.settings input[name="mammothKey"]:focus,
+.settings input[name="hsKey"]:focus,
+.settings .spares-key:focus,
+.settings input[name="logOutMacroKey"]:focus,
+.settings input[name="mammothMacroKey"]:focus {
+  outline: none;
+}
+
+.settings input[name="stopKey"]:disabled,
+.settings input[name="luresKey"]:disabled,
+.settings input[name="fishingKey"]:disabled,
+.settings input[name="intKey"]:disabled,
+.settings input[name="mammothKey"]:disabled,
+.settings input[name="hsKey"]:disabled,
+.settings .spares-key:disabled,
+.settings input[name="logOutMacroKey"]:disabled,
+.settings input[name="mammothMacroKey"]:disabled {
+  cursor: default;
+  border: 1px solid rgb(215, 215, 215);
+  background-color: rgb(245, 245, 245);
 }
 
 .settings textarea.whitelist_input  {
@@ -316,7 +364,6 @@ section {
 
 .advSettings {
   padding: 5px;
-
 }
 
 .advSettings_settings {
@@ -545,6 +592,7 @@ input[type=range].threshold_disabled::-webkit-slider-thumb {
 }
 
 .settings_advSettings {
+  margin-top: -7px;
   display: block;
 }
 
@@ -848,4 +896,33 @@ input[type=range]::-webkit-slider-runnable-track {
 .premium_label {
   background-color: rgba(255, 219, 197, 0.3);
   border-radius: 5px;
+}
+
+
+/* Track */
+::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(250, 0, 0, .2); /* Set the color of the scrollbar handle */
+  border-radius: 5px; /* Round the corners of the scrollbar handle */
+  border: 1px solid rgb(150, 150, 150);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(250, 0, 0, .3); /* Change color on hover */
+  border: 1px solid grey;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Set the color of the scrollbar track */
+}
+
+/* Handle when scrolling */
+::-webkit-scrollbar-thumb:active {
+  background-color:  rgba(250, 0, 0, .3); /* Change color when the user is actively scrolling */
 }
