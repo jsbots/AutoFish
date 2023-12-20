@@ -5,6 +5,7 @@ const createLootZone = require("./lootZone.js");
 const createLootExitZone = require("./lootExitZone.js");
 const {app} = require(`electron`);
 const Vec = require('../utils/vec.js');
+const nutMouse = require("../game/nut.js").mouse;
 
 const { screen, Region, Point } = require("@nut-tree/nut-js");
 
@@ -140,7 +141,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     .split(",")
     .map((word) => word.trim());
 
-    const moveTo = async ({ pos, randomRange, fineTune = {offset: randomRange, steps: [1, 3]}}) => {
+    const moveTo = async ({ pos, randomRange, fineTune = {offset: randomRange, steps: [0, 3]}, forcedNutMouse}) => {
       if (randomRange) {
         pos.x = pos.x + random(-randomRange, randomRange);
         pos.y = pos.y + random(-randomRange, randomRange);
@@ -155,13 +156,23 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
           randomSpeed.from = 0;
         }
 
-        let deviationCoof = 15;
+        let deviationCoof = config.libraryTypeInput === 'nut.js' ? 30 : 15;
         let randomDeviation = {from: config.mouseCurvatureStrength - deviationCoof, to: config.mouseCurvatureStrength + deviationCoof};
         if(randomDeviation.from < 0) {
           randomDeviation.from = 0;
         }
 
-        await mouse.humanMoveTo(pos.x, pos.y, random(randomSpeed.from, randomSpeed.to), random(randomDeviation.from, randomDeviation.to));
+        if(!config.arduino && (config.libraryTypeInput === 'nut.js' || forcedNutMouse)) {
+          await nutMouse.humanMoveTo({
+            from: mouse.getPos(),
+            to: pos,
+            speed: random(randomSpeed.from, randomSpeed.to),
+            deviation: random(randomDeviation.from, randomDeviation.to),
+            fishingZone: Zone.from(screenSize).toRel(config.relZone)
+          });
+        } else {
+          await mouse.humanMoveTo(pos.x, pos.y, random(randomSpeed.from, randomSpeed.to), random(randomDeviation.from, randomDeviation.to));
+        }
 
         if(config.likeHumanFineTune && fineTune && state.status != "stop") {
           let times = random(fineTune.steps[0], fineTune.steps[1]);
