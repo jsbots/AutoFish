@@ -516,6 +516,13 @@ const renderLibraryTypeInput = ({libraryTypeInput}) => {
   return elt('select', {name: 'libraryTypeInput'}, ...libs.map(lib => elt('option', {value: lib, selected: lib == libraryTypeInput}, lib)))
 };
 
+const renderLogOutMacro = ({logOut, logOutUseMacro, logOutMacroKey}) => {
+  const checkbox = elt('input', {type: 'checkbox', checked: logOutUseMacro, name: `logOutUseMacro`, disabled: !logOut });
+  const key = elt('input', {type: `text`, disabled: !logOut || !logOutUseMacro, name: `logOutMacroKey`, value: logOutMacroKey});
+  key.setAttribute(`readonly`, `true`);
+  return elt('div', null, checkbox, key);
+}
+
 const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
     elt(`p`, {className: `settings_header advanced_settings_header`}, `🛠️`), elt(`span`, {className: `advanced_settings_header_text`}, `General`),
@@ -610,6 +617,7 @@ elt('div', {className: "settings_section"},
   wrapInLabel(`Random Log Out Every: (min)`, renderLogOutEvery(config), `The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
   wrapInLabel(`Random Log Out For: (sec)`, renderLogOutFor(config), `How long the bot should be stayed logged out. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
   wrapInLabel(`Random Log Out After: (sec)`, renderLogOutAfter(config), `How long the bot should wait before starting fishing again. The bot will generate a random number from the provided values. The number is generated every time the bot logs out: so the next time the bot logs out, it will be always different (randomly generated).`),
+  wrapInLabel(`Use Macro: `, renderLogOutMacro(config), `Use your own macro in the game instead of the bot typing /logout command.`),
   ),
   elt(`p`, {className: `settings_header`}, `💤`), elt(`span`, {className: `advanced_settings_header_text`}, `Random Sleep`),
   elt('div', {className: "settings_section"},
@@ -771,13 +779,20 @@ const runApp = async () => {
       ipcRenderer.send(`open-link`, event.target.url);
     }
 
-    if((event.target.name == `hsKey` || event.target.name == 'luresKey') && !event.target.disabled) {
-      event.target.style.backgroundColor = `rgb(255, 104, 101)`;
-      event.target.style.border = `1px solid grey`;
-
+    if((event.target.name == `hsKey` || event.target.name == 'luresKey' || event.target.name == `logOutMacroKey`) && !event.target.disabled) {
+      event.target.style.backgroundColor = `rgba(250, 0, 0, .3)`;
+      const activeKeyAnimation = (alter) => () => {
+        if(alter) {
+          event.target.style.backgroundColor = `rgba(250, 0, 0, .3)`;
+        } else {
+          event.target.style.backgroundColor = `white`;
+        }
+        alter = !alter;
+      }
+      const flashKeyAnimation = setInterval(activeKeyAnimation(false), 300);
       event.target.addEventListener(`blur`, function bluring(event) {
+        clearInterval(flashKeyAnimation)
         event.target.style.backgroundColor = `white`;
-        event.target.style.border = `1px solid grey`;
         event.target.removeEventListener(`blur`, bluring);
         event.target.removeEventListener(`keydown`, keyAssigning);
       });

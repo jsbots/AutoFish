@@ -215,11 +215,16 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   const logOut = async (state) => {
     await action(async () => {
-      await keyboard.toggleKey(`enter`, true, delay);
-      await keyboard.toggleKey(`enter`, false, delay);
-      await keyboard.printText(`/logout`, delay);
-      await keyboard.toggleKey(`enter`, true, delay);
-      await keyboard.toggleKey(`enter`, false, delay);
+      if(config.logOutUseMacro) {
+        await keyboard.toggleKey(config.logOutMacroKey, true, delay);
+        await keyboard.toggleKey(config.logOutMacroKey, false, delay);
+      } else {
+        await keyboard.toggleKey(`enter`, true, delay);
+        await keyboard.toggleKey(`enter`, false, delay);
+        await keyboard.printText(`/logout`, delay);
+        await keyboard.toggleKey(`enter`, true, delay);
+        await keyboard.toggleKey(`enter`, false, delay);
+      }
     });
     await sleep(20000);
 
