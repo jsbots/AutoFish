@@ -898,31 +898,30 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 5px;
 }
 
-
 /* Track */
-::-webkit-scrollbar {
+.advSettings_settings::-webkit-scrollbar {
   width: 10px; /* Set the width of the scrollbar */
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+.advSettings_settings::-webkit-scrollbar-thumb {
   background-color: rgba(250, 0, 0, .2); /* Set the color of the scrollbar handle */
   border-radius: 5px; /* Round the corners of the scrollbar handle */
   border: 1px solid rgb(150, 150, 150);
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+.advSettings_settings::-webkit-scrollbar-thumb:hover {
   background-color: rgba(250, 0, 0, .3); /* Change color on hover */
   border: 1px solid grey;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+.advSettings_settings::-webkit-scrollbar-track {
   background: #f1f1f1; /* Set the color of the scrollbar track */
 }
 
 /* Handle when scrolling */
-::-webkit-scrollbar-thumb:active {
+.advSettings_settings::-webkit-scrollbar-thumb:active {
   background-color:  rgba(250, 0, 0, .3); /* Change color when the user is actively scrolling */
 }
