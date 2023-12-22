@@ -180,10 +180,15 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
           randomDeviation.from = 0;
         }
 
-        if(!config.arduino && (config.libraryTypeInput === 'nut.js' || forcedNutMouse)) {
+        if(config.libraryTypeInput === 'nut.js' || forcedNutMouse) {
+          if(!(pos instanceof Vec)) {
+            pos = new Vec(pos.x, pos.y);
+          }
+          let curPos = mouse.getPos();
+          curPos = new Vec(curPos.x, curPos.y);
           await nutMouse.humanMoveTo({
-            from: mouse.getPos(),
-            to: pos,
+            from: curPos.plus(screenSize),
+            to: pos.plus(screenSize),
             speed: random(randomSpeed.from, randomSpeed.to),
             deviation: random(randomDeviation.from, randomDeviation.to),
             fishingZone: Zone.from(screenSize).toRel(config.relZone)
