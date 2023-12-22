@@ -14,10 +14,10 @@ const getDataFrom = async (zone) => {
 const createFishingZone = ({pos, screenSize, type, config, settings, scale}, finished) => {
   let win = new BrowserWindow({
 		title: `Fishing Zone`,
-    x: Math.floor(pos.x),
-    y: Math.floor(pos.y),
-    width: Math.floor(pos.width),
-    height: Math.floor(pos.height),
+		x: Math.round(pos.x),
+    y: Math.round(pos.y),
+    width: Math.round(pos.width),
+    height: Math.round(pos.height),
     show: true,
     resizable: true,
     opacity: 0.3,

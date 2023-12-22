@@ -84,12 +84,15 @@ const setFishingZone = async ({workwindow}, relZone, type, config, settings) => 
 
   const result = await createFishingZone({pos, screenSize, type, config, settings, scale});
   if(!result) return;
-  return {
-    x: (result.x - screenSize.x) * scale / screenSize.width,
-    y: (result.y - screenSize.y) * scale / screenSize.height,
-    width: result.width * scale / screenSize.width,
-    height: result.height * scale / screenSize.height
-  }
+
+  const convertedResult = {
+    x: (result.x * scale - screenSize.x) / screenSize.width,
+    y: (result.y * scale - screenSize.y) / screenSize.height,
+    width: (result.width * scale) / screenSize.width,
+    height: (result.height * scale) / screenSize.height
+  };
+
+  return convertedResult
 }
 
 let win;
