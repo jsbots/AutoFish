@@ -119,22 +119,22 @@ For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro t
 **Retail**:
 
 ```
-/use *lure_name*
-/use *fishpole_name*
+/use lure_name
+/use fishpole_name
 ```
 
 **Classic**:
 
 ```
-/equip *fishpole_name*
-/use *lure_name*
+/equip fishpole_name
+/use lure_name
 /use 16
 ```
 
 **Vanilla**:
 
 ```
-/script UseAction(*your lures key*);
+/script UseAction(your lures key);
 /script PickupInventoryItem(16);
 /script ReplaceEnchant();
 ```
