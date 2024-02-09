@@ -19,7 +19,7 @@ const convertValue = (node) => {
 const renderHideWin = ({hideWin}) => elt(`input`, {type: `checkbox`, checked: hideWin, name: `hideWin`});
 
 const renderLuresOmitInitial = ({luresOmitInitial, lures}) => elt('input', {type: 'checkbox', name: "luresOmitInitial", disabled: !lures, checked: luresOmitInitial})
-
+const renderConfirmLures = ({confirmLures = false, lures}) => elt(`input`, {type: `checkbox`, disabled: !lures, checked: confirmLures, name: `confirmLures`});
 const renderStartByFishingKey = ({startByFishingKey}) => {
   if(startByFishingKey) {
     ipcRenderer.send('reg-start-by-fishing-key');
@@ -607,8 +607,8 @@ wrapInLabel(
 ),
 wrapInLabel(`Applying lures delay (ms):`, renderLuresDelay(config), `How much it takes the bot to apply the lure.`),
 wrapInLabel(`Omit Initial Application`, renderLuresOmitInitial(config), `Don't apply lures at the beggining, wait until timer elapses.`),
+wrapInLabel(`Auto-Confirm Lures:`, renderConfirmLures(config), `If you want the bot to apply lures earlier than they expire, some games might require confirmation for this. If on, the bot will auto-confirm in such cases. You can also use a macro for the same, in that case you don't need to turn on this option.`),
 ),
-
 elt(`p`, {className: `settings_header`}, `⏲️`), elt(`span`, {className: `advanced_settings_header_text`}, `Timer`),
 elt('div', {className: "settings_section"},
 wrapInLabel("Use Timer: ", renderTimer(config),`It's timer. It's too dificult to explain here, so you can ask AI what is it exactly.`),

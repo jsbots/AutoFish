@@ -21,6 +21,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -84,16 +85,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -160,6 +161,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -222,16 +224,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22526,
           "width": 0.082723,
-          "height": 0.022135
+          "height": 0.04427
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.20185,
           "width": 0.073958,
-          "height": 0.021296
+          "height": 0.042592
         }
       },
       "lootWindow": {
@@ -290,6 +292,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": true,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -352,16 +355,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22526,
           "width": 0.082723,
-          "height": 0.022135
+          "height": 0.04427
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.20185,
           "width": 0.073958,
-          "height": 0.021296
+          "height": 0.042592
         }
       },
       "lootWindow": {
@@ -420,6 +423,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -482,16 +486,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -530,6 +534,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -592,16 +597,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -642,6 +647,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -704,16 +710,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -754,6 +760,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -830,16 +837,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41288,
+          "x": 0.09004392,
           "y": 0.22526,
           "width": 0.08345,
-          "height": 0.02604
+          "height": 0.05208
         },
         "1920": {
-          "x": 0.41927,
+          "x": 0.08177083,
           "y": 0.20462,
           "width": 0.07552,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -880,6 +887,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -956,16 +964,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -1008,6 +1016,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -1070,16 +1079,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -1122,6 +1131,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -1186,16 +1196,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -1239,6 +1249,7 @@
       "confirmSoulbound": true,
       "whitelistLanguage": "eng",
       "lures": false,
+      "confirmLures": false,
       "luresKey": "2",
       "luresDelayMin": 10,
       "multipleWindows": false,
@@ -1302,16 +1313,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
