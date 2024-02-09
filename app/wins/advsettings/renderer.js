@@ -20,6 +20,20 @@ const renderHideWin = ({hideWin}) => elt(`input`, {type: `checkbox`, checked: hi
 
 const renderLuresOmitInitial = ({luresOmitInitial, lures}) => elt('input', {type: 'checkbox', name: "luresOmitInitial", disabled: !lures, checked: luresOmitInitial})
 
+const renderStartByFishingKey = ({startByFishingKey}) => {
+  if(startByFishingKey) {
+    ipcRenderer.send('reg-start-by-fishing-key');
+  } else {
+    ipcRenderer.send('unreg-start-by-fishing-key');
+  }
+  return elt('input', {type: 'checkbox', onchange() {
+    if(!startByFishingKey) {
+      ipcRenderer.send('start-by-fishing-key-warn')
+    }
+  }, checked: startByFishingKey, name: "startByFishingKey"});
+}
+
+
 const renderHighlightPercent = ({highlightPercent}) => {
   const winRange = elt(`input`, {type: `number`, value: highlightPercent, name: "highlightPercent"})
   const range = elt('input', {type: `range`, max: 100, value: highlightPercent, oninput: function() {winRange.value = this.value}, name: "highlightPercent"});
@@ -527,6 +541,7 @@ const renderSettings = (config) => {
   return elt('section', {className: `settings settings_advSettings`},
     elt(`p`, {className: `settings_header advanced_settings_header`}, `🛠️`), elt(`span`, {className: `advanced_settings_header_text`}, `General`),
   elt('div', {className: "settings_section"},
+  wrapInLabel(`Start Bot By Fishing Key`, renderStartByFishingKey(config), `Your Fishing Key (the same assigned in the bot) in the game will start the bot and you don't need to alt-tab to start it manually, you still need to stop it either by Stop Key or manually (the bot won't stop if you just move away as it happens in the game). Warning! The key you assigned for Fishing Key will be blocked on your machine and if used will start the bot. Turn this feature on only after you have configured all the settings.`),
   wrapInLabel(
     "Human-like Movement: ",
     renderLikeHuman(config),

@@ -46,6 +46,13 @@ class AutoFish {
     ipcRenderer.on("set-version", (event, version) => {
       versionNode.textContent = `ver. 2.5.1 Public | `;
     });
+
+    ipcRenderer.on('start-by-fishing-key', () => {
+      if(!this.button.state) {
+        this.button.dom.click();
+      }
+    });
+    
     this.settings.regOnChange((config) => {
       ipcRenderer.send("save-settings", config);
     });

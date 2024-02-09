@@ -161,6 +161,15 @@ By pressing "Accept" you agree to everything stated above.`,
     });
     log.msg(fishQuotes[Math.floor(Math.random() * fishQuotes.length)]);
 
+    const config = getJson("./config/bot.json");
+    const settings = getJson("./config/settings.json");
+
+    if(config.patch[settings.game].startByFishingKey) {
+      globalShortcut.register(settings.fishingKey, () => {
+        win.webContents.send('start-by-fishing-key');
+      });
+    }
+
     if(screen.getAllDisplays().length > 1) {
       log.warn("The bot detected more than 1 display: use both the game and the bot on the primary one.")
     }
@@ -225,10 +234,13 @@ By pressing "Accept" you agree to everything stated above.`,
       return;
     }
 
+    if(config.patch[settings.game].startByFishingKey) {
+      globalShortcut.unregister(settings.fishingKey);
+    }
+
     const {startBots, stopBots} = await createBots(games, settings, config, log);
 
     const stopAppAndBots = () => {
-
       games.forEach(({mouse, keyboard}) => {
          mouse.humanMoveTo.cancelCurrent();
          keyboard.sendKeys.cancelCurrent();
@@ -236,13 +248,26 @@ By pressing "Accept" you agree to everything stated above.`,
       });
 
       stopBots();
-      if(config.patch[settings.game].hideWin) win.show();
+
+      if(config.patch[settings.game].hideWin) {
+        win.show();
+      }
+
       shell.beep();
+
       if (!win.isFocused()) {
         win.flashFrame(true);
         win.once("focus", () => win.flashFrame(false));
       }
-      globalShortcut.unregisterAll();
+
+      globalShortcut.unregister(settings.stopKey);
+
+      if(config.patch[settings.game].startByFishingKey) {
+      globalShortcut.register(settings.fishingKey, () => {
+        win.webContents.send('start-by-fishing-key');
+        });
+      }
+
       win.webContents.send("stop-bot");
     };
 
@@ -262,6 +287,21 @@ By pressing "Accept" you agree to everything stated above.`,
   ipcMain.on("open-link", (event, link) =>
     shell.openExternal(link)
   );
+
+  ipcMain.on('reg-start-by-fishing-key', () => {
+  const config = getJson("./config/bot.json");
+  const settings = getJson("./config/settings.json");
+
+  globalShortcut.register(settings.fishingKey, () => {
+    win.webContents.send('start-by-fishing-key');
+  });
+})
+
+ipcMain.on('unreg-start-by-fishing-key', () => {
+  const config = getJson("./config/bot.json");
+  const settings = getJson("./config/settings.json");
+  globalShortcut.unregister(settings.fishingKey);
+})
 
   ipcMain.on("dx11-warn", () => {
     showWarning(win, `Don't use this if you don't know what you are doing. This is an alternative pixel recognition logic that requires DirectX 11 turned on in the game.`);
