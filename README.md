@@ -22,9 +22,7 @@
 
 ## Fishing bot :fish:
 
-This is a fishing bot designed for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron) and leverages [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate the fishing process in a manner that mimics human behavior with various elements of randomness, including random sleep intervals, random reactions, random delays after catching, randomized mouse speed and curvature, and random bobber highlighting.
-
-This bot is capable of simultaneously handling one or multiple game windows. Additionally, it incorporates the use of [tesseract.js](https://github.com/naptha/tesseract.js) for loot filtering.
+This is a fishing bot for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron), [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate the fishing process in a manner that mimics human behavior, and also [tesseract.js](https://github.com/naptha/tesseract.js) for loot filtering. This is a so-called "pixel bot": it works with pixels only, without modifying the game's memory or utilizing any AI vision libraries.
 
 <p align="center">
 <img src="guide_img/UI.jpg" width="640">
@@ -32,13 +30,15 @@ This bot is capable of simultaneously handling one or multiple game windows. Add
 
 For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
-This is commonly referred to as a "pixel bot." It operates without modifying the game's memory or utilizing vision libraries like OpenCV. Instead, it employs a simpler approach: it analyzes the game window for concentrated red colors and monitors that area for any changes. As the bobber moves and gently sways, the bot follows its motion. However, when the bobber suddenly jerks, the bot clicks on it and catches the fish.
-
 ## Disclaimer :warning:
 
-**This project was developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies only. The software provided should never be used with real-life applications, games and servers outside private "sandbox".**
+**This small project was developed for educational purposes ONLY, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies.**
 
-You assume full responsibility for any outcomes that may arise from using this software. It's essential to acknowledge that this software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes as stated above. As a result, **no guarantees or assurances can be made regarding the functionality or outcomes of the bot**.
+**The software provided should NEVER be used with real-life applications, games, servers etc.**
+
+**This software is not designed to be "undetectable" in any way, nor was it ever intended for such purposes. All randomness functionality is added for educational purposes only.**
+
+**No guarantees or assurances can be made regarding the functionality or outcomes of the bot, you assume full responsibility for any outcomes that may arise from using this software.**.
 
 ## Guide :blue_book:
 
@@ -56,13 +56,11 @@ You assume full responsibility for any outcomes that may arise from using this s
 ### Hints and Issues
 
 - **Default UI only**: The bot has been exclusively tested with the default user interface (UI) and default UI scale, without any addons. Therefore, before using the bot, ensure that all addons are turned off and the UI scale is set to default. This is particularly important for fishing addons like Fishing Buddy and others. Disable any UI features they provide.
-- **No English**: If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language. Also read about [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond).
+- **Filter Language**: If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
 - **If doesn't press anything**: If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
 - **2 monitors**: The bot works properly only with 1 monitor, so if you use multiple monitors, launch the bot and the game on **the primary one**.
-- **Sound Detection**: feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
-- You can turn off all the "sleeping" and random values to make the bot work **2-3 times** faster.
-- Don't fish near other players, the bot might confuse their bobber for yours.
-- **Fishing Buddy**: you can set *Loot Window Closing Delay* value to 0 if use some special addons that hide loot window. You can also use FB to improve sound detection. 
+- **Fishing Buddy**: you can set *Loot Window Closing Delay* value to 0 if use some special addons that hide loot window. You can also use FB to improve sound detection.
+- **Sound Detection** (Premium version): feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
 
 ## Threshold :red_circle:
 
@@ -119,16 +117,17 @@ For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro t
 **Retail**:
 
 ```
-/use lure_name
-/use fishpole_name
+/use Aquadynamic Fish Attractor
+/use Big Iron Fishing Pole
 ```
 
 **Classic**:
 
 ```
-/equip fishpole_name
-/use lure_name
+/equip Big Iron Fishing Pole
+/use Aquadynamic Fish Attractor
 /use 16
+/click StaticPopup1Button1
 ```
 
 **Vanilla**:
@@ -145,7 +144,7 @@ Or
 
 ## Interactive key
 
-In **Retail**-like games You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
+You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
 
 <p align="center">
 <img src="guide_img/intkey.jpg" align="center">
@@ -159,12 +158,12 @@ To make the interactive key work, you use this commands (write them in the chat 
 
 ## Soulbound items auto-confirmation :large_blue_diamond:
 
-If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **whitelist**. **This feature also doesn't work with any other language except English**. As a solution (both if you need AutoLoot on and if your WoW isn't in English) use [AutoLooter](https://www.curseforge.com/wow/addons/autolooter) instead.
+If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **Filter** feature.
 
 
 ## AutoFish Premium	:crown:
 
-AutoFish Premium is just a token of gratitude for your support, it's the same application only with some additional features available for supporters of the project.
+AutoFish Premium is just my token of gratitude to you for your support.
 
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
