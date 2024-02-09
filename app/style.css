@@ -296,9 +296,9 @@ section {
 }
 
 .settings textarea.whitelist_input  {
-  width: 405px !important;
+  width: 409px !important;
   height: 50px;
-  max-width: 405px;
+  max-width: 409px;
   min-height: 50px;
 }
 
