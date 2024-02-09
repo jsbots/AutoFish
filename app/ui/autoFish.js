@@ -8,11 +8,16 @@ const renderLogo = () => {
   );
 };
 
+const loggerMemory = [];
 const renderLogger = () => {
   return {
     dom: elt("section", { className: `logger` }),
     show({ text, type }) {
       let row = elt("p", null, text);
+      loggerMemory.push(row);
+      if(loggerMemory.length > 100) {
+        loggerMemory.shift().remove()
+      }
       row.style.color = type;
       this.dom.append(row);
       this.dom.scrollTop += 30;
