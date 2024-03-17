@@ -12,6 +12,7 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
     checkBobber,
     hookBobber,
     doAfterTimer,
+    checkConfirm
   } = bot;
 
   const sleep = (time) => {
@@ -117,6 +118,9 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
       if (isHooked) {
         stats.caught++;
         log.ok(`Caught ${typeof isHooked == `boolean` ? `the fish!` : isHooked}`);
+
+        await checkConfirm();
+
         continue;
       }
     }

@@ -742,7 +742,21 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   doAfterTimer.on = config.timer;
   doAfterTimer.timer = createTimer(() => config.timerTime * 1000 * 60);
 
+  const checkConfirm = async () => {
+    if(config.checkConfirm && !config.whitelist) {
+      await sleep(250) // wait for the window to appear
+      const needsConfirm = await checkRedButton(confirmationWindow);
+      if(needsConfirm) {
+        await action(async () => {
+          await mouse.toggle('left', true, delay);
+          await mouse.toggle('left', false, delay);
+        });
+      }
+    }
+  }
+
   return {
+    checkConfirm,
     doAfterTimer,
     dynamicThreshold,
     logOut,

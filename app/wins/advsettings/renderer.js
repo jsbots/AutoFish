@@ -17,6 +17,7 @@ const convertValue = (node) => {
 };
 
 const renderHideWin = ({hideWin}) => elt(`input`, {type: `checkbox`, checked: hideWin, name: `hideWin`});
+const renderCheckConfirm = ({checkConfirm, whitelist}) => elt('input', {type: `checkbox`, disabled: whitelist, checked: checkConfirm, name: `checkConfirm`});
 
 const renderLuresOmitInitial = ({luresOmitInitial, lures}) => elt('input', {type: 'checkbox', name: "luresOmitInitial", disabled: !lures, checked: luresOmitInitial})
 const renderConfirmLures = ({confirmLures = false, lures}) => elt(`input`, {type: `checkbox`, disabled: !lures, checked: confirmLures, name: `confirmLures`});
@@ -520,6 +521,7 @@ const renderSettings = (config) => {
     renderShiftClick(config),
     `Use shift + click instead of Auto Loot. Check this option if you don't want to turn on Auto Loot option in the game. Your "Loot key" in the game should be assigned to shift.`
   ),
+  wrapInLabel(`Auto-Confirm SB Items: `, renderCheckConfirm(config), `The bot will check for confirmation window after every catch and will auto-confirm soulbound items (even in AutoLoot mode).`),
 wrapInLabel(`Attempts Limit: `, renderMaxAttempts(config), `How many times the bot will fail finding bobber before stopping.`),
   wrapInLabel(`Dynamic Threshold: `, renderDynamicThreshold(config), `ONLY FOR MANUAL MODE. After attempts limit the bot will dynamically change threshold by the provided value.`),
   wrapInLabel(`Catch With Mouse Button: `, renderCatchFishButton(config), `Choose the button you want the bot to click when it wants to catch the fish.`),
