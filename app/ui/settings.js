@@ -51,9 +51,6 @@ class Settings {
 
     this.dom.addEventListener("change", saveSettings);
     this.dom.addEventListener('change', (event) => {
-      if(event.target.name == 'game' && event.target.value == "Turtle WoW") {
-        ipcRenderer.send("turtle-warn");
-      }
 
       if(event.target.name == 'game' && event.target.value == "LK Private") {
         ipcRenderer.send("ascension-warn");
@@ -94,7 +91,7 @@ class Settings {
         this.onChange(this.config);
         this.reRender();
       }
-      
+
       if((event.target.name == `stopKey` || event.target.name == `fishingKey` || event.target.name == `luresKey` || event.target.name == `intKey`) && !event.target.disabled) {
         event.target.style.backgroundColor = `rgb(255, 219, 197)`;
         const activeKeyAnimation = (alter) => () => {

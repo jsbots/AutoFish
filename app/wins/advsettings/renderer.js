@@ -440,7 +440,7 @@ const renderFilterType = ({whitelist, filterType}) => {
 }
 
 const renderFilterAtMouse = ({game, whitelist, atMouse}) => {
-  if(game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)` && game != `Turtle WoW`) {
+  if(game != `Retail` && game != `Vanilla` && game != `Vanilla (splash)`) {
     atMouse = true;
   }
   return elt(`input`, {name: `atMouse`, type:`checkbox`, checked: atMouse, className: `atMouse`, disabled: !whitelist || game != `Retail`});

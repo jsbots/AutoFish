@@ -453,7 +453,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         return pos;
       }
 
-      if(settings.game == `Retail` || settings.game == `Turtle WoW`) {
+      if(settings.game == `Retail`) {
         if(!(await fishingZone.checkBobberPrint(pos))) {
           return pos;
         }
