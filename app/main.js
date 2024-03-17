@@ -310,6 +310,10 @@ ipcMain.on('unreg-start-by-fishing-key', () => {
     showWarning(win, `Don't use this if you don't know what you are doing. This is an alternative pixel recognition logic that requires DirectX 11 turned on in the game.`);
   });
 
+  ipcMain.on("splash-warn", () => {
+    showWarning(win, `The bot will try to detect splash animation instead of the bobber animation. If possible, increase the visual quality of the water either by installing modded textures or in the settings of the game.\n\nIf the splash isn't detected, you can increase Sensitivity and Splash Color values (You can find the Splash Color value in the Advanced Settings).`);
+  });
+
   ipcMain.on("open-link-donate", () =>
     shell.openExternal("https://www.buymeacoffee.com/jsbots/e/96734")
   );

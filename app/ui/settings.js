@@ -55,6 +55,10 @@ class Settings {
       if(event.target.name == 'game' && event.target.value == "LK Private") {
         ipcRenderer.send("ascension-warn");
       }
+
+      if(event.target.name == `game` && event.target.value == `Vanilla (splash)`) {
+        ipcRenderer.send(`splash-warn`); 
+      }
     })
 
     this.dom.addEventListener("input", (event) => {
