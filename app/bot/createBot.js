@@ -271,13 +271,13 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   logOut.on = config.logOut > 0;
 
 
-  const preliminaryChecks = async () => {
+  const preliminaryChecks = async (log) => {
       if(config.ignorePreliminary) return;
       if (screenSize.x == -32000 && screenSize.y == -32000) {
         throw new Error("The window is either in fullscreen mode or minimized. Switch to windowed or windowed(maximized).");
       }
       if(!settings.autoTh) {
-        let bobber = await fishingZone.findBobber();
+        let bobber = await fishingZone.findBobber(null, detectSens, log);
         if (bobber) {
           screen.config.highlightOpacity = 1;
           screen.config.highlightDurationMs = 1000;
@@ -285,7 +285,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
           await screen.highlight(highlightRegion);
 
           throw new Error(
-            `Found ${settings.bobberColor == `red` ? `red` : `blue`} colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.`
+            `Found ${settings.bobberColor == `red` ? `red` : `blue`} colors before casting. Change your Fishing Zone or increase the intensity value or change the fishing place.`
           );
         }
       }
@@ -394,7 +394,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         return pos;
     }
 
-    if(process.env.NODE_ENV == `dev`) {
+    if(pos && process.env.NODE_ENV == `dev`) {
       screen.config.highlightOpacity = 1;
       screen.config.highlightDurationMs = 250;
       const highlightRegion = new Region(screenSize.x + (pos.x - 10), screenSize.y + (pos.y - 10), 10, 10);
@@ -418,7 +418,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
     const pos = await fishingZone.findBobber(findBobber.memory, detectSens(), log);
 
-    if(process.env.NODE_ENV == `dev`) {
+    if(pos && process.env.NODE_ENV == `dev`) {
       screen.config.highlightOpacity = 1;
       screen.config.highlightDurationMs = 250;
       const highlightRegion = new Region(screenSize.x + (pos.x - 10), screenSize.y + (pos.y - 10), 10, 10);

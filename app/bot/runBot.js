@@ -30,7 +30,7 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
   do {
     if (state.status == "initial") {
       log.send(`Preliminary checks...`);
-      await preliminaryChecks();
+      await preliminaryChecks(log);
       log.ok(`Everything is fine!`);
       if(randomSleep.on) {
         randomSleep.timer.start();

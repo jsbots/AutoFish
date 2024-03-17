@@ -53,7 +53,12 @@ const createBots = async (games, settings, config, log) => {
               onError();
             }
             log.setState(true);
-            bot.log.err(`${error.message}`);
+            if(process.env.NODE_ENV == `dev`) {
+              bot.log.err(`${error.message, error.stack}`);
+            } else {
+              bot.log.err(`${error.message}`);
+            }
+
 
             bot.stats.show().forEach((stat) => bot.log.ok(stat));
             bot.log.ok(`Time Passed: ${convertMs(Date.now() - bot.state.startTime)}`);

@@ -36,6 +36,9 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
       let bobber;
       if(autoThreshold) {
         bobber = this._findMost(rgb);
+        if(process.env.NODE_ENV == `dev`) {
+          log.err(`[DEBUG] Color Found: ${bobber.color}, at: ${bobber.pos.x},${bobber.pos.y}`);
+        }
         let thCoof;
         if(game != `Retail` && game != `Classic` && game != `LK Classic`) {
             thCoof = .75;
@@ -58,6 +61,9 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
         try {
           filledBobber = await this.getBobberPointsAround(rgb, bobber.pos);
           filledBobberForPrint = filledBobber.points;
+          if(process.env.NODE_ENV == `dev`) {
+            log.err(`[DEBUG] Points found: ${filledBobber.points.length}`);
+          }
         } catch(e) {
           if(e.message == `color` && colorSwitchOn && ++colorSwitchesCount < 2) {
             log.warn(`Too much ${bobberColor} color! Changing the color...`)
@@ -113,7 +119,6 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
         let mostLeft = filledBobber.points.reduce((a, b) => a.x < b.x ? a : b);
         let mostRight = filledBobber.points.reduce((a, b) => a.x > b.x ? a : b);
         filledBobber.bobber.pos.x = mostLeft.x + Math.round((mostRight.x - mostLeft.x) /  2);
-
         this._findThreshold(filledBobber.bobber, .5); // reapply colors for the most middle top position
         for(let step = 0; step < (screenSize.height / 1080) * 15; step++) {
           let pos = new Vec(filledBobber.bobber.pos.x, filledBobber.bobber.pos.y + step);
@@ -122,6 +127,10 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
             break;
           }
         }
+
+     if(process.env.NODE_ENV == `dev` && !filledBobber.bobber.pos) {
+        log.err(`[DEBUG] Can't find bobber after _findMost`);
+      }
      if(!filledBobber.bobber.pos) return;
       this._findThreshold({color: rgb.colorAt(filledBobber.bobber.pos)}, .5); // reapply for the last one
       return filledBobber.bobber.pos.plus(zone);
@@ -170,7 +179,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
     async getBobberPointsAround(rgb, bobber) {
       let memory = [bobber];
       for(let point of memory) {
-        if(memory.length > ((screenSize.height / 1080) * 2000)) {
+        if(memory.length > ((screenSize.height / 1080) * 3000)) {
           if(process.env.NODE_ENV == `dev`) {
             let myrgb = createRgb(await getDataFrom(zone));
             myrgb.cutOut(memory);
