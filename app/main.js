@@ -228,8 +228,11 @@ By pressing "Accept" you agree to everything stated above.`,
       if(data) {
         config.patch[settings.game][type] = data;
         writeFileSync(path.join(__dirname, "./config/bot.json"), JSON.stringify(config));
+        log.ok(`Set ${type == `relZone` ? `Fishing` : `Chat`} Zone Succesfully!`);
+      } else {
+        log.send(`Canceled.`)
       }
-      log.ok(`Set ${type == `relZone` ? `Fishing` : `Chat`} Zone Succesfully!`);
+
       win.focus();
       return;
     }
