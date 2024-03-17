@@ -36,7 +36,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
       let bobber;
       if(autoThreshold) {
         bobber = this._findMost(rgb);
-        if(process.env.NODE_ENV == `dev`) {
+        if(bobber && process.env.NODE_ENV == `dev`) {
           log.err(`[DEBUG] Color Found: ${bobber.color}, at: ${bobber.pos.x},${bobber.pos.y}`);
         }
         let thCoof;
@@ -139,8 +139,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
     },
 
     _findMost(rgb) {
-      let initialLowerLimit = game == `Retail` || game == `Classic` || game == `LK Classic` ? 50 : 100;
-      isBobber = bobberColor == `red` ? isRed(0, 50, initialLowerLimit) : isBlue(0, 50, initialLowerLimit);
+      isBobber = bobberColor == `red` ? isRed(0, 50, 100) : isBlue(0, 50, 100);
       let initialThColors = rgb.findColors({
         isColor: isBobber,
         saveColor: true
@@ -151,14 +150,8 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
         let [rA, gA, bA] = a.color;
         let [rB, gB, bB] = b.color;
 
-        let closenessARed = Math.abs(gA - bA);
-        let closenessBRed = Math.abs(gB - bB);
-
-        let closenessABlue = Math.abs(rA - gA);
-        let closenessBBlue = Math.abs(rB - gB);
-
-        let colorA = bobberColor == `red` ? (rA - Math.max(gA, bA)) - closenessARed : (bA - Math.max(gA, rA)) - closenessABlue;
-        let colorB = bobberColor == `red` ? (rB - Math.max(gB, bB)) - closenessBRed : (bB - Math.max(gB, rB)) - closenessBBlue;
+        let colorA = bobberColor == `red` ? (rA - Math.max(gA, bA)) : (bA - Math.max(gA, rA));
+        let colorB = bobberColor == `red` ? (rB - Math.max(gB, bB)) : (bB - Math.max(gB, rB));
 
         if(colorA > colorB) {
           return a;
