@@ -12,11 +12,11 @@
 - [Disclaimer](#disclaimer-warning)
 - [Guide](#guide-blue_book)
   - [Hints and Issues](#hints-and-issues)
-- [Intensity](#intensity-red_circle)
-- [Sensitivity](#sensitivity-red_circle)
+  - [Intensity](#intensity)
+  - [Sensitivity](#sensitivity)
+  - [Interactive Key](#interactive-key)
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
-- [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
 - [Download](#download-open_file_folder)
 - [AutoFish Premium](#autofish-premiumcrown)
 
@@ -72,7 +72,7 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 - In very dark zones, consider using custom bobbers with distinctive red or blue colors instead of the default one.
 - The bot will auto-confirm Soulbound items.
 
-## Intensity :red_circle:
+### Intensity 
 
 Intensity value serves as a color threshold below which the bot will ignore all the corresponding colors.
 
@@ -80,9 +80,23 @@ Increasing the intensity value will make the bot recognize fewer red colors, whi
 
 Simply put: decrease this value, if the bot can't find the bobber (e.g. at night, bad weather). Increase this value if you want the bot to ignore some reddish/bluish elements in the Fishing Zone and recognize only the bobber.`
 
-## Sensitivity :red_circle:
+### Sensitivity 
 
 If the bot clicks too early, decrease this value. If the bot clicks too late or doesn't click at all, increase this value.
+
+### Interactive key
+
+You can fish with interactive key in the game. If you want the bot to use it instead of mouse movement, turn on Int. Key option and assign the same key you use for interactive key in the game.
+
+<p align="center">
+<img src="guide_img/intkey.jpg" align="center">
+</p>
+
+To make the interactive key work, you should use this commands (write them in the chat and press enter, one by one):
+```
+/console SoftTargetInteractArc 2  - This will allow you to interact with the bobber no matter which way you are facing.
+/console SoftTargetInteractRange 30  - This increases the interaction range to 30 yards. Adjust to your needs
+```
 
 ## Applying Lures :pushpin:
 For **Retail** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
@@ -113,20 +127,6 @@ For **Retail** and **Classic/Vanilla** you need to use a macro that will apply t
 Or
 ```
 /script UseContainerItem(0,2); PickupInventoryItem(16);
-```
-
-## Interactive key
-
-You can fish with interactive key in the game. If you want the bot to use it instead of mouse movement, turn on Int. Key option and assign the same key you use for interactive key in the game.
-
-<p align="center">
-<img src="guide_img/intkey.jpg" align="center">
-</p>
-
-To make the interactive key work, you should use this commands (write them in the chat and press enter, one by one):
-```
-/console SoftTargetInteractArc 2  - This will allow you to interact with the bobber no matter which way you are facing.
-/console SoftTargetInteractRange 30  - This increases the interaction range to 30 yards. Adjust to your needs
 ```
 
 ## AutoFish Premium	:crown:
