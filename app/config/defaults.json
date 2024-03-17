@@ -38,7 +38,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 25,
+      "maxFishTime": 19,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 85,
       "relZone": {
@@ -52,7 +52,7 @@
         "width": 0.01822916,
         "height": 0.01388888
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -175,7 +175,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 25,
+      "maxFishTime": 17,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 85,
       "relZone": {
@@ -189,7 +189,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -303,7 +303,7 @@
       "castDelay": 3500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 25,
+      "maxFishTime": 29,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 85,
       "relZone": {
@@ -317,7 +317,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
@@ -431,7 +431,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 18,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -445,7 +445,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -539,7 +539,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 18,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -553,7 +553,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -649,7 +649,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 18,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -663,7 +663,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -759,7 +759,7 @@
       "castDelay": 2500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 16,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "ignoreInterrupted": {
@@ -787,7 +787,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -883,7 +883,7 @@
       "castDelay": 3500,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 21,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "ignoreInterrupted": {
@@ -911,7 +911,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
@@ -1009,7 +1009,7 @@
       "castDelay": 4000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 29,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
@@ -1023,7 +1023,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 50,
+      "checkingDelay": 0,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
@@ -1121,7 +1121,7 @@
       "castDelay": 4000,
       "sleepAfterHook": true,
       "afterHookDelay": { "from": 150, "to": 400 },
-      "maxFishTime": 45,
+      "maxFishTime": 29,
       "maxFishTimeAfter": "recast",
       "highlightPercent": 100,
       "relZone": {
