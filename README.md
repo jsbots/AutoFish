@@ -12,8 +12,8 @@
 - [Disclaimer](#disclaimer-warning)
 - [Guide](#guide-blue_book)
   - [Hints and Issues](#hints-and-issues)
-- [Threshold](#threshold-red_circle)
-- [Fishing zone](#fishing-zone-dart)
+- [Intensity](#intensity-red_circle)
+- [Sensitivity](#sensitivity-red_circle)
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Soulbound items](#soulbound-items-auto-confirmation-large_blue_diamond)
@@ -22,13 +22,15 @@
 
 ## Fishing bot :fish:
 
-This is a fishing bot for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron), [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate the fishing process in a manner that mimics human behavior, and also [tesseract.js](https://github.com/naptha/tesseract.js) for loot filtering. This is a so-called "pixel bot": it works with pixels only, without modifying the game's memory or utilizing any AI vision libraries.
+This is a fishing bot for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example with some tweaks in the code it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron), [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate the fishing process in a manner that mimics human behavior, and also [tesseract.js](https://github.com/naptha/tesseract.js) for loot filtering.
+
+This is a so-called "pixel bot": it works with pixels only, without modifying the game's memory or utilizing any AI vision libraries.
 
 <p align="center">
 <img src="guide_img/UI.jpg" width="640">
 </p>
 
-For more detailed review you can watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
+For video review you can watch this (pretty old) <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
 
 ## Disclaimer :warning:
 
@@ -42,77 +44,48 @@ For more detailed review you can watch <img src="https://upload.wikimedia.org/wi
 
 ## Guide :blue_book:
 
-1. Launch the game.
-2. Are you using **Filter** feature?
-   - Yes: Turn off **Auto Loot** in the game, set **UI scale** in the game to default, turn on **Open loot window at mouse** in the game.
-   - No: Turn on **Auto Loot** in the game.
-3. Assign your 'fishing' and 'lures' keys in the game and assign the same keys for the bot.
-4. Find a place to fish.
-5. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the switch you selected). Keep in mind that the **Fishing Zone** functions as an overlay, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
+1. Launch the game and the bot.
+2. Choose the game you want the bot to work with.
+
+<p align="center">
+<img src="guide_img/chooseGame.jpg">
+</p>
+
+4. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the color you selected). Keep in mind that the **Fishing Zone** functions as an overlay, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
+
+<p align="center">
+<img src="guide_img/chooseFishZone.jpg">
+</p>
+
 6. Press the Start button and don't use your mouse and keyboard.
 7. To stop the bot, press your designated stop key (default: delete).
 
-
 ### Hints and Issues
 
-- **Default UI only**: The bot has been exclusively tested with the default user interface (UI) and default UI scale, without any addons. Therefore, before using the bot, ensure that all addons are turned off and the UI scale is set to default. This is particularly important for fishing addons like Fishing Buddy and others. Disable any UI features they provide.
-- **Filter Language**: If you use Filter feature in different from English languages for the first time, wait until the bot downloads the data for your language.
-- **If doesn't press anything**: If the bot doesn't move/press/clicks your mouse, try to launch it as administrator.
-- **2 monitors**: The bot works properly only with 1 monitor, so if you use multiple monitors, launch the bot and the game on **the primary one**.
-- **Fishing Buddy**: you can set *Loot Window Closing Delay* value to 0 if use some special addons that hide loot window. You can also use FB to improve sound detection.
-- **Sound Detection** (Premium version): feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
+- If the bot misses too much, try to fish in 1st person view.
+- The bot works only with default UI: no UI scaling, no UI addons and so on.  
+- If the bot doesn't click/press, run it as admin.
+- The bot works only on primary monitor.
+- If you use an addon that removes loot window, you can set *Loot Window Closing Delay* value to 0 if use some special addons that hide loot window.
+- Different camera directions can affect the brightness, size, and visibility of the bobber.
+- You can Adjust gamma, brightness, and contrast settings to enhance the brightness of the bobber.
+- In very dark zones, consider using custom bobbers with distinctive red or blue colors instead of the default one.
+- The bot will auto-confirm Soulbound items.
 
-## Threshold :red_circle:
+## Intensity :red_circle:
 
-*Since 2.0.0 Threshold value is obsolete and available only in Manual mode*
+Intensity value serves as a color threshold below which the bot will ignore all the corresponding colors.
 
-The Threshold value represents an RGB value of a red or blue color, depending on the switch used. It serves as a color threshold below which the bot will ignore all corresponding colors.
+Increasing the intensity value will make the bot recognize fewer red colors, while decreasing this value will cause the bot to recognize more red colors on the screen.
 
-For instance, if the red switch is used and the threshold is set to 60, the bot will only recognize colors that are redder than this threshold value. This allows the bot to focus on the reddest parts of the screen, such as a red feather on the bobber.
+Simply put: decrease this value, if the bot can't find the bobber (e.g. at night, bad weather). Increase this value if you want the bot to ignore some reddish/bluish elements in the Fishing Zone and recognize only the bobber.`
 
-Increasing the threshold value will result in the bot recognizing fewer red colors, while decreasing the threshold value will cause the bot to recognize more red colors on the screen.
+## Sensitivity :red_circle:
 
-### Errors (Manual mode only)
-
-Are you encountering an error?
-
-> Yes, it says: *Found red/blue colors before casting. Change your Fishing Zone or increase the Threshold value or change the fishing place.*
-
-Adjust the position or size of your **Fishing Zone** to exclude any reddish or bluish elements. If you are certain there are none, you may need to increase the **Threshold** or switch to the other color.
-
-> No, but the bot recasts all the time and can't find the bobber. (as says in the log)
-
-It indicates that you may have set the **Threshold** value too high. Try decreasing it. If the error persists, there might be an issue with the size or position of your **Fishing Zone**.
-
-> No, but the bot clicks too early before fish is even hooked.
-
-There are a couple of solutions for this. First, try switching to the 1st person view. If that doesn't help, navigate to the **Advanced Settings** and adjust either the **Bobber Sensitivity** (disable the Auto adjust Sensitivity and Density option) or the **Bobber Density** (particularly if it's not Retail) values in the **Critical** section.
-
-> No, the bot finds the bobber (as says in the log) but it doesn't react to the bobber being hooked.
-
-Then you do the opposite to the previous issue: navigate to the **Advanced Settings** and decrease either the **Bobber Sensitivity** (particularly if it's Retail) or the **Bobber Density** (especially if it's not Retail) values in the **Critical** section. In the case of Vanilla (splash), you can decrease the Splash Color value."
-
-## Fishing Zone :dart:
-
-The Fishing Zone is an adjustable area in the water where your bobber may land. The bot specifically searches for the bobber within this designated area.
-
-The Fishing Zone is displayed as an overlay window, meaning that the bot will also recognize the colors of your character and user interface.
-
-To assist you in assessing the presence of red or blue colors within the Fishing Zone, there is a "Check" button. This feature relies on the Threshold value. If, upon pressing the Check button, the window turns red, close the window, gradually increase the Threshold value, and test again. Repeat this process until the window turns green.
-
-A general guideline to follow is that the better you can perceive the red or blue feather, the better the bot will be able to detect it as well. Consider the following tips:
-
-- Optimize your video settings to enhance visibility, excluding weather effects.
-- Disable weather effects to prevent the bot from confusing rain or fog with bobber movements. However, note that extremely harsh weather conditions, such as blizzards, may significantly reduce the bot's efficiency. In such cases, you can either find an alternative fishing spot, switch between blue and red feathers, or wait for better weather.
-- Keep in mind that different camera directions can affect the brightness, size, and visibility of the red feather on the bobber, subsequently impacting the bot's performance. While the specific location may not be critical, the direction and positioning are crucial.
-- Although camera position is not highly significant, in dark or snowy areas, a closer view of the bobber might improve visibility. Generally, a normal third-person view is ideal.
-- Adjust gamma, brightness, and contrast settings to enhance the brightness and vibrancy of the bobber.
-- In very dark zones, consider using alternative bobbers with distinctive red or blue colors instead of the default one.
-
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo) for video explanation.
+If the bot clicks too early, decrease this value. If the bot clicks too late or doesn't click at all, increase this value.
 
 ## Applying Lures :pushpin:
-For **Retail** and **Classic/Vanilla** type of fishing you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
+For **Retail** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
 
 **Retail**:
 
@@ -144,22 +117,17 @@ Or
 
 ## Interactive key
 
-You can use interactive key to catch your fish, if you want to use it with the bot, turn on Int. Key option and assign the same key you use for interactive key in the game.
+You can fish with interactive key in the game. If you want the bot to use it instead of mouse movement, turn on Int. Key option and assign the same key you use for interactive key in the game.
 
 <p align="center">
 <img src="guide_img/intkey.jpg" align="center">
 </p>
 
-To make the interactive key work, you use this commands (write them in the chat and press enter, one by one):
+To make the interactive key work, you should use this commands (write them in the chat and press enter, one by one):
 ```
 /console SoftTargetInteractArc 2  - This will allow you to interact with the bobber no matter which way you are facing.
 /console SoftTargetInteractRange 30  - This increases the interaction range to 30 yards. Adjust to your needs
 ```
-
-## Soulbound items auto-confirmation :large_blue_diamond:
-
-If the item requires confirmation on looting, the bot will confirm it automatically. **This won't work with AutoLoot turned on**, so if you need such items always use **Filter** feature.
-
 
 ## AutoFish Premium	:crown:
 
@@ -210,7 +178,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-The Multiple Windows feature enables you to fish simultaneously in multiple game windows, with support for up to 4 windows. The bot will switch between the game windows as needed for casting and catching fish. This feature enhances your fishing efficiency by allowing you to manage multiple fishing spots or engage in multi-character fishing.
+Multiple Fishing mode feature enables you to fish simultaneously in multiple game windows, with support for up to 4 windows. The bot will switch between the game windows as needed for casting and catching fish.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
 
@@ -218,9 +186,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-To facilitate the use of the bot when you have a single monitor and cannot run it in the background or set up a virtual machine, the Alt-Tab Fishing mode is available. This mode enables the bot to focus on the game window only during the casting and fish-catching process. After that, it will automatically switch back to the previous window using the Alt + Tab keys.
-
-With Alt-Tab Fishing mode, you can engage in other activities such as watching videos, browsing the internet, or reading a book while the bot continues to monitor the bobber in the background. It's important to note that this mode requires DirectX11 (turned on in the game) for proper functionality.
+Alt-Tab Fishing Mode will simulate so-called "afk fishing": the bot will focus the window only when your character needs to cast, catch or perform any action and then it will lose focus and return you to the previous window by pressing alt-tab.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Alt-Tab Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
 
@@ -288,7 +254,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <img src="guide_img/rngMove.jpg" align="center">
 </p>
 
-The bot will randomly move and change your camera view from time to time within the given value. It will also balance itself every n minutes (default: 5) and return to the initial camera and character position.  
+The bot will randomly move and change your camera direction from time to time within the provided radius.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Random Camera/Character Movements Test Video](https://youtu.be/o1hU3fNn4uk)
 
@@ -318,14 +284,10 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.4.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.7.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.6.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
-
-The software is open-source, allowing you to clone the repository, review the code, and launch it directly from the command-line interface if you have concerns about downloading the executable file.
+AutoFish 2.9.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 If you choose to download the executable file, it functions as a setup file that installs the bot in the following directory: *c:/users/your_user/App Data/Local/random_folder/*. Additionally, a shortcut with a randomly generated name will be created on your desktop.
 
 If you wish to uninstall the bot, you can do so through the Windows Settings. The uninstaller will have the same name as the shortcut on your desktop.
-
-Please note that if you download a new setup file, it is necessary to uninstall the previous version of AutoFish before proceeding. The application and folder names are generated randomly during each installation, preventing automatic installation of a new version in the previous folder.
