@@ -39,7 +39,10 @@ const createFishingZone = ({pos, screenSize, type, config, settings, scale}, fin
     ipcMain.removeAllListeners(`fishingZone-cancel`);
     ipcMain.removeAllListeners(`fishingZone-ok`);
 		ipcMain.removeHandler(`fishingZone-check`);
+		ipcMain.removeHandler(`fishingZone-bobberColor`);
   });
+
+	ipcMain.handle(`fishingZone-bobberColor`, () => settings.bobberColor)
 
   ipcMain.on(`fishingZone-cancel`, () => {
     finished();
