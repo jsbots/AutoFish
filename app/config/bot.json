@@ -177,7 +177,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 17,
       "maxFishTimeAfter": "recast",
-      "highlightPercent": 85,
+      "highlightPercent": 100,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
@@ -305,7 +305,7 @@
       "afterHookDelay": { "from": 150, "to": 400 },
       "maxFishTime": 29,
       "maxFishTimeAfter": "recast",
-      "highlightPercent": 85,
+      "highlightPercent": 100,
       "relZone": {
         "x": 0.34427083333333336,
         "y": 0.08518518518518518,
