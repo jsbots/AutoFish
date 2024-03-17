@@ -29,7 +29,6 @@
       "likeHumanFineTune": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -73,9 +72,6 @@
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
       "bobberSensitivityPrint": true,
-      "bobberSensitivity": 5,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -85,16 +81,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -169,7 +165,6 @@
       "likeHumanFineTune": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -212,9 +207,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -224,16 +216,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22526,
           "width": 0.082723,
-          "height": 0.022135
+          "height": 0.04427
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.20185,
           "width": 0.073958,
-          "height": 0.021296
+          "height": 0.042592
         }
       },
       "lootWindow": {
@@ -300,7 +292,6 @@
       "likeHumanFineTune": true,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -343,9 +334,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -355,16 +343,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22526,
           "width": 0.082723,
-          "height": 0.022135
+          "height": 0.04427
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.20185,
           "width": 0.073958,
-          "height": 0.021296
+          "height": 0.042592
         }
       },
       "lootWindow": {
@@ -431,7 +419,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -474,9 +461,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -486,16 +470,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -542,7 +526,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -585,9 +568,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -597,16 +577,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -655,7 +635,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -698,9 +677,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -710,16 +686,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41142,
+          "x": 0.09004392,
           "y": 0.22786,
           "width": 0.08272,
-          "height": 0.01953
+          "height": 0.03906
         },
         "1920": {
-          "x": 0.43697,
+          "x": 0.08177083,
           "y": 0.16203,
           "width": 0.05885,
-          "height": 0.01388
+          "height": 0.02776
         }
       },
       "lootWindow": {
@@ -768,7 +744,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -825,9 +800,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -837,16 +809,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41288,
+          "x": 0.09004392,
           "y": 0.22526,
           "width": 0.08345,
-          "height": 0.02604
+          "height": 0.05208
         },
         "1920": {
-          "x": 0.41927,
+          "x": 0.08177083,
           "y": 0.20462,
           "width": 0.07552,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -895,7 +867,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -952,9 +923,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -964,16 +932,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -1024,7 +992,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -1067,9 +1034,6 @@
       "logOutAfter": { "from": 30, "to": 90 },
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
-      "bobberSensitivity": 1,
-      "bobberDensity": 1,
-      "autoSensDens": true,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -1079,16 +1043,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -1139,7 +1103,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -1183,10 +1146,7 @@
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
       "bobberSensitivityPrint": true,
-      "bobberSensitivity": 20,
       "splashColor": 220,
-      "bobberDensity": 1,
-      "autoSensDens": false,
       "findBobberDirection": "reverse",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -1196,16 +1156,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {
@@ -1257,7 +1217,6 @@
       "likeHumanFineTune": false,
       "dynamicThreshold": false,
       "dynamicThresholdValue": 5,
-      "colorSwitchOn": false,
       "useCustomWindow": false,
       "hideWin": false,
       "customWindow": "",
@@ -1301,9 +1260,6 @@
       "logOutUseMacro": false,
       "logOutMacroKey": "7",
       "bobberSensitivityPrint": true,
-      "bobberSensitivity": 3,
-      "bobberDensity": 1,
-      "autoSensDens": false,
       "findBobberDirection": "center",
       "afterTimer": "Stop",
       "hsKey": "6",
@@ -1313,16 +1269,16 @@
       "ignorePreliminary": false,
       "confirmationWindow": {
         "1536": {
-          "x": 0.41215,
+          "x": 0.09004392,
           "y": 0.21875,
           "width": 0.082723,
-          "height": 0.020833
+          "height": 0.041666
         },
         "1920": {
-          "x": 0.42031,
+          "x": 0.08177083,
           "y": 0.19722,
           "width": 0.07447,
-          "height": 0.01851
+          "height": 0.03702
         }
       },
       "lootWindow": {

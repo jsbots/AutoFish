@@ -1,12 +1,26 @@
 {
   "game": "Retail",
   "fishingKey": "1",
-  "stopKey": "delete",
   "intKey": "f",
   "useInt": false,
+  "stopKey": "delete",
   "threshold": 60,
-  "bobberColor": "red",
+  "bobberSensitivity": {
+    "Retail": 25,
+    "LK Classic": 7,
+    "Classic": 7,
+    "Leg": 7,
+    "MoP": 7,
+    "Cata": 7,
+    "LK Private": 7,
+    "TBC": 7,
+    "Vanilla": 7,
+    "Vanilla (splash)": 10
+  },
+  "autoSens": true,
   "autoTh": true,
+  "autoColor": false,
+  "bobberColor": "red",
   "initial": true,
   "initialZone": true
 }
