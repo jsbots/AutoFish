@@ -66,10 +66,10 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 - The bot works only with default UI: no UI scaling, no UI addons and so on.  
 - If the bot doesn't click/press, run it as admin.
 - The bot works only on primary monitor.
-- If you use an addon that removes loot window, you can set *Loot Window Closing Delay* value to 0 if use some special addons that hide loot window.
 - Different camera directions can affect the brightness, size, and visibility of the bobber.
 - You can Adjust gamma, brightness, and contrast settings to enhance the brightness of the bobber.
 - In very dark zones, consider using custom bobbers with distinctive red or blue colors instead of the default one.
+- If you use an addon that removes loot window, you can set *Loot Window Closing Delay* value to 0 to make it work faster.
 - The bot will auto-confirm Soulbound items.
 
 ### Intensity 
