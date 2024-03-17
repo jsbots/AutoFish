@@ -214,7 +214,7 @@ wrapInLabel(
     elt(
       "div",
       { className: "settings_section threshold_settings" },
-      elt('input', {type: `button`,  disabled: !config.autoTh, name: `autoColor`, checked: config.autoTh && config.autoColor,  className: `auto_button autoColor ${config.autoColor && config.autoTh ? `auto_button_on` : ``}`, value: `Auto`}),
+      elt('input', {type: `button`,  disabled: !config.autoTh || config.game == `Vanilla (splash)`, name: `autoColor`, checked: config.autoTh && config.autoColor,  className: `auto_button autoColor ${config.autoColor && config.autoTh && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
       elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoTh`, checked: config.autoTh,  className: `auto_button autoTh ${config.autoTh && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
       elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoSens`, checked: config.autoSens, className: `auto_button autoSens ${config.autoSens && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
 
