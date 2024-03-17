@@ -44,7 +44,7 @@ class AutoFish {
     const footer = elt(`p`, { className: "version" }, versionNode, donateLink, premiumIcon);
 
     ipcRenderer.on("set-version", (event, version) => {
-      versionNode.textContent = `ver. 2.6.0 Public | `;
+      versionNode.textContent = `ver. 2.7.0 Public | `;
     });
 
     ipcRenderer.on('start-by-fishing-key', () => {
