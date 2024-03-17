@@ -178,7 +178,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
             const img = await Jimp.read(resultRgb);
             const date = new Date()
             const name = `test-filledBobber-CHANGING-COLOR-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.png`
-            img.write(name);
+            img.write(`${__dirname}/../debug/${name}`);
           }
 
           throw new Error(`color`);
@@ -198,7 +198,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, threshold, bob
         const img = await Jimp.read(resultRgb);
         const date = new Date()
         const name = `test-filledBobber-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.png`
-        img.write(name);
+        img.write(`${__dirname}/../debug/${name}`);
       }
 
       let mostTop = memory.reduce((a, b) => a.y < b.y ? a : b);

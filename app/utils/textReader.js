@@ -9,6 +9,11 @@ const setWorker = async (language) => {
 
 const readTextFrom = async (buffer, scale) => {
   let img = await Jimp.read(buffer);
+  if(process.env.NODE_ENV == `dev`) {
+    const date = new Date()
+    const name = `test-lootZone-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.png`
+    img.write(name);
+  }
   img.greyscale().contrast(0.3).invert().scale(scale);
   let result = await worker.recognize(await img.getBase64Async(Jimp.MIME_PNG));
   let words = result.data.words.map(({ text, baseline }) => ({

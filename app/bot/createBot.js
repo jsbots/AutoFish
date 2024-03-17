@@ -394,6 +394,13 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         return pos;
     }
 
+    if(process.env.NODE_ENV == `dev`) {
+      screen.config.highlightOpacity = 1;
+      screen.config.highlightDurationMs = 250;
+      const highlightRegion = new Region(screenSize.x + (pos.x - 10), screenSize.y + (pos.y - 10), 10, 10);
+      await screen.highlight(highlightRegion);
+    }
+
     if (config.reaction) {
       await sleep(random(config.reactionDelay.from, config.reactionDelay.to));
     }
@@ -409,7 +416,16 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     if(settings.useInt && settings.soundDetection) {
       return true;
     }
-    return await fishingZone.findBobber(findBobber.memory, detectSens(), log);
+    const pos = await fishingZone.findBobber(findBobber.memory, detectSens(), log);
+
+    if(process.env.NODE_ENV == `dev`) {
+      screen.config.highlightOpacity = 1;
+      screen.config.highlightDurationMs = 250;
+      const highlightRegion = new Region(screenSize.x + (pos.x - 10), screenSize.y + (pos.y - 10), 10, 10);
+      await screen.highlight(highlightRegion);
+    }
+
+    return pos;
   };
 
   findBobber.memory = null;

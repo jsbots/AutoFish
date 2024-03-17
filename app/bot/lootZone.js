@@ -1,4 +1,5 @@
 const createRgb = require('../utils/rgb.js');
+const Jimp = require('jimp');
 
 const createLootZone = ({ getDataFrom, zone }) => {
   let colors = {
@@ -10,6 +11,14 @@ const createLootZone = ({ getDataFrom, zone }) => {
   return {
     async findItems(...types) {
       let rgb = createRgb(await getDataFrom(zone));
+
+      if(process.env.NODE_ENV == `dev`) {
+        const img = await Jimp.read(rgb.getBitmap());
+        const date = new Date()
+        const name = `test-lootZone-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}.png`
+        img.write(`${__dirname}/../debug/${name}`);
+      }
+
       return types.some(type => rgb.findColors({
         isColor: colors[type],
         atFirstMet: true

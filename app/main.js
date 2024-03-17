@@ -382,6 +382,31 @@ app.whenReady().then(() => {
       { type: "separator" },
     ],
   },
+  {
+  label: `Debug`,
+  submenu: [
+    {
+      label: "Debugging On",
+      type: `checkbox`,
+      checked: false,
+      click: () => {
+        if(process.env.NODE_ENV != `dev`) {
+          process.env.NODE_ENV = `dev`
+        } else {
+          process.env.NODE_ENV = `prod`
+        }
+      },
+    },
+    {
+      label: "Open Debugging Folder",
+      click: () => {
+        shell.openExternal(`${__dirname}/debug`);
+      },
+    },
+    { role: 'toggleDevTools' },
+    { type: "separator" },
+  ],
+},
   ])
 
   Menu.setApplicationMenu(menu);
