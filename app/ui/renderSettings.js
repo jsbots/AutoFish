@@ -1,56 +1,59 @@
 const elt = require("./utils/elt.js");
 const wrapInLabel = require("./utils/wrapInLabel.js");
 
-const renderBobberImg = (bobberColor, autoTh) => {
-  return elt(`img`, {className: `threshold_canvas ${autoTh ? `bobberColorSwitch_disabled` : ``}`, src:`img/bobber_${bobberColor}.png`, height: 49});
-};
-
-const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
-	if(threshold < 1) threshold = 1;
-	else if(threshold > 150) threshold = 150;
-  const bobberColorSwitch = elt(`radio`, { className: `bobberColorSwitch ${autoTh ? `bobberColorSwitch_disabled` : ``}`,
+const renderColorSwitch = ({bobberColor, autoColor}) => {
+  const bobberColorSwitch = elt(`radio`, { className: `bobberColorSwitch`,
                                 name: `bobberColor`,
                                 title: `Switch between blue and red feathers.`,
                                 value: bobberColor,
-                                style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgb(100, 0, 0), red` : `rgb(0, 90, 200), rgb(0, 0, 100)`});`
-                              }, elt(`div`, {className: `switch_thumb ${bobberColor == `red` ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`}, `${bobberColor == `red` ? `Red Feather` : `Blue Feather`}`));
-if(game == `Vanilla (splash)`) autoTh = false;
-const autoThSwitch = elt(`radio`, { className: `autoTh`,
-                              name: `autoTh`,
-                              title: `Switch between auto and manual modes.`,
-                              value: autoTh,
-                              disabled: game == `Vanilla (splash)`,
-                              style: `background-image: linear-gradient(to right, ${autoTh ? `#663c20, #fe954d` : `#a8a8a8, #4b4b4b`});`
-                            }, elt(`div`, {className: `switch_thumb ${autoTh ? `switch_thumb_left` : `switch_thumb_right`}`}), elt(`span`, {className: `bobberColorSwitchText`},  `${autoTh ? `Auto` : `Manual`}`));
+                                style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgba(100, 0, 0, .8), rgba(255, 0, 0, .8)` : `rgba(0, 90, 200, .8), rgba(0, 0, 100, .8)`});`
+                              }, elt(`div`, {className: `switch_thumb ${bobberColor == `red` ? `switch_thumb_left` : `switch_thumb_right`}`}));
+ return bobberColorSwitch;
+}
 
-  const range = elt(`input`, { type: `range`, min: 1, max: 150, value: threshold, name: `threshold`, disabled: autoTh, className: `${autoTh ? `threshold_disabled` : ``}` });
-  if(bobberColor == `blue`) {
-    document.styleSheets[0].rules[81].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 100), rgb(0, 90, 200))"
-  } else {
-    document.styleSheets[0].rules[81].style.backgroundImage = "linear-gradient(to right, rgb(100, 0, 0), rgb(250, 0, 0))"
+
+const renderBobberSensitivity = ({game, bobberSensitivity, autoSens}) => {
+  let min = 1;
+  let max = 10;
+
+  if(game == `Retail` || game == `Vanilla (splash)`) {
+    min = 1;
+    max = 30;
   }
 
-  const number = elt(`input`, { type: `number`, className: `threshold_number_input`, value: threshold, disabled: autoTh, name: `threshold` });
+  if(game == `Vanilla (splash)`) {
+    autoSens = false;
+  }
 
-  let bobberImg = elt(`div`, {id: `bobber`, style: `background-color: ${bobberColor == `blue` ? `rgb(0, 0, ${150 + Number(threshold)})` : `rgb(${150 + Number(threshold)}, 0, 0)`}`}, elt(`div`, {id: `bobberHandle`, style: `background-color: ${bobberColor == `blue` ? `rgb(0, 0, ${150 + Number(threshold)})` : `rgb(${150 + Number(threshold)}, 0, 0)`}`}));
-  let waterImg = elt(`div`, {id: "water"}, bobberImg);
+  if(bobberSensitivity > max) bobberSensitivity = max;
+  if(bobberSensitivity < min) bobberSensitivity = min;
 
-  const bobberContainer = elt(`div`, { className: `bobberContainer` }, waterImg, number, elt(`div`, {id: `grass`}));
-  return elt(`div`, { className: `thresholdRange` }, bobberColorSwitch, range, autoThSwitch, bobberContainer);
+  let bobberSensitivityWin = elt(`input`, {type: `number`, name: `bobberSensitivity`, value: bobberSensitivity[game], disabled: autoSens});
+
+  return elt(`div`, {className: `sensitivityContainer`}, elt('input', {type: `range`, min, max,  value: bobberSensitivity[game], disabled: autoSens, className: `${autoSens ? `threshold_disabled` : ``}` , oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}), bobberSensitivityWin);
 };
 
-const renderApplyFatigue = ({applyFatigue = false}) => elt('input', {name: "applyFatigue", type: "checkbox", checked: applyFatigue});
-const renderApplyFatigueEvery = ({applyFatigue = false, applyFatigueEvery = {from: 0, to: 0}}) => {
-  return elt(`div`, {"data-collection": `applyFatigueEvery`}, elt(`span`, {className: `option_text`}, `from:`),
-  elt('input', {type: `number`, name: `from`, value: applyFatigueEvery.from, disabled: !applyFatigue}), elt(`span`, {className: `option_text`}, `to:`),
-  elt('input', {type: `number`, name: `to`, value: applyFatigueEvery.to, disabled: !applyFatigue})
-  );
+const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
+    if(threshold < 1) threshold = 1;
+    else if(threshold > 150) threshold = 150;
+
+    if(game == `Vanilla (splash)`) autoTh = false;
+
+    const range = elt(`input`, { type: `range`, min: 1, max: 150, value: threshold, name: `threshold`, disabled: autoTh, className: `${autoTh ? `threshold_disabled` : ``}` });
+    const number = elt(`input`, { type: `number`, className: `threshold_number_input`, value: threshold, disabled: autoTh, name: `threshold` });
+
+    const bobberContainer = elt(`div`, null, number);
+    const rangeContainer = elt(`div`, { className: `rangeContainer`}, range, bobberContainer)
+
+    if(bobberColor == `blue`) {
+      document.styleSheets[0].rules[80].style.backgroundImage = "linear-gradient(to right, rgb(0, 0, 100), rgb(0, 90, 200))"
+    } else {
+      document.styleSheets[0].rules[80].style.backgroundImage = "linear-gradient(to right, rgb(100, 0, 0), rgb(250, 0, 0))"
+    }
+
+
+    return elt(`div`, { className: `thresholdRange` }, rangeContainer); // autoThSwitch
 };
-const renderApplyFatigueRate = ({applyFatigue = false, applyFatigueRate = 0.5}) => {
-  const winRange = elt(`input`, {type: `number`, disabled: !applyFatigue, value: applyFatigueRate, name: "applyFatigueRate"})
-  const range = elt('input', {type: `range`, step: 0.1, max: 10, disabled: !applyFatigue,  className: applyFatigue ? `` : `threshold_disabled`, value: applyFatigueRate, oninput: function() {winRange.value = this.value}, name: "applyFatigueRate"});
-  return elt(`div`, null, range, winRange);
-}
 
 const renderGameNames = ({game}) => {
   const gamesOfficial = [
@@ -69,8 +72,6 @@ const renderGameNames = ({game}) => {
     "Vanilla (splash)"
   ];
 
-  const gamesCustom = ["Turtle WoW"];
-
   return elt(
     "select",
     { name: "game", className: "option game-option" },
@@ -79,12 +80,10 @@ const renderGameNames = ({game}) => {
         )),
     elt(`optgroup`, {label: `Private-like`}, ...gamesPrivate.map((name) =>
           elt("option", { selected: name == game }, name)
-        )),
-    elt(`optgroup`, {label: `Custom-like`}, ...gamesCustom.map((name) =>
-         elt("option", { selected: name == game }, name)
-       ))
+        ))
   );
 };
+
 
 const renderTimer = ({timer}) => {
   return elt(
@@ -209,15 +208,23 @@ wrapInLabel(
       wrapInLabel("", renderChatZone(config)),
       wrapInLabel("", renderDetectionZone(config)),
       wrapInLabel("", renderAdvancedSettings(config))),
-    elt("p", {className: 'settings_header'}, "🚧"),
+
+    elt("p", {className: 'settings_header'}, "🎣"),
+
     elt(
       "div",
       { className: "settings_section threshold_settings" },
-      wrapInLabel("",
-        renderThreshold(config),
-        `The bot will ignore all red/blue colors below this value. The higher the value the more red/blue colors the bot will ignore. The lower the value the more red/blue colors the bot will find. Min value: 10, max value: 150.  Increase this value if the bot can't pass the preliminary checks for red/blue colors in the fishing zone and there's nothing except the bobber there (e.g. red bottom in Durotar). Decrease this value, if the bobber is very dark and the bot can't find it (e.g. bad lighting, bad weather).`
-      ),
-    )
+      elt('input', {type: `button`,  disabled: !config.autoTh, name: `autoColor`, checked: config.autoTh && config.autoColor,  className: `auto_button autoColor ${config.autoColor && config.autoTh ? `auto_button_on` : ``}`, value: `Auto`}),
+      elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoTh`, checked: config.autoTh,  className: `auto_button autoTh ${config.autoTh && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
+      elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoSens`, checked: config.autoSens, className: `auto_button autoSens ${config.autoSens && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
+
+      wrapInLabel("Color: ", renderColorSwitch(config), `The color the bot will search within Fishing Zone (${config.bobberColor}, in your case). If the water and environment is bluish, choose red color. If the water and environment is reddish, choose blue color.`),
+      wrapInLabel(`Intensity: `,
+      renderThreshold(config),`Decrease this value, if the bot can't find the bobber (e.g. at night, bad weather). Increase this value if you want the bot to ignore more ${config.bobberColor} colors.`),
+      wrapInLabel("Sensitivity: ", renderBobberSensitivity(config), config.game == `Vanilla (splash)` ?
+       `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value. If in Auto mode: The bot will auto-adjust both sensitivity value per each cast.`
+       : `How sensitive the bot is to any movements (jerking, plunging) of the bobber. If the bot clicks too early, decrease this value (don't confuse it with when the bot missclicks on purpose). If the bot clicks on the bobber too late (or doesn't click at all), increase this value.`)
+     )
   );
 }
 

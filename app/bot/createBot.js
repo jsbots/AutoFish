@@ -388,8 +388,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     await sleep(config.castDelay);
   };
 
-  const highlightBobber = async (pos) => {
-    if (settings.useInt || (config.likeHuman && random(0, 100) > Number(config.highlightPercent))) {
+  const highlightBobber = async (pos, log) => {
+
+    if (settings.useInt || settings.afkmode || (config.likeHuman && random(0, 100) > config.highlightPercent)) {
         return pos;
     }
 
@@ -398,39 +399,33 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
 
     await action(async () => {
-      await moveTo({ pos, randomRange: 5, fineTune: {offset: 10, steps: [1, 5]} });
+      await moveTo({ pos, randomRange: 5, fineTune: {offset: 10, steps: [1, 5]}});
     });
 
-    return await findBobber();
+   return await findBobber(log);
   };
 
+  const findBobber = async (log) => {
+    if(settings.useInt && settings.soundDetection) {
+      return true;
+    }
+    return await fishingZone.findBobber(findBobber.memory, detectSens(), log);
+  };
+
+  findBobber.memory = null;
+  findBobber.maxAttempts = config.maxAttempts;
+
   const detectSens = () => {
-    if(!config.autoSensDens || settings.game == `Vanilla (splash)` || settings.game == `Turtle WoW`) {
-       return;
+    if (!settings.autoSens || settings.game == `Vanilla (splash)`) {
+      return;
     }
 
-    if(settings.game == `Retail`) {
+    if (settings.game == `Retail`) {
       return `sensitivity`; // L and H reses for AutoThreshold and Manual
     }
 
-    if (settings.autoTh && (settings.game == "LK Classic" || settings.game == "Classic" || settings.game == "Leg" || settings.game == "Cata")) {
-      return `density`; // LR && HR for AutoThreshold everywhere (if manual = none, because of "lookingLikeBobber" function)
-    }
-
-    if(settings.autoTh && (settings.game == 'LK Private' || settings.game == "TBC" || settings.game == "MoP" || settings.game == "Vanilla") && screenSize.height > 1080) {
-      return `densityHRlk`
-    }
-
-    if(screenSize.height > 1080) {
-        return `densityHRManual`;
-    }
-  }
-
-  const findBobber = async () => {
-    return await fishingZone.findBobber(findBobber.memory, detectSens());
+    return `density`;
   };
-  findBobber.memory = null;
-  findBobber.maxAttempts = config.maxAttempts;
 
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
@@ -467,14 +462,19 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
           return pos;
         }
       } else {
-        if(!(await fishingZone.isBobber(pos))) {
-          const newPos = await fishingZone.checkAroundBobber(pos);
-          if (!newPos) {
-            return pos;
-          } else {
-            pos = newPos;
+
+          if (!(await fishingZone.isBobber(pos))) {
+            const newPos = settings.autoTh ? await fishingZone.checkBelow(pos) : await fishingZone.checkAroundBobber(pos);
+            if (!newPos) {
+              return pos;
+            } else {
+              pos = newPos;
+            }
           }
-        }
+
+          if(settings.autoTh) {
+            pos = await fishingZone.checkAbove(pos);
+          }
       }
 
       await sleep(config.checkingDelay);

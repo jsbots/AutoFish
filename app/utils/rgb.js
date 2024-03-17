@@ -19,6 +19,10 @@ const createRgb = ({ data, width, height }) => {
   }
 
   return {
+    getBitmap() {
+      return {data: Buffer.from(bitmap.flatMap((v) => v).flatMap(v => v)), width, height};
+    },
+
     colorAt(pos) {
       if (isInLimits(pos, { width, height })) {
         return bitmap[pos.y][pos.x];

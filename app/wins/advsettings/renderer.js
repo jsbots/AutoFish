@@ -40,8 +40,6 @@ const renderHighlightPercent = ({highlightPercent}) => {
   return elt(`div`, null, range, winRange);
 };
 
-const renderColorSwitchOn = ({colorSwitchOn}) => elt('input', {type: `checkbox`, checked: colorSwitchOn, name: "colorSwitchOn"});
-
 const renderMissOnPurposeRandomDelay = ({missOnPurposeRandomDelay, missOnPurpose}) => {
   return elt(`div`, {"data-collection": `missOnPurposeRandomDelay`}, elt(`span`, {className: `option_text`}, `from:`),
      elt('input', {type: `number`, name: `from`, value: missOnPurposeRandomDelay.from, disabled: !missOnPurpose}), elt(`span`, {className: `option_text`}, `to:`),
@@ -70,16 +68,6 @@ const renderDynamicThreshold = ({dynamicThreshold, dynamicThresholdValue}) => {
   return elt(`div`, null, checkbox, input);
 };
 
-
-const renderBobberDensity = ({bobberDensity, autoSensDens, game}) => {
-
-  if(bobberDensity > 10) bobberDensity = 10;
-  if(bobberDensity < 1) bobberDensity = 1;
-  let bobberDensityWin = elt(`input`, {type: `number`, name: `bobberDensity`, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", value: bobberDensity});
-
-  return elt(`div`, null, elt('input', {type: `range`, min: 1, max: 10, disabled: autoSensDens || game == "Turtle WoW" || game == "Retail", className: `${autoSensDens || game == "Turtle WoW" || game == "Retail" ? `threshold_disabled` : ``}`, value: bobberDensity, oninput: function() {bobberDensityWin.value = this.value}, name: `bobberDensity`}),
-   bobberDensityWin);
-};
 
 const renderLogOutFor = ({logOutFor, logOut}) => {
   return elt(`div`, {"data-collection": `logOutFor`}, elt(`span`, {className: `option_text`}, `from:`),
@@ -221,23 +209,6 @@ const renderReactionDelay = ({reaction, reactionDelay}) => {
 const renderSleepAfterHook = ({sleepAfterHook}) => {
   return elt(`input`, {type: `checkbox`, name: `sleepAfterHook`, checked: sleepAfterHook});
 };
-
-const renderBobberSensitivity = ({bobberSensitivity, bobberSensitivityPrint, autoSensDens}) => {
-  let min = 1;
-  let max = 3;
-  if(bobberSensitivityPrint) {
-    min = 1;
-    max = 100;
-  }
-
-  if(bobberSensitivity > max) bobberSensitivity = max;
-  if(bobberSensitivity < min) bobberSensitivity = min;
-  let bobberSensitivityWin = elt(`input`, {type: `number`, name: `bobberSensitivity`, value: bobberSensitivity, disabled: autoSensDens});
-
-  return elt(`div`, null, elt('input', {type: `range`, min, max, value: bobberSensitivity, disabled: autoSensDens, className: `${autoSensDens ? `threshold_disabled` : ``}`, oninput: function() {bobberSensitivityWin.value = this.value}, name: `bobberSensitivity`}),
-   bobberSensitivityWin);
-};
-
 
 const renderCustomWindow = ({useCustomWindow, customWindow}) => {
   const select = elt(`select`, {name: `customWindow`, disabled: !useCustomWindow, value: customWindow});
@@ -401,14 +372,10 @@ const renderLikeHuman = ({likeHuman}) => {
   });
 };
 
-const renderAutoSensDens = ({autoSensDens, game}) => {
-  return elt(`input`, {type: `checkbox`, disabled: game == `Vanilla (splash)`, checked: autoSensDens, name: `autoSensDens`});
-};
 
 const renderFindBobberDirection = ({findBobberDirection, game}) => {
   return elt(`select`, {name: `findBobberDirection`, disabled: game == `Vanilla (splash)`}, ...([`normal`, `reverse`, `center`].map(dir => elt(`option`, {value: dir, selected: findBobberDirection == dir}, dir.slice(0, 1).toUpperCase() + dir.slice(1)))))
 };
-
 
 const renderAfterTimer = ({afterTimer, timer}) => {
   let options = [
@@ -718,23 +685,15 @@ wrapInLabel('Sensitivity: ', renderCheckChangesSens(config), `Old good sensitivi
 
   elt(`p`, {className: `settings_header settings_header_critical`}, `⚠️`), elt(`span`, {className: `advanced_settings_header_text`}, `Critical`),
   elt('div', {className: "settings_section settings_critical"},
-  wrapInLabel(`Visual Library: `, renderLibraryType(config), `If something doesn't work with default library you can choose another one. Mind that keysender works only with dx11.`),
-  wrapInLabel(`Looking For Bobber Direction:`, renderFindBobberDirection(config), `The direction how the bot will look for the bobber in the fishing zone. Normal means from left to right and from top to bottom, Reverse means from left to right and from bottom to top, Center means from the very center of the Fishing Zone to its borders.`),
+  wrapInLabel(`Visual Library: `, renderLibraryType(config), `If something doesn't work with default library you can choose another one. Mind that keysender works only with dx11 and will be force for Multiple Fishing or Alt-Tab Fishing modes.`),
   wrapInLabel(`Ignore Preliminary Checks:`, renderIgnorePreliminary(config), `The bot will ignore all the preliminary checks including notification errors.`),
+  wrapInLabel(`Loot Window Closing Delay (ms):`, renderCloseLootDelay(config), `How much does it take for the loot window to disappear after looting. If you use some special addons which turn off loot window completely, you can set this value to 0 to make the bot work faster.`),
   wrapInLabel(`Max Check Time (sec):`, renderMaxFishTime(config), `Maximum time the bot will wait for the bobber to jerk before casting again.`),
   wrapInLabel(`Do After Max Check Time:`, renderMaxFishTimeAfter(config), `What the bot should do if it reaches the maximum checking time.`),
-  wrapInLabel(`Loot Window Closing Delay (ms):`, renderCloseLootDelay(config), `How long does it take for the loot window to disappear after looting. If you use some special addons which turn off loot window completely, you can set this value to 0 to make the bot work faster.`),
-  wrapInLabel(`Bobber Check Time (ms):`, renderCheckingDelay(config), `How often the bot checks the bobber for any movements. Use this option in addition to Bobber Sensativity to find an optimal sensitivity.`),
-  wrapInLabel(`Cast Animation Delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
-  wrapInLabel(`Auto Color: `, renderColorSwitchOn(config), `If there is a lot of colors of your switch in the environment the bot will automatically switch to the other color.`),
-  wrapInLabel(`Auto Density and Sensitivity:`, renderAutoSensDens(config), `The bot will auto-adjust both Sensitivity and Density values per each cast.`),
-  wrapInLabel(`${config.game == `Vanilla (splash)` ? `Splash` : `Bobber`} Sensitivity (px):`,
-   renderBobberSensitivity(config), config.game == `Vanilla (splash)` ?
-    `The size of the zone which will be checked for splash, if the bot doesn't react to "plunging" animation - increase this value.`
-    : `How sensitive the bot is to any movements of the bobber. If the bot often clicks too early, increase this value (don't confuse it with when the bot missclicks on purpose). If the bot often doesn't react to bobber (it might look like it clicks with delay), decrease this value.`),
   config.game == `Vanilla (splash)` ? wrapInLabel(`Splash color: `, renderSplashColor(config), `Whitness of the splash effect: should be smaller at night and higher during the day. `) : ``,
-  wrapInLabel(`Bobber Density (px):`, renderBobberDensity(config), `Density decides where exactly the bot sticks on the feather. The larger the feather the larger the value should be. Increase this value if the bot clicks too early.`),
-
+  wrapInLabel(`Bobber Check Interval (ms):`, renderCheckingDelay(config), `Every given value the bot checks the bobber for any movements. Use this option in addition to Bobber Sensitivity to find an optimal sensitivity.`),
+  wrapInLabel(`Cast Animation Delay (ms):`, renderCastDelay(config), `How long the bot will wait before starting to look for the bobber in the fishing zone. This value is related to appearing and casting animations.`),
+  wrapInLabel(`Looking For Bobber Direction:`, renderFindBobberDirection(config), `The direction how the bot will look for the bobber in the fishing zone. Normal means from left to right and from top to bottom, Reverse means from left to right and from bottom to top, Center means from the very center of the Fishing Zone to its borders.`),
 ),
 )
 }
@@ -795,10 +754,10 @@ const runApp = async () => {
     }
 
     if((event.target.name == `hsKey` || event.target.name == 'luresKey' || event.target.name == `logOutMacroKey`) && !event.target.disabled) {
-      event.target.style.backgroundColor = `rgba(250, 0, 0, .3)`;
+      event.target.style.backgroundColor = `rgb(255, 219, 197)`;
       const activeKeyAnimation = (alter) => () => {
         if(alter) {
-          event.target.style.backgroundColor = `rgba(250, 0, 0, .3)`;
+          event.target.style.backgroundColor = `rgb(255, 219, 197)`;
         } else {
           event.target.style.backgroundColor = `white`;
         }

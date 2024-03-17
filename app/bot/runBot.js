@@ -85,10 +85,10 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
     await castFishing(state);
 
     log.send(`Looking for the bobber...`);
-    let bobber = await findBobber();
+    let bobber = await findBobber(log);
 
     if(bobber) {
-      bobber = await highlightBobber(bobber);
+      bobber = await highlightBobber(bobber, log);
     }
 
     if (bobber) {

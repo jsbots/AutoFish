@@ -218,7 +218,9 @@ section {
 }
 
 .settings_section.threshold_settings {
+  border: 1px solid black;
   padding-left: 2px;
+  position: relative;
 }
 
 .threshold_settings .option {
@@ -316,7 +318,6 @@ section {
   height: 33px;
   font-size: 1.1em;
   width: 140px;
-  background-color: rgba(255, 219, 197, 0.3);
   margin-right: 3px;
   text-align: center;
   border-radius: 5px;
@@ -335,7 +336,7 @@ section {
 
 .option.game-option {
   width: 125px;
-  outline: 2px solid rgba(250, 0, 0, .2);
+  outline: 2px solid #FFDBC5;
 }
 
 .startButton {
@@ -378,7 +379,7 @@ section {
 }
 
 .advSettings .buttons input[type=button] {
-  outline: 2px solid rgba(250, 0, 0, .2);
+  outline: 2px solid #FFDBC5;
 }
 
 .advSettings .option_text {
@@ -396,7 +397,7 @@ section {
 
 .advSettings input[type=button]:hover {
   cursor: pointer;
-  border: 1px solid black;
+
   background-color: rgb(230, 230, 230);
 }
 
@@ -444,11 +445,7 @@ section {
 }
 
 .thresholdRange {
-  height: 70px;
   position: relative;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-end;
 }
 
 .thresholdRange input[type=range] {
@@ -456,11 +453,6 @@ section {
   height: 10px;
   margin-bottom: 5px;
   z-index: 10;
-}
-
-.thresholdRange input[type=number] {
-  width: 45px;
-  margin: 0;
 }
 
 .thresholdRange .bobberContainer {
@@ -476,19 +468,19 @@ section {
 
 .bobberColorSwitch {
   transition: 0.1s all;
-  position: absolute;
-  width: 50px;
-  height: 22px;
-  top: 27px;
-  left: 2px;
+  margin-right: 3px;
+  width: 42px;
+  height: 20px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 3px;
+  margin-right: 38px;
   background-color: white;
   background-size: 50px 22px;
   background-position: -1px -1px;
   background-repeat: no-repeat;
   cursor: pointer;
 }
+
 
 .settings_section input[type=text].tmApiKey {
   width: 194px;
@@ -512,20 +504,21 @@ section {
 
 /* AdvSettings window end */
 
+.threshold_settings input[type=range] {
+  width: 139px;
+  margin-right: 6px;
+}
+
 input[type=range][name=threshold] {
   -webkit-appearance: none;
   background: transparent;
 }
 
-input[type=range][name=threshold]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-input[type=range][name=threshold]:focus {
+.threshold_settings input[type=range]:focus {
   outline: none;
 }
 
-input[type=range][name=threshold]::-ms-track {
+.threshold_settings input[type=range]::-ms-track {
   width: 100%;
   cursor: pointer;
   background: transparent;
@@ -538,10 +531,9 @@ input[type=checkbox] {
   height: 13px;
 }
 
-input[type=range][name=threshold]::-webkit-slider-thumb {
+.threshold_settings input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: 1px solid grey;
-  height: 32px;
   width: 16px;
   border-radius: 3px;
   background: rgb(240,240,240);
@@ -550,14 +542,14 @@ input[type=range][name=threshold]::-webkit-slider-thumb {
   background-size: 10px;
   background-repeat: no-repeat;
   cursor: pointer;
-  margin-top: -12px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
 
-input[type=range][name=threshold]::-webkit-slider-thumb:hover {
+.threshold_settings input[type=range]::-webkit-slider-thumb:hover {
   border: 1px solid black;
 }
 
-input[type=range][name=threshold]::-webkit-slider-runnable-track {
+.threshold_settings input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
@@ -565,6 +557,7 @@ input[type=range][name=threshold]::-webkit-slider-runnable-track {
   border-radius: 3px;
   border: 0.2px solid #010101;
 }
+
 
 input[type=range].threshold_disabled::-webkit-slider-runnable-track {
   opacity: 0.8;
@@ -596,28 +589,6 @@ input[type=range].threshold_disabled::-webkit-slider-thumb {
   display: block;
 }
 
-
-.autoTh {
-  transition: 0.1s all;
-  position: absolute;
-  top: 0;
-  left: 2px;
-  width: 50px;
-  height: 22px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: white;
-  background-size: 50px 22px;
-  background-position: -1px -1px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.bobberColorSwitchText {
-  width: 70px;
-  display: inline-block;
-  margin-left: 55px;
-}
 
 input[type=range] {
   -webkit-appearance: none;
@@ -673,27 +644,26 @@ input[type=range]::-webkit-slider-runnable-track {
   border: 0.2px solid #010101;
 }
 
-
 .switch_thumb {
-  position: absolute;
+  width: 17px;
+  height: 16px;
+  position: relative;
   top: 1px;
-  width: 20px;
-  height: 18px;
   background-color: rgb(240,240,240);
   background-image: url("img/grate.png");
-  background-position: center 3px;
-  background-size: 10px;
+  background-position: 3px center;
+  background-size: 9px;
   background-repeat: no-repeat;
   border-radius: 3px;
   border: 1px solid grey;
 }
 
 .switch_thumb_left {
-    left: 2px;
+    left: 1px;
 }
 
 .switch_thumb_right {
-    left: 26px;
+    left: 22px;
 }
 
 .switch_thumb:hover {
@@ -730,7 +700,7 @@ input[type=range]::-webkit-slider-runnable-track {
   background-size: contain;
   background-position: center center;
   margin-left: 5px;
-  margin-right: 3px;
+  margin-right: 4px;
   margin-top: 2px;
   width: 15px;
   height: 15px;
@@ -745,122 +715,6 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .advSettings input[type=range] {
   width: 180px;
-}
-
-#water {
-  top: -3px;
-  right: -9px;
-  width: 63px;
-  height: 63px;
-  background: linear-gradient(#0080FF, #00BFFF);
-  border-radius: 50%;
-  overflow: hidden;
-  position: absolute;
-}
-
-#water:after {
-  content: "";
-  width: 50px;
-  height: 20px;
-  position: absolute;
-
-  background-color: white;
-  bottom: -11px;
-  left: 5px;
-}
-
-#bobber {
-  width: 30px;
-  height: 30px;
-  background-color: #FF0000;
-  border-radius: 50%;
-  position: absolute;
-  top: 25%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  animation: bobbing 3s infinite;
-}
-
-#bobber:before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  background-color: #FFFFFF;
-  border-top-left-radius: 100%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 1px solid grey;
-  position: absolute;
-  top: 1px;
-  left: 1px;
-}
-
-
-#bobber:after {
-  content: "";
-  width: 15px;
-  height: 15px;
-  background-color: #FFFFFF;
-  border-top-right-radius: 100%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: 1px solid grey;
-  position: absolute;
-  top: 1px;
-  left: 14px;
-}
-
-#bobber:hover {
-  cursor: pointer;
-}
-
-#bobber:active {
-  animation: plunging 1s;
-}
-
-#bobberHandle {
-  width: 6px;
-  height: 4px;
-  position: absolute;
-  top: -4px;
-  left: 12px;
-  background-color: red;
-}
-
-#bobberHandle:before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  position: absolute;
-  top: -3px;
-  left: 1px;
-  background-color: rgba(0,0,0,.7);
-  border-radius: 50%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-#grass {
-  position: absolute;
-  background-image: url('img/grass.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 30px;
-  width: 20px;
-  bottom: 20px;
-  right: 30px;
-}
-
-@keyframes plunging {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(10px);}
-  100% { transform: translateY(0); }
-}
-
-@keyframes bobbing {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-5px);}
-  100% { transform: translateY(0); }
 }
 
 .threshold_number_input {
@@ -894,34 +748,95 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .premium_label {
-  background-color: rgba(255, 219, 197, 0.3);
+  background-image: linear-gradient(to right, rgba(255, 219, 197, 0.6), white);
   border-radius: 5px;
+  padding-left: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: -2px;
+  margin-top: -2px;
 }
-
 /* Track */
 .advSettings_settings::-webkit-scrollbar {
-  width: 15px; /* Set the width of the scrollbar */
+  width: 12px; /* Set the width of the scrollbar */
 }
 
 /* Handle */
 .advSettings_settings::-webkit-scrollbar-thumb {
-  background-color: rgba(250, 0, 0, .2); /* Set the color of the scrollbar handle */
+  background-color: rgba(255, 209, 187); /* Set the color of the scrollbar handle */
   border-radius: 5px; /* Round the corners of the scrollbar handle */
-  border: 1px solid rgb(150, 150, 150);
+  border: 1px solid rgb(130, 130, 130);
 }
 
 /* Handle on hover */
 .advSettings_settings::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(250, 0, 0, .3); /* Change color on hover */
+  background-color: rgba(255, 189, 167);  /* Change color on hover */
   border: 1px solid grey;
 }
 
 /* Track */
 .advSettings_settings::-webkit-scrollbar-track {
-  background: rgb(221, 221, 221); /* Set the color of the scrollbar track */
+  border-radius: 5px;
+  background: rgb(211, 211, 211); /* Set the color of the scrollbar track */
 }
 
 /* Handle when scrolling */
 .advSettings_settings::-webkit-scrollbar-thumb:active {
-  background-color:  rgba(250, 0, 0, .3); /* Change color when the user is actively scrolling */
+  background-color:  rgba(255, 169, 147); /* Change color when the user is actively scrolling */
+}
+
+/* Hide the number input arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+
+.auto_button {
+  width: 30px;
+  height: 15px;
+  cursor: pointer;
+  position: absolute;
+  font-size: 0.7em;
+  padding: 0;
+  z-index: 100;
+}
+
+.auto_button.autoTh {
+  top: 33px;
+  right: 24px;
+}
+
+.auto_button.autoSens {
+  top: 58px;
+  right: 24px;
+}
+
+.auto_button.autoColor {
+  top: 8px;
+  right: 24px;
+}
+
+.auto_button_on {
+  cursor: pointer;
+  border: 1px solid rgb(130, 130, 130);
+  border-radius: 2px;
+  background-color: rgba(255, 219, 197, .9);
+}
+
+.auto_button_on:hover {
+  border: 1px solid rgba(70, 70, 70);
+  background-color: #ffc19b;
+}
+
+.rangeContainer input[type=range] {
+  margin-top: 5px;
+}
+
+.sensitivityContainer, .rangeContainer {
+  margin-right: 35px;
 }
