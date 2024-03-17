@@ -115,6 +115,13 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
     log.send(`Checking the hook...`);
     if ((bobber = await checkBobber(bobber, state))) {
       let isHooked = await hookBobber(bobber);
+
+      if(bobber.missedIntentionally) {
+        stats.misspurpose++;
+        log.warn(`Missed the fish on purpose!`);
+        continue;
+      }
+
       if (isHooked) {
         stats.caught++;
         log.ok(`Caught ${typeof isHooked == `boolean` ? `the fish!` : isHooked}`);
