@@ -24,7 +24,7 @@
 
 This is a fishing bot for wow-like fishing logic (when a model of a bobber has red/blue feather and plunging animation, for example with some tweaks in the code it can work even with Minecraft). It is built using the [Electron](https://github.com/electron/electron), [keysender](https://github.com/Krombik/keysender) and [nut.js](https://github.com/nut-tree/nut.js) libraries to analyze the screen and automate the fishing process in a manner that mimics human behavior, and also [tesseract.js](https://github.com/naptha/tesseract.js) for loot filtering.
 
-This is a so-called "pixel bot": it works with pixels only, without modifying the game's memory or utilizing any AI vision libraries.
+This is a so-called "pixel bot": it works with pixels only, without modifying the game's memory, addons or additional programs.
 
 <p align="center">
 <img src="guide_img/UI.jpg" width="640">
@@ -51,10 +51,22 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 <img src="guide_img/chooseGame.jpg">
 </p>
 
-4. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the color you selected). Keep in mind that the **Fishing Zone** functions as an overlay, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
+3. Set up your **Fishing Zone** by clicking the **Set Fishing Zone** button. Adjust the size and position of the **Fishing Zone** window to exclude any reddish or bluish elements (depending on the color you selected). Keep in mind that **Fishing Zone** is an overlay window, so it will also recognize colors from your character and the game's user interface, including texts and health bars.
 
 <p align="center">
 <img src="guide_img/chooseFishZone.jpg">
+</p>
+
+4. Set up your **Fishing Key** by clicking on Fishing Key section and then pressing the key you want to bind. Your Fishing Key is the same key you bind your fishing skill to in the game.
+
+<p align="center">
+<img src="guide_img/chooseFishKey.jpg">
+</p>
+
+5. You can press **Advanced Settings** and find there a lot of useful features and options.
+
+<p align="center">
+<img src="guide_img/advancedSettings.jpg">
 </p>
 
 6. Press the Start button and don't use your mouse and keyboard.
@@ -69,10 +81,12 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 - Different camera directions can affect the brightness, size, and visibility of the bobber.
 - You can Adjust gamma, brightness, and contrast settings to enhance the brightness of the bobber.
 - In very dark zones, consider using custom bobbers with distinctive red or blue colors instead of the default one.
+- The bot cam auto-confirm *Soulbound* items. For that go to Advanced Settings and turn this option on.
 - If you use an addon that removes loot window, you can set *Loot Window Closing Delay* value to 0 to make it work faster.
-- The bot will auto-confirm Soulbound items.
 
-### Intensity 
+### Intensity
+
+*If in manual mode*
 
 Intensity value serves as a color threshold below which the bot will ignore all the corresponding colors.
 
@@ -80,7 +94,9 @@ Increasing the intensity value will make the bot recognize fewer red colors, whi
 
 Simply put: decrease this value, if the bot can't find the bobber (e.g. at night, bad weather). Increase this value if you want the bot to ignore some reddish/bluish elements in the Fishing Zone and recognize only the bobber.`
 
-### Sensitivity 
+### Sensitivity
+
+*If in manual mode*
 
 If the bot clicks too early, decrease this value. If the bot clicks too late or doesn't click at all, increase this value.
 
@@ -99,7 +115,14 @@ To make the interactive key work, you should use this commands (write them in th
 ```
 
 ## Applying Lures :pushpin:
-For **Retail** and **Classic/Vanilla** you need to use a macro that will apply the lures onto your fishpole and **assign that macro to **Lures Key** option**:
+
+Go to **Advanced Settings** and check **Use Lures**. Bind your key to the same key you bind your lures or **macro**.
+
+<p align="center">
+<img src="guide_img/lures.jpg" align="center">
+</p>
+
+For **Retail** and **Classic/Vanilla** you need to use a special macro that will apply the lures onto your fishing pole. The names of the lures and fishing pole here only an example, you need to substitute them for your names:
 
 **Retail**:
 
