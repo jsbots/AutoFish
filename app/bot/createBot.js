@@ -429,7 +429,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     if(pos && process.env.NODE_ENV == `dev`) {
       screen.config.highlightOpacity = 1;
       screen.config.highlightDurationMs = 250;
-      const highlightRegion = new Region(screenSize.x + (pos.x - 10), screenSize.y + (pos.y - 10), 10, 10);
+      const highlightRegion = new Region(screenSize.x + (pos.x - 5), screenSize.y + (pos.y - 5), 10, 10);
       await screen.highlight(highlightRegion);
     }
 
