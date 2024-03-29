@@ -17,9 +17,10 @@
     "Vanilla": 7,
     "Vanilla (splash)": 10
   },
+  "checkLogic": "default",
   "autoSens": true,
   "autoTh": true,
-  "autoColor": false,
+  "autoColor": true,
   "bobberColor": "red",
   "initial": true,
   "initialZone": true
