@@ -5,7 +5,10 @@ const buttonCancel = elt(`div`, {className: `buttonCancel`}, `Cancel`);
 const buttonCheck = elt(`div`, {className: `buttonCheck`}, `Check`);
 
 ipcRenderer.invoke(`fishingZone-bobberColor`)
-.then((color) => document.body.append(elt('p', {style: `font-size: 6vw`}, `Avoid ${color} colors!`)))
+.then((color) => {
+  document.body.append(elt('p', {style: `font-size: 6vw; margin-bottom: 0; `}, `Water is ${color == `red` ? `blue` : `red`}`));
+  document.body.append(elt('p', {style: `font-size: 6vw`}, `Avoid elements with ${color} color!`));
+});
 
 buttonOk.addEventListener(`click`, () => {
   ipcRenderer.send(`fishingZone-ok`);

@@ -840,3 +840,11 @@ input[type=number] {
 .sensitivityContainer, .rangeContainer {
   margin-right: 35px;
 }
+
+.checkLogicSelect {
+  width: 135px !important;
+  margin-right: 8px !important;
+  outline: 2px solid #FFDBC5;
+  font-size: 0.9em;
+  cursor: help;
+}

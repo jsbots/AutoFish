@@ -64,7 +64,11 @@ const createRgb = ({ data, width, height }) => {
 
                 if (!task || task(pos, color, this)) {
                   if (atFirstMet) {
-                    return pos;
+                    if(saveColor) {
+                      return {pos, color}
+                    } else {
+                      return pos;
+                    }
                   } else {
                     if(saveColor) {
                       colors.push({pos, color})
@@ -78,6 +82,41 @@ const createRgb = ({ data, width, height }) => {
           }
           break;
         }
+
+        case `normalright`: {
+          for (let y = 0; y < height; y++) {
+            for (let x = width - 1; x > -1; x--) {
+              let pos = new Vec(x, y);
+              let color = bitmap[y][x];
+              if (isColor(color)) {
+                if (limit != null) {
+                  limit--;
+                  if (limit < 0) {
+                    return null;
+                  }
+                }
+
+                if (!task || task(pos, color, this)) {
+                  if (atFirstMet) {
+                    if(saveColor) {
+                      return {pos, color}
+                    } else {
+                      return pos;
+                    }
+                  } else {
+                    if(saveColor) {
+                      colors.push({pos, color})
+                    } else {
+                      colors.push(pos);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        }
+
         case `reverse`: {
           for (let y = height - 1; y > -1; y--) {
             for (let x = 0; x < width; x++) {
@@ -93,7 +132,11 @@ const createRgb = ({ data, width, height }) => {
 
                 if (!task || task(pos, color, this)) {
                   if (atFirstMet) {
-                    return pos;
+                    if(saveColor) {
+                      return {pos, color}
+                    } else {
+                      return pos;
+                    }
                   } else {
                     if(saveColor) {
                       colors.push({pos, color})
@@ -134,7 +177,11 @@ const createRgb = ({ data, width, height }) => {
 
                 if (!task || task(pos, color, this)) {
                   if (atFirstMet) {
-                    return pos;
+                    if(saveColor) {
+                      return {pos, color}
+                    } else {
+                      return pos;
+                    }
                   } else {
                     if(saveColor) {
                       colors.push({pos, color})

@@ -1,14 +1,19 @@
 const elt = require("./utils/elt.js");
 const wrapInLabel = require("./utils/wrapInLabel.js");
 
-const renderColorSwitch = ({bobberColor, autoColor}) => {
+const renderColorSwitch = ({bobberColor, checkLogic, autoColor, soundDetection}) => {
+
+  const checkLogicTypes = ['default', 'pixelmatch'];
+
+  const modeSelect = elt(`select`, {name: 'checkLogic', title: `Alternative modes for detecting bobber animation.`, className: `checkLogicSelect`}, ...checkLogicTypes.map((logic) => elt('option', {selected: checkLogic == logic, value: logic}, logic[0].toUpperCase() + logic.slice(1))));
+
   const bobberColorSwitch = elt(`radio`, { className: `bobberColorSwitch`,
                                 name: `bobberColor`,
                                 title: `Switch between blue and red feathers.`,
                                 value: bobberColor,
-                                style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgba(100, 0, 0, .8), rgba(255, 0, 0, .8)` : `rgba(0, 90, 200, .8), rgba(0, 0, 100, .8)`});`
+                                style: `background-image: linear-gradient(to right, ${bobberColor == `red` ? `rgba(100, 0, 0, .8), rgba(255, 0, 0, .8)` : `rgba(0, 90, 200, .8), rgba(0, 0, 100, .8)`}); ${soundDetection ? `display: none` : ``}`
                               }, elt(`div`, {className: `switch_thumb ${bobberColor == `red` ? `switch_thumb_left` : `switch_thumb_right`}`}));
- return bobberColorSwitch;
+ return elt(`div`, null, modeSelect, bobberColorSwitch);
 }
 
 
@@ -214,11 +219,11 @@ wrapInLabel(
     elt(
       "div",
       { className: "settings_section threshold_settings" },
-      elt('input', {type: `button`,  disabled: !config.autoTh || config.game == `Vanilla (splash)`, name: `autoColor`, checked: config.autoTh && config.autoColor,  className: `auto_button autoColor ${config.autoColor && config.autoTh && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
-      elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoTh`, checked: config.autoTh,  className: `auto_button autoTh ${config.autoTh && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
-      elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoSens`, checked: config.autoSens, className: `auto_button autoSens ${config.autoSens && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
+      elt('input', {type: `button`,  disabled: !config.autoTh || config.game == `Vanilla (splash)` || config.checkLogic == `pixelmatch`, name: `autoColor`, checked: config.autoTh && config.autoColor,  className: `auto_button autoColor ${config.autoColor && config.autoTh && config.game != `Vanilla (splash)` && config.checkLogic != `pixelmatch` ? `auto_button_on` : ``}`, value: `Auto`}),
+      elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoTh`, checked: config.autoTh && config.game != `Vanilla (splash)`,  className: `auto_button autoTh ${config.autoTh && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
+      elt('input', {type: `button`, disabled: config.game == `Vanilla (splash)`, name: `autoSens`, checked: config.autoSens && config.game != `Vanilla (splash)`, className: `auto_button autoSens ${config.autoSens && config.game != `Vanilla (splash)` ? `auto_button_on` : ``}`, value: `Auto`}),
 
-      wrapInLabel("Color: ", renderColorSwitch(config), `The color the bot will search within Fishing Zone (${config.bobberColor}, in your case). If the water and environment is bluish, choose red color. If the water and environment is reddish, choose blue color.`),
+      wrapInLabel("Mode: ", renderColorSwitch(config), `The color the bot will search within Fishing Zone (${config.bobberColor}, in your case). If the water and environment is bluish, choose red color. If the water and environment is reddish, choose blue color.`),
       wrapInLabel(`Intensity: `,
       renderThreshold(config),`Decrease this value, if the bot can't find the bobber (e.g. at night, bad weather). Increase this value if you want the bot to ignore more ${config.bobberColor} colors.`),
       wrapInLabel("Sensitivity: ", renderBobberSensitivity(config), config.game == `Vanilla (splash)` ?

@@ -273,11 +273,19 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
   const preliminaryChecks = async (log) => {
       if(config.ignorePreliminary) return;
+
       if (screenSize.x == -32000 && screenSize.y == -32000) {
         throw new Error("The window is either in fullscreen mode or minimized. Switch to windowed or windowed(maximized).");
       }
+
+      if(settings.autoColor) {
+        if(await fishingZone.changeColor()) {
+          log.warn(`Switched to ${settings.bobberColor == `red` ? `blue` : `red`} color.`);
+        }
+      }
+
       if(!settings.autoTh) {
-        let bobber = await fishingZone.findBobber(null, detectSens, log);
+        let bobber = await fishingZone.findBobber(null, log);
         if (bobber) {
           screen.config.highlightOpacity = 1;
           screen.config.highlightDurationMs = 1000;
@@ -385,20 +393,20 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       }
     }
 
-    await sleep(config.castDelay);
+    if(settings.checkLogic == `pixelmatch`) {
+      await sleep(2500);
+    } else {
+      await sleep(config.castDelay)
+    }
   };
 
   const highlightBobber = async (pos, log) => {
 
-    if (settings.useInt || settings.afkmode || (config.likeHuman && random(0, 100) > config.highlightPercent)) {
+    if (settings.checkLogic == `pixelmatch` ||
+        settings.useInt ||
+        settings.afkmode ||
+        (config.likeHuman && random(0, 100) > config.highlightPercent)) {
         return pos;
-    }
-
-    if(pos && process.env.NODE_ENV == `dev`) {
-      screen.config.highlightOpacity = 1;
-      screen.config.highlightDurationMs = 250;
-      const highlightRegion = new Region(screenSize.x + (pos.x - 10), screenSize.y + (pos.y - 10), 10, 10);
-      await screen.highlight(highlightRegion);
     }
 
     if (config.reaction) {
@@ -416,7 +424,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     if(settings.useInt && settings.soundDetection) {
       return true;
     }
-    const pos = await fishingZone.findBobber(findBobber.memory, detectSens(), log);
+    const pos = await fishingZone.findBobber(findBobber.memory, log);
 
     if(pos && process.env.NODE_ENV == `dev`) {
       screen.config.highlightOpacity = 1;
@@ -431,20 +439,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   findBobber.memory = null;
   findBobber.maxAttempts = config.maxAttempts;
 
-  const detectSens = () => {
-    if (!settings.autoSens || settings.game == `Vanilla (splash)`) {
-      return;
-    }
-
-    if (settings.game == `Retail`) {
-      return `sensitivity`; // L and H reses for AutoThreshold and Manual
-    }
-
-    return `density`;
-  };
-
   const checkBobber = async (pos, state) => {
     checkBobberTimer.start();
+    const startTime = Date.now();
     const missOnPurpose = random(0, 100) < missOnPurposeValue;
     if(missOnPurpose) {
       missOnPurposeTimer.update();
@@ -469,32 +466,35 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         return pos;
       }
 
-      if(settings.game == `Retail`) {
-        if(!(await fishingZone.checkBobberPrint(pos))) {
-          return pos;
-        }
-      } else if(settings.game == `Vanilla (splash)`) {
-        if(await fishingZone.checkBobberPrintSplash(pos)) {
-          return pos;
-        }
-      } else {
-
-          if (!(await fishingZone.isBobber(pos))) {
-            const newPos = settings.autoTh ? await fishingZone.checkBelow(pos) : await fishingZone.checkAroundBobber(pos);
-            if (!newPos) {
-              return pos;
-            } else {
-              pos = newPos;
-            }
-          }
-
-          if(settings.autoTh) {
-            pos = await fishingZone.checkAbove(pos);
-          }
-      }
-
-      await sleep(config.checkingDelay);
+  if(settings.checkLogic == `pixelmatch`) {
+    if(await fishingZone.checkPixelMatch(pos, startTime)) {
+      return pos;
+    };
+  } else if(settings.game == `Retail`) {
+   if(!(await fishingZone.checkBobberPrint(pos))) {
+     return pos;
+   }
+  } else if (settings.game == `Vanilla (splash)`) {
+  if(await fishingZone.checkBobberPrintSplash(pos)) {
+    return pos;
     }
+  } else {
+  if (!(await fishingZone.isBobber(pos))) {
+    const newPos = settings.autoTh ? await fishingZone.checkBelow(pos) : await fishingZone.checkAroundBobber(pos);
+    if (!newPos) {
+      return pos;
+    } else {
+      pos = newPos;
+    }
+  }
+
+    if(settings.autoTh) {
+      pos = await fishingZone.checkAbove(pos);
+    }
+  }
+    await sleep(config.checkingDelay);
+  }
+
   };
 
   const pickLoot = async () => {
