@@ -74,15 +74,16 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 
 ### Hints and Issues
 
-- If the bot misses too much, try to fish in 1st person view.
+- Avoid mobs in the Fishing Zone. 
+- If the bot misses too much or confuses your fishpole for a bobber, try to fish in 1st person view.
 - The bot works only with default UI: no UI scaling, no UI addons and so on.  
-- If the bot doesn't click/press, run it as admin.
-- The bot works only on primary monitor.
+- If the bot doesn't cast, though key is correct, launch it as admin.
+- The bot works only on a primary monitor.
 - Different camera directions can affect the brightness, size, and visibility of the bobber.
 - You can Adjust gamma, brightness, and contrast settings to enhance the brightness of the bobber.
-- In very dark zones, consider using custom bobbers with distinctive red or blue colors instead of the default one.
-- The bot cam auto-confirm *Soulbound* items. For that go to Advanced Settings and turn this option on.
-- If you use an addon that removes loot window, you can set *Loot Window Closing Delay* value to 0 to make it work faster.
+- The bot will auto-confirm lures application if such confirmation is needed.  
+- The bot can auto-confirm *Soulbound* items. For that go to Advanced Settings and turn this option on.
+- If you use an addon that removes loot window (like Fishing Buddy), you can set *Loot Window Closing Delay* value to 0 to make it work faster.
 
 ### Intensity
 
@@ -307,9 +308,9 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.7.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.8.0 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.9.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.10.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 If you choose to download the executable file, it functions as a setup file that installs the bot in the following directory: *c:/users/your_user/App Data/Local/random_folder/*. Additionally, a shortcut with a randomly generated name will be created on your desktop.
 
