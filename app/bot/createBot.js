@@ -169,7 +169,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
       const movePastDist = Math.sqrt(Math.pow(Math.abs(posFromCurrent.x), 2) + Math.pow(Math.abs(posFromCurrent.y), 2)) * .5;
 
-      posFromCurrent[movePastMaxMain] += (movePastDist * random(0.25, 0.35)) * movePastDir[movePastMaxMain];
+      posFromCurrent[movePastMaxMain] += (movePastDist * random(0.15, 0.20)) * movePastDir[movePastMaxMain];
       posFromCurrent[movePastMaxSub] += (movePastDist * random(0.05, 0.10)) * movePastDir[movePastMaxSub];
 
       return {x: posFromCurrent.x + mouse.getPos().x, y: posFromCurrent.y + mouse.getPos().y};
