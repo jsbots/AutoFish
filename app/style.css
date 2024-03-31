@@ -413,7 +413,7 @@ section {
 
 
 .advSettings .settings_section input[type=number], .advSettings .settings_section input[type=text] {
-  width: 50px;
+  width: 40px;
 }
 
  .advSettings .settings_section input[name=mammothTraderName] {
@@ -441,7 +441,7 @@ section {
 }
 
 .advSettings .settings select {
-  width: 127px;
+  width: 107px;
 }
 
 .thresholdRange {
