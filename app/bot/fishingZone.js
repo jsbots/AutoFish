@@ -35,7 +35,12 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
 
   let isBobber = bobberColor == `red` ? isRed(threshold, 50) : isBlue(threshold, 50);
   let saturation = bobberColor == `red` ? [40, 0, 0] : [0, 0, 40];
-  const looksLikeBobber = (size) => (pos, color, rgb) => pos.getPointsAround(Math.round(size * (screenSize.height / 1080))).every((pos) => isBobber(rgb.colorAt(pos)));
+  const looksLikeBobber = (size) => (pos, color, rgb) => {
+    let pointsFound = pos.getPointsAround(Math.round(size * (screenSize.height / 1080)) || 1).filter((pos) => isBobber(rgb.colorAt(pos)));
+    if(pointsFound.length >= Math.round(8 * (screenSize.height / 1080))) {
+      return true;
+    }
+  }
   let filledBobber;
 
   return {
@@ -52,7 +57,6 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
       let bobber;
       if(autoThreshold) {
         bobber = this._findMost(rgb);
-
         if(bobber && process.env.NODE_ENV == `dev`) {
           log.err(`[DEBUG] Color Found: ${bobber.color}, at: ${bobber.pos.x},${bobber.pos.y}`);
         }
@@ -125,7 +129,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
 
     _findMost(rgb) {
       let initialThColors = rgb.findColors({
-        isColor: bobberColor == `red` ? isRed(41) : isBlue(41),
+        isColor: bobberColor == `red` ? isRed(0) : isBlue(0),
         saveColor: true,
         taks: looksLikeBobber(1)
       });
