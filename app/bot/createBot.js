@@ -417,10 +417,8 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
   };
 
   const highlightBobber = async (pos, log) => {
-
     if (settings.checkLogic == `pixelmatch` ||
         settings.useInt ||
-        settings.afkmode ||
         (config.likeHuman && random(0, 100) > config.highlightPercent)) {
         return pos;
     }
@@ -430,7 +428,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     }
 
     await action(async () => {
-
       if(config.likeHumanFineTune) {
         let pastPost = generateMovePastPos(pos);
         await moveTo({pos: pastPost, fineTune: null})
@@ -439,14 +436,11 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       await moveTo({ pos, randomRange: 5, fineTune: {offset: 5, steps: [1, 5]}});
     });
 
-   return await findBobber(log);
+   return await findBobber(log, pos);
   };
 
-  const findBobber = async (log) => {
-    if(settings.useInt && settings.soundDetection) {
-      return true;
-    }
-    const pos = await fishingZone.findBobber(findBobber.memory, log);
+  const findBobber = async (log, highlight) => {
+    const pos = await fishingZone.findBobber(findBobber.memory, log, highlight);
 
     if(pos && process.env.NODE_ENV == `dev`) {
       screen.config.highlightOpacity = 1;
@@ -457,7 +451,6 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
 
     return pos;
   };
-
   findBobber.memory = null;
   findBobber.maxAttempts = config.maxAttempts;
 
