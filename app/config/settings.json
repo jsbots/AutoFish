@@ -4,7 +4,7 @@
   "intKey": "f",
   "useInt": false,
   "stopKey": "delete",
-  "threshold": 60,
+  "threshold": 100,
   "bobberSensitivity": {
     "Retail": 25,
     "LK Classic": 7,
@@ -20,7 +20,7 @@
   "checkLogic": "default",
   "autoSens": true,
   "autoTh": true,
-  "autoColor": false,
+  "autoColor": true,
   "bobberColor": "red",
   "initial": true,
   "initialZone": true
