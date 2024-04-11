@@ -14,7 +14,7 @@ const getDataFrom = async (zone) => {
 const createFishingZone = ({pos, screenSize, type, config, settings, scale}, finished) => {
   let win = new BrowserWindow({
 		title: `Fishing Zone`,
-		x: Math.round(pos.x),
+    x: Math.round(pos.x),
     y: Math.round(pos.y),
     width: Math.round(pos.width),
     height: Math.round(pos.height),
@@ -29,7 +29,7 @@ const createFishingZone = ({pos, screenSize, type, config, settings, scale}, fin
 		icon: `./img/icon.png`
   });
 
-  win.loadFile(path.join(__dirname, `${type == `relZone` ? `fishing.html` : `chat.html`}`));
+  win.loadFile(path.join(__dirname, `${type == `relZone` ? `fishing.html` : type == `chatZone` ? `chat.html` : `detect.html`}`));
 
   win.once("ready-to-show", () => {
     win.show();
@@ -63,22 +63,8 @@ const createFishingZone = ({pos, screenSize, type, config, settings, scale}, fin
 		if(pos.y + pos.height > screenSize.height) pos.height = screenSize.height - pos.y;
 
 		if(type != `relZone`) return;
+
 		win.setOpacity(0);
-
-		let saveAutoTh = settings.autoTh;
-		let saveAutoSens = settings.autoSens;
-		let saveFindBobberDirection = config.findBobberDirection;
-		let saveCheckLogic = settings.checkLogic;
-
-		if(saveAutoTh) {
-			settings.threshold = 60;
-		}
-
-		settings.autoTh = false;
-		config.findBobberDirection = `normal`;
-		settings.autoSens = false;
-		settings.checkLogic = `default`;
-
 		let zone = fishZone(
 			 getDataFrom,
 			 pos,
@@ -86,19 +72,10 @@ const createFishingZone = ({pos, screenSize, type, config, settings, scale}, fin
 			 settings,
 			 config
 		 );
-		let bobber = await zone.findBobber();
+		let colorPercent = await zone.checkColor();
 		win.setOpacity(0.3);
 
-		if(saveAutoTh) {
-			settings.threshold = 60;
-		}
-
-		settings.autoTh = saveAutoTh;
-		config.findBobberDirection = saveFindBobberDirection;
-		settings.autoSens = saveAutoSens;
-		settings.checkLogic = saveCheckLogic;
-
-		if(bobber) {
+		if(colorPercent > 25) {
 			return `rgb(255, 70, 68)`;
 		} else {
 			return `rgb(70, 255, 68)`;
