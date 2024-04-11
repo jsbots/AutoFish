@@ -52,7 +52,7 @@
         "width": 0.01822916,
         "height": 0.01388888
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -189,7 +189,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -317,7 +317,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
@@ -445,7 +445,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -553,7 +553,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -663,7 +663,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -787,7 +787,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 3000,
@@ -911,7 +911,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
@@ -1023,7 +1023,7 @@
         "width": 0.01822916,
         "height": 0.01851851
       },
-      "checkingDelay": 0,
+      "checkingDelay": 50,
       "mouseMoveSpeed": 30,
       "mouseCurvatureStrength": 65,
       "luresDelay": 5500,
