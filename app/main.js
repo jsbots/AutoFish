@@ -12,7 +12,7 @@ const {
 } = require("electron");
 const path = require("path");
 
-const { readFileSync, writeFileSync } = require("fs");
+const { readFileSync, writeFileSync, writeFile } = require("fs");
 const createAdvSettings = require(`./wins/advsettings/main.js`);
 const createFishingZone = require(`./wins/fishingzone/main.js`);
 
@@ -148,7 +148,7 @@ By pressing "Accept" you agree to everything stated above.`,
         app.quit();
       } else {
         settings.initial = false;
-        writeFileSync(path.join(__dirname, "./config/settings.json"), JSON.stringify(settings));
+        writeFile(path.join(__dirname, `./config/${profile}/settings.json`), JSON.stringify(settings), () => {})
       }
     }
   });
