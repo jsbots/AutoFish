@@ -40,11 +40,11 @@ const renderBobberSensitivity = ({game, bobberSensitivity, autoSens}) => {
 
 const renderThreshold = ({ threshold, bobberColor, autoTh, game }) => {
     if(threshold < 1) threshold = 1;
-    else if(threshold > 150) threshold = 150;
+    else if(threshold > 250) threshold = 250;
 
     if(game == `Vanilla (splash)`) autoTh = false;
 
-    const range = elt(`input`, { type: `range`, min: 1, max: 150, value: threshold, name: `threshold`, disabled: autoTh, className: `${autoTh ? `threshold_disabled` : ``}` });
+    const range = elt(`input`, { type: `range`, min: 1, max: 250, value: threshold, name: `threshold`, disabled: autoTh, className: `${autoTh ? `threshold_disabled` : ``}` });
     const number = elt(`input`, { type: `number`, className: `threshold_number_input`, value: threshold, disabled: autoTh, name: `threshold` });
 
     const bobberContainer = elt(`div`, null, number);
