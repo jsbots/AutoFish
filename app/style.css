@@ -848,3 +848,7 @@ input[type=number] {
   font-size: 0.9em;
   cursor: help;
 }
+
+.thLabel {
+  padding-left: 3px;
+}
