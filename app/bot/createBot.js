@@ -294,8 +294,9 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
       }
 
       if(settings.autoColor) {
-        if(await fishingZone.changeColor()) {
-          log.warn(`Switched to ${settings.bobberColor == `red` ? `blue` : `red`} color.`);
+        let colorPercent = await fishingZone.checkColor();
+        if(colorPercent > 25) {
+          fishingZone.changeColor();
         }
       }
 
@@ -435,7 +436,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
         await moveTo({pos: pastPost, fineTune: null})
       }
 
-      await moveTo({ pos, randomRange: 5, fineTune: {offset: 10, steps: [1, 5]}});
+      await moveTo({ pos, randomRange: 5, fineTune: {offset: 5, steps: [1, 5]}});
     });
 
    return await findBobber(log);
@@ -477,6 +478,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
             );
           }
           case `recast`: {
+            state.status = `working`;
             return false;
           }
         }
