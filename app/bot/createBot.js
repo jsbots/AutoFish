@@ -412,7 +412,7 @@ const createBot = (game, { config, settings }, winSwitch, state) => {
     if(settings.checkLogic == `pixelmatch`) {
       await sleep(2500);
     } else {
-      await sleep(config.castDelay)
+      await sleep(random(config.castDelay, config.castDelay + 500));
     }
   };
 
