@@ -42,12 +42,13 @@ if (handleSquirrelEvent(app)) {
 
 app.setPath('sessionData', path.resolve(app.getAppPath(), `cache`)); // Set cache folder in the app folder
 
-const showChoiceWarning = (win, warning, title, button1, button2) => {
-  return dialog.showMessageBoxSync(win, {
+
+const showChoiceWarning = (win, warning, title, ...buttons) => {
+  return result = dialog.showMessageBoxSync(win, {
     type: "warning",
     title: `${title}`,
     message: warning,
-    buttons: [`${button1}`, `${button2}`],
+    buttons: buttons,
     defaultId: 0,
     cancelId: 1,
   });
@@ -131,7 +132,6 @@ let log;
     });
     const settings = getJson("./config/settings.json");
     if(settings.initial) {
-      showWarning(win, `The shortcut to AutoFish was created on your desktop`);
 
       if(showChoiceWarning(win, `This project was developed for educational purposes, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies only. The software provided should never be used with real-life applications, games and servers outside private "sandbox".
 
@@ -148,8 +148,16 @@ By pressing "Accept" you agree to everything stated above.`,
         app.quit();
       } else {
         settings.initial = false;
-        writeFile(path.join(__dirname, `./config/${profile}/settings.json`), JSON.stringify(settings), () => {})
       }
+
+      let games = [`Retail`, `LK Classic`, `Classic`, "Leg", "MoP", "Cata", "LK Private", "TBC", "Vanilla"];
+      let initialGameChoice = showChoiceWarning(win, `The shortcut to AutoFish was created on you desktop!\n\nChoose your game:`, `Initial configuration`,
+        ...games
+      );
+      win.webContents.send('set-game', games[initialGameChoice])
+      settings.game = games[initialGameChoice];
+
+      writeFile(path.join(__dirname, `./config/settings.json`), JSON.stringify(settings), () => {})
     }
   });
 
