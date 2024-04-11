@@ -6,6 +6,7 @@ class Stats {
   constructor() {
     this.caught = 0;
     this.miss = 0;
+    this.confused = 0;
     this.misspurpose = 0;
   }
 
@@ -18,7 +19,8 @@ class Stats {
       `Total: ${this.total}`,
       `Caught: ${this.caught} (${getPercent(this.caught, this.total)}%)`,
       `Missed: ${this.miss} (${getPercent(this.miss, this.total)}%)`,
-      `Missed on purpose: ${this.misspurpose} (${getPercent(this.misspurpose, this.total)}%)`
+      `Missed on purpose: ${this.misspurpose} (${getPercent(this.misspurpose, this.total)}%)`,
+      `Couldn't recognize: ${this.confused} (${getPercent(this.confused, this.total)}%)`
     ];
   }
 }

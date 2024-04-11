@@ -98,6 +98,7 @@ const runBot = async ({ bot, log, state, stats }, onError, wins) => {
       attempts = 0;
     } else {
       failedCast = true;
+      stats.confused++;
       log.err(`Can't find the bobber, recast.`);
       if (++attempts == findBobber.maxAttempts) {
         if(dynamicThreshold.on && !dynamicThreshold.limit()) {
