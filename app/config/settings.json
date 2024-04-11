@@ -20,7 +20,7 @@
   "checkLogic": "default",
   "autoSens": true,
   "autoTh": true,
-  "autoColor": true,
+  "autoColor": false,
   "bobberColor": "red",
   "initial": true,
   "initialZone": true
