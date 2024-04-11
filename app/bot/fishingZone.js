@@ -13,11 +13,11 @@ const isCloseEnough = ([_, g, b], closeness) => Math.abs(g - b) <= closeness;
 
 const isRed = (threshold, closeness = 255, size = 255, upperLimit = 335) => ([r, g, b]) => isOverThreshold([r, g, b], threshold) &&
                                                        isCloseEnough([r, g, b], closeness) &&
-                                                       g < size && b < size && r <= upperLimit;
+                                                       g < size && b < size && r <= upperLimit && g != 0 && b != 0;
 
 const isBlue = (threshold, closeness = 255, size = 255, upperLimit = 335) => ([r, g, b]) => isOverThreshold([b, g, r], threshold) &&
                                                         isCloseEnough([b, g, r], closeness) &&
-                                                        r < size && g < size && b <= upperLimit;
+                                                        r < size && g < size && b <= upperLimit && r != 0 && g != 0;
 
 let imgAroundBobberPrev;
 let pixelMatchMax;
@@ -53,7 +53,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
       pixelMatchMax = 0;
 
       let rgbZone = zone;
-      if(highlight) {
+      if(highlight && (game == `Classic` || game == `LK Classic` || game == `Retail`)) {
         rgbZone = {x: highlight.x - doubleZoneSize, y: highlight.y - doubleZoneSize, width: doubleZoneSize * 2, height: doubleZoneSize * 2};
         if(rgbZone.x < zone.x) rgbZone.x = zone.x;
         if(rgbZone.y < zone.y) rgbZone.y = zone.y;
@@ -145,7 +145,10 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
             return;
           }
 
-          filledBobber = mostRedPoints;
+          filledBobber = mostRedPoints.map((point) => ({
+            color: point.color,
+            pos: new Vec(point.pos.x + doubleZoneDims.x - rgbZone.x, point.pos.y + doubleZoneDims.y - rgbZone.y)
+          }));
 
           let mostLeft = mostRedPoints.reduce((a, b) => a.pos.x < b.pos.x ? a : b);
           let mostRight = mostRedPoints.reduce((a, b) => a.pos.x > b.pos.x ? a : b);
@@ -363,6 +366,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
       }
 
       if(!rest) return;
+
       let result = [...rest];
       rest.forEach(restPoint => {
         restPoint.getPointsAround(wobble).forEach(aroundPoint => {
@@ -371,6 +375,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
           }
         })
       });
+
       return result;
     }
   }
