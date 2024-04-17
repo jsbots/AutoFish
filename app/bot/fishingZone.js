@@ -128,16 +128,17 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
             let [r, g, b] = mostRedPoint.color;
             let colorNow = r - Math.max(g, b) - (g + b);
 
-            if(colorPrev) {
-              if((colorNow / colorPrev) * 100 < 50) {
-                break;
-              }
-              colorPrev = colorNow;
-            } else {
+            if(!colorPrev) {
               colorPrev = colorNow;
             }
 
-           rgbAroundBobber.cutOut([mostRedPoint.pos]);
+            let colorDiffPercent = (colorNow / colorPrev) * 100;
+
+            if(colorDiffPercent < 50) {
+              break;
+            }
+
+            rgbAroundBobber.cutOut([mostRedPoint.pos]);
             mostRedPoints.push(mostRedPoint);
           }
 
@@ -234,7 +235,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
 
     async adjustSensitivity(bobberSize) {
       if(game == `Retail`) {
-         let calculatedSens = Math.round(Math.sqrt(bobberSize / (bobberColor == `red` ? 4 : 2.5)));
+         let calculatedSens = Math.round(Math.sqrt(bobberSize / (bobberColor == `red` ? 3 : 2.5))); // 4 2.5
          if(calculatedSens < 3) calculatedSens = 3;
          sensitivity = calculatedSens;
        } else {
