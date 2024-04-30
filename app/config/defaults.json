@@ -141,8 +141,8 @@
         }
       }
     },
-    "LK Classic": {
-      "game": "LK Classic",
+    "Cata Classic": {
+      "game": "Cata Classic",
       "timer": false,
       "timerTime": 30,
       "checkConfirm": true,

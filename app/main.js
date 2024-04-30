@@ -151,7 +151,7 @@ By pressing "Accept" you agree to everything stated above.`,
         settings.initial = false;
       }
 
-      let games = [`Retail`, `LK Classic`, `Classic`, "Leg", "MoP", "Cata", "LK Private", "TBC", "Vanilla"];
+      let games = [`Retail`, `Cata Classic`, `Classic`, "Leg", "MoP", "Cata", "LK Private", "TBC", "Vanilla"];
       let initialGameChoice = showChoiceWarning(win, `The shortcut to AutoFish was created on you desktop!\n\nChoose your game:`, `Initial configuration`,
         ...games
       );

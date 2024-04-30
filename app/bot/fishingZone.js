@@ -53,7 +53,7 @@ const createFishingZone = (getDataFrom, zone, screenSize, { game, checkLogic, au
       pixelMatchMax = 0;
 
       let rgbZone = zone;
-      if(highlight && (game == `Classic` || game == `LK Classic` || game == `Retail`)) {
+      if(highlight && (game == `Classic` || game == `Cata Classic` || game == `Retail`)) {
         rgbZone = {x: highlight.x - doubleZoneSize, y: highlight.y - doubleZoneSize, width: doubleZoneSize * 2, height: doubleZoneSize * 2};
         if(rgbZone.x < zone.x) rgbZone.x = zone.x;
         if(rgbZone.y < zone.y) rgbZone.y = zone.y;
