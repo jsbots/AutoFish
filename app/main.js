@@ -360,7 +360,7 @@ ipcMain.on('unreg-start-by-fishing-key', () => {
 let powerBlocker = powerSaveBlocker.start("prevent-display-sleep");
 app.whenReady().then(() => {
   const menu = Menu.buildFromTemplate([{label: `Help`,     submenu: [
-      { label: `AutoFish ver. 2.8.2 Public` },
+      { label: `AutoFish ver. 2.8.3 Public` },
       { type: 'separator' },
       { label: "📘 Read Me", click: () => shell.openExternal("https://github.com/jsbots/AutoFish#guide-blue_book")},
       { label: 'Video', click: () => shell.openExternal("https://youtu.be/A3W8UuVIZTo")},

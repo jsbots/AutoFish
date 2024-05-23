@@ -171,6 +171,8 @@ AutoFish Premium is just my token of gratitude to you for your support.
 - [Motion Detection](#motion-detection-runner)
 - [Additional Actions](#additional-actions-mage)
 - [Mount Selling](#mount-selling-elephant)
+- [Check For Players Around](#find-player)
+- [Aggro Checking](#aggro-checking)
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
 - [Arduino Control](#arduino-control-joystick)
 - Profiles
@@ -204,7 +206,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
-Multiple Fishing mode feature enables you to fish simultaneously in multiple game windows, with support for up to 4 windows. The bot will switch between the game windows as needed for casting and catching fish.
+Multiple Fishing mode feature enables you to fish simultaneously in multiple game windows. The bot will switch between the game windows as needed for casting and catching fish. The bot should work well with up to 10 windows at the same time.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
 
@@ -254,7 +256,8 @@ You can set a zone for motion detection and the bot will notifiy you via Telegra
 <img src="guide_img/additionalactions.jpg" align="center">
 </p>
 
-You will be able to add as many additional actions which require repetition as you want (e.g. applying additional lures or using different bobbers).
+With Additional Actions module you can perform basically any automation you need during the fishing process. You can automate any mouse or keyboard movements as well as add some additional pixel conditions. It can be used for different things: applying additional lures, opening or deleting some items, automating sending caught fish in the process and so on.
+
 
 ## Mount Selling :elephant:
 
@@ -271,6 +274,45 @@ Because of the novelty of the interaction key this feature is available only for
 Depends on the mount the name of your trader might be different, so change the default value.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
+
+## Check For Players Around
+
+With some additional configuration you can set the bot to check for other players around. If it finds any it will notify you via telegram and sends a screenshot of the player found. It will search for players in front of you every second and players around you every minute (default).
+
+Before using it you need to make some preliminary configuration:
+
+1. Click on color picker icon from "Target HP" option and set it somewhere on the green field of your target health bar. You can target yourself before setting if there's no other player/NPC around. If you play on Vanilla server you might need to set "Target HP Exception" value, because on Vanilla servers "Target Nearest Friend" also targets your own character, it's a unique to your character target window pixel (some pixel on your name or your avatar).
+2. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other players, it should be something like "Target Nearest Friendly Player").  
+3. Choose what the bot should do after it finds a player in "Do After Player Found" option.
+
+### Hints and issues of aggro checking module:
+- You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.   
+
+## Aggro Checking
+
+This module isn't "plug&play" and requires proper initial configuration and testing before using.
+
+The main goal of it is to show some signs of combat action when being attacked by other players rather than standing still and keep on fishing.
+
+It definitely won't defeat anyone except for mobs, so choose a simple class for that role and make your rotation as simple as possible (some range class with simple spells that works both in melee and in range would do perfectly).
+
+The bot will notify you via telegram of any aggro actions.
+
+Guide:
+1. Click on color picker icon from Combat Indication Pixel and point it at the place which changes when your character switches to combat mode. Usually should be the place which changes when the character is in combat mode (character level or the rim around the avatar which changes to red when in the combat mode).
+2. Choose what to do after the bot is being attacked: attack back, run away or stop. (Run Away is the most stable choice for now).
+3. Click on color picker icon from Enemy HP Pixel and point it somewhere on the green field of your target health bar.
+4. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other enemy players, it should be something like "Target Nearest Enemy Player", or "Target Nearest Enemy" if you want to target mobs too).  
+5. Click "+" button:
+  1. If your skill works only at range but doesn't work in melee, turn "Range Only" on. (But better choose another, more universal and simpler skill)
+  2. Bind the same key the skill is bound to in the game.
+  3. Click on color picker icon from Skill Position and point it exactly at the number of the skill (the color should be whitish/greyish), this number is usually used for range indication and the bot will check it to determine how far it is from the enemy and how much it should come up to it.
+  4. Execution time and cooldown you can find in the description of the skill and set them in the respective values.
+
+Use "Test Rotation" button to see what will happen if you are attacked during fishing and check whether your rotation and the bot works properly for you.
+
+### Hints and issues of aggro checking module:
+- You might be able to change the size of enemy names in Accessibility section. Should be called "Minimum Character Name Size". Make it bigger to make the bot recognize enemies easier.  
 
 ## Random Camera/Character Movements :robot:
 
@@ -310,9 +352,9 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.8.2 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+AutoFish 2.8.3 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
 
-AutoFish 2.10.2 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.11.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
 
 If you choose to download the executable file, it functions as a setup file that installs the bot in the following directory: *c:/users/your_user/App Data/Local/random_folder/*. Additionally, a shortcut with a randomly generated name will be created on your desktop.
 
