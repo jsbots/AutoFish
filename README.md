@@ -171,8 +171,8 @@ AutoFish Premium is just my token of gratitude to you for your support.
 - [Motion Detection](#motion-detection-runner)
 - [Additional Actions](#additional-actions-mage)
 - [Mount Selling](#mount-selling-elephant)
-- [Check For Players Around](#find-player)
-- [Aggro Checking](#aggro-checking)
+- [Check For Players Around](#find-player-telescope)
+- [Aggro Checking](#aggro-checking-crossed-swords)
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
 - [Arduino Control](#arduino-control-joystick)
 - Profiles
@@ -275,7 +275,7 @@ Depends on the mount the name of your trader might be different, so change the d
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
 
-## Check For Players Around
+## Check For Players Around :telescope:
 
 With some additional configuration you can set the bot to check for other players around. If it finds any it will notify you via telegram and sends a screenshot of the player found. It will search for players in front of you every second and players around you every minute (default).
 
@@ -288,7 +288,7 @@ Before using it you need to make some preliminary configuration:
 ### Hints and issues of aggro checking module:
 - You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.   
 
-## Aggro Checking
+## Aggro Checking :crossed_swords:
 
 This module isn't "plug&play" and requires proper initial configuration and testing before using.
 
