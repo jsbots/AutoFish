@@ -171,8 +171,8 @@ AutoFish Premium is just my token of gratitude to you for your support.
 - [Motion Detection](#motion-detection-runner)
 - [Additional Actions](#additional-actions-mage)
 - [Mount Selling](#mount-selling-elephant)
-- [Check For Players Around](#find-player-telescope)
-- [Aggro Checking](#aggro-checking-crossed-swords)
+- [Check For Players Around](#check-for-players-around-telescope)
+- [Attacking / Running away](#attackingrunning-away-crossed_swords) 
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
 - [Arduino Control](#arduino-control-joystick)
 - Profiles
@@ -288,7 +288,7 @@ Before using it you need to make some preliminary configuration:
 ### Hints and issues of aggro checking module:
 - You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.   
 
-## Aggro Checking :crossed_swords:
+## Attacking/Running away :crossed_swords:
 
 This module isn't "plug&play" and requires proper initial configuration and testing before using.
 
