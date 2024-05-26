@@ -74,9 +74,10 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 
 ### Hints and Issues
 
-- Avoid aggro mobs (with red names) in the Fishing Zone, if you use red color.
-- If the bot misses too much or confuses your fishpole for a bobber, fish in 1st person view.
-- The bot works only with default UI: no UI scaling, no UI addons and so on.  
+- Avoid aggro mobs (with red names) in the Fishing Zone, if you use red color. Or turn them off in the settings (Interface -> Names -> NPC Names -> None)
+- If the bot can't find the bobber, try from the 1st person view.
+- If the bot doesn't react to animation, try from the 3rd person view.
+- The bot works only with default UI: no UI scaling, no UI addons and so on. (Especially ElvUI)
 - If the bot doesn't cast, though key is correct, launch it as admin.
 - The bot works only on a primary monitor.
 - Different camera directions can affect the brightness, size, and visibility of the bobber.
@@ -84,8 +85,7 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 - The bot will auto-confirm lures application if such confirmation is needed.  
 - The bot can auto-confirm *Soulbound* items. For that go to Advanced Settings and turn this option on.
 - If you use an addon that removes loot window (like Fishing Buddy), you can set *Loot Window Closing Delay* value to 0 to make it work faster.
-- The bot doesn't work properly on Turtle WoW and never will, unless you use sound detection available for Premium.
-- Because it's a "pixel" bot, and such pixel data heavily depends on conditions, the bot usually works at 90% efficiency.  
+- The bot works at 50% efficiency on Turtle WoW and won't work better unless you use sound detection available in Premium.
 
 ### Intensity
 
@@ -168,13 +168,13 @@ AutoFish Premium is just my token of gratitude to you for your support.
 - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
 - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
 - [Sound Detection](#sound-detection-loud_sound)
-- [Motion Detection](#motion-detection-runner)
 - [Additional Actions](#additional-actions-mage)
-- [Mount Selling](#mount-selling-elephant)
 - [Check For Players Around](#check-for-players-around-telescope)
-- [Attacking / Running away](#attackingrunning-away-crossed_swords) 
+- [Attacking / Running away](#attackingrunning-away-crossed_swords)
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
 - [Arduino Control](#arduino-control-joystick)
+- [Mount Selling](#mount-selling-elephant)
+- [Motion Detection](#motion-detection-runner)
 - Profiles
 
 ## Remote Control :iphone:
@@ -279,31 +279,36 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 With some additional configuration you can set the bot to check for other players around. If it finds any it will notify you via telegram and sends a screenshot of the player found. It will search for players in front of you every second and players around you every minute (default).
 
-Before using it you need to make some preliminary configuration:
+*For now it works only with players within 40 yd. range, because it relies on a target key.*
 
-1. Click on color picker icon from "Target HP" option and set it somewhere on the green field of your target health bar. You can target yourself before setting if there's no other player/NPC around. If you play on Vanilla server you might need to set "Target HP Exception" value, because on Vanilla servers "Target Nearest Friend" also targets your own character, it's a unique to your character target window pixel (some pixel on your name or your avatar).
+Before using it you need to make some simple preliminary configuration:
+
+1. Click on color picker icon from "Target HP" option and set it somewhere on the green field of your target health bar. You can target yourself before setting if there's no other player/NPC around.
+  *vanilla* - If you play on Vanilla server you might need to set "Target HP Exception" value, because on Vanilla servers "Target Nearest Friend" also targets your own character, it should be a unique to your character target window pixel (some pixel on your name or your avatar).
 2. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other players, it should be something like "Target Nearest Friendly Player").  
 3. Choose what the bot should do after it finds a player in "Do After Player Found" option.
 
-### Hints and issues of aggro checking module:
+### Hints and issues
+- Tweak rotation time if the 360 degree turn isn't correct.
 - You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.   
 
 ## Attacking/Running away :crossed_swords:
 
 This module isn't "plug&play" and requires proper initial configuration and testing before using.
 
-The main goal of it is to show some signs of combat action when being attacked by other players rather than standing still and keep on fishing.
+*It definitely won't defeat anyone except for mobs, so choose a simple class for that role and make your rotation as simple as possible (some range class with simple spells that works both in melee and in range would do perfectly).*
 
-It definitely won't defeat anyone except for mobs, so choose a simple class for that role and make your rotation as simple as possible (some range class with simple spells that works both in melee and in range would do perfectly).
+*For now it works only with players within 40 yd. range, because it relies on a target key.*
 
-The bot will notify you via telegram of any aggro actions.
+The bot will notify you via telegram of any aggro events.
 
 Guide:
-1. Click on color picker icon from Combat Indication Pixel and point it at the place which changes when your character switches to combat mode. Usually should be the place which changes when the character is in combat mode (character level or the rim around the avatar which changes to red when in the combat mode).
-2. Choose what to do after the bot is being attacked: attack back, run away or stop. (Run Away is the most stable choice for now).
-3. Click on color picker icon from Enemy HP Pixel and point it somewhere on the green field of your target health bar.
-4. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other enemy players, it should be something like "Target Nearest Enemy Player", or "Target Nearest Enemy" if you want to target mobs too).  
-5. Click "+" button:
+1. Turn off the nameplates (ctrl + v) and turn on Enemy Names (Options -> Interface -> Enemy Players), you can also set NPC names to "None" to make the bot avoid mobs names.
+2. Click on color picker icon from Combat Indication Pixel and point it at the place which changes when your character switches to combat mode. Usually it should be a place which changes when the character is in combat mode: for example the place where character level is, which usually changes to "double swords" or the rim around the avatar which changes to red when in the combat mode.
+3. Choose what to do after the bot is being attacked: Attack, Run Away or Stop. (Run Away is the most stable choice for now).
+4. Click on color picker icon from Enemy HP Pixel and point it somewhere on the green field of your target health bar.
+5. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other enemy players, it should be something like "Target Nearest Enemy Player", or "Target Nearest Enemy" if you want to target mobs too).  
+6. Click "+" button, if you chose "Attack" mode:
   1. If your skill works only at range but doesn't work in melee, turn "Range Only" on. (But better choose another, more universal and simpler skill)
   2. Bind the same key the skill is bound to in the game.
   3. Click on color picker icon from Skill Position and point it exactly at the number of the skill (the color should be whitish/greyish), this number is usually used for range indication and the bot will check it to determine how far it is from the enemy and how much it should come up to it.
@@ -311,8 +316,8 @@ Guide:
 
 Use "Test Rotation" button to see what will happen if you are attacked during fishing and check whether your rotation and the bot works properly for you.
 
-### Hints and issues of aggro checking module:
-- You might be able to change the size of enemy names in Accessibility section. Should be called "Minimum Character Name Size". Make it bigger to make the bot recognize enemies easier.  
+### Hints and issues:
+- You can change the size of enemy names in Accessibility section -> "Minimum Character Name Size". You can make it bigger to make the bot recognize enemies easier.  
 
 ## Random Camera/Character Movements :robot:
 
