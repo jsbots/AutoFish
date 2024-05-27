@@ -290,7 +290,8 @@ Before using it you need to make some simple preliminary configuration:
 
 ### Hints and issues
 - Tweak rotation time if the 360 degree turn isn't correct.
-- You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.   
+- You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.
+- This functionality won't work for non-hostile enemy players on Retail, because target friendly/enemy key doesn't target them in the game nor they have any names above if they aren't targeted first.   
 
 ## Attacking/Running away :crossed_swords:
 
