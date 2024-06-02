@@ -350,6 +350,9 @@ The bot is able to connect to your Arduino Board and use it to emulate a mouse/k
 6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
 7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
 
+### Hints and issues
+- If your cursor either overshoots or doesn't reach the destination properly, turn off **Enhance pointer precision** in mouse settings (in Windows).
+
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo)
 
 ## Download :open_file_folder:
