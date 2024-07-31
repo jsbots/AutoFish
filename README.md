@@ -157,7 +157,7 @@ Or
 
 ## AutoFish Premium	:crown:
 
-AutoFish Premium is just my token of gratitude to you for your support.
+AutoFish Premium is an updated version of the bot with many additional features.
 
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
@@ -357,10 +357,8 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-AutoFish 2.8.3 Public: [Download](https://www.buymeacoffee.com/jsbots/e/95380)
+Check again [Disclaimer](#disclaimer-warning) before downloading or using any of these:
 
-AutoFish 2.11.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 2.8.3: [Download](https://github.com/jsbots/AutoFish/releases/tag/v2.8.3)
 
-If you choose to download the executable file, it functions as a setup file that installs the bot in the following directory: *c:/users/your_user/App Data/Local/random_folder/*. Additionally, a shortcut with a randomly generated name will be created on your desktop.
-
-If you wish to uninstall the bot, you can do so through the Windows Settings. The uninstaller will have the same name as the shortcut on your desktop.
+AutoFish 3.0.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
