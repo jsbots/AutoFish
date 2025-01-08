@@ -377,6 +377,10 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 Streaming logic is used to run the bot and the game on different machines, you can use either hardware device for capturing your screen or stream it with OBS to the MediaMTX Server provided by the bot.
 
+In both cases you need a Raspberry Pico W device to simulate hardware input, how to configure and connect it you can find in this video: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q)
+
+**Important!** In Streaming Mode after you press start the bot waits 5 seconds before starting. If you use VM on your host computer this time is given for you to focus the game manually, the bot won't do it on its own, because well... it's not on your host computer so it can't control your windows.
+
 ### Hardware
 
 How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q)
@@ -384,13 +388,18 @@ How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/com
 ### MediaMTX Server
 
 1. Choose "MediaMTX" streaming source and then press Launch button. The bot will start RTMP server and will show (in the log) your RTMP address you need to set in OBS.
-2. Install OBS [Version 29.1](https://github.com/obsproject/obs-studio/releases/download/29.1.0/OBS-Studio-29.1-Full.zip) on your gaming pc (where the game will run). *For some reason newer versions doesn't work properly with custom RTMP servers, so use 29.1 for now.*
-3. **Settings -> Stream -> Service -> Custom**. Copy the address given by the bot in **Server** field, leave Stream Key empty.
-4. If you have some additional networks (VPN and so on) make sure your OBS is connected to the same one the machine with the bot is connected to. (Advanced -> Network)
-5. Then add a new Scene and choose your game as a Source.
-6. Turn off any audio output and microphone for the stream, you won't need them.
-7. Press **"Start Streaming"**. If you see a green square in the right bottom corner, then OBS has connected to the server.
-8. Now press "Set Fishing Zone" button in AutoFish and check if you can see your stream.
+2. Install OBS [Version 29.1](https://github.com/obsproject/obs-studio/releases/download/29.1.0/OBS-Studio-29.1-Full.zip) on your gaming pc (where the game will run). *For some reason newer versions don't work properly with custom RTMP servers, so use 29.1 for now.*
+3. **Settings -> Stream -> Service -> Custom**. Copy the address given by the bot in **Server** field. It should look like this but might be with different IP (if you got several of them then you have several networks, choose only a local one):
+
+```
+rtmp://192.168.1.10:1935/live
+```
+4. Choose Video Encoder either AMD H.264 or h264_nvenc (libx264).
+5. If you have some additional networks (VPN and so on) make sure your OBS is connected to the same one the machine with the bot is connected to. (Advanced -> Network)
+6. Then add a new Scene and choose your game as a Source.
+7. Turn off any audio output and microphone for the stream, you won't need them.
+8. Press **"Start Streaming"**. If you see a green square in the right bottom corner, then OBS has connected to the server.
+9. Now press "Set Fishing Zone" button in AutoFish and check if you can see your stream.
 
 ### VM
 
