@@ -18,7 +18,19 @@
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
 - [Download](#download-open_file_folder)
-- [AutoFish Premium](#autofish-premiumcrown)
+- [AutoFish Premium](#autofish-premium-gem)
+  - [Remote Control](#remote-control-iphone)
+  - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
+  - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
+  - [Sound Detection](#sound-detection-loud_sound)
+  - [Additional Actions](#additional-actions-mage)
+  - [Check For Players Around](#check-for-players-around-telescope)
+  - [Attacking / Running away](#attackingrunning-away-crossed_swords)
+  - [Random camera/character movements](#random-cameracharacter-movements-robot)
+  - [Hardware Control](#hardware-control-joystick)
+  - [Streaming Mode](#streaming-mode-tv)
+  - [Mount Selling](#mount-selling-elephant)
+  - [Motion Detection](#motion-detection-runner)
 
 ## Fishing bot :fish:
 
@@ -155,7 +167,7 @@ Or
 /script UseContainerItem(0,2); PickupInventoryItem(16);
 ```
 
-## AutoFish Premium	:crown:
+## AutoFish Premium :gem:
 
 AutoFish Premium is an updated version of the bot with many additional features.
 
@@ -172,7 +184,8 @@ AutoFish Premium is an updated version of the bot with many additional features.
 - [Check For Players Around](#check-for-players-around-telescope)
 - [Attacking / Running away](#attackingrunning-away-crossed_swords)
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
-- [Arduino Control](#arduino-control-joystick)
+- [Hardware Control](#hardware-control-joystick)
+- [Streaming Mode](#streaming-mode-tv)
 - [Mount Selling](#mount-selling-elephant)
 - [Motion Detection](#motion-detection-runner)
 - Profiles
@@ -228,13 +241,13 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 
 Sound Detection is an alternative to pixel recognition logic. The bot will hook the bobber only after "splash" sound and won't rely on checking the animation of the bobber plunging.
 
-With both Int. Key and Sound Detection turned on you can be completely independent from Threshold and Fishing Zone options. If you don't use Int. key or the game doesn't support it, the bot still needs to find a bobber first but checking will be done by sound recognition if you turn on Sound Detection option.
+Before using sound detection turn off Music and Ambient Sounds in the game, leave only Sound Effects. Try to find a place secluded from the sounds made by other players to avoid false detections.
 
-Before using sound detection turn off Music and Ambient Sounds in the game, leave only Sound Effects. Your volume should be at normal/default level. Try to find a place secluded from the sounds made by other players to avoid false detections.
+You can also use Alt-Tab Fishing Mode with Sound Detection, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on **Sound in Background** for that).
 
-You can also use Alt-Tab Fishing Mode in DX12 now, with Int.Key + Sound Detection the bot will focus the window only when it needs to cast and when it detects splash sound (turn on **Sound in Background** for that).
+Use **"Listen"** button to determine the amplitude of the splashing sound when your bobber plunges in the water: start fishing then press "Listen" button and check for "Max" value when the fish is caught. Do it couple of times to determine the stable value.
 
-**Warning!** Sound Detection feature might not work with some audio devices, in that case you need to switch to another device (e.g. you are using headphones and sound detection doesn't work, then plug in speakers and test again).
+If you want to make the bot listen only to the sounds of the game you can use [Virtual Audio Cable](https://vb-audio.com/Cable/) to "pipe" the sound from the game to an input device and then choose it in the settings of the bot. If your game doesn't support in-game choice for sound output device, you can manually set Output device for your game in **"App volume and device preferences"** settings of your Windows to **CABLE input (VB-Audio Virtual Cable)** and then choose **CABLE output (VB-Audio Virtual Cable)** in the settings of the bot.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Sound Detection Test Video](https://youtu.be/ZggOy8tA32A)
 
@@ -332,7 +345,7 @@ The bot will randomly move and change your camera direction from time to time wi
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Random Camera/Character Movements Test Video](https://youtu.be/o1hU3fNn4uk)
 
-## Arduino Control :joystick:
+## Hardware Control :joystick:
 
 *This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
@@ -340,7 +353,7 @@ Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTub
 <img src="guide_img/arduino.jpg" align="center">
 </p>
 
-The bot is able to connect to your Arduino Board and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
+The bot is able to connect to your Arduino Board/Raspberry Pico W and use it to emulate a mouse/keyboard device, it will look like a real keyboard or mouse to the OS and the game. What you need to do to make it possible:
 
 1. Get an Arduino with an ATmega32U4 on board (any cheap copies for 2-3$ will do too, you can find them on Chinese online markets).
 2. Connect it to your computer.
@@ -350,7 +363,43 @@ The bot is able to connect to your Arduino Board and use it to emulate a mouse/k
 6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
 7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
 
-Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Arduino Control Test Video](https://youtu.be/yE-qARS73oo)
+For **Raspberry Pico W** guide check the guide to **Streaming Mode**.
+
+Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Hardware Control Test Video](https://youtu.be/yE-qARS73oo)
+
+## Streaming Mode :tv:
+
+*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+
+<p align="center">
+<img src="guide_img/streaming.jpg" align="center">
+</p>
+
+Streaming logic is used to run the bot and the game on different machines, you can use either hardware device for capturing your screen or stream it with OBS to the MediaMTX Server provided by the bot.
+
+### Hardware
+
+How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q)
+
+### MediaMTX Server
+
+1. Choose "MediaMTX" streaming source and then press Launch button. The bot will start RTMP server and will show (in the log) your RTMP address you need to set in OBS.
+2. Install OBS [Version 29.1](https://github.com/obsproject/obs-studio/releases/download/29.1.0/OBS-Studio-29.1-Full.zip) on your gaming pc (where the game will run). *For some reason newer versions doesn't work properly with custom RTMP servers, so use 29.1 for now.*
+3. **Settings -> Stream -> Service -> Custom**. Copy the address given by the bot in **Server** field, leave Stream Key empty.
+4. If you have some additional networks (VPN and so on) make sure your OBS is connected to the same one the machine with the bot is connected to. (Advanced -> Network)
+5. Then add a new Scene and choose your game as a Source.
+6. Turn off any audio output and microphone for the stream, you won't need them.
+7. Press **"Start Streaming"**. If you see a green square in the right bottom corner, then OBS has connected to the server.
+8. Now press "Set Fishing Zone" button in AutoFish and check if you can see your stream.
+
+### VM
+
+Instead of another PC you can use a Virtual Machine for either Hardware or MediaMTX approach. There are a lot of guides how to install and use VM, so I won't cover it here (Personally tested it on VMware).
+
+ Make sure your VM uses **Bridge** type of **Network Connection** if you use it with MediaMTX server.
+
+ If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.  
+
 
 ## Download :open_file_folder:
 
@@ -362,4 +411,4 @@ Check again [Disclaimer](#disclaimer-warning) before downloading or using any of
 
 AutoFish 2.8.3: [Download](https://github.com/jsbots/AutoFish/releases/tag/v2.8.3)
 
-AutoFish 3.0.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 3.2.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)

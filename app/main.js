@@ -215,7 +215,7 @@ By pressing "Accept" you agree to everything stated above.`,
     } else {
       log.ok(`Found ${games.length} window${games.length > 1 ? `s` : ``} of the game!`);
     }
-
+    /*
     if(type != `relZone` && settings.initialZone){
       await new Promise(function(resolve, reject) {
         setTimeout(resolve, 50);
@@ -225,6 +225,7 @@ By pressing "Accept" you agree to everything stated above.`,
         win.webContents.send("stop-bot");
       }
     }
+    */
 
     if(settings.initialZone) {
       settings.initialZone = false;
@@ -244,6 +245,16 @@ By pressing "Accept" you agree to everything stated above.`,
 
       win.focus();
       return;
+    }
+
+    if((settings.game == `Retail` || settings.game == `Classic` || settings.game == `Cata Classic`)) {
+      await new Promise(function(resolve, reject) {
+        setTimeout(resolve, 50);
+      });
+      if((showChoiceWarning(win, `You are about to start the bot in a default mode on official servers.\n\nIt's not just a disclaimer, your account WILL be banned sooner or later.\n\nYou can use Streaming Mode for a much safer approach.\n\nAre you sure you want to continue?`, `Warning`, `Yes `, `No (recommended)`))) {
+        win.webContents.send("stop-bot");
+        return;
+      }
     }
 
     if(config.patch[settings.game].startByFishingKey) {
