@@ -405,9 +405,9 @@ rtmp://192.168.1.10:1935/live
 
 Instead of another PC you can use a Virtual Machine for either Hardware or MediaMTX approach. There are a lot of guides how to install and use VM, so I won't cover it here (Personally tested it on VMware).
 
- Make sure your VM uses **Bridge** type of **Network Connection** if you use it with MediaMTX server.
-
- If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.  
+- Make sure your VM uses **Bridge** type of **Network Connection** if you use it with MediaMTX server.
+- When setting Fishing Zone while using MediaMTX the stream image might be green, just minimize your VM window then focus it again.
+- If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
 
 
 ## Download :open_file_folder:
