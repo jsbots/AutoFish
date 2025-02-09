@@ -1,7 +1,6 @@
 <p align="center"> <img src="app/img/logo.png" width="400px"> </p>
 <div align="center">
 
- <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/olesgeras/autofish"> [![GitHub license](https://img.shields.io/github/license/olesgeras/AutoFish)](https://github.com/olesgeras/AutoFish/blob/4c5f0fdb5af0f1378f3318d563c5738fa7580e2f/LICENSE)
 <a href="https://youtu.be/A3W8UuVIZTo"><img alt="" src="https://img.shields.io/youtube/views/A3W8UuVIZTo?style=social"></a>
 
 </div>
@@ -24,13 +23,13 @@
   - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
   - [Sound Detection](#sound-detection-loud_sound)
   - [Additional Actions](#additional-actions-mage)
-  - [Check For Players Around](#check-for-players-around-telescope)
-  - [Attacking / Running away](#attackingrunning-away-crossed_swords)
   - [Random camera/character movements](#random-cameracharacter-movements-robot)
   - [Hardware Control](#hardware-control-joystick)
   - [Streaming Mode](#streaming-mode-tv)
   - [Mount Selling](#mount-selling-elephant)
   - [Motion Detection](#motion-detection-runner)
+  - [Check For Players Around (unstable)](#check-for-players-around-telescope-unstable)
+  - [Attacking / Running away (unstable)](#attackingrunning-away-crossed_swords-unstable)
 
 ## Fishing bot :fish:
 
@@ -43,6 +42,8 @@ This is a so-called "pixel bot": it works with pixels only, without modifying th
 </p>
 
 For video review you can watch this (pretty old) <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 1.12](https://youtu.be/A3W8UuVIZTo)
+
+**Important!** The bot works only on **Windows 10/11**.
 
 ## Disclaimer :warning:
 
@@ -98,6 +99,7 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 - The bot can auto-confirm *Soulbound* items. For that go to Advanced Settings and turn this option on.
 - If you use an addon that removes loot window (like Fishing Buddy), you can set *Loot Window Closing Delay* value to 0 to make it work faster.
 - The bot works at 50% efficiency on Turtle WoW and won't work better unless you use sound detection available in Premium.
+- Any features that print text will use English keyboard layout, so make sure you switched to English before using them.
 
 ### Intensity
 
@@ -176,7 +178,8 @@ AutoFish Premium is an updated version of the bot with many additional features.
 </p>
 
 **Premium Features/Content:**
-- [Remote Control](#remote-control-iphone)
+- [Remote Control / Chat Detection](#remote-control-iphone)
+- [AI](#ai)
 - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
 - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
 - [Sound Detection](#sound-detection-loud_sound)
@@ -190,9 +193,11 @@ AutoFish Premium is an updated version of the bot with many additional features.
 - [Motion Detection](#motion-detection-runner)
 - Profiles
 
-## Remote Control :iphone:
+## Remote Control / Chat Detection :iphone:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+You can control the bot via Telegram and it also can detect messages in your chat in the game and notify you.
+
+### Guide:
 
 1. Get the token from [BotFather](https://t.me/BotFather) by using /newbot command and following the instruction. Imagine some long and random name for the bot so that someone won't accidentally join your bot and gain control over your fishing process.
 2. Paste the token to **Telegram token** input field in **Remote Control** section in the **Advanced Settings** and press enter.
@@ -203,37 +208,72 @@ AutoFish Premium is an updated version of the bot with many additional features.
 
 3. Press **Connect** button and wait until the name of the button changes to either **done** or **error* (*might take awhile*).
 4. Open the bot in your Telegram and either press /start or write /start command.
-5. If evertyhing is OK, the bot will reply with:
+5. If everything is OK, the bot will reply with:
 
 <p align="center">
 <img src="guide_img/tmmenu.jpg" width="416px" align="center">
 </p>
 
-6. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
-
-7. If you want to make the bot notify you about any errors or whipser messeges, *you need to start it from Telegram* (*not by pressing Start on the bot's interface*). Whisper detection will work much better and reliable if you **turn off all the other chat messages**.
+6. Create a separate tab in your chat and set its background to solid black for better visual detection, especially if you set the bot detect messages **by text**.
+7. Now set your **Chat Zone** as on the screenshot below by pressing **Set Chat Zone** button on the main window of the AutoFish.
+8. Start the bot from Telegram.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Telegram remote control Test Video](https://youtu.be/aKulvFK6ubg)
 
+## AI :iphone:
+
+The bot can use one of **OpenRouter** AI models to generate a response to the messages it detects in the **Chat Zone** (it uses settings from **Remote Control** section).
+
+### Guide:
+
+1. Sign In to [OpenRouter](https://openrouter.ai/) and get an API key: *Profile -> Keys -> Create Key*.
+2. Paste it into **API Key** field.
+3. Choose a model from the list.
+4. You can change **AI Prompt* field to your own context and test the result in **AI Test** section.
+
 ## Multiple Fishing Mode :rocket:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
+In **Multiple Fishing** mode you can use the bot simultaneously with multiple game windows, the bot will switch between the windows and can work with up to 10 windows at the same time.
 
-Multiple Fishing mode feature enables you to fish simultaneously in multiple game windows. The bot will switch between the game windows as needed for casting and catching fish. The bot should work well with up to 10 windows at the same time.
+
+###Guide(normal mode):
+Ensure each window is properly launched and configured, and **every game instance is set to DirectX 11 or lower** *(older games doesn't need it)*.
+
+In this mode, the bot will use special profiles specific to each window: WIN1, WIN2, WIN3 and so on *(check in profiles list)*. Each "WIN" profile must have a **"Custom Window"** configured *(found under Advanced Settings -> Window)*. Use the **"Focus"** button to check which window you've selected.
+
+**Simple guide:** choose WIN1 in profiles above -> Go to Advanced Settings -> Custom Window -> Choose the window for the first game -> Repeat the same for every next window.
+
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
 
+###Guide(streaming mode):
+Similar logic as with normal mode, but instead each *WIN1, WIN2, WIN3* and so on will use */live1, /live2, /live3* addresses respectively you need to stream to from your OBS (and because you can't stream to multiple sources in OBS you need to have multiple applications running).
+
+Check [Streaming Mode](#streaming-mode-tv) how to stream to the bot from OBS and use it for every window, but instead of */live* rtps address use */live1*, */live2* and so on, as described above. Also check important notes.
+
+Because there's no way for the bot to control the windows on the gaming PC, after starting the bot you need to focus them in right order to make the bot use simple *alt+tab* logic to switch between them.
+
+For example you have 2 windows: after you pressed "Start" you focus *first window* (/live1(WIN1)) then *second window* (/live2(WIN2)) and then back to first window. This way the bot will be able to switch between them in a *blind* way.
+
+Another example if you have 3 windows: after you pressed "Start" you focus *first window* (/live1(WIN1)) then *second window* (/live2(WIN2)) then *third window* (/live3(WIN3)) then back to *second window* and then back to *first window*. Again, this way the bot will be able to switch between them in a *blind* way.
+
+You can use [Sound Detection](#sound-detection-loud_sound) with Multiple Fishing mode while streaming, but don't forget to add audio source (check Sound Detection section).
+
+**Important!** In **Streaming Mode + Multiple Fishing** use lower bitrate (somewhere 2500-4000) and lower fps (30 works well as well) for each stream. Also, Streaming Mode won't be able to work with more than 3 windows, probably, couldn't test because I got video encoder overload.    
+**Important!** [Sound Detection](#sound-detection-loud_sound) won't work in Multiple Fishing **normal** mode.
+**Important!** For every WIN you need to turn on Streaming Mode checkbox (in Advanced Settings) separately, otherwise the bot will ignore it.
+**Important!** You can start the bot from any WIN window, it doesn't matter, the bot will use settings of every WIN respectively. But if you start from some other profile don't forget to check **Multiple Fishing** checkbox.
+
+
 ## Alt-Tab Fishing Mode :sleeping:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
 Alt-Tab Fishing Mode will simulate so-called "afk fishing": the bot will focus the window only when your character needs to cast, catch or perform any action and then it will lose focus and return you to the previous window by pressing alt-tab.
+
+**Important!** Doesn't work in [Streaming Mode](#streaming-mode-tv).
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Alt-Tab Fishing Test Video](https://youtu.be/lQi6fSxMyL0)
 
 ## Sound Detection :loud_sound:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 <p align="center">
 <img src="guide_img/sound-detection.jpg" align="center">
@@ -249,11 +289,11 @@ Use **"Listen"** button to determine the amplitude of the splashing sound when y
 
 If you want to make the bot listen only to the sounds of the game you can use [Virtual Audio Cable](https://vb-audio.com/Cable/) to "pipe" the sound from the game to an input device and then choose it in the settings of the bot. If your game doesn't support in-game choice for sound output device, you can manually set Output device for your game in **"App volume and device preferences"** settings of your Windows to **CABLE input (VB-Audio Virtual Cable)** and then choose **CABLE output (VB-Audio Virtual Cable)** in the settings of the bot.
 
+For Sound Detection to work in [Streaming Mode](#streaming-mode-tv), you need to stream sound as well. So add **Application Audio Capture (BETA)** source in addition to the video source in your OBS.
+
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Sound Detection Test Video](https://youtu.be/ZggOy8tA32A)
 
 ## Motion Detection :runner:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 <p align="center">
 <img src="guide_img/motiondetection.jpg" align="center">
@@ -263,18 +303,13 @@ You can set a zone for motion detection and the bot will notifiy you via Telegra
 
 ## Additional Actions :mage:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
 <p align="center">
 <img src="guide_img/additionalactions.jpg" align="center">
 </p>
 
 With Additional Actions module you can perform basically any automation you need during the fishing process. You can automate any mouse or keyboard movements as well as add some additional pixel conditions. It can be used for different things: applying additional lures, opening or deleting some items, automating sending caught fish in the process and so on.
 
-
 ## Mount Selling :elephant:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 <p align="center">
 <img src="guide_img/mammoth.jpg" align="center">
@@ -288,7 +323,7 @@ Depends on the mount the name of your trader might be different, so change the d
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
 
-## Check For Players Around :telescope:
+## Check For Players Around :telescope: (unstable)
 
 With some additional configuration you can set the bot to check for other players around. If it finds any it will notify you via telegram and sends a screenshot of the player found. It will search for players in front of you every second and players around you every minute (default).
 
@@ -306,7 +341,7 @@ Before using it you need to make some simple preliminary configuration:
 - You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.
 - This functionality won't work for non-hostile enemy players on Retail, because target friendly/enemy key doesn't target them in the game nor they have any names above if they aren't targeted first.   
 
-## Attacking/Running away :crossed_swords:
+## Attacking/Running away :crossed_swords: (unstable)
 
 This module isn't "plug&play" and requires proper initial configuration and testing before using.
 
@@ -335,8 +370,6 @@ Use "Test Rotation" button to see what will happen if you are attacked during fi
 
 ## Random Camera/Character Movements :robot:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
 <p align="center">
 <img src="guide_img/rngMove.jpg" align="center">
 </p>
@@ -346,8 +379,6 @@ The bot will randomly move and change your camera direction from time to time wi
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Random Camera/Character Movements Test Video](https://youtu.be/o1hU3fNn4uk)
 
 ## Hardware Control :joystick:
-
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
 
 <p align="center">
 <img src="guide_img/arduino.jpg" align="center">
@@ -363,52 +394,62 @@ The bot is able to connect to your Arduino Board/Raspberry Pico W and use it to 
 6. Click **Sketch** -> **Upload** and wait until the code uploads to your board.
 7. Launch AutoFish, click **Advanced Settings** turn on **Use Arduino Board** option and choose the port your Arduino Board connected to, press **Connect** button.
 
-For **Raspberry Pico W** guide check the guide to **Streaming Mode**.
+For **Raspberry Pico W** guide check [Streaming Mode](#streaming-mode-tv).
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Hardware Control Test Video](https://youtu.be/yE-qARS73oo)
 
 ## Streaming Mode :tv:
 
-*This feature is available only for [Premium version](https://www.buymeacoffee.com/jsbots/e/96734) of the app*
-
 <p align="center">
 <img src="guide_img/streaming.jpg" align="center">
 </p>
 
-Streaming logic is used to run the bot and the game on different machines, you can use either hardware device for capturing your screen or stream it with OBS to the MediaMTX Server provided by the bot.
+Streaming Mode is used to run the bot and the game on different computers, you can use either hardware device for capturing your screen or stream it with OBS to the MediaMTX Server provided by the bot *(recommended)*.
 
-In both cases you need a Raspberry Pico W device to simulate hardware input, how to configure and connect it you can find in this video: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q)
+In both cases you need a **Raspberry Pico W** device to simulate hardware input, how to configure and connect it you can find in this video: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q) *The files for Pico W will come with the bot archive*
 
-**Important!** In Streaming Mode after you press start the bot waits 5 seconds before starting. If you use VM on your host computer this time is given for you to focus the game manually, the bot won't do it on its own, because well... it's not on your host computer so it can't control your windows.
+**Important!** In Streaming Mode after you press start the bot waits 5 seconds before starting *(by default)*. If you use VM on your host computer this time is given for you to focus the game manually, the bot won't do it on its own, because well... it's not on your host computer so it can't control your windows.
 
 ### Hardware
 
 How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q)
 
-### MediaMTX Server
+**Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
+**Important!** If you run into any issues with Pico W (Like why it can't connect to your wifi and so on), you can install [Mu Editor](https://codewith.mu/) and check the errors in **Serial** section.
 
-1. Choose "MediaMTX" streaming source and then press Launch button. The bot will start RTMP server and will show (in the log) your RTMP address you need to set in OBS.
-2. Install OBS [Version 29.1](https://github.com/obsproject/obs-studio/releases/download/29.1.0/OBS-Studio-29.1-Full.zip) on your gaming pc (where the game will run). *For some reason newer versions don't work properly with custom RTMP servers, so use 29.1 for now.*
-3. **Settings -> Stream -> Service -> Custom**. Copy the address given by the bot in **Server** field. It should look like this but might be with different IP (if you got several of them then you have several networks, choose only a local one):
+### Streaming Server
 
-```
-rtmp://192.168.1.10:1935/live
-```
-4. Choose Video Encoder either AMD H.264 or h264_nvenc (libx264).
+1. Choose **Streaming Server** as streaming source and then press **Launch** button. The bot will start RTSP server and will show (in the log) your RTSP address.
+2. Install [OBS](https://obsproject.com/) on your gaming pc (where the game will run).
+3. In OBS navigate to Settings -> Output -> Recording. Then configure it like this:
+
+- **Type**: **Custom Output(FFmpeg)**
+- **File Path or URL**: Put here the address given by the bot, *e.g. rtsp://192.168.1.2:8554/live*
+- **Container Format**: rtsp
+- **Video Bitrate**: 6000 Kbps (experiment with this to get a better quality)
+- Check **show all codecs (even if potentically incompatible)**
+- If you have **AMD** GPU choose **h264_amf - AMD AMF H.265 Encoder** or If you have **NVIDIA** GPU choose **h264_nvenc**
+- **Video encoder settings (if any)**: bf=0
+- **Audio Track**: 1
+- **Audio Encoder**: libopus - libopus Opus *(don't confuse it with Opus)*
+
+4. **Add Scene**. Then **Add Source** -> **Game Capture**. Then right-click on it and choose **Properties**. Turn off **Capture Cursor** and turn on **Capture Audio (BETA)** If you use [Sound Detection](#sound-detection-loud_sound).
 5. If you have some additional networks (VPN and so on) make sure your OBS is connected to the same one the machine with the bot is connected to. (Advanced -> Network)
-6. Then add a new Scene and choose your game as a Source.
-7. Turn off any audio output and microphone for the stream, you won't need them.
-8. Press **"Start Streaming"**. If you see a green square in the right bottom corner, then OBS has connected to the server.
-9. Now press "Set Fishing Zone" button in AutoFish and check if you can see your stream.
+6. Press **"Start Recording"** *(Yes, Start Recording, not Start Streaming)*. If the log has a green line "Stream is being published to /live" then you successfully started streaming to the server.
+7. Now press **Set Fishing Zone** and check if you can see your stream.
+
+**Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
+**Important!** Streaming Mode will work only for games in Fullscreen, that's why Game PC Resolution is the setting both for your gaming PC and the game.
+**Important!** If you use any of the *color pickers* in Streaming Mode make the tolerance value lower, because the image you stream from OBS could be very dynamic.  
+**Important!** Make sure your firewall doesn't block 8554 port.
 
 ### VM
 
-Instead of another PC you can use a Virtual Machine for either Hardware or MediaMTX approach. There are a lot of guides how to install and use VM, so I won't cover it here (Personally tested it on VMware).
+Instead of another PC you can use a Virtual Machine for either Hardware or Streaming Server approach. There are a lot of guides how to install and use VM, so I won't cover it here (tested it on VMware).
 
-- Make sure your VM uses **Bridge** type of **Network Connection** if you use it with MediaMTX server.
-- When setting Fishing Zone while using MediaMTX the stream image might be green, just minimize your VM window then focus it again.
-- If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
-
+**Important!** Make sure your VM uses **Bridge** type of **Network Connection**.
+**Important!** When setting Fishing Zone while using Streaming Server the stream image might be green, just minimize your VM window then focus it again.
+**Important!** If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
 
 ## Download :open_file_folder:
 
@@ -416,8 +457,8 @@ Instead of another PC you can use a Virtual Machine for either Hardware or Media
 <a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
 </p>
 
-Check again [Disclaimer](#disclaimer-warning) before downloading or using any of these:
+Check again [Disclaimer](#disclaimer-warning) before downloading or running any of these (*I'm serious, the bot has been there for 3 years and people are still doing stupid things with it. Don't launch/use it if you are new to this stuff.*):
 
 AutoFish 2.8.3: [Download](https://github.com/jsbots/AutoFish/releases/tag/v2.8.3)
 
-AutoFish 3.2.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
+AutoFish 3.3.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
