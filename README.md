@@ -179,7 +179,7 @@ AutoFish Premium is an updated version of the bot with many additional features.
 
 **Premium Features/Content:**
 - [Remote Control / Chat Detection](#remote-control-iphone)
-- [AI](#ai)
+- [AI](#ai-speech_balloon)
 - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
 - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
 - [Sound Detection](#sound-detection-loud_sound)
@@ -220,7 +220,7 @@ You can control the bot via Telegram and it also can detect messages in your cha
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Telegram remote control Test Video](https://youtu.be/aKulvFK6ubg)
 
-## AI :iphone:
+## AI :speech_balloon:
 
 The bot can use one of **OpenRouter** AI models to generate a response to the messages it detects in the **Chat Zone** (it uses settings from **Remote Control** section).
 
