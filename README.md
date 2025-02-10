@@ -18,7 +18,7 @@
 - [Interactive key](#interactive-key)
 - [Download](#download-open_file_folder)
 - [AutoFish Premium](#autofish-premium-gem)
-  - [Remote Control](#remote-control-iphone)
+  - [Remote Control / Chat Detection](#remote-control--chat-detection-iphone)
   - [AI](#ai-speech_balloon)
   - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
   - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
@@ -179,19 +179,19 @@ AutoFish Premium is an updated version of the bot with many additional features.
 </p>
 
 **Premium Features/Content:**
-- [Remote Control / Chat Detection](#remote-control-iphone)
+- [Remote Control / Chat Detection](#remote-control--chat-detection-iphone)
 - [AI](#ai-speech_balloon)
 - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
 - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
 - [Sound Detection](#sound-detection-loud_sound)
 - [Additional Actions](#additional-actions-mage)
-- [Check For Players Around](#check-for-players-around-telescope)
-- [Attacking / Running away](#attackingrunning-away-crossed_swords)
 - [Random camera/character movements](#random-cameracharacter-movements-robot)
 - [Hardware Control](#hardware-control-joystick)
 - [Streaming Mode](#streaming-mode-tv)
 - [Mount Selling](#mount-selling-elephant)
 - [Motion Detection](#motion-detection-runner)
+- [Check For Players Around](#check-for-players-around-telescope-unstable)
+- [Attacking / Running away](#attackingrunning-away-crossed_swords-unstable)
 - Profiles
 
 ## Remote Control / Chat Detection :iphone:
@@ -222,6 +222,10 @@ You can control the bot via Telegram and it also can detect messages in your cha
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Telegram remote control Test Video](https://youtu.be/aKulvFK6ubg)
 
 ## AI :speech_balloon:
+
+<p align="center">
+<img src="guide_img/aiResponse.jpg" width="416px" align="center">
+</p>
 
 The bot can use one of **OpenRouter** AI models to generate a response to the messages it detects in the **Chat Zone** (it uses settings from **Remote Control** section).
 
@@ -260,11 +264,11 @@ Another example if you have 3 windows: after you pressed "Start" you focus *firs
 
 You can use [Sound Detection](#sound-detection-loud_sound) with Multiple Fishing mode while streaming, but don't forget to add audio source (check Sound Detection section).
 
-**Important!** If in **Streaming Mode + Multiple Fishing** you get video encoder overloading try to lower the bitrate (somewhere 2500-4000) and fps (30 works well as well) for each stream.
-**Important!** [Sound Detection](#sound-detection-loud_sound) won't work in Multiple Fishing **normal** mode.
-**Important!** For every WIN you need to turn on Streaming Mode checkbox (in Advanced Settings) separately, otherwise the bot will ignore it.
-**Important!** You can start the bot from any WIN window, it doesn't matter, the bot will use settings of every WIN respectively. But if you start from some other profile don't forget to check **Multiple Fishing** checkbox.
-**Important** You can try to increase mouse speed for multiple windows in case the bot can't catch up.
+- **Important!** If in **Streaming Mode + Multiple Fishing** you get video encoder overloading try to lower the bitrate (somewhere 2500-4000) and fps (30 works well as well) for each stream.
+- **Important!** [Sound Detection](#sound-detection-loud_sound) won't work in Multiple Fishing **normal** mode.
+- **Important!** For every WIN you need to turn on Streaming Mode checkbox (in Advanced Settings) separately, otherwise the bot will ignore it.
+- **Important!** You can start the bot from any WIN window, it doesn't matter, the bot will use settings of every WIN respectively. But if you start from some other profile don't forget to check **Multiple Fishing** checkbox.
+- **Important** You can try to increase mouse speed for multiple windows in case the bot can't catch up.
 
 
 ## Alt-Tab Fishing Mode :sleeping:
@@ -365,14 +369,14 @@ Streaming Mode is used to run the bot and the game on different computers, you c
 
 In both cases you need a **Raspberry Pico W** device to simulate hardware input, how to configure and connect it you can find in this video: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q) *The files for Pico W will come with the bot archive*
 
-**Important!** In Streaming Mode after you press start the bot waits 5 seconds before starting *(by default)*. If you use VM on your host computer this time is given for you to focus the game manually, the bot won't do it on its own, because well... it's not on your host computer so it can't control your windows.
+- **Important!** In Streaming Mode after you press start the bot waits 5 seconds before starting *(by default)*. If you use VM on your host computer this time is given for you to focus the game manually, the bot won't do it on its own, because well... it's not on your host computer so it can't control your windows.
 
 ### Hardware
 
 How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [AutoFish 3.1 - Streaming Mode](https://youtu.be/Kacworq8j8Q)
 
-**Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
-**Important!** If you run into any issues with Pico W (Like why it can't connect to your wifi and so on), you can install [Mu Editor](https://codewith.mu/) and check the errors in **Serial** section.
+- **Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
+- **Important!** If you run into any issues with Pico W (Like why it can't connect to your wifi and so on), you can install [Mu Editor](https://codewith.mu/) and check the errors in **Serial** section.
 
 ### Streaming Server
 
@@ -396,18 +400,18 @@ How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/com
 7. Now press **Set Fishing Zone** and check if you can see your stream.
 8. Press **Start Button** and wait until the bot start counting *(you can change counting time in Advanced Settings)*, during this time you need to focus your game on the PC where the game is running (or focus windows in a proper order if you run it in [Multiple Fishing Mode](#multiple-fishing-mode-rocket))
 
-**Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
-**Important!** Streaming Mode will work only for games in Fullscreen, that's why Game PC Resolution is the setting both for your gaming PC and the game.
-**Important!** If you use any of the *color pickers* in Streaming Mode make the tolerance value lower, because the image you stream from OBS could be very dynamic.  
-**Important!** Make sure your firewall doesn't block 8554 port.
+- **Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
+- **Important!** Streaming Mode will work only for games in Fullscreen, that's why Game PC Resolution is the setting both for your gaming PC and the game.
+- **Important!** If you use any of the *color pickers* in Streaming Mode make the tolerance value lower, because the image you stream from OBS could be very dynamic.  
+- **Important!** Make sure your firewall doesn't block 8554 port.
 
 ### VM
 
 Instead of another PC you can use a Virtual Machine for either Hardware or Streaming Server approach. There are a lot of guides how to install and use VM, so I won't cover it here (tested it on VMware).
 
-**Important!** Make sure your VM uses **Bridge** type of **Network Connection**.
-**Important!** When setting Fishing Zone while using Streaming Server the stream image might be green, just minimize your VM window then focus it again.
-**Important!** If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
+- **Important!** Make sure your VM uses **Bridge** type of **Network Connection**.
+- **Important!** When setting Fishing Zone while using Streaming Server the stream image might be green, just minimize your VM window then focus it again.
+- **Important!** If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
 
 
 ## Check For Players Around :telescope: (unstable)
@@ -465,5 +469,7 @@ Use "Test Rotation" button to see what will happen if you are attacked during fi
 Check again [Disclaimer](#disclaimer-warning) before downloading or running any of these (*I'm serious, the bot has been there for 3 years and people are still doing stupid things with it. Don't launch/use it if you are new to this stuff.*):
 
 AutoFish 2.8.3: [Download](https://github.com/jsbots/AutoFish/releases/tag/v2.8.3)
+
+AutoFish 3.3.0 Premium (trial version): [Download](https://buymeacoffee.com/jsbots/e/258390)
 
 AutoFish 3.3.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
