@@ -19,6 +19,7 @@
 - [Download](#download-open_file_folder)
 - [AutoFish Premium](#autofish-premium-gem)
   - [Remote Control](#remote-control-iphone)
+  - [AI](#ai-speech_balloon)
   - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
   - [Alt-Tab Fishing Mode](#alt-tab-fishing-mode-sleeping)
   - [Sound Detection](#sound-detection-loud_sound)
@@ -259,10 +260,11 @@ Another example if you have 3 windows: after you pressed "Start" you focus *firs
 
 You can use [Sound Detection](#sound-detection-loud_sound) with Multiple Fishing mode while streaming, but don't forget to add audio source (check Sound Detection section).
 
-**Important!** In **Streaming Mode + Multiple Fishing** use lower bitrate (somewhere 2500-4000) and lower fps (30 works well as well) for each stream. Also, Streaming Mode won't be able to work with more than 3 windows, probably, couldn't test because I got video encoder overload.    
+**Important!** If in **Streaming Mode + Multiple Fishing** you get video encoder overloading try to lower the bitrate (somewhere 2500-4000) and fps (30 works well as well) for each stream.
 **Important!** [Sound Detection](#sound-detection-loud_sound) won't work in Multiple Fishing **normal** mode.
 **Important!** For every WIN you need to turn on Streaming Mode checkbox (in Advanced Settings) separately, otherwise the bot will ignore it.
 **Important!** You can start the bot from any WIN window, it doesn't matter, the bot will use settings of every WIN respectively. But if you start from some other profile don't forget to check **Multiple Fishing** checkbox.
+**Important** You can try to increase mouse speed for multiple windows in case the bot can't catch up.
 
 
 ## Alt-Tab Fishing Mode :sleeping:
@@ -322,51 +324,6 @@ Because of the novelty of the interaction key this feature is available only for
 Depends on the mount the name of your trader might be different, so change the default value.
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Mammoth Selling Test Video](https://youtu.be/zY2LqAPszdg)
-
-## Check For Players Around :telescope: (unstable)
-
-With some additional configuration you can set the bot to check for other players around. If it finds any it will notify you via telegram and sends a screenshot of the player found. It will search for players in front of you every second and players around you every minute (default).
-
-*For now it works only with players within 40 yd. range, because it relies on a target key.*
-
-Before using it you need to make some simple preliminary configuration:
-
-1. Click on color picker icon from "Target HP" option and set it somewhere on the green field of your target health bar. You can target yourself before setting if there's no other player/NPC around.
-  *vanilla* - If you play on Vanilla server you might need to set "Target HP Exception" value, because on Vanilla servers "Target Nearest Friend" also targets your own character, it should be a unique to your character target window pixel (some pixel on your name or your avatar).
-2. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other players, it should be something like "Target Nearest Friendly Player").  
-3. Choose what the bot should do after it finds a player in "Do After Player Found" option.
-
-### Hints and issues
-- Tweak rotation time if the 360 degree turn isn't correct.
-- You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.
-- This functionality won't work for non-hostile enemy players on Retail, because target friendly/enemy key doesn't target them in the game nor they have any names above if they aren't targeted first.   
-
-## Attacking/Running away :crossed_swords: (unstable)
-
-This module isn't "plug&play" and requires proper initial configuration and testing before using.
-
-*It definitely won't defeat anyone except for mobs, so choose a simple class for that role and make your rotation as simple as possible (some range class with simple spells that works both in melee and in range would do perfectly).*
-
-*For now it works only with players within 40 yd. range, because it relies on a target key.*
-
-The bot will notify you via telegram of any aggro events.
-
-Guide:
-1. Turn off the nameplates (ctrl + v) and turn on Enemy Names (Options -> Interface -> Enemy Players), you can also set NPC names to "None" to make the bot avoid mobs names.
-2. Click on color picker icon from Combat Indication Pixel and point it at the place which changes when your character switches to combat mode. Usually it should be a place which changes when the character is in combat mode: for example the place where character level is, which usually changes to "double swords" or the rim around the avatar which changes to red when in the combat mode.
-3. Choose what to do after the bot is being attacked: Attack, Run Away or Stop. (Run Away is the most stable choice for now).
-4. Click on color picker icon from Enemy HP Pixel and point it somewhere on the green field of your target health bar.
-5. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other enemy players, it should be something like "Target Nearest Enemy Player", or "Target Nearest Enemy" if you want to target mobs too).  
-6. Click "+" button, if you chose "Attack" mode:
-  1. If your skill works only at range but doesn't work in melee, turn "Range Only" on. (But better choose another, more universal and simpler skill)
-  2. Bind the same key the skill is bound to in the game.
-  3. Click on color picker icon from Skill Position and point it exactly at the number of the skill (the color should be whitish/greyish), this number is usually used for range indication and the bot will check it to determine how far it is from the enemy and how much it should come up to it.
-  4. Execution time and cooldown you can find in the description of the skill and set them in the respective values.
-
-Use "Test Rotation" button to see what will happen if you are attacked during fishing and check whether your rotation and the bot works properly for you.
-
-### Hints and issues:
-- You can change the size of enemy names in Accessibility section -> "Minimum Character Name Size". You can make it bigger to make the bot recognize enemies easier.  
 
 ## Random Camera/Character Movements :robot:
 
@@ -433,10 +390,11 @@ How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/com
 - **Audio Track**: 1
 - **Audio Encoder**: libopus - libopus Opus *(don't confuse it with Opus)*
 
-4. **Add Scene**. Then **Add Source** -> **Game Capture**. Then right-click on it and choose **Properties**. Turn off **Capture Cursor** and turn on **Capture Audio (BETA)** If you use [Sound Detection](#sound-detection-loud_sound).
+4. **Add Scene**. Then **Add Source** -> **Game Capture**. Then right-click on it and choose **Properties**. Turn off **Capture Cursor**. If you use [Sound Detection](#sound-detection-loud_sound) add **Application Audio Capture (BETA)** source in addition to the video source in your OBS.
 5. If you have some additional networks (VPN and so on) make sure your OBS is connected to the same one the machine with the bot is connected to. (Advanced -> Network)
 6. Press **"Start Recording"** *(Yes, Start Recording, not Start Streaming)*. If the log has a green line "Stream is being published to /live" then you successfully started streaming to the server.
 7. Now press **Set Fishing Zone** and check if you can see your stream.
+8. Press **Start Button** and wait until the bot start counting *(you can change counting time in Advanced Settings)*, during this time you need to focus your game on the PC where the game is running (or focus windows in a proper order if you run it in [Multiple Fishing Mode](#multiple-fishing-mode-rocket))
 
 **Important** Turn off [Enhance Pointer Precision](https://www.wikihow.com/Enhance-Pointer-Precision#:~:text=Enhance%20Pointer%20Precision%20changes%20your,gaming%2C%20consider%20disabling%20this%20feature.) in your Windows.
 **Important!** Streaming Mode will work only for games in Fullscreen, that's why Game PC Resolution is the setting both for your gaming PC and the game.
@@ -450,6 +408,53 @@ Instead of another PC you can use a Virtual Machine for either Hardware or Strea
 **Important!** Make sure your VM uses **Bridge** type of **Network Connection**.
 **Important!** When setting Fishing Zone while using Streaming Server the stream image might be green, just minimize your VM window then focus it again.
 **Important!** If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
+
+
+## Check For Players Around :telescope: (unstable)
+
+With some additional configuration you can set the bot to check for other players around. If it finds any it will notify you via telegram and sends a screenshot of the player found. It will search for players in front of you every second and players around you every minute (default).
+
+*For now it works only with players within 40 yd. range, because it relies on a target key.*
+
+Before using it you need to make some simple preliminary configuration:
+
+1. Click on color picker icon from "Target HP" option and set it somewhere on the green field of your target health bar. You can target yourself before setting if there's no other player/NPC around.
+  *vanilla* - If you play on Vanilla server you might need to set "Target HP Exception" value, because on Vanilla servers "Target Nearest Friend" also targets your own character, it should be a unique to your character target window pixel (some pixel on your name or your avatar).
+2. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other players, it should be something like "Target Nearest Friendly Player").  
+3. Choose what the bot should do after it finds a player in "Do After Player Found" option.
+
+### Hints and issues
+- Tweak rotation time if the 360 degree turn isn't correct.
+- You can turn on "Target of target", in that case you will see on the screenshot recieved whether the found player is targeting you specifically.
+- This functionality won't work for non-hostile enemy players on Retail, because target friendly/enemy key doesn't target them in the game nor they have any names above if they aren't targeted first.   
+
+## Attacking/Running away :crossed_swords: (unstable)
+
+This module isn't "plug&play" and requires proper initial configuration and testing before using.
+
+*It definitely won't defeat anyone except for mobs, so choose a simple class for that role and make your rotation as simple as possible (some range class with simple spells that works both in melee and in range would do perfectly).*
+
+*For now it works only with players within 40 yd. range, because it relies on a target key.*
+
+The bot will notify you via telegram of any aggro events.
+
+Guide:
+1. Turn off the nameplates (ctrl + v) and turn on Enemy Names (Options -> Interface -> Enemy Players), you can also set NPC names to "None" to make the bot avoid mobs names.
+2. Click on color picker icon from Combat Indication Pixel and point it at the place which changes when your character switches to combat mode. Usually it should be a place which changes when the character is in combat mode: for example the place where character level is, which usually changes to "double swords" or the rim around the avatar which changes to red when in the combat mode.
+3. Choose what to do after the bot is being attacked: Attack, Run Away or Stop. (Run Away is the most stable choice for now).
+4. Click on color picker icon from Enemy HP Pixel and point it somewhere on the green field of your target health bar.
+5. Bind your "Target Key" to the same targeting key you use in the game (if you wish to target other enemy players, it should be something like "Target Nearest Enemy Player", or "Target Nearest Enemy" if you want to target mobs too).  
+6. Click "+" button, if you chose "Attack" mode:
+  1. If your skill works only at range but doesn't work in melee, turn "Range Only" on. (But better choose another, more universal and simpler skill)
+  2. Bind the same key the skill is bound to in the game.
+  3. Click on color picker icon from Skill Position and point it exactly at the number of the skill (the color should be whitish/greyish), this number is usually used for range indication and the bot will check it to determine how far it is from the enemy and how much it should come up to it.
+  4. Execution time and cooldown you can find in the description of the skill and set them in the respective values.
+
+Use "Test Rotation" button to see what will happen if you are attacked during fishing and check whether your rotation and the bot works properly for you.
+
+### Hints and issues:
+- You can change the size of enemy names in Accessibility section -> "Minimum Character Name Size". You can make it bigger to make the bot recognize enemies easier.  
+
 
 ## Download :open_file_folder:
 
