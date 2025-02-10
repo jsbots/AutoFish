@@ -241,7 +241,7 @@ The bot can use one of **OpenRouter** AI models to generate a response to the me
 In **Multiple Fishing** mode you can use the bot simultaneously with multiple game windows, the bot will switch between the windows and can work with up to 10 windows at the same time.
 
 
-###Guide(normal mode):
+**Guide(normal mode):**
 Ensure each window is properly launched and configured, and **every game instance is set to DirectX 11 or lower** *(older games doesn't need it)*.
 
 In this mode, the bot will use special profiles specific to each window: WIN1, WIN2, WIN3 and so on *(check in profiles list)*. Each "WIN" profile must have a **"Custom Window"** configured *(found under Advanced Settings -> Window)*. Use the **"Focus"** button to check which window you've selected.
@@ -251,7 +251,7 @@ In this mode, the bot will use special profiles specific to each window: WIN1, W
 
 Watch <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png" width="20"> [Multiple Windows Test Video](https://youtu.be/ih-xoQcByz8)
 
-###Guide(streaming mode):
+**Guide(streaming mode):**
 Similar logic as with normal mode, but instead each *WIN1, WIN2, WIN3* and so on will use */live1, /live2, /live3* addresses respectively you need to stream to from your OBS (and because you can't stream to multiple sources in OBS you need to have multiple applications running).
 
 Check [Streaming Mode](#streaming-mode-tv) how to stream to the bot from OBS and use it for every window, but instead of */live* rtps address use */live1*, */live2* and so on, as described above. Also check important notes.
