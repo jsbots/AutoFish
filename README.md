@@ -382,7 +382,7 @@ How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/com
 
 1. Choose **Streaming Server** as streaming source and then press **Launch** button. The bot will start RTSP server and will show (in the log) your RTSP address.
 2. Install [OBS](https://obsproject.com/) on your gaming pc (where the game will run).
-3. In OBS navigate to Settings -> Output -> Recording. Then configure it like this:
+3. In OBS navigate to Settings -> Output -> Output Mode: Advanced -> Recording. Then configure it like this:
 
 - **Type**: **Custom Output(FFmpeg)**
 - **FFmpeg Output Type:** Output to URL
