@@ -265,7 +265,7 @@ Another example if you have 3 windows: after you pressed "Start" you focus *firs
 You can use [Sound Detection](#sound-detection-loud_sound) with Multiple Fishing mode while streaming, but don't forget to add audio source (check Sound Detection section).
 
 - **Important!** If in **Streaming Mode + Multiple Fishing** you get video encoder overloading try to lower the bitrate (somewhere 2500-4000) and fps (30 works well as well) for each stream.
-- **Important!** [Sound Detection](#sound-detection-loud_sound) won't work in Multiple Fishing **normal** mode.
+- **Important!** [Sound Detection](#sound-detection-loud_sound) won't work in Multiple Fishing **normal** mode, but you can use **Streaming Mode** and just stream to your own computer. 
 - **Important!** For every WIN you need to turn on Streaming Mode checkbox (in Advanced Settings) separately, otherwise the bot will ignore it.
 - **Important!** You can start the bot from any WIN window, it doesn't matter, the bot will use settings of every WIN respectively. But if you start from some other profile don't forget to check **Multiple Fishing** checkbox.
 - **Important** You can try to increase mouse speed for multiple windows in case the bot can't catch up.
@@ -385,6 +385,7 @@ How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/com
 3. In OBS navigate to Settings -> Output -> Recording. Then configure it like this:
 
 - **Type**: **Custom Output(FFmpeg)**
+- **FFmpeg Output Type:** Output to URL
 - **File Path or URL**: Put here the address given by the bot, *e.g. rtsp://192.168.1.2:8554/live*
 - **Container Format**: rtsp
 - **Video Bitrate**: 6000 Kbps (experiment with this to get a better quality)
