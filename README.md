@@ -410,6 +410,7 @@ How to use hardware device: <img src="https://upload.wikimedia.org/wikipedia/com
 
 Instead of another PC you can use a Virtual Machine for either Hardware or Streaming Server approach. There are a lot of guides how to install and use VM, so I won't cover it here (tested it on VMware).
 
+- **Important!** Use Windows 10 on your VM for the most stable results.
 - **Important!** Make sure your VM uses **Bridge** type of **Network Connection**.
 - **Important!** When setting Fishing Zone while using Streaming Server the stream image might be green, just minimize your VM window then focus it again.
 - **Important!** If you want to use it with Hardware capture device, make sure to connect it to the VM instead of host PC *(you connect it to your GPU and then to your USB and after it detects a new hardware you choose it work for VM only)*.
