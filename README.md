@@ -3,6 +3,8 @@
 
 <a href="https://youtu.be/A3W8UuVIZTo"><img alt="" src="https://img.shields.io/youtube/views/A3W8UuVIZTo?style=social"></a>
 
+<a href="https://discord.com/invite/4sHFUtZ8tC"><img alt="Discord" src="https://img.shields.io/discord/1006827456931569735">
+
 </div>
 
 This is my first "serious" JavaScript project that I jumped into back in 2022, when I was silly enough to like the idea of making gaming bots :') while probably being morally wrong *(as much as it can be applied to competitive video games and something so boring and repetitive as fishing mechanics)* it was fun to make from the perspective of a young gamer and a beginner developer. Of course, its architecture is nothing more, but spaghetti sandbox-like code filled with all kinds of interesting technologies that were neither supported by testing nor implemented perfectly and reliably: electron, automation, streaming, image/sound/text recognition, multiple windows support, Raspberry/Arduino and even some LLM integration.
