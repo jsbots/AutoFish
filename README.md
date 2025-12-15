@@ -5,6 +5,14 @@
 
 </div>
 
+This is my first "serious" JavaScript project that I jumped into back in 2022, when I was silly enough to like the idea of making gaming bots :') while probably being morally wrong *(as much as it can be applied to competitive video games and something so boring and repetitive as fishing mechanics)* it was fun to make from the perspective of a young gamer and a beginner developer. Of course, its architecture is nothing more, but spaghetti sandbox-like code filled with all kinds of interesting technologies that were neither supported by testing nor implemented perfectly and reliably: electron, automation, streaming, image/sound/text recognition, multiple windows support, Raspberry/Arduino and even some LLM integration.
+
+It's old software, **don’t use it** now for things it was intended for back then and generally better stay away from botting in games both in development and in use, unless you want to get banned or hear from other people that they got banned.  
+
+[3.3.0](https://github.com/jsbots/AutoFish-3.3.0) version is now publicly available, and both repositories (this and [3.3.0](https://github.com/jsbots/AutoFish-3.3.0)) will be read-only from now on, do with it whatever you like. 
+
+Thanks everyone who supported the project along the years 💙, this bot was probably the only thing that kept me sane during the war. 
+
 ## Table of Contents :page_with_curl:
 
 - [Fishing bot](#fishing-bot-fish)
@@ -16,8 +24,7 @@
   - [Interactive Key](#interactive-key)
 - [Applying Lures](#applying-lures-pushpin)
 - [Interactive key](#interactive-key)
-- [Download](#download-open_file_folder)
-- [AutoFish Premium](#autofish-premium-gem)
+- [AutoFish 3.3.0](#autofish-330-)
   - [Remote Control / Chat Detection](#remote-control--chat-detection-iphone)
   - [AI](#ai-speech_balloon)
   - [Multiple Fishing Mode](#multiple-fishing-mode-rocket)
@@ -31,6 +38,7 @@
   - [Motion Detection](#motion-detection-runner)
   - [Check For Players Around (unstable)](#check-for-players-around-telescope-unstable)
   - [Attacking / Running away (unstable)](#attackingrunning-away-crossed_swords-unstable)
+- [Download](#download-open_file_folder)
 
 ## Fishing bot :fish:
 
@@ -47,8 +55,6 @@ For video review you can watch this (pretty old) <img src="https://upload.wikime
 **Important!** The bot works only on **Windows 10/11**.
 
 ## Disclaimer :warning:
-
-**This small project was developed for educational purposes ONLY, aiming to explore the feasibility of creating a functional gaming bot using web-development technologies.**
 
 **The software provided should NEVER be used with real-life applications, games, servers etc.**
 
@@ -170,9 +176,9 @@ Or
 /script UseContainerItem(0,2); PickupInventoryItem(16);
 ```
 
-## AutoFish Premium :gem:
+## AutoFish 3.3.0 👑
 
-AutoFish Premium is an updated version of the bot with many additional features.
+AutoFish 3.3.0 (Previously known as Premium, now publicly available -> [Repository](https://github.com/jsbots/AutoFish-3.3.0)) is an updated version of the bot with many additional features. 
 
 <p align="center">
 <img src="guide_img/Premium_UI.jpg" width="640">
@@ -465,13 +471,12 @@ Use "Test Rotation" button to see what will happen if you are attacked during fi
 ## Download :open_file_folder:
 
 <p align="center">
-<a href="https://www.buymeacoffee.com/jsbots"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jsbots&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" /></a>
+<a href="https://www.buymeacoffee.com/jsbots" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 </p>
 
 Check again [Disclaimer](#disclaimer-warning) before downloading or running any of these (*I'm serious, the bot has been there for 3 years and people are still doing stupid things with it. Don't launch/use it if you are new to this stuff.*):
 
 AutoFish 2.8.3: [Download](https://github.com/jsbots/AutoFish/releases/tag/v2.8.3)
 
-AutoFish 3.3.0 Premium (trial version): [Download](https://buymeacoffee.com/jsbots/e/258390)
+AutoFish 3.3.0: [Repository](https://github.com/jsbots/AutoFish-3.3.0) [Download](https://github.com/jsbots/AutoFish-3.3.0/releases/tag/v3.3.0)
 
-AutoFish 3.3.0 Premium: [Download](https://www.buymeacoffee.com/jsbots/e/96734)
